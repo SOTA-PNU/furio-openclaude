@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.router.pid
+logs/
+*.log
