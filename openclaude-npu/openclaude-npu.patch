@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/23] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/24] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/23] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/24] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/23] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/24] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/23] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/24] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/23] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/24] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/23] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/24] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/23] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/24] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/23] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/24] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/23] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/24] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/23] statusline: separate the current-model marker from the
+Subject: [PATCH 10/24] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/23] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/24] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/23] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/24] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/23] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/24] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/23] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/24] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/23] model picker: support a per-model default pp (large
+Subject: [PATCH 15/24] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/23] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/24] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/23] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/24] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/23] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/24] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/23] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/24] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/23] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/24] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/23] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/24] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/23] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/24] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/23] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/24] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5556,6 +5556,104 @@ index 522362ad..1c509b74 100644
    }
    return `Welcome back, ${username}`
  }
+-- 
+2.43.0
+
+
+From 45ee0600ddc93f7d4e3650c0d07a2aafdae62df4 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Fri, 23 Oct 2026 03:07:23 +0900
+Subject: [PATCH 24/24] brand: calm the logo gradient so a word reads as one
+ block
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The per-character gradient split evenly between the row and the column, so
+within a single row the leftmost and rightmost letters sat half a palette
+apart — SOTA's S looked pale beside a much darker A, and the word stopped
+reading as one shape. Weight the mix toward the row and let the column only
+nudge it (LOGO_GRADIENT_SWEEP = 0.15).
+
+Also add a `sota` palette and make it this build's default: same orange
+family, a narrower brightness range, and it stops short of the brown end
+where the bottom rows used to lose the hue. Upstream palettes are untouched
+and still reachable from /logo.
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/components/StartupScreen.palettes.ts | 21 +++++++++++++++++++--
+ src/components/StartupScreen.ts          | 13 ++++++++++++-
+ 2 files changed, 31 insertions(+), 3 deletions(-)
+
+diff --git a/src/components/StartupScreen.palettes.ts b/src/components/StartupScreen.palettes.ts
+index 7ca452ae..290f3101 100644
+--- a/src/components/StartupScreen.palettes.ts
++++ b/src/components/StartupScreen.palettes.ts
+@@ -19,6 +19,22 @@ export type LogoPalette = {
+ }
+ 
+ export const LOGO_PALETTES = {
++  // 연구실 배포본 기본값. ember 보다 밝기 폭을 좁히고 아래쪽이 갈색으로 떨어지지 않게 했다 —
++  // 폭이 넓으면 글자마다 밝기가 크게 달라져 한 단어가 한 덩어리로 안 보인다.
++  sota: {
++    gradient: [
++      [255, 186, 120],
++      [250, 160, 86],
++      [240, 133, 56],
++      [225, 112, 40],
++      [208, 95, 32],
++      [190, 82, 28],
++    ],
++    accent: [240, 133, 56],
++    cream: [232, 206, 182],
++    dim: [128, 104, 84],
++    border: [104, 84, 66],
++  },
+   ember: {
+     gradient: [
+       [255, 177, 95],
+@@ -95,10 +111,11 @@ export type LogoPaletteName = keyof typeof LOGO_PALETTES
+ 
+ export const LOGO_PALETTE_NAMES = Object.keys(LOGO_PALETTES) as LogoPaletteName[]
+ 
+-export const DEFAULT_LOGO_PALETTE: LogoPaletteName = 'ember'
++export const DEFAULT_LOGO_PALETTE: LogoPaletteName = 'sota'
+ 
+ export const LOGO_PALETTE_LABELS: Record<LogoPaletteName, string> = {
+-  ember: 'Ember (default)',
++  sota: 'SOTA (default)',
++  ember: 'Ember',
+   sunset: 'Sunset',
+   forest: 'Forest green',
+   ocean: 'Ocean blue',
+diff --git a/src/components/StartupScreen.ts b/src/components/StartupScreen.ts
+index 94af8b4c..613481de 100644
+--- a/src/components/StartupScreen.ts
++++ b/src/components/StartupScreen.ts
+@@ -47,10 +47,21 @@ function gradAt(stops: readonly RGB[], t: number): RGB {
+   return lerp(stops[i], stops[i + 1], s - i)
+ }
+ 
++/**
++ * 한 줄 안에서 좌→우로 그라데이션이 얼마나 움직이는가(0 = 가로로는 안 변함).
++ * 예전엔 0.5 라 세로와 가로가 반반이었는데, 그러면 같은 줄의 글자끼리 밝기가 크게 벌어져
++ * 알파벳마다 색이 튀어 보였다. 세로를 주로 두고 가로는 거들기만 한다.
++ */
++const LOGO_GRADIENT_SWEEP = 0.15
++
+ export function paintLine(text: string, stops: readonly RGB[], lineT: number): string {
+   let out = ''
+   for (let i = 0; i < text.length; i++) {
+-    const t = text.length > 1 ? lineT * 0.5 + (i / (text.length - 1)) * 0.5 : lineT
++    const t =
++      text.length > 1
++        ? lineT * (1 - LOGO_GRADIENT_SWEEP) +
++          (i / (text.length - 1)) * LOGO_GRADIENT_SWEEP
++        : lineT
+     const [r, g, b] = gradAt(stops, t)
+     out += `${ansiRgb(r, g, b)}${text[i]}`
+   }
 -- 
 2.43.0
 

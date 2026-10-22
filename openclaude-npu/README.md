@@ -1,7 +1,7 @@
 # NPU 패치 — openclaude 를 furio 클라이언트로
 
 furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude Code 계열 TUI)다.
-`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 23개다.
+`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 24개다.
 
 - 상태줄에 모델별 LED — 라우터의 `/router/status` 를 폴링해 올라오는 중(노랑)/사용 가능(초록)을 보여준다
 - `/model` 창에서 tp·dp·pp 를 따로 고른다(라우터가 주는 변형 목록 기준)
@@ -9,6 +9,9 @@ furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude 
 - 백그라운드 호출(요약·제목 생성)이 실행 중 바꾼 모델을 따라간다 — 안 그러면 켤 때 모델을
   다시 올리느라 카드가 왕복한다
 - 시작 화면과 환영 상자를 연구실 표식(SOTA / furio)으로 바꾼다
+- 로고 그라데이션을 세로 위주로 돌리고(`LOGO_GRADIENT_SWEEP`) 밝기 폭이 좁은 `sota` 팔레트를
+  기본으로 둔다 — 전에는 같은 줄의 첫 글자와 끝 글자가 팔레트 절반만큼 벌어져 알파벳마다
+  색이 튀었다. 업스트림 팔레트는 그대로라 `/logo` 로 되돌릴 수 있다
 
 기준: 업스트림 태그 `v0.33.0` (Twigpine/openclaude, 2026-10-15)
 
@@ -27,7 +30,7 @@ furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude 
 git clone https://github.com/Twigpine/openclaude.git
 cd openclaude
 git checkout v0.33.0
-git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 23개
+git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 24개
 
 bun install
 bun run build          # → dist/cli.mjs, dist/sdk.mjs
