@@ -2,7 +2,7 @@
 
 > 이 문서의 명령은 저장소의 `client/` 폴더 안에서 실행한다고 가정한다. 저장소 루트에서 실행할 때는 `client/install.sh` 처럼 앞에 폴더 이름을 붙인다. 전체 개요는 [루트 README](../README.md).
 
-[openclaude](https://github.com/Gitlawb/openclaude)
+[openclaude](https://github.com/Twigpine/openclaude)
 
 ```
 [내 Mac/Win] furio (openclaude, Node≥22) ──► localhost:8400 ──[SSH 터널 :10022]──► [서버] furiosa_router → furiosa-llm serve(NPU)
@@ -103,7 +103,7 @@ furio
 빌드해서 목에 물려야 한다(Node ≥22 + [bun](https://bun.sh) 필요, 인터넷은 npm 만):
 
 ```bash
-git clone https://github.com/Gitlawb/openclaude.git && cd openclaude
+git clone https://github.com/Twigpine/openclaude.git && cd openclaude
 git am /경로/claude-agent/openclaude-npu.patch     # 이 저장소의 패치
 bun install && bun run build                      # → dist/cli.mjs
 
@@ -242,7 +242,7 @@ SSH 터널이 떠 있는지: `curl http://127.0.0.1:8400/v1/models` (모델 나�
 
 install.sh 는 `@latest` 로 설치하므로 **자동으로 최신(v0.25.0)** 을 받습니다. 0.20.1 → 0.25.0 업그레이드를 소스로 감사하고 실측했습니다.
 
-**그대로인 것(우리 통합 계약 무사)** — 패키지 `@gitlawb/openclaude`·바이너리 `openclaude`·Node ≥22, env 6종(`CLAUDE_CODE_USE_OPENAI`/`OPENAI_BASE_URL`/`OPENAI_MODEL`/`OPENAI_API_KEY`/`CLAUDE_CODE_MAX_OUTPUT_TOKENS`/`OPENCLAUDE_CONFIG_DIR`), 플래그 6종(`--dangerously-skip-permissions`·`--permission-mode acceptEdits`·`-p`·`--model`·`--continue`). 커스텀 모델 id 는 화이트리스트 없이 그대로 전달되고, `dummy` 키도 로컬 주소(127.0.0.1)라 그대로 통과합니다. 새로 생긴 `safetyLevel` 은 `OPENCLAUDE_SAFETY_LEVEL` 을 **명시적으로 설정할 때만** 동작하므로 우리에겐 무영향입니다.
+**그대로인 것(우리 통합 계약 무사)** — 패키지 `@twigpine/openclaude`·바이너리 `openclaude`·Node ≥22, env 6종(`CLAUDE_CODE_USE_OPENAI`/`OPENAI_BASE_URL`/`OPENAI_MODEL`/`OPENAI_API_KEY`/`CLAUDE_CODE_MAX_OUTPUT_TOKENS`/`OPENCLAUDE_CONFIG_DIR`), 플래그 6종(`--dangerously-skip-permissions`·`--permission-mode acceptEdits`·`-p`·`--model`·`--continue`). 커스텀 모델 id 는 화이트리스트 없이 그대로 전달되고, `dummy` 키도 로컬 주소(127.0.0.1)라 그대로 통과합니다. 새로 생긴 `safetyLevel` 은 `OPENCLAUDE_SAFETY_LEVEL` 을 **명시적으로 설정할 때만** 동작하므로 우리에겐 무영향입니다.
 
 **바뀌어서 대응한 것**
 | 변화 | 대응 |

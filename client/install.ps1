@@ -30,7 +30,7 @@ $nodeMajor = [int](node -p "process.versions.node.split('.')[0]")
 if ($nodeMajor -lt 22) { throw "node $(node -v) — openclaude 는 Node >=22 필요. 최신 Node 설치 후 재실행." }
 
 Write-Host "[2/4] openclaude 설치 (격리 prefix: $HomeDir)"
-npm install -g '@gitlawb/openclaude@latest' --prefix $HomeDir | Out-Null
+npm install -g '@twigpine/openclaude@latest' --prefix $HomeDir | Out-Null
 $ocBin = Join-Path $HomeDir "openclaude.cmd"     # Windows npm --prefix 는 prefix 루트에 .cmd 생성
 if (-not (Test-Path $ocBin)) { $ocBin = Join-Path $BinDir "openclaude.cmd" }
 if (-not (Test-Path $ocBin)) { throw "openclaude 바이너리 없음 ($HomeDir)" }
