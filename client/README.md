@@ -210,7 +210,7 @@ FURIO_TOOLS="Bash,Edit,Read,Write,Glob,Grep" furio     # 필요한 도구만 →
 openclaude 0.25.0 은 서드파티 프로바이더에 대해 **최초 1회 온보딩·신뢰(trust) 화면**을 보여줍니다. 한 번 넘기면 `~/.furio/config` 에 기록되어 다시 안 뜹니다. 비대화형(`-p`)에서 걸리면 대화형으로 한 번 실행해 통과시켜 두세요.
 
 ### 모델 응답이 오다 말고 끊김 / 첫 요청이 타임아웃
-NPU 는 모델을 **늦게** 올립니다(라우터가 최대 480초 대기). openclaude 0.25.0 은 응답헤더 마감(`API_TIMEOUT_MS`, 기본 600초)과 SSE 유휴 한도(`CLAUDE_STREAM_IDLE_TIMEOUT_MS`, 0.25.0 에서 120초→**90초**로 축소)를 두는데 둘 다 우리 콜드스타트엔 빠듯합니다.
+NPU 는 모델을 **늦게** 올립니다(라우터가 최대 480초 대기). openclaude 는 응답헤더 마감(`API_TIMEOUT_MS`, 기본 600초)과 SSE 유휴 한도(`CLAUDE_STREAM_IDLE_TIMEOUT_MS`, 기본 **90초**)를 두는데 둘 다 우리 콜드스타트엔 빠듯합니다. 두 기본값은 v0.33.0 에서도 같고, 유휴 한도의 상한이 사실상 무제한이라 래퍼가 주는 600초가 잘리지 않습니다(2026-10-23 소스 확인).
 설치기가 각각 **900000ms / 600000ms** 로 넉넉히 잡아 둡니다. 더 늘리려면:
 ```bash
 API_TIMEOUT_MS=1200000 CLAUDE_STREAM_IDLE_TIMEOUT_MS=900000 furio
@@ -240,7 +240,9 @@ SSH 터널이 떠 있는지: `curl http://127.0.0.1:8400/v1/models` (모델 나�
 
 ## 5. 검증 기록 — openclaude v0.25.0 (2026-07-21)
 
-install.sh 는 `@latest` 로 설치하므로 **자동으로 최신(v0.25.0)** 을 받습니다. 0.20.1 → 0.25.0 업그레이드를 소스로 감사하고 실측했습니다.
+> 현재 기준은 **v0.33.0** 입니다. 아래는 0.25.0 으로 감사한 기록이고, 0.33.0 에서 다시 확인한 것은 위 타임아웃 두 값뿐입니다.
+
+install.sh 는 `@latest` 로 설치하므로 **자동으로 최신(현재 v0.33.0)** 을 받습니다. 0.20.1 → 0.25.0 업그레이드를 소스로 감사하고 실측했습니다.
 
 **그대로인 것(우리 통합 계약 무사)** — 패키지 `@twigpine/openclaude`·바이너리 `openclaude`·Node ≥22, env 6종(`CLAUDE_CODE_USE_OPENAI`/`OPENAI_BASE_URL`/`OPENAI_MODEL`/`OPENAI_API_KEY`/`CLAUDE_CODE_MAX_OUTPUT_TOKENS`/`OPENCLAUDE_CONFIG_DIR`), 플래그 6종(`--dangerously-skip-permissions`·`--permission-mode acceptEdits`·`-p`·`--model`·`--continue`). 커스텀 모델 id 는 화이트리스트 없이 그대로 전달되고, `dummy` 키도 로컬 주소(127.0.0.1)라 그대로 통과합니다. 새로 생긴 `safetyLevel` 은 `OPENCLAUDE_SAFETY_LEVEL` 을 **명시적으로 설정할 때만** 동작하므로 우리에겐 무영향입니다.
 
