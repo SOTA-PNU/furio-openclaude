@@ -5560,60 +5560,66 @@ index 522362ad..1c509b74 100644
 2.43.0
 
 
-From 45ee0600ddc93f7d4e3650c0d07a2aafdae62df4 Mon Sep 17 00:00:00 2001
+From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/24] brand: calm the logo gradient so a word reads as one
- block
+Subject: [PATCH 24/24] brand: give each logo letter its own color from a cool
+ spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-The per-character gradient split evenly between the row and the column, so
-within a single row the leftmost and rightmost letters sat half a palette
-apart — SOTA's S looked pale beside a much darker A, and the word stopped
-reading as one shape. Weight the mix toward the row and let the column only
-nudge it (LOGO_GRADIENT_SWEEP = 0.15).
+Two problems with the inherited gradient. It split evenly between the row and
+the column, so within one row the first and last letters sat half a palette
+apart and a word stopped reading as one shape. And the palette was orange —
+close enough to Claude's own mark to be confusing for a lab build.
 
-Also add a `sota` palette and make it this build's default: same orange
-family, a narrower brightness range, and it stops short of the brown end
-where the bottom rows used to lose the hue. Upstream palettes are untouched
-and still reachable from /logo.
+Paint per letter instead: one flat color per letter cell, walking a nine-stop
+cyan→magenta spectrum across SOTA and FURIO so the two words share one sweep.
+Letter widths differ (FURIO's I is 3 columns, the rest are 9), so the cell
+widths are data next to the art rather than a column arithmetic guess.
+
+paintLine stays as upstream wrote it — unused here, but left alone so it does
+not drift. Upstream palettes are untouched and still reachable from /logo.
 
 Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
 ---
- src/components/StartupScreen.palettes.ts | 21 +++++++++++++++++++--
- src/components/StartupScreen.ts          | 13 ++++++++++++-
- 2 files changed, 31 insertions(+), 3 deletions(-)
+ src/components/StartupScreen.palettes.ts | 25 ++++++++-
+ src/components/StartupScreen.ts          | 71 ++++++++++++++++++++----
+ 2 files changed, 82 insertions(+), 14 deletions(-)
 
 diff --git a/src/components/StartupScreen.palettes.ts b/src/components/StartupScreen.palettes.ts
-index 7ca452ae..290f3101 100644
+index 7ca452ae..2e39da83 100644
 --- a/src/components/StartupScreen.palettes.ts
 +++ b/src/components/StartupScreen.palettes.ts
-@@ -19,6 +19,22 @@ export type LogoPalette = {
+@@ -19,6 +19,26 @@ export type LogoPalette = {
  }
  
  export const LOGO_PALETTES = {
-+  // 연구실 배포본 기본값. ember 보다 밝기 폭을 좁히고 아래쪽이 갈색으로 떨어지지 않게 했다 —
-+  // 폭이 넓으면 글자마다 밝기가 크게 달라져 한 단어가 한 덩어리로 안 보인다.
++  // 연구실 배포본 기본값. 글자 하나에 색 하나씩 돌아가도록 아홉 칸(SOTA 4 + FURIO 5)을
++  // 그대로 적어 둔다 — 글자마다 칠할 때 i/(9-1) 로 뽑으면 보간 없이 이 값이 그대로 쓰인다.
++  // 주황 계열을 피한 이유는 Claude 쪽 색과 너무 닮아서다.
 +  sota: {
 +    gradient: [
-+      [255, 186, 120],
-+      [250, 160, 86],
-+      [240, 133, 56],
-+      [225, 112, 40],
-+      [208, 95, 32],
-+      [190, 82, 28],
++      [86, 208, 228],
++      [78, 178, 236],
++      [96, 148, 238],
++      [122, 126, 232],
++      [146, 118, 230],
++      [170, 112, 222],
++      [194, 108, 206],
++      [214, 104, 188],
++      [228, 108, 166],
 +    ],
-+    accent: [240, 133, 56],
-+    cream: [232, 206, 182],
-+    dim: [128, 104, 84],
-+    border: [104, 84, 66],
++    accent: [122, 126, 232],
++    cream: [208, 210, 228],
++    dim: [108, 110, 138],
++    border: [88, 90, 116],
 +  },
    ember: {
      gradient: [
        [255, 177, 95],
-@@ -95,10 +111,11 @@ export type LogoPaletteName = keyof typeof LOGO_PALETTES
+@@ -95,10 +115,11 @@ export type LogoPaletteName = keyof typeof LOGO_PALETTES
  
  export const LOGO_PALETTE_NAMES = Object.keys(LOGO_PALETTES) as LogoPaletteName[]
  
@@ -5628,32 +5634,121 @@ index 7ca452ae..290f3101 100644
    forest: 'Forest green',
    ocean: 'Ocean blue',
 diff --git a/src/components/StartupScreen.ts b/src/components/StartupScreen.ts
-index 94af8b4c..613481de 100644
+index 94af8b4c..3e2cf093 100644
 --- a/src/components/StartupScreen.ts
 +++ b/src/components/StartupScreen.ts
-@@ -47,10 +47,21 @@ function gradAt(stops: readonly RGB[], t: number): RGB {
+@@ -47,6 +47,36 @@ function gradAt(stops: readonly RGB[], t: number): RGB {
    return lerp(stops[i], stops[i + 1], s - i)
  }
  
 +/**
-+ * 한 줄 안에서 좌→우로 그라데이션이 얼마나 움직이는가(0 = 가로로는 안 변함).
-+ * 예전엔 0.5 라 세로와 가로가 반반이었는데, 그러면 같은 줄의 글자끼리 밝기가 크게 벌어져
-+ * 알파벳마다 색이 튀어 보였다. 세로를 주로 두고 가로는 거들기만 한다.
++ * 글자 한 칸을 통째로 한 색으로 칠한다. 칸 경계를 알아야 하는데 글자 폭이 제각각이라
++ * (FURIO 의 I 만 3칸) 열 번호를 일정하게 나눠서는 못 맞춘다 — 그래서 칸 너비를 데이터로 받는다.
++ * firstLetter 는 이 줄의 첫 글자가 로고 전체에서 몇 번째인지다. SOTA 는 0, FURIO 는 4 라서
++ * 두 단어가 하나의 스펙트럼을 이어받는다.
 + */
-+const LOGO_GRADIENT_SWEEP = 0.15
++export function paintByLetter(
++  text: string,
++  cells: readonly number[],
++  firstLetter: number,
++  totalLetters: number,
++  stops: readonly RGB[],
++): string {
++  let out = ''
++  let col = 0
++  for (let li = 0; li < cells.length && col < text.length; li++) {
++    const cell = text.slice(col, col + cells[li]!)
++    const t = totalLetters > 1 ? (firstLetter + li) / (totalLetters - 1) : 0
++    const [r, g, b] = gradAt(stops, t)
++    out += `${ansiRgb(r, g, b)}${cell}`
++    col += cells[li]!
++    if (col < text.length) {
++      out += text[col]        // 칸 사이 공백 — 색을 입히지 않는다
++      col += 1
++    }
++  }
++  return out + RESET
++}
 +
++// 줄 단위 그라데이션(업스트림 원형). 이 배포본은 글자 단위로 칠하므로 쓰지 않는다.
  export function paintLine(text: string, stops: readonly RGB[], lineT: number): string {
    let out = ''
    for (let i = 0; i < text.length; i++) {
--    const t = text.length > 1 ? lineT * 0.5 + (i / (text.length - 1)) * 0.5 : lineT
-+    const t =
-+      text.length > 1
-+        ? lineT * (1 - LOGO_GRADIENT_SWEEP) +
-+          (i / (text.length - 1)) * LOGO_GRADIENT_SWEEP
-+        : lineT
-     const [r, g, b] = gradAt(stops, t)
-     out += `${ansiRgb(r, g, b)}${text[i]}`
+@@ -60,6 +90,7 @@ export function paintLine(text: string, stops: readonly RGB[], lineT: number): s
+ // ─── Filled Block Text Logo ───────────────────────────────────────────────────
+ 
+ // 연구실 배포본 표식: SOTA / FURIO. 글자 사이 한 칸.
++// CELLS 는 각 글자가 차지하는 칸 수 — 글자마다 색을 바꿀 때 경계로 쓴다.
+ const LOGO_OPEN = [
+   `████████╗ ████████╗ ████████╗ ████████╗`,
+   `██╔═════╝ ██╔═══██║ ╚══██╔══╝ ██╔═══██║`,
+@@ -69,6 +100,8 @@ const LOGO_OPEN = [
+   `╚═══════╝ ╚═══════╝    ╚═╝    ╚═╝   ╚═╝`,
+ ]
+ 
++const LOGO_OPEN_CELLS = [9, 9, 9, 9] as const
++
+ const LOGO_CLAUDE = [
+   `████████╗ ██╗   ██╗ ████████╗ ██╗ ████████╗`,
+   `██╔═════╝ ██║   ██║ ██╔═══██║ ██║ ██╔═══██║`,
+@@ -78,6 +111,11 @@ const LOGO_CLAUDE = [
+   `╚═╝        ╚═════╝  ╚═╝  ╚═╝  ╚═╝ ╚═══════╝`,
+ ]
+ 
++const LOGO_CLAUDE_CELLS = [9, 9, 9, 3, 9] as const
++
++/** 로고 전체 글자 수. 스펙트럼을 이 수로 나눠 글자마다 한 색씩 준다. */
++const LOGO_LETTERS = LOGO_OPEN_CELLS.length + LOGO_CLAUDE_CELLS.length
++
+ // ─── Provider detection ───────────────────────────────────────────────────────
+ 
+ export function detectProvider(modelOverride?: string): { name: string; model: string; baseUrl: string; isLocal: boolean } {
+@@ -211,24 +249,33 @@ export function printStartupScreen(modelOverride?: string): void {
+   const claudeWidth = Math.max(...claude.map(row => row.length))
+   const oneRowWidth = openWidth + 2 + claudeWidth
+   const fitsOneRow = columns >= oneRowWidth
++  // 색은 줄이 아니라 글자 단위로 간다 — 두 단어를 따로 칠해서 이어 붙여야 FURIO 의 첫
++  // 글자가 SOTA 다음 색을 이어받는다. 한 줄 배치든 쌓는 배치든 글자 번호는 그대로다.
++  const paintOpen = (row: string): string =>
++    paintByLetter(row, LOGO_OPEN_CELLS, 0, LOGO_LETTERS, GRAD)
++  const paintClaude = (row: string): string =>
++    paintByLetter(
++      row.trimEnd(),
++      LOGO_CLAUDE_CELLS,
++      LOGO_OPEN_CELLS.length,
++      LOGO_LETTERS,
++      GRAD,
++    )
+   const logoLines = fitsOneRow
+     ? open.map((row, i) => ({
+         pad: centerPad(oneRowWidth),
+-        text: `${row.padEnd(openWidth)}  ${claude[i]}`.trimEnd(),
++        painted: `${paintOpen(row.padEnd(openWidth))}  ${paintClaude(claude[i]!)}`,
+       }))
+     : [
+-        ...open.map(row => ({ pad: centerPad(openWidth), text: row })),
+-        { pad: '', text: '' },
+-        ...claude.map(row => ({ pad: centerPad(claudeWidth), text: row.trimEnd() })),
++        ...open.map(row => ({ pad: centerPad(openWidth), painted: paintOpen(row) })),
++        { pad: '', painted: '' },
++        ...claude.map(row => ({
++          pad: centerPad(claudeWidth),
++          painted: paintClaude(row),
++        })),
+       ]
+-  const total = logoLines.length
+-  for (let i = 0; i < total; i++) {
+-    const t = total > 1 ? i / (total - 1) : 0
+-    if (logoLines[i].text === '') {
+-      out.push('')
+-    } else {
+-      out.push(logoLines[i].pad + paintLine(logoLines[i].text, GRAD, t))
+-    }
++  for (const line of logoLines) {
++    out.push(line.painted === '' ? '' : line.pad + line.painted)
    }
+ 
+   out.push('')
 -- 
 2.43.0
 
