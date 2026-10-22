@@ -37,8 +37,8 @@ furio 는 위 openclaude 에 Furiosa RNGD NPU 연동을 더한 것입니다. 이
 부산대 SOTA 연구실이 작성했으며 위 MIT 조건과 같은 조건으로 제공합니다.
 
 openclaude 본체 소스는 이 저장소에 없습니다. 설치기는 npm 의
-@gitlawb/openclaude 를 받은 뒤 우리 NPU 빌드 산출물로 덮어씁니다.
+@twigpine/openclaude 를 받은 뒤 우리 NPU 빌드 산출물로 덮어씁니다.
 openclaude-npu/openclaude-npu.patch 는 우리가 더한 변경분(diff)이며,
-원본 소스는 https://github.com/Gitlawb/openclaude 에서 받으십시오.
+원본 소스는 https://github.com/Twigpine/openclaude 에서 받으십시오.
 
 원본이 Anthropic Claude Code CLI 파생이라는 위 고지가 그대로 적용됩니다.

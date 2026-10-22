@@ -1,4 +1,4 @@
-From 7c67b3d2b269375ae8e115204f8570f58f03285f Mon Sep 17 00:00:00 2001
+From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
 Subject: [PATCH 01/23] statusline: show Furiosa NPU model state with per-model
@@ -39,7 +39,7 @@ Claude-Session: https://claude.ai/code/session_01Na71jMPNwVCJecN1VMjJbo
  create mode 100644 src/services/npuStatusHook.ts
 
 diff --git a/src/components/BuiltinStatusLine.tsx b/src/components/BuiltinStatusLine.tsx
-index 4a0a0af..ea77786 100644
+index 4a0a0af1..ea77786a 100644
 --- a/src/components/BuiltinStatusLine.tsx
 +++ b/src/components/BuiltinStatusLine.tsx
 @@ -9,6 +9,8 @@ import { useTerminalSize } from '../hooks/useTerminalSize.js';
@@ -159,7 +159,7 @@ index 4a0a0af..ea77786 100644
    // paddingX from the footer (2 each side) is already outside this Box;
 diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
 new file mode 100644
-index 0000000..5c7facc
+index 00000000..5c7facc8
 --- /dev/null
 +++ b/src/services/npuStatus.ts
 @@ -0,0 +1,175 @@
@@ -340,7 +340,7 @@ index 0000000..5c7facc
 +}
 diff --git a/src/services/npuStatusHook.ts b/src/services/npuStatusHook.ts
 new file mode 100644
-index 0000000..5fb053a
+index 00000000..5fb053a4
 --- /dev/null
 +++ b/src/services/npuStatusHook.ts
 @@ -0,0 +1,30 @@
@@ -378,7 +378,7 @@ index 0000000..5fb053a
 2.43.0
 
 
-From b011b77eefa02e916e60392a3967cd48b532c531 Mon Sep 17 00:00:00 2001
+From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
 Subject: [PATCH 02/23] model picker: use backend-supplied model descriptions
@@ -400,7 +400,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
  1 file changed, 34 insertions(+), 1 deletion(-)
 
 diff --git a/src/services/api/bootstrap.ts b/src/services/api/bootstrap.ts
-index e901799..9bfec8b 100644
+index 69f62843..a4615938 100644
 --- a/src/services/api/bootstrap.ts
 +++ b/src/services/api/bootstrap.ts
 @@ -95,12 +95,40 @@ export function getDiscoveredModelApiNames(
@@ -462,7 +462,7 @@ index e901799..9bfec8b 100644
 2.43.0
 
 
-From c7cbc97b974c40f9f73633619f18001745ab9a7e Mon Sep 17 00:00:00 2001
+From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
 Subject: [PATCH 03/23] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
@@ -500,7 +500,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
  create mode 100644 src/utils/npuVariants.ts
 
 diff --git a/src/components/ModelPicker.tsx b/src/components/ModelPicker.tsx
-index fe8d99b..336c021 100644
+index 514a9fee..a7ce959b 100644
 --- a/src/components/ModelPicker.tsx
 +++ b/src/components/ModelPicker.tsx
 @@ -10,6 +10,7 @@ import { useKeybindings } from '../keybindings/useKeybinding.js';
@@ -509,7 +509,7 @@ index fe8d99b..336c021 100644
  import { isModelAllowed } from '../utils/model/modelAllowlist.js';
 +import { cycleNpuVariant, describeNpuVariant, npuVariantsOf } from '../utils/npuVariants.js';
  import { getDefaultMainLoopModel, type ModelSetting, modelDisplayString, parseUserSpecifiedModel } from '../utils/model/model.js';
- import { getModelOptions, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
+ import { getModelOptions, SWITCH_PROFILE_VALUE_PREFIX, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
  import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings.js';
 @@ -93,7 +94,9 @@ function mapDiscoveryToneToColor(tone: ModelPickerDiscoveryState['tone']): 'erro
    }
@@ -577,7 +577,7 @@ index fe8d99b..336c021 100644
  function _temp4() {}
  function _temp3(opt_0) {
    return {
-@@ -513,6 +531,40 @@ function resolveOptionModel(value?: string): string | undefined {
+@@ -523,6 +541,40 @@ function resolveOptionModel(value?: string): string | undefined {
      : null;
    return parseUserSpecifiedModel(switched ? switched.model : value);
  }
@@ -620,7 +620,7 @@ index fe8d99b..336c021 100644
    const {
 diff --git a/src/utils/npuVariants.ts b/src/utils/npuVariants.ts
 new file mode 100644
-index 0000000..6949f79
+index 00000000..6949f79d
 --- /dev/null
 +++ b/src/utils/npuVariants.ts
 @@ -0,0 +1,86 @@
@@ -714,7 +714,7 @@ index 0000000..6949f79
 2.43.0
 
 
-From e666bb3d649641c55a6416cee823024e729e36ce Mon Sep 17 00:00:00 2001
+From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
 Subject: [PATCH 04/23] model picker: say why the NPU config row is absent
@@ -737,10 +737,10 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
  1 file changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/src/components/ModelPicker.tsx b/src/components/ModelPicker.tsx
-index 336c021..e0f1d18 100644
+index a7ce959b..f2ff7fa4 100644
 --- a/src/components/ModelPicker.tsx
 +++ b/src/components/ModelPicker.tsx
-@@ -551,8 +551,19 @@ function NpuParallelismRow({
+@@ -561,8 +561,19 @@ function NpuParallelismRow({
    modelId: string;
    allOptions: readonly ModelOption[];
  }): React.ReactNode {
@@ -766,7 +766,7 @@ index 336c021..e0f1d18 100644
 2.43.0
 
 
-From 09e4947a165c12eb7dbe2f8a9a5cdfa27611d5ad Mon Sep 17 00:00:00 2001
+From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
 Subject: [PATCH 05/23] model picker: pick the model and its dp/pp separately
@@ -801,7 +801,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
  3 files changed, 114 insertions(+), 16 deletions(-)
 
 diff --git a/src/components/ModelPicker.tsx b/src/components/ModelPicker.tsx
-index e0f1d18..691ccba 100644
+index f2ff7fa4..a9972d84 100644
 --- a/src/components/ModelPicker.tsx
 +++ b/src/components/ModelPicker.tsx
 @@ -10,7 +10,7 @@ import { useKeybindings } from '../keybindings/useKeybinding.js';
@@ -811,7 +811,7 @@ index e0f1d18..691ccba 100644
 -import { cycleNpuVariant, describeNpuVariant, npuVariantsOf } from '../utils/npuVariants.js';
 +import { cycleNpuVariant, describeNpuVariant, getDiscoveredModelIds, npuVariantsOf, parseNpuVariant, variantId } from '../utils/npuVariants.js';
  import { getDefaultMainLoopModel, type ModelSetting, modelDisplayString, parseUserSpecifiedModel } from '../utils/model/model.js';
- import { getModelOptions, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
+ import { getModelOptions, SWITCH_PROFILE_VALUE_PREFIX, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
  import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings.js';
 @@ -96,7 +96,7 @@ function mapDiscoveryToneToColor(tone: ModelPickerDiscoveryState['tone']): 'erro
  export function ModelPicker(t0) {
@@ -918,7 +918,7 @@ index e0f1d18..691ccba 100644
      $[66] = t24;
    } else {
      t24 = $[66];
-@@ -546,12 +564,15 @@ function resolveOptionModel(value?: string): string | undefined {
+@@ -556,12 +574,15 @@ function resolveOptionModel(value?: string): string | undefined {
   */
  function NpuParallelismRow({
    modelId,
@@ -937,7 +937,7 @@ index e0f1d18..691ccba 100644
    const variants = npuVariantsOf(modelId, allValues);
    if (variants.length < 2) {
      // Say why the row is missing instead of vanishing — otherwise a model that
-@@ -564,7 +585,7 @@ function NpuParallelismRow({
+@@ -574,7 +595,7 @@ function NpuParallelismRow({
          {'NPU  '}병렬 구성 고정 — 이 모델은 NPU 4장을 모두 사용합니다
        </Text>;
    }
@@ -947,7 +947,7 @@ index e0f1d18..691ccba 100644
        {'NPU  '}
        {variants.map((v, i) => <Text key={v.value}>
 diff --git a/src/utils/model/openaiModelDiscovery.ts b/src/utils/model/openaiModelDiscovery.ts
-index 1801fd5..8d0f991 100644
+index 1801fd50..8d0f9915 100644
 --- a/src/utils/model/openaiModelDiscovery.ts
 +++ b/src/utils/model/openaiModelDiscovery.ts
 @@ -4,6 +4,11 @@ import { logForDebugging } from '../debug.js'
@@ -984,7 +984,7 @@ index 1801fd5..8d0f991 100644
    }))
  }
 diff --git a/src/utils/npuVariants.ts b/src/utils/npuVariants.ts
-index 6949f79..0f41e51 100644
+index 6949f79d..0f41e51d 100644
 --- a/src/utils/npuVariants.ts
 +++ b/src/utils/npuVariants.ts
 @@ -80,7 +80,70 @@ export function cycleNpuVariant(
@@ -1062,7 +1062,7 @@ index 6949f79..0f41e51 100644
 2.43.0
 
 
-From f67bfeb8b414af23f564216285b953325b3991b3 Mon Sep 17 00:00:00 2001
+From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
 Subject: [PATCH 06/23] model picker: apply NPU collapsing and descriptions on
@@ -1091,10 +1091,10 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
  2 files changed, 34 insertions(+), 5 deletions(-)
 
 diff --git a/src/utils/model/modelOptions.ts b/src/utils/model/modelOptions.ts
-index b40f243..a3f1729 100644
+index 259f544a..ea6afef4 100644
 --- a/src/utils/model/modelOptions.ts
 +++ b/src/utils/model/modelOptions.ts
-@@ -58,6 +58,10 @@ import { getCachedNvidiaNimModelOptions, isNvidiaNimProvider } from './nvidiaNim
+@@ -53,6 +53,10 @@ import { getCachedNvidiaNimModelOptions, isNvidiaNimProvider } from './nvidiaNim
  import { getCachedMiniMaxModelOptions, isMiniMaxProvider } from './minimaxModels.js'
  import { getCachedXiaomiMimoModelOptions, isXiaomiMimoProvider } from './xiaomi-mimoModels.js'
  import { getAntModels } from './antModels.js'
@@ -1105,7 +1105,7 @@ index b40f243..a3f1729 100644
  
  // @[MODEL LAUNCH]: Update all the available and default model option strings below.
  
-@@ -695,12 +699,32 @@ function getModelOptionsBase(fastMode = false): ModelOption[] {
+@@ -693,12 +697,32 @@ function getModelOptionsBase(fastMode = false): ModelOption[] {
      const sourceOptions = activeOpenAIOptions.length > 0
        ? activeOpenAIOptions
        : scopedOptions
@@ -1143,7 +1143,7 @@ index b40f243..a3f1729 100644
      ]
    }
 diff --git a/src/utils/npuVariants.ts b/src/utils/npuVariants.ts
-index 0f41e51..d6de5f4 100644
+index 0f41e51d..d6de5f48 100644
 --- a/src/utils/npuVariants.ts
 +++ b/src/utils/npuVariants.ts
 @@ -105,7 +105,12 @@ export function setDiscoveredModelIds(ids: readonly string[]): void {
@@ -1164,7 +1164,7 @@ index 0f41e51..d6de5f4 100644
 2.43.0
 
 
-From 06bb55d93406b70563a2962473fce11e8b3085de Mon Sep 17 00:00:00 2001
+From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
 Subject: [PATCH 07/23] model picker: apply NPU presentation where every path
@@ -1193,7 +1193,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
  2 files changed, 39 insertions(+), 3 deletions(-)
 
 diff --git a/src/components/ModelPicker.tsx b/src/components/ModelPicker.tsx
-index 691ccba..f10e054 100644
+index a9972d84..ad079195 100644
 --- a/src/components/ModelPicker.tsx
 +++ b/src/components/ModelPicker.tsx
 @@ -10,7 +10,7 @@ import { useKeybindings } from '../keybindings/useKeybinding.js';
@@ -1203,7 +1203,7 @@ index 691ccba..f10e054 100644
 -import { cycleNpuVariant, describeNpuVariant, getDiscoveredModelIds, npuVariantsOf, parseNpuVariant, variantId } from '../utils/npuVariants.js';
 +import { applyNpuPresentation, cycleNpuVariant, describeNpuVariant, getDiscoveredModelIds, npuVariantsOf, parseNpuVariant, variantId } from '../utils/npuVariants.js';
  import { getDefaultMainLoopModel, type ModelSetting, modelDisplayString, parseUserSpecifiedModel } from '../utils/model/model.js';
- import { getModelOptions, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
+ import { getModelOptions, SWITCH_PROFILE_VALUE_PREFIX, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
  import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings.js';
 @@ -96,7 +96,7 @@ function mapDiscoveryToneToColor(tone: ModelPickerDiscoveryState['tone']): 'erro
  export function ModelPicker(t0) {
@@ -1234,7 +1234,7 @@ index 691ccba..f10e054 100644
    // onSelect, which decodes the value and activates the target profile. Strip
    // them for inline pickers (allowProfileSwitch falsy) so a hotkey/Settings
 diff --git a/src/utils/npuVariants.ts b/src/utils/npuVariants.ts
-index d6de5f4..239767c 100644
+index d6de5f48..239767cd 100644
 --- a/src/utils/npuVariants.ts
 +++ b/src/utils/npuVariants.ts
 @@ -152,3 +152,29 @@ export function getBackendModelDescriptions(): Record<string, string> {
@@ -1271,7 +1271,7 @@ index d6de5f4..239767c 100644
 2.43.0
 
 
-From 9ed3935fb6f14e98419841dd51a3df81818f40b4 Mon Sep 17 00:00:00 2001
+From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
 Subject: [PATCH 08/23] model picker: adjust dp and pp as separate axes
@@ -1304,7 +1304,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
  5 files changed, 96 insertions(+), 22 deletions(-)
 
 diff --git a/src/components/ModelPicker.tsx b/src/components/ModelPicker.tsx
-index f10e054..cf64f27 100644
+index ad079195..89f9dab9 100644
 --- a/src/components/ModelPicker.tsx
 +++ b/src/components/ModelPicker.tsx
 @@ -10,7 +10,7 @@ import { useKeybindings } from '../keybindings/useKeybinding.js';
@@ -1314,7 +1314,7 @@ index f10e054..cf64f27 100644
 -import { applyNpuPresentation, cycleNpuVariant, describeNpuVariant, getDiscoveredModelIds, npuVariantsOf, parseNpuVariant, variantId } from '../utils/npuVariants.js';
 +import { applyNpuPresentation, getDiscoveredModelIds, npuAxisValues, type NpuAxis, npuVariantsOf, stepNpuAxis, variantId } from '../utils/npuVariants.js';
  import { getDefaultMainLoopModel, type ModelSetting, modelDisplayString, parseUserSpecifiedModel } from '../utils/model/model.js';
- import { getModelOptions, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
+ import { getModelOptions, SWITCH_PROFILE_VALUE_PREFIX, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
  import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings.js';
 @@ -96,7 +96,7 @@ function mapDiscoveryToneToColor(tone: ModelPickerDiscoveryState['tone']): 'erro
  export function ModelPicker(t0) {
@@ -1394,7 +1394,7 @@ index f10e054..cf64f27 100644
      $[66] = t24;
    } else {
      t24 = $[66];
-@@ -575,11 +575,13 @@ function resolveOptionModel(value?: string): string | undefined {
+@@ -585,11 +585,13 @@ function resolveOptionModel(value?: string): string | undefined {
  function NpuParallelismRow({
    modelId,
    dp,
@@ -1409,7 +1409,7 @@ index f10e054..cf64f27 100644
  }): React.ReactNode {
    // 목록은 모델당 한 줄로 접혀 있으므로, 선택지는 백엔드가 광고한 전체 id 에서 읽는다.
    const allValues = getDiscoveredModelIds();
-@@ -595,16 +597,24 @@ function NpuParallelismRow({
+@@ -605,16 +607,24 @@ function NpuParallelismRow({
          {'NPU  '}병렬 구성 고정 — 이 모델은 NPU 4장을 모두 사용합니다
        </Text>;
    }
@@ -1443,7 +1443,7 @@ index f10e054..cf64f27 100644
  }
  function EffortLevelIndicator(t0) {
 diff --git a/src/keybindings/defaultBindings.ts b/src/keybindings/defaultBindings.ts
-index 886b1a9..c7fcae1 100644
+index 886b1a92..c7fcae16 100644
 --- a/src/keybindings/defaultBindings.ts
 +++ b/src/keybindings/defaultBindings.ts
 @@ -313,6 +313,7 @@ export const DEFAULT_BINDINGS: KeybindingBlock[] = [
@@ -1455,7 +1455,7 @@ index 886b1a9..c7fcae1 100644
    },
    // Select component navigation (used by /model, /resume, permission prompts, etc.)
 diff --git a/src/keybindings/schema.ts b/src/keybindings/schema.ts
-index 120622e..5132c95 100644
+index 120622e1..5132c954 100644
 --- a/src/keybindings/schema.ts
 +++ b/src/keybindings/schema.ts
 @@ -154,6 +154,7 @@ export const KEYBINDING_ACTIONS = [
@@ -1467,7 +1467,7 @@ index 120622e..5132c95 100644
    'select:next',
    'select:previous',
 diff --git a/src/keybindings/types.ts b/src/keybindings/types.ts
-index 69b561a..5d769f6 100644
+index 69b561ad..5d769f60 100644
 --- a/src/keybindings/types.ts
 +++ b/src/keybindings/types.ts
 @@ -97,6 +97,7 @@ export type KeybindingAction =
@@ -1479,7 +1479,7 @@ index 69b561a..5d769f6 100644
    | 'select:previous'
    | 'select:accept'
 diff --git a/src/utils/npuVariants.ts b/src/utils/npuVariants.ts
-index 239767c..0f33993 100644
+index 239767cd..0f339933 100644
 --- a/src/utils/npuVariants.ts
 +++ b/src/utils/npuVariants.ts
 @@ -178,3 +178,64 @@ export function applyNpuPresentation<
@@ -1551,7 +1551,7 @@ index 239767c..0f33993 100644
 2.43.0
 
 
-From effb31cff239043a996a7aa3356fedc80a14326c Mon Sep 17 00:00:00 2001
+From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
 Subject: [PATCH 09/23] model picker: stop the dp/pp row from reflowing
@@ -1576,7 +1576,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
  2 files changed, 31 insertions(+), 7 deletions(-)
 
 diff --git a/src/components/ModelPicker.tsx b/src/components/ModelPicker.tsx
-index cf64f27..8dcd48a 100644
+index 89f9dab9..71e62223 100644
 --- a/src/components/ModelPicker.tsx
 +++ b/src/components/ModelPicker.tsx
 @@ -10,7 +10,7 @@ import { useKeybindings } from '../keybindings/useKeybinding.js';
@@ -1586,9 +1586,9 @@ index cf64f27..8dcd48a 100644
 -import { applyNpuPresentation, getDiscoveredModelIds, npuAxisValues, type NpuAxis, npuVariantsOf, stepNpuAxis, variantId } from '../utils/npuVariants.js';
 +import { applyNpuPresentation, getDiscoveredModelIds, npuAxisAllValues, npuAxisValues, type NpuAxis, npuVariantsOf, stepNpuAxis, variantId } from '../utils/npuVariants.js';
  import { getDefaultMainLoopModel, type ModelSetting, modelDisplayString, parseUserSpecifiedModel } from '../utils/model/model.js';
- import { getModelOptions, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
+ import { getModelOptions, SWITCH_PROFILE_VALUE_PREFIX, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
  import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings.js';
-@@ -597,22 +597,26 @@ function NpuParallelismRow({
+@@ -607,22 +607,26 @@ function NpuParallelismRow({
          {'NPU  '}병렬 구성 고정 — 이 모델은 NPU 4장을 모두 사용합니다
        </Text>;
    }
@@ -1622,7 +1622,7 @@ index cf64f27..8dcd48a 100644
        <Text color="subtle">← → to adjust · tab for {axis === 'dp' ? 'pp' : 'dp'}</Text>
      </Text>;
 diff --git a/src/utils/npuVariants.ts b/src/utils/npuVariants.ts
-index 0f33993..b00fbc3 100644
+index 0f339933..b00fbc38 100644
 --- a/src/utils/npuVariants.ts
 +++ b/src/utils/npuVariants.ts
 @@ -239,3 +239,23 @@ export function stepNpuAxis(
@@ -1653,7 +1653,7 @@ index 0f33993..b00fbc3 100644
 2.43.0
 
 
-From 27c42e3729aab78a816115b3e4c68a03c905cb77 Mon Sep 17 00:00:00 2001
+From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
 Subject: [PATCH 10/23] statusline: separate the current-model marker from the
@@ -1671,7 +1671,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/src/components/BuiltinStatusLine.tsx b/src/components/BuiltinStatusLine.tsx
-index ea77786..f6657b6 100644
+index ea77786a..f6657b6c 100644
 --- a/src/components/BuiltinStatusLine.tsx
 +++ b/src/components/BuiltinStatusLine.tsx
 @@ -79,8 +79,9 @@ export function buildNpuSegments(npu: NpuStatus, currentModelId: string | null):
@@ -1690,7 +1690,7 @@ index ea77786..f6657b6 100644
 2.43.0
 
 
-From f473f6cac85eb6191d5847cb17ecabb04e80d7aa Mon Sep 17 00:00:00 2001
+From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
 Subject: [PATCH 11/23] model picker: start loading the model as soon as it is
@@ -1714,7 +1714,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
  2 files changed, 32 insertions(+)
 
 diff --git a/src/components/ModelPicker.tsx b/src/components/ModelPicker.tsx
-index 8dcd48a..77dbe0c 100644
+index 71e62223..cc529a32 100644
 --- a/src/components/ModelPicker.tsx
 +++ b/src/components/ModelPicker.tsx
 @@ -10,6 +10,7 @@ import { useKeybindings } from '../keybindings/useKeybinding.js';
@@ -1724,7 +1724,7 @@ index 8dcd48a..77dbe0c 100644
 +import { preloadNpuModel } from '../services/npuStatus.js';
  import { applyNpuPresentation, getDiscoveredModelIds, npuAxisAllValues, npuAxisValues, type NpuAxis, npuVariantsOf, stepNpuAxis, variantId } from '../utils/npuVariants.js';
  import { getDefaultMainLoopModel, type ModelSetting, modelDisplayString, parseUserSpecifiedModel } from '../utils/model/model.js';
- import { getModelOptions, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
+ import { getModelOptions, SWITCH_PROFILE_VALUE_PREFIX, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
 @@ -376,6 +377,9 @@ export function ModelPicker(t0) {
        // 백엔드가 광고하지 않은 조합이면 조립하지 않는다(있지도 않은 모델로 404 나는 것 방지).
        const composedValue = variantId(selectedValue, npuConfig.dp, npuConfig.pp);
@@ -1736,7 +1736,7 @@ index 8dcd48a..77dbe0c 100644
      };
      $[35] = effort;
 diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
-index 5c7facc..8c5ff49 100644
+index 5c7facc8..8c5ff49e 100644
 --- a/src/services/npuStatus.ts
 +++ b/src/services/npuStatus.ts
 @@ -173,3 +173,31 @@ export function __resetNpuStatusForTest(): void {
@@ -1775,7 +1775,7 @@ index 5c7facc..8c5ff49 100644
 2.43.0
 
 
-From 6ece7115d354facf8412c65797a85ab2bf667c2e Mon Sep 17 00:00:00 2001
+From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
 Subject: [PATCH 12/23] npu: react to a model pick immediately, and show every
@@ -1831,7 +1831,7 @@ Claude-Session: https://claude.ai/code/session_01Na71jMPNwVCJecN1VMjJbo
  create mode 100644 src/utils/npuVariants.test.ts
 
 diff --git a/src/components/BuiltinStatusLine.test.tsx b/src/components/BuiltinStatusLine.test.tsx
-index dfe1aae..e1f8798 100644
+index dfe1aae4..e1f87987 100644
 --- a/src/components/BuiltinStatusLine.test.tsx
 +++ b/src/components/BuiltinStatusLine.test.tsx
 @@ -1,8 +1,10 @@
@@ -1912,7 +1912,7 @@ index dfe1aae..e1f8798 100644
 +  })
 +})
 diff --git a/src/components/BuiltinStatusLine.tsx b/src/components/BuiltinStatusLine.tsx
-index f6657b6..563aa53 100644
+index f6657b6c..563aa531 100644
 --- a/src/components/BuiltinStatusLine.tsx
 +++ b/src/components/BuiltinStatusLine.tsx
 @@ -9,7 +9,7 @@ import { useTerminalSize } from '../hooks/useTerminalSize.js';
@@ -2040,7 +2040,7 @@ index f6657b6..563aa53 100644
    }),
    // paddingX from the footer (2 each side) is already outside this Box;
 diff --git a/src/components/ModelPicker.tsx b/src/components/ModelPicker.tsx
-index 77dbe0c..54bd1a1 100644
+index cc529a32..184d16dc 100644
 --- a/src/components/ModelPicker.tsx
 +++ b/src/components/ModelPicker.tsx
 @@ -11,7 +11,8 @@ import { useAppState, useSetAppState } from '../state/AppState.js';
@@ -2051,7 +2051,7 @@ index 77dbe0c..54bd1a1 100644
 +import { useNpuStatus } from '../services/npuStatusHook.js';
 +import { applyNpuLoadColors, applyNpuPresentation, getDiscoveredModelIds, npuAxisAllValues, npuAxisValues, type NpuAxis, npuLoadStatesByBase, npuVariantsOf, stepNpuAxis, variantId } from '../utils/npuVariants.js';
  import { getDefaultMainLoopModel, type ModelSetting, modelDisplayString, parseUserSpecifiedModel } from '../utils/model/model.js';
- import { getModelOptions, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
+ import { getModelOptions, SWITCH_PROFILE_VALUE_PREFIX, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
  import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings.js';
 @@ -96,8 +97,9 @@ function mapDiscoveryToneToColor(tone: ModelPickerDiscoveryState['tone']): 'erro
  }
@@ -2112,7 +2112,7 @@ index 77dbe0c..54bd1a1 100644
    // Cross-profile switch options can only be honored by the /model command's
    // onSelect, which decodes the value and activates the target profile. Strip
 diff --git a/src/components/PromptInput/PromptInput.tsx b/src/components/PromptInput/PromptInput.tsx
-index 4032ed2..affc76f 100644
+index 3ac42fcc..8d76f99a 100644
 --- a/src/components/PromptInput/PromptInput.tsx
 +++ b/src/components/PromptInput/PromptInput.tsx
 @@ -39,6 +39,8 @@ import { useOptionalKeybindingContext } from '../../keybindings/KeybindingContex
@@ -2124,7 +2124,7 @@ index 4032ed2..affc76f 100644
  import { abortPromptSuggestion, logSuggestionSuppressed } from '../../services/PromptSuggestion/promptSuggestion.js';
  import { type ActiveSpeculationState, abortSpeculation } from '../../services/PromptSuggestion/speculation.js';
  import { getActiveAgentForInput, getViewedTeammateTask } from '../../state/selectors.js';
-@@ -471,13 +473,24 @@ function PromptInput({
+@@ -478,13 +480,24 @@ function PromptInput({
    const backgroundTaskCount = useMemo(() => countVisibleBackgroundTasks(tasks), [tasks]);
    const tasksFooterVisible = backgroundTaskCount > 0 && !shouldHideTasksFooter(tasks, showSpinnerTree);
    const teamsFooterVisible = cachedTeams.length > 0;
@@ -2150,7 +2150,7 @@ index 4032ed2..affc76f 100644
    const footerItemSelected = rawFooterSelection && footerItems.includes(rawFooterSelection) ? rawFooterSelection : null;
    useEffect(() => {
      if (rawFooterSelection && !footerItemSelected) {
-@@ -488,6 +501,7 @@ function PromptInput({
+@@ -495,6 +508,7 @@ function PromptInput({
      }
    }, [rawFooterSelection, footerItemSelected, setAppState]);
    const tasksSelected = footerItemSelected === 'tasks';
@@ -2158,7 +2158,7 @@ index 4032ed2..affc76f 100644
    const tmuxSelected = footerItemSelected === 'tmux';
    const bagelSelected = footerItemSelected === 'bagel';
    const teamsSelected = footerItemSelected === 'teams';
-@@ -495,7 +509,13 @@ function PromptInput({
+@@ -502,7 +516,13 @@ function PromptInput({
    function selectFooterItem(item: FooterItem | null): void {
      setAppState(prev => prev.footerSelection === item ? prev : {
        ...prev,
@@ -2173,7 +2173,7 @@ index 4032ed2..affc76f 100644
      });
      if (item === 'tasks') {
        setTeammateFooterIndex(0);
-@@ -503,6 +523,20 @@ function PromptInput({
+@@ -510,6 +530,20 @@ function PromptInput({
      }
    }
  
@@ -2194,7 +2194,7 @@ index 4032ed2..affc76f 100644
    // delta: +1 = down/right, -1 = up/left. Returns true if nav happened
    // (including deselecting at the start), false if at a boundary.
    function navigateFooter(delta: 1 | -1, exitAtStart = false): boolean {
-@@ -1826,6 +1860,11 @@ function PromptInput({
+@@ -1868,6 +1902,11 @@ function PromptInput({
        navigateFooter(1);
      },
      'footer:next': () => {
@@ -2206,7 +2206,7 @@ index 4032ed2..affc76f 100644
        // Teammate mode: ←/→ cycles within the team member list
        if (tasksSelected && isTeammateMode) {
          const totalAgents = 1 + inProcessTeammates.length;
-@@ -1835,6 +1874,10 @@ function PromptInput({
+@@ -1877,6 +1916,10 @@ function PromptInput({
        navigateFooter(1);
      },
      'footer:previous': () => {
@@ -2217,7 +2217,7 @@ index 4032ed2..affc76f 100644
        if (tasksSelected && isTeammateMode) {
          const totalAgents = 1 + inProcessTeammates.length;
          setTeammateFooterIndex(prev => (prev - 1 + totalAgents) % totalAgents);
-@@ -1847,6 +1890,17 @@ function PromptInput({
+@@ -1889,6 +1932,17 @@ function PromptInput({
          return;
        }
        switch (footerItemSelected) {
@@ -2236,10 +2236,10 @@ index 4032ed2..affc76f 100644
            if (isBuddyEnabled()) {
              selectFooterItem(null);
 diff --git a/src/main.tsx b/src/main.tsx
-index a7832be..d04a747 100644
+index 1e1cc288..8830647e 100644
 --- a/src/main.tsx
 +++ b/src/main.tsx
-@@ -2912,6 +2912,7 @@ async function run(): Promise<CommanderCommand> {
+@@ -2882,6 +2882,7 @@ async function run(): Promise<CommanderCommand> {
        coordinatorTaskIndex: -1,
        viewSelectionMode: 'none',
        footerSelection: null,
@@ -2249,7 +2249,7 @@ index a7832be..d04a747 100644
        agentDefinitions,
 diff --git a/src/services/npuStatus.test.ts b/src/services/npuStatus.test.ts
 new file mode 100644
-index 0000000..dac0e16
+index 00000000..dac0e16b
 --- /dev/null
 +++ b/src/services/npuStatus.test.ts
 @@ -0,0 +1,56 @@
@@ -2310,7 +2310,7 @@ index 0000000..dac0e16
 +  })
 +})
 diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
-index 8c5ff49..763f4af 100644
+index 8c5ff49e..763f4af6 100644
 --- a/src/services/npuStatus.ts
 +++ b/src/services/npuStatus.ts
 @@ -104,8 +104,67 @@ export function parseStatus(raw: RawStatus): Pick<NpuStatus, 'models' | 'freeCar
@@ -2539,7 +2539,7 @@ index 8c5ff49..763f4af 100644
 +  })
 +}
 diff --git a/src/state/AppStateStore.ts b/src/state/AppStateStore.ts
-index b819cc5..208aec2 100644
+index b819cc5f..208aec25 100644
 --- a/src/state/AppStateStore.ts
 +++ b/src/state/AppStateStore.ts
 @@ -87,6 +87,8 @@ export type FooterItem =
@@ -2574,7 +2574,7 @@ index b819cc5..208aec2 100644
      remoteConnectionStatus: 'connecting',
 diff --git a/src/utils/npuVariants.test.ts b/src/utils/npuVariants.test.ts
 new file mode 100644
-index 0000000..6c8bdcc
+index 00000000..6c8bdcca
 --- /dev/null
 +++ b/src/utils/npuVariants.test.ts
 @@ -0,0 +1,120 @@
@@ -2699,7 +2699,7 @@ index 0000000..6c8bdcc
 +  })
 +})
 diff --git a/src/utils/npuVariants.ts b/src/utils/npuVariants.ts
-index b00fbc3..efa22d3 100644
+index b00fbc38..efa22d38 100644
 --- a/src/utils/npuVariants.ts
 +++ b/src/utils/npuVariants.ts
 @@ -119,7 +119,15 @@ export function getDiscoveredModelIds(): readonly string[] {
@@ -2775,7 +2775,7 @@ index b00fbc3..efa22d3 100644
 2.43.0
 
 
-From d5a9fb4eed6d1020b8232bf4717e210cd581af97 Mon Sep 17 00:00:00 2001
+From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
 Subject: [PATCH 13/23] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
@@ -2825,7 +2825,7 @@ Claude-Session: https://claude.ai/code/session_01Na71jMPNwVCJecN1VMjJbo
  create mode 100644 src/services/npuRecentModels.ts
 
 diff --git a/src/components/BuiltinStatusLine.test.tsx b/src/components/BuiltinStatusLine.test.tsx
-index e1f8798..fdab5bd 100644
+index e1f87987..fdab5bd5 100644
 --- a/src/components/BuiltinStatusLine.test.tsx
 +++ b/src/components/BuiltinStatusLine.test.tsx
 @@ -216,11 +216,12 @@ describe('builtinStatusLineShouldDisplay', () => {
@@ -2866,7 +2866,7 @@ index e1f8798..fdab5bd 100644
  
    it('brackets the model under the footer cursor so ↵ is unambiguous', () => {
 diff --git a/src/components/BuiltinStatusLine.tsx b/src/components/BuiltinStatusLine.tsx
-index 563aa53..ddb603c 100644
+index 563aa531..ddb603c2 100644
 --- a/src/components/BuiltinStatusLine.tsx
 +++ b/src/components/BuiltinStatusLine.tsx
 @@ -66,7 +66,7 @@ export function buildNpuSegments(npu: NpuStatus, currentModelId: string | null,
@@ -2879,10 +2879,10 @@ index 563aa53..ddb603c 100644
    for (const m of models) {
      const isCurrent = m.id === currentModelId;
 diff --git a/src/components/PromptInput/PromptInput.tsx b/src/components/PromptInput/PromptInput.tsx
-index affc76f..5376b49 100644
+index 8d76f99a..e0ce104f 100644
 --- a/src/components/PromptInput/PromptInput.tsx
 +++ b/src/components/PromptInput/PromptInput.tsx
-@@ -479,10 +479,10 @@ function PromptInput({
+@@ -486,10 +486,10 @@ function PromptInput({
    // 상태줄이 그리는 것과 같은 순서·같은 목록. 커서가 화면에 없는 항목을 가리키는
    // 일이 없도록 표시와 조작이 한 함수를 공유한다.
    const npuCurrentModelId = typeof mainLoopModel === 'string' ? mainLoopModel : null;
@@ -2899,7 +2899,7 @@ index affc76f..5376b49 100644
    // Effective selection: null if the selected pill stopped rendering (bridge
 diff --git a/src/services/npuRecentModels.test.ts b/src/services/npuRecentModels.test.ts
 new file mode 100644
-index 0000000..2a99aff
+index 00000000..2a99aff1
 --- /dev/null
 +++ b/src/services/npuRecentModels.test.ts
 @@ -0,0 +1,68 @@
@@ -2973,7 +2973,7 @@ index 0000000..2a99aff
 +})
 diff --git a/src/services/npuRecentModels.ts b/src/services/npuRecentModels.ts
 new file mode 100644
-index 0000000..b1c3433
+index 00000000..b1c34339
 --- /dev/null
 +++ b/src/services/npuRecentModels.ts
 @@ -0,0 +1,105 @@
@@ -3083,7 +3083,7 @@ index 0000000..b1c3433
 +  cache = null
 +}
 diff --git a/src/services/npuStatus.test.ts b/src/services/npuStatus.test.ts
-index dac0e16..dd1ae74 100644
+index dac0e16b..dd1ae740 100644
 --- a/src/services/npuStatus.test.ts
 +++ b/src/services/npuStatus.test.ts
 @@ -39,8 +39,20 @@ describe('npuDisplayModels', () => {
@@ -3121,7 +3121,7 @@ index dac0e16..dd1ae74 100644
    })
  })
 diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
-index 763f4af..96d2e40 100644
+index 763f4af6..96d2e404 100644
 --- a/src/services/npuStatus.ts
 +++ b/src/services/npuStatus.ts
 @@ -11,6 +11,8 @@
@@ -3227,7 +3227,7 @@ index 763f4af..96d2e40 100644
  }
  
 diff --git a/src/utils/npuVariants.test.ts b/src/utils/npuVariants.test.ts
-index 6c8bdcc..be3eb5a 100644
+index 6c8bdcca..be3eb5ae 100644
 --- a/src/utils/npuVariants.test.ts
 +++ b/src/utils/npuVariants.test.ts
 @@ -98,7 +98,10 @@ describe('npuLoadStatesByBase', () => {
@@ -3246,7 +3246,7 @@ index 6c8bdcc..be3eb5a 100644
 2.43.0
 
 
-From 04d6b86964adcf6e223c25e3786e8f0c0b823049 Mon Sep 17 00:00:00 2001
+From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
 Subject: [PATCH 14/23] model picker: add tp as a third parallel axis
@@ -3276,7 +3276,7 @@ advertised as `@tp{N}` ids plus a new FURIO_NPU_META map
  3 files changed, 295 insertions(+), 134 deletions(-)
 
 diff --git a/src/components/ModelPicker.tsx b/src/components/ModelPicker.tsx
-index 54bd1a1..10d39fb 100644
+index 184d16dc..eaff4673 100644
 --- a/src/components/ModelPicker.tsx
 +++ b/src/components/ModelPicker.tsx
 @@ -12,7 +12,7 @@ import { convertEffortValueToLevel, type EffortLevel, getAvailableEffortLevels,
@@ -3286,7 +3286,7 @@ index 54bd1a1..10d39fb 100644
 -import { applyNpuLoadColors, applyNpuPresentation, getDiscoveredModelIds, npuAxisAllValues, npuAxisValues, type NpuAxis, npuLoadStatesByBase, npuVariantsOf, stepNpuAxis, variantId } from '../utils/npuVariants.js';
 +import { applyNpuLoadColors, applyNpuPresentation, availableAxes, defaultTpOf, getDiscoveredModelIds, type NpuConfig, nextAxis, npuAxisAllValues, npuAxisValues, type NpuAxis, npuLoadStatesByBase, npuVariantsOf, parseNpuVariant, stepNpuAxis, variantId } from '../utils/npuVariants.js';
  import { getDefaultMainLoopModel, type ModelSetting, modelDisplayString, parseUserSpecifiedModel } from '../utils/model/model.js';
- import { getModelOptions, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
+ import { getModelOptions, SWITCH_PROFILE_VALUE_PREFIX, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
  import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings.js';
 @@ -122,11 +122,13 @@ export function ModelPicker(t0) {
    // NPU 병렬 구성은 모델과 '따로' 고른다. 모델 목록에는 모델당 한 줄만 두고
@@ -3344,7 +3344,7 @@ index 54bd1a1..10d39fb 100644
      $[62] = displayEffort;
      $[63] = focusedDefaultEffort;
      $[64] = focusedModelName;
-@@ -601,11 +607,13 @@ function resolveOptionModel(value?: string): string | undefined {
+@@ -611,11 +617,13 @@ function resolveOptionModel(value?: string): string | undefined {
   */
  function NpuParallelismRow({
    modelId,
@@ -3358,7 +3358,7 @@ index 54bd1a1..10d39fb 100644
    dp: number;
    pp: number;
    axis: NpuAxis;
-@@ -618,34 +626,46 @@ function NpuParallelismRow({
+@@ -628,34 +636,46 @@ function NpuParallelismRow({
      // occupies every card looks identical to a broken feature. Only speak up
      // when the backend actually publishes parallel variants, so non-NPU
      // providers stay untouched. Mirrors the "Effort not supported" line above.
@@ -3420,7 +3420,7 @@ index 54bd1a1..10d39fb 100644
  }
  function EffortLevelIndicator(t0) {
 diff --git a/src/utils/npuVariants.test.ts b/src/utils/npuVariants.test.ts
-index be3eb5a..3eda34d 100644
+index be3eb5ae..3eda34d5 100644
 --- a/src/utils/npuVariants.test.ts
 +++ b/src/utils/npuVariants.test.ts
 @@ -1,4 +1,4 @@
@@ -3508,7 +3508,7 @@ index be3eb5a..3eda34d 100644
    test('a loaded variant lights up its model row', () => {
      const states = npuLoadStatesByBase([{ id: 'L@dp2', state: 'up' }])
 diff --git a/src/utils/npuVariants.ts b/src/utils/npuVariants.ts
-index efa22d3..f429c2e 100644
+index efa22d38..f429c2ef 100644
 --- a/src/utils/npuVariants.ts
 +++ b/src/utils/npuVariants.ts
 @@ -2,30 +2,94 @@
@@ -3970,7 +3970,7 @@ index efa22d3..f429c2e 100644
 2.43.0
 
 
-From 361e3daf8b625ae512e1ccfd3fbe0dd75efdc0f2 Mon Sep 17 00:00:00 2001
+From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
 Subject: [PATCH 15/23] model picker: support a per-model default pp (large
@@ -3994,7 +3994,7 @@ model in FURIO_NPU_META; mirror the tp mechanism:
  2 files changed, 48 insertions(+), 6 deletions(-)
 
 diff --git a/src/utils/npuVariants.test.ts b/src/utils/npuVariants.test.ts
-index 3eda34d..436b00f 100644
+index 3eda34d5..436b00f0 100644
 --- a/src/utils/npuVariants.test.ts
 +++ b/src/utils/npuVariants.test.ts
 @@ -106,6 +106,33 @@ describe('tp axis', () => {
@@ -4032,7 +4032,7 @@ index 3eda34d..436b00f 100644
    test('a loaded variant lights up its model row', () => {
      const states = npuLoadStatesByBase([{ id: 'L@dp2', state: 'up' }])
 diff --git a/src/utils/npuVariants.ts b/src/utils/npuVariants.ts
-index f429c2e..6f87b92 100644
+index f429c2ef..6f87b921 100644
 --- a/src/utils/npuVariants.ts
 +++ b/src/utils/npuVariants.ts
 @@ -46,7 +46,7 @@ const ANY_VARIANT = /@(tp|dp|pp)\d+$/
@@ -4108,7 +4108,7 @@ index f429c2e..6f87b92 100644
 2.43.0
 
 
-From 2a5386e8168b64211e2d06971a49c5c42d21263c Mon Sep 17 00:00:00 2001
+From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
 Subject: [PATCH 16/23] model picker: resolve the active pp to pp_default
@@ -4131,7 +4131,7 @@ so the row reads `dp [1] 2   pp [2] 3 4`.
  2 files changed, 22 insertions(+), 14 deletions(-)
 
 diff --git a/src/components/ModelPicker.tsx b/src/components/ModelPicker.tsx
-index 10d39fb..4c735b5 100644
+index eaff4673..0556b3e4 100644
 --- a/src/components/ModelPicker.tsx
 +++ b/src/components/ModelPicker.tsx
 @@ -12,7 +12,7 @@ import { convertEffortValueToLevel, type EffortLevel, getAvailableEffortLevels,
@@ -4141,7 +4141,7 @@ index 10d39fb..4c735b5 100644
 -import { applyNpuLoadColors, applyNpuPresentation, availableAxes, defaultTpOf, getDiscoveredModelIds, type NpuConfig, nextAxis, npuAxisAllValues, npuAxisValues, type NpuAxis, npuLoadStatesByBase, npuVariantsOf, parseNpuVariant, stepNpuAxis, variantId } from '../utils/npuVariants.js';
 +import { applyNpuLoadColors, applyNpuPresentation, availableAxes, defaultTpOf, getDiscoveredModelIds, type NpuConfig, nextAxis, npuAxisAllValues, npuAxisValues, type NpuAxis, npuLoadStatesByBase, npuVariantsOf, parseNpuVariant, ppDefaultOf, stepNpuAxis, variantId } from '../utils/npuVariants.js';
  import { getDefaultMainLoopModel, type ModelSetting, modelDisplayString, parseUserSpecifiedModel } from '../utils/model/model.js';
- import { getModelOptions, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
+ import { getModelOptions, SWITCH_PROFILE_VALUE_PREFIX, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
  import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings.js';
 @@ -122,11 +122,11 @@ export function ModelPicker(t0) {
    // NPU 병렬 구성은 모델과 '따로' 고른다. 모델 목록에는 모델당 한 줄만 두고
@@ -4178,7 +4178,7 @@ index 10d39fb..4c735b5 100644
        const finalValue = composedValue !== selectedValue && getDiscoveredModelIds().includes(composedValue) ? composedValue : selectedValue;
        // 고르는 즉시 로딩을 시작시킨다. 라우터는 lazy 라 이게 없으면 첫 메시지를
        // 보낼 때까지 아무 일도 안 일어난 것처럼 보인다.
-@@ -615,7 +615,7 @@ function NpuParallelismRow({
+@@ -625,7 +625,7 @@ function NpuParallelismRow({
    modelId: string;
    tp?: number;
    dp: number;
@@ -4187,7 +4187,7 @@ index 10d39fb..4c735b5 100644
    axis: NpuAxis;
  }): React.ReactNode {
    // 목록은 모델당 한 줄로 접혀 있으므로, 선택지는 백엔드가 광고한 전체 id 에서 읽는다.
-@@ -632,15 +632,17 @@ function NpuParallelismRow({
+@@ -642,15 +642,17 @@ function NpuParallelismRow({
          {'NPU  '}병렬 구성 고정 — 이 모델은 NPU 4장을 모두 사용합니다
        </Text>;
    }
@@ -4209,7 +4209,7 @@ index 10d39fb..4c735b5 100644
      const all = npuAxisAllValues(modelId, allValues, name);
      const { [name]: _drop, ...others } = held;
 diff --git a/src/utils/npuVariants.test.ts b/src/utils/npuVariants.test.ts
-index 436b00f..df63c88 100644
+index 436b00f0..df63c88f 100644
 --- a/src/utils/npuVariants.test.ts
 +++ b/src/utils/npuVariants.test.ts
 @@ -109,17 +109,23 @@ describe('tp axis', () => {
@@ -4242,7 +4242,7 @@ index 436b00f..df63c88 100644
 2.43.0
 
 
-From 324f1ea888f06565c310d81893492aa5a8ac8bd1 Mon Sep 17 00:00:00 2001
+From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
 Subject: [PATCH 17/23] npu: fetch router metadata live + ease off status
@@ -4273,7 +4273,7 @@ Two fixes for the Furiosa NPU workflow:
  3 files changed, 106 insertions(+), 10 deletions(-)
 
 diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
-index 96d2e40..a4ef0c6 100644
+index 96d2e404..a4ef0c6c 100644
 --- a/src/services/npuStatus.ts
 +++ b/src/services/npuStatus.ts
 @@ -49,7 +49,15 @@ export type NpuStatus = {
@@ -4315,7 +4315,7 @@ index 96d2e40..a4ef0c6 100644
  }
  
 diff --git a/src/utils/model/openaiModelDiscovery.ts b/src/utils/model/openaiModelDiscovery.ts
-index 8d0f991..57f5de8 100644
+index 8d0f9915..57f5de8a 100644
 --- a/src/utils/model/openaiModelDiscovery.ts
 +++ b/src/utils/model/openaiModelDiscovery.ts
 @@ -8,6 +8,8 @@ import {
@@ -4391,7 +4391,7 @@ index 8d0f991..57f5de8 100644
    return collapseNpuVariants(discoveredModelNames).map(modelName => ({
      value: modelName,
 diff --git a/src/utils/npuVariants.ts b/src/utils/npuVariants.ts
-index 6f87b92..3265bf0 100644
+index 6f87b921..3265bf0d 100644
 --- a/src/utils/npuVariants.ts
 +++ b/src/utils/npuVariants.ts
 @@ -50,7 +50,19 @@ type NpuMeta = Record<string, { tp_default: number; tps: number[]; pp_default?:
@@ -4462,7 +4462,7 @@ index 6f87b92..3265bf0 100644
 2.43.0
 
 
-From 4ab56a3290a872fbb430a4ffece3c76a6eeab4e2 Mon Sep 17 00:00:00 2001
+From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
 Subject: [PATCH 18/23] fix: runtime router-metadata fetch hit
@@ -4481,7 +4481,7 @@ and yields the tp/pp metadata for all 18 models.
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/src/utils/model/openaiModelDiscovery.ts b/src/utils/model/openaiModelDiscovery.ts
-index 57f5de8..54fc369 100644
+index 57f5de8a..54fc369f 100644
 --- a/src/utils/model/openaiModelDiscovery.ts
 +++ b/src/utils/model/openaiModelDiscovery.ts
 @@ -193,11 +193,14 @@ async function loadRouterMetadata(
@@ -4504,7 +4504,7 @@ index 57f5de8..54fc369 100644
 2.43.0
 
 
-From 72fea10e12ae568e800140f9f826b0d5f503986a Mon Sep 17 00:00:00 2001
+From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
 Subject: [PATCH 19/23] npu: keep the LEDs alive through hiccups, and stop
@@ -4542,7 +4542,7 @@ Three fixes for the Furiosa NPU UI:
  3 files changed, 88 insertions(+), 17 deletions(-)
 
 diff --git a/src/components/ModelPicker.tsx b/src/components/ModelPicker.tsx
-index 4c735b5..5503724 100644
+index 0556b3e4..35819ef5 100644
 --- a/src/components/ModelPicker.tsx
 +++ b/src/components/ModelPicker.tsx
 @@ -11,7 +11,7 @@ import { useAppState, useSetAppState } from '../state/AppState.js';
@@ -4553,7 +4553,7 @@ index 4c735b5..5503724 100644
 +import { useNpuLoadStates } from '../services/npuStatusHook.js';
  import { applyNpuLoadColors, applyNpuPresentation, availableAxes, defaultTpOf, getDiscoveredModelIds, type NpuConfig, nextAxis, npuAxisAllValues, npuAxisValues, type NpuAxis, npuLoadStatesByBase, npuVariantsOf, parseNpuVariant, ppDefaultOf, stepNpuAxis, variantId } from '../utils/npuVariants.js';
  import { getDefaultMainLoopModel, type ModelSetting, modelDisplayString, parseUserSpecifiedModel } from '../utils/model/model.js';
- import { getModelOptions, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
+ import { getModelOptions, SWITCH_PROFILE_VALUE_PREFIX, type ModelOption, parseSwitchProfileValue, resolveSelectedSwitchProfileId } from '../utils/model/modelOptions.js';
 @@ -130,8 +130,9 @@ export function ModelPicker(t0) {
    });
    // ←/→ 가 어느 축을 움직이는지. tab 으로 tp→dp→pp 순환.
@@ -4580,7 +4580,7 @@ index 4c735b5..5503724 100644
    } else {
      t3d = $[94];
 diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
-index a4ef0c6..6054299 100644
+index a4ef0c6c..6054299b 100644
 --- a/src/services/npuStatus.ts
 +++ b/src/services/npuStatus.ts
 @@ -198,26 +198,54 @@ function withPending(models: NpuModel[], now: number): NpuModel[] {
@@ -4672,7 +4672,7 @@ index a4ef0c6..6054299 100644
    // A preload the router hasn't acknowledged is as urgent as a visible
    // transition — that gap is exactly when the user is waiting for the LED.
 diff --git a/src/services/npuStatusHook.ts b/src/services/npuStatusHook.ts
-index 5fb053a..9b1e613 100644
+index 5fb053a4..9b1e613e 100644
 --- a/src/services/npuStatusHook.ts
 +++ b/src/services/npuStatusHook.ts
 @@ -1,6 +1,7 @@
@@ -4726,7 +4726,7 @@ index 5fb053a..9b1e613 100644
 2.43.0
 
 
-From cc92ad4597ed6c0cf132cb5b81adf9367e3dea41 Mon Sep 17 00:00:00 2001
+From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
 Subject: [PATCH 20/23] npu: cap the model switcher at four, ordered by when
@@ -4761,7 +4761,7 @@ survives a reload. Verified live: six seeded picks render as four.
  5 files changed, 108 insertions(+), 4 deletions(-)
 
 diff --git a/src/services/npuRecentModels.test.ts b/src/services/npuRecentModels.test.ts
-index 2a99aff..9c37e8b 100644
+index 2a99aff1..9c37e8b1 100644
 --- a/src/services/npuRecentModels.test.ts
 +++ b/src/services/npuRecentModels.test.ts
 @@ -6,6 +6,7 @@ import { setClaudeConfigHomeDirForTesting } from '../utils/envUtils.js'
@@ -4801,7 +4801,7 @@ index 2a99aff..9c37e8b 100644
 +  })
  })
 diff --git a/src/services/npuRecentModels.ts b/src/services/npuRecentModels.ts
-index b1c3433..4efb5d8 100644
+index b1c34339..4efb5d8c 100644
 --- a/src/services/npuRecentModels.ts
 +++ b/src/services/npuRecentModels.ts
 @@ -99,6 +99,23 @@ export function rememberNpuModels(base: string, ids: readonly string[]): string[
@@ -4829,7 +4829,7 @@ index b1c3433..4efb5d8 100644
  export function __resetNpuRecentModelsForTest(): void {
    cache = null
 diff --git a/src/services/npuStatus.test.ts b/src/services/npuStatus.test.ts
-index dd1ae74..17bb50e 100644
+index dd1ae740..17bb50eb 100644
 --- a/src/services/npuStatus.test.ts
 +++ b/src/services/npuStatus.test.ts
 @@ -66,4 +66,27 @@ describe('npuDisplayModels', () => {
@@ -4861,7 +4861,7 @@ index dd1ae74..17bb50e 100644
 +  })
  })
 diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
-index 6054299..75f92dd 100644
+index 6054299b..75f92ddc 100644
 --- a/src/services/npuStatus.ts
 +++ b/src/services/npuStatus.ts
 @@ -11,7 +11,11 @@
@@ -4944,7 +4944,7 @@ index 6054299..75f92dd 100644
      currentNpuStatus.models = withPending(currentNpuStatus.models, Date.now())
      notify()
 diff --git a/src/utils/model/openaiModelDiscovery.ts b/src/utils/model/openaiModelDiscovery.ts
-index 54fc369..99fe43a 100644
+index 54fc369f..99fe43a3 100644
 --- a/src/utils/model/openaiModelDiscovery.ts
 +++ b/src/utils/model/openaiModelDiscovery.ts
 @@ -188,16 +188,26 @@ async function fetchOllamaModels(
@@ -4987,7 +4987,7 @@ index 54fc369..99fe43a 100644
 2.43.0
 
 
-From 9e88e6f0f99528c76a4351f2c5c41c98713e4257 Mon Sep 17 00:00:00 2001
+From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
 Subject: [PATCH 21/23] npu: background calls must follow the /model switch,
@@ -5020,7 +5020,7 @@ Claude-Session: https://claude.ai/code/session_01Na71jMPNwVCJecN1VMjJbo
  2 files changed, 73 insertions(+), 2 deletions(-)
 
 diff --git a/src/utils/model/model.openai-shim-providers.test.ts b/src/utils/model/model.openai-shim-providers.test.ts
-index 3af48a4..ef74cf6 100644
+index 4809c112..ae971ed0 100644
 --- a/src/utils/model/model.openai-shim-providers.test.ts
 +++ b/src/utils/model/model.openai-shim-providers.test.ts
 @@ -4,7 +4,10 @@ import {
@@ -5035,7 +5035,7 @@ index 3af48a4..ef74cf6 100644
  import {
    type GlobalConfig,
    getGlobalConfig,
-@@ -468,3 +471,58 @@ test('default helpers do not leak claude-* names to Xiaomi MiMo', async () => {
+@@ -626,3 +629,58 @@ test('default helpers do not leak claude-* names to Xiaomi MiMo', async () => {
      expect(model.toLowerCase()).not.toContain('opus')
    }
  })
@@ -5095,10 +5095,10 @@ index 3af48a4..ef74cf6 100644
 +  expect(getSmallFastModel()).toBe('Qwen3-32B-FP8@tp8@dp2')
 +})
 diff --git a/src/utils/model/model.ts b/src/utils/model/model.ts
-index 3b8c803..9a9a28f 100644
+index a3138ed2..9e2009c4 100644
 --- a/src/utils/model/model.ts
 +++ b/src/utils/model/model.ts
-@@ -63,8 +63,21 @@ export function getSmallFastModel(): ModelName {
+@@ -92,8 +92,21 @@ export function getSmallFastModel(): ModelName {
    if (getAPIProvider() === 'mistral') {
      return process.env.MISTRAL_MODEL || 'ministral-3b-latest'
    }
@@ -5125,7 +5125,7 @@ index 3b8c803..9a9a28f 100644
 2.43.0
 
 
-From b5ae5ac17af7c5092cc09953a4c277fd446c5271 Mon Sep 17 00:00:00 2001
+From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
 Subject: [PATCH 22/23] npu: Enter on the switcher loads the model, even the
@@ -5155,7 +5155,7 @@ Claude-Session: https://claude.ai/code/session_01Na71jMPNwVCJecN1VMjJbo
  3 files changed, 51 insertions(+), 7 deletions(-)
 
 diff --git a/src/components/PromptInput/PromptInput.tsx b/src/components/PromptInput/PromptInput.tsx
-index 5376b49..3f6ab0f 100644
+index e0ce104f..16b6e088 100644
 --- a/src/components/PromptInput/PromptInput.tsx
 +++ b/src/components/PromptInput/PromptInput.tsx
 @@ -39,7 +39,7 @@ import { useOptionalKeybindingContext } from '../../keybindings/KeybindingContex
@@ -5167,7 +5167,7 @@ index 5376b49..3f6ab0f 100644
  import { useNpuStatus } from '../../services/npuStatusHook.js';
  import { abortPromptSuggestion, logSuggestionSuppressed } from '../../services/PromptSuggestion/promptSuggestion.js';
  import { type ActiveSpeculationState, abortSpeculation } from '../../services/PromptSuggestion/speculation.js';
-@@ -1893,12 +1893,11 @@ function PromptInput({
+@@ -1935,12 +1935,11 @@ function PromptInput({
          case 'npu': {
            // 커서가 있는 모델로 전환하고 포커스를 입력창에 돌려준다.
            const target = npuFooterModelId;
@@ -5185,7 +5185,7 @@ index 5376b49..3f6ab0f 100644
          }
          case 'companion':
 diff --git a/src/services/npuStatus.test.ts b/src/services/npuStatus.test.ts
-index 17bb50e..8dc0ec7 100644
+index 17bb50eb..8dc0ec78 100644
 --- a/src/services/npuStatus.test.ts
 +++ b/src/services/npuStatus.test.ts
 @@ -1,5 +1,11 @@
@@ -5226,7 +5226,7 @@ index 17bb50e..8dc0ec7 100644
 +  })
 +})
 diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
-index 75f92dd..88eec59 100644
+index 75f92ddc..88eec592 100644
 --- a/src/services/npuStatus.ts
 +++ b/src/services/npuStatus.ts
 @@ -150,6 +150,25 @@ export function parseStatus(raw: RawStatus): Pick<NpuStatus, 'models' | 'freeCar
@@ -5259,125 +5259,303 @@ index 75f92dd..88eec59 100644
 2.43.0
 
 
-From 94ac297f5ee1b5aff4351ab5731afd0b224994ef Mon Sep 17 00:00:00 2001
+From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
-Date: Tue, 25 Aug 2026 16:39:26 +0900
-Subject: [PATCH 23/23] --max-turns: let the interactive session set its own
- cap
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Date: Fri, 23 Oct 2026 02:17:22 +0900
+Subject: [PATCH 23/23] brand: show the SOTA / furio wordmark instead of
+ OpenClaude
 
-The REPL caps each prompt at 50 turns. `--max-turns` was parsed, documented as
-"(only works with --print)", and hidden from help — and in a TUI session it was
-silently dropped: sessionConfig, which launchRepl spreads into <REPL/>, simply had
-no maxTurns key, so resolveReplMaxTurns always saw undefined and returned 50. A
-user who typed `--max-turns 200` got no error and no effect.
+The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
+startup screen and the welcome box carry the lab's name, not upstream's.
 
-REPL and the resume selector already accept the prop; only the hand-off from
-options was missing. That is the one line here.
+- StartupScreen: filled-block SOTA / FURIO logo; footer reads `furio v<ver>`
+- brand.ts: BRAND_NAME, tagline, and the two-row half-block wordmark
+- LogoV2 / WelcomeV2 / IdeOnboardingDialog / logoV2Utils: "Welcome to furio"
+- StartupScreen.test: assert the new rows instead of the upstream D glyph
 
-Hitting the cap is a pause, not a failure — the warning is UI-only, history stays
-intact, and the next message starts a fresh count — so this is about how long a
-session runs unattended before it wants a human, not about capability. That is
-worth putting in the user's hands rather than in a constant.
+Letter cells are 9 columns wide (3 for I) and every row must stay the same
+length or the logo leans. Checked by printing the startup screen under a pty.
 
-Also stop honouring a cap that cannot be meant: the flag is parsed with bare
-`Number` and never validated, so `--max-turns 0` (or a typo parsing to NaN) would
-end the turn before the first tool call. Zero reads as "no limit" to whoever types
-it and is useless to everyone else, so both readings fall back to the default.
-
-Claude-Session: https://claude.ai/code/session_01Na71jMPNwVCJecN1VMjJbo
+Claude-Session: https://claude.ai/code/session_01LyQuL9U893GaqNbbnZv6y2
 ---
- src/main.tsx                         |  9 ++++++++-
- src/screens/replMaxTurns.ts          | 14 +++++++++++++-
- src/screens/replMaxTurnsProp.test.ts | 23 +++++++++++++++++++++++
- 3 files changed, 44 insertions(+), 2 deletions(-)
+ src/components/IdeOnboardingDialog.tsx |  2 +-
+ src/components/LogoV2/LogoV2.tsx       |  6 ++---
+ src/components/LogoV2/WelcomeV2.tsx    |  6 ++---
+ src/components/StartupScreen.test.ts   | 32 ++++++++++++-----------
+ src/components/StartupScreen.ts        | 35 ++++++++++++++------------
+ src/constants/brand.ts                 | 14 ++++++-----
+ src/utils/logoV2Utils.ts               |  2 +-
+ 7 files changed, 52 insertions(+), 45 deletions(-)
 
-diff --git a/src/main.tsx b/src/main.tsx
-index d04a747..7517689 100644
---- a/src/main.tsx
-+++ b/src/main.tsx
-@@ -945,7 +945,7 @@ async function run(): Promise<CommanderCommand> {
-     } catch (error) {
-       throw new InvalidArgumentError(errorMessage(error));
-     }
--  })).option('--bare', 'Minimal mode: skip hooks, LSP, plugin sync, attribution, auto-memory, background prefetches, keychain reads, and CLAUDE.md auto-discovery. Sets CLAUDE_CODE_SIMPLE=1. Anthropic auth is strictly ANTHROPIC_API_KEY or apiKeyHelper via --settings (OAuth and keychain are never read). 3P providers (Bedrock/Vertex/Foundry) use their own credentials. Skills still resolve via /skill-name. Explicitly provide context via: --system-prompt[-file], --append-system-prompt[-file], --add-dir (CLAUDE.md dirs), --mcp-config, --settings, --agents, --plugin-dir.', () => true).addOption(new Option('--init', 'Run Setup hooks with init trigger, then continue').hideHelp()).addOption(new Option('--init-only', 'Run Setup and SessionStart:startup hooks, then exit').hideHelp()).addOption(new Option('--maintenance', 'Run Setup hooks with maintenance trigger, then continue').hideHelp()).addOption(new Option('--output-format <format>', 'Output format (only works with --print): "text" (default), "json" (single result), or "stream-json" (realtime streaming)').choices(['text', 'json', 'stream-json'])).addOption(new Option('--json-schema <schema>', 'JSON Schema for structured output validation. ' + 'Example: {"type":"object","properties":{"name":{"type":"string"}},"required":["name"]}').argParser(String)).option('--include-hook-events', 'Include all hook lifecycle events in the output stream (only works with --output-format=stream-json)', () => true).option('--include-partial-messages', 'Include partial message chunks as they arrive (only works with --print and --output-format=stream-json)', () => true).addOption(new Option('--input-format <format>', 'Input format (only works with --print): "text" (default), or "stream-json" (realtime streaming input)').choices(['text', 'stream-json'])).option('--mcp-debug', '[DEPRECATED. Use --debug instead] Enable MCP debug mode (shows MCP server errors)', () => true).option('--dangerously-skip-permissions', 'Bypass all permission checks. Recommended only for sandboxes with no internet access.', () => true).option('--allow-dangerously-skip-permissions', 'Enable bypassing all permission checks as an option, without it being enabled by default. Recommended only for sandboxes with no internet access.', () => true).addOption(new Option('--thinking <mode>', 'Thinking mode: enabled (equivalent to adaptive), disabled').choices(['enabled', 'adaptive', 'disabled']).hideHelp()).addOption(new Option('--max-thinking-tokens <tokens>', '[DEPRECATED. Use --thinking instead for newer models] Maximum number of thinking tokens (only works with --print)').argParser(Number).hideHelp()).addOption(new Option('--max-turns <turns>', 'Maximum number of agentic turns in non-interactive mode. This will early exit the conversation after the specified number of turns. (only works with --print)').argParser(Number).hideHelp()).addOption(new Option('--max-budget-usd <amount>', 'Maximum dollar amount to spend on API calls (only works with --print)').argParser(value => {
-+  })).option('--bare', 'Minimal mode: skip hooks, LSP, plugin sync, attribution, auto-memory, background prefetches, keychain reads, and CLAUDE.md auto-discovery. Sets CLAUDE_CODE_SIMPLE=1. Anthropic auth is strictly ANTHROPIC_API_KEY or apiKeyHelper via --settings (OAuth and keychain are never read). 3P providers (Bedrock/Vertex/Foundry) use their own credentials. Skills still resolve via /skill-name. Explicitly provide context via: --system-prompt[-file], --append-system-prompt[-file], --add-dir (CLAUDE.md dirs), --mcp-config, --settings, --agents, --plugin-dir.', () => true).addOption(new Option('--init', 'Run Setup hooks with init trigger, then continue').hideHelp()).addOption(new Option('--init-only', 'Run Setup and SessionStart:startup hooks, then exit').hideHelp()).addOption(new Option('--maintenance', 'Run Setup hooks with maintenance trigger, then continue').hideHelp()).addOption(new Option('--output-format <format>', 'Output format (only works with --print): "text" (default), "json" (single result), or "stream-json" (realtime streaming)').choices(['text', 'json', 'stream-json'])).addOption(new Option('--json-schema <schema>', 'JSON Schema for structured output validation. ' + 'Example: {"type":"object","properties":{"name":{"type":"string"}},"required":["name"]}').argParser(String)).option('--include-hook-events', 'Include all hook lifecycle events in the output stream (only works with --output-format=stream-json)', () => true).option('--include-partial-messages', 'Include partial message chunks as they arrive (only works with --print and --output-format=stream-json)', () => true).addOption(new Option('--input-format <format>', 'Input format (only works with --print): "text" (default), or "stream-json" (realtime streaming input)').choices(['text', 'stream-json'])).option('--mcp-debug', '[DEPRECATED. Use --debug instead] Enable MCP debug mode (shows MCP server errors)', () => true).option('--dangerously-skip-permissions', 'Bypass all permission checks. Recommended only for sandboxes with no internet access.', () => true).option('--allow-dangerously-skip-permissions', 'Enable bypassing all permission checks as an option, without it being enabled by default. Recommended only for sandboxes with no internet access.', () => true).addOption(new Option('--thinking <mode>', 'Thinking mode: enabled (equivalent to adaptive), disabled').choices(['enabled', 'adaptive', 'disabled']).hideHelp()).addOption(new Option('--max-thinking-tokens <tokens>', '[DEPRECATED. Use --thinking instead for newer models] Maximum number of thinking tokens (only works with --print)').argParser(Number).hideHelp()).addOption(new Option('--max-turns <turns>', 'Maximum number of agentic turns per prompt. With --print this ends the conversation; interactively it pauses the turn and you can keep typing (default 50).').argParser(Number)).addOption(new Option('--max-budget-usd <amount>', 'Maximum dollar amount to spend on API calls (only works with --print)').argParser(value => {
-     const amount = Number(value);
-     if (isNaN(amount) || amount <= 0) {
-       throw new Error('--max-budget-usd must be a positive number greater than 0');
-@@ -3050,6 +3050,13 @@ async function run(): Promise<CommanderCommand> {
-       systemPrompt,
-       appendSystemPrompt,
-       thinkingConfig,
-+      // The interactive REPL caps each prompt at DEFAULT_REPL_MAX_TURNS. Until this
-+      // line, --max-turns reached only the headless path, so `--max-turns 200` in a
-+      // TUI session was parsed and then silently dropped — the cap stayed 50 with no
-+      // error to say so. REPL and the resume selector already accept the prop; only
-+      // this hand-off was missing. Non-positive values fall back to the default in
-+      // resolveReplMaxTurns, so a stray `--max-turns 0` cannot wedge the first turn.
-+      maxTurns: options.maxTurns,
-     };
- 
-     // Shared context for processResumedConversation calls
-diff --git a/src/screens/replMaxTurns.ts b/src/screens/replMaxTurns.ts
-index c60c8ab..7556770 100644
---- a/src/screens/replMaxTurns.ts
-+++ b/src/screens/replMaxTurns.ts
-@@ -1,5 +1,17 @@
- export const DEFAULT_REPL_MAX_TURNS = 50
- 
-+/**
-+ * Per-prompt turn cap for the interactive REPL.
-+ *
-+ * A non-positive or non-finite cap falls back to the default instead of being
-+ * honoured: `--max-turns` is parsed with bare `Number` and never validated, so
-+ * `--max-turns 0` — or a typo that parses to NaN — would otherwise stop the very
-+ * first turn. Zero reads as "no limit" to whoever types it and is useless to
-+ * everyone else, so neither reading is worth shipping.
-+ */
- export function resolveReplMaxTurns(maxTurns?: number): number {
--  return maxTurns ?? DEFAULT_REPL_MAX_TURNS
-+  if (typeof maxTurns !== 'number' || !Number.isFinite(maxTurns) || maxTurns < 1) {
-+    return DEFAULT_REPL_MAX_TURNS
-+  }
-+  return Math.floor(maxTurns)
+diff --git a/src/components/IdeOnboardingDialog.tsx b/src/components/IdeOnboardingDialog.tsx
+index fd94ebb0..bc636892 100644
+--- a/src/components/IdeOnboardingDialog.tsx
++++ b/src/components/IdeOnboardingDialog.tsx
+@@ -70,7 +70,7 @@ export function IdeOnboardingDialog(t0) {
+   }
+   let t6;
+   if ($[8] !== ideName) {
+-    t6 = <>{t5}<Text>Welcome to OpenClaude for {ideName}</Text></>;
++    t6 = <>{t5}<Text>Welcome to furio for {ideName}</Text></>;
+     $[8] = ideName;
+     $[9] = t6;
+   } else {
+diff --git a/src/components/LogoV2/LogoV2.tsx b/src/components/LogoV2/LogoV2.tsx
+index 9e3dc6dd..e7a1b742 100644
+--- a/src/components/LogoV2/LogoV2.tsx
++++ b/src/components/LogoV2/LogoV2.tsx
+@@ -7,7 +7,7 @@ import { stringWidth } from '../../ink/stringWidth.js';
+ import { getLayoutMode, calculateLayoutDimensions, calculateOptimalLeftWidth, formatWelcomeMessage, truncatePath, getRecentActivitySync, getRecentReleaseNotesSync, getLogoDisplayData } from '../../utils/logoV2Utils.js';
+ import { truncate } from '../../utils/format.js';
+ import { getDisplayPath } from '../../utils/file.js';
+-import { BRAND_TAGLINE } from '../../constants/brand.js';
++import { BRAND_NAME, BRAND_TAGLINE } from '../../constants/brand.js';
+ import { Clawd } from './Clawd.js';
+ import { WordmarkRow } from './WordmarkRow.js';
+ import { FeedColumn } from './FeedColumn.js';
+@@ -261,8 +261,8 @@ export function LogoV2() {
+   }
+   const layoutMode = getLayoutMode(columns);
+   const userTheme = resolveThemeSetting(getGlobalConfig().theme);
+-  const borderTitle = ` ${color("text", userTheme)("OpenClaude")} ${color("inactive", userTheme)(`v${version}`)} `;
+-  const compactBorderTitle = color("text", userTheme)(" OpenClaude ");
++  const borderTitle = ` ${color("text", userTheme)(BRAND_NAME)} ${color("inactive", userTheme)(`v${version}`)} `;
++  const compactBorderTitle = color("text", userTheme)(` ${BRAND_NAME} `);
+   if (layoutMode === "compact") {
+     let welcomeMessage = formatWelcomeMessage(username);
+     if (stringWidth(welcomeMessage) > columns - 4) {
+diff --git a/src/components/LogoV2/WelcomeV2.tsx b/src/components/LogoV2/WelcomeV2.tsx
+index b68ad966..76722750 100644
+--- a/src/components/LogoV2/WelcomeV2.tsx
++++ b/src/components/LogoV2/WelcomeV2.tsx
+@@ -9,7 +9,7 @@ export function WelcomeV2() {
+   if (env.terminal === "Apple_Terminal") {
+     let t0;
+     if ($[0] !== theme) {
+-      t0 = <AppleTerminalWelcomeV2 theme={theme} welcomeMessage="Welcome to OpenClaude" />;
++      t0 = <AppleTerminalWelcomeV2 theme={theme} welcomeMessage="Welcome to furio" />;
+       $[0] = theme;
+       $[1] = t0;
+     } else {
+@@ -28,7 +28,7 @@ export function WelcomeV2() {
+     let t7;
+     let t8;
+     if ($[2] === Symbol.for("react.memo_cache_sentinel")) {
+-      t0 = <Text><Text color="claude">{"Welcome to OpenClaude"} </Text><Text dimColor={true}>v{MACRO.DISPLAY_VERSION ?? MACRO.VERSION} </Text></Text>;
++      t0 = <Text><Text color="claude">{"Welcome to furio"} </Text><Text dimColor={true}>v{MACRO.DISPLAY_VERSION ?? MACRO.VERSION} </Text></Text>;
+       t1 = <Text>{"\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026"}</Text>;
+       t2 = <Text>{"                                                          "}</Text>;
+       t3 = <Text>{"                                                          "}</Text>;
+@@ -113,7 +113,7 @@ export function WelcomeV2() {
+   let t5;
+   let t6;
+   if ($[18] === Symbol.for("react.memo_cache_sentinel")) {
+-    t0 = <Text><Text color="claude">{"Welcome to OpenClaude"} </Text><Text dimColor={true}>v{MACRO.DISPLAY_VERSION ?? MACRO.VERSION} </Text></Text>;
++    t0 = <Text><Text color="claude">{"Welcome to furio"} </Text><Text dimColor={true}>v{MACRO.DISPLAY_VERSION ?? MACRO.VERSION} </Text></Text>;
+     t1 = <Text>{"\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026"}</Text>;
+     t2 = <Text>{"                                                          "}</Text>;
+     t3 = <Text>{"     *                                       \u2588\u2588\u2588\u2588\u2588\u2593\u2593\u2591     "}</Text>;
+diff --git a/src/components/StartupScreen.test.ts b/src/components/StartupScreen.test.ts
+index 2ecab962..2bdb4cf6 100644
+--- a/src/components/StartupScreen.test.ts
++++ b/src/components/StartupScreen.test.ts
+@@ -112,7 +112,7 @@ function setupOpenAIMode(baseUrl: string, model: string): void {
  }
-diff --git a/src/screens/replMaxTurnsProp.test.ts b/src/screens/replMaxTurnsProp.test.ts
-index c125ba7..61e1130 100644
---- a/src/screens/replMaxTurnsProp.test.ts
-+++ b/src/screens/replMaxTurnsProp.test.ts
-@@ -34,6 +34,29 @@ describe('interactive REPL max-turn cap', () => {
-     expect(resolveReplMaxTurns(7)).toBe(7)
+ 
+ describe('printStartupScreen logo', () => {
+-  test('renders CLAUDE with a D-shaped D instead of an O-shaped block', () => {
++  test('renders the SOTA / FURIO wordmark, not the upstream OPEN / CLAUDE one', () => {
+     ;(globalThis as Record<string, unknown>).MACRO = { VERSION: 'test-version' }
+     Object.defineProperty(process.stdout, 'isTTY', {
+       configurable: true,
+@@ -128,10 +128,12 @@ describe('printStartupScreen logo', () => {
+     printStartupScreen()
+ 
+     const plainOutput = stripAnsi(output)
+-    expect(plainOutput).toContain('██████╗  ███████╗')
+-    expect(plainOutput).toContain('██║  ██║ █████╗')
+-    expect(plainOutput).toContain('██████╔╝ ███████╗')
+-    expect(plainOutput).not.toContain('██║   ██║ █████╗')
++    // 칸이 어긋나면 로고가 기울어 보인다 — 행을 통째로 본다.
++    expect(plainOutput).toContain('██╔═════╝ ██╔═══██║ ╚══██╔══╝ ██╔═══██║')
++    expect(plainOutput).toContain('██║       ╚██████╔╝ ██║  ██║  ██║ ████████║')
++    expect(plainOutput).toContain('furio v')
++    // 업스트림 CLAUDE 의 D 조각이 남아 있으면 안 된다.
++    expect(plainOutput).not.toContain('██████╔╝ ███████╗')
+   })
+ })
+ 
+@@ -166,25 +168,25 @@ function logoLines(plainOutput: string): string[] {
+   return plainOutput.split('\n').filter(line => line.includes('█') || line.includes('╚═╝'))
+ }
+ 
+-// Visible widths of the current art: OPEN 38 + gap 2 + CLAUDE 54.
+-const ONE_ROW_WIDTH = 94
++// Visible widths of the current art: SOTA 39 + gap 2 + FURIO 43.
++const ONE_ROW_WIDTH = 84
+ const BOX_WIDTH = 62
+ 
+ describe('printStartupScreen layout', () => {
+-  test('wide terminal renders OPEN and CLAUDE side by side as one 6-line block', () => {
++  test('wide terminal renders SOTA and FURIO side by side as one 6-line block', () => {
+     const out = renderStartupScreen(120)
+     const logo = logoLines(out)
+     expect(logo).toHaveLength(6)
+-    // End of N (OPEN) and start of C (CLAUDE) share a line
+-    expect(logo[0]).toContain('███╗   ██╗   ██████╗ ██╗')
++    // End of A (SOTA) and start of F (FURIO) share a line
++    expect(logo[0]).toContain('████████╗  ████████╗ ██╗')
    })
  
-+  test('ignores a cap that would stop the first turn', () => {
-+    // `--max-turns` is parsed with bare Number and never validated, so these reach
-+    // here verbatim. A cap of 0 reads as "no limit" to whoever typed it; honouring
-+    // it would end the turn before the first tool call.
-+    for (const bad of [0, -1, Number.NaN]) {
-+      expect(resolveReplMaxTurns(bad)).toBe(DEFAULT_REPL_MAX_TURNS)
-+    }
-+  })
-+
-+  test('floors a fractional cap rather than passing it through', () => {
-+    expect(resolveReplMaxTurns(12.9)).toBe(12)
-+  })
-+
-+  test('hands --max-turns to the interactive session, not just headless', () => {
-+    // Regression: sessionConfig is what launchRepl spreads into <REPL/>. Without
-+    // maxTurns here, `--max-turns 200` in a TUI session was parsed and silently
-+    // dropped — the cap stayed 50 with nothing to say so.
-+    const source = readFileSync(join(screenDir, '..', 'main.tsx'), 'utf8')
-+    const config = objectBody(source, /const sessionConfig = \{/)
-+
-+    expect(config).toContain('maxTurns: options.maxTurns,')
-+  })
-+
-   test('passes the resolved cap to foreground and background queries', () => {
-     const source = readScreen('REPL.tsx')
-     const foreground = objectBody(source, /for await \(const event of query\(\{/)
+   test('one-row logo is centered and rows are aligned as a block', () => {
+     const out = renderStartupScreen(120)
+     const logo = logoLines(out)
+     const pad = ' '.repeat(Math.floor((120 - ONE_ROW_WIDTH) / 2))
+-    expect(logo[1]!.startsWith(`${pad}██╔═══██╗`)).toBe(true)
+-    expect(logo[4]!.startsWith(`${pad}╚██████╔╝`)).toBe(true)
++    expect(logo[1]!.startsWith(`${pad}██╔═════╝`)).toBe(true)
++    expect(logo[4]!.startsWith(`${pad}████████║`)).toBe(true)
+     for (const line of out.split('\n')) {
+       expect(line.length).toBeLessThanOrEqual(120)
+     }
+@@ -193,7 +195,7 @@ describe('printStartupScreen layout', () => {
+   test('narrow terminal falls back to two stacked centered blocks', () => {
+     const out = renderStartupScreen(80)
+     expect(logoLines(out)).toHaveLength(12)
+-    expect(out).not.toContain('███╗   ██╗   ██████╗')
++    expect(out).not.toContain('████████╗  ████████╗')
+     for (const line of out.split('\n')) {
+       expect(line.length).toBeLessThanOrEqual(80)
+     }
+@@ -220,9 +222,9 @@ describe('printStartupScreen layout', () => {
+       Math.floor((120 - tagline!.trim().length) / 2),
+     )
+ 
+-    const version = lines.find(line => line.includes('openclaude v'))
++    const version = lines.find(line => line.includes('furio v'))
+     expect(version).toBeDefined()
+-    expect(version!.indexOf('openclaude')).toBe(
++    expect(version!.indexOf('furio')).toBe(
+       Math.floor((120 - version!.trim().length) / 2),
+     )
+   })
+diff --git a/src/components/StartupScreen.ts b/src/components/StartupScreen.ts
+index e6f4407b..94af8b4c 100644
+--- a/src/components/StartupScreen.ts
++++ b/src/components/StartupScreen.ts
+@@ -1,5 +1,8 @@
+ /**
+- * OpenClaude startup screen — filled-block text logo with sunset gradient.
++ * furio startup screen — filled-block text logo with sunset gradient.
++ *
++ * 글자는 9칸(I 는 3칸) 셀을 가로로 이어 만든 것이라 한 칸이라도 어긋나면 기울어
++ * 보인다. 상수 이름은 업스트림 그대로 두어 배치 코드와 충돌하지 않게 했다.
+  * Called once at CLI startup before the Ink UI renders.
+  *
+  * Addresses: https://github.com/Twigpine/openclaude/issues/55
+@@ -56,23 +59,23 @@ export function paintLine(text: string, stops: readonly RGB[], lineT: number): s
+ 
+ // ─── Filled Block Text Logo ───────────────────────────────────────────────────
+ 
+-// ANSI Shadow figlet letterforms, one space between letters.
++// 연구실 배포본 표식: SOTA / FURIO. 글자 사이 한 칸.
+ const LOGO_OPEN = [
+-  ' \u2588\u2588\u2588\u2588\u2588\u2588\u2557  \u2588\u2588\u2588\u2588\u2588\u2588\u2557  \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2588\u2557   \u2588\u2588\u2557',
+-  '\u2588\u2588\u2554\u2550\u2550\u2550\u2588\u2588\u2557 \u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2557 \u2588\u2588\u2554\u2550\u2550\u2550\u2550\u255d \u2588\u2588\u2588\u2588\u2557  \u2588\u2588\u2551',
+-  '\u2588\u2588\u2551   \u2588\u2588\u2551 \u2588\u2588\u2588\u2588\u2588\u2588\u2554\u255d \u2588\u2588\u2588\u2588\u2588\u2557   \u2588\u2588\u2554\u2588\u2588\u2557 \u2588\u2588\u2551',
+-  '\u2588\u2588\u2551   \u2588\u2588\u2551 \u2588\u2588\u2554\u2550\u2550\u2550\u255d  \u2588\u2588\u2554\u2550\u2550\u255d   \u2588\u2588\u2551\u255a\u2588\u2588\u2557\u2588\u2588\u2551',
+-  '\u255a\u2588\u2588\u2588\u2588\u2588\u2588\u2554\u255d \u2588\u2588\u2551      \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2551 \u255a\u2588\u2588\u2588\u2588\u2551',
+-  ' \u255a\u2550\u2550\u2550\u2550\u2550\u255d  \u255a\u2550\u255d      \u255a\u2550\u2550\u2550\u2550\u2550\u2550\u255d \u255a\u2550\u255d  \u255a\u2550\u2550\u2550\u255d',
++  `████████╗ ████████╗ ████████╗ ████████╗`,
++  `██╔═════╝ ██╔═══██║ ╚══██╔══╝ ██╔═══██║`,
++  `████████╗ ██║   ██║    ██║    ████████║`,
++  `╚═════██║ ██║   ██║    ██║    ██╔═══██║`,
++  `████████║ ████████║    ██║    ██║   ██║`,
++  `╚═══════╝ ╚═══════╝    ╚═╝    ╚═╝   ╚═╝`,
+ ]
+ 
+ const LOGO_CLAUDE = [
+-  ' \u2588\u2588\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2557       \u2588\u2588\u2588\u2588\u2588\u2557  \u2588\u2588\u2557   \u2588\u2588\u2557 \u2588\u2588\u2588\u2588\u2588\u2588\u2557  \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557',
+-  '\u2588\u2588\u2554\u2550\u2550\u2550\u2550\u255d \u2588\u2588\u2551      \u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2557 \u2588\u2588\u2551   \u2588\u2588\u2551 \u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2557 \u2588\u2588\u2554\u2550\u2550\u2550\u2550\u255d',
+-  '\u2588\u2588\u2551      \u2588\u2588\u2551      \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2551 \u2588\u2588\u2551   \u2588\u2588\u2551 \u2588\u2588\u2551  \u2588\u2588\u2551 \u2588\u2588\u2588\u2588\u2588\u2557  ',
+-  '\u2588\u2588\u2551      \u2588\u2588\u2551      \u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2551 \u2588\u2588\u2551   \u2588\u2588\u2551 \u2588\u2588\u2551  \u2588\u2588\u2551 \u2588\u2588\u2554\u2550\u2550\u255d  ',
+-  '\u255a\u2588\u2588\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2551  \u2588\u2588\u2551 \u255a\u2588\u2588\u2588\u2588\u2588\u2588\u2554\u255d \u2588\u2588\u2588\u2588\u2588\u2588\u2554\u255d \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557',
+-  ' \u255a\u2550\u2550\u2550\u2550\u2550\u255d \u255a\u2550\u2550\u2550\u2550\u2550\u2550\u255d \u255a\u2550\u255d  \u255a\u2550\u255d  \u255a\u2550\u2550\u2550\u2550\u2550\u255d  \u255a\u2550\u2550\u2550\u2550\u2550\u255d  \u255a\u2550\u2550\u2550\u2550\u2550\u2550\u255d',
++  `████████╗ ██╗   ██╗ ████████╗ ██╗ ████████╗`,
++  `██╔═════╝ ██║   ██║ ██╔═══██║ ██║ ██╔═══██║`,
++  `██████╗   ██║   ██║ ████████║ ██║ ██║   ██║`,
++  `██╔═══╝   ██║   ██║ ██╔══██╗  ██║ ██║   ██║`,
++  `██║       ╚██████╔╝ ██║  ██║  ██║ ████████║`,
++  `╚═╝        ╚═════╝  ╚═╝  ╚═╝  ╚═╝ ╚═══════╝`,
+ ]
+ 
+ // ─── Provider detection ───────────────────────────────────────────────────────
+@@ -261,8 +264,8 @@ export function printStartupScreen(modelOverride?: string): void {
+   out.push(boxPad + boxRow(sRow, W, sLen, BORDER))
+ 
+   out.push(`${boxPad}${ansiRgb(...BORDER)}\u255a${'\u2550'.repeat(W - 2)}\u255d${RESET}`)
+-  const versionText = `openclaude v${MACRO.DISPLAY_VERSION ?? MACRO.VERSION}`
+-  out.push(`${centerPad(versionText.length)}${DIM}${ansiRgb(...DIMCOL)}openclaude ${RESET}${ansiRgb(...ACCENT)}v${MACRO.DISPLAY_VERSION ?? MACRO.VERSION}${RESET}`)
++  const versionText = `furio v${MACRO.DISPLAY_VERSION ?? MACRO.VERSION}`
++  out.push(`${centerPad(versionText.length)}${DIM}${ansiRgb(...DIMCOL)}furio ${RESET}${ansiRgb(...ACCENT)}v${MACRO.DISPLAY_VERSION ?? MACRO.VERSION}${RESET}`)
+   out.push('')
+ 
+   process.stdout.write(out.join('\n') + '\n')
+diff --git a/src/constants/brand.ts b/src/constants/brand.ts
+index 673fdcf9..c21c8def 100644
+--- a/src/constants/brand.ts
++++ b/src/constants/brand.ts
+@@ -1,5 +1,5 @@
+ /**
+- * OpenClaude brand identity — single source of truth for the product name,
++ * furio brand identity — single source of truth for the product name,
+  * tagline, accent color, and wordmark art used across the TUI.
+  *
+  * The accent is the twigpine orange. Theme entries derived from it MUST stay
+@@ -7,9 +7,9 @@
+  * parses theme values with `parseRGB`, which only matches `rgb(...)` strings.
+  */
+ 
+-export const BRAND_NAME = 'OpenClaude'
++export const BRAND_NAME = 'furio'
+ 
+-export const BRAND_TAGLINE = 'Open terminal for any LLM'
++export const BRAND_TAGLINE = 'Furiosa RNGD NPU coding agent'
+ 
+ /** twigpine orange (#ff7a1a) in the rgb() form required by theme consumers. */
+ export const BRAND_ACCENT_RGB = 'rgb(255,122,26)'
+@@ -19,13 +19,15 @@ export const BRAND_ACCENT_RGB = 'rgb(255,122,26)'
+  * accent shades. Letter-spaced caps flanked by shade-gradient accents
+  * (░ ▒ ▓ █ render correctly in Apple Terminal). Rendered as one centered row:
+  *
+- *   ░▒▓█ O P E N C L A U D E █▓▒░
++ *   ░▒▓█ S O T A F U R I O █▓▒░
+  */
+ export const WORDMARK_ACCENT_LEFT = '░▒▓█'
+ 
+-export const WORDMARK_OPEN = 'O P E N'
++// 이름은 업스트림 그대로 두고 글자만 연구실 것으로 바꾼다 — WordmarkRow 와
++// 그 테스트가 이 상수를 그대로 읽으므로 수정 범위가 여기서 끝난다.
++export const WORDMARK_OPEN = 'S O T A'
+ 
+-export const WORDMARK_CLAUDE = 'C L A U D E'
++export const WORDMARK_CLAUDE = 'F U R I O'
+ 
+ export const WORDMARK_ACCENT_RIGHT = '█▓▒░'
+ 
+diff --git a/src/utils/logoV2Utils.ts b/src/utils/logoV2Utils.ts
+index 522362ad..1c509b74 100644
+--- a/src/utils/logoV2Utils.ts
++++ b/src/utils/logoV2Utils.ts
+@@ -100,7 +100,7 @@ export function calculateOptimalLeftWidth(
+  */
+ export function formatWelcomeMessage(username: string | null): string {
+   if (!username || username.length > MAX_USERNAME_LENGTH) {
+-    return 'Welcome to OpenClaude'
++    return 'Welcome to furio'
+   }
+   return `Welcome back, ${username}`
+ }
 -- 
 2.43.0
 

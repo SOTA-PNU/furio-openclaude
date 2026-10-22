@@ -2,7 +2,7 @@
 # ───────────────────────────────────────────────────────────────────────────
 # furio — Claude Code 같은 코딩 에이전트(openclaude)를 서버 NPU 에 붙여 쓰는 CLI 설치기 (macOS / Linux)
 #
-# openclaude(github.com/Gitlawb/openclaude)는 Claude Code 에서 파생된 오픈소스 CLI 라
+# openclaude(github.com/Twigpine/openclaude)는 Claude Code 에서 파생된 오픈소스 CLI 라
 # "정말 Claude 같은" 경험(권한 프롬프트·CLAUDE.md·서브에이전트·슬래시 등)을 그대로 주되,
 # 추론은 서버 NPU(OpenAI 호환 라우터 :8400)에서 돈다. 도구 실행·파일 수정은 내 PC 로컬.
 #
@@ -105,22 +105,30 @@ fi
 
 if [ -n "$LOCAL_DIST" ]; then
   echo "      로컬 dist 사용: $LOCAL_DIST (서버 없이 NPU 기능 적용)"
-  NPM_SPEC="@gitlawb/openclaude@${FURIO_CLIENT_VER:-latest}"
+  NPM_SPEC="@twigpine/openclaude@${FURIO_CLIENT_VER:-latest}"
 elif [ -n "$FORK_VER" ]; then
-  echo "      서버 포크 감지 — @gitlawb/openclaude@$FORK_VER 고정 설치 후 NPU 기능 dist 적용"
-  NPM_SPEC="@gitlawb/openclaude@$FORK_VER"
+  echo "      서버 포크 감지 — @twigpine/openclaude@$FORK_VER 고정 설치 후 NPU 기능 dist 적용"
+  NPM_SPEC="@twigpine/openclaude@$FORK_VER"
 else
   echo "      서버 포크 없음 — 업스트림 최신으로 설치(NPU LED/위젯 없이 동작)"
-  NPM_SPEC="@gitlawb/openclaude@latest"
+  NPM_SPEC="@twigpine/openclaude@latest"
 fi
 npm install -g "$NPM_SPEC" --prefix "$HOME_DIR" >/dev/null 2>&1 || { echo "[fail] openclaude 설치 실패 ($NPM_SPEC — npm 로그 확인)"; exit 1; }
 OC_BIN="$HOME_DIR/bin/openclaude"
 [ -x "$OC_BIN" ] || { echo "[fail] openclaude 바이너리 없음: $OC_BIN"; exit 1; }
 
+# 업스트림이 이름을 바꾸기 전(@gitlawb/openclaude)에 깔아 둔 사본이 남아 있으면 지운다.
+# 바이너리와 래퍼는 새 경로를 보므로 동작에는 지장이 없지만, 30MB 짜리 옛 dist 가 그대로
+# 남아 "고쳤는데 왜 그대로지" 하는 혼선을 만든다.
+if [ -d "$HOME_DIR/lib/node_modules/@gitlawb/openclaude" ]; then
+  rm -rf "$HOME_DIR/lib/node_modules/@gitlawb"
+  echo "      [ok] 이름 변경 전 사본 제거(@gitlawb/openclaude)"
+fi
+
 # 포크 dist 덮어쓰기. 실패하면 업스트림 dist 가 그대로 남아 furio 는 계속 동작한다
 # (NPU LED·dp/pp 위젯만 빠짐) — 설치를 통째로 실패시키지 않는다.
 if [ -n "$LOCAL_DIST" ] || [ -n "$FORK_VER" ]; then
-  DIST_DIR="$HOME_DIR/lib/node_modules/@gitlawb/openclaude/dist"
+  DIST_DIR="$HOME_DIR/lib/node_modules/@twigpine/openclaude/dist"
   [ -d "$DIST_DIR" ] || DIST_DIR=$(dirname "$(readlink -f "$OC_BIN" 2>/dev/null || echo "$OC_BIN")")/../dist
   OK=1
   for f in cli.mjs sdk.mjs; do
@@ -607,7 +615,7 @@ if [ "\$_USE_BUN" = 1 ]; then
       *) _ARGS+=("\$_a") ;;
     esac
   done
-  exec "\$_BUN" --no-env-file --config=/dev/null "$HOME_DIR/lib/node_modules/@gitlawb/openclaude/dist/cli.mjs" \${AUTO_ARGS[@]+"\${AUTO_ARGS[@]}"} \${TOOL_ARGS[@]+"\${TOOL_ARGS[@]}"} \${TURN_ARGS[@]+"\${TURN_ARGS[@]}"} \${_ARGS[@]+"\${_ARGS[@]}"}
+  exec "\$_BUN" --no-env-file --config=/dev/null "$HOME_DIR/lib/node_modules/@twigpine/openclaude/dist/cli.mjs" \${AUTO_ARGS[@]+"\${AUTO_ARGS[@]}"} \${TOOL_ARGS[@]+"\${TOOL_ARGS[@]}"} \${TURN_ARGS[@]+"\${TURN_ARGS[@]}"} \${_ARGS[@]+"\${_ARGS[@]}"}
 fi
 exec "$OC_BIN" \${AUTO_ARGS[@]+"\${AUTO_ARGS[@]}"} \${TOOL_ARGS[@]+"\${TOOL_ARGS[@]}"} \${TURN_ARGS[@]+"\${TURN_ARGS[@]}"} "\$@"
 EOF

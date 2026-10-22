@@ -151,7 +151,7 @@ bash server/furiosa_patches/install.sh      # qwen3_coder 파서 등록 (venv �
 
 ## 라이선스·출처
 
-화면은 [openclaude](https://github.com/Gitlawb/openclaude) 를 쓴다. openclaude 는 Anthropic 의
+화면은 [openclaude](https://github.com/Twigpine/openclaude) 를 쓴다. openclaude 는 Anthropic 의
 Claude Code CLI 파생이며, 그 고지를 [`NOTICE`](NOTICE) 에 그대로 실었다. 이 저장소가 담은
 우리 작업물(설치기·라우터·NPU 패치)은 부산대 SOTA 연구실이 만들었고 같은 조건으로 제공한다.
 openclaude 본체 소스는 이 저장소에 없다 — 설치기가 npm 에서 받는다.
