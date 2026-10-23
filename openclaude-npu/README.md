@@ -1,7 +1,7 @@
 # NPU 패치 — openclaude 를 furio 클라이언트로
 
 furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude Code 계열 TUI)다.
-`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 28개다.
+`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 29개다.
 
 - 상태줄에 모델별 LED — 라우터의 `/router/status` 를 폴링해 올라오는 중(노랑)/사용 가능(초록)을 보여준다
 - `/model` 창에서 tp·dp·pp 를 따로 고른다(라우터가 주는 변형 목록 기준)
@@ -15,7 +15,9 @@ furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude 
 - `furio agents` 로 이 컴퓨터에서 하던 세션 목록을 claude agents 와 같은 구성(프로젝트
   폴더별 묶음, 한 줄에 제목·요약·나이, 아래 "새 세션" 입력상자)으로 열고, 다른 폴더 세션도 그
   자리에서 이어 쓴다 — 고르면 그 폴더에서 furio 를 다시 띄우고 터미널을 넘긴다. 세션 안에서는
-  빈 프롬프트에서 `←` 를 누르거나 `/switch` 로 같은 화면을 연다. 세션의 설정·
+  빈 프롬프트에서 `←` 를 누르거나 `/switch` 로 같은 화면을 연다 — 대화 위에 따로 뜨는
+  대체 화면(ctrl+o 전사와 같은 방식)이라 들어갔다 나와도 자리가 같고, `Esc`·`ctrl+c` 로
+  닫으면 대화가 그대로 돌아온다. 세션의 설정·
   CLAUDE.md·신뢰 결정·MCP 서버는 시작할 때 그 폴더 기준으로 읽히니 중간에 디렉터리만
   바꿔서는 가져올 수 없다. 물려받은 피커는 현재 저장소 세션만 보여줬고, Ctrl+A 로 펼쳐
   다른 폴더 것을 고르면 재개하지 않고 `cd … && claude --resume <id>` 를 클립보드에 넣고
@@ -45,7 +47,7 @@ furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude 
 git clone https://github.com/Twigpine/openclaude.git
 cd openclaude
 git checkout v0.33.0
-git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 28개
+git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 29개
 
 bun install
 bun run build          # → dist/cli.mjs, dist/sdk.mjs

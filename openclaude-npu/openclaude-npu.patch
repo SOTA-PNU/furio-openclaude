@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/28] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/29] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/28] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/29] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/28] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/29] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/28] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/29] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/28] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/29] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/28] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/29] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/28] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/29] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/28] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/29] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/28] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/29] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/28] statusline: separate the current-model marker from the
+Subject: [PATCH 10/29] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/28] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/29] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/28] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/29] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/28] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/29] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/28] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/29] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/28] model picker: support a per-model default pp (large
+Subject: [PATCH 15/29] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/28] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/29] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/28] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/29] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/28] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/29] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/28] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/29] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/28] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/29] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/28] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/29] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/28] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/29] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/28] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/29] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5563,7 +5563,7 @@ index 522362ad..1c509b74 100644
 From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/28] brand: give each logo letter its own color from a cool
+Subject: [PATCH 24/29] brand: give each logo letter its own color from a cool
  spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5756,7 +5756,7 @@ index 94af8b4c..3e2cf093 100644
 From 9cf8784b2009e6734c8bd3d24740e72ccc69a6ea Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:07:48 +0900
-Subject: [PATCH 25/28] startup: drop the provider box, keep the mark and one
+Subject: [PATCH 25/29] startup: drop the provider box, keep the mark and one
  line
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5913,7 +5913,7 @@ index c21c8def..9b775d33 100644
 From bf4d4d421cbaa00a9c49fb6851a4d713b11729b9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:37:56 +0900
-Subject: [PATCH 26/28] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
+Subject: [PATCH 26/29] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
  =?UTF-8?q?=EA=B8=B0:=20agents=20=ED=95=9C=20=EB=8B=A8=EC=96=B4=EB=A1=9C?=
  =?UTF-8?q?=20=EC=9D=B4=20=EC=BB=B4=ED=93=A8=ED=84=B0=EC=9D=98=20=EC=84=B8?=
  =?UTF-8?q?=EC=85=98=EC=9D=84=20=EC=97=B4=EA=B3=A0=20=EB=8B=A4=EB=A5=B8=20?=
@@ -6389,7 +6389,7 @@ index 00000000..fb864cb2
 From 032cb8ae9935682e0a02e8fff4a8c09b355ad0d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:16:30 +0900
-Subject: [PATCH 27/28] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
+Subject: [PATCH 27/29] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
  =?UTF-8?q?=20=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=95=88=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EC=82=AC=EC=9A=A9=20=EA=B2=BD=ED=97=98=EC=9D=84=20=EB=B0=9B?=
  =?UTF-8?q?=EC=95=84=20=EB=9D=BC=EC=9A=B0=ED=84=B0=EB=A1=9C=20=EB=B3=B4?=
@@ -7711,7 +7711,7 @@ index 00000000..e41d7a38
 From 4c1dd2e0ccbe99a2b09c45f2482d67aea3db94d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:59:23 +0900
-Subject: [PATCH 28/28] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 28/29] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20agents=20=EB=A5=BC=20claude=20agents=20=EC=8B=9D=20=EA=B5=AC?=
  =?UTF-8?q?=EC=84=B1=EC=9C=BC=EB=A1=9C,=20=EB=B9=88=20=ED=94=84=EB=A1=AC?=
  =?UTF-8?q?=ED=94=84=ED=8A=B8=EC=97=90=EC=84=9C=20=E2=86=90=20=EB=A1=9C?=
@@ -8804,6 +8804,357 @@ index fb864cb2..858a1faa 100644
 +): boolean {
 +  return relaunchInDir(projectPath, ['--resume', sessionId], deps)
 +}
+-- 
+2.43.0
+
+
+From c969ee7ee1a65e2c6036a3dd28ee8b28b6bf8cbf Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Fri, 23 Oct 2026 18:42:09 +0900
+Subject: [PATCH 29/29] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+ =?UTF-8?q?=20=EC=84=B8=EC=85=98=20=EC=95=88=EC=9D=98=20=EC=84=A0=ED=83=9D?=
+ =?UTF-8?q?=EC=B0=BD=EC=9D=84=20=EB=8C=80=EC=B2=B4=20=ED=99=94=EB=A9=B4?=
+ =?UTF-8?q?=EC=97=90=20=EB=9D=84=EC=9B=8C=20=EC=9E=90=EB=A6=AC=EB=A5=BC=20?=
+ =?UTF-8?q?=EA=B3=A0=EC=A0=95=ED=95=98=EA=B3=A0=20ctrl+x=20=EA=B0=80=20?=
+ =?UTF-8?q?=EB=8B=BF=EA=B2=8C=20=ED=95=9C=EB=8B=A4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- local-jsx 명령에 `fullscreen` 플래그를 두고(/switch 가 켠다), REPL 은 그런 명령을
+  ctrl+o 전사처럼 <AlternateScreen> 안에 혼자 그린다. 대화는 다시 그리지도 밀리지도
+  않고 닫으면 그대로 돌아온다 — 몇 번을 들어갔다 나와도 선택창 자리가 같다.
+- 그 화면엔 프롬프트와 CancelRequestHandler 가 마운트되지 않으므로 Chat 컨텍스트의
+  `ctrl+x ctrl+k`·`ctrl+x ctrl+e` 화음 접두어가 ctrl+x 를 삼키지 않는다
+  (ChordInterceptor 는 핸들러가 등록된 컨텍스트의 더 긴 화음을 단일 키보다 우선한다).
+- 다른 폴더 세션으로 넘길 때 Ink 의 pause() 는 대체 화면을 안 나가므로
+  releaseTerminalToChild 가 먼저 나간다 — 아니면 부모의 종료 정리가 자식 세션의
+  출력을 통째로 덮어 버린다.
+- 선택창에서 ctrl+c 는 Esc 와 같고, 휠로 움직인다(대체 화면은 마우스 추적을 켠다).
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/Tool.ts                                   |  2 +
+ src/commands/switch/index.ts                  |  1 +
+ src/components/SessionFleet.test.tsx          | 31 +++++++++++++
+ src/components/SessionFleet.tsx               | 10 ++++-
+ src/screens/REPL.tsx                          | 18 ++++++++
+ src/types/command.ts                          |  7 +++
+ .../processUserInput/processSlashCommand.tsx  |  3 +-
+ src/utils/relaunchInProjectDir.test.ts        | 44 ++++++++++++++++++-
+ src/utils/relaunchInProjectDir.ts             | 33 +++++++++++---
+ 9 files changed, 140 insertions(+), 9 deletions(-)
+
+diff --git a/src/Tool.ts b/src/Tool.ts
+index 54fb5560..c1ba4fa0 100644
+--- a/src/Tool.ts
++++ b/src/Tool.ts
+@@ -125,6 +125,8 @@ export type SetToolJSXFn = (
+     showSpinner?: boolean
+     isLocalJSXCommand?: boolean
+     isImmediate?: boolean
++    /** The command asked for the whole screen (Command.fullscreen). */
++    fullscreen?: boolean
+     /** Set to true to clear a local JSX command (e.g., from its onDone callback) */
+     clearLocalJSX?: boolean
+   } | null,
+diff --git a/src/commands/switch/index.ts b/src/commands/switch/index.ts
+index 2ba47860..9aae98d3 100644
+--- a/src/commands/switch/index.ts
++++ b/src/commands/switch/index.ts
+@@ -5,6 +5,7 @@ const switchSession = {
+   name: 'switch',
+   description: 'Open another session from anywhere on this computer (← on an empty prompt)',
+   isHidden: false,
++  fullscreen: true,
+   load: () => import('./switch.js'),
+ } satisfies Command
+ 
+diff --git a/src/components/SessionFleet.test.tsx b/src/components/SessionFleet.test.tsx
+index b8b09d9a..e816a07c 100644
+--- a/src/components/SessionFleet.test.tsx
++++ b/src/components/SessionFleet.test.tsx
+@@ -14,6 +14,10 @@ const UP = '\u001B[A'
+ const ENTER = '\r'
+ const ESC = '\u001B'
+ const CTRL_X = '\u0018'
++const CTRL_C = '\u0003'
++// SGR mouse reports, as the terminal sends them while the alt screen tracks the mouse.
++const WHEEL_UP = '\u001B[<64;5;5M'
++const WHEEL_DOWN = '\u001B[<65;5;5M'
+ 
+ function log(partial: Partial<LogOption> & { sessionId: string }): LogOption {
+   return {
+@@ -218,3 +222,30 @@ test('ctrl+x asks once and deletes on the second press; Esc leaves', async () =>
+     h.stop()
+   }
+ })
++
++test('ctrl+c leaves like Esc, and the wheel moves the focus', async () => {
++  const picked: string[] = []
++  let cancelled = 0
++  const h = await mount(
++    <SessionFleet
++      {...baseProps}
++      logs={LOGS}
++      onSelect={l => picked.push(l.sessionId!)}
++      onCancel={() => {
++        cancelled++
++      }}
++    />,
++  )
++  try {
++    await h.waitFor('New sessions:')
++    await h.type(WHEEL_DOWN)
++    await h.type(WHEEL_DOWN)
++    await h.type(WHEEL_UP)
++    await h.type(ENTER)
++    expect(picked).toEqual(['cccc'])
++    await h.type(CTRL_C)
++    expect(cancelled).toBe(1)
++  } finally {
++    h.stop()
++  }
++})
+diff --git a/src/components/SessionFleet.tsx b/src/components/SessionFleet.tsx
+index 7f6e2456..1b12e5bd 100644
+--- a/src/components/SessionFleet.tsx
++++ b/src/components/SessionFleet.tsx
+@@ -111,7 +111,8 @@ function detailOf(log: LogOption, title: string): string {
+ /**
+  * The machine-wide session view: every session furio has opened on this
+  * computer, grouped by project, one line each. Enter opens the focused one,
+- * ctrl+x twice deletes it, and typing starts a new session from here.
++ * ctrl+x twice deletes it, typing starts a new session from here, and Esc or
++ * ctrl+c leaves.
+  */
+ export function SessionFleet({
+   logs,
+@@ -177,7 +178,7 @@ export function SessionFleet({
+   useRegisterOverlay('session-fleet')
+   useInput(
+     (input, key) => {
+-      if (key.escape) {
++      if (key.escape || (key.ctrl && input === 'c')) {
+         onCancel()
+         return
+       }
+@@ -185,6 +186,11 @@ export function SessionFleet({
+         requestDelete()
+         return
+       }
++      // In the alternate screen the wheel arrives as key events.
++      if (key.wheelUp || key.wheelDown) {
++        moveFocus(key.wheelUp ? -1 : 1)
++        return
++      }
+       // With the text box present, arrows and Enter arrive through it instead.
+       if (hasBox) return
+       if (key.upArrow) moveFocus(-1)
+diff --git a/src/screens/REPL.tsx b/src/screens/REPL.tsx
+index 0cffc95e..b463f68d 100644
+--- a/src/screens/REPL.tsx
++++ b/src/screens/REPL.tsx
+@@ -1189,6 +1189,7 @@ export function REPL({
+     showSpinner?: boolean;
+     isLocalJSXCommand?: boolean;
+     isImmediate?: boolean;
++    fullscreen?: boolean;
+   } | null>(null);
+ 
+   // Track local JSX commands separately so tools can't overwrite them.
+@@ -1199,6 +1200,7 @@ export function REPL({
+     shouldContinueAnimation?: true;
+     showSpinner?: boolean;
+     isLocalJSXCommand: true;
++    fullscreen?: boolean;
+   } | null>(null);
+ 
+   // Wrapper for setToolJSX that preserves local JSX commands (like /btw).
+@@ -1216,6 +1218,7 @@ export function REPL({
+     shouldContinueAnimation?: true;
+     showSpinner?: boolean;
+     isLocalJSXCommand?: boolean;
++    fullscreen?: boolean;
+     clearLocalJSX?: boolean;
+   } | null) => {
+     // If setting a local JSX command, store it in the ref
+@@ -5023,6 +5026,21 @@ export function REPL({
+   });
+   // Auto-exit viewing mode when teammate completes or errors
+   useTeammateViewAutoExit();
++  // A local JSX command that asked for the whole screen (/switch) is drawn
++  // alone in the alternate screen, the way the ctrl+o transcript is: the
++  // conversation underneath is neither redrawn nor scrolled, and it comes
++  // back exactly as it was when the command closes, so the view sits at
++  // the same place every time. Only the command's own keys are live — the
++  // prompt and CancelRequestHandler are not mounted, so no Chat-context
++  // chord (ctrl+x ctrl+k, ctrl+x ctrl+e) can swallow the command's ctrl+x.
++  if (toolJSX?.isLocalJSXCommand && toolJSX.fullscreen && toolJSX.jsx) {
++    return <AlternateScreen mouseTracking={isMouseTrackingEnabled()}>
++      <KeybindingSetup>
++        <AnimatedTerminalTitle isAnimating={titleIsAnimating} title={terminalTitle} disabled={titleDisabled} noPrefix={showStatusInTerminalTab} />
++        {toolJSX.jsx}
++      </KeybindingSetup>
++    </AlternateScreen>;
++  }
+   if (screen === 'transcript') {
+     // Virtual scroll replaces the 30-message cap: everything is scrollable
+     // and memory is bounded by the viewport. Without it, wrapping transcript
+diff --git a/src/types/command.ts b/src/types/command.ts
+index b71e78d9..0aa6f63a 100644
+--- a/src/types/command.ts
++++ b/src/types/command.ts
+@@ -171,6 +171,13 @@ type LocalJSXCommand = {
+    * This defers loading heavy dependencies until the command is invoked.
+    */
+   load: () => Promise<LocalJSXCommandModule>
++  /**
++   * Draw the command alone in the alternate screen instead of inline under
++   * the conversation. The conversation is left exactly as it was when the
++   * command closes, so a picker such as /switch always sits at the top of a
++   * clean screen. Ignored for immediate commands.
++   */
++  fullscreen?: boolean
+ }
+ 
+ /**
+diff --git a/src/utils/processUserInput/processSlashCommand.tsx b/src/utils/processUserInput/processSlashCommand.tsx
+index 30c1c855..b296860b 100644
+--- a/src/utils/processUserInput/processSlashCommand.tsx
++++ b/src/utils/processUserInput/processSlashCommand.tsx
+@@ -621,7 +621,8 @@ async function getMessagesForSlashCommand(commandName: string, args: string, set
+                 shouldHidePromptInput: true,
+                 showSpinner: false,
+                 isLocalJSXCommand: true,
+-                isImmediate: command.immediate === true
++                isImmediate: command.immediate === true,
++                fullscreen: command.fullscreen === true
+               });
+             }).catch(e => {
+               // If load()/call() throws and onDone never fired, the outer
+diff --git a/src/utils/relaunchInProjectDir.test.ts b/src/utils/relaunchInProjectDir.test.ts
+index 288e42a0..51d9e78b 100644
+--- a/src/utils/relaunchInProjectDir.test.ts
++++ b/src/utils/relaunchInProjectDir.test.ts
+@@ -1,6 +1,12 @@
+ import { describe, expect, it, mock } from 'bun:test'
+ import type { spawnSync } from 'child_process'
+-import { relaunchInDir, relaunchInProjectDir } from './relaunchInProjectDir.js'
++import { DISABLE_MOUSE_TRACKING, EXIT_ALT_SCREEN } from '../ink/termio/dec.js'
++import {
++  relaunchInDir,
++  relaunchInProjectDir,
++  releaseTerminalToChild,
++  type TerminalOwner,
++} from './relaunchInProjectDir.js'
+ 
+ type SpawnResult = ReturnType<typeof spawnSync>
+ 
+@@ -104,3 +110,39 @@ describe('relaunchInDir', () => {
+     expect(options.cwd).toBe('/home/u/repo')
+   })
+ })
++
++describe('releaseTerminalToChild', () => {
++  function fakeInk(isAltScreenActive: boolean) {
++    const calls: string[] = []
++    const ink: TerminalOwner = {
++      pause: () => calls.push('pause'),
++      suspendStdin: () => calls.push('suspendStdin'),
++      isAltScreenActive,
++      setAltScreenActive: active => calls.push(`setAltScreenActive(${active})`),
++    }
++    const written: string[] = []
++    return { ink, calls, written, write: (text: string) => written.push(text) }
++  }
++
++  it('stops drawing and reading, and leaves the main screen alone', () => {
++    const f = fakeInk(false)
++    releaseTerminalToChild(f.ink, f.write)
++    expect(f.calls).toEqual(['pause', 'suspendStdin'])
++    expect(f.written).toEqual([])
++  })
++
++  it('leaves the alternate screen first when /switch is drawn in it', () => {
++    const f = fakeInk(true)
++    releaseTerminalToChild(f.ink, f.write)
++    // pause() alone keeps us in the alt screen; the child must get the main
++    // one, and our exit cleanup must not switch back over its output.
++    expect(f.calls).toEqual(['pause', 'suspendStdin', 'setAltScreenActive(false)'])
++    expect(f.written).toEqual([DISABLE_MOUSE_TRACKING + EXIT_ALT_SCREEN])
++  })
++
++  it('is a no-op without a live Ink instance', () => {
++    const written: string[] = []
++    releaseTerminalToChild(undefined, text => written.push(text))
++    expect(written).toEqual([])
++  })
++})
+diff --git a/src/utils/relaunchInProjectDir.ts b/src/utils/relaunchInProjectDir.ts
+index 858a1faa..4549b875 100644
+--- a/src/utils/relaunchInProjectDir.ts
++++ b/src/utils/relaunchInProjectDir.ts
+@@ -1,5 +1,6 @@
+ import { spawnSync } from 'child_process'
+ import instances from '../ink/instances.js'
++import { DISABLE_MOUSE_TRACKING, EXIT_ALT_SCREEN } from '../ink/termio/dec.js'
+ 
+ export type RelaunchDeps = {
+   /** Overridable for tests; defaults to `child_process.spawnSync`. */
+@@ -12,17 +13,39 @@ export type RelaunchDeps = {
+   releaseTerminal?: () => void
+ }
+ 
++/** The part of the Ink instance a hand-off touches; narrowed so tests can fake it. */
++export type TerminalOwner = {
++  pause: () => void
++  suspendStdin: () => void
++  isAltScreenActive: boolean
++  setAltScreenActive: (active: boolean) => void
++}
++
+ /**
+  * Stop drawing and let go of the keyboard before a child takes the terminal.
+  *
+  * Two Ink apps on one terminal fight over the screen and split the user's
+  * keystrokes between them, so the parent has to step aside first. We never
+  * resume: the child owns the terminal until it exits, and then we exit too.
++ *
++ * /switch draws in the alternate screen, and `pause()` does not leave it.
++ * The child must get the main screen, and our exit cleanup must not switch
++ * back over its output — the terminal would end up showing our old
++ * conversation instead of everything the child session did.
+  */
+-function releaseTerminalToChild(): void {
+-  const ink = instances.get(process.stdout)
+-  ink?.pause()
+-  ink?.suspendStdin()
++export function releaseTerminalToChild(
++  ink: TerminalOwner | undefined = instances.get(process.stdout),
++  write: (text: string) => void = text => {
++    process.stdout.write(text)
++  },
++): void {
++  if (!ink) return
++  ink.pause()
++  ink.suspendStdin()
++  if (ink.isAltScreenActive) {
++    write(DISABLE_MOUSE_TRACKING + EXIT_ALT_SCREEN)
++    ink.setAltScreenActive(false)
++  }
+ }
+ 
+ /**
+@@ -47,7 +70,7 @@ export function relaunchInDir(
+   if (!entrypoint) return false
+ 
+   const spawnProcess = deps.spawnProcess ?? spawnSync
+-  const releaseTerminal = deps.releaseTerminal ?? releaseTerminalToChild
++  const releaseTerminal = deps.releaseTerminal ?? (() => releaseTerminalToChild())
+   const exitProcess =
+     deps.exitProcess ??
+     // eslint-disable-next-line custom-rules/no-process-exit
 -- 
 2.43.0
 
