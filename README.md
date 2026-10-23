@@ -56,14 +56,18 @@ powershell -ExecutionPolicy Bypass -File client\install.ps1
 
 ```bash
 furio                          # 화면(TUI) 열기
-furio agents                   # 이 컴퓨터에서 하던 세션을 골라 이어 쓰기
+furio agents                   # 이 컴퓨터에서 하던 세션을 골라 이어 쓰기 (세션 안에서는 빈 프롬프트에서 ←)
 furio -p "PROMPT.md 대로 base_run.py 를 고쳐 새 파일로 만들어줘"   # 한 줄 실행
 furio --model Qwen3-32B-FP8    # 이번 실행만 다른 모델로
 ```
 
-`furio agents` 는 이 컴퓨터가 작업한 세션 목록이다(최근 순). Enter 로 이어 쓰고, 다른
-폴더 세션을 고르면 그 폴더에서 furio 가 다시 떠서 이어진다. `Ctrl+A` 는 목록을 현재 폴더
-것으로 좁힌다. 아래 `FURIO_AGENTS`(서브에이전트 끄기)와는 다른 것이다.
+`furio agents` 는 이 컴퓨터가 작업한 세션을 프로젝트 폴더별로 묶어 보여준다(지금 폴더가 맨 위).
+`↑↓` 로 옮기고 `Enter` 로 이어 쓴다 — 다른 폴더 세션이면 그 폴더에서 furio 가 다시 떠서 이어진다.
+`ctrl+x` 두 번은 삭제, 아래 상자에 할 일을 적고 `Enter` 면 그 글을 첫 프롬프트로 새 세션이 뜬다.
+세션 안에서는 **빈 프롬프트에서 `←`** 를 누르면(또는 `/switch`) 같은 화면이 나온다.
+아래 `FURIO_AGENTS`(서브에이전트 끄기)와는 다른 것이다.
+
+![furio agents 화면](furio-agents.png)
 
 화면 안에서:
 

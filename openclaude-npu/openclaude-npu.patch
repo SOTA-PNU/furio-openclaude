@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/27] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/28] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/27] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/28] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/27] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/28] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/27] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/28] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/27] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/28] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/27] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/28] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/27] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/28] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/27] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/28] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/27] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/28] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/27] statusline: separate the current-model marker from the
+Subject: [PATCH 10/28] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/27] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/28] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/27] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/28] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/27] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/28] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/27] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/28] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/27] model picker: support a per-model default pp (large
+Subject: [PATCH 15/28] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/27] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/28] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/27] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/28] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/27] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/28] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/27] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/28] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/27] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/28] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/27] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/28] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/27] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/28] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/27] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/28] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5563,7 +5563,7 @@ index 522362ad..1c509b74 100644
 From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/27] brand: give each logo letter its own color from a cool
+Subject: [PATCH 24/28] brand: give each logo letter its own color from a cool
  spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5756,7 +5756,7 @@ index 94af8b4c..3e2cf093 100644
 From 9cf8784b2009e6734c8bd3d24740e72ccc69a6ea Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:07:48 +0900
-Subject: [PATCH 25/27] startup: drop the provider box, keep the mark and one
+Subject: [PATCH 25/28] startup: drop the provider box, keep the mark and one
  line
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5913,7 +5913,7 @@ index c21c8def..9b775d33 100644
 From bf4d4d421cbaa00a9c49fb6851a4d713b11729b9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:37:56 +0900
-Subject: [PATCH 26/27] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
+Subject: [PATCH 26/28] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
  =?UTF-8?q?=EA=B8=B0:=20agents=20=ED=95=9C=20=EB=8B=A8=EC=96=B4=EB=A1=9C?=
  =?UTF-8?q?=20=EC=9D=B4=20=EC=BB=B4=ED=93=A8=ED=84=B0=EC=9D=98=20=EC=84=B8?=
  =?UTF-8?q?=EC=85=98=EC=9D=84=20=EC=97=B4=EA=B3=A0=20=EB=8B=A4=EB=A5=B8=20?=
@@ -6389,7 +6389,7 @@ index 00000000..fb864cb2
 From 032cb8ae9935682e0a02e8fff4a8c09b355ad0d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:16:30 +0900
-Subject: [PATCH 27/27] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
+Subject: [PATCH 27/28] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
  =?UTF-8?q?=20=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=95=88=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EC=82=AC=EC=9A=A9=20=EA=B2=BD=ED=97=98=EC=9D=84=20=EB=B0=9B?=
  =?UTF-8?q?=EC=95=84=20=EB=9D=BC=EC=9A=B0=ED=84=B0=EB=A1=9C=20=EB=B3=B4?=
@@ -7703,6 +7703,1106 @@ index 00000000..e41d7a38
 +  emit(
 +    `${signal}까지 끝났네요 — 30초만 주시면 됩니다: /survey (오늘은 더 묻지 않습니다)`,
 +  )
++}
+-- 
+2.43.0
+
+
+From 4c1dd2e0ccbe99a2b09c45f2482d67aea3db94d9 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Fri, 23 Oct 2026 17:59:23 +0900
+Subject: [PATCH 28/28] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+ =?UTF-8?q?=20agents=20=EB=A5=BC=20claude=20agents=20=EC=8B=9D=20=EA=B5=AC?=
+ =?UTF-8?q?=EC=84=B1=EC=9C=BC=EB=A1=9C,=20=EB=B9=88=20=ED=94=84=EB=A1=AC?=
+ =?UTF-8?q?=ED=94=84=ED=8A=B8=EC=97=90=EC=84=9C=20=E2=86=90=20=EB=A1=9C?=
+ =?UTF-8?q?=EB=8F=84=20=EC=97=B0=EB=8B=A4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+`furio agents` 가 띄우던 것은 물려받은 --resume 피커(검색상자 + 두 줄짜리
+평면 목록)라 claude agents 와 구성이 달랐다. 그 화면을 그대로 따랐다:
+머리말(워드마크·버전 / 새 세션 기본값 / 세션·프로젝트 수) → 프로젝트 폴더별
+묶음(지금 폴더가 맨 위) → 한 줄에 `• 제목  요약  나이` → 아래 "새 세션"
+입력상자 → 단축키 줄.
+
+- SessionFleet: 폴더별 묶음과 포커스를 직접 그린다. Enter 는 열기, ctrl+x
+  두 번은 삭제, 상자에 글을 적고 Enter 면 그 글을 첫 프롬프트로 지금 폴더에서
+  새 furio 를 띄운다(빈 상자에서 Enter 는 포커스된 세션 열기). 상자가 있으면
+  화살표·Enter 는 TextInput 의 history 훅으로 들어오고, 없으면(REPL 안)
+  useInput 이 직접 받는다.
+- 가벼운 행은 메시지 수를 모르니 "0 messages" 대신 파일 크기를 적는다.
+- `agents` 는 이제 `--resume --fleet`(숨은 플래그)로 바뀐다. 다른 폴더 세션을
+  고르면 그 폴더에서 다시 띄우는 것은 그대로다. relaunchInDir 로 일반화해
+  새 세션 띄우기도 같은 길을 쓴다.
+- /switch: 같은 화면을 세션 안에서 연다. 같은 폴더면 그 자리에서 재개, 다른
+  폴더면 그쪽에서 다시 띄운다. 빈 프롬프트에서 ← 를 누르면 /switch 가 된다 —
+  적힌 글이 없으면 옮길 커서도 없어 그 키가 비어 있고, 하단 pill 이 선택된
+  동안은 pill 이 화살표를 가지므로 건드리지 않는다.
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/commands.ts                            |   3 +
+ src/commands/switch/index.ts               |  11 +
+ src/commands/switch/switch.tsx             | 162 ++++++++++
+ src/components/PromptInput/PromptInput.tsx |  11 +-
+ src/components/SessionFleet.test.tsx       | 220 ++++++++++++++
+ src/components/SessionFleet.tsx            | 329 +++++++++++++++++++++
+ src/entrypoints/cli.test.ts                |   4 +-
+ src/entrypoints/cli.tsx                    |   2 +-
+ src/main.tsx                               |   4 +-
+ src/screens/ResumeConversation.tsx         |  33 ++-
+ src/utils/relaunchInProjectDir.test.ts     |  17 +-
+ src/utils/relaunchInProjectDir.ts          |  35 ++-
+ 12 files changed, 808 insertions(+), 23 deletions(-)
+ create mode 100644 src/commands/switch/index.ts
+ create mode 100644 src/commands/switch/switch.tsx
+ create mode 100644 src/components/SessionFleet.test.tsx
+ create mode 100644 src/components/SessionFleet.tsx
+
+diff --git a/src/commands.ts b/src/commands.ts
+index 07f73a03..3e93f75b 100644
+--- a/src/commands.ts
++++ b/src/commands.ts
+@@ -78,6 +78,7 @@ import usage from './commands/usage/index.js'
+ import theme from './commands/theme/index.js'
+ import logo from './commands/logo/index.js'
+ import survey from './commands/survey/index.js'
++import switchSession from './commands/switch/index.js'
+ import vim from './commands/vim/index.js'
+ import { feature } from 'bun:bundle'
+ import { isBuddyEnabled } from './buddy/feature.js'
+@@ -355,6 +356,7 @@ const COMMANDS = memoize((): Command[] => [
+   theme,
+   logo,
+   survey,
++  switchSession,
+   feedback,
+   goal,
+   review,
+@@ -684,6 +686,7 @@ export const REMOTE_SAFE_COMMANDS: Set<Command> = new Set([
+   theme, // Change terminal theme
+   logo, // Change startup logo color scheme
+   survey, // Short service-experience questionnaire
++  switchSession, // Open another session from anywhere on this computer
+   color, // Change agent color
+   vim, // Toggle vim mode
+   cost, // Show session cost (local cost tracking)
+diff --git a/src/commands/switch/index.ts b/src/commands/switch/index.ts
+new file mode 100644
+index 00000000..2ba47860
+--- /dev/null
++++ b/src/commands/switch/index.ts
+@@ -0,0 +1,11 @@
++import type { Command } from '../../commands.js'
++
++const switchSession = {
++  type: 'local-jsx',
++  name: 'switch',
++  description: 'Open another session from anywhere on this computer (← on an empty prompt)',
++  isHidden: false,
++  load: () => import('./switch.js'),
++} satisfies Command
++
++export default switchSession
+diff --git a/src/commands/switch/switch.tsx b/src/commands/switch/switch.tsx
+new file mode 100644
+index 00000000..12038a60
+--- /dev/null
++++ b/src/commands/switch/switch.tsx
+@@ -0,0 +1,162 @@
++import type { UUID } from 'crypto'
++import * as React from 'react'
++import { getOriginalCwd, getSessionId } from '../../bootstrap/state.js'
++import { SessionFleet } from '../../components/SessionFleet.js'
++import { Text } from '../../ink.js'
++import { useAppState } from '../../state/AppState.js'
++import type {
++  LocalJSXCommandCall,
++  LocalJSXCommandOnDone,
++  ResumeEntrypoint,
++} from '../../types/command.js'
++import type { LogOption } from '../../types/logs.js'
++import { checkCrossProjectResume } from '../../utils/crossProjectResume.js'
++import { getWorktreePaths } from '../../utils/getWorktreePaths.js'
++import { getLogDisplayTitle, logError } from '../../utils/log.js'
++import { relaunchInProjectDir } from '../../utils/relaunchInProjectDir.js'
++import { deleteSessionFiles } from '../../utils/sessionDeletion.js'
++import {
++  getSessionIdFromLog,
++  getTranscriptPathForSession,
++  isLiteLog,
++  loadAllProjectsMessageLogs,
++  loadFullLog,
++} from '../../utils/sessionStorage.js'
++import { validateUuid } from '../../utils/uuid.js'
++import { filterResumableSessions } from '../resume/resume.js'
++
++type OnResume = (
++  sessionId: UUID,
++  log: LogOption,
++  entrypoint: ResumeEntrypoint,
++) => Promise<void>
++
++/** Titles for the first N rows are read from disk; the rest fill in as lite rows. */
++const ENRICH_COUNT = 80
++
++/**
++ * `/switch` — the `furio agents` view from inside a session. A session from
++ * this directory is resumed in place; one from another directory restarts
++ * furio over there, because its settings and trust decision live there.
++ */
++function SwitchSession({
++  onDone,
++  onResume,
++}: {
++  onDone: LocalJSXCommandOnDone
++  onResume: OnResume
++}): React.ReactNode {
++  const model = useAppState(s => s.mainLoopModel)
++  const [logs, setLogs] = React.useState<LogOption[] | null>(null)
++  const [worktreePaths, setWorktreePaths] = React.useState<string[]>([])
++  const [busy, setBusy] = React.useState(false)
++  const [notice, setNotice] = React.useState<string | undefined>()
++
++  const load = React.useCallback(async (): Promise<LogOption[]> => {
++    const all = await loadAllProjectsMessageLogs(undefined, {
++      initialEnrichCount: ENRICH_COUNT,
++    })
++    return filterResumableSessions(all, getSessionId())
++  }, [])
++
++  React.useEffect(() => {
++    void getWorktreePaths(getOriginalCwd()).then(setWorktreePaths)
++    load()
++      .then(loaded => {
++        if (loaded.length === 0) {
++          onDone('No saved sessions on this computer.', { display: 'system' })
++          return
++        }
++        setLogs(loaded)
++      })
++      .catch((error: unknown) => {
++        logError(error as Error)
++        onDone('Failed to load sessions', { display: 'system' })
++      })
++  }, [load, onDone])
++
++  const open = async (log: LogOption) => {
++    const sessionId = validateUuid(getSessionIdFromLog(log))
++    if (!sessionId) {
++      setNotice('That session has no id to resume.')
++      return
++    }
++    setBusy(true)
++    setNotice(undefined)
++    const cross = checkCrossProjectResume(log, true, worktreePaths)
++    if (cross.isCrossProject && !cross.isSameRepoWorktree) {
++      // Hands the terminal to a fresh furio in that directory and exits;
++      // only returns if it could not start one.
++      relaunchInProjectDir(cross.projectPath, sessionId)
++      setBusy(false)
++      setNotice(`Run this by hand: ${cross.command}`)
++      return
++    }
++    try {
++      const fullLog = isLiteLog(log) ? await loadFullLog(log) : log
++      if (isLiteLog(fullLog)) throw new Error('Transcript could not be loaded')
++      await onResume(sessionId, fullLog, 'slash_command_picker')
++    } catch (error) {
++      logError(error as Error)
++      setBusy(false)
++      setNotice(`Failed to open “${getLogDisplayTitle(log)}”: ${(error as Error).message}`)
++    }
++  }
++
++  const remove = async (log: LogOption) => {
++    const sessionId = getSessionIdFromLog(log) ?? ''
++    setBusy(true)
++    try {
++      const result = await deleteSessionFiles({
++        sessionId,
++        transcriptPath: log.fullPath ?? getTranscriptPathForSession(sessionId),
++        currentSessionId: getSessionId(),
++      })
++      if (!result.ok) {
++        setNotice(result.reason)
++        return
++      }
++      const remaining = await load()
++      if (remaining.length === 0) {
++        onDone('Deleted. No saved sessions left.', { display: 'system' })
++        return
++      }
++      setLogs(remaining)
++      setNotice(undefined)
++    } catch (error) {
++      logError(error as Error)
++      setNotice(`Failed to delete: ${(error as Error).message}`)
++    } finally {
++      setBusy(false)
++    }
++  }
++
++  if (!logs) return <Text dimColor>Loading sessions…</Text>
++
++  return (
++    <SessionFleet
++      logs={logs}
++      cwd={getOriginalCwd()}
++      version={MACRO.DISPLAY_VERSION ?? MACRO.VERSION}
++      model={model ?? undefined}
++      onSelect={log => void open(log)}
++      onCancel={() => onDone(undefined, { display: 'skip' })}
++      onDelete={log => void remove(log)}
++      busy={busy}
++      notice={notice}
++    />
++  )
++}
++
++export const call: LocalJSXCommandCall = async (onDone, context) => {
++  const onResume: OnResume = async (sessionId, log, entrypoint) => {
++    try {
++      await context.resume?.(sessionId, log, entrypoint)
++      onDone(undefined, { display: 'skip' })
++    } catch (error) {
++      logError(error as Error)
++      onDone(`Failed to resume: ${(error as Error).message}`)
++    }
++  }
++  return <SwitchSession onDone={onDone} onResume={onResume} />
++}
+diff --git a/src/components/PromptInput/PromptInput.tsx b/src/components/PromptInput/PromptInput.tsx
+index 16b6e088..128f8dfe 100644
+--- a/src/components/PromptInput/PromptInput.tsx
++++ b/src/components/PromptInput/PromptInput.tsx
+@@ -2008,7 +2008,7 @@ function PromptInput({
+     context: 'Footer',
+     isActive: !!footerItemSelected && !isModalOverlayActive && !isConfirmingDangerousMode
+   });
+-  useInput((char, key) => {
++  useInput((char, key, event) => {
+     // Skip all input handling when a full-screen dialog is open. These dialogs
+     // render via early return, but hooks run unconditionally — so without this
+     // guard, Escape inside a dialog leaks to the double-press message-selector.
+@@ -2016,6 +2016,15 @@ function PromptInput({
+       return;
+     }
+ 
++    // ← on an empty prompt opens the session switcher (the `furio agents`
++    // view). With nothing typed there is no cursor to move, so the key is
++    // free; a selected footer pill owns the arrows, so it keeps them.
++    if (key.leftArrow && !key.ctrl && !key.meta && !key.shift && input === '' && !footerItemSelected && !isSearchingHistory) {
++      event.stopImmediatePropagation();
++      void onSubmit('/switch');
++      return;
++    }
++
+     // Detect failed Alt shortcuts on macOS (Option key produces special characters)
+     if (getPlatform() === 'macos' && isMacosOptionChar(char)) {
+       const shortcut = MACOS_OPTION_SPECIAL_CHARS[char];
+diff --git a/src/components/SessionFleet.test.tsx b/src/components/SessionFleet.test.tsx
+new file mode 100644
+index 00000000..b8b09d9a
+--- /dev/null
++++ b/src/components/SessionFleet.test.tsx
+@@ -0,0 +1,220 @@
++import { PassThrough } from 'node:stream'
++import { stripVTControlCharacters as stripAnsi } from 'node:util'
++
++import { describe, expect, it, test } from 'bun:test'
++import React from 'react'
++
++import { render } from '../ink.js'
++import { AppStateProvider, getDefaultAppState } from '../state/AppState.js'
++import type { LogOption } from '../types/logs.js'
++import { ageLabel, buildFleetRows, SessionFleet, shortenHome } from './SessionFleet.js'
++
++const DOWN = '\u001B[B'
++const UP = '\u001B[A'
++const ENTER = '\r'
++const ESC = '\u001B'
++const CTRL_X = '\u0018'
++
++function log(partial: Partial<LogOption> & { sessionId: string }): LogOption {
++  return {
++    date: '2026-10-23T00:00:00.000Z',
++    messages: [],
++    value: 0,
++    created: new Date('2026-10-23T00:00:00Z'),
++    modified: new Date('2026-10-23T00:00:00Z'),
++    firstPrompt: '',
++    messageCount: 3,
++    isSidechain: false,
++    isLite: true,
++    ...partial,
++  } as LogOption
++}
++
++const NOW = new Date('2026-10-23T12:00:00Z')
++const LOGS: LogOption[] = [
++  log({ sessionId: 'aaaa', projectPath: '/home/u/repo', firstPrompt: '테스트 고쳐줘', modified: new Date('2026-10-23T11:00:00Z') }),
++  log({ sessionId: 'bbbb', projectPath: '/home/u/other', customTitle: 'docs sweep', firstPrompt: 'README 정리', modified: new Date('2026-10-23T11:30:00Z') }),
++  log({ sessionId: 'cccc', projectPath: '/home/u/repo', firstPrompt: 'build 실패 원인', modified: new Date('2026-10-20T11:00:00Z') }),
++]
++
++describe('buildFleetRows', () => {
++  it('puts the current directory first and groups the rest newest first', () => {
++    const rows = buildFleetRows(LOGS, '/home/u/repo')
++    expect(rows.map(r => (r.kind === 'group' ? `#${r.label}` : r.key))).toEqual([
++      '#/home/u/repo', 'aaaa', 'cccc',
++      '#/home/u/other', 'bbbb',
++    ])
++    // Without a current-directory group, newest activity decides the order.
++    const elsewhere = buildFleetRows(LOGS, '/nowhere')
++    expect(elsewhere[0]).toEqual({ kind: 'group', label: '/home/u/other', isCurrent: false })
++  })
++})
++
++describe('labels', () => {
++  it('abbreviates the home directory', () => {
++    const home = require('node:os').homedir() as string
++    expect(shortenHome(home)).toBe('~')
++    expect(shortenHome(`${home}/x/y`)).toBe('~/x/y')
++    expect(shortenHome('/srv/app')).toBe('/srv/app')
++  })
++
++  it('prints ages the way the header row expects', () => {
++    expect(ageLabel(new Date('2026-10-23T11:00:00Z'), NOW)).toBe('1h')
++    expect(ageLabel(new Date('2026-10-23T11:52:00Z'), NOW)).toBe('8m')
++    expect(ageLabel(new Date('2026-07-16T12:00:00Z'), NOW)).toBe('3mo')
++  })
++})
++
++type Harness = {
++  output: () => string
++  type: (keys: string) => Promise<void>
++  waitFor: (text: string) => Promise<void>
++  stop: () => void
++}
++
++async function mount(element: React.ReactElement, columns = 110, rows = 40): Promise<Harness> {
++  let output = ''
++  const stdout = new PassThrough()
++  const stdin = new PassThrough() as PassThrough & {
++    isTTY: boolean
++    setRawMode: (mode: boolean) => void
++    ref: () => void
++    unref: () => void
++  }
++  stdin.isTTY = true
++  stdin.setRawMode = () => {}
++  stdin.ref = () => {}
++  stdin.unref = () => {}
++  ;(stdout as unknown as { columns: number; rows: number }).columns = columns
++  ;(stdout as unknown as { columns: number; rows: number }).rows = rows
++  stdout.on('data', chunk => {
++    output += chunk.toString()
++  })
++  const instance = await render(
++    <AppStateProvider initialState={getDefaultAppState()}>{element}</AppStateProvider>,
++    {
++      stdin: stdin as unknown as NodeJS.ReadStream,
++      stdout: stdout as unknown as NodeJS.WriteStream,
++      exitOnCtrlC: false,
++    },
++  )
++  const waitFor = async (text: string): Promise<void> => {
++    const startedAt = Date.now()
++    while (Date.now() - startedAt < 2000) {
++      if (stripAnsi(output).includes(text)) return
++      await Bun.sleep(10)
++    }
++    throw new Error(`Timed out waiting for ${JSON.stringify(text)}`)
++  }
++  return {
++    output: () => stripAnsi(output),
++    // A lone Escape is held 300ms by the parser (it might start a sequence).
++    type: async (keys: string) => {
++      output = ''
++      stdin.write(keys)
++      await Bun.sleep(keys === ESC ? 400 : 40)
++    },
++    waitFor,
++    stop: () => {
++      instance.unmount()
++      stdin.end()
++      stdout.end()
++    },
++  }
++}
++
++const baseProps = {
++  cwd: '/home/u/repo',
++  version: '0.33.0',
++  model: 'gpt-oss-120b',
++  onCancel: () => {},
++}
++
++test('renders the header and the sessions grouped by directory', async () => {
++  const h = await mount(<SessionFleet {...baseProps} logs={LOGS} onSelect={() => {}} />)
++  try {
++    await h.waitFor('New sessions:')
++    const out = h.output()
++    expect(out).toContain('v0.33.0')
++    expect(out).toContain('gpt-oss-120b · /home/u/repo')
++    expect(out).toContain('3 sessions · 2 projects')
++    // Group header, then its rows; the focused row carries the pointer.
++    expect(out.indexOf('/home/u/repo')).toBeLessThan(out.indexOf('테스트 고쳐줘'))
++    expect(out).toContain('❯ •')
++    expect(out).toContain('docs sweep')
++    expect(out).toContain('README 정리') // detail column when the title is a custom one
++  } finally {
++    h.stop()
++  }
++})
++
++test('arrow keys move across groups and Enter opens the focused session', async () => {
++  const picked: string[] = []
++  const h = await mount(
++    <SessionFleet {...baseProps} logs={LOGS} onSelect={l => picked.push(l.sessionId!)} />,
++  )
++  try {
++    await h.waitFor('New sessions:')
++    await h.type(DOWN) // cccc (same group)
++    await h.type(DOWN) // bbbb (next group)
++    await h.type(ENTER)
++    expect(picked).toEqual(['bbbb'])
++    await h.type(UP)
++    await h.type(ENTER)
++    expect(picked).toEqual(['bbbb', 'cccc'])
++  } finally {
++    h.stop()
++  }
++})
++
++test('the text box starts a new session, and Enter on an empty box opens the focused one', async () => {
++  const picked: string[] = []
++  const started: string[] = []
++  const h = await mount(
++    <SessionFleet
++      {...baseProps}
++      logs={LOGS}
++      onSelect={l => picked.push(l.sessionId!)}
++      onNewSession={p => started.push(p)}
++    />,
++  )
++  try {
++    await h.waitFor('describe a task for a new session')
++    await h.type(ENTER)
++    expect(picked).toEqual(['aaaa'])
++    await h.type(DOWN) // arrows reach the list through the box
++    await h.type('fix the build')
++    await h.type(ENTER)
++    expect(started).toEqual(['fix the build'])
++  } finally {
++    h.stop()
++  }
++})
++
++test('ctrl+x asks once and deletes on the second press; Esc leaves', async () => {
++  const deleted: string[] = []
++  let cancelled = 0
++  const h = await mount(
++    <SessionFleet
++      {...baseProps}
++      logs={LOGS}
++      onSelect={() => {}}
++      onDelete={l => deleted.push(l.sessionId!)}
++      onCancel={() => {
++        cancelled++
++      }}
++    />,
++  )
++  try {
++    await h.waitFor('New sessions:')
++    await h.type(CTRL_X)
++    await h.waitFor('Press ctrl+x again')
++    expect(deleted).toEqual([])
++    await h.type(CTRL_X)
++    expect(deleted).toEqual(['aaaa'])
++    await h.type(ESC)
++    expect(cancelled).toBe(1)
++  } finally {
++    h.stop()
++  }
++})
+diff --git a/src/components/SessionFleet.tsx b/src/components/SessionFleet.tsx
+new file mode 100644
+index 00000000..7f6e2456
+--- /dev/null
++++ b/src/components/SessionFleet.tsx
+@@ -0,0 +1,329 @@
++import { homedir } from 'os'
++import * as React from 'react'
++import { useRegisterOverlay } from '../context/overlayContext.js'
++import { useTerminalSize } from '../hooks/useTerminalSize.js'
++import { Box, Text, useInput } from '../ink.js'
++import type { LogOption } from '../types/logs.js'
++import { formatRelativeTime, truncateToWidth } from '../utils/format.js'
++import { getLogDisplayTitle } from '../utils/log.js'
++import { getSessionIdFromLog } from '../utils/sessionStorage.js'
++import { WordmarkRow } from './LogoV2/WordmarkRow.js'
++import { Spinner } from './Spinner.js'
++import TextInput from './TextInput.js'
++
++export type SessionFleetProps = {
++  logs: LogOption[]
++  /** Directory furio was started in; its sessions are listed first. */
++  cwd: string
++  version: string
++  model?: string
++  onSelect: (log: LogOption) => void
++  onCancel: () => void
++  /**
++   * Start a fresh session from the text box at the bottom. When omitted the
++   * box is not drawn and the arrow keys are read directly.
++   */
++  onNewSession?: (prompt: string) => void
++  /** ctrl+x twice on a row. When omitted the hint is not shown. */
++  onDelete?: (log: LogOption) => void
++  busy?: boolean
++  notice?: string
++}
++
++export type FleetRow =
++  | { kind: 'group'; label: string; isCurrent: boolean }
++  | { kind: 'log'; log: LogOption; key: string }
++
++export function rowKey(log: LogOption): string {
++  return getSessionIdFromLog(log) ?? log.fullPath ?? String(log.value)
++}
++
++export function shortenHome(path: string): string {
++  const home = homedir()
++  if (path === home) return '~'
++  return path.startsWith(`${home}/`) ? `~${path.slice(home.length)}` : path
++}
++
++/** "1h", "8m", "99d" — the narrow form without "ago". */
++export function ageLabel(date: Date | string, now: Date = new Date()): string {
++  return formatRelativeTime(new Date(date), { style: 'narrow', now })
++    .replace(/ ago$/, '')
++    .replace(/^in /, '')
++}
++
++function modifiedMs(log: LogOption): number {
++  return new Date(log.modified).getTime()
++}
++
++/**
++ * Sessions grouped by the directory they were opened in, the current
++ * directory first and the rest newest first; inside a group newest first.
++ *
++ * Grouping by directory is the point of the view: a session only makes sense
++ * next to its project, and the directory is what decides whether opening it
++ * is a resume in place or a relaunch somewhere else.
++ */
++export function buildFleetRows(logs: LogOption[], cwd: string): FleetRow[] {
++  const groups = new Map<string, LogOption[]>()
++  for (const log of logs) {
++    const dir = log.projectPath ?? ''
++    const list = groups.get(dir)
++    if (list) list.push(log)
++    else groups.set(dir, [log])
++  }
++  const newest = (dir: string): number =>
++    Math.max(...groups.get(dir)!.map(modifiedMs))
++  const dirs = [...groups.keys()].sort((a, b) => {
++    if (a === cwd) return -1
++    if (b === cwd) return 1
++    return newest(b) - newest(a)
++  })
++
++  const rows: FleetRow[] = []
++  for (const dir of dirs) {
++    rows.push({
++      kind: 'group',
++      label: dir ? shortenHome(dir) : '(unknown directory)',
++      isCurrent: dir === cwd,
++    })
++    for (const log of [...groups.get(dir)!].sort((a, b) => modifiedMs(b) - modifiedMs(a))) {
++      rows.push({ kind: 'log', log, key: rowKey(log) })
++    }
++  }
++  return rows
++}
++
++/**
++ * The second column: the first prompt when the title is something else;
++ * otherwise the size. A lite row has not been read yet, so its message count
++ * is unknown rather than zero — the file size is what we do know.
++ */
++function detailOf(log: LogOption, title: string): string {
++  const first = (log.firstPrompt ?? '').replace(/\s+/g, ' ').trim()
++  if (first && first !== title) return first
++  const parts: string[] = []
++  if (log.messageCount > 0) parts.push(`${log.messageCount} messages`)
++  else if (log.fileSize) parts.push(`${Math.max(1, Math.round(log.fileSize / 1024))}KB`)
++  if (log.gitBranch) parts.push(log.gitBranch)
++  return parts.join(' · ')
++}
++
++/**
++ * The machine-wide session view: every session furio has opened on this
++ * computer, grouped by project, one line each. Enter opens the focused one,
++ * ctrl+x twice deletes it, and typing starts a new session from here.
++ */
++export function SessionFleet({
++  logs,
++  cwd,
++  version,
++  model,
++  onSelect,
++  onCancel,
++  onNewSession,
++  onDelete,
++  busy = false,
++  notice,
++}: SessionFleetProps): React.ReactNode {
++  const { rows: termRows, columns } = useTerminalSize()
++  const rows = React.useMemo(() => buildFleetRows(logs, cwd), [logs, cwd])
++  const logRows = React.useMemo(
++    () => rows.map((row, index) => (row.kind === 'log' ? index : -1)).filter(i => i >= 0),
++    [rows],
++  )
++  const projectCount = rows.filter(row => row.kind === 'group').length
++
++  const [focus, setFocus] = React.useState<number>(logRows[0] ?? -1)
++  const [pendingDeleteKey, setPendingDeleteKey] = React.useState<string | null>(null)
++  const [draft, setDraft] = React.useState('')
++  const [cursor, setCursor] = React.useState(0)
++
++  // A deleted or newly loaded list may leave the focus pointing at nothing.
++  React.useEffect(() => {
++    if (!logRows.includes(focus)) setFocus(logRows[0] ?? -1)
++  }, [logRows, focus])
++
++  const focused = rows[focus]
++  const focusedLog = focused?.kind === 'log' ? focused : undefined
++
++  const moveFocus = React.useCallback(
++    (delta: number) => {
++      if (logRows.length === 0) return
++      const at = Math.max(0, logRows.indexOf(focus))
++      const next = Math.min(logRows.length - 1, Math.max(0, at + delta))
++      setFocus(logRows[next]!)
++      setPendingDeleteKey(null)
++    },
++    [focus, logRows],
++  )
++
++  const openFocused = React.useCallback(() => {
++    if (focusedLog) onSelect(focusedLog.log)
++  }, [focusedLog, onSelect])
++
++  const requestDelete = React.useCallback(() => {
++    if (!onDelete || !focusedLog) return
++    if (pendingDeleteKey === focusedLog.key) {
++      setPendingDeleteKey(null)
++      onDelete(focusedLog.log)
++    } else {
++      setPendingDeleteKey(focusedLog.key)
++    }
++  }, [onDelete, focusedLog, pendingDeleteKey])
++
++  const hasBox = onNewSession !== undefined
++
++  // Keeps the REPL's cancel handler off our Escape while the view is open.
++  useRegisterOverlay('session-fleet')
++  useInput(
++    (input, key) => {
++      if (key.escape) {
++        onCancel()
++        return
++      }
++      if (key.ctrl && input === 'x') {
++        requestDelete()
++        return
++      }
++      // With the text box present, arrows and Enter arrive through it instead.
++      if (hasBox) return
++      if (key.upArrow) moveFocus(-1)
++      else if (key.downArrow) moveFocus(1)
++      else if (key.return) openFocused()
++    },
++    { isActive: !busy },
++  )
++
++  // Layout: pointer+glyph 5, title, detail (flexible), PR, age 6.
++  const anyPr = logs.some(log => log.prNumber !== undefined)
++  const titleWidth = Math.min(32, Math.max(12, Math.floor(columns * 0.3)))
++  const prWidth = anyPr ? 9 : 0
++  const detailWidth = Math.max(8, columns - 5 - titleWidth - prWidth - 6 - 2)
++  const visible = Math.max(4, termRows - (hasBox ? 11 : 9))
++  const start = Math.min(
++    Math.max(0, focus - Math.floor(visible / 2)),
++    Math.max(0, rows.length - visible),
++  )
++  const window = rows.slice(start, start + visible)
++
++  const pendingTitle =
++    pendingDeleteKey && focusedLog && focusedLog.key === pendingDeleteKey
++      ? getLogDisplayTitle(focusedLog.log)
++      : undefined
++
++  return (
++    <Box flexDirection="column">
++      <Box flexDirection="column" marginBottom={1}>
++        <Box flexDirection="row" gap={2}>
++          <WordmarkRow />
++          <Text dimColor>v{version}</Text>
++        </Box>
++        <Text>
++          <Text dimColor>New sessions: </Text>
++          {model ?? '—'}
++          <Text dimColor> · </Text>
++          {shortenHome(cwd)}
++        </Text>
++        <Text dimColor>
++          {logs.length} {logs.length === 1 ? 'session' : 'sessions'} · {projectCount}{' '}
++          {projectCount === 1 ? 'project' : 'projects'}
++        </Text>
++      </Box>
++
++      {rows.length === 0 ? (
++        <Text dimColor>No saved sessions yet.</Text>
++      ) : (
++        <Box flexDirection="column">
++          {start > 0 ? <Text dimColor>  ↑ {start} more</Text> : null}
++          {window.map((row, offset) => {
++            const index = start + offset
++            if (row.kind === 'group') {
++              return (
++                <Box key={`group:${row.label}`} marginTop={offset === 0 ? 0 : 1}>
++                  <Text bold={row.isCurrent} dimColor={!row.isCurrent}>
++                    {row.label}
++                  </Text>
++                </Box>
++              )
++            }
++            const isFocused = index === focus
++            const isPendingDelete = pendingDeleteKey === row.key
++            const title = getLogDisplayTitle(row.log)
++            const color = isPendingDelete ? 'error' : isFocused ? 'suggestion' : undefined
++            return (
++              <Box key={row.key} flexDirection="row">
++                <Box width={5}>
++                  <Text color={color}>{isFocused ? ' ❯ ' : '   '}</Text>
++                  <Text color="success">• </Text>
++                </Box>
++                <Box width={titleWidth}>
++                  <Text bold={isFocused} color={color}>
++                    {truncateToWidth(title, titleWidth - 1)}
++                  </Text>
++                </Box>
++                <Box width={detailWidth}>
++                  <Text dimColor>{truncateToWidth(detailOf(row.log, title), detailWidth - 1)}</Text>
++                </Box>
++                {prWidth > 0 ? (
++                  <Box width={prWidth} justifyContent="flex-end">
++                    <Text dimColor>{row.log.prNumber !== undefined ? `PR #${row.log.prNumber}` : ''}</Text>
++                  </Box>
++                ) : null}
++                <Box width={6} justifyContent="flex-end">
++                  <Text dimColor>{ageLabel(row.log.modified)}</Text>
++                </Box>
++              </Box>
++            )
++          })}
++          {start + visible < rows.length ? (
++            <Text dimColor>  ↓ {rows.length - start - visible} more</Text>
++          ) : null}
++        </Box>
++      )}
++
++      {hasBox ? (
++        <Box flexDirection="column" marginTop={1}>
++          <Text dimColor>{'─'.repeat(Math.max(10, columns - 2))}</Text>
++          <Box flexDirection="row" gap={1}>
++            <Text color="suggestion">❯</Text>
++            <TextInput
++              value={draft}
++              onChange={setDraft}
++              cursorOffset={cursor}
++              onChangeCursorOffset={setCursor}
++              columns={Math.max(20, columns - 6)}
++              placeholder="describe a task for a new session"
++              onHistoryUp={() => moveFocus(-1)}
++              onHistoryDown={() => moveFocus(1)}
++              onSubmit={value => {
++                const prompt = value.trim()
++                if (prompt) onNewSession?.(prompt)
++                else openFocused()
++              }}
++            />
++          </Box>
++          <Text dimColor>{'─'.repeat(Math.max(10, columns - 2))}</Text>
++        </Box>
++      ) : null}
++
++      <Box marginTop={hasBox ? 0 : 1} flexDirection="column">
++        {notice ? <Text color="error">{notice}</Text> : null}
++        {pendingTitle ? (
++          <Text color="warning">Press ctrl+x again to delete “{truncateToWidth(pendingTitle, 40)}”.</Text>
++        ) : null}
++        {busy ? (
++          <Box>
++            <Spinner />
++            <Text> Opening…</Text>
++          </Box>
++        ) : (
++          <Text dimColor>
++            {' '}enter to open · ↑↓ to move
++            {onDelete ? ' · ctrl+x to delete' : ''}
++            {hasBox ? ' · type a task to start a new session here' : ''} · esc to {hasBox ? 'quit' : 'close'}
++          </Text>
++        )}
++      </Box>
++    </Box>
++  )
++}
+diff --git a/src/entrypoints/cli.test.ts b/src/entrypoints/cli.test.ts
+index 29ad6c86..f7ea54c9 100644
+--- a/src/entrypoints/cli.test.ts
++++ b/src/entrypoints/cli.test.ts
+@@ -1381,12 +1381,12 @@ describe('cli.tsx — bare `agents` opens the session picker', () => {
+     return seen
+   }
+ 
+-  it('rewrites `agents` into the all-projects resume picker', async () => {
++  it('rewrites `agents` into the machine-wide session view', async () => {
+     expect(await argvSeenFor(['agents'])).toEqual([
+       'node',
+       'openclaude',
+       '--resume',
+-      '--all-projects',
++      '--fleet',
+     ])
+   })
+ 
+diff --git a/src/entrypoints/cli.tsx b/src/entrypoints/cli.tsx
+index bf57fd5f..acf87b51 100644
+--- a/src/entrypoints/cli.tsx
++++ b/src/entrypoints/cli.tsx
+@@ -825,7 +825,7 @@ export async function main(
+   // argv here reuses the whole --resume startup path; the commander subcommand
+   // keeps listing configured subagents for `agents list` and the flag form.
+   if (args.length === 1 && args[0] === 'agents') {
+-    process.argv = [process.argv[0]!, process.argv[1]!, '--resume', '--all-projects'];
++    process.argv = [process.argv[0]!, process.argv[1]!, '--resume', '--fleet'];
+   }
+ 
+   // --bare: set SIMPLE early so gates fire during module eval / commander
+diff --git a/src/main.tsx b/src/main.tsx
+index f310b342..47f9bf89 100644
+--- a/src/main.tsx
++++ b/src/main.tsx
+@@ -921,6 +921,7 @@ async function run(): Promise<CommanderCommand> {
+   .option('-c, --continue', 'Continue the most recent conversation in the current directory', () => true)
+   .option('-r, --resume [value]', 'Resume a conversation by session ID, or open interactive picker with optional search term', value => value || true)
+   .option('--all-projects', 'With --resume, list sessions from every project on this machine instead of this repository only (Ctrl+A toggles it inside the picker)', () => true)
++  .addOption(new Option('--fleet', 'With --resume, open the machine-wide session view that `agents` opens').hideHelp())
+   .option('--fork-session', 'When resuming, branch the conversation into a new session ID; does not create filesystem or worktree isolation (use with --resume or --continue)', () => true)
+   .addOption(new Option('--prefill <text>', 'Pre-fill the prompt input with text without submitting it').hideHelp()).addOption(new Option('--deep-link-origin', 'Signal that this session was launched from a deep link').hideHelp()).addOption(new Option('--deep-link-repo <slug>', 'Repo slug the deep link ?repo= parameter resolved to the current cwd').hideHelp()).addOption(new Option('--deep-link-last-fetch <ms>', 'FETCH_HEAD mtime in epoch ms, precomputed by the deep link trampoline').argParser(v => {
+     const n = Number(v);
+@@ -3608,7 +3609,8 @@ async function run(): Promise<CommanderCommand> {
+         }, getWorktreePaths(getOriginalCwd()), {
+           ...sessionConfig,
+           initialSearchQuery: searchTerm,
+-          allProjects: options.allProjects === true,
++          allProjects: options.allProjects === true || options.fleet === true,
++          fleet: options.fleet === true,
+           forkSession: options.forkSession,
+           filterByPr
+         });
+diff --git a/src/screens/ResumeConversation.tsx b/src/screens/ResumeConversation.tsx
+index fae6abd4..0b564f14 100644
+--- a/src/screens/ResumeConversation.tsx
++++ b/src/screens/ResumeConversation.tsx
+@@ -3,9 +3,10 @@ import { feature } from 'bun:bundle';
+ import { dirname } from 'path';
+ import React from 'react';
+ import { useTerminalSize } from 'src/hooks/useTerminalSize.js';
+-import { getOriginalCwd, switchSession } from '../bootstrap/state.js';
++import { getOriginalCwd, getSessionId, switchSession } from '../bootstrap/state.js';
+ import type { Command } from '../commands.js';
+ import { LogSelector } from '../components/LogSelector.js';
++import { SessionFleet } from '../components/SessionFleet.js';
+ import { Spinner } from '../components/Spinner.js';
+ import { restoreCostStateForSession } from '../cost-tracker.js';
+ import { setClipboard } from '../ink/termio/osc.js';
+@@ -29,9 +30,10 @@ import { errorMessage } from '../utils/errors.js';
+ import type { FileHistorySnapshot } from '../utils/fileHistory.js';
+ import { logError } from '../utils/log.js';
+ import { createSystemMessage } from '../utils/messages.js';
+-import { relaunchInProjectDir } from '../utils/relaunchInProjectDir.js';
++import { relaunchInDir, relaunchInProjectDir } from '../utils/relaunchInProjectDir.js';
++import { deleteSessionFiles } from '../utils/sessionDeletion.js';
+ import { computeStandaloneAgentContext, createForkSessionInfoMessage, restoreAgentFromSession, restoreWorktreeForResume } from '../utils/sessionRestore.js';
+-import { adoptResumedSessionFile, enrichLogs, getSessionIdFromLog, isCustomTitleEnabled, loadAllProjectsMessageLogsProgressive, loadSameRepoMessageLogsProgressive, recordContentReplacement, resetSessionFilePointer, restoreSessionMetadata, type SessionLogResult } from '../utils/sessionStorage.js';
++import { adoptResumedSessionFile, enrichLogs, getSessionIdFromLog, getTranscriptPathForSession, isCustomTitleEnabled, loadAllProjectsMessageLogsProgressive, loadSameRepoMessageLogsProgressive, recordContentReplacement, resetSessionFilePointer, restoreSessionMetadata, type SessionLogResult } from '../utils/sessionStorage.js';
+ import type { ModelSetting } from '../utils/model/model.js';
+ import type { ThinkingConfig } from '../utils/thinking.js';
+ import { filterContentReplacementsForMessages, type ContentReplacementRecord } from '../utils/toolResultStorage.js';
+@@ -54,6 +56,8 @@ type Props = {
+   initialSearchQuery?: string;
+   /** Open on every project's sessions, not just this repository's. */
+   allProjects?: boolean;
++  /** The `furio agents` view: grouped by project, with a box to start a new session. */
++  fleet?: boolean;
+   disableSlashCommands?: boolean;
+   forkSession?: boolean;
+   filterByPr?: boolean | number | string;
+@@ -78,6 +82,7 @@ export function ResumeConversation({
+   appendSystemPrompt,
+   initialSearchQuery,
+   allProjects = false,
++  fleet = false,
+   disableSlashCommands = false,
+   forkSession,
+   filterByPr,
+@@ -90,6 +95,7 @@ export function ResumeConversation({
+     rows
+   } = useTerminalSize();
+   const agentDefinitions = useAppState(s => s.agentDefinitions);
++  const mainLoopModel = useAppState(s => s.mainLoopModel);
+   const setAppState = useSetAppState();
+   const [logs, setLogs] = React.useState<LogOption[]>([]);
+   const [loading, setLoading] = React.useState(true);
+@@ -165,6 +171,24 @@ export function ResumeConversation({
+     // eslint-disable-next-line custom-rules/no-process-exit
+     process.exit(1);
+   }
++  // The box at the bottom of the fleet view: a fresh session here, with that
++  // text as its first prompt. Same hand-over as a cross-project resume.
++  function startNewSession(prompt: string) {
++    relaunchInDir(getOriginalCwd(), [prompt]);
++  }
++  async function deleteLog(log: LogOption) {
++    const sessionId = getSessionIdFromLog(log) ?? '';
++    const result = await deleteSessionFiles({
++      sessionId,
++      transcriptPath: log.fullPath ?? getTranscriptPathForSession(sessionId),
++      currentSessionId: getSessionId()
++    });
++    if (!result.ok) {
++      setResumeError(result.reason);
++      return;
++    }
++    loadLogs(showAllProjects);
++  }
+   async function onSelect(log_0: LogOption) {
+     setResumeError(null);
+     setResuming(true);
+@@ -321,6 +345,9 @@ export function ResumeConversation({
+   if (filteredLogs.length === 0) {
+     return <NoConversationsMessage />;
+   }
++  if (fleet) {
++    return <SessionFleet logs={filteredLogs} cwd={getOriginalCwd()} version={MACRO.DISPLAY_VERSION ?? MACRO.VERSION} model={mainLoopModel ?? undefined} onSelect={log => void onSelect(log)} onCancel={onCancel} onNewSession={startNewSession} onDelete={log => void deleteLog(log)} busy={resuming} notice={resumeError ?? undefined} />;
++  }
+   return <Box flexDirection="column">
+       {resumeErrorBanner}
+       <LogSelector logs={filteredLogs} maxHeight={rows} onCancel={onCancel} onSelect={onSelect} onLogsChanged={isResumeWithRenameEnabled ? () => loadLogs(showAllProjects) : undefined} onLoadMore={loadMoreLogs} initialSearchQuery={initialSearchQuery} showAllProjects={showAllProjects} onToggleAllProjects={handleToggleAllProjects} onAgenticSearch={agenticSessionSearch} />
+diff --git a/src/utils/relaunchInProjectDir.test.ts b/src/utils/relaunchInProjectDir.test.ts
+index c01bfd8d..288e42a0 100644
+--- a/src/utils/relaunchInProjectDir.test.ts
++++ b/src/utils/relaunchInProjectDir.test.ts
+@@ -1,6 +1,6 @@
+ import { describe, expect, it, mock } from 'bun:test'
+ import type { spawnSync } from 'child_process'
+-import { relaunchInProjectDir } from './relaunchInProjectDir.js'
++import { relaunchInDir, relaunchInProjectDir } from './relaunchInProjectDir.js'
+ 
+ type SpawnResult = ReturnType<typeof spawnSync>
+ 
+@@ -89,3 +89,18 @@ describe('relaunchInProjectDir', () => {
+     expect(h.exitProcess).toHaveBeenCalledWith(1)
+   })
+ })
++
++describe('relaunchInDir', () => {
++  it('passes the given arguments through, for a new session with a first prompt', () => {
++    const h = harness()
++    relaunchInDir('/home/u/repo', ['fix the build'], {
++      ...h,
++      entrypoint: '/opt/furio/cli.mjs',
++    })
++    const [, args, options] = (
++      h.spawnProcess as unknown as { mock: { calls: unknown[][] } }
++    ).mock.calls[0] as [string, string[], { cwd: string }]
++    expect(args).toEqual([...process.execArgv, '/opt/furio/cli.mjs', 'fix the build'])
++    expect(options.cwd).toBe('/home/u/repo')
++  })
++})
+diff --git a/src/utils/relaunchInProjectDir.ts b/src/utils/relaunchInProjectDir.ts
+index fb864cb2..858a1faa 100644
+--- a/src/utils/relaunchInProjectDir.ts
++++ b/src/utils/relaunchInProjectDir.ts
+@@ -26,23 +26,21 @@ function releaseTerminalToChild(): void {
+ }
+ 
+ /**
+- * Hand the terminal to a fresh session started in another project directory.
++ * Hand the terminal to a fresh copy of ourselves started in `dir` with `args`.
+  *
+- * A session belongs to the directory it was opened in: settings, CLAUDE.md,
+- * the workspace trust decision and the MCP servers are all resolved for that
+- * directory while we start up, so a session from elsewhere cannot be adopted
+- * by chdir'ing mid-flight. Instead we start ourselves again — same
+- * interpreter, same script, new working directory — and exit with the child's
+- * status. That is the `cd <dir> && furio --resume <id>` the user would
+- * otherwise type, run for them.
++ * Settings, CLAUDE.md, the workspace trust decision and the MCP servers are
++ * all resolved for the starting directory while we boot, so anything that
++ * belongs to another directory cannot be adopted by chdir'ing mid-flight.
++ * Starting again — same interpreter, same script, new working directory —
++ * is the only honest way, and it is what the user would type by hand.
+  *
+  * Returns false when no relaunch was attempted (the entrypoint is unknown, so
+  * the caller should fall back to printing the command). Otherwise the process
+  * exits and the `true` is never observed outside tests.
+  */
+-export function relaunchInProjectDir(
+-  projectPath: string,
+-  sessionId: string,
++export function relaunchInDir(
++  dir: string,
++  args: string[],
+   deps: RelaunchDeps = {},
+ ): boolean {
+   const entrypoint = 'entrypoint' in deps ? deps.entrypoint : process.argv[1]
+@@ -59,13 +57,13 @@ export function relaunchInProjectDir(
+ 
+   const result = spawnProcess(
+     process.execPath,
+-    [...process.execArgv, entrypoint, '--resume', sessionId],
+-    { cwd: projectPath, stdio: 'inherit', env: process.env },
++    [...process.execArgv, entrypoint, ...args],
++    { cwd: dir, stdio: 'inherit', env: process.env },
+   )
+ 
+   if (result.error) {
+     process.stderr.write(
+-      `Could not start a session in ${projectPath}: ${result.error.message}\n`,
++      `Could not start a session in ${dir}: ${result.error.message}\n`,
+     )
+     exitProcess(1)
+     return true
+@@ -74,3 +72,12 @@ export function relaunchInProjectDir(
+   exitProcess(result.status ?? 0)
+   return true
+ }
++
++/** Resume `sessionId` in the directory it belongs to: `cd <dir> && furio --resume <id>`, run for the user. */
++export function relaunchInProjectDir(
++  projectPath: string,
++  sessionId: string,
++  deps: RelaunchDeps = {},
++): boolean {
++  return relaunchInDir(projectPath, ['--resume', sessionId], deps)
 +}
 -- 
 2.43.0
