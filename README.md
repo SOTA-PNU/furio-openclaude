@@ -56,15 +56,28 @@ powershell -ExecutionPolicy Bypass -File client\install.ps1
 
 ```bash
 furio                          # 화면(TUI) 열기
+furio agents                   # 이 컴퓨터에서 하던 세션을 골라 이어 쓰기
 furio -p "PROMPT.md 대로 base_run.py 를 고쳐 새 파일로 만들어줘"   # 한 줄 실행
 furio --model Qwen3-32B-FP8    # 이번 실행만 다른 모델로
 ```
+
+`furio agents` 는 이 컴퓨터가 작업한 세션 목록이다(최근 순). Enter 로 이어 쓰고, 다른
+폴더 세션을 고르면 그 폴더에서 furio 가 다시 떠서 이어진다. `Ctrl+A` 는 목록을 현재 폴더
+것으로 좁힌다. 아래 `FURIO_AGENTS`(서브에이전트 끄기)와는 다른 것이다.
 
 화면 안에서:
 
 - `/model` — 모델과 tp·dp·pp(카드를 몇 장 어떻게 쓸지)를 고른다. 고르는 즉시 라우터가 올리기 시작한다.
 - `Shift+Tab` — 권한 모드 순환: 매번 확인 → 편집 자동 → 계획 → 전부 자동.
 - 상태줄 LED — 초록은 올라와 있음, 노랑은 올라오는 중, 빨강은 아직 카드에 없음.
+- `/survey` — 쓴 경험을 묻는 10문항 설문. 화살표로 고르고 Enter, Esc 는 한 걸음 뒤로.
+
+![furio 설문 화면](furio-survey.png)
+
+응답은 먼저 설정 폴더(`<config>/survey/responses.jsonl`)에 적고 그다음 라우터로 보낸다 —
+서버가 꺼져 있어도 답이 사라지지 않는다. 보낼 곳은 이미 쓰고 있는 라우터 주소에서 끌어내므로
+쓰는 사람이 설정할 것은 없다. 수업에서 걷을 때는 마지막에 `/survey` 한 번만 안내하면 된다
+(모으고 보는 방법은 `server/README.md`).
 
 기본 모델은 `gpt-oss-120b` 다(도구 호출·코드 작성 실측 확인). 도구 호출까지 확인한 모델은
 `gpt-oss-120b`, `Solar-Open-100B`, `Qwen3-32B-FP8`, `Llama-3.3-70B-Instruct` 넷이다.
