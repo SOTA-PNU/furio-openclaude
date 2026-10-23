@@ -155,6 +155,33 @@ sdi            # Claude Code 같은 TUI, 추론은 서버 NPU
 설치기·Windows(install.ps1)·네트워킹(LAN/VPN/TLS)·보안·한계는 [`sdi-code/README.md`](sdi-code/README.md).
 (검증: LAN IP+Bearer 로 401/200 인증 + `sdi run` 정상 — localhost 아닌 네트워크 경로.)
 
+## 설문 걷기 — 수업에서 쓴 경험 모으기
+
+클라이언트의 `/survey`(10문항, 터미널 안에서 화살표로 응답)가 보낸 답을 라우터가 한 파일에
+모은다. 학생은 설치만 돼 있으면 되고, 설정할 것은 없다 — 보낼 주소를 이미 쓰고 있는 라우터
+주소에서 끌어내기 때문이다. 수업 마지막에 "`/survey` 한 번만 해주세요" 라고 말하면 된다.
+
+| 엔드포인트 | 인증 | 쓰임 |
+|---|---|---|
+| `POST /survey/responses` | 없음 | 클라이언트가 응답을 보낸다 |
+| `GET /router/survey/summary` | `/router` 와 동일(키를 걸었다면 Bearer) | 문항별 응답 수와 최근 자유기술 |
+| `GET /router/survey/responses.csv` | 〃 | 엑셀로 열 CSV(BOM 포함) |
+
+제출만 인증을 걸지 않는다. 학생 PC 에 키를 심지 않고도 답이 도착해야 하기 때문이고, 대신
+읽기는 `/router` 아래에 둬서 키를 건 서버에서는 운영자만 본다. 응답에 IP·이름은 남기지
+않는다 — 익명이어야 솔직한 답이 모인다.
+
+```bash
+# 모인 응답 보기 (키를 걸었다면 -H "Authorization: Bearer <키>")
+curl -s localhost:8400/router/survey/summary | python3 -m json.tool
+curl -s localhost:8400/router/survey/responses.csv -o furio-survey.csv
+```
+
+저장 위치는 기본 `~/furio-survey/responses.jsonl`, `FURIO_SURVEY_DIR` 로 바꾼다. 한 줄이
+한 응답이라 수업마다 파일을 옮겨 두면 그대로 분리된다. 라우터가 꺼져 있던 동안의 응답은
+학생 PC 의 `<config>/survey/responses.jsonl` 에 남아 있다(클라이언트가 보내기 전에 먼저
+적는다).
+
 ## (구버전) 단일 모델만 직접 serve — 빠른 시작 (2단계)
 
 ### 1) 백엔드 serve 띄우기 — **tool calling 필수**

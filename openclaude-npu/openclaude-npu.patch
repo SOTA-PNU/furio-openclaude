@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/26] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/27] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/26] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/27] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/26] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/27] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/26] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/27] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/26] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/27] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/26] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/27] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/26] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/27] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/26] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/27] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/26] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/27] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/26] statusline: separate the current-model marker from the
+Subject: [PATCH 10/27] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/26] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/27] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/26] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/27] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/26] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/27] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/26] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/27] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/26] model picker: support a per-model default pp (large
+Subject: [PATCH 15/27] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/26] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/27] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/26] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/27] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/26] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/27] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/26] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/27] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/26] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/27] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/26] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/27] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/26] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/27] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/26] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/27] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5563,7 +5563,7 @@ index 522362ad..1c509b74 100644
 From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/26] brand: give each logo letter its own color from a cool
+Subject: [PATCH 24/27] brand: give each logo letter its own color from a cool
  spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5756,7 +5756,7 @@ index 94af8b4c..3e2cf093 100644
 From 9cf8784b2009e6734c8bd3d24740e72ccc69a6ea Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:07:48 +0900
-Subject: [PATCH 25/26] startup: drop the provider box, keep the mark and one
+Subject: [PATCH 25/27] startup: drop the provider box, keep the mark and one
  line
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5913,7 +5913,7 @@ index c21c8def..9b775d33 100644
 From bf4d4d421cbaa00a9c49fb6851a4d713b11729b9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:37:56 +0900
-Subject: [PATCH 26/26] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
+Subject: [PATCH 26/27] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
  =?UTF-8?q?=EA=B8=B0:=20agents=20=ED=95=9C=20=EB=8B=A8=EC=96=B4=EB=A1=9C?=
  =?UTF-8?q?=20=EC=9D=B4=20=EC=BB=B4=ED=93=A8=ED=84=B0=EC=9D=98=20=EC=84=B8?=
  =?UTF-8?q?=EC=85=98=EC=9D=84=20=EC=97=B4=EA=B3=A0=20=EB=8B=A4=EB=A5=B8=20?=
@@ -6381,6 +6381,1328 @@ index 00000000..fb864cb2
 +
 +  exitProcess(result.status ?? 0)
 +  return true
++}
+-- 
+2.43.0
+
+
+From 032cb8ae9935682e0a02e8fff4a8c09b355ad0d9 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Fri, 23 Oct 2026 17:16:30 +0900
+Subject: [PATCH 27/27] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
+ =?UTF-8?q?=20=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=95=88=EC=97=90=EC=84=9C=20?=
+ =?UTF-8?q?=EC=82=AC=EC=9A=A9=20=EA=B2=BD=ED=97=98=EC=9D=84=20=EB=B0=9B?=
+ =?UTF-8?q?=EC=95=84=20=EB=9D=BC=EC=9A=B0=ED=84=B0=EB=A1=9C=20=EB=B3=B4?=
+ =?UTF-8?q?=EB=82=B8=EB=8B=A4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+수업에서 보조도구로 쓰는 동안 쌓인 사용 경험을 모으려면 설문이 필요한데,
+창을 옮겨 웹 폼을 여는 순간 응답률이 떨어진다. 그래서 쓰던 터미널에서 끝나게
+했다 — 화살표로 고르고 Enter, 한 문항에 한 화면.
+
+- /survey: 10문항(평소 쓰는 서비스 → 대기 시간·속도·정확성·재요청·코드 동작·
+  중단·만족도·재사용 의향 → 자유 기술). 첫 문항이 비교 대상을 정하므로 이후
+  화면에 "비교 대상: ChatGPT" 처럼 계속 띄운다. 비교 척도는 가운데(비슷함)에
+  커서를 두고 시작해 한쪽 끝으로 쏠리지 않게 한다. Esc 는 한 걸음 뒤로, 첫
+  문항에서는 닫기.
+- 응답은 먼저 <config>/survey/responses.jsonl 에 적고, 그 다음 라우터로
+  보낸다(실패해도 답은 남는다). 보낼 곳은 FURIO_SURVEY_URL, 없으면 이미 쓰고
+  있는 OPENAI_BASE_URL 에서 끌어낸다 — 모델을 서빙하는 라우터가 설문도 모으니
+  학생 쪽에 설정할 것이 없다.
+- 커밋이나 테스트가 통과한 턴 끝에 한 줄로만 권한다(하루 한 번, 세션당 한 번).
+  실패한 도구 결과는 신호로 치지 않는다 — 빨간 테스트는 아직 작업 중이라는 뜻.
+- Esc 는 각 문항의 Select 가 아니라 폼이 직접 받는다. 문항이 바뀔 때마다
+  Select 가 새로 뜨는데, 'select' 오버레이 id 가 그때마다 들락거리면 Esc 의
+  주인이 흔들린다. 폼이 'survey' 로 한 번 등록하고 끝까지 들고 있는다.
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/commands.ts                    |   3 +
+ src/commands/survey/index.ts       |  11 ++
+ src/commands/survey/survey.tsx     |  90 +++++++++++
+ src/components/SurveyForm.test.tsx | 226 ++++++++++++++++++++++++++
+ src/components/SurveyForm.tsx      | 132 ++++++++++++++++
+ src/screens/REPL.tsx               |   6 +
+ src/utils/config.ts                |   6 +
+ src/utils/survey.test.ts           | 142 +++++++++++++++++
+ src/utils/survey.ts                | 244 +++++++++++++++++++++++++++++
+ src/utils/surveyPrompt.test.ts     | 163 +++++++++++++++++++
+ src/utils/surveyPrompt.ts          | 132 ++++++++++++++++
+ 11 files changed, 1155 insertions(+)
+ create mode 100644 src/commands/survey/index.ts
+ create mode 100644 src/commands/survey/survey.tsx
+ create mode 100644 src/components/SurveyForm.test.tsx
+ create mode 100644 src/components/SurveyForm.tsx
+ create mode 100644 src/utils/survey.test.ts
+ create mode 100644 src/utils/survey.ts
+ create mode 100644 src/utils/surveyPrompt.test.ts
+ create mode 100644 src/utils/surveyPrompt.ts
+
+diff --git a/src/commands.ts b/src/commands.ts
+index 01af8dad..07f73a03 100644
+--- a/src/commands.ts
++++ b/src/commands.ts
+@@ -77,6 +77,7 @@ import terminalSetup from './commands/terminalSetup/index.js'
+ import usage from './commands/usage/index.js'
+ import theme from './commands/theme/index.js'
+ import logo from './commands/logo/index.js'
++import survey from './commands/survey/index.js'
+ import vim from './commands/vim/index.js'
+ import { feature } from 'bun:bundle'
+ import { isBuddyEnabled } from './buddy/feature.js'
+@@ -353,6 +354,7 @@ const COMMANDS = memoize((): Command[] => [
+   tag,
+   theme,
+   logo,
++  survey,
+   feedback,
+   goal,
+   review,
+@@ -681,6 +683,7 @@ export const REMOTE_SAFE_COMMANDS: Set<Command> = new Set([
+   help, // Show help
+   theme, // Change terminal theme
+   logo, // Change startup logo color scheme
++  survey, // Short service-experience questionnaire
+   color, // Change agent color
+   vim, // Toggle vim mode
+   cost, // Show session cost (local cost tracking)
+diff --git a/src/commands/survey/index.ts b/src/commands/survey/index.ts
+new file mode 100644
+index 00000000..172fdc7e
+--- /dev/null
++++ b/src/commands/survey/index.ts
+@@ -0,0 +1,11 @@
++import type { Command } from '../../commands.js'
++
++const survey = {
++  type: 'local-jsx',
++  name: 'survey',
++  description: '이 서비스를 쓴 경험을 묻는 짧은 설문 (화살표로 고르고 Enter)',
++  isHidden: false,
++  load: () => import('./survey.js'),
++} satisfies Command
++
++export default survey
+diff --git a/src/commands/survey/survey.tsx b/src/commands/survey/survey.tsx
+new file mode 100644
+index 00000000..5df6770b
+--- /dev/null
++++ b/src/commands/survey/survey.tsx
+@@ -0,0 +1,90 @@
++import * as React from 'react'
++import { getSessionId } from '../../bootstrap/state.js'
++import { Spinner } from '../../components/Spinner.js'
++import { SurveyForm } from '../../components/SurveyForm.js'
++import { Box, Text } from '../../ink.js'
++import { useAppState } from '../../state/AppState.js'
++import type {
++  LocalJSXCommandCall,
++  LocalJSXCommandOnDone,
++} from '../../types/command.js'
++import { getCwd } from '../../utils/cwd.js'
++import { errorMessage } from '../../utils/errors.js'
++import { logError } from '../../utils/log.js'
++import {
++  SURVEY_QUESTIONS,
++  recordSurveyResponse,
++  summarizeSession,
++  type SurveyResponse,
++} from '../../utils/survey.js'
++
++type Props = {
++  onDone: LocalJSXCommandOnDone
++  messages: ReadonlyArray<{ type?: string }>
++}
++
++function SurveyCommand({ onDone, messages }: Props): React.ReactNode {
++  const model = useAppState(s => s.mainLoopModel)
++  const [sending, setSending] = React.useState(false)
++
++  const handleSubmit = React.useCallback(
++    (answers: Record<string, string>) => {
++      setSending(true)
++      const response: SurveyResponse = {
++        version: 1,
++        submittedAt: new Date().toISOString(),
++        sessionId: getSessionId(),
++        model: model ?? process.env.OPENAI_MODEL,
++        // DISPLAY_VERSION is the number on the startup screen; VERSION is the
++        // build's internal one (99.0.0 outside a release build).
++        clientVersion: MACRO.DISPLAY_VERSION ?? MACRO.VERSION,
++        cwd: getCwd(),
++        session: summarizeSession(messages),
++        answers,
++      }
++      void recordSurveyResponse(response)
++        .then(({ filePath, posted }) => {
++          onDone(
++            posted
++              ? '설문 고맙습니다 — 보냈습니다.'
++              : `설문 고맙습니다 — ${filePath} 에 저장했습니다(서버에는 닿지 않았습니다).`,
++            { display: 'system' },
++          )
++        })
++        .catch(error => {
++          logError(error)
++          onDone(`설문을 저장하지 못했습니다: ${errorMessage(error)}`, {
++            display: 'system',
++          })
++        })
++    },
++    [messages, model, onDone],
++  )
++
++  const handleCancel = React.useCallback(() => {
++    onDone('설문을 닫았습니다. 나중에 /survey 로 다시 열 수 있습니다.', {
++      display: 'system',
++    })
++  }, [onDone])
++
++  if (sending) {
++    return (
++      <Box>
++        <Spinner />
++        <Text> 보내는 중…</Text>
++      </Box>
++    )
++  }
++
++  return (
++    <SurveyForm
++      questions={SURVEY_QUESTIONS}
++      onSubmit={handleSubmit}
++      onCancel={handleCancel}
++    />
++  )
++}
++
++export const call: LocalJSXCommandCall = async (onDone, context) => {
++  return <SurveyCommand onDone={onDone} messages={context.messages ?? []} />
++}
+diff --git a/src/components/SurveyForm.test.tsx b/src/components/SurveyForm.test.tsx
+new file mode 100644
+index 00000000..78cd0fa0
+--- /dev/null
++++ b/src/components/SurveyForm.test.tsx
+@@ -0,0 +1,226 @@
++import { PassThrough } from 'node:stream'
++import { stripVTControlCharacters as stripAnsi } from 'node:util'
++
++import { expect, test } from 'bun:test'
++import React from 'react'
++
++import { render } from '../ink.js'
++import { KeybindingSetup } from '../keybindings/KeybindingProviderSetup.js'
++import { AppStateProvider, getDefaultAppState } from '../state/AppState.js'
++import type { SurveyQuestion } from '../utils/survey.js'
++import { SURVEY_QUESTIONS } from '../utils/survey.js'
++import { SurveyForm } from './SurveyForm.js'
++
++const DOWN = '\u001B[B'
++const UP = '\u001B[A'
++const ENTER = '\r'
++const ESC = '\u001B'
++
++const TWO_QUESTIONS: SurveyQuestion[] = [
++  {
++    id: 'service',
++    prompt: '평소 어떤 AI 서비스를 쓰십니까?',
++    choices: [
++      { value: 'chatgpt', label: 'ChatGPT' },
++      { value: 'claude', label: 'Claude' },
++      { value: 'gemini', label: 'Gemini' },
++    ],
++  },
++  {
++    id: 'satisfaction',
++    prompt: '전반적으로 얼마나 만족하셨습니까?',
++    choices: [
++      { value: 'low', label: '불만족' },
++      { value: 'mid', label: '보통' },
++      { value: 'high', label: '만족' },
++    ],
++    defaultValue: 'mid',
++  },
++]
++
++type Harness = {
++  output: () => string
++  type: (keys: string) => Promise<void>
++  waitFor: (text: string) => Promise<void>
++  stop: () => void
++}
++
++async function mount(
++  element: React.ReactElement,
++  columns = 100,
++): Promise<Harness> {
++  let output = ''
++  const stdout = new PassThrough()
++  const stdin = new PassThrough() as PassThrough & {
++    isTTY: boolean
++    setRawMode: (mode: boolean) => void
++    ref: () => void
++    unref: () => void
++  }
++  stdin.isTTY = true
++  stdin.setRawMode = () => {}
++  stdin.ref = () => {}
++  stdin.unref = () => {}
++  ;(stdout as unknown as { columns: number }).columns = columns
++  stdout.on('data', chunk => {
++    output += chunk.toString()
++  })
++
++  // Arrow keys / Enter / Esc reach Select through the keybinding system, which
++  // needs the same providers the app mounts a picker inside.
++  const instance = await render(
++    <AppStateProvider initialState={getDefaultAppState()}>
++      <KeybindingSetup>{element}</KeybindingSetup>
++    </AppStateProvider>,
++    {
++      stdin: stdin as unknown as NodeJS.ReadStream,
++      stdout: stdout as unknown as NodeJS.WriteStream,
++      exitOnCtrlC: false,
++    },
++  )
++
++  const waitFor = async (text: string): Promise<void> => {
++    const startedAt = Date.now()
++    while (Date.now() - startedAt < 2000) {
++      if (stripAnsi(output).includes(text)) return
++      await Bun.sleep(10)
++    }
++    throw new Error(`Timed out waiting for ${JSON.stringify(text)}`)
++  }
++
++  return {
++    output: () => stripAnsi(output),
++    // Frames accumulate, so a keypress clears the buffer first: what follows
++    // is only what was drawn *after* that key — otherwise an earlier screen
++    // still matches and a failed transition reads as a pass.
++    //
++    // A lone Escape byte could be the start of a sequence, so the parser holds
++    // it for NORMAL_TIMEOUT (300ms) before deciding it was the key itself.
++    // Anything else lands immediately.
++    type: async (keys: string) => {
++      output = ''
++      stdin.write(keys)
++      await Bun.sleep(keys === ESC ? 400 : 30)
++    },
++    waitFor,
++    stop: () => {
++      instance.unmount()
++      stdin.end()
++      stdout.end()
++    },
++  }
++}
++
++test('moves through the options with the arrow keys and answers on Enter', async () => {
++  const answers: Record<string, string>[] = []
++  const h = await mount(
++    <SurveyForm
++      questions={TWO_QUESTIONS}
++      onSubmit={a => answers.push(a)}
++      onCancel={() => {}}
++    />,
++  )
++
++  try {
++    await h.waitFor('평소 어떤 AI 서비스를 쓰십니까?')
++    expect(h.output()).toContain('1/2')
++
++    // Down twice lands on the third option; Enter answers with it.
++    await h.type(DOWN)
++    await h.type(DOWN)
++    await h.type(ENTER)
++
++    await h.waitFor('전반적으로 얼마나 만족하셨습니까?')
++    expect(h.output()).toContain('2/2')
++    // The first answer is echoed as the comparison anchor for what follows.
++    expect(h.output()).toContain('비교 대상: Gemini')
++
++    // This question starts on '보통'; one step up is '불만족'.
++    await h.type(UP)
++    await h.type(ENTER)
++
++    expect(answers).toEqual([{ service: 'gemini', satisfaction: 'low' }])
++  } finally {
++    h.stop()
++  }
++})
++
++test('Esc steps back, and leaves from the first question', async () => {
++  let cancelled = 0
++  const h = await mount(
++    <SurveyForm
++      questions={TWO_QUESTIONS}
++      onSubmit={() => {}}
++      onCancel={() => {
++        cancelled++
++      }}
++    />,
++  )
++
++  try {
++    await h.waitFor('평소 어떤 AI 서비스를 쓰십니까?')
++    await h.type(ENTER)
++    await h.waitFor('전반적으로 얼마나 만족하셨습니까?')
++
++    // A wrong keypress must not cost the whole form.
++    await h.type(ESC)
++    await h.waitFor('평소 어떤 AI 서비스를 쓰십니까?')
++    expect(cancelled).toBe(0)
++
++    // Esc again, with nowhere to step back to, closes the form.
++    await h.type(ESC)
++    expect(cancelled).toBe(1)
++  } finally {
++    h.stop()
++  }
++})
++
++test('an answer can be changed after stepping back', async () => {
++  const answers: Record<string, string>[] = []
++  const h = await mount(
++    <SurveyForm
++      questions={TWO_QUESTIONS}
++      onSubmit={a => answers.push(a)}
++      onCancel={() => {}}
++    />,
++  )
++
++  try {
++    await h.waitFor('평소 어떤 AI 서비스를 쓰십니까?')
++    await h.type(ENTER)
++    await h.waitFor('전반적으로 얼마나 만족하셨습니까?')
++
++    // Back one step, pick a different service, then carry on to the end.
++    await h.type(ESC)
++    await h.waitFor('평소 어떤 AI 서비스를 쓰십니까?')
++    await h.type(DOWN)
++    await h.type(ENTER)
++    await h.waitFor('비교 대상: Claude')
++    await h.type(ENTER)
++
++    expect(answers).toEqual([{ service: 'claude', satisfaction: 'mid' }])
++  } finally {
++    h.stop()
++  }
++})
++
++test('renders the real questionnaire starting with the comparison service', async () => {
++  const h = await mount(
++    <SurveyForm
++      questions={SURVEY_QUESTIONS}
++      onSubmit={() => {}}
++      onCancel={() => {}}
++    />,
++  )
++
++  try {
++    await h.waitFor('평소 어떤 AI 서비스를 쓰십니까?')
++    const rendered = h.output()
++    expect(rendered).toContain(`1/${SURVEY_QUESTIONS.length}`)
++    expect(rendered).toContain('ChatGPT')
++    expect(rendered).toContain('거의 안 쓴다')
++    expect(rendered).toContain('↑↓ 고르기 · Enter 확인 · Esc 뒤로')
++  } finally {
++    h.stop()
++  }
++})
+diff --git a/src/components/SurveyForm.tsx b/src/components/SurveyForm.tsx
+new file mode 100644
+index 00000000..ef2b04a9
+--- /dev/null
++++ b/src/components/SurveyForm.tsx
+@@ -0,0 +1,132 @@
++import * as React from 'react'
++import { useRegisterOverlay } from '../context/overlayContext.js'
++import { useTerminalSize } from '../hooks/useTerminalSize.js'
++import { Box, Text, useInput } from '../ink.js'
++import type { SurveyQuestion } from '../utils/survey.js'
++import { Select } from './CustomSelect/index.js'
++import TextInput from './TextInput.js'
++
++export type SurveyFormProps = {
++  questions: SurveyQuestion[]
++  onSubmit: (answers: Record<string, string>) => void
++  onCancel: () => void
++}
++
++/** Label of an already-given answer, for the "compared against" reminder. */
++function answeredLabel(
++  question: SurveyQuestion | undefined,
++  value: string | undefined,
++): string | undefined {
++  if (!question?.choices || !value) return undefined
++  return question.choices.find(choice => choice.value === value)?.label
++}
++
++/**
++ * The questionnaire, one question per screen: arrow keys move, Enter answers,
++ * Esc steps back (and leaves from the first question).
++ *
++ * One question at a time because every question but the first is answered
++ * *relative to* the first one, and because a single keypress per screen is the
++ * cheapest thing we can ask of someone who just finished their work.
++ */
++export function SurveyForm({
++  questions,
++  onSubmit,
++  onCancel,
++}: SurveyFormProps): React.ReactNode {
++  const [step, setStep] = React.useState(0)
++  const [answers, setAnswers] = React.useState<Record<string, string>>({})
++  const [text, setText] = React.useState('')
++  const [cursorOffset, setCursorOffset] = React.useState(0)
++  const { columns } = useTerminalSize()
++
++  const question = questions[step]
++
++  const goBack = React.useCallback(() => {
++    setText('')
++    setCursorOffset(0)
++    if (step === 0) onCancel()
++    else setStep(previous => previous - 1)
++  }, [step, onCancel])
++
++  const answer = React.useCallback(
++    (value: string) => {
++      if (!question) return
++      const next = { ...answers, [question.id]: value }
++      if (step + 1 >= questions.length) {
++        onSubmit(next)
++        return
++      }
++      setAnswers(next)
++      setStep(step + 1)
++    },
++    [answers, question, questions.length, step, onSubmit],
++  )
++
++  // The form owns Escape for every step, rather than letting each step's
++  // Select own it: one owner means no ordering question between the two, and
++  // the overlay stays registered for the whole form instead of churning as
++  // each question's Select unmounts and the next one mounts under the same
++  // overlay id. Registering keeps the REPL's cancel handler off our Escape.
++  useRegisterOverlay('survey')
++  useInput((_input, key) => {
++    if (key.escape) goBack()
++  })
++
++  if (!question) return null
++
++  const comparedWith = step > 0 ? answeredLabel(questions[0], answers[questions[0]?.id ?? '']) : undefined
++
++  return (
++    <Box flexDirection="column" gap={1} paddingX={1}>
++      <Box flexDirection="row" gap={1}>
++        <Text bold>furio 사용 경험 설문</Text>
++        <Text dimColor>
++          {step + 1}/{questions.length}
++          {comparedWith ? ` · 비교 대상: ${comparedWith}` : ''}
++        </Text>
++      </Box>
++
++      <Box flexDirection="column">
++        <Text>{question.prompt}</Text>
++        {question.hint ? <Text dimColor>{question.hint}</Text> : null}
++      </Box>
++
++      {question.choices ? (
++        <Select
++          key={question.id}
++          options={question.choices.map(choice => ({
++            label: choice.label,
++            value: choice.value,
++          }))}
++          onChange={value => answer(value)}
++          visibleOptionCount={question.choices.length}
++          defaultValue={answers[question.id] ?? question.defaultValue}
++          defaultFocusValue={answers[question.id] ?? question.defaultValue}
++        />
++      ) : (
++        <Box flexDirection="row" gap={1}>
++          <Text>›</Text>
++          <TextInput
++            value={text}
++            onChange={setText}
++            cursorOffset={cursorOffset}
++            onChangeCursorOffset={setCursorOffset}
++            columns={Math.max(20, columns - 8)}
++            onSubmit={value => {
++              const trimmed = value.trim()
++              if (!trimmed && !question.optional) return
++              answer(trimmed)
++            }}
++          />
++        </Box>
++      )}
++
++      <Text dimColor>
++        {question.choices
++          ? '↑↓ 고르기 · Enter 확인 · Esc 뒤로'
++          : 'Enter 보내기 · Esc 뒤로'}
++      </Text>
++    </Box>
++  )
++}
+diff --git a/src/screens/REPL.tsx b/src/screens/REPL.tsx
+index be7a3a43..0cffc95e 100644
+--- a/src/screens/REPL.tsx
++++ b/src/screens/REPL.tsx
+@@ -133,6 +133,7 @@ import { getGlobalConfig, saveGlobalConfig, saveGlobalConfigDeferred } from '../
+ import { hasConsoleBillingAccess } from '../utils/billing.js';
+ import { logEvent, type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS } from 'src/services/analytics/index.js';
+ import { getFeatureValue_CACHED_MAY_BE_STALE } from 'src/services/analytics/growthbook.js';
++import { maybeSuggestSurvey } from '../utils/surveyPrompt.js';
+ import { textForResubmit, handleMessageFromStream, type StreamingToolUse, type StreamingThinking, isCompactBoundaryMessage, getMessagesAfterCompactBoundary, getContentText, createUserMessage, createAssistantMessage, createTurnDurationMessage, createAgentsKilledMessage, createSystemMessage, createCommandInputMessage, formatCommandInputTags } from '../utils/messages.js';
+ import { getCurrentTurnCacheMetrics, resetCurrentTurn } from '../services/api/cacheStatsTracker.js';
+ import { formatCacheMetricsCompact, formatCacheMetricsFull } from '../services/api/cacheMetrics.js';
+@@ -3335,6 +3336,11 @@ export function REPL({
+ 
+     resetLoadingState();
+ 
++    // A commit or a passing test suite is the one moment someone is plainly
++    // between tasks, which is the only time it is fair to ask them for thirty
++    // seconds. Prints at most one line, once a day, and never blocks the turn.
++    maybeSuggestSurvey(messagesRef.current, line => setMessages(prev => [...prev, createSystemMessage(line, 'info')]));
++
+     // Log query profiling report if enabled
+     logQueryProfileReport();
+ 
+diff --git a/src/utils/config.ts b/src/utils/config.ts
+index 5d34cbba..324d96a6 100644
+--- a/src/utils/config.ts
++++ b/src/utils/config.ts
+@@ -695,6 +695,11 @@ export type GlobalConfig = {
+   // config layer. Falls back to 'sunset' if missing or unrecognized.
+   logoColor?: string
+ 
++  // When the service-experience survey was last suggested, as an ISO string.
++  // Keeps the nudge to once a day per machine; cleared by hand if a study
++  // wants to ask again sooner.
++  surveyPromptedAt?: string
++
+   // Message-count-based compaction threshold. Set via /config.
+   // 'off' = disabled. Otherwise, one of '100', '200', '500', '1000'.
+   // When enabled, triggers forced compaction if the message count exceeds the
+@@ -815,6 +820,7 @@ export const GLOBAL_CONFIG_KEYS = [
+   'remoteDialogSeen',
+   'knowledgeGraphEnabled',
+   'logoColor',
++  'surveyPromptedAt',
+   'maxMessagesCompactionThreshold',
+   'compactModel',
+ ] as const
+diff --git a/src/utils/survey.test.ts b/src/utils/survey.test.ts
+new file mode 100644
+index 00000000..d2e160b1
+--- /dev/null
++++ b/src/utils/survey.test.ts
+@@ -0,0 +1,142 @@
++import { afterEach, describe, expect, it } from 'bun:test'
++import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
++import { tmpdir } from 'node:os'
++import { join } from 'node:path'
++import {
++  SURVEY_QUESTIONS,
++  recordSurveyResponse,
++  resolveSurveyEndpoint,
++  summarizeSession,
++  type SurveyResponse,
++} from './survey.js'
++
++const dirs: string[] = []
++function tmpFile(): string {
++  const dir = mkdtempSync(join(tmpdir(), 'survey-'))
++  dirs.push(dir)
++  return join(dir, 'nested', 'responses.jsonl')
++}
++
++afterEach(() => {
++  while (dirs.length) rmSync(dirs.pop()!, { recursive: true, force: true })
++})
++
++function response(): SurveyResponse {
++  return {
++    version: 1,
++    submittedAt: '2026-10-23T00:00:00.000Z',
++    sessionId: 'session-1',
++    session: { messageCount: 4, userTurns: 2, assistantTurns: 2 },
++    answers: { satisfaction: 'high' },
++  }
++}
++
++describe('SURVEY_QUESTIONS', () => {
++  it('has unique ids and ends with the optional free-text step', () => {
++    const ids = SURVEY_QUESTIONS.map(q => q.id)
++    expect(new Set(ids).size).toBe(ids.length)
++    const last = SURVEY_QUESTIONS.at(-1)!
++    expect(last.choices).toBeUndefined()
++    expect(last.optional).toBe(true)
++  })
++
++  it('names the comparison service first', () => {
++    // Every later question is answered relative to this one, so it cannot move.
++    expect(SURVEY_QUESTIONS[0]!.id).toBe('service')
++  })
++
++  it('starts each scale on an option that exists', () => {
++    for (const question of SURVEY_QUESTIONS) {
++      if (!question.defaultValue) continue
++      const values = (question.choices ?? []).map(c => c.value)
++      expect(values).toContain(question.defaultValue)
++    }
++  })
++})
++
++describe('summarizeSession', () => {
++  it('counts user and assistant turns', () => {
++    expect(
++      summarizeSession([
++        { type: 'user' },
++        { type: 'assistant' },
++        { type: 'assistant' },
++        { type: 'system' },
++      ]),
++    ).toEqual({ messageCount: 4, userTurns: 1, assistantTurns: 2 })
++  })
++})
++
++describe('resolveSurveyEndpoint', () => {
++  it('prefers an explicit URL', () => {
++    expect(
++      resolveSurveyEndpoint({
++        FURIO_SURVEY_URL: 'http://host/collect',
++        OPENAI_BASE_URL: 'http://router:8400/v1',
++      } as NodeJS.ProcessEnv),
++    ).toBe('http://host/collect')
++  })
++
++  it('derives it from the router the client already talks to', () => {
++    // No extra configuration: the router serving the model collects the study.
++    expect(
++      resolveSurveyEndpoint({
++        OPENAI_BASE_URL: 'http://router:8400/v1',
++      } as NodeJS.ProcessEnv),
++    ).toBe('http://router:8400/survey/responses')
++    expect(
++      resolveSurveyEndpoint({
++        OPENAI_BASE_URL: 'http://router:8400/v1/',
++      } as NodeJS.ProcessEnv),
++    ).toBe('http://router:8400/survey/responses')
++  })
++
++  it('is undefined with nothing to go on', () => {
++    expect(resolveSurveyEndpoint({} as NodeJS.ProcessEnv)).toBeUndefined()
++  })
++})
++
++describe('recordSurveyResponse', () => {
++  it('posts the response and records that it was delivered', async () => {
++    const filePath = tmpFile()
++    const seen: { url: string; body: unknown }[] = []
++    const result = await recordSurveyResponse(response(), {
++      filePath,
++      endpoint: 'http://router/survey/responses',
++      fetchImpl: (async (url: string, init: { body: string }) => {
++        seen.push({ url, body: JSON.parse(init.body) })
++        return { ok: true } as Response
++      }) as unknown as typeof fetch,
++    })
++
++    expect(result.posted).toBe(true)
++    expect(seen[0]!.url).toBe('http://router/survey/responses')
++    const stored = JSON.parse(readFileSync(filePath, 'utf-8').trim())
++    expect(stored.posted).toBe(true)
++    expect(stored.answers.satisfaction).toBe('high')
++  })
++
++  it('keeps the answer locally when the router cannot be reached', async () => {
++    const filePath = tmpFile()
++    const result = await recordSurveyResponse(response(), {
++      filePath,
++      endpoint: 'http://router/survey/responses',
++      fetchImpl: (async () => {
++        throw new Error('ECONNREFUSED')
++      }) as unknown as typeof fetch,
++    })
++
++    // The local file is the record of truth — a response is never dropped
++    // because the server was down.
++    expect(result.posted).toBe(false)
++    expect(JSON.parse(readFileSync(filePath, 'utf-8').trim()).posted).toBe(false)
++  })
++
++  it('appends, one response per line', async () => {
++    const filePath = tmpFile()
++    const noEndpoint = { filePath, endpoint: undefined }
++    await recordSurveyResponse(response(), noEndpoint)
++    await recordSurveyResponse(response(), noEndpoint)
++    expect(readFileSync(filePath, 'utf-8').trim().split('\n')).toHaveLength(2)
++  })
++})
+diff --git a/src/utils/survey.ts b/src/utils/survey.ts
+new file mode 100644
+index 00000000..b3959330
+--- /dev/null
++++ b/src/utils/survey.ts
+@@ -0,0 +1,244 @@
++import { appendFile, mkdir } from 'fs/promises'
++import { dirname, join } from 'path'
++import { getClaudeConfigHomeDir } from './envUtils.js'
++
++export type SurveyChoice = {
++  /** Stable slug stored in the response; never translated. */
++  value: string
++  /** What the respondent reads. */
++  label: string
++}
++
++export type SurveyQuestion = {
++  id: string
++  prompt: string
++  /** Second line, for scale wording or a reminder. */
++  hint?: string
++  /** Choice list, or none for a free-text step. */
++  choices?: SurveyChoice[]
++  /** Option the cursor starts on — keeps a scale from anchoring at one end. */
++  defaultValue?: string
++  /** Free-text steps may be submitted empty. */
++  optional?: boolean
++}
++
++/**
++ * Five-point comparison against the service the respondent normally uses.
++ * The wording is the one the study asked for, so it stays verbatim.
++ */
++const COMPARISON: SurveyChoice[] = [
++  { value: 'much_worse', label: '훨씬 못함' },
++  { value: 'worse', label: '조금 못함' },
++  { value: 'same', label: '비슷함' },
++  { value: 'better', label: '조금 나음' },
++  { value: 'much_better', label: '훨씬 나음' },
++]
++
++/** Same five points for a count, where fewer is better. */
++const COMPARISON_COUNT: SurveyChoice[] = [
++  { value: 'many_more', label: '훨씬 많음' },
++  { value: 'more', label: '조금 많음' },
++  { value: 'same', label: '비슷함' },
++  { value: 'fewer', label: '조금 적음' },
++  { value: 'many_fewer', label: '훨씬 적음' },
++]
++
++/**
++ * The questionnaire. Order matters: question 0 names the service everything
++ * after it is compared against, so it has to come first.
++ *
++ * Items 1·2·4·6 are also measured on the router (TTFT, tokens/s, turn count,
++ * errors). They are kept here because the gap between what was measured and
++ * what was felt is the interesting part — not because the numbers are missing.
++ */
++export const SURVEY_QUESTIONS: SurveyQuestion[] = [
++  {
++    id: 'service',
++    prompt: '평소 어떤 AI 서비스를 쓰십니까?',
++    hint: '다음 문항들은 모두 그 서비스와 비교해 답해 주세요.',
++    choices: [
++      { value: 'chatgpt', label: 'ChatGPT' },
++      { value: 'claude', label: 'Claude' },
++      { value: 'gemini', label: 'Gemini' },
++      { value: 'copilot', label: 'GitHub Copilot' },
++      { value: 'local', label: '로컬·오픈소스 모델' },
++      { value: 'none', label: '거의 안 쓴다' },
++    ],
++  },
++  {
++    id: 'ttft',
++    prompt: '답이 나오기 시작할 때까지의 대기 시간은 어땠습니까?',
++    choices: COMPARISON,
++    defaultValue: 'same',
++  },
++  {
++    id: 'tps',
++    prompt: '글자가 나오는 속도는 어땠습니까?',
++    choices: COMPARISON,
++    defaultValue: 'same',
++  },
++  {
++    id: 'accuracy',
++    prompt: '답의 정확성은 어땠습니까?',
++    hint: '없는 함수를 만들어 내거나 틀린 설명을 섞는 정도를 생각해 주세요.',
++    choices: COMPARISON,
++    defaultValue: 'same',
++  },
++  {
++    id: 'retries',
++    prompt: '원하는 결과를 얻기까지 다시 요청한 횟수는 어땠습니까?',
++    choices: COMPARISON_COUNT,
++    defaultValue: 'same',
++  },
++  {
++    id: 'code_ran',
++    prompt: '받은 코드가 실제로 동작했습니까?',
++    choices: [
++      { value: 'ran_as_is', label: '그대로 동작했다' },
++      { value: 'ran_after_small_fix', label: '조금 고쳐서 동작했다' },
++      { value: 'needed_big_fix', label: '많이 고쳐야 했다' },
++      { value: 'unusable', label: '쓸 수 없었다' },
++      { value: 'no_code', label: '코드를 받는 작업이 아니었다' },
++    ],
++    defaultValue: 'ran_after_small_fix',
++  },
++  {
++    id: 'interrupted',
++    prompt: '도중에 끊기거나 멈춘 적이 있습니까?',
++    choices: [
++      { value: 'none', label: '없다' },
++      { value: 'once', label: '한 번' },
++      { value: 'few', label: '두세 번' },
++      { value: 'many', label: '여러 번' },
++    ],
++    defaultValue: 'none',
++  },
++  {
++    id: 'satisfaction',
++    prompt: '전반적으로 얼마나 만족하셨습니까?',
++    choices: [
++      { value: 'very_low', label: '매우 불만족' },
++      { value: 'low', label: '불만족' },
++      { value: 'mid', label: '보통' },
++      { value: 'high', label: '만족' },
++      { value: 'very_high', label: '매우 만족' },
++    ],
++    defaultValue: 'mid',
++  },
++  {
++    id: 'reuse',
++    prompt: '다음에도 이 서비스를 쓰시겠습니까?',
++    choices: [
++      { value: 'no', label: '쓰지 않겠다' },
++      { value: 'probably_no', label: '아마 안 쓴다' },
++      { value: 'unsure', label: '모르겠다' },
++      { value: 'probably_yes', label: '아마 쓴다' },
++      { value: 'yes', label: '꼭 쓴다' },
++    ],
++    defaultValue: 'unsure',
++  },
++  {
++    id: 'comment',
++    prompt: '덧붙일 말이 있으면 적어 주세요.',
++    hint: '없으면 그냥 Enter 를 누르면 됩니다.',
++    optional: true,
++  },
++]
++
++export type SurveySessionContext = {
++  messageCount: number
++  userTurns: number
++  assistantTurns: number
++}
++
++export type SurveyResponse = {
++  version: 1
++  submittedAt: string
++  sessionId: string
++  model?: string
++  clientVersion?: string
++  cwd?: string
++  session: SurveySessionContext
++  answers: Record<string, string>
++}
++
++/**
++ * Count the turns behind the answers, so a response carries its own context
++ * even when it never reaches the router.
++ */
++export function summarizeSession(
++  messages: ReadonlyArray<{ type?: string }>,
++): SurveySessionContext {
++  let userTurns = 0
++  let assistantTurns = 0
++  for (const message of messages) {
++    if (message.type === 'user') userTurns++
++    else if (message.type === 'assistant') assistantTurns++
++  }
++  return { messageCount: messages.length, userTurns, assistantTurns }
++}
++
++export function getSurveyFilePath(): string {
++  return join(getClaudeConfigHomeDir(), 'survey', 'responses.jsonl')
++}
++
++/**
++ * Where to send responses so the operator can collect them in one place.
++ *
++ * `FURIO_SURVEY_URL` wins. Otherwise we derive it from the endpoint this
++ * client already talks to — the router that served the session is also the
++ * one running the study, so a working furio needs no extra configuration.
++ */
++export function resolveSurveyEndpoint(
++  env: NodeJS.ProcessEnv = process.env,
++): string | undefined {
++  const explicit = env.FURIO_SURVEY_URL?.trim()
++  if (explicit) return explicit
++
++  const base = env.OPENAI_BASE_URL?.trim()
++  if (!base) return undefined
++  const root = base.replace(/\/+$/, '').replace(/\/v1$/, '')
++  if (!root) return undefined
++  return `${root}/survey/responses`
++}
++
++/**
++ * Write the response where it cannot be lost, then try to deliver it.
++ *
++ * The local file is the record of truth: a response is never dropped because
++ * the router was down or the session was offline. Delivery is best-effort and
++ * never blocks the answer being kept.
++ */
++export async function recordSurveyResponse(
++  response: SurveyResponse,
++  deps: {
++    endpoint?: string | undefined
++    fetchImpl?: typeof fetch
++    filePath?: string
++    timeoutMs?: number
++  } = {},
++): Promise<{ filePath: string; posted: boolean }> {
++  const filePath = deps.filePath ?? getSurveyFilePath()
++  const endpoint = 'endpoint' in deps ? deps.endpoint : resolveSurveyEndpoint()
++
++  let posted = false
++  if (endpoint) {
++    const send = deps.fetchImpl ?? fetch
++    try {
++      const res = await send(endpoint, {
++        method: 'POST',
++        headers: { 'content-type': 'application/json' },
++        body: JSON.stringify(response),
++        signal: AbortSignal.timeout(deps.timeoutMs ?? 3000),
++      })
++      posted = res.ok
++    } catch {
++      posted = false
++    }
++  }
++
++  await mkdir(dirname(filePath), { recursive: true })
++  await appendFile(filePath, `${JSON.stringify({ ...response, posted })}\n`, 'utf-8')
++
++  return { filePath, posted }
++}
+diff --git a/src/utils/surveyPrompt.test.ts b/src/utils/surveyPrompt.test.ts
+new file mode 100644
+index 00000000..9de782bd
+--- /dev/null
++++ b/src/utils/surveyPrompt.test.ts
+@@ -0,0 +1,163 @@
++import { beforeEach, describe, expect, it } from 'bun:test'
++import type { Message } from '../types/message.js'
++import {
++  findCompletionSignal,
++  maybeSuggestSurvey,
++  resetSurveySuggestionForTesting,
++} from './surveyPrompt.js'
++
++function human(text: string): Message {
++  return {
++    type: 'user',
++    message: { role: 'user', content: text },
++  } as unknown as Message
++}
++
++function bash(id: string, command: string): Message {
++  return {
++    type: 'assistant',
++    message: {
++      role: 'assistant',
++      content: [{ type: 'tool_use', id, name: 'Bash', input: { command } }],
++    },
++  } as unknown as Message
++}
++
++function result(id: string, isError = false): Message {
++  return {
++    type: 'user',
++    message: {
++      role: 'user',
++      content: [{ type: 'tool_result', tool_use_id: id, is_error: isError }],
++    },
++  } as unknown as Message
++}
++
++beforeEach(() => {
++  resetSurveySuggestionForTesting()
++})
++
++describe('findCompletionSignal', () => {
++  it('sees a commit that went through', () => {
++    expect(
++      findCompletionSignal([
++        human('커밋해줘'),
++        bash('t1', 'git commit -m "fix"'),
++        result('t1'),
++      ]),
++    ).toBe('커밋')
++  })
++
++  it('sees a test run across the runners', () => {
++    for (const command of [
++      'pytest -q',
++      'bun test src/',
++      'npm run test',
++      'cargo test --all',
++      'go test ./...',
++    ]) {
++      expect(
++        findCompletionSignal([human('go'), bash('t1', command), result('t1')]),
++      ).toBe('테스트')
++    }
++  })
++
++  it('is silent while the work is still failing', () => {
++    // A red test suite means the task is not finished — the worst possible
++    // moment to ask how satisfied someone is.
++    expect(
++      findCompletionSignal([
++        human('테스트 돌려줘'),
++        bash('t1', 'pytest -q'),
++        result('t1', true),
++      ]),
++    ).toBeUndefined()
++  })
++
++  it('ignores a dry run', () => {
++    expect(
++      findCompletionSignal([
++        human('확인만'),
++        bash('t1', 'git commit --dry-run'),
++        result('t1'),
++      ]),
++    ).toBeUndefined()
++  })
++
++  it('only reads the turn that just ended', () => {
++    // The commit belongs to an earlier turn; the current one only read a file.
++    expect(
++      findCompletionSignal([
++        human('커밋해줘'),
++        bash('t1', 'git commit -m "fix"'),
++        result('t1'),
++        human('이제 README 좀 보여줘'),
++        bash('t2', 'cat README.md'),
++        result('t2'),
++      ]),
++    ).toBeUndefined()
++  })
++
++  it('finds nothing in a turn without a finished unit of work', () => {
++    expect(
++      findCompletionSignal([human('빌드해줘'), bash('t1', 'bun run build'), result('t1')]),
++    ).toBeUndefined()
++  })
++})
++
++describe('maybeSuggestSurvey', () => {
++  const turn = [human('커밋해줘'), bash('t1', 'git commit -m "x"'), result('t1')]
++
++  function harness(promptedAt?: string) {
++    const lines: string[] = []
++    const written: string[] = []
++    return {
++      lines,
++      written,
++      run: (now = new Date('2026-10-23T12:00:00Z')) =>
++        maybeSuggestSurvey(turn, line => lines.push(line), {
++          now: () => now,
++          readPromptedAt: () => promptedAt,
++          writePromptedAt: iso => written.push(iso),
++        }),
++    }
++  }
++
++  it('offers the survey once and records when it did', () => {
++    const h = harness()
++    h.run()
++    expect(h.lines).toHaveLength(1)
++    expect(h.lines[0]).toContain('/survey')
++    expect(h.written).toEqual(['2026-10-23T12:00:00.000Z'])
++  })
++
++  it('does not ask twice in one session', () => {
++    const h = harness()
++    h.run()
++    h.run()
++    expect(h.lines).toHaveLength(1)
++  })
++
++  it('stays quiet for a day after asking', () => {
++    const h = harness('2026-10-23T06:00:00Z') // six hours ago
++    h.run()
++    expect(h.lines).toHaveLength(0)
++    expect(h.written).toHaveLength(0)
++  })
++
++  it('asks again once the day has passed', () => {
++    const h = harness('2026-10-21T06:00:00Z')
++    h.run()
++    expect(h.lines).toHaveLength(1)
++  })
++
++  it('says nothing when no work finished', () => {
++    const lines: string[] = []
++    maybeSuggestSurvey(
++      [human('뭐 하고 있어?')],
++      line => lines.push(line),
++      { readPromptedAt: () => undefined, writePromptedAt: () => {} },
++    )
++    expect(lines).toHaveLength(0)
++  })
++})
+diff --git a/src/utils/surveyPrompt.ts b/src/utils/surveyPrompt.ts
+new file mode 100644
+index 00000000..e41d7a38
+--- /dev/null
++++ b/src/utils/surveyPrompt.ts
+@@ -0,0 +1,132 @@
++import type { Message } from '../types/message.js'
++import { getGlobalConfig, saveGlobalConfig } from './config.js'
++import { isToolUseResultMessage } from './messages.js'
++
++/** How long a suggestion keeps the next one away. */
++const QUIET_HOURS = 20
++
++/**
++ * Commands that mark the end of a unit of work rather than a step inside one.
++ * A commit and a passing test suite are the two moments where someone is
++ * plainly between tasks — which is the only time it is fair to ask them
++ * anything at all.
++ */
++const COMPLETION_SIGNALS: { label: string; pattern: RegExp }[] = [
++  { label: '커밋', pattern: /\bgit\s+(?:-\S+\s+|--\S+\s+)*commit\b/ },
++  {
++    label: '테스트',
++    pattern:
++      /\b(?:pytest|tox|jest|vitest|ctest|(?:bun|npm|pnpm|yarn)\s+(?:run\s+)?test|cargo\s+test|go\s+test|make\s+test|mvn\s+test|gradle\s+test)\b/,
++  },
++]
++
++/** Things that look like a signal but finished nothing. */
++const NOT_A_SIGNAL = /--dry-run|--help|\s-h\b/
++
++let suggestedThisSession = false
++
++export function resetSurveySuggestionForTesting(): void {
++  suggestedThisSession = false
++}
++
++type ToolUseBlock = { type: string; id?: string; name?: string; input?: unknown }
++
++/**
++ * The command that finished a unit of work in the turn that just ended, or
++ * undefined if nothing did.
++ *
++ * Only the last turn is read: walking back stops at the human message that
++ * started it, so a commit from ten minutes ago cannot trigger a suggestion
++ * now. A tool call whose result came back as an error is not a signal — a
++ * failing test suite means the work is still in progress.
++ */
++export function findCompletionSignal(
++  messages: readonly Message[],
++): string | undefined {
++  const failedToolUses = new Set<string>()
++  const candidates: { id: string | undefined; label: string }[] = []
++
++  for (let i = messages.length - 1; i >= 0; i--) {
++    const message = messages[i]!
++
++    if (message.type === 'user') {
++      if (!isToolUseResultMessage(message)) break // start of this turn
++      const content = (message as { message?: { content?: unknown } }).message
++        ?.content
++      if (Array.isArray(content)) {
++        for (const block of content as {
++          type?: string
++          tool_use_id?: string
++          is_error?: boolean
++        }[]) {
++          if (block.type === 'tool_result' && block.is_error && block.tool_use_id) {
++            failedToolUses.add(block.tool_use_id)
++          }
++        }
++      }
++      continue
++    }
++
++    if (message.type !== 'assistant') continue
++    const content = (message as { message?: { content?: unknown } }).message
++      ?.content
++    if (!Array.isArray(content)) continue
++
++    for (const block of content as ToolUseBlock[]) {
++      if (block.type !== 'tool_use' || block.name !== 'Bash') continue
++      const command = (block.input as { command?: unknown } | undefined)?.command
++      if (typeof command !== 'string' || NOT_A_SIGNAL.test(command)) continue
++      const signal = COMPLETION_SIGNALS.find(entry => entry.pattern.test(command))
++      if (signal) candidates.push({ id: block.id, label: signal.label })
++    }
++  }
++
++  // Oldest first, so the suggestion names the work in the order it happened.
++  for (const candidate of candidates.reverse()) {
++    if (!candidate.id || !failedToolUses.has(candidate.id)) return candidate.label
++  }
++  return undefined
++}
++
++export type SurveySuggestionDeps = {
++  now?: () => Date
++  readPromptedAt?: () => string | undefined
++  writePromptedAt?: (iso: string) => void
++}
++
++/**
++ * Offer the survey once, right after a piece of work landed.
++ *
++ * It only ever prints one line and never interrupts: the respondent is in the
++ * middle of their own work, and a form that takes the terminal away from them
++ * would be answered once and resented after that.
++ */
++export function maybeSuggestSurvey(
++  messages: readonly Message[],
++  emit: (text: string) => void,
++  deps: SurveySuggestionDeps = {},
++): void {
++  if (suggestedThisSession) return
++
++  const now = deps.now?.() ?? new Date()
++  const readPromptedAt =
++    deps.readPromptedAt ?? (() => getGlobalConfig().surveyPromptedAt)
++  const lastPrompt = readPromptedAt()
++  if (lastPrompt) {
++    const elapsedHours = (now.getTime() - new Date(lastPrompt).getTime()) / 3_600_000
++    if (Number.isFinite(elapsedHours) && elapsedHours < QUIET_HOURS) return
++  }
++
++  const signal = findCompletionSignal(messages)
++  if (!signal) return
++
++  suggestedThisSession = true
++  const writePromptedAt =
++    deps.writePromptedAt ??
++    ((iso: string) => saveGlobalConfig(config => ({ ...config, surveyPromptedAt: iso })))
++  writePromptedAt(now.toISOString())
++
++  emit(
++    `${signal}까지 끝났네요 — 30초만 주시면 됩니다: /survey (오늘은 더 묻지 않습니다)`,
++  )
 +}
 -- 
 2.43.0

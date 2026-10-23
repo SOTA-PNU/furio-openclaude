@@ -729,7 +729,7 @@ ROUTER = Router()
 def build_app():
     import httpx
     from fastapi import FastAPI, Request
-    from fastapi.responses import JSONResponse, StreamingResponse
+    from fastapi.responses import JSONResponse, Response, StreamingResponse
     from starlette.background import BackgroundTask
     from starlette.concurrency import run_in_threadpool
 
@@ -823,6 +823,116 @@ def build_app():
 
         threading.Thread(target=_go, daemon=True).start()
         return {"ok": True, "model": model}
+
+    # ── 수업용 설문 수집 ───────────────────────────────────────────────────
+    # 클라이언트의 /survey 가 보낸 응답을 한 파일에 모은다. 학생 PC 에도 사본이
+    # 남지만(클라이언트가 먼저 저장한다), 모아 보는 곳은 여기뿐이다.
+    #
+    # 제출은 키 없이 받는다: 인증 미들웨어는 /v1·/router 만 막고, 학생 쪽에 키를
+    # 심지 않고도 응답이 도착해야 하기 때문이다. 대신 읽기는 /router 아래에 둬서
+    # 키를 건 서버에서는 운영자만 본다. 응답에 IP·이름은 남기지 않는다 —
+    # 익명이어야 솔직한 답이 모인다.
+    SURVEY_DIR = os.environ.get(
+        "FURIO_SURVEY_DIR", os.path.join(os.path.expanduser("~"), "furio-survey"))
+    SURVEY_PATH = os.path.join(SURVEY_DIR, "responses.jsonl")
+    SURVEY_META = ["receivedAt", "submittedAt", "sessionId", "model", "clientVersion"]
+    SURVEY_ANSWERS = ["service", "ttft", "tps", "accuracy", "retries", "code_ran",
+                      "interrupted", "satisfaction", "reuse", "comment"]
+    SURVEY_SESSION = ["messageCount", "userTurns", "assistantTurns"]
+    SURVEY_MAX_BYTES = 64 * 1024
+    SURVEY_MAX_TEXT = 2000
+    _survey_lock = threading.Lock()
+
+    def _survey_int(value):
+        try:
+            return int(value)
+        except (TypeError, ValueError):
+            return 0
+
+    def _survey_read():
+        out = []
+        try:
+            with open(SURVEY_PATH, encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        out.append(json.loads(line))
+                    except Exception:
+                        continue      # 한 줄이 깨져도 나머지는 읽는다
+        except FileNotFoundError:
+            pass
+        return out
+
+    @app.post("/survey/responses")
+    async def survey_submit(request: Request):
+        raw = await request.body()
+        if len(raw) > SURVEY_MAX_BYTES:
+            return JSONResponse({"error": "too large"}, status_code=413)
+        try:
+            body = json.loads(raw.decode("utf-8"))
+        except Exception:
+            return JSONResponse({"error": "invalid json"}, status_code=400)
+        answers = body.get("answers") if isinstance(body, dict) else None
+        if not isinstance(answers, dict) or not answers:
+            return JSONResponse({"error": "answers required"}, status_code=400)
+
+        session = body.get("session") if isinstance(body.get("session"), dict) else {}
+        record = {
+            "receivedAt": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+            "submittedAt": str(body.get("submittedAt") or "")[:40],
+            "sessionId": str(body.get("sessionId") or "")[:64],
+            "model": str(body.get("model") or "")[:80],
+            "clientVersion": str(body.get("clientVersion") or "")[:32],
+            # 아는 문항만 받는다 — 모르는 키로 파일이 불어나지 않게.
+            "answers": {k: str(v)[:SURVEY_MAX_TEXT]
+                        for k, v in answers.items() if k in SURVEY_ANSWERS},
+            "session": {k: _survey_int(session.get(k)) for k in SURVEY_SESSION},
+        }
+
+        def _append():
+            os.makedirs(SURVEY_DIR, exist_ok=True)
+            with _survey_lock:
+                with open(SURVEY_PATH, "a", encoding="utf-8") as f:
+                    f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+        await run_in_threadpool(_append)
+        return {"ok": True, "received": len(record["answers"])}
+
+    @app.get("/router/survey/responses.csv")
+    def survey_csv():
+        import csv
+        import io as _io
+        buf = _io.StringIO()
+        writer = csv.writer(buf)
+        writer.writerow(SURVEY_META + SURVEY_ANSWERS + SURVEY_SESSION)
+        for row in _survey_read():
+            answers = row.get("answers") or {}
+            session = row.get("session") or {}
+            writer.writerow([row.get(k, "") for k in SURVEY_META]
+                            + [answers.get(k, "") for k in SURVEY_ANSWERS]
+                            + [session.get(k, "") for k in SURVEY_SESSION])
+        # 엑셀은 BOM 없는 UTF-8 CSV 의 한글을 깨뜨린다.
+        return Response(content="\ufeff" + buf.getvalue(),
+                        media_type="text/csv; charset=utf-8",
+                        headers={"content-disposition":
+                                 'attachment; filename="furio-survey.csv"'})
+
+    @app.get("/router/survey/summary")
+    def survey_summary():
+        rows = _survey_read()
+        counts = {q: {} for q in SURVEY_ANSWERS if q != "comment"}
+        comments = []
+        for row in rows:
+            for question, value in (row.get("answers") or {}).items():
+                if question == "comment":
+                    if value:
+                        comments.append(value)
+                elif question in counts and value:
+                    counts[question][value] = counts[question].get(value, 0) + 1
+        return {"total": len(rows), "counts": counts,
+                "comments": comments[-20:], "path": SURVEY_PATH}
 
     @app.get("/router/status")
     def router_status():

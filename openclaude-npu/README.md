@@ -1,13 +1,17 @@
 # NPU 패치 — openclaude 를 furio 클라이언트로
 
 furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude Code 계열 TUI)다.
-`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 26개다.
+`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 27개다.
 
 - 상태줄에 모델별 LED — 라우터의 `/router/status` 를 폴링해 올라오는 중(노랑)/사용 가능(초록)을 보여준다
 - `/model` 창에서 tp·dp·pp 를 따로 고른다(라우터가 주는 변형 목록 기준)
 - 모델 설명을 라우터에서 받아 보여준다 — "tp8·2장·ctx 40k" 처럼 카드 점유가 보인다
 - 백그라운드 호출(요약·제목 생성)이 실행 중 바꾼 모델을 따라간다 — 안 그러면 켤 때 모델을
   다시 올리느라 카드가 왕복한다
+- `/survey` 로 터미널 안에서 사용 경험 설문을 받는다 — 화살표로 고르고 Enter, 한 문항에
+  한 화면. 응답은 먼저 설정 폴더에 적고 그다음 라우터로 보내므로 서버가 꺼져 있어도 답이
+  사라지지 않는다. 보낼 곳은 이미 쓰고 있는 `OPENAI_BASE_URL` 에서 끌어내니 학생 쪽에
+  설정할 것이 없다. 커밋이나 테스트가 통과한 턴 끝에 한 줄로만 권한다(하루 한 번)
 - `furio agents` 로 이 컴퓨터에서 하던 세션 목록을 열고, 다른 폴더 세션도 그 자리에서
   이어 쓴다 — 고르면 그 폴더에서 furio 를 다시 띄우고 터미널을 넘긴다. 세션의 설정·
   CLAUDE.md·신뢰 결정·MCP 서버는 시작할 때 그 폴더 기준으로 읽히니 중간에 디렉터리만
@@ -39,7 +43,7 @@ furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude 
 git clone https://github.com/Twigpine/openclaude.git
 cd openclaude
 git checkout v0.33.0
-git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 26개
+git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 27개
 
 bun install
 bun run build          # → dist/cli.mjs, dist/sdk.mjs
