@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/25] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/26] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/25] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/26] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/25] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/26] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/25] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/26] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/25] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/26] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/25] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/26] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/25] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/26] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/25] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/26] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/25] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/26] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/25] statusline: separate the current-model marker from the
+Subject: [PATCH 10/26] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/25] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/26] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/25] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/26] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/25] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/26] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/25] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/26] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/25] model picker: support a per-model default pp (large
+Subject: [PATCH 15/26] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/25] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/26] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/25] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/26] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/25] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/26] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/25] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/26] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/25] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/26] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/25] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/26] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/25] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/26] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/25] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/26] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5563,7 +5563,7 @@ index 522362ad..1c509b74 100644
 From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/25] brand: give each logo letter its own color from a cool
+Subject: [PATCH 24/26] brand: give each logo letter its own color from a cool
  spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5756,7 +5756,7 @@ index 94af8b4c..3e2cf093 100644
 From 9cf8784b2009e6734c8bd3d24740e72ccc69a6ea Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:07:48 +0900
-Subject: [PATCH 25/25] startup: drop the provider box, keep the mark and one
+Subject: [PATCH 25/26] startup: drop the provider box, keep the mark and one
  line
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5906,6 +5906,482 @@ index c21c8def..9b775d33 100644
  
  /** twigpine orange (#ff7a1a) in the rgb() form required by theme consumers. */
  export const BRAND_ACCENT_RGB = 'rgb(255,122,26)'
+-- 
+2.43.0
+
+
+From bf4d4d421cbaa00a9c49fb6851a4d713b11729b9 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Fri, 23 Oct 2026 16:37:56 +0900
+Subject: [PATCH 26/26] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
+ =?UTF-8?q?=EA=B8=B0:=20agents=20=ED=95=9C=20=EB=8B=A8=EC=96=B4=EB=A1=9C?=
+ =?UTF-8?q?=20=EC=9D=B4=20=EC=BB=B4=ED=93=A8=ED=84=B0=EC=9D=98=20=EC=84=B8?=
+ =?UTF-8?q?=EC=85=98=EC=9D=84=20=EC=97=B4=EA=B3=A0=20=EB=8B=A4=EB=A5=B8=20?=
+ =?UTF-8?q?=ED=8F=B4=EB=8D=94=20=EA=B2=83=EB=8F=84=20=EC=9D=B4=EC=96=B4=20?=
+ =?UTF-8?q?=EC=93=B4=EB=8B=A4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+세션을 이어 쓰려면 그 폴더로 먼저 가 있어야 했다. --resume 피커는 현재 저장소
+세션만 보여주고, Ctrl+A 로 전체를 펼쳐 다른 폴더 세션을 고르면 재개하지 않고
+`cd … && claude --resume <id>` 를 클립보드에 넣고 끝났다 — 이름도 claude 로
+틀려 있었다.
+
+- `agents` 한 단어는 cli.tsx 에서 `--resume --all-projects` 로 바꿔 보낸다.
+  --update 와 같은 자리에서 argv 만 고치므로 시작 경로를 그대로 쓰고, 검색·
+  미리보기·이름 바꾸기가 전부 따라온다.
+- `--all-projects` 는 피커를 전 프로젝트 목록으로 연다. 이때 Ctrl+A 는 반대로
+  현재 폴더로 좁히는 토글이 된다.
+- 다른 폴더 세션을 고르면 relaunchInProjectDir 가 그 폴더에서 자기 자신을 다시
+  띄우고 터미널을 넘긴다. 세션의 설정·CLAUDE.md·신뢰 결정·MCP 서버는 시작할 때
+  그 폴더 기준으로 읽히니 중간에 chdir 로 가져올 수 없다. Ink 두 개가 같은
+  터미널에서 키 입력을 나눠 먹지 않도록 넘기기 전에 pause()·suspendStdin() 으로
+  화면과 키보드를 놓는다. 띄울 수 없을 때만 예전 안내로 떨어진다.
+- 설정된 서브에이전트 목록은 `agents list`(와 플래그 형태)로 그대로 남는다.
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/entrypoints/cli.test.ts            | 80 ++++++++++++++++++++++
+ src/entrypoints/cli.tsx                |  8 +++
+ src/main.tsx                           | 11 +++-
+ src/screens/ResumeConversation.tsx     | 19 ++++--
+ src/utils/crossProjectResume.ts        |  5 +-
+ src/utils/relaunchInProjectDir.test.ts | 91 ++++++++++++++++++++++++++
+ src/utils/relaunchInProjectDir.ts      | 76 +++++++++++++++++++++
+ 7 files changed, 282 insertions(+), 8 deletions(-)
+ create mode 100644 src/utils/relaunchInProjectDir.test.ts
+ create mode 100644 src/utils/relaunchInProjectDir.ts
+
+diff --git a/src/entrypoints/cli.test.ts b/src/entrypoints/cli.test.ts
+index 75701733..29ad6c86 100644
+--- a/src/entrypoints/cli.test.ts
++++ b/src/entrypoints/cli.test.ts
+@@ -1339,3 +1339,83 @@ describe('cli.tsx — --yolo alias (PR #1939)', () => {
+     }
+   })
+ })
++
++describe('cli.tsx — bare `agents` opens the session picker', () => {
++  const options = {
++    importers: mockImporters,
++  } as unknown as Parameters<CliMain>[1]
++  const originalAutoRunGuard =
++    process.env.OPENCLAUDE_DISABLE_CLI_ENTRYPOINT_AUTO_RUN
++  const savedArgv = [...process.argv]
++
++  beforeAll(async () => {
++    process.env.OPENCLAUDE_DISABLE_CLI_ENTRYPOINT_AUTO_RUN = '1'
++    const entrypoint = await import('./cli.js')
++    runCliEntrypoint = entrypoint.main
++  })
++
++  afterAll(() => {
++    if (originalAutoRunGuard === undefined) {
++      delete process.env.OPENCLAUDE_DISABLE_CLI_ENTRYPOINT_AUTO_RUN
++    } else {
++      process.env.OPENCLAUDE_DISABLE_CLI_ENTRYPOINT_AUTO_RUN =
++        originalAutoRunGuard
++    }
++  })
++
++  beforeEach(() => {
++    clearRuntimeMocks()
++  })
++
++  afterEach(() => {
++    process.argv = [...savedArgv]
++  })
++
++  const argvSeenFor = async (argv: string[]): Promise<string[] | undefined> => {
++    process.argv = ['node', 'openclaude', ...argv]
++    let seen: string[] | undefined
++    mockCliMain.mockImplementationOnce(async () => {
++      seen = [...process.argv]
++    })
++    await runCliEntrypoint(argv, options)
++    return seen
++  }
++
++  it('rewrites `agents` into the all-projects resume picker', async () => {
++    expect(await argvSeenFor(['agents'])).toEqual([
++      'node',
++      'openclaude',
++      '--resume',
++      '--all-projects',
++    ])
++  })
++
++  it('leaves the configured-agent listing forms alone', async () => {
++    // `agents list` and the flag form must still reach commander untouched —
++    // they print configured subagents, not sessions.
++    expect(await argvSeenFor(['agents', 'list'])).toEqual([
++      'node',
++      'openclaude',
++      'agents',
++      'list',
++    ])
++    expect(
++      await argvSeenFor(['agents', '--setting-sources', 'user']),
++    ).toEqual([
++      'node',
++      'openclaude',
++      'agents',
++      '--setting-sources',
++      'user',
++    ])
++  })
++
++  it('does not touch an `agents` token that is not the subcommand', async () => {
++    expect(await argvSeenFor(['-p', 'agents'])).toEqual([
++      'node',
++      'openclaude',
++      '-p',
++      'agents',
++    ])
++  })
++})
+diff --git a/src/entrypoints/cli.tsx b/src/entrypoints/cli.tsx
+index 27fd715b..bf57fd5f 100644
+--- a/src/entrypoints/cli.tsx
++++ b/src/entrypoints/cli.tsx
+@@ -820,6 +820,14 @@ export async function main(
+     process.argv = [process.argv[0]!, process.argv[1]!, 'update'];
+   }
+ 
++  // `agents` on its own opens the machine-wide session picker: every session
++  // this computer has worked on, newest first, Enter to carry one on. Rewriting
++  // argv here reuses the whole --resume startup path; the commander subcommand
++  // keeps listing configured subagents for `agents list` and the flag form.
++  if (args.length === 1 && args[0] === 'agents') {
++    process.argv = [process.argv[0]!, process.argv[1]!, '--resume', '--all-projects'];
++  }
++
+   // --bare: set SIMPLE early so gates fire during module eval / commander
+   // option building (not just inside the action handler).
+   if (args.includes('--bare')) {
+diff --git a/src/main.tsx b/src/main.tsx
+index 8830647e..f310b342 100644
+--- a/src/main.tsx
++++ b/src/main.tsx
+@@ -920,6 +920,7 @@ async function run(): Promise<CommanderCommand> {
+   }).hideHelp()).option('--replay-user-messages', 'Re-emit user messages from stdin back on stdout for acknowledgment (only works with --input-format=stream-json and --output-format=stream-json)', () => true).addOption(new Option('--enable-auth-status', 'Enable auth status messages in SDK mode').default(false).hideHelp()).option('--allowedTools, --allowed-tools <tools...>', 'Comma or space-separated list of tool names to allow (e.g. "Bash(git:*) Edit")').option('--tools <tools...>', 'Specify the list of available tools from the built-in set. Use "" to disable all tools, "default" to use all tools, or specify tool names (e.g. "Bash,Edit,Read").').option('--disallowedTools, --disallowed-tools <tools...>', 'Comma or space-separated list of tool names to deny (e.g. "Bash(git:*) Edit")').option('--mcp-config <configs...>', 'Load MCP servers from JSON files or strings (space-separated)').addOption(new Option('--permission-prompt-tool <tool>', 'MCP tool to use for permission prompts (only works with --print)').argParser(String).hideHelp()).addOption(new Option('--system-prompt <prompt>', 'System prompt to use for the session').argParser(String)).addOption(new Option('--system-prompt-file <file>', 'Read system prompt from a file').argParser(String).hideHelp()).addOption(new Option('--append-system-prompt <prompt>', 'Append a system prompt to the default system prompt').argParser(String)).addOption(new Option('--append-system-prompt-file <file>', 'Read system prompt from a file and append to the default system prompt').argParser(String).hideHelp()).addOption(new Option('--permission-mode <mode>', 'Permission mode to use for the session').argParser(String).choices(PERMISSION_MODES))
+   .option('-c, --continue', 'Continue the most recent conversation in the current directory', () => true)
+   .option('-r, --resume [value]', 'Resume a conversation by session ID, or open interactive picker with optional search term', value => value || true)
++  .option('--all-projects', 'With --resume, list sessions from every project on this machine instead of this repository only (Ctrl+A toggles it inside the picker)', () => true)
+   .option('--fork-session', 'When resuming, branch the conversation into a new session ID; does not create filesystem or worktree isolation (use with --resume or --continue)', () => true)
+   .addOption(new Option('--prefill <text>', 'Pre-fill the prompt input with text without submitting it').hideHelp()).addOption(new Option('--deep-link-origin', 'Signal that this session was launched from a deep link').hideHelp()).addOption(new Option('--deep-link-repo <slug>', 'Repo slug the deep link ?repo= parameter resolved to the current cwd').hideHelp()).addOption(new Option('--deep-link-last-fetch <ms>', 'FETCH_HEAD mtime in epoch ms, precomputed by the deep link trampoline').argParser(v => {
+     const n = Number(v);
+@@ -3607,6 +3608,7 @@ async function run(): Promise<CommanderCommand> {
+         }, getWorktreePaths(getOriginalCwd()), {
+           ...sessionConfig,
+           initialSearchQuery: searchTerm,
++          allProjects: options.allProjects === true,
+           forkSession: options.forkSession,
+           filterByPr
+         });
+@@ -4143,13 +4145,18 @@ async function run(): Promise<CommanderCommand> {
+   });
+ 
+   // Agents command - list configured agents
+-  program.command('agents').description('List configured agents').option('--setting-sources <sources>', 'Comma-separated list of setting sources to load (user, project, local).').action(async () => {
++  const runAgentsHandler = async () => {
+     const {
+       agentsHandler
+     } = await import('./cli/handlers/agents.js');
+     await agentsHandler();
+     process.exit(0);
+-  });
++  };
++  // Bare `agents` is turned into the session picker in entrypoints/cli.tsx, so it
++  // never reaches this action; the flag form and `agents list` still list the
++  // configured subagent definitions.
++  const agentsCmd = program.command('agents').description('Pick a session from this machine and resume it (`agents list` lists configured subagents)').option('--setting-sources <sources>', 'Comma-separated list of setting sources to load (user, project, local).').action(runAgentsHandler);
++  agentsCmd.command('list').description('List configured agents').option('--setting-sources <sources>', 'Comma-separated list of setting sources to load (user, project, local).').action(runAgentsHandler);
+ 
+   const runSkillsCommanderAction = async (action: (handlers: typeof import('./cli/handlers/skills.js')) => Promise<void>) => {
+     const [skillsHandlers, {
+diff --git a/src/screens/ResumeConversation.tsx b/src/screens/ResumeConversation.tsx
+index f5c8bb17..fae6abd4 100644
+--- a/src/screens/ResumeConversation.tsx
++++ b/src/screens/ResumeConversation.tsx
+@@ -29,8 +29,9 @@ import { errorMessage } from '../utils/errors.js';
+ import type { FileHistorySnapshot } from '../utils/fileHistory.js';
+ import { logError } from '../utils/log.js';
+ import { createSystemMessage } from '../utils/messages.js';
++import { relaunchInProjectDir } from '../utils/relaunchInProjectDir.js';
+ import { computeStandaloneAgentContext, createForkSessionInfoMessage, restoreAgentFromSession, restoreWorktreeForResume } from '../utils/sessionRestore.js';
+-import { adoptResumedSessionFile, enrichLogs, isCustomTitleEnabled, loadAllProjectsMessageLogsProgressive, loadSameRepoMessageLogsProgressive, recordContentReplacement, resetSessionFilePointer, restoreSessionMetadata, type SessionLogResult } from '../utils/sessionStorage.js';
++import { adoptResumedSessionFile, enrichLogs, getSessionIdFromLog, isCustomTitleEnabled, loadAllProjectsMessageLogsProgressive, loadSameRepoMessageLogsProgressive, recordContentReplacement, resetSessionFilePointer, restoreSessionMetadata, type SessionLogResult } from '../utils/sessionStorage.js';
+ import type { ModelSetting } from '../utils/model/model.js';
+ import type { ThinkingConfig } from '../utils/thinking.js';
+ import { filterContentReplacementsForMessages, type ContentReplacementRecord } from '../utils/toolResultStorage.js';
+@@ -51,6 +52,8 @@ type Props = {
+   systemPrompt?: string;
+   appendSystemPrompt?: string;
+   initialSearchQuery?: string;
++  /** Open on every project's sessions, not just this repository's. */
++  allProjects?: boolean;
+   disableSlashCommands?: boolean;
+   forkSession?: boolean;
+   filterByPr?: boolean | number | string;
+@@ -74,6 +77,7 @@ export function ResumeConversation({
+   systemPrompt,
+   appendSystemPrompt,
+   initialSearchQuery,
++  allProjects = false,
+   disableSlashCommands = false,
+   forkSession,
+   filterByPr,
+@@ -90,7 +94,7 @@ export function ResumeConversation({
+   const [logs, setLogs] = React.useState<LogOption[]>([]);
+   const [loading, setLoading] = React.useState(true);
+   const [resuming, setResuming] = React.useState(false);
+-  const [showAllProjects, setShowAllProjects] = React.useState(false);
++  const [showAllProjects, setShowAllProjects] = React.useState(allProjects);
+   const [resumeData, setResumeData] = React.useState<{
+     messages: Message[];
+     fileHistorySnapshots?: FileHistorySnapshot[];
+@@ -110,7 +114,7 @@ export function ResumeConversation({
+   }, [logs, filterByPr]);
+   const isResumeWithRenameEnabled = isCustomTitleEnabled();
+   React.useEffect(() => {
+-    loadSameRepoMessageLogsProgressive(worktreePaths).then(result_0 => {
++    (allProjects ? loadAllProjectsMessageLogsProgressive() : loadSameRepoMessageLogsProgressive(worktreePaths)).then(result_0 => {
+       sessionLogResultRef.current = result_0;
+       logCountRef.current = result_0.logs.length;
+       setLogs(result_0.logs);
+@@ -119,7 +123,7 @@ export function ResumeConversation({
+       logError(error);
+       setLoading(false);
+     });
+-  }, [worktreePaths]);
++  }, [worktreePaths, allProjects]);
+   const loadMoreLogs = React.useCallback((count: number) => {
+     const ref = sessionLogResultRef.current;
+     if (!ref || ref.nextIndex >= ref.allStatLogs.length) return;
+@@ -168,6 +172,13 @@ export function ResumeConversation({
+     const crossProjectCheck = checkCrossProjectResume(log_0, showAllProjects, worktreePaths);
+     if (crossProjectCheck.isCrossProject) {
+       if (!crossProjectCheck.isSameRepoWorktree) {
++        // A session from another project cannot be adopted in place, so start
++        // a fresh one in its own directory and hand it the terminal. Only if
++        // that is impossible do we fall back to printing the command.
++        const crossProjectSessionId = getSessionIdFromLog(log_0);
++        if (crossProjectSessionId) {
++          relaunchInProjectDir(crossProjectCheck.projectPath, crossProjectSessionId);
++        }
+         const raw = await setClipboard(crossProjectCheck.command);
+         if (raw) process.stdout.write(raw);
+         setCrossProjectCommand(crossProjectCheck.command);
+diff --git a/src/utils/crossProjectResume.ts b/src/utils/crossProjectResume.ts
+index 2a5f2f2a..f98960d6 100644
+--- a/src/utils/crossProjectResume.ts
++++ b/src/utils/crossProjectResume.ts
+@@ -1,5 +1,6 @@
+ import { sep } from 'path'
+ import { getOriginalCwd } from '../bootstrap/state.js'
++import { BRAND_NAME } from '../constants/brand.js'
+ import type { LogOption } from '../types/logs.js'
+ import { quote } from './bash/shellQuote.js'
+ import { getSessionIdFromLog } from './sessionStorage.js'
+@@ -41,7 +42,7 @@ export function checkCrossProjectResume(
+   // Gate worktree detection to ants only for staged rollout
+   if (process.env.USER_TYPE !== 'ant') {
+     const sessionId = getSessionIdFromLog(log)
+-    const command = `cd ${quote([log.projectPath])} && claude --resume ${sessionId}`
++    const command = `cd ${quote([log.projectPath])} && ${BRAND_NAME} --resume ${sessionId}`
+     return {
+       isCrossProject: true,
+       isSameRepoWorktree: false,
+@@ -65,7 +66,7 @@ export function checkCrossProjectResume(
+ 
+   // Different repo - generate cd command
+   const sessionId = getSessionIdFromLog(log)
+-  const command = `cd ${quote([log.projectPath])} && claude --resume ${sessionId}`
++  const command = `cd ${quote([log.projectPath])} && ${BRAND_NAME} --resume ${sessionId}`
+   return {
+     isCrossProject: true,
+     isSameRepoWorktree: false,
+diff --git a/src/utils/relaunchInProjectDir.test.ts b/src/utils/relaunchInProjectDir.test.ts
+new file mode 100644
+index 00000000..c01bfd8d
+--- /dev/null
++++ b/src/utils/relaunchInProjectDir.test.ts
+@@ -0,0 +1,91 @@
++import { describe, expect, it, mock } from 'bun:test'
++import type { spawnSync } from 'child_process'
++import { relaunchInProjectDir } from './relaunchInProjectDir.js'
++
++type SpawnResult = ReturnType<typeof spawnSync>
++
++function spawnOk(status: number): SpawnResult {
++  return { status, signal: null, pid: 1, output: [], stdout: '', stderr: '' } as unknown as SpawnResult
++}
++
++function harness(result: SpawnResult = spawnOk(0)) {
++  const spawnProcess = mock(() => result) as unknown as typeof spawnSync
++  const exitProcess = mock((_code: number) => {})
++  const releaseTerminal = mock(() => {})
++  return { spawnProcess, exitProcess, releaseTerminal }
++}
++
++describe('relaunchInProjectDir', () => {
++  it('re-runs this entrypoint in the session’s directory with --resume', () => {
++    const h = harness()
++    const started = relaunchInProjectDir('/home/u/other-repo', 'abc-123', {
++      ...h,
++      entrypoint: '/opt/furio/cli.mjs',
++    })
++
++    expect(started).toBe(true)
++    const [command, args, options] = (
++      h.spawnProcess as unknown as { mock: { calls: unknown[][] } }
++    ).mock.calls[0] as [string, string[], { cwd: string; stdio: string }]
++    expect(command).toBe(process.execPath)
++    expect(args).toEqual([
++      ...process.execArgv,
++      '/opt/furio/cli.mjs',
++      '--resume',
++      'abc-123',
++    ])
++    // The child must start in the session's own directory — that is the whole
++    // point: its settings, CLAUDE.md and trust decision live there.
++    expect(options.cwd).toBe('/home/u/other-repo')
++    // 'inherit' gives the child the real terminal, so it can draw its own UI.
++    expect(options.stdio).toBe('inherit')
++  })
++
++  it('releases the terminal before the child starts', () => {
++    const order: string[] = []
++    const releaseTerminal = mock(() => {
++      order.push('release')
++    })
++    const spawnProcess = mock(() => {
++      order.push('spawn')
++      return spawnOk(0)
++    }) as unknown as typeof spawnSync
++
++    relaunchInProjectDir('/tmp/p', 'id', {
++      spawnProcess,
++      releaseTerminal,
++      exitProcess: () => {},
++      entrypoint: '/opt/furio/cli.mjs',
++    })
++
++    expect(order).toEqual(['release', 'spawn'])
++  })
++
++  it('exits with the status the child exited with', () => {
++    const h = harness(spawnOk(3))
++    relaunchInProjectDir('/tmp/p', 'id', { ...h, entrypoint: '/opt/furio/cli.mjs' })
++    expect(h.exitProcess).toHaveBeenCalledWith(3)
++  })
++
++  it('does not touch the terminal when the entrypoint is unknown', () => {
++    const h = harness()
++    const started = relaunchInProjectDir('/tmp/p', 'id', {
++      ...h,
++      entrypoint: undefined,
++    })
++
++    // Nothing was handed over, so the caller can still render a fallback.
++    expect(started).toBe(false)
++    expect(h.releaseTerminal).not.toHaveBeenCalled()
++    expect(h.exitProcess).not.toHaveBeenCalled()
++  })
++
++  it('exits non-zero when the child could not be started', () => {
++    const h = harness({
++      error: new Error('ENOENT'),
++      status: null,
++    } as unknown as SpawnResult)
++    relaunchInProjectDir('/tmp/p', 'id', { ...h, entrypoint: '/opt/furio/cli.mjs' })
++    expect(h.exitProcess).toHaveBeenCalledWith(1)
++  })
++})
+diff --git a/src/utils/relaunchInProjectDir.ts b/src/utils/relaunchInProjectDir.ts
+new file mode 100644
+index 00000000..fb864cb2
+--- /dev/null
++++ b/src/utils/relaunchInProjectDir.ts
+@@ -0,0 +1,76 @@
++import { spawnSync } from 'child_process'
++import instances from '../ink/instances.js'
++
++export type RelaunchDeps = {
++  /** Overridable for tests; defaults to `child_process.spawnSync`. */
++  spawnProcess?: typeof spawnSync
++  /** Script to re-run; defaults to the entrypoint this process was started from. */
++  entrypoint?: string | undefined
++  /** Overridable for tests; defaults to `process.exit`. */
++  exitProcess?: (code: number) => void
++  /** Overridable for tests; defaults to releasing the live Ink instance. */
++  releaseTerminal?: () => void
++}
++
++/**
++ * Stop drawing and let go of the keyboard before a child takes the terminal.
++ *
++ * Two Ink apps on one terminal fight over the screen and split the user's
++ * keystrokes between them, so the parent has to step aside first. We never
++ * resume: the child owns the terminal until it exits, and then we exit too.
++ */
++function releaseTerminalToChild(): void {
++  const ink = instances.get(process.stdout)
++  ink?.pause()
++  ink?.suspendStdin()
++}
++
++/**
++ * Hand the terminal to a fresh session started in another project directory.
++ *
++ * A session belongs to the directory it was opened in: settings, CLAUDE.md,
++ * the workspace trust decision and the MCP servers are all resolved for that
++ * directory while we start up, so a session from elsewhere cannot be adopted
++ * by chdir'ing mid-flight. Instead we start ourselves again — same
++ * interpreter, same script, new working directory — and exit with the child's
++ * status. That is the `cd <dir> && furio --resume <id>` the user would
++ * otherwise type, run for them.
++ *
++ * Returns false when no relaunch was attempted (the entrypoint is unknown, so
++ * the caller should fall back to printing the command). Otherwise the process
++ * exits and the `true` is never observed outside tests.
++ */
++export function relaunchInProjectDir(
++  projectPath: string,
++  sessionId: string,
++  deps: RelaunchDeps = {},
++): boolean {
++  const entrypoint = 'entrypoint' in deps ? deps.entrypoint : process.argv[1]
++  if (!entrypoint) return false
++
++  const spawnProcess = deps.spawnProcess ?? spawnSync
++  const releaseTerminal = deps.releaseTerminal ?? releaseTerminalToChild
++  const exitProcess =
++    deps.exitProcess ??
++    // eslint-disable-next-line custom-rules/no-process-exit
++    ((code: number) => process.exit(code))
++
++  releaseTerminal()
++
++  const result = spawnProcess(
++    process.execPath,
++    [...process.execArgv, entrypoint, '--resume', sessionId],
++    { cwd: projectPath, stdio: 'inherit', env: process.env },
++  )
++
++  if (result.error) {
++    process.stderr.write(
++      `Could not start a session in ${projectPath}: ${result.error.message}\n`,
++    )
++    exitProcess(1)
++    return true
++  }
++
++  exitProcess(result.status ?? 0)
++  return true
++}
 -- 
 2.43.0
 

@@ -1,13 +1,19 @@
 # NPU 패치 — openclaude 를 furio 클라이언트로
 
 furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude Code 계열 TUI)다.
-`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 25개다.
+`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 26개다.
 
 - 상태줄에 모델별 LED — 라우터의 `/router/status` 를 폴링해 올라오는 중(노랑)/사용 가능(초록)을 보여준다
 - `/model` 창에서 tp·dp·pp 를 따로 고른다(라우터가 주는 변형 목록 기준)
 - 모델 설명을 라우터에서 받아 보여준다 — "tp8·2장·ctx 40k" 처럼 카드 점유가 보인다
 - 백그라운드 호출(요약·제목 생성)이 실행 중 바꾼 모델을 따라간다 — 안 그러면 켤 때 모델을
   다시 올리느라 카드가 왕복한다
+- `furio agents` 로 이 컴퓨터에서 하던 세션 목록을 열고, 다른 폴더 세션도 그 자리에서
+  이어 쓴다 — 고르면 그 폴더에서 furio 를 다시 띄우고 터미널을 넘긴다. 세션의 설정·
+  CLAUDE.md·신뢰 결정·MCP 서버는 시작할 때 그 폴더 기준으로 읽히니 중간에 디렉터리만
+  바꿔서는 가져올 수 없다. 물려받은 피커는 현재 저장소 세션만 보여줬고, Ctrl+A 로 펼쳐
+  다른 폴더 것을 고르면 재개하지 않고 `cd … && claude --resume <id>` 를 클립보드에 넣고
+  끝났다(이름도 claude 로 틀려 있었다)
 - 시작 화면과 환영 상자를 연구실 표식(SOTA / furio)으로 바꾸고, 시작 화면은 로고·한 줄 소개·
   버전만 남긴다 — Provider/Model/Endpoint 박스는 상태줄과 `/model` 에 이미 있는 내용이라 걷어냈다
 - 로고를 글자 단위로 칠한다 — 아홉 글자(SOTA 4 + FURIO 5)가 청록에서 분홍까지 한 색씩
@@ -33,7 +39,7 @@ furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude 
 git clone https://github.com/Twigpine/openclaude.git
 cd openclaude
 git checkout v0.33.0
-git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 25개
+git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 26개
 
 bun install
 bun run build          # → dist/cli.mjs, dist/sdk.mjs
