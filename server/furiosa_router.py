@@ -85,6 +85,11 @@ os.makedirs(LOGDIR, exist_ok=True)   # chat/ 은 git 미추적이라 디렉토�
 REGISTRY = {
     # ── agent-ready (tool calling 검증/신뢰 순) ──
     "gpt-oss-120b":                     dict(path="furiosa-ai/gpt-oss-120b",                     tp=32, cards=4, pp=1, tool="openai",     reasoning=None,         ctx=131072),
+    # 1장짜리(tp8 = RNGD 1 card, HF README 51행) → @dp4 로 4벌 복제. 수업용(2026-10-24).
+    # dp 라우팅은 round-robin 으로: 기본 scoring 은 @dp4 에서 4번째 복제본(npu3)을 한 번도 고르지 않았다
+    # (2026-10-24 실측, 동시 30·60·90 모두 npu3 사용률 0 %). furiosa-llm 2026.4.0.
+    "gpt-oss-20b":                      dict(path="furiosa-ai/gpt-oss-20b",                      tp=8,  cards=1, pp=1, tool="openai",     reasoning=None,         ctx=131072,
+                                             extra=["--data-parallel-routing-policy", "round-robin"]),
     "Solar-Open-100B-NVFP4A16":         dict(path="furiosa-ai/Solar-Open-100B-NVFP4A16",         tp=32, cards=4, pp=1, tool="solar_open", reasoning="solar_open", ctx=131072),
     "Qwen3-32B-FP8":                    dict(path="furiosa-ai/Qwen3-32B-FP8",                    tp=32, cards=4, pp=1, tool="hermes",     reasoning="qwen3",      ctx=40960,   tps={8: f"{NVME_ART}/qwen3-32b-tp8"}),
     "Llama-3.3-70B-Instruct":           dict(path="furiosa-ai/Llama-3.3-70B-Instruct",           tp=32, cards=4, pp=1, tool="llama3_json", reasoning=None,        ctx=131072),
@@ -134,6 +139,7 @@ REGISTRY = {
 #   no   : 파서 없음 → 채팅 전용
 TOOL_SUPPORT = {
     "gpt-oss-120b": "ok",
+    "gpt-oss-20b": "weak",   # 120b 와 같은 harmony/openai 파서. 20b 자체 도구 호출은 미실측
     "Solar-Open-100B-NVFP4A16": "ok",
     "Qwen3-32B-FP8": "ok",
     "Llama-3.3-70B-Instruct": "ok",
