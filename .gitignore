@@ -3,3 +3,5 @@ __pycache__/
 .router.pid
 logs/
 *.log
+# 라우터 수업 모드 환경변수(ROUTER_PIN 등) — serve-router.sh 가 읽는다. 비밀값이 들어갈 수 있어 추적 안 함.
+server/.env

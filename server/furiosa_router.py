@@ -57,6 +57,14 @@ EVICT_WAIT = int(os.environ.get("ROUTER_EVICT_WAIT", "300"))
 # 막 ready 된 백엔드에 주는 최소 상주 시간(초). 없으면 7분 걸려 올린 모델이 첫 요청도
 # 못 받고 즉시 쫓겨나, 카드만 왕복하고 아무도 전진하지 못한다.
 EVICT_GRACE = int(os.environ.get("ROUTER_EVICT_GRACE", "20"))
+# ── 수업 모드(2026-10-25) ──
+# ROUTER_PIN: 쉼표로 구분한 모델 ID(변형 포함, 예 gpt-oss-20b@dp4). 핀 모델은 LRU·강제 축출 어느
+#   경로에서도 내려가지 않는다 — 25명이 쓰는 모델을 LAN 의 다른 사용자 한 명의 /model 이 내리면 수업
+#   전체가 선다. 내리는 길은 POST /router/evict {"force": true} 뿐(수업 끝 — 게이트웨이 타이머).
+PINNED = set(filter(None, os.environ.get("ROUTER_PIN", "").split(",")))
+# ROUTER_FORCE_EVICT=0 이면 EVICT_WAIT 뒤 '사용 중인 백엔드 강제 종료' 를 하지 않고 그 요청을 실패시킨다
+#   (503, 핀·처리 중 백엔드는 그대로). 기본 1 = 예전처럼 교착 방지용 강제 축출.
+FORCE_EVICT = os.environ.get("ROUTER_FORCE_EVICT", "1") == "1"
 # openclaude 포크(NPU LED·dp/pp) 빌드 산출물 — install.sh 가 여기서 dist 를 받아 덮어쓴다.
 CLIENT_DIST = os.environ.get("FURIO_CLIENT_DIST", "/home/jun/NPU_AIP/openclaude-fork/dist")
 CLIENT_PKG = os.environ.get("FURIO_CLIENT_PKG", "/home/jun/NPU_AIP/openclaude-fork/package.json")
@@ -77,7 +85,8 @@ os.makedirs(LOGDIR, exist_ok=True)   # chat/ 은 git 미추적이라 디렉토�
 #   reasoning : --reasoning-parser 값 또는 None (thinking 모델만; 아니면 None — 주면 400)
 #   extra     : 모델별 추가 serve 인자 (예: K-EXAONE 의 enable_thinking)
 #   kind      : "chat"(기본) | "embedding" | "reranker" — chat 이 아니면 opencode/furio 목록에서 제외
-#   ctx       : 클라이언트 컨텍스트 한도 힌트 = 아티팩트 max_position_embeddings (serve 엔 전달 안 됨)
+#   ctx       : 클라이언트 컨텍스트 한도 힌트 = 아티팩트 max_position_embeddings (serve 엔 전달 안 됨 —
+#               serve 쪽 한도까지 같이 줄이려면 extra 에 --max-model-len 을 둔다: gpt-oss-20b)
 # 파서 매핑 근거: available_model.md (2026.3 공식) / tp·ctx 근거: fxb show + artifact.json 실측(2026-07-16)
 # ★ MoE tp8 아티팩트는 등록하지 않는다(2026-08-29 실측). artifact.json 의 model_type 을 위장해
 #   게이트를 지나면 적재는 되지만 답이 틀리고 에러도 안 난다 — furiosa-llm 2026.3.0 의 v2 아티팩트
@@ -88,8 +97,12 @@ REGISTRY = {
     # 1장짜리(tp8 = RNGD 1 card, HF README 51행) → @dp4 로 4벌 복제. 수업용(2026-10-24).
     # dp 라우팅은 round-robin 으로: 기본 scoring 은 @dp4 에서 4번째 복제본(npu3)을 한 번도 고르지 않았다
     # (2026-10-24 실측, 동시 30·60·90 모두 npu3 사용률 0 %). furiosa-llm 2026.4.0.
-    "gpt-oss-20b":                      dict(path="furiosa-ai/gpt-oss-20b",                      tp=8,  cards=1, pp=1, tool="openai",     reasoning=None,         ctx=131072,
-                                             extra=["--data-parallel-routing-policy", "round-robin"]),
+    # 컨텍스트는 총 65,536 으로 자른다(2026-10-25, 수업): serve --max-model-len 65536 + ctx 65536(→ 클라이언트
+    # ctx 힌트). 128K 를 열어 두면 요청 하나가 100K 를 들고 와 복제본 하나를 25 s 붙든다(프리필 ~5K tok/s);
+    # 64K 면 openclaude 자동 요약 문턱이 35.5K 라 수업 대화에 충분. 근거: notes/2026-10-24-multi-npu-gateway-design.md 2절.
+    "gpt-oss-20b":                      dict(path="furiosa-ai/gpt-oss-20b",                      tp=8,  cards=1, pp=1, tool="openai",     reasoning=None,         ctx=65536,
+                                             extra=["--data-parallel-routing-policy", "round-robin",
+                                                    "--max-model-len", "65536"]),
     "Solar-Open-100B-NVFP4A16":         dict(path="furiosa-ai/Solar-Open-100B-NVFP4A16",         tp=32, cards=4, pp=1, tool="solar_open", reasoning="solar_open", ctx=131072),
     "Qwen3-32B-FP8":                    dict(path="furiosa-ai/Qwen3-32B-FP8",                    tp=32, cards=4, pp=1, tool="hermes",     reasoning="qwen3",      ctx=40960,   tps={8: f"{NVME_ART}/qwen3-32b-tp8"}),
     "Llama-3.3-70B-Instruct":           dict(path="furiosa-ai/Llama-3.3-70B-Instruct",           tp=32, cards=4, pp=1, tool="llama3_json", reasoning=None,        ctx=131072),
@@ -528,22 +541,38 @@ class Router:
         그래서 후보는 '처리 중 요청 0개 + ready 후 GRACE 초 지난' 백엔드뿐이다. 후보가
         없으면 기다린다(self.lock 은 쥔 채로 — warm 요청은 락프리 경로라 안 막히고,
         그 요청들이 끝나야 후보가 생긴다). EVICT_WAIT 을 넘기면 교착보다는 낫다고 보고
-        마지막 수단으로 LRU 를 끊는다."""
+        마지막 수단으로 LRU 를 끊는다.
+
+        수업 모드(2026-10-25): PINNED 에 든 백엔드는 유휴든 아니든 후보가 아니다. 내릴 수 있는
+        백엔드가 하나도 없으면 기다려 봐야 생길 리 없으니 즉시 RuntimeError. FORCE_EVICT 가
+        꺼져 있으면 EVICT_WAIT 뒤 강제 종료 대신 RuntimeError — 요청은 503 으로 실패하고
+        핀·처리 중 백엔드는 그대로 남는다. _start 가 이 예외를 받아 state 를 'error' 로 둔다."""
         deadline = time.time() + EVICT_WAIT
         while len(self._free_cards()) < need and self.running:
+            evictable = [b for b in self.running.values() if b.model_id not in PINNED]
+            if not evictable:
+                raise RuntimeError(self._no_cards_msg(need))
             now = time.time()
             with self.ilock:
-                idle = [b for b in self.running.values()
+                idle = [b for b in evictable
                         if b.inflight == 0 and (b.ready_at is None or now - b.ready_at >= EVICT_GRACE)]
             if idle:
                 self._stop(min(idle, key=lambda b: b.last_used))
                 continue
             if now >= deadline:
-                victim = min(self.running.values(), key=lambda b: b.last_used)
+                if not FORCE_EVICT:
+                    raise RuntimeError(self._no_cards_msg(need))
+                victim = min(evictable, key=lambda b: b.last_used)
                 self._log(f"evict-wait {EVICT_WAIT}s 초과 — 사용 중인 '{victim.model_id}' 을(를) 강제로 내린다")
                 self._stop(victim)
                 continue
             time.sleep(1)
+
+    def _no_cards_msg(self, need):
+        pinned = sorted(m for m in self.running if m in PINNED)
+        busy = sorted(m for m, b in self.running.items() if m not in PINNED and b.inflight > 0)
+        return (f"카드 부족 — 핀 모델을 내릴 수 없음 (need {need}, free {len(self._free_cards())}, "
+                f"핀 {pinned}, 처리 중 {busy}, force_evict={'on' if FORCE_EVICT else 'off'})")
 
     def _start(self, model_id):
         base, tp, dp, pp = parse_variant(model_id)
@@ -557,7 +586,13 @@ class Router:
         if need > len(ALL_CARDS):
             raise RuntimeError(f"{need}장 필요 — 카드는 {len(ALL_CARDS)}장뿐")
         self.state[model_id] = "loading"
-        self._evict_until(need)
+        try:
+            self._evict_until(need)
+        except RuntimeError as e:
+            # 핀·FORCE_EVICT=0 으로 카드를 못 만든 경우. 'loading' 으로 남겨 두면 LED 가 영원히 노랑이다.
+            self.state[model_id] = "error"
+            self._log(f"start '{model_id}' 포기: {e}")
+            raise
         free = self._free_cards()
         if len(free) < need:
             self.state[model_id] = "error"
@@ -700,6 +735,26 @@ class Router:
                 b.inflight = max(0, b.inflight - 1)
                 b.last_used = time.time()
 
+    def evict(self, model_id, force=False):
+        """백엔드 하나를 내린다(수업 창 끝·콘솔 '내리기'). 반환 "ok" | "pinned" | "busy" | "down".
+
+        force=False 면 핀 모델("pinned")과 처리 중(inflight>0, "busy") 백엔드는 거절한다.
+        force=True 는 둘 다 건너뛴다 — 진행 중인 턴이 끊기므로 수업 끝처럼 의도한 때만.
+        _stop 은 self.lock 아래에서만 돈다(_start 와 같은 규칙) — 콜드스타트 중이면 그게 끝날 때까지
+        기다린다."""
+        if model_id in PINNED and not force:
+            return "pinned"
+        with self.lock:
+            b = self.running.get(model_id)
+            if b is None or not b.alive():
+                return "down"
+            with self.ilock:
+                busy = b.inflight > 0
+            if busy and not force:
+                return "busy"
+            self._stop(b)
+        return "ok"
+
     def status(self):
         # 락 없이 스냅샷(list 복사 후 순회) — ensure() 가 콜드스타트 동안 self.lock 을 잡고 있어도
         # 상태 조회는 블로킹되지 않는다. dict 읽기는 GIL 하에서 안전.
@@ -830,6 +885,26 @@ def build_app():
         threading.Thread(target=_go, daemon=True).start()
         return {"ok": True, "model": model}
 
+    @app.post("/router/evict")
+    async def evict(request: Request):
+        """백엔드를 내린다. 본문 {"model": id, "force": false}.
+        핀 모델은 force 없이는 409 pinned, 처리 중이면 409 busy, 안 떠 있으면 404 down,
+        내렸으면 {"ok": true}. 수업 창이 끝날 때 게이트웨이 타이머가 force=true 로 부른다."""
+        try:
+            payload = json.loads(await request.body() or b"{}")
+        except Exception:
+            payload = {}
+        model = payload.get("model") or ""
+        force = bool(payload.get("force", False))
+        if parse_variant(model)[0] not in REGISTRY:
+            return JSONResponse({"error": {"message": f"unknown model '{model}'"}}, status_code=404)
+        # 락 대기·종료·카드 해제 대기(smi)가 이벤트 루프를 막지 않게 threadpool 로.
+        result = await run_in_threadpool(ROUTER.evict, model, force)
+        if result == "ok":
+            return {"ok": True}
+        return JSONResponse({"ok": False, "reason": result, "model": model},
+                            status_code=404 if result == "down" else 409)
+
     # ── 수업용 설문 수집 ───────────────────────────────────────────────────
     # 클라이언트의 /survey 가 보낸 응답을 한 파일에 모은다. 학생 PC 에도 사본이
     # 남지만(클라이언트가 먼저 저장한다), 모아 보는 곳은 여기뿐이다.
@@ -942,7 +1017,8 @@ def build_app():
 
     @app.get("/router/status")
     def router_status():
-        return {"running": ROUTER.status(), "free_cards": ROUTER._free_cards()}
+        return {"running": ROUTER.status(), "free_cards": ROUTER._free_cards(),
+                "pinned": sorted(PINNED), "force_evict": FORCE_EVICT}
 
     @app.get("/router/models")
     async def router_models():
@@ -1169,6 +1245,8 @@ def main():
         nvar = len(all_model_ids()) - len(REGISTRY)
         ROUTER._log(f"furiosa-router up on {host}:{ROUTER_PORT}  ({len(REGISTRY)} models + {nvar} dp/pp variants, "
                     f"auth={authmode})  pid={os.getpid()}")
+        if PINNED or not FORCE_EVICT:
+            ROUTER._log(f"수업 모드: pin={sorted(PINNED)} force_evict={'on' if FORCE_EVICT else 'off'}")
         uvicorn.run(build_app(), host=host, port=ROUTER_PORT, log_level="warning")
     else:
         print(__doc__)

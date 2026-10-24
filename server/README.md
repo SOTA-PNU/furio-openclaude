@@ -55,6 +55,33 @@ evict) 카드를 확보합니다. furiosa-llm 은 serve 1프로세스=모델 1�
 
 검증: `python3 test_furiosa_router.py` (NPU 없이 도는 축출 정책 테스트 14개).
 
+### 수업 모드 (2026-10-25)
+
+25명이 한 라우터를 쓰면 LAN 의 다른 사용자 한 명의 `/model` 이 LRU 로 모두의 모델을 내린다. 그래서
+핀·강제 evict 끔·evict API 를 둔다. 환경변수는 `serve-router.sh` 옆 `.env`(gitignore)에 적는다.
+
+| 환경변수 | 기본 | 뜻 |
+|---|---|---|
+| `ROUTER_PIN` | 없음 | 쉼표 구분 모델 ID(변형 포함, 예 `gpt-oss-20b@dp4`). LRU·강제 축출 어느 경로로도 안 내려감 |
+| `ROUTER_FORCE_EVICT` | `1` | `0` 이면 `ROUTER_EVICT_WAIT` 뒤 사용 중 백엔드 강제 종료 대신 그 요청을 503 으로 실패 |
+
+- 내릴 수 있는 백엔드가 없으면(전부 핀) 기다리지 않고 즉시 503 — `/router/status` 의 그 모델 `state` 는 `error`.
+- `POST /router/evict` `{"model": "<id>", "force": false}` → `{"ok": true}`. 핀이면 `409 {"reason":"pinned"}`,
+  처리 중이면 `409 {"reason":"busy"}`, 안 떠 있으면 `404 {"reason":"down"}`. `force: true` 는 셋 중 앞 둘을
+  건너뛴다(수업 끝에 게이트웨이 타이머가 핀 모델을 내리는 길).
+- `GET /router/status` 에 `pinned: [...]`·`force_evict: bool` 이 붙는다.
+- `gpt-oss-20b`: serve 에 `--max-model-len 65536`, `ctx 65536`(클라이언트 ctx 힌트). 근거는
+  `notes/2026-10-24-multi-npu-gateway-design.md` 2절(64K 에서 자동 요약 문턱 35.5K).
+
+```bash
+# server/.env
+ROUTER_PIN=gpt-oss-20b@dp4
+ROUTER_FORCE_EVICT=0
+FURIO_CLIENT_DIST=/home/jun/NPU_AIP/openclaude-fork/dist
+```
+
+검증: `python -m pytest server/test_router_classmode.py -q` (NPU 없이 돈다 — furiosa-llm·smi 경로는 막혀 있다).
+
 > 클라이언트도 함께 고쳐야 의미가 있습니다. openclaude 의 백그라운드 호출(세션 제목·주제
 > 판정)은 실행 시점의 `OPENAI_MODEL` 을 계속 썼기 때문에, `/model` 로 tp32 모델(4장 전부)로
 > 바꿔도 제목 생성 한 번에 그 모델이 통째로 내려갔다 다시 올라왔습니다(~100초). 포크의
