@@ -543,35 +543,59 @@ class Router:
         그 요청들이 끝나야 후보가 생긴다). EVICT_WAIT 을 넘기면 교착보다는 낫다고 보고
         마지막 수단으로 LRU 를 끊는다.
 
-        수업 모드(2026-10-25): PINNED 에 든 백엔드는 유휴든 아니든 후보가 아니다. 내릴 수 있는
-        백엔드가 하나도 없으면 기다려 봐야 생길 리 없으니 즉시 RuntimeError. FORCE_EVICT 가
-        꺼져 있으면 EVICT_WAIT 뒤 강제 종료 대신 RuntimeError — 요청은 503 으로 실패하고
-        핀·처리 중 백엔드는 그대로 남는다. _start 가 이 예외를 받아 state 를 'error' 로 둔다."""
+        수업 모드(2026-10-25): PINNED 에 든 백엔드는 유휴든 아니든 후보가 아니다. 이 루프가 만들
+        수 있는 카드의 최대는 '지금 빈 카드 + 내릴 수 있는(비핀) 백엔드가 쥔 카드' 다 — need 가
+        그보다 크면(핀이 3장을 쥐고 2장을 요구, 외부 serve 가 카드를 들고 있음) 기다려도·끊어도
+        못 채우니, 멀쩡한 백엔드를 헛되이 내리거나 EVICT_WAIT 동안 self.lock 을 쥐고 있지 말고
+        아무것도 내리지 않은 채 즉시 RuntimeError. FORCE_EVICT 가 꺼져 있으면 EVICT_WAIT 뒤 강제
+        종료 대신 RuntimeError — 요청은 503 으로 실패하고 핀·처리 중 백엔드는 그대로 남는다.
+        _start 가 이 예외를 받아 state 를 'error' 로 둔다.
+
+        희생양은 고른 그 ilock 안에서 evicting 을 박는다 — 고르고 나서 _stop 이 표시하기까지의 틈에
+        acquire() 의 락프리 경로가 그 백엔드를 새로 잡아 inflight 를 올리고, 그 요청이 끊기는
+        경쟁을 막기 위해서다(_stop 의 표시는 그대로 두되 여기서 먼저 한다)."""
         deadline = time.time() + EVICT_WAIT
-        while len(self._free_cards()) < need and self.running:
+        while True:
+            free = self._free_cards()
+            if len(free) >= need:
+                return
             evictable = [b for b in self.running.values() if b.model_id not in PINNED]
-            if not evictable:
-                raise RuntimeError(self._no_cards_msg(need))
+            reach = set(free) | {c for b in evictable for c in b.cards}
+            if len(reach) < need:
+                raise RuntimeError(self._no_cards_msg(need, "unreachable"))
             now = time.time()
+            forced = False
             with self.ilock:
                 idle = [b for b in evictable
                         if b.inflight == 0 and (b.ready_at is None or now - b.ready_at >= EVICT_GRACE)]
-            if idle:
-                self._stop(min(idle, key=lambda b: b.last_used))
-                continue
-            if now >= deadline:
-                if not FORCE_EVICT:
-                    raise RuntimeError(self._no_cards_msg(need))
-                victim = min(evictable, key=lambda b: b.last_used)
-                self._log(f"evict-wait {EVICT_WAIT}s 초과 — 사용 중인 '{victim.model_id}' 을(를) 강제로 내린다")
+                victim = min(idle, key=lambda b: b.last_used) if idle else None
+                if victim is None and now >= deadline and FORCE_EVICT:
+                    # evictable 은 비어 있지 않다(비었으면 reach == free < need 로 위에서 끝났다).
+                    victim = min(evictable, key=lambda b: b.last_used)
+                    forced = True
+                if victim is not None:
+                    victim.evicting = True
+            if victim is not None:
+                if forced:
+                    self._log(f"evict-wait {EVICT_WAIT}s 초과 — 사용 중인 '{victim.model_id}' 을(를) 강제로 내린다")
                 self._stop(victim)
                 continue
+            if now >= deadline:
+                raise RuntimeError(self._no_cards_msg(need, "busy"))
             time.sleep(1)
 
-    def _no_cards_msg(self, need):
+    def _no_cards_msg(self, need, why):
+        """why: "unreachable" — 핀·외부 점유를 뺀 카드로는 need 를 못 채움(아무것도 안 내렸다),
+        "busy" — EVICT_WAIT 가 지났는데 FORCE_EVICT 가 꺼져 있어 처리 중 백엔드를 끊지 않음."""
         pinned = sorted(m for m in self.running if m in PINNED)
         busy = sorted(m for m, b in self.running.items() if m not in PINNED and b.inflight > 0)
-        return (f"카드 부족 — 핀 모델을 내릴 수 없음 (need {need}, free {len(self._free_cards())}, "
+        if why == "busy":
+            reason = "처리 중인 백엔드를 강제로 내리지 않음"
+        elif pinned:
+            reason = "핀 모델을 내릴 수 없음"
+        else:
+            reason = "내릴 수 있는 백엔드를 다 내려도 모자람(외부 점유?)"
+        return (f"카드 부족 — {reason} (need {need}, free {len(self._free_cards())}, "
                 f"핀 {pinned}, 처리 중 {busy}, force_evict={'on' if FORCE_EVICT else 'off'})")
 
     def _start(self, model_id):
@@ -750,6 +774,11 @@ class Router:
                 return "down"
             with self.ilock:
                 busy = b.inflight > 0
+                if force or not busy:
+                    # 결정과 표시를 한 락 안에서 — 여기서 _stop 까지의 틈에 acquire() 의 락프리
+                    # 경로가 이 백엔드를 새로 잡아 그 요청이 끊기는 경쟁을 막는다. 거절(busy)
+                    # 되는 백엔드엔 표시를 남기지 않는다.
+                    b.evicting = True
             if busy and not force:
                 return "busy"
             self._stop(b)
@@ -889,13 +918,17 @@ def build_app():
     async def evict(request: Request):
         """백엔드를 내린다. 본문 {"model": id, "force": false}.
         핀 모델은 force 없이는 409 pinned, 처리 중이면 409 busy, 안 떠 있으면 404 down,
-        내렸으면 {"ok": true}. 수업 창이 끝날 때 게이트웨이 타이머가 force=true 로 부른다."""
+        내렸으면 {"ok": true}. 수업 창이 끝날 때 게이트웨이 타이머가 force=true 로 부른다.
+        force 는 JSON true 만 인정한다 — "true"·"false"·1 같은 값은 force 가 아니다(bool() 로
+        받으면 "false" 가 참이 되어 핀 모델이 내려간다)."""
         try:
             payload = json.loads(await request.body() or b"{}")
         except Exception:
             payload = {}
+        if not isinstance(payload, dict):
+            payload = {}
         model = payload.get("model") or ""
-        force = bool(payload.get("force", False))
+        force = payload.get("force") is True
         if parse_variant(model)[0] not in REGISTRY:
             return JSONResponse({"error": {"message": f"unknown model '{model}'"}}, status_code=404)
         # 락 대기·종료·카드 해제 대기(smi)가 이벤트 루프를 막지 않게 threadpool 로.

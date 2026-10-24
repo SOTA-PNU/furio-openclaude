@@ -16,16 +16,14 @@
 #   ROUTER_FORCE_EVICT 0 이면 카드가 모자라도 사용 중인 백엔드를 강제로 내리지 않고 그 요청을 503 으로 실패시킨다(기본 1)
 #
 # 같은 폴더의 .env(gitignore, KEY=VALUE 한 줄씩)에 적어 두면 재시작마다 같은 값으로 뜬다.
-# 셸에서 이미 준 변수는 .env 보다 우선한다.
+# 셸에서 이미 준 변수는(빈 값으로 준 것도) .env 보다 우선한다 — ROUTER_PIN= bash serve-router.sh 는
+# 이번 한 번만 핀 없이. 값은 글자 그대로(따옴표 포함), 꼴이 틀린 줄이 있으면 줄 번호를 들어 멈춘다.
+# 규칙 전부는 load-env.sh 머리에.
 # ───────────────────────────────────────────────────────────────────────────
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-if [ -f "$HERE/.env" ]; then
-  while IFS='=' read -r k v || [ -n "$k" ]; do
-    case "$k" in ''|\#*) continue ;; esac
-    [ -z "${!k:-}" ] && export "$k=$v"
-  done < "$HERE/.env"
-fi
+# shellcheck disable=SC1091
+source "$HERE/load-env.sh" "$HERE/.env"
 LOGDIR="${FURIO_LOGDIR:-$HERE/logs}"
 LOG="$LOGDIR/router.log"
 PIDFILE="$HERE/.router.pid"
@@ -51,6 +49,9 @@ if [ "${1:-start}" = "stop" ]; then
   echo "종료 완료"; exit 0
 fi
 
+if [ -n "${DOTENV_LOADED:-}${DOTENV_SKIPPED:-}" ]; then
+  echo "[..] .env 에서 읽음: ${DOTENV_LOADED:-(없음)}${DOTENV_SKIPPED:+   (셸 값 우선: $DOTENV_SKIPPED)}"
+fi
 echo "[..] 기존 라우터·백엔드 정리 (라우터가 NPU 카드를 직접 스케줄링한다)"
 stop_router
 pkill -f 'furiosa-llm[ ]serve' 2>/dev/null || true

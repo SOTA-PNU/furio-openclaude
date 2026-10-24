@@ -53,22 +53,28 @@ evict) 카드를 확보합니다. furiosa-llm 은 serve 1프로세스=모델 1�
 | 후보가 없으면 `ROUTER_EVICT_WAIT`(기본 300초)까지 대기 → 넘으면 강제 축출 | 대기는 턴을 지키려는 것, 강제는 교착을 막으려는 것 |
 | `ready` 전에는 프록시 대상이 아님 | `_start` 는 `_wait_ready` 前에 `running` 에 넣는다. `alive()` 만 보면 아직 듣지도 않는 포트에 붙어 ConnectError(→500) |
 
-검증: `python3 test_furiosa_router.py` (NPU 없이 도는 축출 정책 테스트 14개).
+검증: 아래 수업 모드 절의 pytest(축출 정책은 `server/test_router_classmode.py` 가 핀·강제 축출·도달
+가능성까지 함께 검사한다. 예전에 가리키던 `test_furiosa_router.py` 는 이 리포에 없다).
 
 ### 수업 모드 (2026-10-25)
 
 25명이 한 라우터를 쓰면 LAN 의 다른 사용자 한 명의 `/model` 이 LRU 로 모두의 모델을 내린다. 그래서
-핀·강제 evict 끔·evict API 를 둔다. 환경변수는 `serve-router.sh` 옆 `.env`(gitignore)에 적는다.
+핀·강제 evict 끔·evict API 를 둔다. 환경변수는 `serve-router.sh` 옆 `.env`(gitignore)에 적는다
+(로더 `load-env.sh`: `KEY=VALUE` 한 줄씩, 값은 글자 그대로 — 따옴표도 값, 셸에서 준 변수는 빈 값이어도
+우선, 꼴이 틀린 줄은 줄 번호를 들어 멈추고 라우터를 띄우지 않는다).
 
 | 환경변수 | 기본 | 뜻 |
 |---|---|---|
 | `ROUTER_PIN` | 없음 | 쉼표 구분 모델 ID(변형 포함, 예 `gpt-oss-20b@dp4`). LRU·강제 축출 어느 경로로도 안 내려감 |
 | `ROUTER_FORCE_EVICT` | `1` | `0` 이면 `ROUTER_EVICT_WAIT` 뒤 사용 중 백엔드 강제 종료 대신 그 요청을 503 으로 실패 |
 
-- 내릴 수 있는 백엔드가 없으면(전부 핀) 기다리지 않고 즉시 503 — `/router/status` 의 그 모델 `state` 는 `error`.
+- 빈 카드 + 내릴 수 있는(비핀) 백엔드가 쥔 카드로 필요한 장수를 못 채우면(전부 핀, 핀이 3장을 쥐고
+  2장을 요구, 외부 serve 가 카드를 들고 있음) **아무것도 내리지 않고** 즉시 503 — 기다리지도, 멀쩡한
+  비핀 백엔드를 헛되이 내리지도 않는다. `/router/status` 의 그 모델 `state` 는 `error`.
 - `POST /router/evict` `{"model": "<id>", "force": false}` → `{"ok": true}`. 핀이면 `409 {"reason":"pinned"}`,
   처리 중이면 `409 {"reason":"busy"}`, 안 떠 있으면 `404 {"reason":"down"}`. `force: true` 는 셋 중 앞 둘을
-  건너뛴다(수업 끝에 게이트웨이 타이머가 핀 모델을 내리는 길).
+  건너뛴다(수업 끝에 게이트웨이 타이머가 핀 모델을 내리는 길). `force` 는 JSON `true` 만 — `"true"`·`1` 은
+  force 가 아니다.
 - `GET /router/status` 에 `pinned: [...]`·`force_evict: bool` 이 붙는다.
 - `gpt-oss-20b`: serve 에 `--max-model-len 65536`, `ctx 65536`(클라이언트 ctx 힌트). 근거는
   `notes/2026-10-24-multi-npu-gateway-design.md` 2절(64K 에서 자동 요약 문턱 35.5K).
@@ -80,7 +86,16 @@ ROUTER_FORCE_EVICT=0
 FURIO_CLIENT_DIST=/home/jun/NPU_AIP/openclaude-fork/dist
 ```
 
-검증: `python -m pytest server/test_router_classmode.py -q` (NPU 없이 돈다 — furiosa-llm·smi 경로는 막혀 있다).
+이번 한 번만 핀 없이: `ROUTER_PIN= bash server/serve-router.sh`.
+
+검증(NPU 없이 돈다 — furiosa-llm·smi 경로는 막혀 있다). `pytest`·`fastapi`·`httpx` 가 든 파이썬이 필요하다.
+`~/furiosa` venv 에는 pytest 가 없고 시스템 python3 에는 fastapi 가 없으니 시험용 venv 를 하나 만든다:
+
+```bash
+python3 -m venv ~/.venvs/router-test && ~/.venvs/router-test/bin/pip install pytest fastapi httpx
+taskset -c 64-127 ~/.venvs/router-test/bin/python -m pytest \
+  server/test_router_classmode.py server/test_serve_router_env.py -q
+```
 
 > 클라이언트도 함께 고쳐야 의미가 있습니다. openclaude 의 백그라운드 호출(세션 제목·주제
 > 판정)은 실행 시점의 `OPENAI_MODEL` 을 계속 썼기 때문에, `/model` 로 tp32 모델(4장 전부)로

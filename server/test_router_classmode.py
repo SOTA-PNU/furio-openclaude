@@ -155,6 +155,105 @@ def test_all_pinned_raises_without_waiting(monkeypatch):
     assert stopped == []
 
 
+# ── 못 채우는 need 는 아무것도 내리지 않고 즉시 실패 ─────────────────────────
+def test_unattainable_need_evicts_nothing(monkeypatch):
+    """핀 [0,1,2]·비핀 유휴 [3], need 2 → 비핀을 내려도 1장뿐이니 내리지 않고 즉시 RuntimeError.
+    (검토 지적: 예전엔 멀쩡한 비핀을 먼저 내린 뒤에야 실패했다.) need 1 은 그대로 된다."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    pinned = make_backend(PIN, [0, 1, 2])
+    other = make_backend(IDLE, [3])
+    r, stopped = make_router(monkeypatch, pinned, other)
+
+    with pytest.raises(RuntimeError, match="카드 부족"):
+        r._evict_until(2)
+    assert stopped == []
+    assert set(r.running) == {PIN, IDLE}
+    assert other.evicting is False and other.usable()
+
+    r._evict_until(1)
+    assert stopped == [IDLE]
+
+
+def test_unattainable_need_does_not_force_kill(monkeypatch):
+    """FORCE_EVICT 켜짐·EVICT_WAIT 0: 비핀 처리 중 [3] 을 끊어도 need 2 는 못 채운다 → 끊지 않는다."""
+    monkeypatch.setattr(fr, "EVICT_WAIT", 0)
+    monkeypatch.setattr(fr, "FORCE_EVICT", True)
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    pinned = make_backend(PIN, [0, 1, 2])
+    busy = make_backend(BUSY, [3], inflight=1)
+    r, stopped = make_router(monkeypatch, pinned, busy)
+
+    with pytest.raises(RuntimeError, match="카드 부족"):
+        r._evict_until(2)
+    assert stopped == []
+    assert busy.evicting is False
+
+
+def test_unattainable_need_does_not_wait(monkeypatch):
+    """FORCE_EVICT 꺼짐·EVICT_WAIT 3: 못 채울 need 는 기한까지 self.lock 을 쥐고 기다리지 않는다."""
+    monkeypatch.setattr(fr, "EVICT_WAIT", 3)
+    monkeypatch.setattr(fr, "FORCE_EVICT", False)
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    pinned = make_backend(PIN, [0, 1, 2])
+    busy = make_backend(BUSY, [3], inflight=1)
+    r, stopped = make_router(monkeypatch, pinned, busy)
+
+    t0 = time.time()
+    with pytest.raises(RuntimeError, match="카드 부족"):
+        r._evict_until(2)
+    assert time.time() - t0 < 1
+    assert stopped == []
+
+
+def test_unattainable_need_external_cards_no_pin(monkeypatch):
+    """핀 없이도 같다: 외부 serve 가 [0,1,2] 를 쥐고(smi 사용량) 내 비핀 유휴가 [3] 뿐이면
+    need 2 는 못 채운다 → 유휴 백엔드를 헛되이 내리지 않고 즉시 실패."""
+    monkeypatch.setattr(fr, "PINNED", set())
+    monkeypatch.setattr(fr, "npu_used_mem", lambda fresh=False: {0: 40.0, 1: 40.0, 2: 40.0})
+    other = make_backend(IDLE, [3])
+    r, stopped = make_router(monkeypatch, other)
+    assert r._free_cards() == []
+
+    with pytest.raises(RuntimeError, match="카드 부족"):
+        r._evict_until(2)
+    assert stopped == []
+    assert IDLE in r.running
+
+
+def test_evict_until_marks_victim_before_stop(monkeypatch):
+    """희생양은 고른 그 ilock 안에서 evicting 표시 — _stop 에 이르기 전 acquire() 의 락프리 경로가
+    그 백엔드를 새로 잡지 못하게(기록용 _stop 은 표시를 안 하므로 _evict_until 이 박은 것이다)."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    pinned = make_backend(PIN, [0, 1, 2])
+    other = make_backend(IDLE, [3])
+    r, stopped = make_router(monkeypatch, pinned, other)
+
+    r._evict_until(1)
+    assert stopped == [IDLE]
+    assert other.evicting is True
+
+
+# ── Router.evict ──────────────────────────────────────────────────────────
+def test_evict_marks_evicting_in_same_lock_as_busy_check(monkeypatch):
+    """evict(): busy 판정과 evicting 표시를 같은 ilock 안에서. 거절(busy)된 백엔드엔 표시가 남지 않는다."""
+    monkeypatch.setattr(fr, "PINNED", set())
+    busy = make_backend(BUSY, [2], inflight=1)
+    idle = make_backend(IDLE, [3])
+    r, stopped = make_router(monkeypatch, busy, idle)
+
+    assert r.evict(BUSY) == "busy"
+    assert busy.evicting is False and busy.usable()
+    assert stopped == []
+
+    assert r.evict(IDLE) == "ok"
+    assert idle.evicting is True
+    assert stopped == [IDLE]
+
+    assert r.evict(BUSY, force=True) == "ok"
+    assert busy.evicting is True
+    assert stopped == [IDLE, BUSY]
+
+
 # ── HTTP ──────────────────────────────────────────────────────────────────
 def test_evict_endpoint_pinned_409_busy_409_ok(monkeypatch):
     from fastapi.testclient import TestClient
@@ -193,6 +292,25 @@ def test_evict_endpoint_pinned_409_busy_409_ok(monkeypatch):
     assert res.status_code == 404
     res = c.post("/router/evict", json={"model": "no-such-model"})
     assert res.status_code == 404
+
+
+def test_evict_endpoint_force_must_be_json_true(monkeypatch):
+    """force 는 JSON true 만 — "true"·"false"·1 같은 값은 force 가 아니다(409 그대로)."""
+    from fastapi.testclient import TestClient
+
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    pinned = make_backend(PIN, [0, 1])
+    busy = make_backend(BUSY, [2], inflight=1)
+    r, stopped = make_router(monkeypatch, pinned, busy)
+    monkeypatch.setattr(fr, "ROUTER", r)
+    c = TestClient(fr.build_app())
+
+    for bad in ("true", "false", "yes", 1):
+        res = c.post("/router/evict", json={"model": BUSY, "force": bad})
+        assert (res.status_code, res.json()["reason"]) == (409, "busy"), bad
+        res = c.post("/router/evict", json={"model": PIN, "force": bad})
+        assert (res.status_code, res.json()["reason"]) == (409, "pinned"), bad
+    assert stopped == []
 
 
 def test_status_lists_pinned(monkeypatch):
