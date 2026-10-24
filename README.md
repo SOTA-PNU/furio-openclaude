@@ -11,7 +11,7 @@ Furiosa RNGD NPU 가 한다. 클라우드 API 키도, GPU 도 필요 없다.
 |---|---|---|
 | `client/` | `furio` 설치기(Linux·macOS·Windows), SSH 터널 도우미, 목 라우터 | 쓰는 사람 |
 | `server/` | 모델을 요청 때 올리는 라우터(OpenAI 호환 `:8400`), furiosa-llm 파서 패치 | NPU 서버 운영자 |
-| `openclaude-npu/` | 화면(openclaude v0.33.0)에 NPU 기능을 더한 패치 30개 | 클라이언트를 직접 빌드할 때 |
+| `openclaude-npu/` | 화면(openclaude v0.33.0)에 NPU 기능을 더한 패치 31개 | 클라이언트를 직접 빌드할 때 |
 
 라우터는 **요청이 올 때 모델을 올린다**. 카드가 모자라면 오래 안 쓴 모델을 내리고 바꾼다.
 그래서 모델 17종을 등록해 두고도 카드 4장으로 돌아간다. 모델 하나가 올라오는 데 최대 2분쯤
@@ -75,14 +75,12 @@ furio --model Qwen3-32B-FP8    # 이번 실행만 다른 모델로
 - `/model` — 모델과 tp·dp·pp(카드를 몇 장 어떻게 쓸지)를 고른다. 고르는 즉시 라우터가 올리기 시작한다.
 - `Shift+Tab` — 권한 모드 순환: 매번 확인 → 편집 자동 → 계획 → 전부 자동.
 - 상태줄 LED — 초록은 올라와 있음, 노랑은 올라오는 중, 빨강은 아직 카드에 없음.
-- `/survey` — 쓴 경험을 묻는 10문항 설문. 화살표로 고르고 Enter, Esc 는 한 걸음 뒤로.
 
-![furio 설문 화면](furio-survey.png)
+이 저장소의 클라이언트는 **일반판**(lab)이다. 수업용 **수업판**(class: 모델 고정·`/model` 등 서버를 바꾸는 명령 없음·`/survey` 설문)은
+같은 소스를 `FURIO_EDITION=class` 로 빌드한 것으로, 저장소 `furio-class` 에서 배포한다(설치기·빌드 스크립트·패치 사본).
+설문 응답을 모으고 보는 쪽(라우터 `/survey/responses`·`/router/survey/*`)은 `server/README.md` 에 있다.
 
-응답은 먼저 설정 폴더(`<config>/survey/responses.jsonl`)에 적고 그다음 라우터로 보낸다 —
-서버가 꺼져 있어도 답이 사라지지 않는다. 보낼 곳은 이미 쓰고 있는 라우터 주소에서 끌어내므로
-쓰는 사람이 설정할 것은 없다. 수업에서 걷을 때는 마지막에 `/survey` 한 번만 안내하면 된다
-(모으고 보는 방법은 `server/README.md`).
+![furio 설문 화면 — 수업판](furio-survey.png)
 
 기본 모델은 `gpt-oss-120b` 다(도구 호출·코드 작성 실측 확인). 도구 호출까지 확인한 모델은
 `gpt-oss-120b`, `Solar-Open-100B`, `Qwen3-32B-FP8`, `Llama-3.3-70B-Instruct` 넷이다.

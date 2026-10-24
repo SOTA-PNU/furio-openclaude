@@ -1,7 +1,7 @@
 # NPU 패치 — openclaude 를 furio 클라이언트로
 
 furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude Code 계열 TUI)다.
-`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 30개다.
+`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 31개다.
 
 - 상태줄에 모델별 LED — 라우터의 `/router/status` 를 폴링해 올라오는 중(노랑)/사용 가능(초록)을 보여준다
 - `/model` 창에서 tp·dp·pp 를 따로 고른다(라우터가 주는 변형 목록 기준)
@@ -47,11 +47,15 @@ furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude 
 git clone https://github.com/Twigpine/openclaude.git
 cd openclaude
 git checkout v0.33.0
-git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 30개
+git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 31개
 
 bun install
-bun run build          # → dist/cli.mjs, dist/sdk.mjs
+bun run build          # → dist/cli.mjs, dist/sdk.mjs   (일반판 = lab, 설문 없음)
+FURIO_EDITION=class FURIO_OUTDIR=./dist-class bun run build   # 수업판: /model·/provider 등 13개 명령 제거, /survey 켬
 ```
+
+에디션은 번들에 박힌다(`scripts/build.ts` 의 `define`, `src/furio/edition.ts`) — 실행 때 환경변수로 못 바꾼다.
+수업판 제거 목록은 `src/furio/edition.ts` 한 곳이다.
 
 빌드에는 [bun](https://bun.sh) 이 필요하다(openclaude 자체 빌드 도구).
 

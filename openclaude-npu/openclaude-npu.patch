@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/30] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/31] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/30] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/31] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/30] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/31] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/30] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/31] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/30] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/31] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/30] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/31] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/30] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/31] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/30] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/31] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/30] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/31] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/30] statusline: separate the current-model marker from the
+Subject: [PATCH 10/31] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/30] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/31] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/30] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/31] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/30] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/31] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/30] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/31] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/30] model picker: support a per-model default pp (large
+Subject: [PATCH 15/31] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/30] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/31] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/30] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/31] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/30] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/31] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/30] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/31] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/30] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/31] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/30] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/31] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/30] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/31] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/30] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/31] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5563,7 +5563,7 @@ index 522362ad..1c509b74 100644
 From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/30] brand: give each logo letter its own color from a cool
+Subject: [PATCH 24/31] brand: give each logo letter its own color from a cool
  spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5756,7 +5756,7 @@ index 94af8b4c..3e2cf093 100644
 From 9cf8784b2009e6734c8bd3d24740e72ccc69a6ea Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:07:48 +0900
-Subject: [PATCH 25/30] startup: drop the provider box, keep the mark and one
+Subject: [PATCH 25/31] startup: drop the provider box, keep the mark and one
  line
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5913,7 +5913,7 @@ index c21c8def..9b775d33 100644
 From bf4d4d421cbaa00a9c49fb6851a4d713b11729b9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:37:56 +0900
-Subject: [PATCH 26/30] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
+Subject: [PATCH 26/31] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
  =?UTF-8?q?=EA=B8=B0:=20agents=20=ED=95=9C=20=EB=8B=A8=EC=96=B4=EB=A1=9C?=
  =?UTF-8?q?=20=EC=9D=B4=20=EC=BB=B4=ED=93=A8=ED=84=B0=EC=9D=98=20=EC=84=B8?=
  =?UTF-8?q?=EC=85=98=EC=9D=84=20=EC=97=B4=EA=B3=A0=20=EB=8B=A4=EB=A5=B8=20?=
@@ -6389,7 +6389,7 @@ index 00000000..fb864cb2
 From 032cb8ae9935682e0a02e8fff4a8c09b355ad0d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:16:30 +0900
-Subject: [PATCH 27/30] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
+Subject: [PATCH 27/31] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
  =?UTF-8?q?=20=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=95=88=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EC=82=AC=EC=9A=A9=20=EA=B2=BD=ED=97=98=EC=9D=84=20=EB=B0=9B?=
  =?UTF-8?q?=EC=95=84=20=EB=9D=BC=EC=9A=B0=ED=84=B0=EB=A1=9C=20=EB=B3=B4?=
@@ -7711,7 +7711,7 @@ index 00000000..e41d7a38
 From 4c1dd2e0ccbe99a2b09c45f2482d67aea3db94d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:59:23 +0900
-Subject: [PATCH 28/30] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 28/31] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20agents=20=EB=A5=BC=20claude=20agents=20=EC=8B=9D=20=EA=B5=AC?=
  =?UTF-8?q?=EC=84=B1=EC=9C=BC=EB=A1=9C,=20=EB=B9=88=20=ED=94=84=EB=A1=AC?=
  =?UTF-8?q?=ED=94=84=ED=8A=B8=EC=97=90=EC=84=9C=20=E2=86=90=20=EB=A1=9C?=
@@ -8811,7 +8811,7 @@ index fb864cb2..858a1faa 100644
 From c969ee7ee1a65e2c6036a3dd28ee8b28b6bf8cbf Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 18:42:09 +0900
-Subject: [PATCH 29/30] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 29/31] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20=EC=84=B8=EC=85=98=20=EC=95=88=EC=9D=98=20=EC=84=A0=ED=83=9D?=
  =?UTF-8?q?=EC=B0=BD=EC=9D=84=20=EB=8C=80=EC=B2=B4=20=ED=99=94=EB=A9=B4?=
  =?UTF-8?q?=EC=97=90=20=EB=9D=84=EC=9B=8C=20=EC=9E=90=EB=A6=AC=EB=A5=BC=20?=
@@ -9162,7 +9162,7 @@ index 858a1faa..4549b875 100644
 From 5f7367539a9ac62b25088f69a1ad0a1b9e15e1d8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 22:41:22 +0900
-Subject: [PATCH 30/30] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
+Subject: [PATCH 30/31] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
  =?UTF-8?q?=EA=B0=92=EC=9D=84=20=EB=AF=B8=EB=A6=AC=20=EA=B3=A0=EB=A5=B8=20?=
  =?UTF-8?q?=EB=8B=B5(=EC=B4=88=EB=A1=9D)=EC=9C=BC=EB=A1=9C=20=EA=B7=B8?=
  =?UTF-8?q?=EB=A6=AC=EC=A7=80=20=EC=95=8A=EA=B3=A0=20=EC=BB=A4=EC=84=9C=20?=
@@ -9196,6 +9196,435 @@ index ef2b04a9..d16156ab 100644
            defaultFocusValue={answers[question.id] ?? question.defaultValue}
          />
        ) : (
+-- 
+2.43.0
+
+
+From cacc5fb703bf009ba3c25d3530d319c2de787022 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sun, 25 Oct 2026 00:31:57 +0900
+Subject: [PATCH 31/31] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
+ =?UTF-8?q?=EC=9C=84=EC=B9=98:=20=EC=9D=BC=EB=B0=98=ED=8C=90(lab)=C2=B7?=
+ =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90(class)=EC=9D=84=20=ED=95=9C=20?=
+ =?UTF-8?q?=EC=86=8C=EC=8A=A4=EC=97=90=EC=84=9C=20=EB=B9=8C=EB=93=9C?=
+ =?UTF-8?q?=ED=95=9C=EB=8B=A4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- scripts/build.ts: FURIO_EDITION(lab|class)을 define 으로 번들에 박고 FURIO_OUTDIR 로 출력 폴더를 고른다
+- src/furio/edition.ts: 수업판이 숨기는 명령 13개(model·provider·effort·fast·smartroute·set-context-window·
+  update·upgrade·extra-usage·rate-limit-options·passes·login·logout)와 수업판에만 있는 survey
+- commands.ts 가 이름으로 거르고, 수업판은 alt+p 피커와 상태줄 스위처 Enter 도 막는다
+- 설문 권유는 수업판에서만, 설문 전송에 Authorization: Bearer(placeholder 키는 안 보냄)
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ scripts/build.ts                           | 20 +++++---
+ src/commands.ts                            |  7 ++-
+ src/components/PromptInput/PromptInput.tsx |  8 +++
+ src/furio/edition.test.ts                  | 50 ++++++++++++++++++
+ src/furio/edition.ts                       | 60 ++++++++++++++++++++++
+ src/utils/survey.test.ts                   | 20 ++++++++
+ src/utils/survey.ts                        | 10 +++-
+ src/utils/surveyPrompt.test.ts             | 24 ++++++++-
+ src/utils/surveyPrompt.ts                  |  3 ++
+ 9 files changed, 193 insertions(+), 9 deletions(-)
+ create mode 100644 src/furio/edition.test.ts
+ create mode 100644 src/furio/edition.ts
+
+diff --git a/scripts/build.ts b/scripts/build.ts
+index d46b2336..d060f328 100644
+--- a/scripts/build.ts
++++ b/scripts/build.ts
+@@ -18,6 +18,12 @@ import { canonicalStub, collectBundleStubs } from './stubMarkerGuard.js'
+ const nodeRequire = createRequire(import.meta.url)
+ const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'))
+ const version = pkg.version
++// furio edition (src/furio/edition.ts): `lab` is the general client, `class`
++// the student build for the NPU hands-on course. Baked in with `define` so a
++// built client cannot be flipped by setting the variable at runtime.
++// FURIO_OUTDIR lets both editions be built side by side (default ./dist).
++const furioEdition = process.env.FURIO_EDITION === 'class' ? 'class' : 'lab'
++const outdir = process.env.FURIO_OUTDIR || './dist'
+ // Baked into the update hints and the doctor checks, so it has to be the
+ // name the tarball is actually published under — derive it instead of
+ // repeating it.
+@@ -187,7 +193,7 @@ try {
+ 
+ result = await Bun.build({
+   entrypoints: ['./src/entrypoints/cli.tsx'],
+-  outdir: './dist',
++  outdir,
+   target: 'node',
+   format: 'esm',
+   splitting: false,
+@@ -199,6 +205,7 @@ result = await Bun.build({
+   minify: { whitespace: true, syntax: true, identifiers: false },
+   naming: 'cli.mjs',
+   define: {
++    'process.env.FURIO_EDITION': JSON.stringify(furioEdition),
+     // MACRO.* build-time constants
+     // Keep the internal compatibility version high enough to pass
+     // first-party minimum-version guards, but expose the real package
+@@ -529,7 +536,7 @@ if (!result.success) {
+   }
+   process.exitCode = 1
+ } else {
+-  console.log(`✓ Built openclaude v${version} → dist/cli.mjs`)
++  console.log(`✓ Built openclaude v${version} (${furioEdition} edition) → ${outdir}/cli.mjs`)
+ }
+ 
+ // ── SDK Bundle Build ──────────────────────────────────────────────────────
+@@ -538,7 +545,7 @@ console.log('Building SDK bundle...')
+ 
+ sdkResult = await Bun.build({
+   entrypoints: ['./src/entrypoints/sdk/index.ts'],
+-  outdir: './dist',
++  outdir,
+   target: 'node',
+   format: 'esm',
+   splitting: false,
+@@ -546,6 +553,7 @@ sdkResult = await Bun.build({
+   minify: false,
+   naming: 'sdk.mjs',
+   define: {
++    'process.env.FURIO_EDITION': JSON.stringify(furioEdition),
+     'MACRO.VERSION': JSON.stringify(version),
+     'MACRO.DISPLAY_VERSION': JSON.stringify(version),
+     'MACRO.BUILD_TIME': JSON.stringify(new Date().toISOString()),
+@@ -962,7 +970,7 @@ if (!sdkResult.success) {
+   }
+   process.exitCode = 1
+ } else {
+-  console.log(`✓ Built SDK bundle → dist/sdk.mjs`)
++  console.log(`✓ Built SDK bundle → ${outdir}/sdk.mjs`)
+ }
+ 
+ } finally {
+@@ -971,7 +979,7 @@ if (!sdkResult.success) {
+ 
+ // ── Validate SDK bundle for React/Ink leakage ──────────────────────────────
+ if (sdkResult?.success) {
+-  const sdkBundle = readFileSync('./dist/sdk.mjs', 'utf-8')
++  const sdkBundle = readFileSync(`${outdir}/sdk.mjs`, 'utf-8')
+   // Patterns that indicate React/Ink code leaked into the SDK bundle.
+   const reactInkPatterns = [
+     /from\s+["']react["']/,               // direct react import
+@@ -1046,7 +1054,7 @@ if (result?.success) {
+     [...ACCEPTABLE_RUNTIME_STUBS].map(canonicalStub),
+   )
+ 
+-  const bundleText = await Bun.file('dist/cli.mjs').text()
++  const bundleText = await Bun.file(`${outdir}/cli.mjs`).text()
+   // canonical key -> raw marker text (kept for human-readable diagnostics)
+   const stubbed = collectBundleStubs(bundleText)
+   const unexpected = [...stubbed]
+diff --git a/src/commands.ts b/src/commands.ts
+index 3e93f75b..2130530b 100644
+--- a/src/commands.ts
++++ b/src/commands.ts
+@@ -79,6 +79,7 @@ import theme from './commands/theme/index.js'
+ import logo from './commands/logo/index.js'
+ import survey from './commands/survey/index.js'
+ import switchSession from './commands/switch/index.js'
++import { commandAllowedInEdition } from './furio/edition.js'
+ import vim from './commands/vim/index.js'
+ import { feature } from 'bun:bundle'
+ import { isBuddyEnabled } from './buddy/feature.js'
+@@ -398,7 +399,11 @@ const COMMANDS = memoize((): Command[] => [
+   ...(process.env.USER_TYPE === 'ant' && !process.env.IS_DEMO
+     ? INTERNAL_ONLY_COMMANDS
+     : []),
+-].filter(isCommand).map(withOpenClaudeCommandLocalizationKey))
++].filter(isCommand)
++  // furio editions: the class build hides the commands that change what the
++  // server sees; the lab build has no survey (src/furio/edition.ts).
++  .filter(cmd => commandAllowedInEdition(cmd.name))
++  .map(withOpenClaudeCommandLocalizationKey))
+ 
+ function withOpenClaudeCommandLocalizationKey(cmd: Command): Command {
+   cmd.localizationKey ??= getOpenClaudeCommandDescriptionKey(cmd.name)
+diff --git a/src/components/PromptInput/PromptInput.tsx b/src/components/PromptInput/PromptInput.tsx
+index 128f8dfe..b9cf8087 100644
+--- a/src/components/PromptInput/PromptInput.tsx
++++ b/src/components/PromptInput/PromptInput.tsx
+@@ -40,6 +40,7 @@ import { getShortcutDisplay } from '../../keybindings/shortcutFormat.js';
+ import { useKeybinding, useKeybindings } from '../../keybindings/useKeybinding.js';
+ import type { MCPServerConnection } from '../../services/mcp/types.js';
+ import { npuDisplayModels, npuSwitcherEnter, preloadNpuModel } from '../../services/npuStatus.js';
++import { isClassEdition } from '../../furio/edition.js';
+ import { useNpuStatus } from '../../services/npuStatusHook.js';
+ import { abortPromptSuggestion, logSuggestionSuppressed } from '../../services/PromptSuggestion/promptSuggestion.js';
+ import { type ActiveSpeculationState, abortSpeculation } from '../../services/PromptSuggestion/speculation.js';
+@@ -1494,6 +1495,8 @@ function PromptInput({
+ 
+   // Handler for chat:modelPicker - toggle model picker
+   const handleModelPicker = useCallback(() => {
++    // Class edition: the server pins the model — no picker, not even by shortcut.
++    if (isClassEdition()) return;
+     setShowModelPicker(prev => !prev);
+     if (helpOpen) {
+       setHelpOpen(false);
+@@ -1933,6 +1936,11 @@ function PromptInput({
+       }
+       switch (footerItemSelected) {
+         case 'npu': {
++          // 수업판은 모델이 서버에 고정이라 상태줄에서도 못 바꾼다 — 포커스만 돌려준다.
++          if (isClassEdition()) {
++            selectFooterItem(null);
++            break;
++          }
+           // 커서가 있는 모델로 전환하고 포커스를 입력창에 돌려준다.
+           const target = npuFooterModelId;
+           const { switchModel, preload } = npuSwitcherEnter(target, npuCurrentModelId);
+diff --git a/src/furio/edition.test.ts b/src/furio/edition.test.ts
+new file mode 100644
+index 00000000..f297e27f
+--- /dev/null
++++ b/src/furio/edition.test.ts
+@@ -0,0 +1,50 @@
++import { afterEach, describe, expect, it } from 'bun:test'
++import {
++  CLASS_EDITION_HIDDEN_COMMANDS,
++  commandAllowedInEdition,
++  furioEdition,
++  isClassEdition,
++} from './edition.js'
++
++afterEach(() => {
++  delete process.env.FURIO_EDITION
++})
++
++describe('furioEdition', () => {
++  it('is lab unless the build says class', () => {
++    delete process.env.FURIO_EDITION
++    expect(furioEdition()).toBe('lab')
++    expect(isClassEdition()).toBe(false)
++    process.env.FURIO_EDITION = 'class'
++    expect(furioEdition()).toBe('class')
++    expect(isClassEdition()).toBe(true)
++    process.env.FURIO_EDITION = 'anything-else'
++    expect(furioEdition()).toBe('lab')
++  })
++})
++
++describe('commandAllowedInEdition', () => {
++  it('class: hides every server- and account-facing command, keeps the rest', () => {
++    for (const name of CLASS_EDITION_HIDDEN_COMMANDS) {
++      expect(commandAllowedInEdition(name, 'class')).toBe(false)
++    }
++    for (const name of ['help', 'clear', 'compact', 'status', 'survey', 'switch', 'resume']) {
++      expect(commandAllowedInEdition(name, 'class')).toBe(true)
++    }
++  })
++
++  it('lab: has every command except the survey', () => {
++    for (const name of CLASS_EDITION_HIDDEN_COMMANDS) {
++      expect(commandAllowedInEdition(name, 'lab')).toBe(true)
++    }
++    expect(commandAllowedInEdition('survey', 'lab')).toBe(false)
++    expect(commandAllowedInEdition('help', 'lab')).toBe(true)
++  })
++
++  it('defaults to the edition of this process', () => {
++    delete process.env.FURIO_EDITION
++    expect(commandAllowedInEdition('model')).toBe(true)
++    process.env.FURIO_EDITION = 'class'
++    expect(commandAllowedInEdition('model')).toBe(false)
++  })
++})
+diff --git a/src/furio/edition.ts b/src/furio/edition.ts
+new file mode 100644
+index 00000000..689939c8
+--- /dev/null
++++ b/src/furio/edition.ts
+@@ -0,0 +1,60 @@
++/**
++ * Which furio edition this client is.
++ *
++ * `lab`   — the general client the lab uses: every command, no survey.
++ * `class` — the student build for the NPU hands-on course: the service survey
++ *           is on, and every command that would change what the server sees
++ *           (model, provider, effort, context window) or the account the
++ *           client runs under (login, upgrade, self-update) is gone. The class
++ *           model is pinned by the server; the client cannot ask for another.
++ *
++ * `scripts/build.ts` substitutes `process.env.FURIO_EDITION` with a literal via
++ * Bun's `define`, so a built client is one edition for good. Running from
++ * source (bun run dev, tests) reads the real environment, which is why this is
++ * a function and not a module-level constant.
++ */
++export type FurioEdition = 'lab' | 'class'
++
++export function furioEdition(): FurioEdition {
++  return process.env.FURIO_EDITION === 'class' ? 'class' : 'lab'
++}
++
++export function isClassEdition(): boolean {
++  return furioEdition() === 'class'
++}
++
++/**
++ * Slash commands the class build does not have, by command name.
++ *
++ * The rule: anything that changes what the server sees or who the client is.
++ * `/status`, `/help`, `/compact` and the like only read or act locally, so
++ * they stay.
++ */
++export const CLASS_EDITION_HIDDEN_COMMANDS: ReadonlySet<string> = new Set([
++  'model', // picks model and tp/dp/pp — the server pins the class model
++  'provider', // switches base URL / key
++  'effort', // reasoning effort is a server-side cost
++  'fast', // Anthropic fast mode
++  'smartroute', // routes turns to a second model
++  'set-context-window', // longer context = longer prefill for everyone
++  'update', // self-update would replace this build
++  'upgrade', // Anthropic plan
++  'extra-usage', // Anthropic billing
++  'rate-limit-options', // Anthropic billing
++  'passes', // Anthropic guest passes
++  'login', // would switch the client to an Anthropic account
++  'logout',
++])
++
++/** Slash commands only the class build has. */
++export const CLASS_EDITION_ONLY_COMMANDS: ReadonlySet<string> = new Set([
++  'survey', // the course questionnaire
++])
++
++export function commandAllowedInEdition(
++  name: string,
++  edition: FurioEdition = furioEdition(),
++): boolean {
++  if (edition === 'class') return !CLASS_EDITION_HIDDEN_COMMANDS.has(name)
++  return !CLASS_EDITION_ONLY_COMMANDS.has(name)
++}
+diff --git a/src/utils/survey.test.ts b/src/utils/survey.test.ts
+index d2e160b1..8a71190c 100644
+--- a/src/utils/survey.test.ts
++++ b/src/utils/survey.test.ts
+@@ -116,6 +116,26 @@ describe('recordSurveyResponse', () => {
+     expect(stored.answers.satisfaction).toBe('high')
+   })
+ 
++  it('sends the client key as a Bearer token, but never the placeholder', async () => {
++    const headersSeen: Record<string, string>[] = []
++    const fetchImpl = (async (_url: string, init: { headers: Record<string, string> }) => {
++      headersSeen.push(init.headers)
++      return { ok: true } as Response
++    }) as unknown as typeof fetch
++    await recordSurveyResponse(response(), {
++      filePath: tmpFile(), endpoint: 'http://router/survey/responses', fetchImpl, apiKey: 'fk_abc',
++    })
++    await recordSurveyResponse(response(), {
++      filePath: tmpFile(), endpoint: 'http://router/survey/responses', fetchImpl, apiKey: 'dummy',
++    })
++    await recordSurveyResponse(response(), {
++      filePath: tmpFile(), endpoint: 'http://router/survey/responses', fetchImpl, apiKey: undefined,
++    })
++    expect(headersSeen[0]!.authorization).toBe('Bearer fk_abc')
++    expect(headersSeen[1]!.authorization).toBeUndefined()
++    expect(headersSeen[2]!.authorization).toBeUndefined()
++  })
++
+   it('keeps the answer locally when the router cannot be reached', async () => {
+     const filePath = tmpFile()
+     const result = await recordSurveyResponse(response(), {
+diff --git a/src/utils/survey.ts b/src/utils/survey.ts
+index b3959330..17a9405d 100644
+--- a/src/utils/survey.ts
++++ b/src/utils/survey.ts
+@@ -216,6 +216,8 @@ export async function recordSurveyResponse(
+     fetchImpl?: typeof fetch
+     filePath?: string
+     timeoutMs?: number
++    /** Bearer token for the endpoint; defaults to the key the chat already uses. */
++    apiKey?: string | undefined
+   } = {},
+ ): Promise<{ filePath: string; posted: boolean }> {
+   const filePath = deps.filePath ?? getSurveyFilePath()
+@@ -225,9 +227,15 @@ export async function recordSurveyResponse(
+   if (endpoint) {
+     const send = deps.fetchImpl ?? fetch
+     try {
++      // The gateway in front of the class servers takes the same key as the
++      // chat endpoint, so the survey needs no setting of its own; a bare
++      // router ignores the header. The placeholder key is not sent.
++      const headers: Record<string, string> = { 'content-type': 'application/json' }
++      const apiKey = 'apiKey' in deps ? deps.apiKey : process.env.OPENAI_API_KEY
++      if (apiKey && apiKey !== 'dummy') headers.authorization = `Bearer ${apiKey}`
+       const res = await send(endpoint, {
+         method: 'POST',
+-        headers: { 'content-type': 'application/json' },
++        headers,
+         body: JSON.stringify(response),
+         signal: AbortSignal.timeout(deps.timeoutMs ?? 3000),
+       })
+diff --git a/src/utils/surveyPrompt.test.ts b/src/utils/surveyPrompt.test.ts
+index 9de782bd..32cc4e5f 100644
+--- a/src/utils/surveyPrompt.test.ts
++++ b/src/utils/surveyPrompt.test.ts
+@@ -1,4 +1,4 @@
+-import { beforeEach, describe, expect, it } from 'bun:test'
++import { afterEach, beforeEach, describe, expect, it } from 'bun:test'
+ import type { Message } from '../types/message.js'
+ import {
+   findCompletionSignal,
+@@ -37,6 +37,14 @@ beforeEach(() => {
+   resetSurveySuggestionForTesting()
+ })
+ 
++// The suggestion belongs to the class edition — every test below runs as it.
++beforeEach(() => {
++  process.env.FURIO_EDITION = 'class'
++})
++afterEach(() => {
++  delete process.env.FURIO_EDITION
++})
++
+ describe('findCompletionSignal', () => {
+   it('sees a commit that went through', () => {
+     expect(
+@@ -161,3 +169,17 @@ describe('maybeSuggestSurvey', () => {
+     expect(lines).toHaveLength(0)
+   })
+ })
++
++describe('maybeSuggestSurvey in the lab edition', () => {
++  it('never suggests, whatever just finished', () => {
++    delete process.env.FURIO_EDITION
++    resetSurveySuggestionForTesting()
++    const emitted: string[] = []
++    maybeSuggestSurvey(
++      [human('커밋해줘'), bash('t1', 'git commit -m done'), result('t1')],
++      text => emitted.push(text),
++      { readPromptedAt: () => undefined, writePromptedAt: () => {} },
++    )
++    expect(emitted).toEqual([])
++  })
++})
+diff --git a/src/utils/surveyPrompt.ts b/src/utils/surveyPrompt.ts
+index e41d7a38..54e24ea7 100644
+--- a/src/utils/surveyPrompt.ts
++++ b/src/utils/surveyPrompt.ts
+@@ -1,6 +1,7 @@
+ import type { Message } from '../types/message.js'
+ import { getGlobalConfig, saveGlobalConfig } from './config.js'
+ import { isToolUseResultMessage } from './messages.js'
++import { isClassEdition } from '../furio/edition.js'
+ 
+ /** How long a suggestion keeps the next one away. */
+ const QUIET_HOURS = 20
+@@ -106,6 +107,8 @@ export function maybeSuggestSurvey(
+   emit: (text: string) => void,
+   deps: SurveySuggestionDeps = {},
+ ): void {
++  // The survey belongs to the class edition; the lab build never asks.
++  if (!isClassEdition()) return
+   if (suggestedThisSession) return
+ 
+   const now = deps.now?.() ?? new Date()
 -- 
 2.43.0
 

@@ -58,8 +58,8 @@ EVICT_WAIT = int(os.environ.get("ROUTER_EVICT_WAIT", "300"))
 # 못 받고 즉시 쫓겨나, 카드만 왕복하고 아무도 전진하지 못한다.
 EVICT_GRACE = int(os.environ.get("ROUTER_EVICT_GRACE", "20"))
 # openclaude 포크(NPU LED·dp/pp) 빌드 산출물 — install.sh 가 여기서 dist 를 받아 덮어쓴다.
-CLIENT_DIST = os.environ.get("FURIO_CLIENT_DIST", "/home/jun/openclaude-fork/dist")
-CLIENT_PKG = os.environ.get("FURIO_CLIENT_PKG", "/home/jun/openclaude-fork/package.json")
+CLIENT_DIST = os.environ.get("FURIO_CLIENT_DIST", "/home/jun/NPU_AIP/openclaude-fork/dist")
+CLIENT_PKG = os.environ.get("FURIO_CLIENT_PKG", "/home/jun/NPU_AIP/openclaude-fork/package.json")
 
 os.makedirs(LOGDIR, exist_ok=True)   # chat/ 은 git 미추적이라 디렉토리가 없을 수 있음
 
