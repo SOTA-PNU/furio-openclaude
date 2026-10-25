@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/31] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/36] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/31] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/36] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/31] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/36] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/31] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/36] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/31] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/36] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/31] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/36] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/31] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/36] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/31] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/36] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/31] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/36] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/31] statusline: separate the current-model marker from the
+Subject: [PATCH 10/36] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/31] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/36] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/31] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/36] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/31] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/36] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/31] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/36] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/31] model picker: support a per-model default pp (large
+Subject: [PATCH 15/36] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/31] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/36] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/31] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/36] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/31] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/36] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/31] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/36] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/31] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/36] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/31] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/36] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/31] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/36] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/31] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/36] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5563,7 +5563,7 @@ index 522362ad..1c509b74 100644
 From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/31] brand: give each logo letter its own color from a cool
+Subject: [PATCH 24/36] brand: give each logo letter its own color from a cool
  spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5756,7 +5756,7 @@ index 94af8b4c..3e2cf093 100644
 From 9cf8784b2009e6734c8bd3d24740e72ccc69a6ea Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:07:48 +0900
-Subject: [PATCH 25/31] startup: drop the provider box, keep the mark and one
+Subject: [PATCH 25/36] startup: drop the provider box, keep the mark and one
  line
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5913,7 +5913,7 @@ index c21c8def..9b775d33 100644
 From bf4d4d421cbaa00a9c49fb6851a4d713b11729b9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:37:56 +0900
-Subject: [PATCH 26/31] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
+Subject: [PATCH 26/36] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
  =?UTF-8?q?=EA=B8=B0:=20agents=20=ED=95=9C=20=EB=8B=A8=EC=96=B4=EB=A1=9C?=
  =?UTF-8?q?=20=EC=9D=B4=20=EC=BB=B4=ED=93=A8=ED=84=B0=EC=9D=98=20=EC=84=B8?=
  =?UTF-8?q?=EC=85=98=EC=9D=84=20=EC=97=B4=EA=B3=A0=20=EB=8B=A4=EB=A5=B8=20?=
@@ -6389,7 +6389,7 @@ index 00000000..fb864cb2
 From 032cb8ae9935682e0a02e8fff4a8c09b355ad0d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:16:30 +0900
-Subject: [PATCH 27/31] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
+Subject: [PATCH 27/36] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
  =?UTF-8?q?=20=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=95=88=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EC=82=AC=EC=9A=A9=20=EA=B2=BD=ED=97=98=EC=9D=84=20=EB=B0=9B?=
  =?UTF-8?q?=EC=95=84=20=EB=9D=BC=EC=9A=B0=ED=84=B0=EB=A1=9C=20=EB=B3=B4?=
@@ -7711,7 +7711,7 @@ index 00000000..e41d7a38
 From 4c1dd2e0ccbe99a2b09c45f2482d67aea3db94d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:59:23 +0900
-Subject: [PATCH 28/31] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 28/36] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20agents=20=EB=A5=BC=20claude=20agents=20=EC=8B=9D=20=EA=B5=AC?=
  =?UTF-8?q?=EC=84=B1=EC=9C=BC=EB=A1=9C,=20=EB=B9=88=20=ED=94=84=EB=A1=AC?=
  =?UTF-8?q?=ED=94=84=ED=8A=B8=EC=97=90=EC=84=9C=20=E2=86=90=20=EB=A1=9C?=
@@ -8811,7 +8811,7 @@ index fb864cb2..858a1faa 100644
 From c969ee7ee1a65e2c6036a3dd28ee8b28b6bf8cbf Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 18:42:09 +0900
-Subject: [PATCH 29/31] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 29/36] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20=EC=84=B8=EC=85=98=20=EC=95=88=EC=9D=98=20=EC=84=A0=ED=83=9D?=
  =?UTF-8?q?=EC=B0=BD=EC=9D=84=20=EB=8C=80=EC=B2=B4=20=ED=99=94=EB=A9=B4?=
  =?UTF-8?q?=EC=97=90=20=EB=9D=84=EC=9B=8C=20=EC=9E=90=EB=A6=AC=EB=A5=BC=20?=
@@ -9162,7 +9162,7 @@ index 858a1faa..4549b875 100644
 From 5f7367539a9ac62b25088f69a1ad0a1b9e15e1d8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 22:41:22 +0900
-Subject: [PATCH 30/31] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
+Subject: [PATCH 30/36] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
  =?UTF-8?q?=EA=B0=92=EC=9D=84=20=EB=AF=B8=EB=A6=AC=20=EA=B3=A0=EB=A5=B8=20?=
  =?UTF-8?q?=EB=8B=B5(=EC=B4=88=EB=A1=9D)=EC=9C=BC=EB=A1=9C=20=EA=B7=B8?=
  =?UTF-8?q?=EB=A6=AC=EC=A7=80=20=EC=95=8A=EA=B3=A0=20=EC=BB=A4=EC=84=9C=20?=
@@ -9203,7 +9203,7 @@ index ef2b04a9..d16156ab 100644
 From cacc5fb703bf009ba3c25d3530d319c2de787022 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Sun, 25 Oct 2026 00:31:57 +0900
-Subject: [PATCH 31/31] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
+Subject: [PATCH 31/36] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
  =?UTF-8?q?=EC=9C=84=EC=B9=98:=20=EC=9D=BC=EB=B0=98=ED=8C=90(lab)=C2=B7?=
  =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90(class)=EC=9D=84=20=ED=95=9C=20?=
  =?UTF-8?q?=EC=86=8C=EC=8A=A4=EC=97=90=EC=84=9C=20=EB=B9=8C=EB=93=9C?=
@@ -9625,6 +9625,2471 @@ index e41d7a38..54e24ea7 100644
    if (suggestedThisSession) return
  
    const now = deps.now?.() ?? new Date()
+-- 
+2.43.0
+
+
+From e3b9f75537b51b3a459ba9fa001f02706d13a6de Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Sun, 25 Oct 2026 02:38:42 +0900
+Subject: [PATCH 32/36] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/l?=
+ =?UTF-8?q?ogin=C2=B7/logout(=EA=B8=B0=EA=B8=B0=20=EC=BD=94=EB=93=9C),=20?=
+ =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84=20=EA=B3=84=EC=A0=95=C2=B7=EB=A1=9C?=
+ =?UTF-8?q?=EA=B7=B8=EC=9D=B8=20=ED=95=84=EC=9A=94=C2=B7=EC=88=98=EC=97=85?=
+ =?UTF-8?q?=20=EB=8B=AB=ED=9E=98?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- src/furio/auth.ts: 게이트웨이 기기 코드 로그인(startDeviceLogin·pollDeviceToken),
+  토큰 파일 ~/.furio/key(FURIO_HOME, 0600) 읽기·쓰기·삭제, furioBase(OPENAI_BASE_URL 의 /v1 제거),
+  applyFurioKey(OPENAI_API_KEY 를 토큰 또는 dummy 로)
+- /login(수업판 전용): 주소와 코드를 보여 주고 openBrowser 시도, interval 마다 폴링(expires_in 까지),
+  성공 시 키 저장·적용·onChangeAPIKey·상태줄 즉시 갱신; Esc 는 '로그인 취소'
+- /logout(수업판 전용): 키 파일 삭제·dummy 로 복귀·'로그아웃됨 — 다시 쓰려면 /login'
+- commands.ts: 에디션 필터와 localizationKey 매핑 **뒤에** concat — 이름이 같은 Anthropic
+  login/logout 은 필터가 빼고, 'login' 키의 영문 설명이 furio 설명을 덮지 않게 한다
+- npuStatus: NpuStatus += account·loginRequired·classOpen·classNext·notice, 폴링에
+  Authorization: Bearer(dummy 면 생략), 401 → available+loginRequired(폴링은 계속),
+  pollOnce 를 테스트용으로 export(fetchImpl 주입)
+- 상태줄: loginRequired → 빨강 '로그인 필요: /login' 하나만; 아니면 모델 LED 뒤에
+  수업 닫힘(노랑, 다음 창)·공지·계정(흐림)
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/commands.ts                           |  11 +-
+ src/commands/furio-login/index.ts         |  16 ++
+ src/commands/furio-login/login.tsx        | 177 +++++++++++++++++++++
+ src/commands/furio-logout/index.ts        |  34 ++++
+ src/components/BuiltinStatusLine.test.tsx |  65 ++++++++
+ src/components/BuiltinStatusLine.tsx      |  38 +++++
+ src/furio/auth.test.ts                    | 184 ++++++++++++++++++++++
+ src/furio/auth.ts                         | 180 +++++++++++++++++++++
+ src/furio/edition.ts                      |   4 +
+ src/services/npuStatus.test.ts            | 122 +++++++++++++-
+ src/services/npuStatus.ts                 | 121 +++++++++++++-
+ 11 files changed, 944 insertions(+), 8 deletions(-)
+ create mode 100644 src/commands/furio-login/index.ts
+ create mode 100644 src/commands/furio-login/login.tsx
+ create mode 100644 src/commands/furio-logout/index.ts
+ create mode 100644 src/furio/auth.test.ts
+ create mode 100644 src/furio/auth.ts
+
+diff --git a/src/commands.ts b/src/commands.ts
+index 2130530b..80bd7d55 100644
+--- a/src/commands.ts
++++ b/src/commands.ts
+@@ -79,7 +79,9 @@ import theme from './commands/theme/index.js'
+ import logo from './commands/logo/index.js'
+ import survey from './commands/survey/index.js'
+ import switchSession from './commands/switch/index.js'
+-import { commandAllowedInEdition } from './furio/edition.js'
++import furioLogin from './commands/furio-login/index.js'
++import furioLogout from './commands/furio-logout/index.js'
++import { commandAllowedInEdition, isClassEdition } from './furio/edition.js'
+ import vim from './commands/vim/index.js'
+ import { feature } from 'bun:bundle'
+ import { isBuddyEnabled } from './buddy/feature.js'
+@@ -403,7 +405,12 @@ const COMMANDS = memoize((): Command[] => [
+   // furio editions: the class build hides the commands that change what the
+   // server sees; the lab build has no survey (src/furio/edition.ts).
+   .filter(cmd => commandAllowedInEdition(cmd.name))
+-  .map(withOpenClaudeCommandLocalizationKey))
++  .map(withOpenClaudeCommandLocalizationKey)
++  // The class build's own /login·/logout (device code against the class
++  // gateway) go in after the filter above has removed the Anthropic pair of
++  // the same names — and after the localization map, whose `login`/`logout`
++  // keys would otherwise replace the furio wording with the Anthropic one.
++  .concat(isClassEdition() ? [furioLogin, furioLogout] : []))
+ 
+ function withOpenClaudeCommandLocalizationKey(cmd: Command): Command {
+   cmd.localizationKey ??= getOpenClaudeCommandDescriptionKey(cmd.name)
+diff --git a/src/commands/furio-login/index.ts b/src/commands/furio-login/index.ts
+new file mode 100644
+index 00000000..d64c0ecc
+--- /dev/null
++++ b/src/commands/furio-login/index.ts
+@@ -0,0 +1,16 @@
++import type { Command } from '../../commands.js'
++
++/**
++ * The class edition's `/login`: a device-code login against the furio class
++ * gateway (src/furio/auth.ts). It takes the name of the Anthropic `/login`,
++ * which the class edition drops (src/furio/edition.ts), so students get the
++ * command they expect.
++ */
++const furioLogin = {
++  type: 'local-jsx',
++  name: 'login',
++  description: '수업 계정으로 로그인 — 브라우저에서 코드를 승인한다',
++  load: () => import('./login.js'),
++} satisfies Command
++
++export default furioLogin
+diff --git a/src/commands/furio-login/login.tsx b/src/commands/furio-login/login.tsx
+new file mode 100644
+index 00000000..81952efb
+--- /dev/null
++++ b/src/commands/furio-login/login.tsx
+@@ -0,0 +1,177 @@
++import * as React from 'react'
++import { ConfigurableShortcutHint } from '../../components/ConfigurableShortcutHint.js'
++import { Dialog } from '../../components/design-system/Dialog.js'
++import { Spinner } from '../../components/Spinner.js'
++import {
++  applyFurioKey,
++  type DeviceLoginStart,
++  furioBase,
++  pollDeviceToken,
++  startDeviceLogin,
++  writeFurioKey,
++} from '../../furio/auth.js'
++import { Box, Text } from '../../ink.js'
++import { refreshNpuStatusNow } from '../../services/npuStatus.js'
++import type {
++  LocalJSXCommandCall,
++  LocalJSXCommandOnDone,
++} from '../../types/command.js'
++import { openBrowser } from '../../utils/browser.js'
++import { errorMessage } from '../../utils/errors.js'
++import { logError } from '../../utils/log.js'
++
++const EXPIRED_MESSAGE = '로그인 코드가 만료되었습니다. /login 으로 다시 시작하세요'
++
++type Props = {
++  onDone: LocalJSXCommandOnDone
++  /** Runs once with the new token, before `onDone`. */
++  onLoggedIn: (token: string) => void
++}
++
++/**
++ * Shows the gateway's one-time code, opens the browser on its login page, and
++ * polls until the student has signed in there (or the code dies, or Esc).
++ */
++function FurioLogin({ onDone, onLoggedIn }: Props): React.ReactNode {
++  const [start, setStart] = React.useState<DeviceLoginStart | null>(null)
++  const [browserOpened, setBrowserOpened] = React.useState<boolean | null>(null)
++  // `onDone` unmounts us, but a poll already in flight can still resolve; the
++  // ref makes every exit path — success, expiry, error, Esc — fire it once.
++  const finished = React.useRef(false)
++  const finish = React.useCallback(
++    (message: string) => {
++      if (finished.current) return
++      finished.current = true
++      onDone(message, { display: 'system' })
++    },
++    [onDone],
++  )
++
++  React.useEffect(() => {
++    const base = furioBase()
++    if (!base) {
++      finish('OPENAI_BASE_URL 이 없어 로그인할 서버를 모릅니다')
++      return
++    }
++    let timer: ReturnType<typeof setTimeout> | null = null
++    const stopped = (): boolean => finished.current
++
++    void (async () => {
++      let s: DeviceLoginStart
++      try {
++        s = await startDeviceLogin(base)
++      } catch (e) {
++        logError(e)
++        finish(`로그인을 시작하지 못했습니다: ${errorMessage(e)}`)
++        return
++      }
++      if (stopped()) return
++      setStart(s)
++      // Best effort: on a headless box this fails and the student types the
++      // address shown on screen instead.
++      void openBrowser(s.verificationUri).then(ok => {
++        if (!stopped()) setBrowserOpened(ok)
++      })
++
++      const deadline = Date.now() + s.expiresIn * 1000
++      const tick = async (): Promise<void> => {
++        if (stopped()) return
++        if (Date.now() >= deadline) {
++          finish(EXPIRED_MESSAGE)
++          return
++        }
++        const r = await pollDeviceToken(base, s.deviceCode)
++        if (stopped()) return
++        if (r.status === 'ok' && r.token) {
++          try {
++            onLoggedIn(r.token)
++          } catch (e) {
++            logError(e)
++            finish(`토큰을 저장하지 못했습니다: ${errorMessage(e)}`)
++            return
++          }
++          finish(`로그인됨: ${r.email || '(이메일 없음)'}`)
++          return
++        }
++        if (r.status === 'expired') {
++          finish(EXPIRED_MESSAGE)
++          return
++        }
++        if (r.status === 'error') {
++          finish(`로그인 실패: ${r.error ?? '알 수 없는 오류'}`)
++          return
++        }
++        timer = setTimeout(() => void tick(), s.interval * 1000)
++      }
++      timer = setTimeout(() => void tick(), s.interval * 1000)
++    })()
++
++    return () => {
++      finished.current = true
++      if (timer !== null) clearTimeout(timer)
++    }
++    // Runs once: the flow owns its own lifetime through `finished`.
++    // eslint-disable-next-line react-hooks/exhaustive-deps
++  }, [])
++
++  return (
++    <Dialog
++      title="furio 로그인"
++      color="permission"
++      onCancel={() => finish('로그인 취소')}
++      inputGuide={exitState =>
++        exitState.pending ? (
++          <Text>Press {exitState.keyName} again to exit</Text>
++        ) : (
++          <ConfigurableShortcutHint
++            action="confirm:no"
++            context="Confirmation"
++            fallback="Esc"
++            description="취소"
++          />
++        )
++      }
++    >
++      {start === null ? (
++        <Box>
++          <Spinner />
++          <Text> 로그인 코드를 받는 중…</Text>
++        </Box>
++      ) : (
++        <Box flexDirection="column" gap={1}>
++          <Text>
++            {browserOpened === false
++              ? '브라우저를 열지 못했습니다. 아래 주소를 직접 열고 이 코드를 입력하세요.'
++              : '브라우저에서 로그인(또는 가입)하고 이 코드를 확인하세요. 열리지 않으면 아래 주소를 직접 여세요.'}
++          </Text>
++          <Text color="suggestion">{start.verificationUri}</Text>
++          <Box borderStyle="round" paddingX={2} alignSelf="flex-start">
++            <Text bold>{start.userCode.split('').join(' ')}</Text>
++          </Box>
++          <Box>
++            <Spinner />
++            <Text> 승인을 기다리는 중… 코드는 {Math.max(1, Math.round(start.expiresIn / 60))}분 동안 유효합니다</Text>
++          </Box>
++        </Box>
++      )}
++    </Dialog>
++  )
++}
++
++export const call: LocalJSXCommandCall = async (onDone, context) => {
++  return (
++    <FurioLogin
++      onDone={onDone}
++      onLoggedIn={token => {
++        // The file is what the wrapper reads on the next start; the env is
++        // what this process sends from now on — chat and status poll alike.
++        writeFurioKey(token)
++        applyFurioKey(token)
++        context.onChangeAPIKey()
++        // Flip the status line from "로그인 필요" to the account now, not at
++        // the next idle poll.
++        refreshNpuStatusNow()
++      }}
++    />
++  )
++}
+diff --git a/src/commands/furio-logout/index.ts b/src/commands/furio-logout/index.ts
+new file mode 100644
+index 00000000..c02964b8
+--- /dev/null
++++ b/src/commands/furio-logout/index.ts
+@@ -0,0 +1,34 @@
++import type { Command } from '../../commands.js'
++import { applyFurioKey, clearFurioKey } from '../../furio/auth.js'
++import { refreshNpuStatusNow } from '../../services/npuStatus.js'
++import type { LocalJSXCommandCall } from '../../types/command.js'
++import { errorMessage } from '../../utils/errors.js'
++
++/**
++ * The class edition's `/logout`: forgets the furio token (file and process)
++ * so the next request — and the status line — say "로그인 필요: /login".
++ * Counterpart of src/commands/furio-login; takes the name of the Anthropic
++ * `/logout` the class edition drops (src/furio/edition.ts).
++ */
++export const call: LocalJSXCommandCall = async (onDone, context) => {
++  try {
++    clearFurioKey()
++  } catch (e) {
++    onDone(`토큰 파일을 지우지 못했습니다: ${errorMessage(e)}`, { display: 'system' })
++    return null
++  }
++  applyFurioKey(null)
++  context.onChangeAPIKey()
++  refreshNpuStatusNow()
++  onDone('로그아웃됨 — 다시 쓰려면 /login', { display: 'system' })
++  return null
++}
++
++const furioLogout = {
++  type: 'local-jsx',
++  name: 'logout',
++  description: '수업 계정에서 로그아웃 — 저장된 토큰을 지운다',
++  load: () => Promise.resolve({ call }),
++} satisfies Command
++
++export default furioLogout
+diff --git a/src/components/BuiltinStatusLine.test.tsx b/src/components/BuiltinStatusLine.test.tsx
+index fdab5bd5..09863020 100644
+--- a/src/components/BuiltinStatusLine.test.tsx
++++ b/src/components/BuiltinStatusLine.test.tsx
+@@ -222,6 +222,11 @@ describe('buildNpuSegments', () => {
+     phase: 0,
+     available: true,
+     remembered,
++    account: null,
++    loginRequired: false,
++    classOpen: null,
++    classNext: null,
++    notice: null,
+   })
+   const m = (id: string, state: NpuModel['state'], cards: number[] = []): NpuModel => ({
+     id,
+@@ -285,4 +290,64 @@ describe('buildNpuSegments', () => {
+       buildBuiltinStatusSegments({ ...data, npuCursorModelId: 'A' }).map(s => s.key),
+     ).toContain('npu:hint')
+   })
++
++  describe('behind the class gateway', () => {
++    it('login required: one red segment pointing at /login and nothing else', () => {
++      // Even a remembered model stays hidden — the only thing to do is log in.
++      const segments = buildNpuSegments(
++        { ...npu([], ['A']), loginRequired: true, classOpen: false, account: null },
++        'A',
++      )
++      expect(segments.map(s => s.text)).toEqual(['로그인 필요: /login'])
++      expect(segments[0]?.color).toBe('error')
++      // It must survive a narrow terminal like the current model does.
++      expect(segments[0]?.priority).toBeLessThanOrEqual(0.5)
++    })
++
++    it('class closed: yellow segment with the next window, after the models', () => {
++      const segments = buildNpuSegments(
++        { ...npu([m('A', 'up', [0])]), classOpen: false, classNext: '10-27 09:00' },
++        'A',
++      )
++      expect(segments.map(s => s.text)).toEqual(['▶ ● A npu0', '수업 닫힘 · 다음 10-27 09:00'])
++      expect(segments[1]?.color).toBe('warning')
++      expect(segments[1]?.shortText).toBe('수업 닫힘')
++    })
++
++    it('class closed without a known next window says only that it is closed', () => {
++      const segments = buildNpuSegments({ ...npu([m('A', 'up')]), classOpen: false }, 'A')
++      expect(segments.map(s => s.text)).toEqual(['▶ ● A', '수업 닫힘'])
++    })
++
++    it('class open or unknown: no class segment', () => {
++      expect(buildNpuSegments({ ...npu([m('A', 'up')]), classOpen: true }, 'A').map(s => s.key)).toEqual(['npu:A'])
++      expect(buildNpuSegments({ ...npu([m('A', 'up')]), classOpen: null }, 'A').map(s => s.key)).toEqual(['npu:A'])
++    })
++
++    it('account: the email, dimmed, at the very end', () => {
++      const segments = buildNpuSegments(
++        { ...npu([m('A', 'up')]), classOpen: false, classNext: '10-27 09:00', account: 's@x' },
++        'A',
++      )
++      expect(segments.map(s => s.text)).toEqual(['▶ ● A', '수업 닫힘 · 다음 10-27 09:00', 's@x'])
++      expect(segments.at(-1)?.key).toBe('npu:account')
++      expect(segments.at(-1)?.color).toBe('subtle')
++      // The email is the first thing to go when the terminal narrows.
++      expect(segments.at(-1)!.priority).toBeGreaterThan(segments[1]!.priority)
++    })
++
++    it('class closed with nothing on the cards still shows the closed segment', () => {
++      const segments = buildNpuSegments({ ...npu([]), classOpen: false, account: 's@x' }, null)
++      expect(segments.map(s => s.key)).toEqual(['npu:class', 'npu:account'])
++    })
++
++    it('notice: the operator message, dimmed, before the account', () => {
++      const segments = buildNpuSegments(
++        { ...npu([m('A', 'up')]), notice: '15시에 끝납니다', account: 's@x' },
++        'A',
++      )
++      expect(segments.map(s => s.text)).toEqual(['▶ ● A', '15시에 끝납니다', 's@x'])
++      expect(segments[1]?.key).toBe('npu:notice')
++    })
++  })
+ })
+diff --git a/src/components/BuiltinStatusLine.tsx b/src/components/BuiltinStatusLine.tsx
+index ddb603c2..cb61628a 100644
+--- a/src/components/BuiltinStatusLine.tsx
++++ b/src/components/BuiltinStatusLine.tsx
+@@ -64,6 +64,16 @@ const LED_OFF = '○';
+  */
+ export function buildNpuSegments(npu: NpuStatus, currentModelId: string | null, cursorModelId: string | null = null): StatusSegment[] {
+   if (!npu.available) return [];
++  if (npu.loginRequired) {
++    // The class gateway refused the poll: nothing about the cards is known and
++    // nothing works until the student logs in, so that is the whole line.
++    return [{
++      key: 'npu:login',
++      priority: 0,
++      text: '로그인 필요: /login',
++      color: 'error'
++    }];
++  }
+   const segments: StatusSegment[] = [];
+   const blinkOn = npu.phase % 2 === 0;
+   const models = npuDisplayModels(npu.models, currentModelId, npu.remembered);
+@@ -93,6 +103,34 @@ export function buildNpuSegments(npu: NpuStatus, currentModelId: string | null,
+       color,
+     });
+   }
++  // Class gateway extras, after the cards. A closed window is why a request
++  // is being refused, so it ranks with the current model; the notice and the
++  // account are context and go first when the terminal narrows.
++  if (npu.classOpen === false) {
++    segments.push({
++      key: 'npu:class',
++      priority: 0.5,
++      text: `수업 닫힘${npu.classNext ? ` · 다음 ${npu.classNext}` : ''}`,
++      shortText: '수업 닫힘',
++      color: 'warning'
++    });
++  }
++  if (npu.notice) {
++    segments.push({
++      key: 'npu:notice',
++      priority: 5,
++      text: npu.notice,
++      color: 'subtle'
++    });
++  }
++  if (npu.account) {
++    segments.push({
++      key: 'npu:account',
++      priority: 6,
++      text: npu.account,
++      color: 'subtle'
++    });
++  }
+   return segments;
+ }
+ export type BuiltinStatusData = {
+diff --git a/src/furio/auth.test.ts b/src/furio/auth.test.ts
+new file mode 100644
+index 00000000..38ff7513
+--- /dev/null
++++ b/src/furio/auth.test.ts
+@@ -0,0 +1,184 @@
++import { afterEach, beforeEach, describe, expect, it } from 'bun:test'
++import { chmodSync, existsSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from 'fs'
++import { homedir, tmpdir } from 'os'
++import { join } from 'path'
++import {
++  applyFurioKey,
++  clearFurioKey,
++  furioBase,
++  furioHome,
++  pollDeviceToken,
++  readFurioKey,
++  startDeviceLogin,
++  writeFurioKey,
++} from './auth.js'
++
++type Call = { url: string; init: RequestInit | undefined }
++
++/** A fetch stand-in that records the call and answers with one canned reply. */
++function reply(status: number, body: unknown, calls: Call[] = []) {
++  return async (url: string, init?: RequestInit): Promise<Response> => {
++    calls.push({ url, init })
++    return new Response(JSON.stringify(body), {
++      status,
++      headers: { 'content-type': 'application/json' },
++    })
++  }
++}
++
++let home: string
++const saved = {
++  FURIO_HOME: process.env.FURIO_HOME,
++  OPENAI_API_KEY: process.env.OPENAI_API_KEY,
++}
++
++beforeEach(() => {
++  home = mkdtempSync(join(tmpdir(), 'furio-auth-'))
++  process.env.FURIO_HOME = home
++})
++
++afterEach(() => {
++  rmSync(home, { recursive: true, force: true })
++  for (const [k, v] of Object.entries(saved)) {
++    if (v === undefined) delete process.env[k]
++    else process.env[k] = v
++  }
++})
++
++describe('furioHome', () => {
++  it('is FURIO_HOME when set, else ~/.furio', () => {
++    expect(furioHome({ FURIO_HOME: '/tmp/elsewhere' })).toBe('/tmp/elsewhere')
++    expect(furioHome({})).toBe(join(homedir(), '.furio'))
++  })
++})
++
++describe('furioBase', () => {
++  it('strips the /v1 suffix so the gateway endpoints sit next to it', () => {
++    expect(furioBase({ OPENAI_BASE_URL: 'https://x/furio/v1' })).toBe('https://x/furio')
++  })
++
++  it('tolerates a trailing slash', () => {
++    expect(furioBase({ OPENAI_BASE_URL: 'https://x/furio/v1/' })).toBe('https://x/furio')
++  })
++
++  it('is null without an OpenAI-compatible base URL', () => {
++    expect(furioBase({})).toBeNull()
++  })
++})
++
++describe('key file', () => {
++  it('writeFurioKey stores the token with mode 0600 and readFurioKey returns it', () => {
++    writeFurioKey('furio_abc')
++    const path = join(home, 'key')
++    expect(existsSync(path)).toBe(true)
++    expect(statSync(path).mode & 0o777).toBe(0o600)
++    expect(readFileSync(path, 'utf-8')).toBe('furio_abc\n')
++    expect(readFurioKey()).toBe('furio_abc')
++  })
++
++  it('tightens a key file that was left world-readable', () => {
++    writeFileSync(join(home, 'key'), 'old\n')
++    chmodSync(join(home, 'key'), 0o644)
++    writeFurioKey('furio_new')
++    expect(statSync(join(home, 'key')).mode & 0o777).toBe(0o600)
++    expect(readFurioKey()).toBe('furio_new')
++  })
++
++  it('readFurioKey is null without a key file, and clearFurioKey removes it', () => {
++    expect(readFurioKey()).toBeNull()
++    writeFurioKey('furio_abc')
++    clearFurioKey()
++    expect(existsSync(join(home, 'key'))).toBe(false)
++    expect(readFurioKey()).toBeNull()
++    // Clearing twice is not an error.
++    clearFurioKey()
++  })
++
++  it('reads an empty or whitespace-only key file as no key', () => {
++    writeFileSync(join(home, 'key'), '  \n')
++    expect(readFurioKey()).toBeNull()
++  })
++})
++
++describe('applyFurioKey', () => {
++  it('puts the token in OPENAI_API_KEY and falls back to the dummy placeholder', () => {
++    applyFurioKey('furio_abc')
++    expect(process.env.OPENAI_API_KEY).toBe('furio_abc')
++    applyFurioKey(null)
++    expect(process.env.OPENAI_API_KEY).toBe('dummy')
++  })
++})
++
++describe('startDeviceLogin', () => {
++  it('posts the client name and maps the snake_case reply', async () => {
++    const calls: Call[] = []
++    const out = await startDeviceLogin(
++      'https://x/furio',
++      reply(
++        200,
++        {
++          device_code: 'dc-1',
++          user_code: 'KX7Q-2M4A',
++          verification_uri: 'https://x/furio/login?code=KX7Q-2M4A',
++          expires_in: 600,
++          interval: 3,
++        },
++        calls,
++      ),
++    )
++    expect(calls[0]?.url).toBe('https://x/furio/auth/device/start')
++    expect(calls[0]?.init?.method).toBe('POST')
++    expect(JSON.parse(String(calls[0]?.init?.body))).toEqual({ client: 'furio-cli' })
++    expect(out).toEqual({
++      deviceCode: 'dc-1',
++      userCode: 'KX7Q-2M4A',
++      verificationUri: 'https://x/furio/login?code=KX7Q-2M4A',
++      interval: 3,
++      expiresIn: 600,
++    })
++  })
++
++  it('rejects when the gateway does not answer 2xx', async () => {
++    await expect(startDeviceLogin('https://x/furio', reply(404, { error: 'nope' }))).rejects.toThrow()
++  })
++})
++
++describe('pollDeviceToken', () => {
++  it('400 authorization_pending → pending', async () => {
++    const calls: Call[] = []
++    const out = await pollDeviceToken(
++      'https://x/furio',
++      'dc-1',
++      reply(400, { error: 'authorization_pending' }, calls),
++    )
++    expect(out).toEqual({ status: 'pending' })
++    expect(calls[0]?.url).toBe('https://x/furio/auth/device/token')
++    expect(JSON.parse(String(calls[0]?.init?.body))).toEqual({ device_code: 'dc-1' })
++  })
++
++  it('200 → ok with the token and the email', async () => {
++    const out = await pollDeviceToken(
++      'https://x/furio',
++      'dc-1',
++      reply(200, { access_token: 'furio_tok', email: 's@x' }),
++    )
++    expect(out).toEqual({ status: 'ok', token: 'furio_tok', email: 's@x' })
++  })
++
++  it('400 expired_token → expired', async () => {
++    const out = await pollDeviceToken('https://x/furio', 'dc-1', reply(400, { error: 'expired_token' }))
++    expect(out.status).toBe('expired')
++  })
++
++  it('400 invalid_grant → error', async () => {
++    const out = await pollDeviceToken('https://x/furio', 'dc-1', reply(400, { error: 'invalid_grant' }))
++    expect(out.status).toBe('error')
++  })
++
++  it('a network failure → error rather than a throw', async () => {
++    const out = await pollDeviceToken('https://x/furio', 'dc-1', async () => {
++      throw new Error('ECONNREFUSED')
++    })
++    expect(out.status).toBe('error')
++  })
++})
+diff --git a/src/furio/auth.ts b/src/furio/auth.ts
+new file mode 100644
+index 00000000..383cbea2
+--- /dev/null
++++ b/src/furio/auth.ts
+@@ -0,0 +1,180 @@
++/**
++ * furio class-edition login: the device-code flow against the class gateway.
++ *
++ * The student runs `/login`; the client asks the gateway for a one-time code,
++ * shows it (and opens the browser on the gateway's login page), then polls
++ * until the student has signed in there. The token that comes back is stored
++ * in `~/.furio/key` (0600) — the same file the installer's wrapper reads into
++ * `OPENAI_API_KEY` on the next start — and applied to this process at once so
++ * the next request and the next status poll already carry it.
++ *
++ * Gateway protocol (furio-class gateway, Task 9):
++ *   POST {base}/auth/device/start  {"client":"furio-cli"}
++ *     → {device_code, user_code, verification_uri, expires_in, interval}
++ *   POST {base}/auth/device/token  {"device_code"}
++ *     → 200 {access_token, email}
++ *     → 400 {"error": "authorization_pending" | "expired_token" | "invalid_grant"}
++ *
++ * `base` is the gateway root — `OPENAI_BASE_URL` without its `/v1`.
++ */
++
++import { chmodSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'fs'
++import { homedir } from 'os'
++import { join } from 'path'
++
++/** The placeholder the installer uses when there is no key yet. */
++export const FURIO_NO_KEY = 'dummy'
++
++/** Minimal fetch shape so tests can hand in a stub without the Bun extras. */
++export type FetchLike = (url: string, init?: RequestInit) => Promise<Response>
++
++export type DeviceLoginStart = {
++  deviceCode: string
++  userCode: string
++  verificationUri: string
++  /** Seconds between polls, as the gateway asks. */
++  interval: number
++  /** Seconds until the code is dead. */
++  expiresIn: number
++}
++
++export type DeviceTokenPoll = {
++  status: 'pending' | 'ok' | 'expired' | 'error'
++  token?: string
++  email?: string
++  /** What went wrong when `status` is `error`, for the message to the user. */
++  error?: string
++}
++
++/** Where furio keeps its per-user files: `FURIO_HOME`, else `~/.furio`. */
++export function furioHome(env: NodeJS.ProcessEnv = process.env): string {
++  const explicit = env.FURIO_HOME?.trim()
++  return explicit ? explicit : join(homedir(), '.furio')
++}
++
++function keyPath(env: NodeJS.ProcessEnv = process.env): string {
++  return join(furioHome(env), 'key')
++}
++
++/** The stored token, or null when there is none (missing or blank file). */
++export function readFurioKey(): string | null {
++  try {
++    const raw = readFileSync(keyPath(), 'utf-8').trim()
++    return raw.length > 0 ? raw : null
++  } catch {
++    return null
++  }
++}
++
++/**
++ * Stores the token with owner-only permissions. The directory is created
++ * 0700 when missing; an existing file is re-chmodded because `writeFileSync`
++ * only applies `mode` to files it creates.
++ */
++export function writeFurioKey(token: string): void {
++  const dir = furioHome()
++  if (!existsSync(dir)) mkdirSync(dir, { recursive: true, mode: 0o700 })
++  const path = keyPath()
++  writeFileSync(path, `${token}\n`, { encoding: 'utf-8', mode: 0o600 })
++  chmodSync(path, 0o600)
++}
++
++/** Removes the stored token. Not an error when there is none. */
++export function clearFurioKey(): void {
++  rmSync(keyPath(), { force: true })
++}
++
++/**
++ * The gateway root: `OPENAI_BASE_URL` with its trailing `/v1` removed, so
++ * `/auth/device/*` and `/router/status` resolve next to the OpenAI surface.
++ * Null when no OpenAI-compatible backend is configured.
++ */
++export function furioBase(env: NodeJS.ProcessEnv = process.env): string | null {
++  const base = env.OPENAI_BASE_URL?.trim()
++  if (!base) return null
++  const root = base.replace(/\/+$/, '').replace(/\/v1$/, '')
++  return root.length > 0 ? root : null
++}
++
++async function postJson(fetchImpl: FetchLike, url: string, body: unknown): Promise<Response> {
++  return fetchImpl(url, {
++    method: 'POST',
++    headers: { 'content-type': 'application/json', accept: 'application/json' },
++    body: JSON.stringify(body),
++    signal: AbortSignal.timeout(10_000),
++  })
++}
++
++function str(v: unknown): string {
++  return typeof v === 'string' ? v : ''
++}
++
++function num(v: unknown, fallback: number): number {
++  return typeof v === 'number' && Number.isFinite(v) && v > 0 ? v : fallback
++}
++
++/** Asks the gateway for a device code. Throws when it refuses or is unreachable. */
++export async function startDeviceLogin(
++  base: string,
++  fetchImpl: FetchLike = fetch,
++): Promise<DeviceLoginStart> {
++  const res = await postJson(fetchImpl, `${base}/auth/device/start`, { client: 'furio-cli' })
++  if (!res.ok) {
++    throw new Error(`게이트웨이가 로그인 코드를 주지 않았습니다 (HTTP ${res.status})`)
++  }
++  const raw = (await res.json()) as Record<string, unknown>
++  const deviceCode = str(raw.device_code)
++  const userCode = str(raw.user_code)
++  const verificationUri = str(raw.verification_uri)
++  if (!deviceCode || !userCode || !verificationUri) {
++    throw new Error('게이트웨이의 로그인 응답에 코드가 없습니다')
++  }
++  return {
++    deviceCode,
++    userCode,
++    verificationUri,
++    interval: num(raw.interval, 3),
++    expiresIn: num(raw.expires_in, 600),
++  }
++}
++
++/**
++ * One poll of the token endpoint. Never throws: a network blip is reported
++ * as `error` so the caller decides whether to keep waiting.
++ */
++export async function pollDeviceToken(
++  base: string,
++  deviceCode: string,
++  fetchImpl: FetchLike = fetch,
++): Promise<DeviceTokenPoll> {
++  let res: Response
++  try {
++    res = await postJson(fetchImpl, `${base}/auth/device/token`, { device_code: deviceCode })
++  } catch (e) {
++    return { status: 'error', error: e instanceof Error ? e.message : String(e) }
++  }
++  let raw: Record<string, unknown> = {}
++  try {
++    raw = (await res.json()) as Record<string, unknown>
++  } catch {
++    // A body-less reply; the status code below still decides.
++  }
++  if (res.ok) {
++    const token = str(raw.access_token)
++    if (!token) return { status: 'error', error: '토큰이 비어 있습니다' }
++    return { status: 'ok', token, email: str(raw.email) }
++  }
++  const code = str(raw.error)
++  if (res.status === 400 && code === 'authorization_pending') return { status: 'pending' }
++  if (res.status === 400 && code === 'expired_token') return { status: 'expired' }
++  return { status: 'error', error: code || `HTTP ${res.status}` }
++}
++
++/**
++ * Makes the token the one this process sends — to the chat endpoint and to
++ * the status poll — without a restart. Null restores the installer's
++ * placeholder, which both of them know not to send.
++ */
++export function applyFurioKey(token: string | null): void {
++  process.env.OPENAI_API_KEY = token ?? FURIO_NO_KEY
++}
+diff --git a/src/furio/edition.ts b/src/furio/edition.ts
+index 689939c8..da5f859c 100644
+--- a/src/furio/edition.ts
++++ b/src/furio/edition.ts
+@@ -42,6 +42,10 @@ export const CLASS_EDITION_HIDDEN_COMMANDS: ReadonlySet<string> = new Set([
+   'extra-usage', // Anthropic billing
+   'rate-limit-options', // Anthropic billing
+   'passes', // Anthropic guest passes
++  // The Anthropic OAuth pair. The class build has its own `/login`·`/logout`
++  // under the same names — a device-code login against the class gateway
++  // (src/furio/auth.ts, src/commands/furio-login, src/commands/furio-logout) —
++  // which commands.ts appends *after* this filter has removed these two.
+   'login', // would switch the client to an Anthropic account
+   'logout',
+ ])
+diff --git a/src/services/npuStatus.test.ts b/src/services/npuStatus.test.ts
+index 8dc0ec78..cc169d3a 100644
+--- a/src/services/npuStatus.test.ts
++++ b/src/services/npuStatus.test.ts
+@@ -1,9 +1,15 @@
+-import { describe, expect, test } from 'bun:test'
++import { afterEach, beforeEach, describe, expect, test } from 'bun:test'
++import { mkdtempSync, rmSync } from 'fs'
++import { tmpdir } from 'os'
++import { join } from 'path'
+ import {
++  __resetNpuStatusForTest,
++  currentNpuStatus,
+   type NpuModel,
+   npuDisplayModels,
+   npuSwitcherEnter,
+   parseStatus,
++  pollOnce,
+   routerBaseUrl,
+ } from './npuStatus.js'
+ 
+@@ -37,6 +43,120 @@ describe('parseStatus', () => {
+     const { models } = parseStatus({ running: { B: {}, A: {}, C: {} } })
+     expect(models.map(m => m.id)).toEqual(['A', 'B', 'C'])
+   })
++
++  test('reads the gateway fields: account email, class window, notice', () => {
++    const out = parseStatus({
++      running: {},
++      free_cards: [],
++      login_required: false,
++      account: { email: 's@x', name: 'S' },
++      class: { open: false, until: null, next: '10-27 09:00' },
++      notice: '오늘은 15시에 끝납니다',
++    })
++    expect(out.account).toBe('s@x')
++    expect(out.loginRequired).toBe(false)
++    expect(out.classOpen).toBe(false)
++    expect(out.classNext).toBe('10-27 09:00')
++    expect(out.notice).toBe('오늘은 15시에 끝납니다')
++  })
++
++  test('a bare router without the gateway fields: no account, class unknown, no notice', () => {
++    const out = parseStatus({ running: {}, free_cards: [0, 1, 2, 3] })
++    expect(out.account).toBeNull()
++    expect(out.loginRequired).toBe(false)
++    expect(out.classOpen).toBeNull()
++    expect(out.classNext).toBeNull()
++    expect(out.notice).toBeNull()
++  })
++
++  test('an open class window with no account reads as open and anonymous', () => {
++    const out = parseStatus({ running: {}, account: null, class: { open: true, until: '18:00', next: null }, notice: '' })
++    expect(out.classOpen).toBe(true)
++    expect(out.classNext).toBeNull()
++    expect(out.account).toBeNull()
++    // An empty notice is no notice.
++    expect(out.notice).toBeNull()
++  })
++})
++
++describe('pollOnce', () => {
++  type Call = { url: string; init: RequestInit | undefined }
++  const reply = (status: number, body: unknown, calls: Call[] = []) =>
++    async (url: string, init?: RequestInit): Promise<Response> => {
++      calls.push({ url, init })
++      return new Response(JSON.stringify(body), {
++        status,
++        headers: { 'content-type': 'application/json' },
++      })
++    }
++  const saved = { OPENAI_API_KEY: process.env.OPENAI_API_KEY, OPENCLAUDE_CONFIG_DIR: process.env.OPENCLAUDE_CONFIG_DIR }
++  let configDir: string
++
++  beforeEach(() => {
++    __resetNpuStatusForTest()
++    // The remembered-models store writes next to the config; keep it out of
++    // the real one (getClaudeConfigHomeDir reads OPENCLAUDE_CONFIG_DIR).
++    configDir = mkdtempSync(join(tmpdir(), 'furio-npu-'))
++    process.env.OPENCLAUDE_CONFIG_DIR = configDir
++  })
++
++  afterEach(() => {
++    __resetNpuStatusForTest()
++    rmSync(configDir, { recursive: true, force: true })
++    for (const [k, v] of Object.entries(saved)) {
++      if (v === undefined) delete process.env[k]
++      else process.env[k] = v
++    }
++  })
++
++  test('401 means the gateway wants a login: available, loginRequired, no models', async () => {
++    process.env.OPENAI_API_KEY = 'dummy'
++    const result = await pollOnce('http://g', reply(401, { detail: '로그인이 필요합니다: /login' }))
++    expect(result).toBe('ok')
++    expect(currentNpuStatus.available).toBe(true)
++    expect(currentNpuStatus.loginRequired).toBe(true)
++    expect(currentNpuStatus.models).toEqual([])
++    expect(currentNpuStatus.account).toBeNull()
++  })
++
++  test('sends the key as a Bearer token, but never the dummy placeholder', async () => {
++    const calls: Call[] = []
++    process.env.OPENAI_API_KEY = 'furio_abc'
++    await pollOnce('http://g', reply(200, { running: {}, free_cards: [] }, calls))
++    expect(calls[0]?.url).toBe('http://g/router/status')
++    expect(new Headers(calls[0]?.init?.headers).get('authorization')).toBe('Bearer furio_abc')
++
++    process.env.OPENAI_API_KEY = 'dummy'
++    await pollOnce('http://g', reply(200, { running: {}, free_cards: [] }, calls))
++    expect(new Headers(calls[1]?.init?.headers).get('authorization')).toBeNull()
++  })
++
++  test('a real status after a 401 clears loginRequired and fills the account', async () => {
++    process.env.OPENAI_API_KEY = 'dummy'
++    await pollOnce('http://g', reply(401, { detail: 'login' }))
++    expect(currentNpuStatus.loginRequired).toBe(true)
++    process.env.OPENAI_API_KEY = 'furio_abc'
++    await pollOnce(
++      'http://g',
++      reply(200, {
++        running: {},
++        free_cards: [],
++        login_required: false,
++        account: { email: 's@x', name: 'S' },
++        class: { open: false, until: null, next: '10-27 09:00' },
++        notice: null,
++      }),
++    )
++    expect(currentNpuStatus.loginRequired).toBe(false)
++    expect(currentNpuStatus.account).toBe('s@x')
++    expect(currentNpuStatus.classOpen).toBe(false)
++    expect(currentNpuStatus.classNext).toBe('10-27 09:00')
++  })
++
++  test('404 is still not a router', async () => {
++    expect(await pollOnce('http://g', reply(404, { error: 'nope' }))).toBe('not-router')
++    expect(currentNpuStatus.available).toBe(false)
++  })
+ })
+ 
+ describe('npuDisplayModels', () => {
+diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
+index 88eec592..11ec25df 100644
+--- a/src/services/npuStatus.ts
++++ b/src/services/npuStatus.ts
+@@ -11,6 +11,7 @@
+  * so pointing openclaude at OpenAI/Ollama costs one request and nothing more.
+  */
+ 
++import { type FetchLike, FURIO_NO_KEY } from '../furio/auth.js'
+ import {
+   getRememberedNpuModels,
+   recordNpuModelSelection,
+@@ -48,6 +49,20 @@ export type NpuStatus = {
+    * vanishing. Persisted across restarts; see npuRecentModels.
+    */
+   remembered: string[]
++  /**
++   * The rest only come from the class gateway in front of the router
++   * (furio-class); a bare router leaves them at their "unknown" values.
++   */
++  /** Email of the account the token belongs to, or null when anonymous. */
++  account: string | null
++  /** The gateway answered 401: there is no usable token — `/login`. */
++  loginRequired: boolean
++  /** Whether the class window is open; null when the backend has no such notion. */
++  classOpen: boolean | null
++  /** When the next window opens, as the gateway words it; null when unknown. */
++  classNext: string | null
++  /** One line from the operator for the status line, or null. */
++  notice: string | null
+ }
+ 
+ const IDLE_INTERVAL_MS = 10_000
+@@ -69,6 +84,11 @@ export const currentNpuStatus: NpuStatus = {
+   phase: 0,
+   available: false,
+   remembered: [],
++  account: null,
++  loginRequired: false,
++  classOpen: null,
++  classNext: null,
++  notice: null,
+ }
+ 
+ export const npuStatusListeners = new Set<(status: NpuStatus) => void>()
+@@ -103,9 +123,24 @@ type RawStatus = {
+     { state?: string; cards?: number[]; dp?: number; pp?: number }
+   >
+   free_cards?: number[]
++  // Added by the class gateway (furio-class) in front of the router.
++  login_required?: boolean
++  account?: { email?: string; name?: string } | null
++  class?: { open?: boolean; until?: string | null; next?: string | null } | null
++  notice?: string | null
++}
++
++type ParsedStatus = Pick<
++  NpuStatus,
++  'models' | 'freeCards' | 'account' | 'loginRequired' | 'classOpen' | 'classNext' | 'notice'
++>
++
++/** A non-empty string, else null — the gateway sends `""`/`null` for "none". */
++function textOrNull(v: unknown): string | null {
++  return typeof v === 'string' && v.trim().length > 0 ? v.trim() : null
+ }
+ 
+-export function parseStatus(raw: RawStatus): Pick<NpuStatus, 'models' | 'freeCards'> {
++export function parseStatus(raw: RawStatus): ParsedStatus {
+   const models: NpuModel[] = []
+   for (const [id, v] of Object.entries(raw.running ?? {})) {
+     const state = v?.state
+@@ -122,7 +157,16 @@ export function parseStatus(raw: RawStatus): Pick<NpuStatus, 'models' | 'freeCar
+   }
+   // Stable order so the status line doesn't reshuffle between polls.
+   models.sort((a, b) => a.id.localeCompare(b.id))
+-  return { models, freeCards: Array.isArray(raw.free_cards) ? raw.free_cards : [] }
++  const cls = raw.class
++  return {
++    models,
++    freeCards: Array.isArray(raw.free_cards) ? raw.free_cards : [],
++    account: textOrNull(raw.account?.email),
++    loginRequired: raw.login_required === true,
++    classOpen: typeof cls?.open === 'boolean' ? cls.open : null,
++    classNext: textOrNull(cls?.next),
++    notice: textOrNull(raw.notice),
++  }
+ }
+ 
+ /**
+@@ -249,11 +293,71 @@ function sameModels(a: readonly NpuModel[], b: readonly NpuModel[]): boolean {
+   return true
+ }
+ 
+-async function pollOnce(base: string): Promise<PollResult> {
++/** The gateway fields of a 401: nothing is known except that a login is due. */
++const LOGIN_REQUIRED: Omit<ParsedStatus, 'models' | 'freeCards'> = {
++  account: null,
++  loginRequired: true,
++  classOpen: null,
++  classNext: null,
++  notice: null,
++}
++
++/** Whether the gateway-only fields of the current status differ from `next`. */
++function gatewayFieldsChanged(next: Omit<ParsedStatus, 'models' | 'freeCards'>): boolean {
++  return (
++    currentNpuStatus.account !== next.account ||
++    currentNpuStatus.loginRequired !== next.loginRequired ||
++    currentNpuStatus.classOpen !== next.classOpen ||
++    currentNpuStatus.classNext !== next.classNext ||
++    currentNpuStatus.notice !== next.notice
++  )
++}
++
++function applyGatewayFields(next: Omit<ParsedStatus, 'models' | 'freeCards'>): void {
++  currentNpuStatus.account = next.account
++  currentNpuStatus.loginRequired = next.loginRequired
++  currentNpuStatus.classOpen = next.classOpen
++  currentNpuStatus.classNext = next.classNext
++  currentNpuStatus.notice = next.notice
++}
++
++/**
++ * The token the chat endpoint uses, for the gateway in front of the router.
++ * The installer's placeholder is not a token and is not sent; a bare router
++ * ignores the header either way.
++ */
++function statusHeaders(): Record<string, string> {
++  const key = process.env.OPENAI_API_KEY
++  return key && key !== FURIO_NO_KEY ? { authorization: `Bearer ${key}` } : {}
++}
++
++/**
++ * One poll of `/router/status`, applied to `currentNpuStatus`. Exported for
++ * tests; the loop below is the only production caller.
++ */
++export async function pollOnce(base: string, fetchImpl: FetchLike = fetch): Promise<PollResult> {
+   const controller = new AbortController()
+   const abort = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
+   try {
+-    const res = await fetch(`${base}/router/status`, { signal: controller.signal })
++    const res = await fetchImpl(`${base}/router/status`, {
++      headers: statusHeaders(),
++      signal: controller.signal,
++    })
++    if (res.status === 401) {
++      // The class gateway, and no usable token: the backend is real and keeps
++      // getting polled, so the line flips to the account as soon as `/login`
++      // has stored one. Nothing else is known until then.
++      const changed = !currentNpuStatus.available || currentNpuStatus.models.length > 0 || gatewayFieldsChanged(LOGIN_REQUIRED)
++      currentNpuStatus.models = []
++      currentNpuStatus.freeCards = []
++      applyGatewayFields(LOGIN_REQUIRED)
++      currentNpuStatus.available = true
++      if (changed) {
++        currentNpuStatus.phase += 1
++        notify()
++      }
++      return 'ok'
++    }
+     // A real response that is not a router status (404 from OpenAI/Ollama) is a
+     // permanent answer; a timeout or connection error is not — see PollResult.
+     if (!res.ok) return 'not-router'
+@@ -263,9 +367,11 @@ async function pollOnce(base: string): Promise<PollResult> {
+       !currentNpuStatus.available ||
+       !sameModels(currentNpuStatus.models, nextModels) ||
+       currentNpuStatus.freeCards.length !== parsed.freeCards.length ||
+-      currentNpuStatus.freeCards.some((c, i) => c !== parsed.freeCards[i])
++      currentNpuStatus.freeCards.some((c, i) => c !== parsed.freeCards[i]) ||
++      gatewayFieldsChanged(parsed)
+     currentNpuStatus.models = nextModels
+     currentNpuStatus.freeCards = parsed.freeCards
++    applyGatewayFields(parsed)
+     // Remember models the router reports as fully up, so they keep showing (red)
+     // after an eviction or restart. Only `up` — a load that never finished must
+     // not be remembered as if it had.
+@@ -378,6 +484,11 @@ export function __resetNpuStatusForTest(): void {
+   currentNpuStatus.phase = 0
+   currentNpuStatus.available = false
+   currentNpuStatus.remembered = []
++  currentNpuStatus.account = null
++  currentNpuStatus.loginRequired = false
++  currentNpuStatus.classOpen = null
++  currentNpuStatus.classNext = null
++  currentNpuStatus.notice = null
+   npuStatusListeners.clear()
+ }
+ 
+-- 
+2.43.0
+
+
+From 5ceec773cb628a56a9d1443a5f4ba56de414a328 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Sun, 25 Oct 2026 03:02:22 +0900
+Subject: [PATCH 33/36] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+ =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20403=C2=B75xx=20?=
+ =?UTF-8?q?=EC=97=90=EB=8F=84=20=EC=83=81=ED=83=9C=EC=A4=84=20=EC=9C=A0?=
+ =?UTF-8?q?=EC=A7=80,=20/login=20=EC=9D=80=20=EC=9D=BC=EC=8B=9C=20?=
+ =?UTF-8?q?=EC=98=A4=EB=A5=98=EB=A5=BC=20=EB=84=98=EA=B8=B0=EA=B3=A0=20?=
+ =?UTF-8?q?=ED=86=A0=ED=81=B0=EC=9D=84=20=EB=A8=BC=EC=A0=80=20=EC=A0=81?=
+ =?UTF-8?q?=EC=9A=A9?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- npuStatus: 첫 폴링이 403(정지 계정)·5xx/429(중계기 재시작) 이어도 루프를 끝내지 않는다
+  — 403 은 NpuStatus.denied(게이트웨이의 detail, 없으면 고정 문구) 로 '성공한 폴링',
+  5xx/429 는 unreachable. 404 만 '라우터 아님' 으로 영구 정지. /logout → /login 이 상태줄을 되살린다
+  (테스트: polling loop 403/502/404 세 경우)
+- auth.pollDeviceToken: 네트워크 실패·5xx 는 transient 로 표시 → /login 은 expiresIn 까지 계속 폴링하고
+  "서버가 답하지 않아 다시 시도하는 중… (이유)" 를 보여 준다. invalid_grant 같은 게이트웨이 판정만 종료
+- /login: 토큰을 먼저 프로세스에 적용(applyFurioKey·onChangeAPIKey·상태줄 갱신)한 뒤 파일에 쓴다
+  — 1회 소비 토큰을 저장 실패로 잃지 않는다. 저장 실패는 '로그인됨 … 다음 실행 때 다시 /login' 로 알림
+- 상태줄: denied → 빨강 한 줄(사유). 401 문구는 에디션별 — 수업판 '로그인 필요: /login',
+  일반판은 /login 이 없으므로 '인증 실패(401): 키 확인'
+- 목 게이트웨이 + tmux 탐침(furio-class tools/) 으로 네 시나리오 확인: 새 시작·로그인·로그아웃,
+  정지 토큰 시작 → 로그아웃 → 로그인(수업 닫힘·공지·계정), 502 두 번 뒤 복구·토큰 폴링 502 재시도, 일반판 401 문구
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/commands/furio-login/login.tsx        |  51 ++++++---
+ src/components/BuiltinStatusLine.test.tsx |  32 +++++-
+ src/components/BuiltinStatusLine.tsx      |  17 ++-
+ src/furio/auth.test.ts                    |  17 ++-
+ src/furio/auth.ts                         |  21 +++-
+ src/services/npuStatus.test.ts            | 126 ++++++++++++++++++++++
+ src/services/npuStatus.ts                 | 100 +++++++++++++----
+ 7 files changed, 322 insertions(+), 42 deletions(-)
+
+diff --git a/src/commands/furio-login/login.tsx b/src/commands/furio-login/login.tsx
+index 81952efb..ef4e7a70 100644
+--- a/src/commands/furio-login/login.tsx
++++ b/src/commands/furio-login/login.tsx
+@@ -24,8 +24,12 @@ const EXPIRED_MESSAGE = '로그인 코드가 만료되었습니다. /login 으
+ 
+ type Props = {
+   onDone: LocalJSXCommandOnDone
+-  /** Runs once with the new token, before `onDone`. */
+-  onLoggedIn: (token: string) => void
++  /**
++   * Runs once with the new token, before `onDone`. Returns what went wrong
++   * when the token could not be *stored* — the session is logged in either
++   * way — or null.
++   */
++  onLoggedIn: (token: string) => string | null
+ }
+ 
+ /**
+@@ -35,6 +39,9 @@ type Props = {
+ function FurioLogin({ onDone, onLoggedIn }: Props): React.ReactNode {
+   const [start, setStart] = React.useState<DeviceLoginStart | null>(null)
+   const [browserOpened, setBrowserOpened] = React.useState<boolean | null>(null)
++  // The last poll did not reach the gateway (set while retrying, cleared by
++  // the next real answer) — shown so a long silence is not mistaken for a hang.
++  const [retrying, setRetrying] = React.useState<string | null>(null)
+   // `onDone` unmounts us, but a poll already in flight can still resolve; the
+   // ref makes every exit path — success, expiry, error, Esc — fire it once.
+   const finished = React.useRef(false)
+@@ -83,24 +90,29 @@ function FurioLogin({ onDone, onLoggedIn }: Props): React.ReactNode {
+         const r = await pollDeviceToken(base, s.deviceCode)
+         if (stopped()) return
+         if (r.status === 'ok' && r.token) {
+-          try {
+-            onLoggedIn(r.token)
+-          } catch (e) {
+-            logError(e)
+-            finish(`토큰을 저장하지 못했습니다: ${errorMessage(e)}`)
+-            return
+-          }
+-          finish(`로그인됨: ${r.email || '(이메일 없음)'}`)
++          const storeError = onLoggedIn(r.token)
++          const who = r.email || '(이메일 없음)'
++          finish(
++            storeError
++              ? `로그인됨: ${who} — 토큰을 저장하지 못해 다음 실행 때 다시 /login 해야 합니다 (${storeError})`
++              : `로그인됨: ${who}`,
++          )
+           return
+         }
+         if (r.status === 'expired') {
+           finish(EXPIRED_MESSAGE)
+           return
+         }
+-        if (r.status === 'error') {
++        if (r.status === 'error' && !r.transient) {
++          // The gateway's own verdict (invalid_grant and the like): the code
++          // is dead, so a new one is needed.
+           finish(`로그인 실패: ${r.error ?? '알 수 없는 오류'}`)
+           return
+         }
++        // Pending — or the gateway could not be reached this time (timeout,
++        // ECONNRESET through the relay, a 502 while it restarts). The code is
++        // still valid, so keep polling until `expiresIn` runs out.
++        setRetrying(r.status === 'error' ? (r.error ?? '연결 실패') : null)
+         timer = setTimeout(() => void tick(), s.interval * 1000)
+       }
+       timer = setTimeout(() => void tick(), s.interval * 1000)
+@@ -152,6 +164,9 @@ function FurioLogin({ onDone, onLoggedIn }: Props): React.ReactNode {
+             <Spinner />
+             <Text> 승인을 기다리는 중… 코드는 {Math.max(1, Math.round(start.expiresIn / 60))}분 동안 유효합니다</Text>
+           </Box>
++          {retrying !== null && (
++            <Text dimColor>서버가 답하지 않아 다시 시도하는 중… ({retrying})</Text>
++          )}
+         </Box>
+       )}
+     </Dialog>
+@@ -163,14 +178,22 @@ export const call: LocalJSXCommandCall = async (onDone, context) => {
+     <FurioLogin
+       onDone={onDone}
+       onLoggedIn={token => {
+-        // The file is what the wrapper reads on the next start; the env is
+-        // what this process sends from now on — chat and status poll alike.
+-        writeFurioKey(token)
++        // The env is what this process sends from now on — chat and status
++        // poll alike — and comes first: the gateway hands the token out once
++        // (the poll that got it consumed the code), so a session must not lose
++        // it to a read-only home directory. The file only buys the next start.
+         applyFurioKey(token)
+         context.onChangeAPIKey()
+         // Flip the status line from "로그인 필요" to the account now, not at
+         // the next idle poll.
+         refreshNpuStatusNow()
++        try {
++          writeFurioKey(token)
++          return null
++        } catch (e) {
++          logError(e)
++          return errorMessage(e)
++        }
+       }}
+     />
+   )
+diff --git a/src/components/BuiltinStatusLine.test.tsx b/src/components/BuiltinStatusLine.test.tsx
+index 09863020..a89d83de 100644
+--- a/src/components/BuiltinStatusLine.test.tsx
++++ b/src/components/BuiltinStatusLine.test.tsx
+@@ -1,4 +1,4 @@
+-import { describe, expect, it } from 'bun:test'
++import { afterEach, beforeEach, describe, expect, it } from 'bun:test'
+ import type { NpuModel, NpuStatus } from '../services/npuStatus.js'
+ import { DEFAULT_GLOBAL_CONFIG } from '../utils/config.js'
+ import {
+@@ -224,6 +224,7 @@ describe('buildNpuSegments', () => {
+     remembered,
+     account: null,
+     loginRequired: false,
++    denied: null,
+     classOpen: null,
+     classNext: null,
+     notice: null,
+@@ -292,6 +293,35 @@ describe('buildNpuSegments', () => {
+   })
+ 
+   describe('behind the class gateway', () => {
++    // buildNpuSegments words the 401 by edition; the tests run from source,
++    // where the edition is the real environment.
++    const savedEdition = process.env.FURIO_EDITION
++    beforeEach(() => {
++      process.env.FURIO_EDITION = 'class'
++    })
++    afterEach(() => {
++      if (savedEdition === undefined) delete process.env.FURIO_EDITION
++      else process.env.FURIO_EDITION = savedEdition
++    })
++
++    it('login required in the lab edition does not point at a /login it does not have', () => {
++      process.env.FURIO_EDITION = 'lab'
++      const segments = buildNpuSegments({ ...npu([m('A', 'up')]), loginRequired: true }, 'A')
++      expect(segments.map(s => s.text)).toEqual(['인증 실패(401): 키 확인'])
++      expect(segments[0]?.color).toBe('error')
++    })
++
++    it('denied (403): one red segment with the gateway reason and nothing else', () => {
++      const segments = buildNpuSegments(
++        { ...npu([m('A', 'up')], ['A']), denied: '계정이 정지되었습니다. 운영자에게 문의하세요', classOpen: false },
++        'A',
++      )
++      expect(segments.map(s => s.text)).toEqual(['계정이 정지되었습니다. 운영자에게 문의하세요'])
++      expect(segments[0]?.key).toBe('npu:denied')
++      expect(segments[0]?.color).toBe('error')
++      expect(segments[0]?.priority).toBeLessThanOrEqual(0.5)
++    })
++
+     it('login required: one red segment pointing at /login and nothing else', () => {
+       // Even a remembered model stays hidden — the only thing to do is log in.
+       const segments = buildNpuSegments(
+diff --git a/src/components/BuiltinStatusLine.tsx b/src/components/BuiltinStatusLine.tsx
+index cb61628a..9b3afa93 100644
+--- a/src/components/BuiltinStatusLine.tsx
++++ b/src/components/BuiltinStatusLine.tsx
+@@ -9,6 +9,7 @@ import { useTerminalSize } from '../hooks/useTerminalSize.js';
+ import { Box, Text } from '../ink.js';
+ import { getRawUtilization } from '../services/claudeAiLimits.js';
+ import { useClaudeAiLimits } from '../services/claudeAiLimitsHook.js';
++import { isClassEdition } from '../furio/edition.js';
+ import { type NpuStatus, npuDisplayModels } from '../services/npuStatus.js';
+ import { useNpuStatus } from '../services/npuStatusHook.js';
+ import { useAppState } from '../state/AppState.js';
+@@ -67,10 +68,24 @@ export function buildNpuSegments(npu: NpuStatus, currentModelId: string | null,
+   if (npu.loginRequired) {
+     // The class gateway refused the poll: nothing about the cards is known and
+     // nothing works until the student logs in, so that is the whole line.
++    // Only the class build has `/login` (src/furio/edition.ts); the lab build
++    // runs with CLAUDE_CODE_USE_OPENAI=1, which drops the Anthropic one too,
++    // so it must not be sent to a command it does not have — its key comes
++    // from the installer.
+     return [{
+       key: 'npu:login',
+       priority: 0,
+-      text: '로그인 필요: /login',
++      text: isClassEdition() ? '로그인 필요: /login' : '인증 실패(401): 키 확인',
++      color: 'error'
++    }];
++  }
++  if (npu.denied) {
++    // 403: the gateway knows the token and refuses it (a suspended account).
++    // Nothing on this side fixes that, so the reason is the whole line.
++    return [{
++      key: 'npu:denied',
++      priority: 0,
++      text: npu.denied,
+       color: 'error'
+     }];
+   }
+diff --git a/src/furio/auth.test.ts b/src/furio/auth.test.ts
+index 38ff7513..5b3879b6 100644
+--- a/src/furio/auth.test.ts
++++ b/src/furio/auth.test.ts
+@@ -170,15 +170,28 @@ describe('pollDeviceToken', () => {
+     expect(out.status).toBe('expired')
+   })
+ 
+-  it('400 invalid_grant → error', async () => {
++  it('400 invalid_grant → error, and final: the code is dead, no point polling on', async () => {
+     const out = await pollDeviceToken('https://x/furio', 'dc-1', reply(400, { error: 'invalid_grant' }))
+     expect(out.status).toBe('error')
++    expect(out.transient).toBeFalsy()
+   })
+ 
+-  it('a network failure → error rather than a throw', async () => {
++  it('a network failure → a transient error rather than a throw, so the caller keeps polling', async () => {
+     const out = await pollDeviceToken('https://x/furio', 'dc-1', async () => {
+       throw new Error('ECONNREFUSED')
+     })
++    expect(out).toEqual({ status: 'error', error: 'ECONNREFUSED', transient: true })
++  })
++
++  it('a 5xx from the relay (gateway restarting) → transient error', async () => {
++    const out = await pollDeviceToken('https://x/furio', 'dc-1', async () => new Response('bad gateway', { status: 502 }))
++    expect(out.status).toBe('error')
++    expect(out.transient).toBe(true)
++  })
++
++  it('a 200 without a token is a broken gateway, not something to wait out', async () => {
++    const out = await pollDeviceToken('https://x/furio', 'dc-1', reply(200, {}))
+     expect(out.status).toBe('error')
++    expect(out.transient).toBeFalsy()
+   })
+ })
+diff --git a/src/furio/auth.ts b/src/furio/auth.ts
+index 383cbea2..fdc133e9 100644
+--- a/src/furio/auth.ts
++++ b/src/furio/auth.ts
+@@ -44,6 +44,13 @@ export type DeviceTokenPoll = {
+   email?: string
+   /** What went wrong when `status` is `error`, for the message to the user. */
+   error?: string
++  /**
++   * With `status: 'error'`: the gateway did not actually answer about this
++   * code — a network failure, a timeout, or a 5xx from the relay while the
++   * gateway restarts. The code is still good, so the caller keeps polling
++   * until `expiresIn`. Absent (final) for a real answer such as `invalid_grant`.
++   */
++  transient?: boolean
+ }
+ 
+ /** Where furio keeps its per-user files: `FURIO_HOME`, else `~/.furio`. */
+@@ -138,9 +145,15 @@ export async function startDeviceLogin(
+   }
+ }
+ 
++/** An HTTP status that says nothing about the request itself: try again later. */
++export function isTransientStatus(status: number): boolean {
++  return status >= 500 || status === 429
++}
++
+ /**
+  * One poll of the token endpoint. Never throws: a network blip is reported
+- * as `error` so the caller decides whether to keep waiting.
++ * as a `transient` error so the caller keeps waiting (the device code is
++ * still valid); only the gateway's own verdict ends the flow.
+  */
+ export async function pollDeviceToken(
+   base: string,
+@@ -151,7 +164,11 @@ export async function pollDeviceToken(
+   try {
+     res = await postJson(fetchImpl, `${base}/auth/device/token`, { device_code: deviceCode })
+   } catch (e) {
+-    return { status: 'error', error: e instanceof Error ? e.message : String(e) }
++    return { status: 'error', error: e instanceof Error ? e.message : String(e), transient: true }
++  }
++  if (isTransientStatus(res.status)) {
++    // The relay (NPM) or a restarting gateway, not an answer about the code.
++    return { status: 'error', error: `HTTP ${res.status}`, transient: true }
+   }
+   let raw: Record<string, unknown> = {}
+   try {
+diff --git a/src/services/npuStatus.test.ts b/src/services/npuStatus.test.ts
+index cc169d3a..df049ed6 100644
+--- a/src/services/npuStatus.test.ts
++++ b/src/services/npuStatus.test.ts
+@@ -10,7 +10,10 @@ import {
+   npuSwitcherEnter,
+   parseStatus,
+   pollOnce,
++  refreshNpuStatusNow,
+   routerBaseUrl,
++  startNpuStatusPolling,
++  stopNpuStatusPolling,
+ } from './npuStatus.js'
+ 
+ const model = (id: string, state: NpuModel['state'] = 'up'): NpuModel => ({
+@@ -157,6 +160,129 @@ describe('pollOnce', () => {
+     expect(await pollOnce('http://g', reply(404, { error: 'nope' }))).toBe('not-router')
+     expect(currentNpuStatus.available).toBe(false)
+   })
++
++  test('403 means the gateway refused the token: available, denied with its reason, not a login prompt', async () => {
++    process.env.OPENAI_API_KEY = 'furio_suspended'
++    const result = await pollOnce(
++      'http://g',
++      reply(403, { detail: '계정이 정지되었습니다. 운영자에게 문의하세요' }),
++    )
++    expect(result).toBe('ok')
++    expect(currentNpuStatus.available).toBe(true)
++    expect(currentNpuStatus.denied).toBe('계정이 정지되었습니다. 운영자에게 문의하세요')
++    expect(currentNpuStatus.loginRequired).toBe(false)
++    expect(currentNpuStatus.models).toEqual([])
++    expect(currentNpuStatus.account).toBeNull()
++  })
++
++  test('a 403 without a readable reason falls back to the fixed suspension wording', async () => {
++    process.env.OPENAI_API_KEY = 'furio_suspended'
++    await pollOnce('http://g', async () => new Response('forbidden', { status: 403 }))
++    expect(currentNpuStatus.denied).toBe('계정이 정지되었습니다. 운영자에게 문의하세요')
++  })
++
++  test('after a 403, a 401 (logout) and a real status both clear denied', async () => {
++    process.env.OPENAI_API_KEY = 'furio_suspended'
++    await pollOnce('http://g', reply(403, { detail: 'no' }))
++    expect(currentNpuStatus.denied).toBe('no')
++    process.env.OPENAI_API_KEY = 'dummy'
++    await pollOnce('http://g', reply(401, { detail: 'login' }))
++    expect(currentNpuStatus.denied).toBeNull()
++    expect(currentNpuStatus.loginRequired).toBe(true)
++    process.env.OPENAI_API_KEY = 'furio_ok'
++    await pollOnce('http://g', reply(200, { running: {}, free_cards: [], account: { email: 's@x' } }))
++    expect(currentNpuStatus.denied).toBeNull()
++    expect(currentNpuStatus.loginRequired).toBe(false)
++    expect(currentNpuStatus.account).toBe('s@x')
++  })
++
++  test('5xx (relay restarting) is transient: unreachable, status untouched, never "not a router"', async () => {
++    expect(await pollOnce('http://g', async () => new Response('bad gateway', { status: 502 }))).toBe('unreachable')
++    expect(await pollOnce('http://g', async () => new Response('timeout', { status: 504 }))).toBe('unreachable')
++    expect(await pollOnce('http://g', reply(429, { detail: 'slow down' }))).toBe('unreachable')
++    expect(currentNpuStatus.available).toBe(false)
++  })
++})
++
++describe('polling loop', () => {
++  const saved = { OPENAI_API_KEY: process.env.OPENAI_API_KEY, OPENCLAUDE_CONFIG_DIR: process.env.OPENCLAUDE_CONFIG_DIR, FURIO_NPU_STATUS: process.env.FURIO_NPU_STATUS }
++  const realFetch = globalThis.fetch
++  let configDir: string
++  let calls: number
++
++  /** Answers /router/status with the given HTTP statuses in order (the last one repeats). */
++  function serve(statuses: number[]): void {
++    calls = 0
++    const good = { running: {}, free_cards: [], account: { email: 's@x' }, class: { open: true } }
++    globalThis.fetch = (async () => {
++      const status = statuses[Math.min(calls, statuses.length - 1)]!
++      calls += 1
++      const body = status === 200 ? good : status === 403 ? { detail: '정지' } : { detail: 'x' }
++      return new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } })
++    }) as unknown as typeof fetch
++  }
++
++  async function waitFor(cond: () => boolean, ms = 2000): Promise<void> {
++    const deadline = Date.now() + ms
++    while (!cond()) {
++      if (Date.now() > deadline) throw new Error('timed out waiting')
++      await new Promise(r => setTimeout(r, 5))
++    }
++  }
++
++  beforeEach(() => {
++    __resetNpuStatusForTest()
++    configDir = mkdtempSync(join(tmpdir(), 'furio-npu-loop-'))
++    process.env.OPENCLAUDE_CONFIG_DIR = configDir
++    process.env.OPENAI_API_KEY = 'furio_x'
++    delete process.env.FURIO_NPU_STATUS
++  })
++
++  afterEach(() => {
++    stopNpuStatusPolling()
++    __resetNpuStatusForTest()
++    globalThis.fetch = realFetch
++    rmSync(configDir, { recursive: true, force: true })
++    for (const [k, v] of Object.entries(saved)) {
++      if (v === undefined) delete process.env[k]
++      else process.env[k] = v
++    }
++  })
++
++  test('a 403 on the first poll keeps the loop alive, so /logout·/login can refresh it', async () => {
++    serve([403, 200])
++    startNpuStatusPolling('http://g')
++    await waitFor(() => calls === 1)
++    await waitFor(() => currentNpuStatus.denied !== null)
++    expect(currentNpuStatus.available).toBe(true)
++    refreshNpuStatusNow()
++    await waitFor(() => calls === 2)
++    await waitFor(() => currentNpuStatus.account === 's@x')
++    expect(currentNpuStatus.denied).toBeNull()
++  })
++
++  test('a 502 on the first poll keeps the loop alive', async () => {
++    serve([502, 200])
++    startNpuStatusPolling('http://g')
++    await waitFor(() => calls === 1)
++    // Let pollOnce settle before asking again.
++    await new Promise(r => setTimeout(r, 20))
++    expect(currentNpuStatus.available).toBe(false)
++    refreshNpuStatusNow()
++    await waitFor(() => calls === 2)
++    await waitFor(() => currentNpuStatus.account === 's@x')
++  })
++
++  test('a 404 on the first poll still rules the backend out for good', async () => {
++    serve([404, 200])
++    startNpuStatusPolling('http://g')
++    await waitFor(() => calls === 1)
++    await new Promise(r => setTimeout(r, 20))
++    refreshNpuStatusNow()
++    await new Promise(r => setTimeout(r, 50))
++    expect(calls).toBe(1)
++    expect(currentNpuStatus.available).toBe(false)
++  })
+ })
+ 
+ describe('npuDisplayModels', () => {
+diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
+index 11ec25df..ce796cdd 100644
+--- a/src/services/npuStatus.ts
++++ b/src/services/npuStatus.ts
+@@ -11,7 +11,7 @@
+  * so pointing openclaude at OpenAI/Ollama costs one request and nothing more.
+  */
+ 
+-import { type FetchLike, FURIO_NO_KEY } from '../furio/auth.js'
++import { type FetchLike, FURIO_NO_KEY, isTransientStatus } from '../furio/auth.js'
+ import {
+   getRememberedNpuModels,
+   recordNpuModelSelection,
+@@ -57,6 +57,12 @@ export type NpuStatus = {
+   account: string | null
+   /** The gateway answered 401: there is no usable token — `/login`. */
+   loginRequired: boolean
++  /**
++   * The gateway answered 403 — it knows the token but refuses it (a suspended
++   * account) — and this is its reason, worded for the student. Null otherwise.
++   * Unlike 401 there is nothing `/login` fixes, so the line shows the reason.
++   */
++  denied: string | null
+   /** Whether the class window is open; null when the backend has no such notion. */
+   classOpen: boolean | null
+   /** When the next window opens, as the gateway words it; null when unknown. */
+@@ -86,6 +92,7 @@ export const currentNpuStatus: NpuStatus = {
+   remembered: [],
+   account: null,
+   loginRequired: false,
++  denied: null,
+   classOpen: null,
+   classNext: null,
+   notice: null,
+@@ -130,11 +137,14 @@ type RawStatus = {
+   notice?: string | null
+ }
+ 
+-type ParsedStatus = Pick<
++/** What the class gateway adds to a status; a bare router leaves these unknown. */
++type GatewayFields = Pick<
+   NpuStatus,
+-  'models' | 'freeCards' | 'account' | 'loginRequired' | 'classOpen' | 'classNext' | 'notice'
++  'account' | 'loginRequired' | 'denied' | 'classOpen' | 'classNext' | 'notice'
+ >
+ 
++type ParsedStatus = Pick<NpuStatus, 'models' | 'freeCards'> & GatewayFields
++
+ /** A non-empty string, else null — the gateway sends `""`/`null` for "none". */
+ function textOrNull(v: unknown): string | null {
+   return typeof v === 'string' && v.trim().length > 0 ? v.trim() : null
+@@ -163,6 +173,8 @@ export function parseStatus(raw: RawStatus): ParsedStatus {
+     freeCards: Array.isArray(raw.free_cards) ? raw.free_cards : [],
+     account: textOrNull(raw.account?.email),
+     loginRequired: raw.login_required === true,
++    // A 200 is the gateway accepting the token; refusals never carry a body here.
++    denied: null,
+     classOpen: typeof cls?.open === 'boolean' ? cls.open : null,
+     classNext: textOrNull(cls?.next),
+     notice: textOrNull(raw.notice),
+@@ -294,33 +306,72 @@ function sameModels(a: readonly NpuModel[], b: readonly NpuModel[]): boolean {
+ }
+ 
+ /** The gateway fields of a 401: nothing is known except that a login is due. */
+-const LOGIN_REQUIRED: Omit<ParsedStatus, 'models' | 'freeCards'> = {
++const LOGIN_REQUIRED: GatewayFields = {
+   account: null,
+   loginRequired: true,
++  denied: null,
+   classOpen: null,
+   classNext: null,
+   notice: null,
+ }
+ 
++/** The gateway's own wording for its only 403 (plan: Global Constraints). */
++const SUSPENDED_TEXT = '계정이 정지되었습니다. 운영자에게 문의하세요'
++
++/** The gateway fields of a 403: the token is known and refused for `reason`. */
++function denied(reason: string | null): GatewayFields {
++  return { ...LOGIN_REQUIRED, loginRequired: false, denied: reason ?? SUSPENDED_TEXT }
++}
++
+ /** Whether the gateway-only fields of the current status differ from `next`. */
+-function gatewayFieldsChanged(next: Omit<ParsedStatus, 'models' | 'freeCards'>): boolean {
++function gatewayFieldsChanged(next: GatewayFields): boolean {
+   return (
+     currentNpuStatus.account !== next.account ||
+     currentNpuStatus.loginRequired !== next.loginRequired ||
++    currentNpuStatus.denied !== next.denied ||
+     currentNpuStatus.classOpen !== next.classOpen ||
+     currentNpuStatus.classNext !== next.classNext ||
+     currentNpuStatus.notice !== next.notice
+   )
+ }
+ 
+-function applyGatewayFields(next: Omit<ParsedStatus, 'models' | 'freeCards'>): void {
++function applyGatewayFields(next: GatewayFields): void {
+   currentNpuStatus.account = next.account
+   currentNpuStatus.loginRequired = next.loginRequired
++  currentNpuStatus.denied = next.denied
+   currentNpuStatus.classOpen = next.classOpen
+   currentNpuStatus.classNext = next.classNext
+   currentNpuStatus.notice = next.notice
+ }
+ 
++/**
++ * A refusal from the gateway (401/403) applied as the whole status: the
++ * backend is real — the loop goes on, so the line flips the moment `/login`
++ * or `/logout` has changed the token — but nothing about the cards is known.
++ */
++function applyRefusal(fields: GatewayFields): void {
++  const changed =
++    !currentNpuStatus.available || currentNpuStatus.models.length > 0 || gatewayFieldsChanged(fields)
++  currentNpuStatus.models = []
++  currentNpuStatus.freeCards = []
++  applyGatewayFields(fields)
++  currentNpuStatus.available = true
++  if (changed) {
++    currentNpuStatus.phase += 1
++    notify()
++  }
++}
++
++/** The `detail` string of a FastAPI-style error body, or null. */
++async function errorDetail(res: Response): Promise<string | null> {
++  try {
++    const raw = (await res.json()) as { detail?: unknown }
++    return textOrNull(raw?.detail)
++  } catch {
++    return null
++  }
++}
++
+ /**
+  * The token the chat endpoint uses, for the gateway in front of the router.
+  * The installer's placeholder is not a token and is not sent; a bare router
+@@ -344,22 +395,23 @@ export async function pollOnce(base: string, fetchImpl: FetchLike = fetch): Prom
+       signal: controller.signal,
+     })
+     if (res.status === 401) {
+-      // The class gateway, and no usable token: the backend is real and keeps
+-      // getting polled, so the line flips to the account as soon as `/login`
+-      // has stored one. Nothing else is known until then.
+-      const changed = !currentNpuStatus.available || currentNpuStatus.models.length > 0 || gatewayFieldsChanged(LOGIN_REQUIRED)
+-      currentNpuStatus.models = []
+-      currentNpuStatus.freeCards = []
+-      applyGatewayFields(LOGIN_REQUIRED)
+-      currentNpuStatus.available = true
+-      if (changed) {
+-        currentNpuStatus.phase += 1
+-        notify()
+-      }
++      // The class gateway, and no usable token — `/login`.
++      applyRefusal(LOGIN_REQUIRED)
++      return 'ok'
++    }
++    if (res.status === 403) {
++      // The class gateway refusing a token it knows (a suspended account).
++      // Not a login prompt: the reason is what the student needs to see, and
++      // `/logout` → `/login` with another account must still be able to
++      // revive the line, so this is a successful poll, not a dead backend.
++      applyRefusal(denied(await errorDetail(res)))
+       return 'ok'
+     }
+-    // A real response that is not a router status (404 from OpenAI/Ollama) is a
+-    // permanent answer; a timeout or connection error is not — see PollResult.
++    // A 5xx or 429 is the relay (NPM) or a restarting gateway, not an answer
++    // about this backend: transient, like a connection error.
++    if (isTransientStatus(res.status)) return 'unreachable'
++    // Any other real response that is not a router status (404 from
++    // OpenAI/Ollama) is a permanent answer — see PollResult.
+     if (!res.ok) return 'not-router'
+     const parsed = parseStatus((await res.json()) as RawStatus)
+     const nextModels = withPending(parsed.models, Date.now())
+@@ -409,8 +461,11 @@ export function refreshNpuStatusNow(): void {
+ 
+ /**
+  * Starts polling. Safe to call repeatedly — only the first call arms the loop.
+- * A failed *first* probe means this backend is not a Furiosa router, so we stop
+- * for good rather than retrying against someone else's OpenAI endpoint.
++ * A *first* probe answered 404 (or any other non-router response) means this
++ * backend is not a Furiosa router, so we stop for good rather than retrying
++ * against someone else's OpenAI endpoint. A refusal (401/403) or a transient
++ * failure (5xx, timeout) is not that: the loop stays up, because the class
++ * gateway's first screen — "로그인 필요" — is this loop's job.
+  */
+ export function startNpuStatusPolling(base = routerBaseUrl()): void {
+   // Escape hatch: FURIO_NPU_STATUS=0 turns the whole loop off. Useful both as a
+@@ -486,6 +541,7 @@ export function __resetNpuStatusForTest(): void {
+   currentNpuStatus.remembered = []
+   currentNpuStatus.account = null
+   currentNpuStatus.loginRequired = false
++  currentNpuStatus.denied = null
+   currentNpuStatus.classOpen = null
+   currentNpuStatus.classNext = null
+   currentNpuStatus.notice = null
+-- 
+2.43.0
+
+
+From e6883f42491fab75ade11f18581e905f679ae8c6 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Sun, 25 Oct 2026 03:18:36 +0900
+Subject: [PATCH 34/36] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+ =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=202:=20=ED=8F=B4?=
+ =?UTF-8?q?=EB=A7=81=20=EC=A4=91=20/login=C2=B7/logout=20=EA=B0=B1?=
+ =?UTF-8?q?=EC=8B=A0=EC=9D=B4=20=EB=91=90=20=EB=B2=88=EC=A7=B8=20=ED=8F=B4?=
+ =?UTF-8?q?=EB=A7=81=20=EB=A3=A8=ED=94=84=EB=A5=BC=20=EB=A7=8C=EB=93=A4?=
+ =?UTF-8?q?=EC=A7=80=20=EC=95=8A=EB=8A=94=EB=8B=A4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- npuStatus.refreshNpuStatusNow: 폴링이 날아가 있는 동안(느린 게이트웨이, REQUEST_TIMEOUT_MS 까지)
+  불리면 setTimeout(scheduledPoll, 0) 을 또 걸지 않고 refreshWanted 만 켠다 — 지금 나간 폴링이
+  돌아오는 즉시 새 키로 한 번 더 돈다. 이전엔 두 루프가 각자 재무장해 폴링 빈도가 세션 내내 두 배였고
+  stopNpuStatusPolling 은 마지막 타이머만 지웠다
+- scheduledPoll: inFlight 플래그(동시 폴링 최대 1) + generation(정지·리셋 시점에 날아가 있던 폴링은
+  돌아와도 재무장하지 않음)
+- routerBaseUrl 은 furioBase 에 위임, furioBase 는 OPENAI_API_BASE 도 받는다 — 상태줄과 /login 이
+  다른 게이트웨이를 가리킬 수 없게
+- 테스트: 느린 게이트웨이에서 폴링 중 갱신 → fetch 겹침 0, 유휴 타이머 1개, 두 번째 폴링에 새 Bearer;
+  furioBase 의 OPENAI_API_BASE 폴백·OPENAI_BASE_URL 우선
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/furio/auth.test.ts         |  5 ++++
+ src/furio/auth.ts              |  8 ++++--
+ src/services/npuStatus.test.ts | 43 ++++++++++++++++++++++++++++
+ src/services/npuStatus.ts      | 52 +++++++++++++++++++++++++++++-----
+ 4 files changed, 98 insertions(+), 10 deletions(-)
+
+diff --git a/src/furio/auth.test.ts b/src/furio/auth.test.ts
+index 5b3879b6..6aa502ee 100644
+--- a/src/furio/auth.test.ts
++++ b/src/furio/auth.test.ts
+@@ -64,6 +64,11 @@ describe('furioBase', () => {
+   it('is null without an OpenAI-compatible base URL', () => {
+     expect(furioBase({})).toBeNull()
+   })
++
++  it('falls back to OPENAI_API_BASE like routerBaseUrl, so /login and the status line name the same gateway', () => {
++    expect(furioBase({ OPENAI_API_BASE: 'https://x/furio/v1' })).toBe('https://x/furio')
++    expect(furioBase({ OPENAI_BASE_URL: 'https://a/v1', OPENAI_API_BASE: 'https://b/v1' })).toBe('https://a')
++  })
+ })
+ 
+ describe('key file', () => {
+diff --git a/src/furio/auth.ts b/src/furio/auth.ts
+index fdc133e9..0af24ed0 100644
+--- a/src/furio/auth.ts
++++ b/src/furio/auth.ts
+@@ -92,12 +92,14 @@ export function clearFurioKey(): void {
+ }
+ 
+ /**
+- * The gateway root: `OPENAI_BASE_URL` with its trailing `/v1` removed, so
++ * The gateway root: `OPENAI_BASE_URL` (or the older `OPENAI_API_BASE`, which
++ * the rest of the fork also honours) with its trailing `/v1` removed, so
+  * `/auth/device/*` and `/router/status` resolve next to the OpenAI surface.
+- * Null when no OpenAI-compatible backend is configured.
++ * Null when no OpenAI-compatible backend is configured. The status line's
++ * `routerBaseUrl` is this same function, so the two cannot disagree.
+  */
+ export function furioBase(env: NodeJS.ProcessEnv = process.env): string | null {
+-  const base = env.OPENAI_BASE_URL?.trim()
++  const base = env.OPENAI_BASE_URL?.trim() || env.OPENAI_API_BASE?.trim()
+   if (!base) return null
+   const root = base.replace(/\/+$/, '').replace(/\/v1$/, '')
+   return root.length > 0 ? root : null
+diff --git a/src/services/npuStatus.test.ts b/src/services/npuStatus.test.ts
+index df049ed6..ff2c36f7 100644
+--- a/src/services/npuStatus.test.ts
++++ b/src/services/npuStatus.test.ts
+@@ -2,6 +2,7 @@ import { afterEach, beforeEach, describe, expect, test } from 'bun:test'
+ import { mkdtempSync, rmSync } from 'fs'
+ import { tmpdir } from 'os'
+ import { join } from 'path'
++import { FURIO_NO_KEY } from '../furio/auth.js'
+ import {
+   __resetNpuStatusForTest,
+   currentNpuStatus,
+@@ -283,6 +284,48 @@ describe('polling loop', () => {
+     expect(calls).toBe(1)
+     expect(currentNpuStatus.available).toBe(false)
+   })
++
++  test('a refresh that lands mid-poll (/login on a slow gateway) waits for the poll, then goes once with the new key — no second loop', async () => {
++    // A slow gateway: each /router/status takes 100ms, so /login's refresh
++    // arrives while the first poll is still out. The refresh must neither
++    // overlap it (two loops, two idle timers, forever) nor be dropped (the
++    // first poll went out with no token, so its answer is stale by now).
++    const realSetTimeout = globalThis.setTimeout
++    const seen: Array<string | undefined> = []
++    let inFlight = 0
++    let maxInFlight = 0
++    let idleArmed = 0
++    globalThis.setTimeout = ((fn: () => void, ms?: number, ...rest: unknown[]) => {
++      if (ms === 10_000) idleArmed += 1
++      return realSetTimeout(fn, ms, ...rest)
++    }) as unknown as typeof setTimeout
++    globalThis.fetch = (async (_url: string, init?: RequestInit) => {
++      seen.push((init?.headers as Record<string, string> | undefined)?.authorization)
++      inFlight += 1
++      maxInFlight = Math.max(maxInFlight, inFlight)
++      await new Promise(r => realSetTimeout(r, 100))
++      inFlight -= 1
++      const good = { running: {}, free_cards: [], account: { email: 's@x' }, class: { open: true } }
++      return new Response(JSON.stringify(good), { status: 200, headers: { 'content-type': 'application/json' } })
++    }) as unknown as typeof fetch
++    try {
++      process.env.OPENAI_API_KEY = FURIO_NO_KEY
++      startNpuStatusPolling('http://g')
++      await waitFor(() => seen.length === 1)
++      // /login: token applied, status line asked to catch up — mid-poll.
++      process.env.OPENAI_API_KEY = 'furio_new'
++      refreshNpuStatusNow()
++      await waitFor(() => seen.length === 2)
++      await waitFor(() => idleArmed >= 1)
++      await new Promise(r => realSetTimeout(r, 50))
++      expect(seen).toEqual([undefined, 'Bearer furio_new'])
++      expect(maxInFlight).toBe(1)
++      expect(idleArmed).toBe(1)
++      expect(currentNpuStatus.account).toBe('s@x')
++    } finally {
++      globalThis.setTimeout = realSetTimeout
++    }
++  })
+ })
+ 
+ describe('npuDisplayModels', () => {
+diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
+index ce796cdd..b1d82ffd 100644
+--- a/src/services/npuStatus.ts
++++ b/src/services/npuStatus.ts
+@@ -11,7 +11,7 @@
+  * so pointing openclaude at OpenAI/Ollama costs one request and nothing more.
+  */
+ 
+-import { type FetchLike, FURIO_NO_KEY, isTransientStatus } from '../furio/auth.js'
++import { type FetchLike, FURIO_NO_KEY, furioBase, isTransientStatus } from '../furio/auth.js'
+ import {
+   getRememberedNpuModels,
+   recordNpuModelSelection,
+@@ -103,11 +103,12 @@ export const npuStatusListeners = new Set<(status: NpuStatus) => void>()
+ /**
+  * `OPENAI_BASE_URL` points at the OpenAI-compatible surface (`.../v1`);
+  * the router's own endpoints sit next to it. Returns null when unset.
++ *
++ * One implementation with `/login`'s `furioBase` on purpose: the status line
++ * and the login command must never name different gateways.
+  */
+ export function routerBaseUrl(env: NodeJS.ProcessEnv = process.env): string | null {
+-  const base = env.OPENAI_BASE_URL ?? env.OPENAI_API_BASE
+-  if (!base) return null
+-  return base.replace(/\/+$/, '').replace(/\/v1$/, '')
++  return furioBase(env)
+ }
+ 
+ export function isTransitioning(models: NpuModel[]): boolean {
+@@ -255,6 +256,16 @@ export function npuDisplayModels(
+ let timer: ReturnType<typeof setTimeout> | null = null
+ let stopped = false
+ let pollBase: string | null = null
++/** A `scheduledPoll` is between its fetch and its re-arm. Only one may be. */
++let inFlight = false
++/** `refreshNpuStatusNow` was called while a poll was in flight: go again at once. */
++let refreshWanted = false
++/**
++ * Bumped by `stopNpuStatusPolling`. A poll that was in flight at that moment
++ * sees the mismatch when it lands and does not re-arm — `stopped` alone would
++ * let it through once the test seam flips `stopped` back.
++ */
++let generation = 0
+ 
+ /**
+  * Models we have asked the router to load, until it acknowledges them.
+@@ -455,6 +466,16 @@ export async function pollOnce(base: string, fetchImpl: FetchLike = fetch): Prom
+  */
+ export function refreshNpuStatusNow(): void {
+   if (stopped || timer === null) return
++  if (inFlight) {
++    // A poll is already out (a slow gateway holds one for up to
++    // REQUEST_TIMEOUT_MS). Arming another scheduledPoll here would start a
++    // second loop: both re-arm after their fetch, nothing ever stops the
++    // orphan, and the poll rate doubles for the session. Instead the running
++    // one goes again as soon as it lands — with whatever key the caller
++    // (/login, /logout) has applied by then, which is the point of the call.
++    refreshWanted = true
++    return
++  }
+   clearTimeout(timer)
+   timer = setTimeout(scheduledPoll, 0)
+ }
+@@ -485,8 +506,16 @@ let everSucceeded = false
+ 
+ async function scheduledPoll(): Promise<void> {
+   const base = pollBase
+-  if (base === null) return
+-  const result = await pollOnce(base)
++  if (base === null || inFlight) return
++  const gen = generation
++  inFlight = true
++  let result: PollResult
++  try {
++    result = await pollOnce(base)
++  } finally {
++    inFlight = false
++  }
++  if (gen !== generation) return
+   if (result === 'ok') {
+     everSucceeded = true
+   } else if (result === 'not-router' && !everSucceeded) {
+@@ -506,7 +535,12 @@ async function scheduledPoll(): Promise<void> {
+   // transition — that gap is exactly when the user is waiting for the LED.
+   const active = isTransitioning(currentNpuStatus.models) || pendingPreload.size > 0
+   let delay: number
+-  if (active) {
++  if (refreshWanted) {
++    // Asked for while this poll was out; its answer may predate the key
++    // change that prompted the ask, so go again now rather than in 10s.
++    refreshWanted = false
++    delay = 0
++  } else if (active) {
+     if (activeSince === null) activeSince = Date.now()
+     // Fast (1s) only for the first few seconds; then ease off so a long load
+     // doesn't repaint the terminal every second for a minute or two.
+@@ -520,6 +554,8 @@ async function scheduledPoll(): Promise<void> {
+ 
+ export function stopNpuStatusPolling(): void {
+   stopped = true
++  generation += 1
++  refreshWanted = false
+   if (timer !== null) {
+     clearTimeout(timer)
+     timer = null
+@@ -532,6 +568,8 @@ export function __resetNpuStatusForTest(): void {
+   stopped = false
+   timer = null
+   pollBase = null
++  inFlight = false
++  refreshWanted = false
+   everSucceeded = false
+   pendingPreload.clear()
+   currentNpuStatus.models = []
+-- 
+2.43.0
+
+
+From 26b1ff94693af6a9b65a3ba591492550e475b46c Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Sun, 25 Oct 2026 05:51:31 +0900
+Subject: [PATCH 35/36] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+ =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84:=20=EA=B2=8C=EC=9D=B4=ED=8A=B8?=
+ =?UTF-8?q?=EC=9B=A8=EC=9D=B4=20=EC=98=A4=EB=A5=98=20=EB=B3=B8=EB=AC=B8=20?=
+ =?UTF-8?q?{"error":{message,code}}=20=ED=8C=8C=EC=8B=B1,=20403=20suspende?=
+ =?UTF-8?q?d=20=EB=8A=94=20=EA=B3=A0=EC=A0=95=20=EB=AC=B8=EA=B5=AC=C2=B7?=
+ =?UTF-8?q?=EA=B7=B8=20=EC=99=B8=EB=8A=94=20message,=20200+login=5Frequire?=
+ =?UTF-8?q?d=20=EB=8A=94=20=EB=A1=9C=EA=B7=B8=EC=9D=B8=20=EC=95=88?=
+ =?UTF-8?q?=EB=82=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- errorDetail({"detail"} 만) → errorInfo: {"error":{"message","code"}}(furio-class deps.py error_body)·
+  {"error":"<code>"}(기기 코드 끝점, 평평한 모양)·{"detail"}(FastAPI 기본, 옛 목) 셋 다 읽는다
+- 403: code 가 suspended 면 고정 문구 '계정이 정지되었습니다. 운영자에게 문의하세요', 다른 code 는 message 를
+  상태줄에, message 없으면 고정 문구로
+- /router/status 무토큰은 실제 게이트웨이가 200 + login_required: true 로 답한다 — parseStatus 가 그대로
+  loginRequired 로 읽음을 테스트로 고정(401 경로는 옛 모양으로 유지)
+- 테스트 6개 추가(npuStatus.test.ts), 폴링 루프 도우미의 403 본문을 실제 모양으로
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/services/npuStatus.test.ts | 89 +++++++++++++++++++++++++++++++++-
+ src/services/npuStatus.ts      | 61 ++++++++++++++++++-----
+ 2 files changed, 136 insertions(+), 14 deletions(-)
+
+diff --git a/src/services/npuStatus.test.ts b/src/services/npuStatus.test.ts
+index ff2c36f7..14165961 100644
+--- a/src/services/npuStatus.test.ts
++++ b/src/services/npuStatus.test.ts
+@@ -73,6 +73,22 @@ describe('parseStatus', () => {
+     expect(out.notice).toBeNull()
+   })
+ 
++  test('login_required: true (the gateway answering without a token) is a login prompt with the window still known', () => {
++    const out = parseStatus({
++      running: {},
++      free_cards: [],
++      login_required: true,
++      account: null,
++      class: { open: false, until: null, next: '10-27 09:00' },
++      notice: '',
++    })
++    expect(out.loginRequired).toBe(true)
++    expect(out.account).toBeNull()
++    expect(out.denied).toBeNull()
++    expect(out.classOpen).toBe(false)
++    expect(out.classNext).toBe('10-27 09:00')
++  })
++
+   test('an open class window with no account reads as open and anonymous', () => {
+     const out = parseStatus({ running: {}, account: null, class: { open: true, until: '18:00', next: null }, notice: '' })
+     expect(out.classOpen).toBe(true)
+@@ -176,6 +192,74 @@ describe('pollOnce', () => {
+     expect(currentNpuStatus.account).toBeNull()
+   })
+ 
++  // The class gateway's shapes (furio-class gateway/furio_gateway/deps.py): every
++  // error is {"error": {"message", "code"}}, and /router/status without a usable
++  // token is a 200 with login_required: true, not a 401.
++  const SUSPENDED = '계정이 정지되었습니다. 운영자에게 문의하세요'
++  const gatewayError = (code: string, message: string) => ({ error: { message, code } })
++
++  test('200 with login_required (the gateway without a token): a login prompt, class window kept, no models hidden by an error', async () => {
++    process.env.OPENAI_API_KEY = 'dummy'
++    const result = await pollOnce(
++      'http://g',
++      reply(200, {
++        running: {},
++        free_cards: [0, 1, 2, 3],
++        server: 'rngd',
++        pinned: ['gpt-oss-20b@dp4'],
++        class: { open: false, until: null, next: '10-27 09:00' },
++        notice: '',
++        login_required: true,
++        account: null,
++        backend: 'up',
++      }),
++    )
++    expect(result).toBe('ok')
++    expect(currentNpuStatus.available).toBe(true)
++    expect(currentNpuStatus.loginRequired).toBe(true)
++    expect(currentNpuStatus.denied).toBeNull()
++    expect(currentNpuStatus.account).toBeNull()
++    expect(currentNpuStatus.classOpen).toBe(false)
++    expect(currentNpuStatus.classNext).toBe('10-27 09:00')
++  })
++
++  test('401 in the gateway\'s {"error": {"message", "code"}} shape is still a login prompt', async () => {
++    process.env.OPENAI_API_KEY = 'furio_stale'
++    await pollOnce('http://g', reply(401, gatewayError('login_required', '로그인이 필요합니다: /login')))
++    expect(currentNpuStatus.loginRequired).toBe(true)
++    expect(currentNpuStatus.denied).toBeNull()
++  })
++
++  test('403 code "suspended": the fixed suspension wording, whatever the message says', async () => {
++    process.env.OPENAI_API_KEY = 'furio_suspended'
++    const result = await pollOnce('http://g', reply(403, gatewayError('suspended', '정지됨(운영자 메모)')))
++    expect(result).toBe('ok')
++    expect(currentNpuStatus.denied).toBe(SUSPENDED)
++    expect(currentNpuStatus.loginRequired).toBe(false)
++    expect(currentNpuStatus.models).toEqual([])
++  })
++
++  test('403 with another code shows the gateway\'s message on the line', async () => {
++    process.env.OPENAI_API_KEY = 'furio_abc'
++    await pollOnce('http://g', reply(403, gatewayError('forbidden', '허용되지 않은 주소입니다')))
++    expect(currentNpuStatus.denied).toBe('허용되지 않은 주소입니다')
++    expect(currentNpuStatus.loginRequired).toBe(false)
++  })
++
++  test('403 with another code but no message falls back to the fixed suspension wording', async () => {
++    process.env.OPENAI_API_KEY = 'furio_abc'
++    await pollOnce('http://g', reply(403, { error: { code: 'forbidden' } }))
++    expect(currentNpuStatus.denied).toBe(SUSPENDED)
++  })
++
++  test('403 with the flat {"error": "<code>"} shape (the device-code endpoints) reads the string as both', async () => {
++    process.env.OPENAI_API_KEY = 'furio_abc'
++    await pollOnce('http://g', reply(403, { error: 'suspended' }))
++    expect(currentNpuStatus.denied).toBe(SUSPENDED)
++    await pollOnce('http://g', reply(403, { error: 'nope' }))
++    expect(currentNpuStatus.denied).toBe('nope')
++  })
++
+   test('a 403 without a readable reason falls back to the fixed suspension wording', async () => {
+     process.env.OPENAI_API_KEY = 'furio_suspended'
+     await pollOnce('http://g', async () => new Response('forbidden', { status: 403 }))
+@@ -218,7 +302,10 @@ describe('polling loop', () => {
+     globalThis.fetch = (async () => {
+       const status = statuses[Math.min(calls, statuses.length - 1)]!
+       calls += 1
+-      const body = status === 200 ? good : status === 403 ? { detail: '정지' } : { detail: 'x' }
++      const body =
++        status === 200 ? good
++        : status === 403 ? { error: { message: '계정이 정지되었습니다. 운영자에게 문의하세요', code: 'suspended' } }
++        : { error: { message: 'x', code: 'login_required' } }
+       return new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } })
+     }) as unknown as typeof fetch
+   }
+diff --git a/src/services/npuStatus.ts b/src/services/npuStatus.ts
+index b1d82ffd..f8d2a7bd 100644
+--- a/src/services/npuStatus.ts
++++ b/src/services/npuStatus.ts
+@@ -55,7 +55,12 @@ export type NpuStatus = {
+    */
+   /** Email of the account the token belongs to, or null when anonymous. */
+   account: string | null
+-  /** The gateway answered 401: there is no usable token — `/login`. */
++  /**
++   * There is no usable token — `/login`. The class gateway says so as a 200
++   * with `login_required: true` (its `/router/status` keeps showing the class
++   * window and the pin without a token; furio-class routes_router.py), or as
++   * a 401 from an older build.
++   */
+   loginRequired: boolean
+   /**
+    * The gateway answered 403 — it knows the token but refuses it (a suspended
+@@ -131,7 +136,9 @@ type RawStatus = {
+     { state?: string; cards?: number[]; dp?: number; pp?: number }
+   >
+   free_cards?: number[]
+-  // Added by the class gateway (furio-class) in front of the router.
++  // Added by the class gateway (furio-class) in front of the router. Without a
++  // usable token it still answers 200, with `login_required: true` and
++  // `account: null` — the window and the pin stay visible to the student.
+   login_required?: boolean
+   account?: { email?: string; name?: string } | null
+   class?: { open?: boolean; until?: string | null; next?: string | null } | null
+@@ -326,12 +333,19 @@ const LOGIN_REQUIRED: GatewayFields = {
+   notice: null,
+ }
+ 
+-/** The gateway's own wording for its only 403 (plan: Global Constraints). */
++/** The gateway's own wording for its `suspended` 403 (plan: Global Constraints). */
+ const SUSPENDED_TEXT = '계정이 정지되었습니다. 운영자에게 문의하세요'
+ 
+-/** The gateway fields of a 403: the token is known and refused for `reason`. */
+-function denied(reason: string | null): GatewayFields {
+-  return { ...LOGIN_REQUIRED, loginRequired: false, denied: reason ?? SUSPENDED_TEXT }
++/**
++ * The gateway fields of a 403: the token is known and refused. `suspended` is
++ * the one code `/router/status` sends (furio-class deps.py `optional_token`),
++ * and it gets the fixed wording rather than whatever the body says; any other
++ * code is shown by its message, and a body without one falls back to the
++ * suspension wording — on this endpoint that is what a 403 means.
++ */
++function denied(info: ErrorInfo): GatewayFields {
++  const reason = info.code === 'suspended' ? SUSPENDED_TEXT : (info.message ?? SUSPENDED_TEXT)
++  return { ...LOGIN_REQUIRED, loginRequired: false, denied: reason }
+ }
+ 
+ /** Whether the gateway-only fields of the current status differ from `next`. */
+@@ -373,13 +387,32 @@ function applyRefusal(fields: GatewayFields): void {
+   }
+ }
+ 
+-/** The `detail` string of a FastAPI-style error body, or null. */
+-async function errorDetail(res: Response): Promise<string | null> {
++/** What an error body says; either field is null when the body does not carry it. */
++type ErrorInfo = { code: string | null; message: string | null }
++
++/**
++ * Reads the shapes a gateway in front of the router may answer with:
++ * `{"error": {"message", "code"}}` (the class gateway — furio-class deps.py
++ * `error_body`, every error), `{"error": "<code>"}` (its device-code
++ * endpoints, flat) and `{"detail": "..."}` (FastAPI's default, the older mock).
++ * A body that is not JSON, or none of these, reads as unknown.
++ */
++async function errorInfo(res: Response): Promise<ErrorInfo> {
+   try {
+-    const raw = (await res.json()) as { detail?: unknown }
+-    return textOrNull(raw?.detail)
++    const raw = (await res.json()) as { error?: unknown; detail?: unknown }
++    const err = raw?.error
++    if (err !== null && typeof err === 'object') {
++      const e = err as { message?: unknown; code?: unknown }
++      return { code: textOrNull(e.code), message: textOrNull(e.message) }
++    }
++    if (typeof err === 'string') {
++      // Flat: the string is the code, and the only wording there is.
++      const text = textOrNull(err)
++      return { code: text, message: text }
++    }
++    return { code: null, message: textOrNull(raw?.detail) }
+   } catch {
+-    return null
++    return { code: null, message: null }
+   }
+ }
+ 
+@@ -406,7 +439,9 @@ export async function pollOnce(base: string, fetchImpl: FetchLike = fetch): Prom
+       signal: controller.signal,
+     })
+     if (res.status === 401) {
+-      // The class gateway, and no usable token — `/login`.
++      // A gateway with no usable token — `/login`. The class gateway's own
++      // `/router/status` answers that as a 200 with `login_required: true`
++      // instead (handled by parseStatus below); this is the older shape.
+       applyRefusal(LOGIN_REQUIRED)
+       return 'ok'
+     }
+@@ -415,7 +450,7 @@ export async function pollOnce(base: string, fetchImpl: FetchLike = fetch): Prom
+       // Not a login prompt: the reason is what the student needs to see, and
+       // `/logout` → `/login` with another account must still be able to
+       // revive the line, so this is a successful poll, not a dead backend.
+-      applyRefusal(denied(await errorDetail(res)))
++      applyRefusal(denied(await errorInfo(res)))
+       return 'ok'
+     }
+     // A 5xx or 429 is the relay (NPM) or a restarting gateway, not an answer
+-- 
+2.43.0
+
+
+From 90865c80ebc4263917693b318403c1e6122d2492 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Sun, 25 Oct 2026 06:07:17 +0900
+Subject: [PATCH 36/36] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+ =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=203:=20/login=C2=B7?=
+ =?UTF-8?q?=EC=84=A4=EB=AC=B8=20=EC=A0=84=EC=86=A1=EC=9D=98=20AbortSignal.?=
+ =?UTF-8?q?timeout=20=EC=9D=84=20=EC=A0=95=EB=A6=AC=EB=90=98=EB=8A=94=20?=
+ =?UTF-8?q?=ED=83=80=EC=9E=84=EC=95=84=EC=9B=83=EC=9C=BC=EB=A1=9C(?=
+ =?UTF-8?q?=EA=B0=80=EB=93=9C=20=ED=85=8C=EC=8A=A4=ED=8A=B8=20=ED=86=B5?=
+ =?UTF-8?q?=EA=B3=BC)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- src/furio/auth.ts postJson·src/utils/survey.ts recordSurveyResponse: createCombinedAbortSignal(timeoutMs)
+  + finally cleanup — Bun 은 AbortSignal.timeout 타이머를 만료 전까지 안 푼다(combinedAbortSignal.ts)
+- postJson 은 본문을 타임아웃 창 안에서 읽고 같은 status·headers 의 Response 로 돌려준다(호출자 .json() 그대로,
+  본문이 멈춰도 폴링이 안 걸린다)
+- scripts/no-raw-abort-signal-timeout.test.ts 의 브랜치 수준 실패 해소; 26b1ff94 가 만든 것은 아니고 e3b9f755·032cb8ae 몫
+- bun test scripts/no-raw-abort-signal-timeout.test.ts src/furio src/utils/survey.test.ts src/services/npuStatus.test.ts
+  src/components/BuiltinStatusLine.test.tsx 112 통과, bun run typecheck 통과
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/furio/auth.ts   | 24 ++++++++++++++++++------
+ src/utils/survey.ts | 22 ++++++++++++++++------
+ 2 files changed, 34 insertions(+), 12 deletions(-)
+
+diff --git a/src/furio/auth.ts b/src/furio/auth.ts
+index 0af24ed0..6d65493c 100644
+--- a/src/furio/auth.ts
++++ b/src/furio/auth.ts
+@@ -21,6 +21,7 @@
+ import { chmodSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'fs'
+ import { homedir } from 'os'
+ import { join } from 'path'
++import { createCombinedAbortSignal } from '../utils/combinedAbortSignal.js'
+ 
+ /** The placeholder the installer uses when there is no key yet. */
+ export const FURIO_NO_KEY = 'dummy'
+@@ -106,12 +107,23 @@ export function furioBase(env: NodeJS.ProcessEnv = process.env): string | null {
+ }
+ 
+ async function postJson(fetchImpl: FetchLike, url: string, body: unknown): Promise<Response> {
+-  return fetchImpl(url, {
+-    method: 'POST',
+-    headers: { 'content-type': 'application/json', accept: 'application/json' },
+-    body: JSON.stringify(body),
+-    signal: AbortSignal.timeout(10_000),
+-  })
++  // Not the raw timeout signal: under Bun its timer is freed only when it
++  // fires (see combinedAbortSignal.ts); this one is cleared as soon as the
++  // reply is in. The body is read inside the window so a stalled reply cannot
++  // hang a poll, and handed back as a fresh Response so callers keep `.json()`.
++  const { signal, cleanup } = createCombinedAbortSignal(undefined, { timeoutMs: 10_000 })
++  try {
++    const res = await fetchImpl(url, {
++      method: 'POST',
++      headers: { 'content-type': 'application/json', accept: 'application/json' },
++      body: JSON.stringify(body),
++      signal,
++    })
++    const text = await res.text()
++    return new Response(text.length > 0 ? text : null, { status: res.status, headers: res.headers })
++  } finally {
++    cleanup()
++  }
+ }
+ 
+ function str(v: unknown): string {
+diff --git a/src/utils/survey.ts b/src/utils/survey.ts
+index 17a9405d..92cbe0e0 100644
+--- a/src/utils/survey.ts
++++ b/src/utils/survey.ts
+@@ -1,5 +1,6 @@
+ import { appendFile, mkdir } from 'fs/promises'
+ import { dirname, join } from 'path'
++import { createCombinedAbortSignal } from './combinedAbortSignal.js'
+ import { getClaudeConfigHomeDir } from './envUtils.js'
+ 
+ export type SurveyChoice = {
+@@ -233,13 +234,22 @@ export async function recordSurveyResponse(
+       const headers: Record<string, string> = { 'content-type': 'application/json' }
+       const apiKey = 'apiKey' in deps ? deps.apiKey : process.env.OPENAI_API_KEY
+       if (apiKey && apiKey !== 'dummy') headers.authorization = `Bearer ${apiKey}`
+-      const res = await send(endpoint, {
+-        method: 'POST',
+-        headers,
+-        body: JSON.stringify(response),
+-        signal: AbortSignal.timeout(deps.timeoutMs ?? 3000),
++      // Not the raw timeout signal (Bun frees its timer only when it fires,
++      // see combinedAbortSignal.ts): this one is cleared once the reply is in.
++      const { signal, cleanup } = createCombinedAbortSignal(undefined, {
++        timeoutMs: deps.timeoutMs ?? 3000,
+       })
+-      posted = res.ok
++      try {
++        const res = await send(endpoint, {
++          method: 'POST',
++          headers,
++          body: JSON.stringify(response),
++          signal,
++        })
++        posted = res.ok
++      } finally {
++        cleanup()
++      }
+     } catch {
+       posted = false
+     }
 -- 
 2.43.0
 
