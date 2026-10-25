@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/36] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/38] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/36] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/38] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/36] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/38] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/36] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/38] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/36] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/38] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/36] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/38] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/36] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/38] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/36] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/38] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/36] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/38] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/36] statusline: separate the current-model marker from the
+Subject: [PATCH 10/38] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/36] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/38] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/36] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/38] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/36] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/38] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/36] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/38] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/36] model picker: support a per-model default pp (large
+Subject: [PATCH 15/38] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/36] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/38] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/36] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/38] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/36] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/38] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/36] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/38] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/36] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/38] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/36] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/38] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/36] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/38] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/36] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/38] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5563,7 +5563,7 @@ index 522362ad..1c509b74 100644
 From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/36] brand: give each logo letter its own color from a cool
+Subject: [PATCH 24/38] brand: give each logo letter its own color from a cool
  spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5756,7 +5756,7 @@ index 94af8b4c..3e2cf093 100644
 From 9cf8784b2009e6734c8bd3d24740e72ccc69a6ea Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:07:48 +0900
-Subject: [PATCH 25/36] startup: drop the provider box, keep the mark and one
+Subject: [PATCH 25/38] startup: drop the provider box, keep the mark and one
  line
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5913,7 +5913,7 @@ index c21c8def..9b775d33 100644
 From bf4d4d421cbaa00a9c49fb6851a4d713b11729b9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:37:56 +0900
-Subject: [PATCH 26/36] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
+Subject: [PATCH 26/38] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
  =?UTF-8?q?=EA=B8=B0:=20agents=20=ED=95=9C=20=EB=8B=A8=EC=96=B4=EB=A1=9C?=
  =?UTF-8?q?=20=EC=9D=B4=20=EC=BB=B4=ED=93=A8=ED=84=B0=EC=9D=98=20=EC=84=B8?=
  =?UTF-8?q?=EC=85=98=EC=9D=84=20=EC=97=B4=EA=B3=A0=20=EB=8B=A4=EB=A5=B8=20?=
@@ -6389,7 +6389,7 @@ index 00000000..fb864cb2
 From 032cb8ae9935682e0a02e8fff4a8c09b355ad0d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:16:30 +0900
-Subject: [PATCH 27/36] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
+Subject: [PATCH 27/38] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
  =?UTF-8?q?=20=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=95=88=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EC=82=AC=EC=9A=A9=20=EA=B2=BD=ED=97=98=EC=9D=84=20=EB=B0=9B?=
  =?UTF-8?q?=EC=95=84=20=EB=9D=BC=EC=9A=B0=ED=84=B0=EB=A1=9C=20=EB=B3=B4?=
@@ -7711,7 +7711,7 @@ index 00000000..e41d7a38
 From 4c1dd2e0ccbe99a2b09c45f2482d67aea3db94d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:59:23 +0900
-Subject: [PATCH 28/36] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 28/38] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20agents=20=EB=A5=BC=20claude=20agents=20=EC=8B=9D=20=EA=B5=AC?=
  =?UTF-8?q?=EC=84=B1=EC=9C=BC=EB=A1=9C,=20=EB=B9=88=20=ED=94=84=EB=A1=AC?=
  =?UTF-8?q?=ED=94=84=ED=8A=B8=EC=97=90=EC=84=9C=20=E2=86=90=20=EB=A1=9C?=
@@ -8811,7 +8811,7 @@ index fb864cb2..858a1faa 100644
 From c969ee7ee1a65e2c6036a3dd28ee8b28b6bf8cbf Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 18:42:09 +0900
-Subject: [PATCH 29/36] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 29/38] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20=EC=84=B8=EC=85=98=20=EC=95=88=EC=9D=98=20=EC=84=A0=ED=83=9D?=
  =?UTF-8?q?=EC=B0=BD=EC=9D=84=20=EB=8C=80=EC=B2=B4=20=ED=99=94=EB=A9=B4?=
  =?UTF-8?q?=EC=97=90=20=EB=9D=84=EC=9B=8C=20=EC=9E=90=EB=A6=AC=EB=A5=BC=20?=
@@ -9162,7 +9162,7 @@ index 858a1faa..4549b875 100644
 From 5f7367539a9ac62b25088f69a1ad0a1b9e15e1d8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 22:41:22 +0900
-Subject: [PATCH 30/36] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
+Subject: [PATCH 30/38] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
  =?UTF-8?q?=EA=B0=92=EC=9D=84=20=EB=AF=B8=EB=A6=AC=20=EA=B3=A0=EB=A5=B8=20?=
  =?UTF-8?q?=EB=8B=B5(=EC=B4=88=EB=A1=9D)=EC=9C=BC=EB=A1=9C=20=EA=B7=B8?=
  =?UTF-8?q?=EB=A6=AC=EC=A7=80=20=EC=95=8A=EA=B3=A0=20=EC=BB=A4=EC=84=9C=20?=
@@ -9203,7 +9203,7 @@ index ef2b04a9..d16156ab 100644
 From cacc5fb703bf009ba3c25d3530d319c2de787022 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Sun, 25 Oct 2026 00:31:57 +0900
-Subject: [PATCH 31/36] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
+Subject: [PATCH 31/38] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
  =?UTF-8?q?=EC=9C=84=EC=B9=98:=20=EC=9D=BC=EB=B0=98=ED=8C=90(lab)=C2=B7?=
  =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90(class)=EC=9D=84=20=ED=95=9C=20?=
  =?UTF-8?q?=EC=86=8C=EC=8A=A4=EC=97=90=EC=84=9C=20=EB=B9=8C=EB=93=9C?=
@@ -9632,7 +9632,7 @@ index e41d7a38..54e24ea7 100644
 From e3b9f75537b51b3a459ba9fa001f02706d13a6de Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 02:38:42 +0900
-Subject: [PATCH 32/36] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/l?=
+Subject: [PATCH 32/38] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/l?=
  =?UTF-8?q?ogin=C2=B7/logout(=EA=B8=B0=EA=B8=B0=20=EC=BD=94=EB=93=9C),=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84=20=EA=B3=84=EC=A0=95=C2=B7=EB=A1=9C?=
  =?UTF-8?q?=EA=B7=B8=EC=9D=B8=20=ED=95=84=EC=9A=94=C2=B7=EC=88=98=EC=97=85?=
@@ -10814,7 +10814,7 @@ index 88eec592..11ec25df 100644
 From 5ceec773cb628a56a9d1443a5f4ba56de414a328 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 03:02:22 +0900
-Subject: [PATCH 33/36] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 33/38] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20403=C2=B75xx=20?=
  =?UTF-8?q?=EC=97=90=EB=8F=84=20=EC=83=81=ED=83=9C=EC=A4=84=20=EC=9C=A0?=
  =?UTF-8?q?=EC=A7=80,=20/login=20=EC=9D=80=20=EC=9D=BC=EC=8B=9C=20?=
@@ -11476,7 +11476,7 @@ index 11ec25df..ce796cdd 100644
 From e6883f42491fab75ade11f18581e905f679ae8c6 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 03:18:36 +0900
-Subject: [PATCH 34/36] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 34/38] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=202:=20=ED=8F=B4?=
  =?UTF-8?q?=EB=A7=81=20=EC=A4=91=20/login=C2=B7/logout=20=EA=B0=B1?=
  =?UTF-8?q?=EC=8B=A0=EC=9D=B4=20=EB=91=90=20=EB=B2=88=EC=A7=B8=20=ED=8F=B4?=
@@ -11725,7 +11725,7 @@ index ce796cdd..b1d82ffd 100644
 From 26b1ff94693af6a9b65a3ba591492550e475b46c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 05:51:31 +0900
-Subject: [PATCH 35/36] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 35/38] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84:=20=EA=B2=8C=EC=9D=B4=ED=8A=B8?=
  =?UTF-8?q?=EC=9B=A8=EC=9D=B4=20=EC=98=A4=EB=A5=98=20=EB=B3=B8=EB=AC=B8=20?=
  =?UTF-8?q?{"error":{message,code}}=20=ED=8C=8C=EC=8B=B1,=20403=20suspende?=
@@ -11983,7 +11983,7 @@ index b1d82ffd..f8d2a7bd 100644
 From 90865c80ebc4263917693b318403c1e6122d2492 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 06:07:17 +0900
-Subject: [PATCH 36/36] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 36/38] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=203:=20/login=C2=B7?=
  =?UTF-8?q?=EC=84=A4=EB=AC=B8=20=EC=A0=84=EC=86=A1=EC=9D=98=20AbortSignal.?=
  =?UTF-8?q?timeout=20=EC=9D=84=20=EC=A0=95=EB=A6=AC=EB=90=98=EB=8A=94=20?=
@@ -12090,6 +12090,568 @@ index 17a9405d..92cbe0e0 100644
      } catch {
        posted = false
      }
+-- 
+2.43.0
+
+
+From ab997ad7bb833f4327d80ba4c112b179e022fe5f Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Mon, 26 Oct 2026 03:02:30 +0900
+Subject: [PATCH 37/38] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20?=
+ =?UTF-8?q?=EA=B3=B5=EC=8B=9D=20=EB=A7=88=EC=BC=93=20=EC=9E=90=EB=8F=99=20?=
+ =?UTF-8?q?=EC=84=A4=EC=B9=98=EB=A5=BC=20=EB=8F=8C=EB=A6=AC=EC=A7=80=20?=
+ =?UTF-8?q?=EC=95=8A=EB=8A=94=EB=8B=A4(=ED=95=99=EC=83=9D=20PC=20=EB=B0=94?=
+ =?UTF-8?q?=EA=B9=A5=20=ED=8A=B8=EB=9E=98=ED=94=BD=200)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+2026-10-26 공개 리허설에서 수업판 첫 실행 때 "✓ Anthropic marketplace installed" 가 떴다 —
+checkAndInstallOfficialMarketplace 가 downloads.claude.ai(GCS 미러)·GitHub git clone 으로
+공식 마켓을 받아 왔다(설계 11-3 #14 위반). 이 경로는 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC 로
+막히지 않는다.
+
+- isClassEdition() 이면 맨 앞에서 { installed:false, skipped:true, reason:'class_edition' } —
+  다운로드·git 탐지·전역 설정 기록 없음. 알림 훅은 이 값에 알림을 내지 않는다. 일반판(lab)은 그대로.
+- /lsp recommend 도 같은 함수를 부르므로 class_edition 이유 문구를 더한다('/doctor' 안내 대신).
+- 시험: 수업판은 fetch·GCS·git·설정 저장을 하나도 부르지 않음(재시도 시각이 돼도), 일반판은 GCS·git 경로 그대로.
+- 실측(목 게이트웨이 + 소켓/프로세스 기록): 고치기 전 수업판 빌드는 downloads.claude.ai:443 에 붙고
+  알림을 냈다, 고친 뒤는 127.0.0.1(게이트웨이)만. 일반판 빌드는 여전히 마켓을 설치한다.
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/commands/lsp/lsp.test.ts                  | 15 +++
+ src/commands/lsp/lsp.ts                       |  2 +
+ .../officialMarketplaceStartupCheck.test.ts   | 91 ++++++++++++++++++-
+ .../officialMarketplaceStartupCheck.ts        | 12 +++
+ 4 files changed, 117 insertions(+), 3 deletions(-)
+
+diff --git a/src/commands/lsp/lsp.test.ts b/src/commands/lsp/lsp.test.ts
+index 26f2b780..89904e51 100644
+--- a/src/commands/lsp/lsp.test.ts
++++ b/src/commands/lsp/lsp.test.ts
+@@ -31,6 +31,7 @@ type OfficialMarketplaceCheckResult = {
+     | 'policy_blocked'
+     | 'git_unavailable'
+     | 'gcs_unavailable'
++    | 'class_edition'
+     | 'unknown'
+   configSaveFailed?: boolean
+ }
+@@ -444,6 +445,20 @@ describe('/lsp recommend', () => {
+     expect(output).toContain('No LSP plugin candidates found for .ts')
+     expect(output).toContain('policy blocks it')
+   })
++
++  test('says the class edition does not fetch the marketplace', async () => {
++    checkAndInstallOfficialMarketplace.mockImplementationOnce(async () => ({
++      installed: false,
++      skipped: true,
++      reason: 'class_edition',
++    }))
++
++    const output = await run('recommend src/main.ts')
++
++    expect(output).toContain('No LSP plugin candidates found for .ts')
++    expect(output).toContain('not downloaded in the furio class edition')
++    expect(output).not.toContain('run /doctor')
++  })
+ })
+ 
+ describe('/lsp install', () => {
+diff --git a/src/commands/lsp/lsp.ts b/src/commands/lsp/lsp.ts
+index 7efac5b8..3b56a0aa 100644
+--- a/src/commands/lsp/lsp.ts
++++ b/src/commands/lsp/lsp.ts
+@@ -459,6 +459,8 @@ function renderMarketplaceSetupMessage(
+       return 'Anthropic marketplace download is temporarily unavailable; it will retry later.'
+     case 'already_attempted':
+       return 'Anthropic marketplace setup was already attempted and is waiting before retrying.'
++    case 'class_edition':
++      return 'Anthropic marketplace is not downloaded in the furio class edition.'
+     case 'unknown':
+     default:
+       return 'Anthropic marketplace setup failed; run /doctor for details.'
+diff --git a/src/utils/plugins/officialMarketplaceStartupCheck.test.ts b/src/utils/plugins/officialMarketplaceStartupCheck.test.ts
+index 8a6a609f..1218ab9e 100644
+--- a/src/utils/plugins/officialMarketplaceStartupCheck.test.ts
++++ b/src/utils/plugins/officialMarketplaceStartupCheck.test.ts
+@@ -1,4 +1,13 @@
+-import { afterAll, beforeEach, describe, expect, mock, test } from 'bun:test'
++import {
++  afterAll,
++  afterEach,
++  beforeEach,
++  describe,
++  expect,
++  mock,
++  spyOn,
++  test,
++} from 'bun:test'
+ import {
+   acquireSharedMutationLock,
+   releaseSharedMutationLock,
+@@ -29,7 +38,10 @@ const saveKnownMarketplacesConfig = mock(
+     knownMarketplaces = next
+   },
+ )
+-const fetchOfficialMarketplaceFromGcs = mock(async () => 'sha')
++const fetchOfficialMarketplaceFromGcs = mock(
++  async (): Promise<string | null> => 'sha',
++)
++const checkGitAvailable = mock(async () => true)
+ const addMarketplaceSource = mock(async () => ({
+   name: 'claude-plugins-official',
+   alreadyMaterialized: false,
+@@ -112,7 +124,7 @@ mock.module('../log.js', () => ({
+ }))
+ 
+ mock.module('./gitAvailability.js', () => ({
+-  checkGitAvailable: async () => true,
++  checkGitAvailable,
+   markGitUnavailable: mock(() => {}),
+ }))
+ 
+@@ -169,6 +181,11 @@ beforeEach(() => {
+   fetchOfficialMarketplaceFromGcs.mockClear()
+   fetchOfficialMarketplaceFromGcs.mockImplementation(async () => 'sha')
+   addMarketplaceSource.mockClear()
++  checkGitAvailable.mockClear()
++})
++
++afterEach(() => {
++  delete process.env.FURIO_EDITION
+ })
+ 
+ describe('checkAndInstallOfficialMarketplace', () => {
+@@ -207,3 +224,71 @@ describe('checkAndInstallOfficialMarketplace', () => {
+     expect(config.officialMarketplaceAutoInstalled).toBe(true)
+   })
+ })
++
++// furio 수업판: 학생 PC 는 수업 게이트웨이 말고는 바깥에 나가지 않는다(설계 11-3 #14).
++// 공식 마켓 자동 설치는 GCS(downloads.claude.ai)·GitHub git clone 둘 다 바깥 트래픽이라 아예 돌지 않는다.
++describe('checkAndInstallOfficialMarketplace — furio editions', () => {
++  test('class edition: skips before any download, git probe or config write', async () => {
++    process.env.FURIO_EDITION = 'class'
++    const fetchSpy = spyOn(globalThis, 'fetch')
++    try {
++      const result = await checkAndInstallOfficialMarketplace()
++
++      expect(result).toEqual({
++        installed: false,
++        skipped: true,
++        reason: 'class_edition',
++      })
++      expect(fetchSpy).not.toHaveBeenCalled()
++      expect(fetchOfficialMarketplaceFromGcs).not.toHaveBeenCalled()
++      expect(checkGitAvailable).not.toHaveBeenCalled()
++      expect(addMarketplaceSource).not.toHaveBeenCalled()
++      expect(saveKnownMarketplacesConfig).not.toHaveBeenCalled()
++      expect(saveGlobalConfig).not.toHaveBeenCalled()
++      expect(knownMarketplaces).toEqual({})
++    } finally {
++      fetchSpy.mockRestore()
++    }
++  })
++
++  test('class edition: a retry that is due still does not reach out', async () => {
++    process.env.FURIO_EDITION = 'class'
++    config = {
++      officialMarketplaceAutoInstallAttempted: true,
++      officialMarketplaceAutoInstalled: false,
++      officialMarketplaceAutoInstallFailReason: 'unknown',
++      officialMarketplaceAutoInstallRetryCount: 1,
++      officialMarketplaceAutoInstallNextRetryTime: 0,
++    }
++    fetchOfficialMarketplaceFromGcs.mockImplementation(async () => null)
++
++    const result = await checkAndInstallOfficialMarketplace()
++
++    expect(result.reason).toBe('class_edition')
++    expect(fetchOfficialMarketplaceFromGcs).not.toHaveBeenCalled()
++    expect(checkGitAvailable).not.toHaveBeenCalled()
++    expect(addMarketplaceSource).not.toHaveBeenCalled()
++  })
++
++  test('lab edition keeps the upstream install path', async () => {
++    process.env.FURIO_EDITION = 'lab'
++
++    const result = await checkAndInstallOfficialMarketplace()
++
++    expect(result).toEqual({ installed: true, skipped: false })
++    expect(fetchOfficialMarketplaceFromGcs).toHaveBeenCalled()
++    expect(knownMarketplaces).toHaveProperty('claude-plugins-official')
++    expect(config.officialMarketplaceAutoInstalled).toBe(true)
++  })
++
++  test('lab edition falls back to git when the GCS mirror is unavailable', async () => {
++    delete process.env.FURIO_EDITION
++    fetchOfficialMarketplaceFromGcs.mockImplementation(async () => null)
++
++    const result = await checkAndInstallOfficialMarketplace()
++
++    expect(result).toEqual({ installed: true, skipped: false })
++    expect(checkGitAvailable).toHaveBeenCalled()
++    expect(addMarketplaceSource).toHaveBeenCalled()
++  })
++})
+diff --git a/src/utils/plugins/officialMarketplaceStartupCheck.ts b/src/utils/plugins/officialMarketplaceStartupCheck.ts
+index 1dead1d4..050d39ae 100644
+--- a/src/utils/plugins/officialMarketplaceStartupCheck.ts
++++ b/src/utils/plugins/officialMarketplaceStartupCheck.ts
+@@ -9,6 +9,7 @@
+  */
+ 
+ import { join } from 'path'
++import { isClassEdition } from '../../furio/edition.js'
+ import { getFeatureValue_CACHED_MAY_BE_STALE } from '../../services/analytics/growthbook.js'
+ import { logEvent } from '../../services/analytics/index.js'
+ import { getGlobalConfig, saveGlobalConfig } from '../config.js'
+@@ -39,6 +40,7 @@ export type OfficialMarketplaceSkipReason =
+   | 'policy_blocked'
+   | 'git_unavailable'
+   | 'gcs_unavailable'
++  | 'class_edition'
+   | 'unknown'
+ 
+ /**
+@@ -140,6 +142,16 @@ export type OfficialMarketplaceCheckResult = {
+  * @returns Result indicating whether installation succeeded or was skipped
+  */
+ export async function checkAndInstallOfficialMarketplace(): Promise<OfficialMarketplaceCheckResult> {
++  // furio class edition: a student PC talks to the class gateway and nothing
++  // else. Both install routes (the GCS mirror on downloads.claude.ai and the
++  // GitHub git clone) are outside traffic, so stop before any of them — no
++  // download, no git probe, no retry state in the global config. The lab
++  // edition keeps the upstream behaviour below.
++  if (isClassEdition()) {
++    logForDebugging('Official marketplace auto-install skipped: class edition')
++    return { installed: false, skipped: true, reason: 'class_edition' }
++  }
++
+   const config = getGlobalConfig()
+ 
+   try {
+-- 
+2.43.0
+
+
+From 408110b5e22ff4be18b6f5c70ad133b04afd183c Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Mon, 26 Oct 2026 03:29:03 +0900
+Subject: [PATCH 38/38] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/a?=
+ =?UTF-8?q?ds=20=EC=88=A8=EA=B9=80=C2=B7=EA=B4=91=EA=B3=A0=20=ED=8C=81=20?=
+ =?UTF-8?q?=EB=81=94=C2=B7=EC=84=A0=EC=96=B8=EB=90=9C=20=EB=A7=88=EC=BC=93?=
+ =?UTF-8?q?=20=EB=B0=B1=EA=B7=B8=EB=9D=BC=EC=9A=B4=EB=93=9C=20reconcile=20?=
+ =?UTF-8?q?=EC=95=88=20=EB=8F=8C=EB=A6=BC(=EB=B0=94=EA=B9=A5=20=ED=8A=B8?=
+ =?UTF-8?q?=EB=9E=98=ED=94=BD=20=EB=82=A8=EC=9D=80=20=EB=91=90=20=EA=B8=B8?=
+ =?UTF-8?q?)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+ab997ad7 검토(nit): 공식 마켓 자동 설치를 막은 뒤에도 학생 PC 가 바깥에 나가는 길이 둘 남았다.
+
+- /ads: `/ads on <code>` 이면 스피너 팁이 최근 프롬프트를 ads.gitlawb.com 에 보낸다.
+  CLASS_EDITION_HIDDEN_COMMANDS 에 'ads' 를 더하고(숨김 14개), 일반판에서 켠 설정이 같은 홈에
+  남아 있어도 adsEarningEnabled() 가 수업판에서는 false — 팁 슬롯·광고 요청 없음.
+- 선언된 마켓: 프로젝트 enabledPlugins 가 claude-plugins-official 플러그인을 가리키면
+  getDeclaredMarketplaces 가 공식 마켓을 암묵 선언하고, 신뢰 뒤 백그라운드 reconcile
+  (REPL performBackgroundPluginInstallations·`-p` installPluginsForHeadless)이 GitHub clone·GCS 로
+  받는다. extraKnownMarketplaces 의 원격 마켓도 같다. reconcileMarketplaces 가 수업판이면 맨 앞에서
+  빈 결과(진행 이벤트·addMarketplaceSource 없음). 일반판은 그대로.
+- 플러그인 자동 갱신(autoUpdateMarketplacesAndPluginsInBackground)은 설치기가 넣는
+  DISABLE_AUTOUPDATER=1 로 이미 건너뛴다(shouldSkipPluginAutoupdate). 학생이 직접 치는
+  `/plugin install` 은 본인 동작이라 그대로 둔다.
+- 시험: edition(/ads 수업판 숨김·일반판 있음), gitlawbEarn(수업판은 켠 설정이어도 꺼짐·fetch 0,
+  일반판 켜짐), reconciler.classEdition(수업판 addMarketplaceSource·fetch·진행 이벤트 0,
+  일반판 공식+명시 2개 설치).
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/furio/edition.test.ts                     |   8 ++
+ src/furio/edition.ts                          |   7 +-
+ src/services/tips/gitlawbEarn.test.ts         |  32 +++++
+ src/services/tips/gitlawbEarn.ts              |   9 +-
+ .../plugins/reconciler.classEdition.test.ts   | 120 ++++++++++++++++++
+ src/utils/plugins/reconciler.ts               |  12 ++
+ 6 files changed, 184 insertions(+), 4 deletions(-)
+ create mode 100644 src/utils/plugins/reconciler.classEdition.test.ts
+
+diff --git a/src/furio/edition.test.ts b/src/furio/edition.test.ts
+index f297e27f..03cea769 100644
+--- a/src/furio/edition.test.ts
++++ b/src/furio/edition.test.ts
+@@ -33,6 +33,14 @@ describe('commandAllowedInEdition', () => {
+     }
+   })
+ 
++  it('class: /ads is gone — it would send prompts to the outside ads service', () => {
++    // src/services/ads.ts talks to ads.gitlawb.com; a student PC talks to the
++    // class gateway and nothing else.
++    expect(CLASS_EDITION_HIDDEN_COMMANDS.has('ads')).toBe(true)
++    expect(commandAllowedInEdition('ads', 'class')).toBe(false)
++    expect(commandAllowedInEdition('ads', 'lab')).toBe(true)
++  })
++
+   it('lab: has every command except the survey', () => {
+     for (const name of CLASS_EDITION_HIDDEN_COMMANDS) {
+       expect(commandAllowedInEdition(name, 'lab')).toBe(true)
+diff --git a/src/furio/edition.ts b/src/furio/edition.ts
+index da5f859c..cad11b61 100644
+--- a/src/furio/edition.ts
++++ b/src/furio/edition.ts
+@@ -26,9 +26,9 @@ export function isClassEdition(): boolean {
+ /**
+  * Slash commands the class build does not have, by command name.
+  *
+- * The rule: anything that changes what the server sees or who the client is.
+- * `/status`, `/help`, `/compact` and the like only read or act locally, so
+- * they stay.
++ * The rule: anything that changes what the server sees or who the client is,
++ * or that talks to a server other than the class gateway. `/status`, `/help`,
++ * `/compact` and the like only read or act locally, so they stay.
+  */
+ export const CLASS_EDITION_HIDDEN_COMMANDS: ReadonlySet<string> = new Set([
+   'model', // picks model and tp/dp/pp — the server pins the class model
+@@ -42,6 +42,7 @@ export const CLASS_EDITION_HIDDEN_COMMANDS: ReadonlySet<string> = new Set([
+   'extra-usage', // Anthropic billing
+   'rate-limit-options', // Anthropic billing
+   'passes', // Anthropic guest passes
++  'ads', // sends recent prompts to ads.gitlawb.com — outside the class gateway
+   // The Anthropic OAuth pair. The class build has its own `/login`·`/logout`
+   // under the same names — a device-code login against the class gateway
+   // (src/furio/auth.ts, src/commands/furio-login, src/commands/furio-logout) —
+diff --git a/src/services/tips/gitlawbEarn.test.ts b/src/services/tips/gitlawbEarn.test.ts
+index bfa0f70d..814f6c69 100644
+--- a/src/services/tips/gitlawbEarn.test.ts
++++ b/src/services/tips/gitlawbEarn.test.ts
+@@ -27,6 +27,7 @@ beforeEach(() => {
+ 
+ // Restore env + global ads config so nothing leaks into other suites in the run.
+ afterEach(() => {
++  delete process.env.FURIO_EDITION
+   globalThis.fetch = ORIGINAL_FETCH
+   saveGlobalConfig(c => ({ ...c, ads: originalAds }))
+   if (ORIGINAL_ADS_BASE_URL === undefined) delete process.env.ADS_BASE_URL
+@@ -109,3 +110,34 @@ describe('twigpine earning tips', () => {
+     expect(text.toLowerCase()).toContain('twigpine.com') // degraded to static line
+   })
+ })
++
++// furio 수업판: 학생 PC 는 수업 게이트웨이 말고는 바깥에 나가지 않는다. 일반판에서 `/ads on` 으로
++// 켜 둔 설정이 같은 홈에 남아 있어도 수업판은 광고 서버(ads.gitlawb.com)에 프롬프트를 보내지 않는다.
++describe('twigpine earning tips — furio class edition', () => {
++  test('a carried-over /ads on config does not turn earning on', () => {
++    process.env.FURIO_EDITION = 'class'
++    setAds({ enabled: true, earnCode: 'earn_abc' })
++    expect(adsEarningEnabled()).toBe(false)
++    process.env.OPENCLAUDE_ADS_TIP_EVERY = '1'
++    resetEarningCadenceForTesting()
++    for (let i = 0; i < 3; i++) expect(shouldShowEarningTip()).toBe(false)
++  })
++
++  test('the earning tip is never relevant, so the spinner never fetches an ad', async () => {
++    process.env.FURIO_EDITION = 'class'
++    setAds({ enabled: true, earnCode: 'earn_abc' })
++    let calls = 0
++    globalThis.fetch = (async () => {
++      calls += 1
++      return new Response('{}', { status: 200 })
++    }) as unknown as typeof fetch
++    expect(await buildEarningTip().isRelevant()).toBe(false)
++    expect(calls).toBe(0)
++  })
++
++  test('lab edition keeps /ads on earning', () => {
++    process.env.FURIO_EDITION = 'lab'
++    setAds({ enabled: true, earnCode: 'earn_abc' })
++    expect(adsEarningEnabled()).toBe(true)
++  })
++})
+diff --git a/src/services/tips/gitlawbEarn.ts b/src/services/tips/gitlawbEarn.ts
+index c926d856..0e404875 100644
+--- a/src/services/tips/gitlawbEarn.ts
++++ b/src/services/tips/gitlawbEarn.ts
+@@ -1,4 +1,5 @@
+ import { color } from '../../components/design-system/color.js'
++import { isClassEdition } from '../../furio/edition.js'
+ import { getGlobalConfig } from '../../utils/config.js'
+ import { confirmTip, fetchNextTip } from '../ads.js'
+ import { renderSponsorLink } from './tipLink.js'
+@@ -21,8 +22,14 @@ const TWIGPINE: TipSponsor = {
+ const DEFAULT_TIP_EVERY = 2
+ const MAX_CONFIRM_DELAY_MS = 30_000
+ 
+-/** Earning is on only when the user ran `/ads on <code>` (enabled + a code). */
++/**
++ * Earning is on only when the user ran `/ads on <code>` (enabled + a code).
++ * Never in the furio class edition: a student PC talks to the class gateway
++ * and nothing else, and `/ads on` set in a lab install that shares this home
++ * must not start sending prompts to the ads service.
++ */
+ export function adsEarningEnabled(): boolean {
++  if (isClassEdition()) return false
+   const ads = getGlobalConfig().ads
+   return Boolean(ads?.enabled && ads.earnCode)
+ }
+diff --git a/src/utils/plugins/reconciler.classEdition.test.ts b/src/utils/plugins/reconciler.classEdition.test.ts
+new file mode 100644
+index 00000000..cd9a8085
+--- /dev/null
++++ b/src/utils/plugins/reconciler.classEdition.test.ts
+@@ -0,0 +1,120 @@
++import {
++  afterAll,
++  afterEach,
++  beforeEach,
++  describe,
++  expect,
++  mock,
++  spyOn,
++  test,
++} from 'bun:test'
++import {
++  acquireSharedMutationLock,
++  releaseSharedMutationLock,
++} from '../../test/sharedMutationLock.js'
++import {
++  OFFICIAL_MARKETPLACE_NAME,
++  OFFICIAL_MARKETPLACE_SOURCE,
++} from './officialMarketplace.js'
++
++// furio 수업판: 학생 PC 는 수업 게이트웨이 말고는 바깥에 나가지 않는다.
++// 프로젝트 설정의 enabledPlugins 가 claude-plugins-official 플러그인을 가리키면
++// getDeclaredMarketplaces 가 공식 마켓을 암묵 선언하고, 신뢰 대화 뒤 백그라운드 reconcile
++// (REPL 의 performBackgroundPluginInstallations·`-p` 의 installPluginsForHeadless)이
++// GitHub clone·GCS 미러로 받으러 나간다. extraKnownMarketplaces 로 명시 선언된 원격 마켓도 같다.
++// 수업판은 reconcile 자체를 돌리지 않는다. 일반판(lab)은 그대로.
++
++const addMarketplaceSource = mock(async () => ({
++  name: OFFICIAL_MARKETPLACE_NAME,
++  alreadyMaterialized: false,
++  resolvedSource: OFFICIAL_MARKETPLACE_SOURCE,
++}))
++const getDeclaredMarketplaces = mock(() => ({
++  [OFFICIAL_MARKETPLACE_NAME]: {
++    source: OFFICIAL_MARKETPLACE_SOURCE,
++    sourceIsFallback: true,
++  },
++  'acme-plugins': { source: { source: 'github' as const, repo: 'acme/plugins' } },
++}))
++const loadKnownMarketplacesConfigSafe = mock(async () => ({}))
++
++await acquireSharedMutationLock('utils/plugins/reconciler.classEdition.test.ts')
++
++// Spread the real module so every export stays present for any later test in
++// the same Bun process that re-imports this path (see the same pattern in
++// officialMarketplaceStartupCheck.test.ts).
++const realMarketplaceManager = await import(
++  `./marketplaceManager.js?real=${Date.now()}-${Math.random()}`
++)
++mock.module('./marketplaceManager.js', () => ({
++  ...realMarketplaceManager,
++  addMarketplaceSource,
++  getDeclaredMarketplaces,
++  loadKnownMarketplacesConfigSafe,
++}))
++
++// A fresh instance so its imports bind to the mocked marketplaceManager even
++// if another suite in this process already loaded reconciler.js.
++const { reconcileMarketplaces } = await import(
++  `./reconciler.js?class-edition=${Date.now()}-${Math.random()}`
++)
++
++afterAll(() => {
++  try {
++    mock.restore()
++  } finally {
++    releaseSharedMutationLock()
++  }
++})
++
++beforeEach(() => {
++  addMarketplaceSource.mockClear()
++  getDeclaredMarketplaces.mockClear()
++  loadKnownMarketplacesConfigSafe.mockClear()
++})
++
++afterEach(() => {
++  delete process.env.FURIO_EDITION
++})
++
++describe('reconcileMarketplaces — furio editions', () => {
++  test('class edition: declared marketplaces are not fetched', async () => {
++    process.env.FURIO_EDITION = 'class'
++    const fetchSpy = spyOn(globalThis, 'fetch')
++    try {
++      const result = await reconcileMarketplaces()
++
++      expect(result).toEqual({
++        installed: [],
++        updated: [],
++        failed: [],
++        upToDate: [],
++        skipped: [],
++      })
++      expect(addMarketplaceSource).not.toHaveBeenCalled()
++      expect(fetchSpy).not.toHaveBeenCalled()
++    } finally {
++      fetchSpy.mockRestore()
++    }
++  })
++
++  test('class edition: no progress events, so the UI shows nothing installing', async () => {
++    process.env.FURIO_EDITION = 'class'
++    const onProgress = mock(() => {})
++
++    await reconcileMarketplaces({ onProgress })
++
++    expect(onProgress).not.toHaveBeenCalled()
++  })
++
++  test('lab edition keeps the upstream reconcile (official + explicit)', async () => {
++    process.env.FURIO_EDITION = 'lab'
++
++    const result = await reconcileMarketplaces()
++
++    expect(addMarketplaceSource).toHaveBeenCalledTimes(2)
++    expect(result.installed.sort()).toEqual(
++      ['acme-plugins', OFFICIAL_MARKETPLACE_NAME].sort(),
++    )
++  })
++})
+diff --git a/src/utils/plugins/reconciler.ts b/src/utils/plugins/reconciler.ts
+index 8157a324..bce161cb 100644
+--- a/src/utils/plugins/reconciler.ts
++++ b/src/utils/plugins/reconciler.ts
+@@ -10,6 +10,7 @@
+ import isEqual from 'lodash-es/isEqual.js'
+ import { isAbsolute, resolve } from 'path'
+ import { getOriginalCwd } from '../../bootstrap/state.js'
++import { isClassEdition } from '../../furio/edition.js'
+ import { logForDebugging } from '../debug.js'
+ import { errorMessage } from '../errors.js'
+ import { pathExists } from '../file.js'
+@@ -120,6 +121,17 @@ export type ReconcileResult = {
+ export async function reconcileMarketplaces(
+   opts?: ReconcileOptions,
+ ): Promise<ReconcileResult> {
++  // furio class edition: a student PC talks to the class gateway and nothing
++  // else. Declared marketplaces — the implicit official one a project's
++  // enabledPlugins pulls in, or an explicit extraKnownMarketplaces entry — are
++  // fetched by GitHub clone or the GCS mirror, so the background reconcile
++  // (REPL and headless) does not run at all. Same guard as
++  // checkAndInstallOfficialMarketplace. The lab edition keeps the code below.
++  if (isClassEdition()) {
++    logForDebugging('[reconcile] skipped: furio class edition')
++    return { installed: [], updated: [], failed: [], upToDate: [], skipped: [] }
++  }
++
+   const declared = getDeclaredMarketplaces()
+   if (Object.keys(declared).length === 0) {
+     return { installed: [], updated: [], failed: [], upToDate: [], skipped: [] }
 -- 
 2.43.0
 

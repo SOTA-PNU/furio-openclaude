@@ -11,7 +11,7 @@ Furiosa RNGD NPU 가 한다. 클라우드 API 키도, GPU 도 필요 없다.
 |---|---|---|
 | `client/` | `furio` 설치기(Linux·macOS·Windows), SSH 터널 도우미, 목 라우터 | 쓰는 사람 |
 | `server/` | 모델을 요청 때 올리는 라우터(OpenAI 호환 `:8400`), furiosa-llm 파서 패치 | NPU 서버 운영자 |
-| `openclaude-npu/` | 화면(openclaude v0.33.0)에 NPU 기능을 더한 패치 36개 | 클라이언트를 직접 빌드할 때 |
+| `openclaude-npu/` | 화면(openclaude v0.33.0)에 NPU 기능을 더한 패치 38개 | 클라이언트를 직접 빌드할 때 |
 
 라우터는 **요청이 올 때 모델을 올린다**. 카드가 모자라면 오래 안 쓴 모델을 내리고 바꾼다.
 그래서 모델 17종을 등록해 두고도 카드 4장으로 돌아간다. 모델 하나가 올라오는 데 최대 2분쯤
