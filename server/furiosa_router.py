@@ -83,7 +83,10 @@ def short_error(msg):
     lines = [ln.strip() for ln in str(msg).splitlines() if ln.strip()]
     if not lines:
         return "알 수 없는 오류"
-    text = lines[0] if len(lines) == 1 else f"{lines[0]} {lines[-1]}"
+    if len(lines) == 1:
+        text = lines[0]
+    else:
+        text = f"{lines[0]}{' ' if lines[0].endswith(':') else ': '}{lines[-1]}"
     return text[:ERROR_SHORT]
 
 
@@ -614,17 +617,23 @@ class Router:
 
     def _no_cards_msg(self, need, why):
         """why: "unreachable" — 핀·외부 점유를 뺀 카드로는 need 를 못 채움(아무것도 안 내렸다),
-        "busy" — EVICT_WAIT 가 지났는데 FORCE_EVICT 가 꺼져 있어 처리 중 백엔드를 끊지 않음."""
+        "busy" — EVICT_WAIT 가 지났는데 FORCE_EVICT 가 꺼져 있어 처리 중 백엔드를 끊지 않음.
+        돌려주는 문구는 /router/models 의 error 칸(콘솔 모델 목록)에 그대로 보이므로 한국어 한 줄로만 쓰고,
+        목록 표기·설정 이름 같은 상세는 운영 로그에 남긴다."""
         pinned = sorted(m for m in self.running if m in PINNED)
         busy = sorted(m for m, b in self.running.items() if m not in PINNED and b.inflight > 0)
+        free = len(self._free_cards())
+        self._log(f"카드 부족({why}): need {need}, free {free}, 핀 {pinned}, 처리 중 {busy}, "
+                  f"force_evict={'on' if FORCE_EVICT else 'off'}")
+        head = f"카드 부족: {need}장이 필요한데 빈 카드가 {free}장입니다."
         if why == "busy":
-            reason = "처리 중인 백엔드를 강제로 내리지 않음"
+            tail = (f" 요청을 처리 중인 모델({', '.join(busy)})은 내리지 않습니다" if busy
+                    else " 요청을 처리 중인 모델은 내리지 않습니다")
         elif pinned:
-            reason = "핀 모델을 내릴 수 없음"
+            tail = f" 핀 모델({', '.join(pinned)})은 내리지 않습니다"
         else:
-            reason = "내릴 수 있는 백엔드를 다 내려도 모자람(외부 점유?)"
-        return (f"카드 부족: {reason} (need {need}, free {len(self._free_cards())}, "
-                f"핀 {pinned}, 처리 중 {busy}, force_evict={'on' if FORCE_EVICT else 'off'})")
+            tail = " 다른 프로그램이 카드를 쓰고 있을 수 있습니다"
+        return head + tail
 
     def _start(self, model_id):
         base, tp, dp, pp = parse_variant(model_id)
@@ -650,7 +659,7 @@ class Router:
             raise
         free = self._free_cards()
         if len(free) < need:
-            msg = f"need {need} cards, only {len(free)} free"
+            msg = f"카드 부족: {need}장이 필요한데 빈 카드가 {len(free)}장입니다"
             self._fail(model_id, msg)
             raise RuntimeError(msg)
         cards = free[:need]
@@ -704,10 +713,12 @@ class Router:
             self._stop(b)
             raise
         # HTTP 서버가 실제로 뜬 뒤에야 usable — 이 전에는 프록시가 붙으면 ConnectError 다.
+        # state 'up' 도 같은 ilock 안에서 쓴다 — mark_loading 이 usable() 확인과 'loading' 쓰기를 이 락 안에서
+        # 하므로, 두 쪽이 엇갈려 올라온 모델 위에 'loading' 이 덮이는 일이 없다.
         with self.ilock:
             b.ready = True
             b.ready_at = time.time()
-        self.state[model_id] = "up"
+            self.state[model_id] = "up"
         self._log(f"ready '{model_id}' on :{port}")
         return b
 
@@ -727,12 +738,15 @@ class Router:
 
     def mark_loading(self, model_id):
         """preload 를 받은 즉시 'loading' 으로 보인다 — 다른 모델 적재가 self.lock 을 쥐고 있어 줄 서 있는
-        동안에도 콘솔이 '올리는 중' 을 볼 수 있게. 이미 쓸 수 있는(up) 백엔드는 건드리지 않는다."""
-        b = self.running.get(model_id)
-        if b and b.usable():
-            return
-        self.errors.pop(model_id, None)
-        self.state[model_id] = "loading"
+        동안에도 콘솔이 '올리는 중' 을 볼 수 있게. 이미 쓸 수 있는(up) 백엔드는 건드리지 않는다.
+        확인과 쓰기는 ilock 안에서 — _start 가 ready·'up' 을 같은 락 안에서 쓰므로, 확인 뒤 쓰기 전에 _start 가
+        끝나 올라온 모델 위에 'loading' 을 덮는 일(다음 stop·start 까지 노랑으로 남음)이 없다."""
+        with self.ilock:
+            b = self.running.get(model_id)
+            if b and b.usable():
+                return
+            self.errors.pop(model_id, None)
+            self.state[model_id] = "loading"
 
     def _wait_ready(self, b, logpath):
         import httpx
@@ -746,16 +760,17 @@ class Router:
                         tail = "".join(f.readlines()[-15:])
                 except Exception:
                     pass
-                raise RuntimeError(f"serve process exited early:\n{tail}")
+                raise RuntimeError(f"모델 서버가 시작 중에 끝났습니다\n{tail}")
             try:
                 if httpx.get(url, timeout=3).status_code == 200:
                     return
             except Exception:
                 pass
             time.sleep(2)
+        self._log(f"'{b.model_id}' 가 {READY_TIMEOUT}초 안에 준비되지 않음(ROUTER_READY_TIMEOUT 을 늘려 재기동할 수 있다)")
         raise RuntimeError(
-            f"serve not ready within {READY_TIMEOUT}s. 첫 사용 모델이면 가중치 다운로드가 진행 중이었을 수 "
-            f"있습니다. 재시도하면 다운로드를 이어받습니다(또는 ROUTER_READY_TIMEOUT 을 늘려 재기동).")
+            f"{READY_TIMEOUT}초 안에 준비되지 않았습니다. 처음 쓰는 모델이면 가중치를 받는 중이었을 수 있습니다. "
+            f"다시 올리면 이어서 받습니다")
 
     def ensure(self, model_id):
         """model_id('Qwen3-4B-FP8@dp2' 같은 변형 포함)가 서빙되도록 보장하고 포트 반환(블로킹).

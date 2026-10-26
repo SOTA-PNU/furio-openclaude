@@ -437,7 +437,7 @@ def test_router_models_state_and_error(monkeypatch):
     r.state[IDLE] = "loading"
     r.state["Qwen3-32B-FP8"] = "stopping"
     r.state[BUSY] = "error"
-    r.errors[BUSY] = "serve process exited early:\nINFO loading\n\nRuntimeError: out of memory\n"
+    r.errors[BUSY] = "모델 서버가 시작 중에 끝났습니다\nINFO loading\n\nRuntimeError: out of memory\n"
     c = _client(monkeypatch, r)
 
     rows = _rows(c)
@@ -495,7 +495,7 @@ def test_preload_shows_loading_then_error(monkeypatch):
 
     def _ensure(model_id):
         gate.wait(5)
-        raise RuntimeError("serve process exited early:\nboom: device busy")
+        raise RuntimeError("모델 서버가 시작 중에 끝났습니다\nboom: device busy")
 
     monkeypatch.setattr(r, "ensure", _ensure)
     c = _client(monkeypatch, r)
@@ -520,3 +520,105 @@ def test_preload_of_up_model_stays_up(monkeypatch):
     assert _rows(c)[PIN]["state"] == "up"
     assert _wait_for(lambda: calls == [PIN])
     assert _rows(c)[PIN]["state"] == "up"
+
+
+def test_mark_loading_does_not_overwrite_up(monkeypatch):
+    """preload 의 mark_loading 이 usable() 을 본 뒤 state 를 쓰기 전에 _start 가 ready·up 을 마치면, 올라온 모델 위에
+    'loading' 을 덮어써 LED·콘솔 버튼이 노랑·비활성으로 남았다(검토 지적). 확인과 쓰기, _start 의 ready·up 은 한 ilock 안에서.
+    실제 _start 를 돌리되 serve 실행·포트·준비 확인은 가짜로 바꾼다(NPU 를 건드리지 않는다)."""
+    import threading as _th
+
+    monkeypatch.setattr(fr, "PINNED", set())
+    r, _ = make_router(monkeypatch)
+    monkeypatch.setattr(fr.subprocess, "Popen", lambda *a, **k: FakeProc())
+    monkeypatch.setattr(fr, "free_port", lambda *a, **k: 18999)
+    in_wait, proceed, checked, go = _th.Event(), _th.Event(), _th.Event(), _th.Event()
+
+    def _wait_ready(b, logpath):
+        in_wait.set()
+        assert proceed.wait(5)
+
+    monkeypatch.setattr(r, "_wait_ready", _wait_ready)
+    starter = _th.Thread(target=r._start, args=(IDLE,), daemon=True)
+    starter.start()
+    assert in_wait.wait(5)
+    b = r.running[IDLE]
+    orig_usable = b.usable
+
+    def _usable():
+        res = orig_usable()        # 아직 준비 전이라 False
+        checked.set()
+        go.wait(5)                 # 확인과 쓰기 사이에 _start 가 끝나게 기다린다
+        return res
+
+    monkeypatch.setattr(b, "usable", _usable)
+    marker = _th.Thread(target=r.mark_loading, args=(IDLE,), daemon=True)
+    marker.start()
+    assert checked.wait(5)
+    proceed.set()                  # _start 가 ready·up 을 하러 간다
+    starter.join(0.5)              # 고친 뒤에는 mark_loading 이 쥔 ilock 때문에 여기서 끝나지 않는다
+    go.set()
+    marker.join(5)
+    starter.join(5)
+    assert not marker.is_alive() and not starter.is_alive()
+    assert b.ready is True
+    assert r.state[IDLE] == "up"
+
+
+def test_failure_messages_are_plain_korean(monkeypatch):
+    """/router/models 의 error 칸(콘솔 모델 목록)으로 가는 실패 문구: 한국어, 파이썬 목록 표기·설정 이름·영어 디버그 문구 없음."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    pinned = make_backend(PIN, [0, 1, 2, 3])
+    busy = make_backend(BUSY, [2], inflight=1)
+
+    def plain(msg):
+        assert "카드 부족" in msg, msg
+        for bad in ("[", "]", "need", "free", "force_evict", "ROUTER_", "—"):
+            assert bad not in msg, (bad, msg)
+
+    r, _ = make_router(monkeypatch, pinned)
+    msg = r._no_cards_msg(4, "unreachable")
+    plain(msg)
+    assert PIN in msg and "핀 모델" in msg and "4장" in msg
+
+    r, _ = make_router(monkeypatch, busy)
+    msg = r._no_cards_msg(4, "busy")
+    plain(msg)
+    assert BUSY in msg
+
+    monkeypatch.setattr(fr, "PINNED", set())
+    r, _ = make_router(monkeypatch)
+    plain(r._no_cards_msg(4, "unreachable"))
+
+    # _evict_until 뒤에 카드가 모자란 경우(_start 안)
+    r, _ = make_router(monkeypatch)
+    monkeypatch.setattr(r, "_evict_until", lambda need: None)
+    monkeypatch.setattr(r, "_free_cards", lambda: [])
+    with pytest.raises(RuntimeError):
+        r._start(IDLE)
+    plain(r.errors[IDLE])
+
+    # serve 가 시작 중에 끝남: 한국어 첫 줄 + 로그 꼬리 마지막 줄(실제 오류)
+    class DeadProc(FakeProc):
+        def poll(self):
+            return 1
+
+    log = os.path.join(fr.LOGDIR, "router-test-dead.log")
+    with open(log, "w") as f:
+        f.write("INFO loading\nRuntimeError: out of memory\n")
+    dead = fr.Backend(IDLE, 18998, DeadProc(), [3])
+    with pytest.raises(RuntimeError) as ei:
+        r._wait_ready(dead, log)
+    short = fr.short_error(ei.value)
+    assert short.startswith("모델 서버가 시작 중에 끝났습니다"), short
+    assert short.endswith("RuntimeError: out of memory"), short
+    assert "serve process" not in short
+
+    # 준비 시간 초과: 설정 이름(ROUTER_READY_TIMEOUT)은 화면 문구에 넣지 않는다
+    monkeypatch.setattr(fr, "READY_TIMEOUT", 0)
+    alive = fr.Backend(IDLE, 18997, FakeProc(), [3])
+    with pytest.raises(RuntimeError) as ei:
+        r._wait_ready(alive, log)
+    msg = str(ei.value)
+    assert "준비되지 않았습니다" in msg
+    assert "ROUTER_READY_TIMEOUT" not in msg and "serve not ready" not in msg
