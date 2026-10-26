@@ -77,10 +77,25 @@ def set_pins(models):
 # /router/models 의 error 칸 길이. 콘솔 표의 한 줄 — 긴 로그 꼬리는 서버 로그(router-*.log)에서 본다.
 ERROR_SHORT = 200
 
+# serve 로그 줄의 틀: 색 코드, 맨 앞 시각(tracing 은 2026-10-23T22:49:05.30+09:00), 시각 뒤 tracing 의 '수준 대상:'.
+_ANSI = re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
+_LOG_STAMP = re.compile(r"^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}(?:[.,]\d+)?(?:Z|[+-]\d{2}:?\d{2})?\s+")
+_TRACE_HEAD = re.compile(r"^(?:TRACE|DEBUG|INFO|WARN|WARNING|ERROR)\s+[A-Za-z_][\w.-]*(?:::[\w.-]+)*:\s+")
+
+
+def clean_log_line(line):
+    """로그 한 줄 → 사람이 읽을 내용만. 색 코드와 맨 앞 시각을 떼고, 시각이 있던 줄(tracing)은 '수준 대상:' 도 뗀다.
+    시각이 없는 줄(파이썬 예외 등)은 색 코드만 뗀다."""
+    text = _ANSI.sub("", str(line)).strip()
+    stamped = _LOG_STAMP.sub("", text, count=1)
+    if stamped != text:
+        text = _TRACE_HEAD.sub("", stamped, count=1)
+    return text.strip()
+
 
 def short_error(msg):
     """긴 실패 까닭(여러 줄 로그 꼬리 포함) → 한 줄. 첫 줄과 마지막 줄(로그 꼬리의 실제 오류)만 남긴다."""
-    lines = [ln.strip() for ln in str(msg).splitlines() if ln.strip()]
+    lines = [s for s in (clean_log_line(ln) for ln in str(msg).splitlines()) if s]
     if not lines:
         return "알 수 없는 오류"
     if len(lines) == 1:
@@ -756,8 +771,11 @@ class Router:
             if not b.alive():
                 tail = ""
                 try:
-                    with open(logpath) as f:
-                        tail = "".join(f.readlines()[-15:])
+                    with open(logpath, "rb") as f:
+                        f.seek(max(0, os.fstat(f.fileno()).st_size - 65536))
+                        raw = f.read().decode("utf-8", "replace")
+                    lines = [s for s in (clean_log_line(ln) for ln in raw.splitlines()) if s]
+                    tail = "".join(f"{ln}\n" for ln in lines[-15:])
                 except Exception:
                     pass
                 raise RuntimeError(f"모델 서버가 시작 중에 끝났습니다\n{tail}")

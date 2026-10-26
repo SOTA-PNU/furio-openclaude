@@ -622,3 +622,47 @@ def test_failure_messages_are_plain_korean(monkeypatch):
     msg = str(ei.value)
     assert "준비되지 않았습니다" in msg
     assert "ROUTER_READY_TIMEOUT" not in msg and "serve not ready" not in msg
+
+
+# furiosa-llm serve 로그의 실제 꼴(tracing, 색 코드, 2026-10-23 router-gpt-oss-120b.log 마지막 3줄)
+_REAL_TAIL = (
+    "\x1b[2m2026-10-23T22:47:56.36325561+09:00\x1b[0m \x1b[32m INFO\x1b[0m \x1b[2mpe_runtime::context\x1b[0m"
+    "\x1b[2m:\x1b[0m Memory dump thread for TpGroupId(npu0-3) started\n"
+    "\x1b[2m2026-10-23T22:47:56.363418971+09:00\x1b[0m \x1b[32m INFO\x1b[0m \x1b[2mfuriosa_generator::entrypoint\x1b[0m"
+    "\x1b[2m:\x1b[0m Loading DP group 1/1: PP=1, devices=[TpGroupId(npu0-3)]\n"
+    "\x1b[2m2026-10-23T22:49:05.304547795+09:00\x1b[0m \x1b[32m INFO\x1b[0m \x1b[2mfuriosa_generator::entrypoint\x1b[0m"
+    "\x1b[2m:\x1b[0m   PP rank 1/1: device=TpGroupId(npu0-3), layers=0..36\n"
+)
+
+
+def test_start_exit_error_drops_log_colors_and_timestamps(monkeypatch):
+    """serve 가 시작 중에 끝났을 때 콘솔 error 칸: 색 코드·로그 시각·tracing 대상 이름 없이 마지막 줄의 내용만."""
+    r, _ = make_router(monkeypatch)
+
+    class DeadProc(FakeProc):
+        def poll(self):
+            return 1
+
+    log = os.path.join(fr.LOGDIR, "router-test-ansi.log")
+    with open(log, "w") as f:
+        f.write(_REAL_TAIL)
+    dead = fr.Backend(IDLE, 18996, DeadProc(), [3])
+    with pytest.raises(RuntimeError) as ei:
+        r._wait_ready(dead, log)
+    full = str(ei.value)
+    assert "\x1b" not in full and "2026-10-23T" not in full, full
+    short = fr.short_error(ei.value)
+    assert short == "모델 서버가 시작 중에 끝났습니다: PP rank 1/1: device=TpGroupId(npu0-3), layers=0..36", short
+
+    # 꼬리를 날것으로 받아도(다른 길로 들어온 까닭) short_error 가 같은 한 줄로 만든다
+    raw = "모델 서버가 시작 중에 끝났습니다\n" + _REAL_TAIL
+    assert fr.short_error(raw) == short
+
+
+def test_clean_log_line_keeps_plain_lines():
+    """색·시각이 없는 줄(파이썬 예외·uvicorn 줄)은 그대로 둔다."""
+    assert fr.clean_log_line("RuntimeError: out of memory") == "RuntimeError: out of memory"
+    assert fr.clean_log_line("\x1b[31mERROR\x1b[0m boom") == "ERROR boom"
+    assert fr.clean_log_line("2026-10-23T22:49:05.3+09:00  WARN xgrammar: Provided vocab_size 1 does not match") == \
+        "Provided vocab_size 1 does not match"
+    assert fr.clean_log_line("2026-10-23 22:49:05,123 device busy") == "device busy"

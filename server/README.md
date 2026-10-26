@@ -199,7 +199,7 @@ furiosa-llm 2026.2.0 패키지(`/home/jun/furiosa/lib/python3.12/site-packages/f
 # 서버: 인증 켜고 라우터 기동
 SDI_API_KEY="<비밀키>" bash serve-router.sh start
 # 유저(Mac/Linux): 설치 → sdi 명령
-SDI_SERVER=http://10.125.19.138:8400 SDI_API_KEY=<받은키> bash sdi-code/install.sh
+SDI_SERVER=http://<SERVER_IP>:8400 SDI_API_KEY=<받은키> bash sdi-code/install.sh   # <SERVER_IP> = 운영자에게 받은 서버 주소
 sdi            # Claude Code 같은 TUI, 추론은 서버 NPU
 ```
 설치기·Windows(install.ps1)·네트워킹(LAN/VPN/TLS)·보안·한계는 [`sdi-code/README.md`](sdi-code/README.md).
