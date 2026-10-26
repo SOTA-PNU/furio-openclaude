@@ -2,10 +2,10 @@
 # furio 설치기 (Windows PowerShell) — Claude Code 같은 코딩 에이전트(openclaude) + 서버 NPU
 #
 # 사용 (PowerShell). SDI_SERVER = 라우터 주소:
-#   원격(집/외부): 먼저 SSH 터널 후 http://127.0.0.1:8400 (외부 입구는 SSH 10022뿐)
-#       터미널①:  ssh -p 10022 -N -L 8400:localhost:8400 jun@164.125.19.138
+#   원격(집/외부): 먼저 SSH 터널 후 http://127.0.0.1:8400 (외부 입구는 SSH 뿐)
+#       터미널①:  ssh -p <SSH_PORT> -N -L 8400:localhost:8400 <계정>@<SERVER_PUBLIC_IP>
 #       터미널②:  $env:SDI_SERVER="http://127.0.0.1:8400"   # 인증ON이면 $env:SDI_API_KEY="<키>"
-#   사내 LAN: $env:SDI_SERVER="http://10.125.19.138:8400"
+#   사내 LAN: $env:SDI_SERVER="http://<SERVER_IP>:8400"
 #   powershell -ExecutionPolicy Bypass -File install.ps1
 #
 # 설치 후:  furio            # Claude 같은 코딩 에이전트 TUI
@@ -38,7 +38,7 @@ if (-not (Test-Path $ocBin)) { throw "openclaude 바이너리 없음 ($HomeDir)"
 Write-Host "[3/4] 서버 도달 확인: $server"
 $headers = if ($key) { @{ Authorization = "Bearer $key" } } else { @{} }
 try { Invoke-RestMethod -Uri "$server/v1/models" -Headers $headers -TimeoutSec 10 | Out-Null; Write-Host "      [ok] /v1/models 응답" }
-catch { Write-Host "[fail] 서버 도달 실패 $server/v1/models — SSH 터널이 떠 있나요? (ssh -p 10022 -N -L 8400:localhost:8400 ...)"; exit 1 }
+catch { Write-Host "[fail] 서버 도달 실패 $server/v1/models — SSH 터널이 떠 있나요? (ssh -p <SSH_PORT> -N -L 8400:localhost:8400 ...)"; exit 1 }
 
 # 키는 파일에(있을 때) + 사용자 전용 잠금. 래퍼 텍스트엔 비밀 없음.
 $keyFile = Join-Path $HomeDir "key"

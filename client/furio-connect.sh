@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 # ───────────────────────────────────────────────────────────────────────────
-# furio connect — 서버 NPU 라우터로 가는 보안 SSH 터널 (부산대 서버: SSH 포트 10022)
+# furio connect — 서버 NPU 라우터로 가는 보안 SSH 터널
 #
-# 외부 입구가 SSH(10022)뿐이라 라우터(:8400)에 직접 HTTP 로 못 붙는다.
+# 외부 입구가 SSH 뿐이라 라우터(:8400)에 직접 HTTP 로 못 붙는다.
 # SSH 터널로 내 PC 의 localhost:8400 을 서버 라우터에 연결한다(코딩은 내 PC 로컬, 추론만 서버).
 #
 # 사용:
-#   SDI_SSH_USER=jun bash furio-connect.sh        # 이 창 켜 둔 채로, 다른 창에서 furio 사용
+#   SDI_SSH_USER=<계정> SDI_SSH_HOST=<SERVER_PUBLIC_IP> SDI_SSH_PORT=<SSH_PORT> bash furio-connect.sh       # 이 창 켜 둔 채로, 다른 창에서 furio 사용
 #   그 다음 다른 터미널:
 #     SDI_SERVER=http://127.0.0.1:8400 bash install.sh   # (최초 1회)
 #     furio                                                # 사용
 # ───────────────────────────────────────────────────────────────────────────
 set -euo pipefail
-: "${SDI_SSH_USER:?서버 계정을 지정하세요 (예: SDI_SSH_USER=jun)}"
-HOST="${SDI_SSH_HOST:-164.125.19.138}"     # 공인 IP
-SSH_PORT="${SDI_SSH_PORT:-10022}"          # 서버 SSH 포트
+: "${SDI_SSH_USER:?서버 계정을 지정하세요 (예: SDI_SSH_USER=<계정>)}"
+: "${SDI_SSH_HOST:?서버 공인 주소를 지정하세요 (운영자에게 받은 주소, 예: SDI_SSH_HOST=<SERVER_PUBLIC_IP>)}"
+HOST="$SDI_SSH_HOST"
+SSH_PORT="${SDI_SSH_PORT:-22}"             # 서버 SSH 포트(운영자에게 받은 포트)
 LOCAL_PORT="${SDI_LOCAL_PORT:-8400}"       # 내 PC 포트(설치/사용 시 SDI_SERVER=http://127.0.0.1:이포트)
 
 # 이미 이 포트로 라우터가 닿으면(터널 가동 중) 새로 안 띄움

@@ -34,8 +34,8 @@ SDI_SERVER=http://<SERVER_IP>:8400 bash client/install.sh
 밖(집·외부망)에서는 SSH 터널을 먼저 연다. 터널 창은 켜 둔 채로 다른 터미널에서 쓴다.
 
 ```bash
-# 터미널 ①  — 터널 (= ssh -p 10022 -N -L 8400:localhost:8400 사용자@서버)
-SDI_SSH_USER=jun bash client/furio-connect.sh
+# 터미널 ①  — 터널 (= ssh -p <SSH_PORT> -N -L 8400:localhost:8400 <계정>@<SERVER_PUBLIC_IP>)
+SDI_SSH_USER=<계정> SDI_SSH_HOST=<SERVER_PUBLIC_IP> SDI_SSH_PORT=<SSH_PORT> bash client/furio-connect.sh
 
 # 터미널 ②  — 설치는 localhost 로
 SDI_SERVER=http://127.0.0.1:8400 bash client/install.sh

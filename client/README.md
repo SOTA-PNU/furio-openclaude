@@ -5,7 +5,7 @@
 [openclaude](https://github.com/Twigpine/openclaude)
 
 ```
-[내 Mac/Win] furio (openclaude, Node≥22) ──► localhost:8400 ──[SSH 터널 :10022]──► [서버] furiosa_router → furiosa-llm serve(NPU)
+[내 Mac/Win] furio (openclaude, Node≥22) ──► localhost:8400 ──[SSH 터널]──► [서버] furiosa_router → furiosa-llm serve(NPU)
 ```
 
 ---
@@ -26,8 +26,8 @@ bash serve-router.sh start                               # 이미 sdi 용으로 
 ### 2-A. 원격(집/외부) — SSH 터널 (권장)
 **터미널 ①** — 터널(유지):
 ```bash
-SDI_SSH_USER=jun bash furio-connect.sh
-#   (= ssh -p 10022 -N -L 8400:localhost:8400 jun@164.125.19.138)  ← 비밀번호
+SDI_SSH_USER=<계정> SDI_SSH_HOST=<SERVER_PUBLIC_IP> SDI_SSH_PORT=<SSH_PORT> bash furio-connect.sh
+#   (= ssh -p <SSH_PORT> -N -L 8400:localhost:8400 <계정>@<SERVER_PUBLIC_IP>)  ← 비밀번호
 ```
 >  다른 서버 계정이면 `jun`(또는 `SDI_SSH_USER`)만 바꾸면 됩니다(install/furio/설정 그대로).
 
@@ -40,7 +40,7 @@ furio                                               # Claude 같은 TUI
 
 ### 2-B. 사내 같은 LAN — 직접 (터널 불필요)
 ```bash
-SDI_SERVER=http://10.125.19.138:8400 bash install.sh
+SDI_SERVER=http://<SERVER_IP>:8400 bash install.sh
 furio
 ```
 

@@ -8,7 +8,7 @@
 #
 # 사용 (SDI_SERVER = 라우터 주소):
 #   원격(집/외부): 먼저 SSH 터널 → SDI_SERVER=http://127.0.0.1:8400  (furio-connect.sh / README 2-A)
-#   사내 LAN:     SDI_SERVER=http://10.125.19.138:8400
+#   사내 LAN:     SDI_SERVER=http://<SERVER_IP>:8400
 #   예) SDI_SERVER=http://127.0.0.1:8400 bash install.sh
 #       (서버 인증 ON 이면 SDI_API_KEY=<키> 추가)
 #
