@@ -1,0 +1,20 @@
+# 라우터 추가 모델 파일 예시. server/extra-models.yaml 로 복사해 고친다(ROUTER_EXTRA_MODELS 로 다른 경로도 된다).
+# 내장 목록(furiosa_router.py 의 REGISTRY)에 더해지고, 같은 id 는 내장 항목을 바꾼다.
+# 고치면 다음 /router/models 때 저절로 다시 읽는다. 바로 읽히려면 POST /router/rescan(콘솔의 새로 고침).
+models:
+  # 직접 빌드한 v2 결과물 폴더(artifact.json·binary_bundle.zip 이 있는 폴더, 절대 경로)
+  - id: Qwen3-32B-FP8-local
+    path: /mnt/nvme2n1p1/models/artifacts/qwen3-32b-tp8
+    tp: 8                 # 1·2·4·8·16·32. 카드 수는 tp 로 정한다(8 이하 1장, 32 는 4장)
+    ctx: 40960            # 컨텍스트 토큰 수(필수)
+    tool: hermes          # --tool-call-parser, 없으면 도구 호출 없음
+    reasoning: qwen3      # --reasoning-parser, 없으면 빼기
+    tools: ok             # ok·weak·no. 없으면 tool 이 있으면 weak
+  # 프리빌트(HF 저장소 id). HF 캐시에 받아 두지 않았으면 목록에 '내려받지 않음' 으로 흐리게 보인다
+  # - id: Qwen3-14B-FP8
+  #   path: furiosa-ai/Qwen3-14B-FP8
+  #   tp: 8
+  #   ctx: 40960
+  #   tool: hermes
+  #   reasoning: qwen3
+  #   extra: [--max-model-len, "40960"]   # serve 에 더할 인자

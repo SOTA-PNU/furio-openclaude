@@ -100,15 +100,47 @@ FURIO_CLIENT_DIST=/home/jun/NPU_AIP/openclaude-fork/dist
 `~/furiosa` venv 에는 pytest 가 없고 시스템 python3 에는 fastapi 가 없으니 시험용 venv 를 하나 만든다:
 
 ```bash
-python3 -m venv ~/.venvs/router-test && ~/.venvs/router-test/bin/pip install pytest fastapi httpx
+python3 -m venv ~/.venvs/router-test && ~/.venvs/router-test/bin/pip install pytest fastapi httpx pyyaml
 taskset -c 64-127 ~/.venvs/router-test/bin/python -m pytest \
-  server/test_router_classmode.py server/test_serve_router_env.py -q
+  server/test_router_classmode.py server/test_router_catalog.py server/test_serve_router_env.py -q
+# 60 passed (2026-10-26)
 ```
 
 > 클라이언트도 함께 고쳐야 의미가 있습니다. openclaude 의 백그라운드 호출(세션 제목·주제
 > 판정)은 실행 시점의 `OPENAI_MODEL` 을 계속 썼기 때문에, `/model` 로 tp32 모델(4장 전부)로
 > 바꿔도 제목 생성 한 번에 그 모델이 통째로 내려갔다 다시 올라왔습니다(~100초). 포크의
 > `getSmallFastModel()` 이 이제 `/model` 로 바꾼 세션 모델을 따라갑니다.
+
+### 모델 목록 다시 읽기, 올릴 수 있는지 (2026-10-26)
+
+콘솔이 서버마다 바로 올릴 수 있는 모델을 목록에서 고르게 한다. 목록 = 내장 `REGISTRY` + 추가 모델 파일.
+
+| 길, 칸 | 뜻 |
+|---|---|
+| `GET /router/models` 행의 `available`·`reason` | 그 변형이 쓰는 결과물이 디스크에 다 있나. `false` 여도 행은 남는다(콘솔이 흐리게) |
+| `POST /router/rescan` | 내장 목록과 추가 파일을 바로 다시 읽는다 → `{"ok": true, "count", "added", "removed", "kept"}`(id 는 변형 포함). 추가 파일이 틀렸으면 `400 {"reason": "bad_catalog", "error": {"message"}}` 이고 목록은 그대로. 라우터 키는 preload 와 같다 |
+| 추가 파일 `ROUTER_EXTRA_MODELS` | 기본 `server/extra-models.yaml`(없으면 내장만, gitignore). `.json` 이면 JSON. 예시 `server/extra-models.example.yaml`. 같은 id 는 내장 항목을 바꾼다 |
+| 저절로 다시 읽기 | 추가 파일의 mtime·크기가 바뀌면 다음 `/router/models`·`/v1/models`·preload·pin·요청 때 |
+| 떠 있는 모델 | 목록에서 빠져도 내려갈 때까지 남긴다(`kept`, evict 가 404 로 막히지 않게). 내려간 뒤 다음 목록에서 빠진다 |
+
+`reason`:
+
+| 값 | 판정 |
+|---|---|
+| `파일 없음` | 결과물 폴더(절대 경로)가 없다. preload 는 카드를 비우기 전에 `409 {"reason": "unavailable"}` |
+| `일부 파일 없음` | 폴더는 있는데 `artifact.json`+`binary_bundle.zip`(v2), 또는 `*.fxb`+가중치 조각 전부(FXB)가 없다. preload `409` |
+| `내려받지 않음` | 프리빌트(HF 저장소 id)가 HF 캐시(`HF_HUB_CACHE`, `HF_HOME/hub`, `~/.cache/huggingface/hub`)에 없다. preload 는 받는다(serve 가 내려받는다) |
+| `일부만 내려받음` | 캐시에 저장소는 있는데 다 받은 스냅숏이 없다. preload 는 받는다 |
+
+판정은 경로마다 5초 기억한다(`AVAIL_TTL`, rescan 이 지운다). 첫 `/router/models` 는 MoE 가중치 색인을 읽느라 ~140 ms, 다음부터 ~15 ms(2026-10-26 이 서버 실측, 모델 57행).
+
+```bash
+cp server/extra-models.example.yaml server/extra-models.yaml    # 고쳐 쓴다
+curl -s -X POST localhost:8400/router/rescan                      # {"ok":true,"count":64,"added":["Qwen3-32B-FP8-local",...],...}
+curl -s localhost:8400/router/models | python3 -c 'import json,sys; [print(m["id"], m["available"], m["reason"]) for m in json.load(sys.stdin)["data"]]'
+```
+
+이 서버 실측(2026-10-26): 내장 chat 모델 16종은 전부 `available: true`(프리빌트는 `/mnt/nvme2n1p1/models/hf/hub`, Llama-3.1-8B 는 `/mnt/nvme2n1p1/models/artifacts/llama31-8b-tp8`). `Qwen3-Reranker-8B` 만 `일부만 내려받음`(스냅숏에 `artifact.json` 뿐).
 
 ### 사용법 (2줄)
 
@@ -341,6 +373,8 @@ FURIOSA_MODEL=furiosa-ai/Qwen3-Coder-30B-A3B-FP8 bash launch-opencode.sh
 ---
 
 ## 내가 빌드한 아티팩트를 OpenCode 모델로 추가하기  ✅ 가능
+
+라우터 목록에 더하려면 이 절 대신 `server/extra-models.yaml`(위 "모델 목록 다시 읽기, 올릴 수 있는지").
 
 OpenCode 는 OpenAI 호환 엔드포인트면 무엇이든 모델로 씁니다. furiosa-llm 은 **serve 1프로세스 = 아티팩트
 1개 = 포트 1개** 라서, "아티팩트 추가" = "그 아티팩트를 serve 해서 `opencode.json` 의 `provider` 에 한 칸
