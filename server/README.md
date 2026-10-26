@@ -76,6 +76,14 @@ evict) 카드를 확보합니다. furiosa-llm 은 serve 1프로세스=모델 1�
   건너뛴다(수업 끝에 게이트웨이 타이머가 핀 모델을 내리는 길). `force` 는 JSON `true` 만 — `"true"`·`1` 은
   force 가 아니다.
 - `GET /router/status` 에 `pinned: [...]`·`force_evict: bool` 이 붙는다.
+- `POST /router/pin` `{"models": ["<id>", ...]}` → `{"ok": true, "pinned": [...]}`(2026-10-26). 실행 중 핀 목록을
+  통째로 바꾼다(빈 목록 = 핀 없음). 모델을 올리지는 않는다(올리기는 `/router/preload`). 메모리에만 두므로
+  재시작하면 다시 `ROUTER_PIN`. 목록이 아니면 `400`, 띄울 수 없는 이름(모르는 모델, 카드 4장을 넘는 변형)이
+  하나라도 있으면 `404 {"reason":"unknown","models":[...]}` 이고 핀은 그대로. 라우터 키는 preload·evict 와 같다.
+  콘솔이 모델을 바꾸는 순서: (옛 핀 `force` evict →) `/router/pin` → `/router/preload`.
+- `GET /router/models` 각 행에 `state`(`up`·`loading`·`stopping`·`down`·`error`)·`error`(`state` 가 `error` 일 때
+  한 줄 까닭, 아니면 `null`)가 붙는다. `cards` 는 그 변형이 쓰는 카드 장수(정수). `POST /router/preload` 는 받는
+  즉시 그 모델을 `loading` 으로 보인다(다른 모델 적재 뒤에 줄 서 있어도).
 - `gpt-oss-20b`: serve 에 `--max-model-len 65536`, `ctx 65536`(클라이언트 ctx 힌트). 근거는
   `notes/2026-10-24-multi-npu-gateway-design.md` 2절(64K 에서 자동 요약 문턱 35.5K).
 
@@ -191,7 +199,7 @@ furiosa-llm 2026.2.0 패키지(`/home/jun/furiosa/lib/python3.12/site-packages/f
 # 서버: 인증 켜고 라우터 기동
 SDI_API_KEY="<비밀키>" bash serve-router.sh start
 # 유저(Mac/Linux): 설치 → sdi 명령
-SDI_SERVER=http://10.125.19.138:8400 SDI_API_KEY=<받은키> bash sdi-code/install.sh
+SDI_SERVER=http://<SERVER_IP>:8400 SDI_API_KEY=<받은키> bash sdi-code/install.sh   # <SERVER_IP> = 운영자에게 받은 서버 주소
 sdi            # Claude Code 같은 TUI, 추론은 서버 NPU
 ```
 설치기·Windows(install.ps1)·네트워킹(LAN/VPN/TLS)·보안·한계는 [`sdi-code/README.md`](sdi-code/README.md).
