@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/45] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/48] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/45] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/48] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/45] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/48] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/45] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/48] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/45] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/48] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/45] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/48] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/45] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/48] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/45] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/48] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/45] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/48] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/45] statusline: separate the current-model marker from the
+Subject: [PATCH 10/48] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/45] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/48] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/45] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/48] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/45] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/48] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/45] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/48] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/45] model picker: support a per-model default pp (large
+Subject: [PATCH 15/48] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/45] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/48] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/45] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/48] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/45] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/48] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/45] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/48] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/45] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/48] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/45] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/48] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/45] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/48] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/45] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/48] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5563,7 +5563,7 @@ index 522362ad..1c509b74 100644
 From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/45] brand: give each logo letter its own color from a cool
+Subject: [PATCH 24/48] brand: give each logo letter its own color from a cool
  spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5756,7 +5756,7 @@ index 94af8b4c..3e2cf093 100644
 From 9cf8784b2009e6734c8bd3d24740e72ccc69a6ea Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:07:48 +0900
-Subject: [PATCH 25/45] startup: drop the provider box, keep the mark and one
+Subject: [PATCH 25/48] startup: drop the provider box, keep the mark and one
  line
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5913,7 +5913,7 @@ index c21c8def..9b775d33 100644
 From bf4d4d421cbaa00a9c49fb6851a4d713b11729b9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:37:56 +0900
-Subject: [PATCH 26/45] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
+Subject: [PATCH 26/48] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
  =?UTF-8?q?=EA=B8=B0:=20agents=20=ED=95=9C=20=EB=8B=A8=EC=96=B4=EB=A1=9C?=
  =?UTF-8?q?=20=EC=9D=B4=20=EC=BB=B4=ED=93=A8=ED=84=B0=EC=9D=98=20=EC=84=B8?=
  =?UTF-8?q?=EC=85=98=EC=9D=84=20=EC=97=B4=EA=B3=A0=20=EB=8B=A4=EB=A5=B8=20?=
@@ -6389,7 +6389,7 @@ index 00000000..fb864cb2
 From 032cb8ae9935682e0a02e8fff4a8c09b355ad0d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:16:30 +0900
-Subject: [PATCH 27/45] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
+Subject: [PATCH 27/48] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
  =?UTF-8?q?=20=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=95=88=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EC=82=AC=EC=9A=A9=20=EA=B2=BD=ED=97=98=EC=9D=84=20=EB=B0=9B?=
  =?UTF-8?q?=EC=95=84=20=EB=9D=BC=EC=9A=B0=ED=84=B0=EB=A1=9C=20=EB=B3=B4?=
@@ -7711,7 +7711,7 @@ index 00000000..e41d7a38
 From 4c1dd2e0ccbe99a2b09c45f2482d67aea3db94d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:59:23 +0900
-Subject: [PATCH 28/45] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 28/48] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20agents=20=EB=A5=BC=20claude=20agents=20=EC=8B=9D=20=EA=B5=AC?=
  =?UTF-8?q?=EC=84=B1=EC=9C=BC=EB=A1=9C,=20=EB=B9=88=20=ED=94=84=EB=A1=AC?=
  =?UTF-8?q?=ED=94=84=ED=8A=B8=EC=97=90=EC=84=9C=20=E2=86=90=20=EB=A1=9C?=
@@ -8811,7 +8811,7 @@ index fb864cb2..858a1faa 100644
 From c969ee7ee1a65e2c6036a3dd28ee8b28b6bf8cbf Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 18:42:09 +0900
-Subject: [PATCH 29/45] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 29/48] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20=EC=84=B8=EC=85=98=20=EC=95=88=EC=9D=98=20=EC=84=A0=ED=83=9D?=
  =?UTF-8?q?=EC=B0=BD=EC=9D=84=20=EB=8C=80=EC=B2=B4=20=ED=99=94=EB=A9=B4?=
  =?UTF-8?q?=EC=97=90=20=EB=9D=84=EC=9B=8C=20=EC=9E=90=EB=A6=AC=EB=A5=BC=20?=
@@ -9162,7 +9162,7 @@ index 858a1faa..4549b875 100644
 From 5f7367539a9ac62b25088f69a1ad0a1b9e15e1d8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 22:41:22 +0900
-Subject: [PATCH 30/45] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
+Subject: [PATCH 30/48] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
  =?UTF-8?q?=EA=B0=92=EC=9D=84=20=EB=AF=B8=EB=A6=AC=20=EA=B3=A0=EB=A5=B8=20?=
  =?UTF-8?q?=EB=8B=B5(=EC=B4=88=EB=A1=9D)=EC=9C=BC=EB=A1=9C=20=EA=B7=B8?=
  =?UTF-8?q?=EB=A6=AC=EC=A7=80=20=EC=95=8A=EA=B3=A0=20=EC=BB=A4=EC=84=9C=20?=
@@ -9203,7 +9203,7 @@ index ef2b04a9..d16156ab 100644
 From cacc5fb703bf009ba3c25d3530d319c2de787022 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Sun, 25 Oct 2026 00:31:57 +0900
-Subject: [PATCH 31/45] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
+Subject: [PATCH 31/48] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
  =?UTF-8?q?=EC=9C=84=EC=B9=98:=20=EC=9D=BC=EB=B0=98=ED=8C=90(lab)=C2=B7?=
  =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90(class)=EC=9D=84=20=ED=95=9C=20?=
  =?UTF-8?q?=EC=86=8C=EC=8A=A4=EC=97=90=EC=84=9C=20=EB=B9=8C=EB=93=9C?=
@@ -9632,7 +9632,7 @@ index e41d7a38..54e24ea7 100644
 From e3b9f75537b51b3a459ba9fa001f02706d13a6de Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 02:38:42 +0900
-Subject: [PATCH 32/45] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/l?=
+Subject: [PATCH 32/48] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/l?=
  =?UTF-8?q?ogin=C2=B7/logout(=EA=B8=B0=EA=B8=B0=20=EC=BD=94=EB=93=9C),=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84=20=EA=B3=84=EC=A0=95=C2=B7=EB=A1=9C?=
  =?UTF-8?q?=EA=B7=B8=EC=9D=B8=20=ED=95=84=EC=9A=94=C2=B7=EC=88=98=EC=97=85?=
@@ -10814,7 +10814,7 @@ index 88eec592..11ec25df 100644
 From 5ceec773cb628a56a9d1443a5f4ba56de414a328 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 03:02:22 +0900
-Subject: [PATCH 33/45] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 33/48] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20403=C2=B75xx=20?=
  =?UTF-8?q?=EC=97=90=EB=8F=84=20=EC=83=81=ED=83=9C=EC=A4=84=20=EC=9C=A0?=
  =?UTF-8?q?=EC=A7=80,=20/login=20=EC=9D=80=20=EC=9D=BC=EC=8B=9C=20?=
@@ -11476,7 +11476,7 @@ index 11ec25df..ce796cdd 100644
 From e6883f42491fab75ade11f18581e905f679ae8c6 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 03:18:36 +0900
-Subject: [PATCH 34/45] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 34/48] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=202:=20=ED=8F=B4?=
  =?UTF-8?q?=EB=A7=81=20=EC=A4=91=20/login=C2=B7/logout=20=EA=B0=B1?=
  =?UTF-8?q?=EC=8B=A0=EC=9D=B4=20=EB=91=90=20=EB=B2=88=EC=A7=B8=20=ED=8F=B4?=
@@ -11725,7 +11725,7 @@ index ce796cdd..b1d82ffd 100644
 From 26b1ff94693af6a9b65a3ba591492550e475b46c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 05:51:31 +0900
-Subject: [PATCH 35/45] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 35/48] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84:=20=EA=B2=8C=EC=9D=B4=ED=8A=B8?=
  =?UTF-8?q?=EC=9B=A8=EC=9D=B4=20=EC=98=A4=EB=A5=98=20=EB=B3=B8=EB=AC=B8=20?=
  =?UTF-8?q?{"error":{message,code}}=20=ED=8C=8C=EC=8B=B1,=20403=20suspende?=
@@ -11983,7 +11983,7 @@ index b1d82ffd..f8d2a7bd 100644
 From 90865c80ebc4263917693b318403c1e6122d2492 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 06:07:17 +0900
-Subject: [PATCH 36/45] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 36/48] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=203:=20/login=C2=B7?=
  =?UTF-8?q?=EC=84=A4=EB=AC=B8=20=EC=A0=84=EC=86=A1=EC=9D=98=20AbortSignal.?=
  =?UTF-8?q?timeout=20=EC=9D=84=20=EC=A0=95=EB=A6=AC=EB=90=98=EB=8A=94=20?=
@@ -12097,7 +12097,7 @@ index 17a9405d..92cbe0e0 100644
 From ab997ad7bb833f4327d80ba4c112b179e022fe5f Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 03:02:30 +0900
-Subject: [PATCH 37/45] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20?=
+Subject: [PATCH 37/48] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20?=
  =?UTF-8?q?=EA=B3=B5=EC=8B=9D=20=EB=A7=88=EC=BC=93=20=EC=9E=90=EB=8F=99=20?=
  =?UTF-8?q?=EC=84=A4=EC=B9=98=EB=A5=BC=20=EB=8F=8C=EB=A6=AC=EC=A7=80=20?=
  =?UTF-8?q?=EC=95=8A=EB=8A=94=EB=8B=A4(=ED=95=99=EC=83=9D=20PC=20=EB=B0=94?=
@@ -12340,7 +12340,7 @@ index 1dead1d4..050d39ae 100644
 From 408110b5e22ff4be18b6f5c70ad133b04afd183c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 03:29:03 +0900
-Subject: [PATCH 38/45] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/a?=
+Subject: [PATCH 38/48] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/a?=
  =?UTF-8?q?ds=20=EC=88=A8=EA=B9=80=C2=B7=EA=B4=91=EA=B3=A0=20=ED=8C=81=20?=
  =?UTF-8?q?=EB=81=94=C2=B7=EC=84=A0=EC=96=B8=EB=90=9C=20=EB=A7=88=EC=BC=93?=
  =?UTF-8?q?=20=EB=B0=B1=EA=B7=B8=EB=9D=BC=EC=9A=B4=EB=93=9C=20reconcile=20?=
@@ -12659,7 +12659,7 @@ index 8157a324..bce161cb 100644
 From 9b35c4b683c791144341240c1c668fa293066971 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 12:17:28 +0900
-Subject: [PATCH 39/45] =?UTF-8?q?furio=20=ED=99=94=EB=A9=B4=20=EB=AC=B8?=
+Subject: [PATCH 39/48] =?UTF-8?q?furio=20=ED=99=94=EB=A9=B4=20=EB=AC=B8?=
  =?UTF-8?q?=EA=B5=AC=20=EC=A0=95=EB=A6=AC:=20=EB=8C=80=EC=8B=9C=C2=B7?=
  =?UTF-8?q?=EC=9E=A5=EC=8B=9D=20=EA=B0=80=EC=9A=B4=EB=8E=83=EC=A0=90=C2=B7?=
  =?UTF-8?q?TMI=20=EC=A0=9C=EA=B1=B0,=20=ED=99=94=EB=A9=B4=20=ED=91=9C?=
@@ -13129,7 +13129,7 @@ index 54e24ea7..82a2f3ea 100644
 From 95f428a2c0f238f2e0996e74a29d598620e39290 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 12:44:14 +0900
-Subject: [PATCH 40/45] =?UTF-8?q?furio=20=EB=AC=B8=EA=B5=AC=20=EC=A0=95?=
+Subject: [PATCH 40/48] =?UTF-8?q?furio=20=EB=AC=B8=EA=B5=AC=20=EC=A0=95?=
  =?UTF-8?q?=EB=A6=AC=20=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20?=
  =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4=20=EB=8C=80=EC=8B=9C?=
  =?UTF-8?q?=C2=B7=EC=9E=A5=EC=8B=9D=20=EA=B0=80=EC=9A=B4=EB=8E=83=EC=A0=90?=
@@ -13304,7 +13304,7 @@ index 1b12e5bd..e6bf289f 100644
 From d5b8b13efd9b646e3e3241050b67a521a3523aca Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:17:59 +0900
-Subject: [PATCH 41/45] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 41/48] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84:=20=EB=AA=A8=EB=8D=B8=20=EC=9D=B4?=
  =?UTF-8?q?=EB=A6=84=C2=B7NPU=20=EC=B9=B4=EB=93=9C=C2=B7=EC=8A=A4=EC=9C=84?=
  =?UTF-8?q?=EC=B2=98=20=ED=9E=8C=ED=8A=B8=EB=A5=BC=20=EC=88=A8=EA=B8=B0?=
@@ -14293,7 +14293,7 @@ index f8d2a7bd..5422edb8 100644
 From e557fa4d78691d8a0dcf4e0f2a5a3e5ea64ec0a0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:48:53 +0900
-Subject: [PATCH 42/45] =?UTF-8?q?furio=20=EC=83=81=ED=83=9C=EC=A4=84=20?=
+Subject: [PATCH 42/48] =?UTF-8?q?furio=20=EC=83=81=ED=83=9C=EC=A4=84=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20=EA=B5=AC=ED=9A=8D?=
  =?UTF-8?q?=20=EB=84=88=EB=B9=84=EB=A5=BC=20=ED=84=B0=EB=AF=B8=EB=84=90=20?=
  =?UTF-8?q?=EC=B9=B8(stringWidth)=EC=9C=BC=EB=A1=9C=20=EC=9E=AC=EC=84=9C?=
@@ -14615,7 +14615,7 @@ index 6e6023d3..ace10d0f 100644
 From 263341600a8e36c38fe5469fa860b086b1ee66a3 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:55:11 +0900
-Subject: [PATCH 43/45] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 43/48] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C:=20Shift+Tab=20?=
  =?UTF-8?q?=EC=88=9C=ED=99=98=20default=E2=86=92acceptEdits=E2=86=92plan?=
  =?UTF-8?q?=E2=86=92auto=E2=86=92fullAccess(bypassPermissions=20=EC=97=86?=
@@ -16355,10 +16355,1609 @@ index 9936421e..889418e7 100644
 2.43.0
 
 
+From f7b8959fa133f711e880e2d22b062ac48c0d3cf5 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Mon, 26 Oct 2026 17:15:50 +0900
+Subject: [PATCH 44/48] =?UTF-8?q?furio=20agents=20=ED=99=94=EB=A9=B4?=
+ =?UTF-8?q?=EC=9D=84=20Claude=20agents=20=EC=B2=98=EB=9F=BC=20=EC=A0=95?=
+ =?UTF-8?q?=EB=A6=AC:=20=ED=81=B0=20=EB=B0=B0=EB=84=88=C2=B7=EB=9D=A0=20?=
+ =?UTF-8?q?=EB=A8=B8=EB=A6=AC=20=EB=8C=80=EC=8B=A0=20=EC=9E=91=EC=9D=80=20?=
+ =?UTF-8?q?FURIO=20=ED=91=9C=EC=8B=9D=EA=B3=BC=20=EB=A8=B8=EB=A6=AC=203?=
+ =?UTF-8?q?=EC=A4=84(=EB=B2=84=EC=A0=84,=20=EC=83=88=20=EC=84=B8=EC=85=98?=
+ =?UTF-8?q?=20=EB=AA=A8=EB=8D=B8=EA=B3=BC=20=EA=B2=BD=EB=A1=9C(=EC=88=98?=
+ =?UTF-8?q?=EC=97=85=ED=8C=90=EC=9D=80=20=EA=B2=BD=EB=A1=9C=EB=A7=8C),=20?=
+ =?UTF-8?q?=EC=83=81=ED=83=9C=EB=B3=84=20=EA=B0=9C=EC=88=98),=20=EC=A4=84?=
+ =?UTF-8?q?=EC=9D=80=20=EC=83=81=ED=83=9C=20=EC=95=84=EC=9D=B4=EC=BD=98?=
+ =?UTF-8?q?=C2=B7=EC=9D=B4=EB=A6=84=20=EC=97=B4=C2=B7Done/Working/Waiting?=
+ =?UTF-8?q?=20=EA=B3=BC=20=EB=A7=88=EC=A7=80=EB=A7=89=20=EB=8B=B5=20?=
+ =?UTF-8?q?=EC=9A=94=EC=95=BD=C2=B7=EC=98=A4=EB=A5=B8=EC=AA=BD=20=EA=B2=BD?=
+ =?UTF-8?q?=EA=B3=BC=20=EC=8B=9C=EA=B0=84(=ED=8C=8C=EC=9D=BC=20=ED=81=AC?=
+ =?UTF-8?q?=EA=B8=B0=C2=B7HEAD=20=EC=A0=9C=EA=B1=B0),=20=EC=83=81=ED=83=9C?=
+ =?UTF-8?q?=EB=8A=94=20sessions/<pid>.json=20=EC=9D=98=20=EC=82=B4?=
+ =?UTF-8?q?=EC=95=84=20=EC=9E=88=EB=8A=94=20=ED=94=84=EB=A1=9C=EC=84=B8?=
+ =?UTF-8?q?=EC=8A=A4=EC=99=80=20REPL=20status=20=EB=A1=9C=20=ED=8C=90?=
+ =?UTF-8?q?=EC=A0=95,=20=EA=B3=A0=EB=A5=B8=20=EC=A4=84=20=EB=B0=B0?=
+ =?UTF-8?q?=EA=B2=BD=20=EA=B0=95=EC=A1=B0,=20=ED=99=94=EB=A9=B4=20?=
+ =?UTF-8?q?=EC=A4=84=20=EC=88=98=20=EA=B8=B0=EC=A4=80=20=EC=8A=A4=ED=81=AC?=
+ =?UTF-8?q?=EB=A1=A4=EB=A1=9C=2080x24=20=EC=97=90=EC=84=9C=EB=8F=84=20?=
+ =?UTF-8?q?=EB=A8=B8=EB=A6=AC=20=EC=9C=A0=EC=A7=80?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/components/FurioMark.tsx               |  83 ++++
+ src/components/SessionFleet.test.tsx       | 353 ++++++++++++++++-
+ src/components/SessionFleet.tsx            | 433 ++++++++++++++++-----
+ src/entrypoints/cli.test.ts                |   8 +
+ src/entrypoints/cli.tsx                    |   7 +-
+ src/types/logs.ts                          |   1 +
+ src/utils/sessionLiveness.test.ts          |  73 ++++
+ src/utils/sessionLiveness.ts               | 106 +++++
+ src/utils/sessionStorage.lastReply.test.ts |  69 ++++
+ src/utils/sessionStorage.ts                |   5 +
+ src/utils/sessionStoragePortable.ts        |  59 +++
+ 11 files changed, 1082 insertions(+), 115 deletions(-)
+ create mode 100644 src/components/FurioMark.tsx
+ create mode 100644 src/utils/sessionLiveness.test.ts
+ create mode 100644 src/utils/sessionLiveness.ts
+ create mode 100644 src/utils/sessionStorage.lastReply.test.ts
+
+diff --git a/src/components/FurioMark.tsx b/src/components/FurioMark.tsx
+new file mode 100644
+index 00000000..30f5c25c
+--- /dev/null
++++ b/src/components/FurioMark.tsx
+@@ -0,0 +1,83 @@
++import * as React from 'react'
++import { Box, Text } from '../ink.js'
++import { getGlobalConfig } from '../utils/config.js'
++import { type RGB, resolveLogoPalette } from './StartupScreen.palettes.js'
++
++/**
++ * FURIO in half-block letters, three rows tall so it sits beside a three-line
++ * header the way the big startup logo cannot. Each entry is one letter's
++ * column of rows; letters are joined with one space.
++ */
++const LETTERS: readonly (readonly [string, string, string])[] = [
++  ['▄▄▄', '█▄ ', '█  '], // F
++  ['▄ ▄', '█ █', '█▄█'], // U
++  ['▄▄▄', '█▄▀', '█ █'], // R
++  ['▄', '█', '█'], // I
++  ['▄▄▄', '█ █', '█▄█'], // O
++]
++
++export const FURIO_MARK_WIDTH =
++  LETTERS.reduce((sum, letter) => sum + letter[0].length, 0) + LETTERS.length - 1
++
++/** The plain rows, for tests and width checks. */
++export const FURIO_MARK_ROWS: readonly string[] = [0, 1, 2].map(row =>
++  LETTERS.map(letter => letter[row as 0 | 1 | 2]).join(' '),
++)
++
++function mix(a: RGB, b: RGB, t: number): RGB {
++  return [
++    Math.round(a[0] + (b[0] - a[0]) * t),
++    Math.round(a[1] + (b[1] - a[1]) * t),
++    Math.round(a[2] + (b[2] - a[2]) * t),
++  ]
++}
++
++function at(stops: readonly RGB[], t: number): RGB {
++  const s = Math.max(0, Math.min(1, t)) * (stops.length - 1)
++  const i = Math.floor(s)
++  return i >= stops.length - 1 ? stops[stops.length - 1]! : mix(stops[i]!, stops[i + 1]!, s - i)
++}
++
++/**
++ * The colors FURIO's five letters get in the startup logo: the palette is one
++ * spectrum over SOTA (four letters) then FURIO (five), so FURIO takes the last
++ * five of nine steps.
++ */
++export function furioLetterColors(paletteName?: string): string[] {
++  const { gradient } = resolveLogoPalette(paletteName)
++  return LETTERS.map((_, i) => {
++    const [r, g, b] = at(gradient, (4 + i) / 8)
++    return `rgb(${r},${g},${b})`
++  })
++}
++
++function configuredPalette(): string | undefined {
++  try {
++    return getGlobalConfig().logoColor
++  } catch {
++    return undefined
++  }
++}
++
++/** The letter colors for the palette picked with /logo. */
++export function furioMarkColors(): string[] {
++  return furioLetterColors(configuredPalette())
++}
++
++export function FurioMark(): React.ReactNode {
++  const colors = React.useMemo(furioMarkColors, [])
++  return (
++    <Box flexDirection="column" width={FURIO_MARK_WIDTH}>
++      {[0, 1, 2].map(row => (
++        <Text key={row}>
++          {LETTERS.map((letter, i) => (
++            <Text key={i} color={colors[i]}>
++              {i > 0 ? ' ' : ''}
++              {letter[row as 0 | 1 | 2]}
++            </Text>
++          ))}
++        </Text>
++      ))}
++    </Box>
++  )
++}
+diff --git a/src/components/SessionFleet.test.tsx b/src/components/SessionFleet.test.tsx
+index def5e0b0..6639b212 100644
+--- a/src/components/SessionFleet.test.tsx
++++ b/src/components/SessionFleet.test.tsx
+@@ -1,13 +1,25 @@
+ import { PassThrough } from 'node:stream'
+ import { stripVTControlCharacters as stripAnsi } from 'node:util'
+ 
+-import { describe, expect, it, test } from 'bun:test'
++import { afterEach, describe, expect, it, test } from 'bun:test'
+ import React from 'react'
+ 
+ import { render } from '../ink.js'
++import { stringWidth } from '../ink/stringWidth.js'
+ import { AppStateProvider, getDefaultAppState } from '../state/AppState.js'
+ import type { LogOption } from '../types/logs.js'
+-import { ageLabel, buildFleetRows, SessionFleet, shortenHome } from './SessionFleet.js'
++import type { LiveSession } from '../utils/sessionLiveness.js'
++import { FURIO_MARK_ROWS } from './FurioMark.js'
++import {
++  ageLabel,
++  buildFleetRows,
++  fleetLayout,
++  fleetWindow,
++  rowSummary,
++  SessionFleet,
++  shortenHome,
++  statusCountsLabel,
++} from './SessionFleet.js'
+ 
+ const DOWN = '\u001B[B'
+ const UP = '\u001B[A'
+@@ -41,6 +53,43 @@ const LOGS: LogOption[] = [
+   log({ sessionId: 'cccc', projectPath: '/home/u/repo', firstPrompt: 'build 실패 원인', modified: new Date('2026-10-20T11:00:00Z') }),
+ ]
+ 
++const NO_LIVE: ReadonlyMap<string, LiveSession> = new Map()
++
++/** Sessions in all three states, with CJK titles and long replies. */
++const MIXED: LogOption[] = [
++  log({
++    sessionId: 's-done',
++    projectPath: '/home/u/repo',
++    customTitle: '빌드 고치기',
++    lastReply: '빌드가 다시 통과합니다. 실패 원인은 node 18 에서 빠진 structuredClone 이었고 polyfill 로 고쳤습니다.',
++    modified: new Date('2026-10-23T11:00:00Z'),
++  }),
++  log({
++    sessionId: 's-work',
++    projectPath: '/home/u/repo',
++    customTitle: 'npu status line',
++    lastReply: 'Reading the status line component and its tests before changing the width math.',
++    modified: new Date('2026-10-23T10:00:00Z'),
++  }),
++  log({
++    sessionId: 's-wait',
++    projectPath: '/home/u/repo',
++    firstPrompt: '서버 로그 정리해줘',
++    lastReply: 'I need to delete the old archives under /var/log/furio.',
++    modified: new Date('2026-10-22T10:00:00Z'),
++  }),
++  log({
++    sessionId: 's-other',
++    projectPath: '/home/u/other',
++    firstPrompt: 'README 다듬기',
++    modified: new Date('2026-10-21T10:00:00Z'),
++  }),
++]
++const MIXED_LIVE: ReadonlyMap<string, LiveSession> = new Map([
++  ['s-work', { pid: 101, sessionId: 's-work', status: 'busy' }],
++  ['s-wait', { pid: 102, sessionId: 's-wait', status: 'waiting', waitingFor: 'approve Bash' }],
++])
++
+ describe('buildFleetRows', () => {
+   it('puts the current directory first and groups the rest newest first', () => {
+     const rows = buildFleetRows(LOGS, '/home/u/repo')
+@@ -52,6 +101,20 @@ describe('buildFleetRows', () => {
+     const elsewhere = buildFleetRows(LOGS, '/nowhere')
+     expect(elsewhere[0]).toEqual({ kind: 'group', label: '/home/u/other', isCurrent: false })
+   })
++
++  it('takes each status from the live sessions and lists the ones needing the user first', () => {
++    const rows = buildFleetRows(MIXED, '/home/u/repo', MIXED_LIVE)
++    expect(
++      rows.map(r => (r.kind === 'group' ? `#${r.label}` : `${r.key}:${r.status}`)),
++    ).toEqual([
++      '#/home/u/repo', 's-wait:waiting', 's-work:working', 's-done:done',
++      '#/home/u/other', 's-other:done',
++    ])
++    // No live file at all: everything is done and the order is by time.
++    expect(
++      buildFleetRows(MIXED, '/home/u/repo').filter(r => r.kind === 'log').map(r => r.kind === 'log' && r.status),
++    ).toEqual(['done', 'done', 'done', 'done'])
++  })
+ })
+ 
+ describe('labels', () => {
+@@ -67,10 +130,82 @@ describe('labels', () => {
+     expect(ageLabel(new Date('2026-10-23T11:52:00Z'), NOW)).toBe('8m')
+     expect(ageLabel(new Date('2026-07-16T12:00:00Z'), NOW)).toBe('3mo')
+   })
++
++  it('counts states and leaves out the empty ones', () => {
++    expect(statusCountsLabel(buildFleetRows(MIXED, '/home/u/repo', MIXED_LIVE))).toBe(
++      '1 working, 1 waiting, 2 done',
++    )
++    expect(statusCountsLabel(buildFleetRows(LOGS, '/home/u/repo'))).toBe('3 done')
++    expect(statusCountsLabel([])).toBe('No sessions yet')
++  })
++
++  it('summarises with the wait reason and the last reply, falling back to the prompt', () => {
++    const [done, work, wait, other] = MIXED as [LogOption, LogOption, LogOption, LogOption]
++    expect(rowSummary(done, '빌드 고치기')).toStartWith('빌드가 다시 통과합니다.')
++    expect(rowSummary(wait, '서버 로그 정리해줘', MIXED_LIVE.get('s-wait'))).toBe(
++      'approve Bash, I need to delete the old archives under /var/log/furio.',
++    )
++    expect(rowSummary(work, 'npu status line', MIXED_LIVE.get('s-work'))).toStartWith('Reading')
++    // No reply and the prompt is already the title: nothing to repeat.
++    expect(rowSummary(other, 'README 다듬기')).toBe('')
++    // A custom title leaves the prompt as the fallback.
++    expect(rowSummary(LOGS[1]!, 'docs sweep')).toBe('README 정리')
++  })
++
++  it('cuts the summary column before the name column on a narrow terminal', () => {
++    const titles = ['claude-agents-workspace-trust-error', '빌드 고치기']
++    const wide = fleetLayout(160, titles, ['1h', '10h'], [])
++    const narrow = fleetLayout(80, titles, ['1h', '10h'], [])
++    expect(wide.nameWidth).toBe(35)
++    expect(narrow.detailWidth).toBeLessThan(wide.detailWidth)
++    expect(narrow.nameWidth).toBeGreaterThanOrEqual(20)
++    for (const l of [wide, narrow]) {
++      expect(4 + l.nameWidth + 2 + l.detailWidth + l.prWidth + 2 + l.ageWidth).toBe(l.width)
++    }
++    // The status cell is as wide as the widest word on screen.
++    expect(fleetLayout(80, titles, ['1h'], [], ['done', 'done']).statusWidth).toBe(4)
++    expect(fleetLayout(80, titles, ['1h'], [], ['done', 'waiting']).statusWidth).toBe(7)
++  })
++})
++
++describe('fleetWindow', () => {
++  // Two groups of five: 12 rows, 13 lines with the blank line between groups.
++  const rows = buildFleetRows(
++    Array.from({ length: 10 }, (_, i) =>
++      log({
++        sessionId: `w${i}`,
++        projectPath: i < 5 ? '/home/u/repo' : '/home/u/other',
++        firstPrompt: `task ${i}`,
++        modified: new Date(Date.UTC(2026, 9, 23, 11, 59 - i)),
++      }),
++    ),
++    '/home/u/repo',
++  )
++  const lineCount = (start: number, end: number) =>
++    rows.slice(start, end).reduce((n, row, i) => n + (row.kind === 'group' && i > 0 ? 2 : 1), 0)
++
++  it('shows everything when it fits, counting the gap between groups', () => {
++    expect(fleetWindow(rows, 1, 13)).toEqual({ start: 0, end: 12 })
++    expect(fleetWindow(rows, 1, 12).end).toBeLessThan(12)
++  })
++
++  it('keeps the focus in view and never spends more lines than it has', () => {
++    for (let focus = 0; focus < rows.length; focus++) {
++      for (const budget of [4, 6, 9]) {
++        const { start, end } = fleetWindow(rows, focus, budget)
++        expect(start).toBeLessThanOrEqual(focus)
++        expect(end).toBeGreaterThan(focus)
++        expect(lineCount(start, end)).toBeLessThanOrEqual(budget)
++        expect(rows[end - 1]!.kind).toBe('log')
++      }
++    }
++  })
+ })
+ 
+ type Harness = {
+   output: () => string
++  /** Everything written since mount, never cleared by type(). */
++  all: () => string
+   type: (keys: string) => Promise<void>
+   waitFor: (text: string) => Promise<void>
+   stop: () => void
+@@ -78,6 +213,7 @@ type Harness = {
+ 
+ async function mount(element: React.ReactElement, columns = 110, rows = 40): Promise<Harness> {
+   let output = ''
++  let all = ''
+   const stdout = new PassThrough()
+   const stdin = new PassThrough() as PassThrough & {
+     isTTY: boolean
+@@ -93,6 +229,7 @@ async function mount(element: React.ReactElement, columns = 110, rows = 40): Pro
+   ;(stdout as unknown as { columns: number; rows: number }).rows = rows
+   stdout.on('data', chunk => {
+     output += chunk.toString()
++    all += chunk.toString()
+   })
+   const instance = await render(
+     <AppStateProvider initialState={getDefaultAppState()}>{element}</AppStateProvider>,
+@@ -112,6 +249,7 @@ async function mount(element: React.ReactElement, columns = 110, rows = 40): Pro
+   }
+   return {
+     output: () => stripAnsi(output),
++    all: () => stripAnsi(all),
+     // A lone Escape is held 300ms by the parser (it might start a sequence).
+     type: async (keys: string) => {
+       output = ''
+@@ -132,21 +270,196 @@ const baseProps = {
+   version: '0.33.0',
+   model: 'gpt-oss-120b',
+   onCancel: () => {},
++  liveSessions: NO_LIVE,
++}
++
++const STATUS_WORD = /(Done|Working|Waiting)/
++
++/** The session rows of a first frame: lines that carry a status word after an icon. */
++function sessionLines(out: string): string[] {
++  return out.split('\n').filter(line => /^[❯ ] \S /.test(line) && STATUS_WORD.test(line))
+ }
+ 
+-test('renders the header and the sessions grouped by directory', async () => {
++afterEach(() => {
++  delete process.env.FURIO_EDITION
++})
++
++test('renders a three-line header and the sessions grouped by directory', async () => {
+   const h = await mount(<SessionFleet {...baseProps} logs={LOGS} onSelect={() => {}} />)
+   try {
+     await h.waitFor('New sessions:')
++    const lines = h.output().split('\n')
++    // Mark beside version, model and directory, and the counts.
++    expect(lines[0]).toBe(`${FURIO_MARK_ROWS[0]}   FURIO v0.33.0`)
++    expect(lines[1]).toBe(`${FURIO_MARK_ROWS[1]}   New sessions: gpt-oss-120b, /home/u/repo`)
++    expect(lines[2]).toBe(`${FURIO_MARK_ROWS[2]}   3 done`)
+     const out = h.output()
+-    expect(out).toContain('v0.33.0')
+-    expect(out).toContain('gpt-oss-120b in /home/u/repo')
+-    expect(out).toContain('3 sessions in 2 projects')
++    // No big logo, no wordmark band, no file sizes or branch names.
++    expect(out).not.toContain('S O T A')
++    expect(out).not.toContain('HEAD')
++    expect(out).not.toMatch(/\d+KB/)
+     // Group header, then its rows; the focused row carries the pointer.
+     expect(out.indexOf('/home/u/repo')).toBeLessThan(out.indexOf('테스트 고쳐줘'))
+-    expect(out).toContain('❯ •')
++    expect(out).toContain('❯ • 테스트 고쳐줘')
+     expect(out).toContain('docs sweep')
+-    expect(out).toContain('README 정리') // detail column when the title is a custom one
++    expect(out).toContain('README 정리') // summary falls back to the prompt under a custom title
++    expect(out).toContain('enter to open, ↑↓ to move, esc to close')
++  } finally {
++    h.stop()
++  }
++})
++
++test('the class edition never shows the model', async () => {
++  process.env.FURIO_EDITION = 'class'
++  const h = await mount(<SessionFleet {...baseProps} logs={LOGS} onSelect={() => {}} />)
++  try {
++    await h.waitFor('New sessions:')
++    const out = h.output()
++    expect(out).toContain('New sessions: /home/u/repo')
++    expect(out).not.toContain('gpt-oss-120b')
++  } finally {
++    h.stop()
++  }
++})
++
++test('rows line up across states and CJK titles, with the age at the right edge', async () => {
++  const h = await mount(
++    <SessionFleet {...baseProps} logs={MIXED} liveSessions={MIXED_LIVE} onSelect={() => {}} />,
++    120,
++  )
++  try {
++    await h.waitFor('2 done')
++    const out = h.output()
++    expect(out).toContain('1 working, 1 waiting, 2 done')
++    const rows = sessionLines(out)
++    expect(rows).toHaveLength(4)
++    // The status word starts in the same column on every row, whatever the title's script.
++    const statusColumns = rows.map(line => stringWidth(line.slice(0, line.search(STATUS_WORD))))
++    expect(new Set(statusColumns).size).toBe(1)
++    // So does the summary: the status cell is as wide as the widest word.
++    // (The fourth row has no summary; its next text is the age.)
++    const summaryColumns = rows
++      .slice(0, 3)
++      .map(line => stringWidth(line.match(/^(.*?(?:Done|Working|Waiting) +)\S/)![1]!))
++    expect(new Set(summaryColumns).size).toBe(1)
++    // Every row is the same width: the age is right-aligned, one column short of the edge.
++    expect(new Set(rows.map(stringWidth))).toEqual(new Set([119]))
++    // Waiting first, with what it waits on; working next; done last.
++    expect(rows[0]).toMatch(/^❯ ✻ 서버 로그 정리해줘 +Waiting  approve Bash, I need to delete/)
++    expect(rows[1]).toMatch(/^  [✢✶✽] npu status line +Working  Reading the status line/)
++    expect(rows[2]).toMatch(/^  • 빌드 고치기 +Done +빌드가 다시 통과합니다/)
++  } finally {
++    h.stop()
++  }
++})
++
++const MANY_MIXED: LogOption[] = [
++  ...MIXED,
++  ...Array.from({ length: 12 }, (_, i) =>
++    log({
++      sessionId: `extra-${i}`,
++      projectPath: `/home/u/project-${i % 4}`,
++      firstPrompt: `정리 작업 ${i}`,
++      lastReply: 'Done and verified; the details are in the session.',
++      modified: new Date(Date.UTC(2026, 9, 20, 11, 59 - i)),
++    }),
++  ),
++]
++
++test('at 80 columns rows stay on one line and the summary gives way first', async () => {
++  const h = await mount(
++    <SessionFleet
++      {...baseProps}
++      logs={MANY_MIXED}
++      liveSessions={MIXED_LIVE}
++      onSelect={() => {}}
++      onNewSession={() => {}}
++      onDelete={() => {}}
++    />,
++    80,
++    24,
++  )
++  try {
++    await h.waitFor('describe a task for a new session')
++    const out = h.output()
++    // The whole frame fits in 24 lines, so the header never scrolls away.
++    const frame = out.replace(/\n+$/, '').split('\n')
++    expect(frame[0]).toContain('FURIO v0.33.0')
++    expect(frame.length).toBeLessThanOrEqual(23)
++    expect(out).toMatch(/↓ \d+ more/)
++    const rows = sessionLines(out)
++    expect(rows.length).toBeGreaterThanOrEqual(4)
++    for (const line of rows) expect(stringWidth(line)).toBe(79)
++    // Names are whole; the long replies are cut with an ellipsis.
++    expect(out).toContain('빌드 고치기')
++    expect(out).toContain('npu status line')
++    expect(rows.filter(line => line.includes('…')).length).toBeGreaterThanOrEqual(2)
++    // Nothing on screen is wider than the terminal.
++    for (const line of out.split('\n')) expect(stringWidth(line)).toBeLessThanOrEqual(80)
++    expect(out).toContain('  enter to open, ↑↓ to move, ctrl+x to delete, esc to quit')
++  } finally {
++    h.stop()
++  }
++})
++
++test('screen copy uses no decorative middle dots or dashes', async () => {
++  for (const props of [
++    { logs: MIXED, liveSessions: MIXED_LIVE },
++    { logs: [] as LogOption[] },
++  ]) {
++    const h = await mount(
++      <SessionFleet {...baseProps} {...props} onSelect={() => {}} onNewSession={() => {}} onDelete={() => {}} />,
++    )
++    try {
++      await h.waitFor('describe a task for a new session')
++      const out = h.output()
++      expect(out).not.toContain('·')
++      expect(out).not.toContain('—')
++    } finally {
++      h.stop()
++    }
++  }
++})
++
++test('an empty list says how to start', async () => {
++  const h = await mount(
++    <SessionFleet {...baseProps} logs={[]} onSelect={() => {}} onNewSession={() => {}} />,
++  )
++  try {
++    await h.waitFor('describe a task for a new session')
++    const out = h.output()
++    expect(out).toContain('No sessions yet')
++    expect(out).toContain('Type a task below to start one.')
++    expect(out).toContain('type a task and press enter to start, esc to quit')
++  } finally {
++    h.stop()
++  }
++})
++
++test('a long list scrolls with the focus', async () => {
++  const many = Array.from({ length: 30 }, (_, i) =>
++    log({
++      sessionId: `s${String(i).padStart(2, '0')}`,
++      projectPath: '/home/u/repo',
++      firstPrompt: `task ${i}`,
++      modified: new Date(Date.UTC(2026, 9, 23, 11, 59 - i)),
++    }),
++  )
++  const picked: string[] = []
++  const h = await mount(
++    <SessionFleet {...baseProps} logs={many} onSelect={l => picked.push(l.sessionId!)} />,
++    100,
++    24,
++  )
++  try {
++    await h.waitFor('↓')
++    expect(h.output()).not.toContain('task 29')
++    for (let i = 0; i < 25; i++) await h.type(DOWN)
++    await h.type(ENTER)
++    expect(picked).toEqual(['s25'])
++    // The window followed the focus: the far rows were drawn, with a mark for the ones above.
++    expect(h.all()).toContain('task 25')
++    expect(h.all()).toMatch(/↑ \d+ more/)
+   } finally {
+     h.stop()
+   }
+@@ -249,3 +562,27 @@ test('ctrl+c leaves like Esc, and the wheel moves the focus', async () => {
+     h.stop()
+   }
+ })
++
++test('the focus stays on its session when a status change reorders the group', async () => {
++  const picked: string[] = []
++  const Harnessed = ({ live }: { live: ReadonlyMap<string, LiveSession> }) => (
++    <SessionFleet {...baseProps} logs={MIXED} liveSessions={live} onSelect={l => picked.push(l.sessionId!)} />
++  )
++  let rerender: ((live: ReadonlyMap<string, LiveSession>) => void) | undefined
++  const Wrapper = () => {
++    const [live, setLive] = React.useState<ReadonlyMap<string, LiveSession>>(NO_LIVE)
++    rerender = setLive
++    return <Harnessed live={live} />
++  }
++  const h = await mount(<Wrapper />)
++  try {
++    await h.waitFor('New sessions:')
++    await h.type(DOWN) // s-work, second by time
++    rerender!(MIXED_LIVE) // s-wait and s-work move to the top
++    await Bun.sleep(40)
++    await h.type(ENTER)
++    expect(picked).toEqual(['s-work'])
++  } finally {
++    h.stop()
++  }
++})
+diff --git a/src/components/SessionFleet.tsx b/src/components/SessionFleet.tsx
+index e6bf289f..f82a4087 100644
+--- a/src/components/SessionFleet.tsx
++++ b/src/components/SessionFleet.tsx
+@@ -1,13 +1,22 @@
+ import { homedir } from 'os'
+ import * as React from 'react'
+ import { useRegisterOverlay } from '../context/overlayContext.js'
++import { isClassEdition } from '../furio/edition.js'
+ import { useTerminalSize } from '../hooks/useTerminalSize.js'
+-import { Box, Text, useInput } from '../ink.js'
++import { Box, Text, useAnimationFrame, useInput } from '../ink.js'
++import { stringWidth } from '../ink/stringWidth.js'
+ import type { LogOption } from '../types/logs.js'
+ import { formatRelativeTime, truncateToWidth } from '../utils/format.js'
+ import { getLogDisplayTitle } from '../utils/log.js'
++import {
++  type FleetStatus,
++  fleetStatusOf,
++  fleetStatusRank,
++  type LiveSession,
++  readLiveSessions,
++} from '../utils/sessionLiveness.js'
+ import { getSessionIdFromLog } from '../utils/sessionStorage.js'
+-import { WordmarkRow } from './LogoV2/WordmarkRow.js'
++import { FURIO_MARK_WIDTH, FurioMark, furioMarkColors } from './FurioMark.js'
+ import { Spinner } from './Spinner.js'
+ import TextInput from './TextInput.js'
+ 
+@@ -16,6 +25,7 @@ export type SessionFleetProps = {
+   /** Directory furio was started in; its sessions are listed first. */
+   cwd: string
+   version: string
++  /** Model new sessions start on. Never shown in the class edition. */
+   model?: string
+   onSelect: (log: LogOption) => void
+   onCancel: () => void
+@@ -28,11 +38,16 @@ export type SessionFleetProps = {
+   onDelete?: (log: LogOption) => void
+   busy?: boolean
+   notice?: string
++  /**
++   * Sessions that have a process open right now, by session id. When omitted
++   * the view reads the PID files itself and keeps them fresh.
++   */
++  liveSessions?: ReadonlyMap<string, LiveSession>
+ }
+ 
+ export type FleetRow =
+   | { kind: 'group'; label: string; isCurrent: boolean }
+-  | { kind: 'log'; log: LogOption; key: string }
++  | { kind: 'log'; log: LogOption; key: string; status: FleetStatus; live?: LiveSession }
+ 
+ export function rowKey(log: LogOption): string {
+   return getSessionIdFromLog(log) ?? log.fullPath ?? String(log.value)
+@@ -44,7 +59,7 @@ export function shortenHome(path: string): string {
+   return path.startsWith(`${home}/`) ? `~${path.slice(home.length)}` : path
+ }
+ 
+-/** "1h", "8m", "99d" — the narrow form without "ago". */
++/** "1h", "8m", "99d": the narrow form without "ago". */
+ export function ageLabel(date: Date | string, now: Date = new Date()): string {
+   return formatRelativeTime(new Date(date), { style: 'narrow', now })
+     .replace(/ ago$/, '')
+@@ -57,13 +72,18 @@ function modifiedMs(log: LogOption): number {
+ 
+ /**
+  * Sessions grouped by the directory they were opened in, the current
+- * directory first and the rest newest first; inside a group newest first.
++ * directory first and the rest newest first. Inside a group, sessions that
++ * need the user come first, then running ones, then the rest, newest first.
+  *
+  * Grouping by directory is the point of the view: a session only makes sense
+  * next to its project, and the directory is what decides whether opening it
+  * is a resume in place or a relaunch somewhere else.
+  */
+-export function buildFleetRows(logs: LogOption[], cwd: string): FleetRow[] {
++export function buildFleetRows(
++  logs: LogOption[],
++  cwd: string,
++  live: ReadonlyMap<string, LiveSession> = new Map(),
++): FleetRow[] {
+   const groups = new Map<string, LogOption[]>()
+   for (const log of logs) {
+     const dir = log.projectPath ?? ''
+@@ -86,33 +106,228 @@ export function buildFleetRows(logs: LogOption[], cwd: string): FleetRow[] {
+       label: dir ? shortenHome(dir) : '(unknown directory)',
+       isCurrent: dir === cwd,
+     })
+-    for (const log of [...groups.get(dir)!].sort((a, b) => modifiedMs(b) - modifiedMs(a))) {
+-      rows.push({ kind: 'log', log, key: rowKey(log) })
+-    }
++    const entries = groups.get(dir)!.map(log => {
++      const sessionId = getSessionIdFromLog(log)
++      const state = sessionId ? live.get(sessionId) : undefined
++      return {
++        kind: 'log' as const,
++        log,
++        key: rowKey(log),
++        status: fleetStatusOf(state),
++        ...(state ? { live: state } : {}),
++      }
++    })
++    entries.sort(
++      (a, b) =>
++        fleetStatusRank(a.status) - fleetStatusRank(b.status) ||
++        modifiedMs(b.log) - modifiedMs(a.log),
++    )
++    rows.push(...entries)
+   }
+   return rows
+ }
+ 
++/** "2 working, 1 waiting, 8 done", leaving out what is zero. */
++export function statusCountsLabel(rows: FleetRow[]): string {
++  const counts: Record<FleetStatus, number> = { working: 0, waiting: 0, done: 0 }
++  for (const row of rows) if (row.kind === 'log') counts[row.status]++
++  const parts = (['working', 'waiting', 'done'] as const)
++    .filter(status => counts[status] > 0)
++    .map(status => `${counts[status]} ${status}`)
++  return parts.length > 0 ? parts.join(', ') : 'No sessions yet'
++}
++
++const STATUS_WORD: Record<FleetStatus, string> = {
++  done: 'Done',
++  working: 'Working',
++  waiting: 'Waiting',
++}
++
++/**
++ * The text after the status word: what is being waited on, then the first
++ * line of the last reply. A session with no reply yet falls back to its
++ * prompt when the title is not already showing it.
++ */
++export function rowSummary(log: LogOption, title: string, live?: LiveSession): string {
++  const clean = (text: string | undefined): string => (text ?? '').replace(/\s+/g, ' ').trim()
++  const prompt = clean(log.firstPrompt)
++  const said = clean(log.lastReply) || (prompt && prompt !== title ? prompt : '')
++  const waitingOn = live?.status === 'waiting' ? clean(live.waitingFor) : ''
++  return [waitingOn, said].filter(Boolean).join(', ')
++}
++
++export type FleetLayout = {
++  /** Row width; one column short of the terminal so a full row never wraps. */
++  width: number
++  nameWidth: number
++  detailWidth: number
++  /** The widest status word on screen, so the summaries start in one column. */
++  statusWidth: number
++  prWidth: number
++  ageWidth: number
++}
++
++/** Pointer, space, icon, space. */
++const LEAD = 4
++const GAP = 2
++
+ /**
+- * The second column: the first prompt when the title is something else;
+- * otherwise the size. A lite row has not been read yet, so its message count
+- * is unknown rather than zero — the file size is what we do know.
++ * Column widths for the session rows. The name column is as wide as the
++ * longest title up to about a third of the row; the age sits at the right
++ * edge; the status and summary take what is left, so a narrow terminal cuts
++ * the summary first and the name only when nothing else is left.
+  */
+-function detailOf(log: LogOption, title: string): string {
+-  const first = (log.firstPrompt ?? '').replace(/\s+/g, ' ').trim()
+-  if (first && first !== title) return first
+-  const parts: string[] = []
+-  if (log.messageCount > 0) parts.push(`${log.messageCount} messages`)
+-  else if (log.fileSize) parts.push(`${Math.max(1, Math.round(log.fileSize / 1024))}KB`)
+-  if (log.gitBranch) parts.push(log.gitBranch)
+-  return parts.join(', ')
++export function fleetLayout(
++  columns: number,
++  titles: string[],
++  ages: string[],
++  prLabels: string[],
++  statuses: FleetStatus[] = [],
++): FleetLayout {
++  const width = Math.max(30, columns - 1)
++  const statusWidth = Math.max(0, ...statuses.map(status => STATUS_WORD[status].length))
++  const ageWidth = Math.max(2, ...ages.map(stringWidth))
++  const prWidth = prLabels.length > 0 ? Math.max(...prLabels.map(stringWidth)) + GAP : 0
++  const longest = Math.max(4, ...titles.map(stringWidth))
++  const cap = Math.max(12, Math.min(40, Math.floor(width * 0.3)))
++  let nameWidth = Math.min(longest, cap)
++  const minDetail = STATUS_WORD.working.length
++  const rest = (name: number): number => width - LEAD - name - GAP - prWidth - GAP - ageWidth
++  if (rest(nameWidth) < minDetail) nameWidth = Math.max(4, nameWidth - (minDetail - rest(nameWidth)))
++  return { width, nameWidth, detailWidth: Math.max(0, rest(nameWidth)), statusWidth, prWidth, ageWidth }
++}
++
++/**
++ * Which rows fit in `budget` screen lines, counting the blank line above each
++ * group header but the first. Keeps the focused row in view, about a third
++ * of the way down when the list is longer than the screen.
++ */
++export function fleetWindow(
++  rows: FleetRow[],
++  focus: number,
++  budget: number,
++): { start: number; end: number } {
++  const lines = (start: number, end: number): number => {
++    let total = 0
++    for (let i = start; i < end; i++) total += rows[i]!.kind === 'group' && i > start ? 2 : 1
++    return total
++  }
++  if (lines(0, rows.length) <= budget) return { start: 0, end: rows.length }
++  const at = Math.max(0, Math.min(rows.length - 1, focus))
++  let start = at
++  while (start > 0 && lines(start - 1, at + 1) <= Math.max(1, Math.floor(budget / 3))) start--
++  let end = at + 1
++  while (end < rows.length && lines(start, end + 1) <= budget) end++
++  while (start > 0 && lines(start - 1, end) <= budget) start--
++  // A group header with none of its sessions under it says nothing.
++  if (end - 1 > at && rows[end - 1]!.kind === 'group') end--
++  return { start, end }
++}
++
++function padToWidth(text: string, width: number): string {
++  return text + ' '.repeat(Math.max(0, width - stringWidth(text)))
++}
++
++const WORKING_FRAMES = ['✢', '✶', '✽', '✶']
++const FRAME_MS = 160
++
++function SessionRow({
++  row,
++  layout,
++  focused,
++  pendingDelete,
++  now,
++  accent,
++}: {
++  row: Extract<FleetRow, { kind: 'log' }>
++  layout: FleetLayout
++  focused: boolean
++  pendingDelete: boolean
++  now: Date
++  /** The working icon's color: the middle letter of the FURIO mark. */
++  accent: string
++}): React.ReactNode {
++  const working = row.status === 'working'
++  const [ref, time] = useAnimationFrame(working ? FRAME_MS : null)
++  const title = getLogDisplayTitle(row.log)
++  const word = truncateToWidth(STATUS_WORD[row.status], layout.detailWidth)
++  const wordCell = Math.min(layout.detailWidth, Math.max(stringWidth(word), layout.statusWidth))
++  const room = layout.detailWidth - wordCell - GAP
++  const summary = room >= 4 ? truncateToWidth(rowSummary(row.log, title, row.live), room) : ''
++  const detailUsed = wordCell + (summary ? GAP + stringWidth(summary) : 0)
++  const pr = row.log.prNumber !== undefined ? `PR #${row.log.prNumber}` : ''
++  const icon =
++    row.status === 'working' ? (
++      <Text color={accent}>{WORKING_FRAMES[Math.floor(time / FRAME_MS) % WORKING_FRAMES.length]}</Text>
++    ) : row.status === 'waiting' ? (
++      <Text color="warning">✻</Text>
++    ) : (
++      <Text color="success">•</Text>
++    )
++  return (
++    <Box ref={ref} width={layout.width}>
++      <Text backgroundColor={focused ? 'userMessageBackground' : undefined} wrap="truncate-end">
++        <Text color="suggestion">{focused ? '❯' : ' '}</Text> {icon}{' '}
++        <Text bold={focused} color={pendingDelete ? 'error' : undefined}>
++          {padToWidth(truncateToWidth(title, layout.nameWidth), layout.nameWidth)}
++        </Text>
++        {' '.repeat(GAP)}
++        <Text color={row.status === 'done' ? 'success' : row.status === 'waiting' ? 'warning' : undefined}>
++          {word}
++        </Text>
++        {' '.repeat(wordCell - stringWidth(word))}
++        {summary ? (
++          <Text dimColor>
++            {' '.repeat(GAP)}
++            {summary}
++          </Text>
++        ) : null}
++        {' '.repeat(Math.max(0, layout.detailWidth - detailUsed))}
++        {layout.prWidth > 0 ? <Text dimColor>{pr.padStart(layout.prWidth)}</Text> : null}
++        {' '.repeat(GAP)}
++        <Text dimColor>{ageLabel(row.log.modified, now).padStart(layout.ageWidth)}</Text>
++      </Text>
++    </Box>
++  )
++}
++
++const LIVE_POLL_MS = 2000
++
++function liveSignature(live: ReadonlyMap<string, LiveSession>): string {
++  return [...live.values()]
++    .map(entry => `${entry.sessionId}:${entry.pid}:${entry.status ?? ''}:${entry.waitingFor ?? ''}`)
++    .sort()
++    .join('|')
++}
++
++/** The PID files, re-read every couple of seconds while the view is open; a change re-renders. */
++function usePolledLiveSessions(enabled: boolean): ReadonlyMap<string, LiveSession> {
++  const [live, setLive] = React.useState<ReadonlyMap<string, LiveSession>>(() => new Map())
++  React.useEffect(() => {
++    if (!enabled) return
++    let stopped = false
++    const refresh = (): void => {
++      void readLiveSessions().then(next => {
++        if (stopped) return
++        setLive(prev => (liveSignature(prev) === liveSignature(next) ? prev : next))
++      })
++    }
++    refresh()
++    const timer = setInterval(refresh, LIVE_POLL_MS)
++    timer.unref?.()
++    return () => {
++      stopped = true
++      clearInterval(timer)
++    }
++  }, [enabled])
++  return live
+ }
+ 
+ /**
+  * The machine-wide session view: every session furio has opened on this
+- * computer, grouped by project, one line each. Enter opens the focused one,
+- * ctrl+x twice deletes it, typing starts a new session from here, and Esc or
+- * ctrl+c leaves.
++ * computer, grouped by project, one line each with what it is doing. Enter
++ * opens the focused one, ctrl+x twice deletes it, typing starts a new session
++ * from here, and Esc or ctrl+c leaves.
+  */
+ export function SessionFleet({
+   logs,
+@@ -125,37 +340,39 @@ export function SessionFleet({
+   onDelete,
+   busy = false,
+   notice,
++  liveSessions,
+ }: SessionFleetProps): React.ReactNode {
+   const { rows: termRows, columns } = useTerminalSize()
+-  const rows = React.useMemo(() => buildFleetRows(logs, cwd), [logs, cwd])
++  const polled = usePolledLiveSessions(liveSessions === undefined)
++  const live = liveSessions ?? polled
++  const rows = React.useMemo(() => buildFleetRows(logs, cwd, live), [logs, cwd, live])
+   const logRows = React.useMemo(
+     () => rows.map((row, index) => (row.kind === 'log' ? index : -1)).filter(i => i >= 0),
+     [rows],
+   )
+-  const projectCount = rows.filter(row => row.kind === 'group').length
+ 
+-  const [focus, setFocus] = React.useState<number>(logRows[0] ?? -1)
++  // Focus follows the session, not the index: a status change can reorder a group.
++  const [focusKey, setFocusKey] = React.useState<string | undefined>(undefined)
+   const [pendingDeleteKey, setPendingDeleteKey] = React.useState<string | null>(null)
+   const [draft, setDraft] = React.useState('')
+   const [cursor, setCursor] = React.useState(0)
+ 
+-  // A deleted or newly loaded list may leave the focus pointing at nothing.
+-  React.useEffect(() => {
+-    if (!logRows.includes(focus)) setFocus(logRows[0] ?? -1)
+-  }, [logRows, focus])
+-
+-  const focused = rows[focus]
++  const focusIndex = React.useMemo(() => {
++    const at = focusKey === undefined ? -1 : rows.findIndex(row => row.kind === 'log' && row.key === focusKey)
++    return at >= 0 ? at : (logRows[0] ?? -1)
++  }, [rows, logRows, focusKey])
++  const focused = rows[focusIndex]
+   const focusedLog = focused?.kind === 'log' ? focused : undefined
+ 
+   const moveFocus = React.useCallback(
+     (delta: number) => {
+       if (logRows.length === 0) return
+-      const at = Math.max(0, logRows.indexOf(focus))
+-      const next = Math.min(logRows.length - 1, Math.max(0, at + delta))
+-      setFocus(logRows[next]!)
++      const at = Math.max(0, logRows.indexOf(focusIndex))
++      const next = rows[logRows[Math.min(logRows.length - 1, Math.max(0, at + delta))]!]
++      if (next?.kind === 'log') setFocusKey(next.key)
+       setPendingDeleteKey(null)
+     },
+-    [focus, logRows],
++    [focusIndex, logRows, rows],
+   )
+ 
+   const openFocused = React.useCallback(() => {
+@@ -200,100 +417,107 @@ export function SessionFleet({
+     { isActive: !busy },
+   )
+ 
+-  // Layout: pointer+glyph 5, title, detail (flexible), PR, age 6.
+-  const anyPr = logs.some(log => log.prNumber !== undefined)
+-  const titleWidth = Math.min(32, Math.max(12, Math.floor(columns * 0.3)))
+-  const prWidth = anyPr ? 9 : 0
+-  const detailWidth = Math.max(8, columns - 5 - titleWidth - prWidth - 6 - 2)
+-  const visible = Math.max(4, termRows - (hasBox ? 11 : 9))
+-  const start = Math.min(
+-    Math.max(0, focus - Math.floor(visible / 2)),
+-    Math.max(0, rows.length - visible),
++  const now = new Date()
++  const layout = React.useMemo(
++    () =>
++      fleetLayout(
++        columns,
++        logs.map(log => getLogDisplayTitle(log)),
++        logs.map(log => ageLabel(log.modified, now)),
++        logs.filter(log => log.prNumber !== undefined).map(log => `PR #${log.prNumber}`),
++        rows.flatMap(row => (row.kind === 'log' ? [row.status] : [])),
++      ),
++    // Ages only change the width when they gain a digit; a re-render on the
++    // next poll or key press picks that up.
++    // eslint-disable-next-line react-hooks/exhaustive-deps
++    [columns, logs, rows],
+   )
+-  const window = rows.slice(start, start + visible)
++
++  // Everything but the list: header 3 + gap, box 3 + gap (or a gap), hint 1,
++  // a line for a notice or the delete question, a line each for the scroll
++  // marks, and the line the cursor rests on. Past the terminal height the top
++  // of the frame would scroll away.
++  const budget = Math.max(4, termRows - (hasBox ? 13 : 10))
++  const { start, end } = fleetWindow(rows, focusIndex, budget)
++  const window = rows.slice(start, end)
++  const hiddenAbove = rows.slice(0, start).filter(row => row.kind === 'log').length
++  const hiddenBelow = rows.slice(end).filter(row => row.kind === 'log').length
+ 
+   const pendingTitle =
+     pendingDeleteKey && focusedLog && focusedLog.key === pendingDeleteKey
+       ? getLogDisplayTitle(focusedLog.log)
+       : undefined
+ 
++  const shownModel = isClassEdition() ? undefined : model
++  const accent = React.useMemo(() => furioMarkColors()[2]!, [])
++  const headerWidth = Math.max(10, columns - FURIO_MARK_WIDTH - 4)
++  const rule = '─'.repeat(Math.max(10, columns - 1))
++
++  const hints =
++    logs.length === 0
++      ? [...(hasBox ? ['type a task and press enter to start'] : []), `esc to ${hasBox ? 'quit' : 'close'}`]
++      : [
++          'enter to open',
++          '↑↓ to move',
++          ...(onDelete ? ['ctrl+x to delete'] : []),
++          `esc to ${hasBox ? 'quit' : 'close'}`,
++        ]
++
+   return (
+     <Box flexDirection="column">
+-      <Box flexDirection="column" marginBottom={1}>
+-        <Box flexDirection="row" gap={2}>
+-          <WordmarkRow />
+-          <Text dimColor>v{version}</Text>
++      <Box flexDirection="row" gap={3} marginBottom={1}>
++        <FurioMark />
++        <Box flexDirection="column">
++          <Text>
++            <Text bold>FURIO</Text> <Text dimColor>v{version}</Text>
++          </Text>
++          <Text dimColor wrap="truncate-end">
++            {truncateToWidth(
++              `New sessions: ${shownModel ? `${shownModel}, ` : ''}${shortenHome(cwd)}`,
++              headerWidth,
++            )}
++          </Text>
++          <Text dimColor>{statusCountsLabel(rows)}</Text>
+         </Box>
+-        <Text>
+-          <Text dimColor>New sessions: </Text>
+-          {model ? (
+-            <>
+-              {model}
+-              <Text dimColor> in </Text>
+-            </>
+-          ) : null}
+-          {shortenHome(cwd)}
+-        </Text>
+-        <Text dimColor>
+-          {logs.length} {logs.length === 1 ? 'session' : 'sessions'} in {projectCount}{' '}
+-          {projectCount === 1 ? 'project' : 'projects'}
+-        </Text>
+       </Box>
+ 
+       {rows.length === 0 ? (
+-        <Text dimColor>No saved sessions yet.</Text>
++        <Text dimColor>
++          {'  '}
++          {hasBox ? 'Type a task below to start one.' : 'No saved sessions yet.'}
++        </Text>
+       ) : (
+         <Box flexDirection="column">
+-          {start > 0 ? <Text dimColor>  ↑ {start} more</Text> : null}
++          {hiddenAbove > 0 ? <Text dimColor>  ↑ {hiddenAbove} more</Text> : null}
+           {window.map((row, offset) => {
+-            const index = start + offset
+             if (row.kind === 'group') {
+               return (
+                 <Box key={`group:${row.label}`} marginTop={offset === 0 ? 0 : 1}>
+-                  <Text bold={row.isCurrent} dimColor={!row.isCurrent}>
++                  <Text bold dimColor wrap="truncate-end">
+                     {row.label}
+                   </Text>
+                 </Box>
+               )
+             }
+-            const isFocused = index === focus
+-            const isPendingDelete = pendingDeleteKey === row.key
+-            const title = getLogDisplayTitle(row.log)
+-            const color = isPendingDelete ? 'error' : isFocused ? 'suggestion' : undefined
+             return (
+-              <Box key={row.key} flexDirection="row">
+-                <Box width={5}>
+-                  <Text color={color}>{isFocused ? ' ❯ ' : '   '}</Text>
+-                  <Text color="success">• </Text>
+-                </Box>
+-                <Box width={titleWidth}>
+-                  <Text bold={isFocused} color={color}>
+-                    {truncateToWidth(title, titleWidth - 1)}
+-                  </Text>
+-                </Box>
+-                <Box width={detailWidth}>
+-                  <Text dimColor>{truncateToWidth(detailOf(row.log, title), detailWidth - 1)}</Text>
+-                </Box>
+-                {prWidth > 0 ? (
+-                  <Box width={prWidth} justifyContent="flex-end">
+-                    <Text dimColor>{row.log.prNumber !== undefined ? `PR #${row.log.prNumber}` : ''}</Text>
+-                  </Box>
+-                ) : null}
+-                <Box width={6} justifyContent="flex-end">
+-                  <Text dimColor>{ageLabel(row.log.modified)}</Text>
+-                </Box>
+-              </Box>
++              <SessionRow
++                key={row.key}
++                row={row}
++                layout={layout}
++                focused={start + offset === focusIndex}
++                pendingDelete={pendingDeleteKey === row.key}
++                now={now}
++                accent={accent}
++              />
+             )
+           })}
+-          {start + visible < rows.length ? (
+-            <Text dimColor>  ↓ {rows.length - start - visible} more</Text>
+-          ) : null}
++          {hiddenBelow > 0 ? <Text dimColor>  ↓ {hiddenBelow} more</Text> : null}
+         </Box>
+       )}
+ 
+       {hasBox ? (
+         <Box flexDirection="column" marginTop={1}>
+-          <Text dimColor>{'─'.repeat(Math.max(10, columns - 2))}</Text>
++          <Text dimColor>{rule}</Text>
+           <Box flexDirection="row" gap={1}>
+             <Text color="suggestion">❯</Text>
+             <TextInput
+@@ -312,14 +536,14 @@ export function SessionFleet({
+               }}
+             />
+           </Box>
+-          <Text dimColor>{'─'.repeat(Math.max(10, columns - 2))}</Text>
++          <Text dimColor>{rule}</Text>
+         </Box>
+       ) : null}
+ 
+       <Box marginTop={hasBox ? 0 : 1} flexDirection="column">
+-        {notice ? <Text color="error">{notice}</Text> : null}
++        {notice ? <Text color="error">  {notice}</Text> : null}
+         {pendingTitle ? (
+-          <Text color="warning">Press ctrl+x again to delete “{truncateToWidth(pendingTitle, 40)}”.</Text>
++          <Text color="warning">  Press ctrl+x again to delete “{truncateToWidth(pendingTitle, 40)}”.</Text>
+         ) : null}
+         {busy ? (
+           <Box>
+@@ -327,10 +551,9 @@ export function SessionFleet({
+             <Text> Opening…</Text>
+           </Box>
+         ) : (
+-          <Text dimColor>
+-            {' '}enter to open, ↑↓ to move
+-            {onDelete ? ', ctrl+x to delete' : ''}
+-            {hasBox ? ', type a task to start a new session here' : ''}, esc to {hasBox ? 'quit' : 'close'}
++          <Text dimColor wrap="truncate-end">
++            {'  '}
++            {hints.join(', ')}
+           </Text>
+         )}
+       </Box>
+diff --git a/src/entrypoints/cli.test.ts b/src/entrypoints/cli.test.ts
+index f7ea54c9..ef2742b2 100644
+--- a/src/entrypoints/cli.test.ts
++++ b/src/entrypoints/cli.test.ts
+@@ -1410,6 +1410,14 @@ describe('cli.tsx — bare `agents` opens the session picker', () => {
+     ])
+   })
+ 
++  it('skips the big startup logo for the session view only', async () => {
++    // The view draws its own three-line header; the banner would sit on top of it.
++    await argvSeenFor(['agents'])
++    expect(mockPrintStartupScreen).not.toHaveBeenCalled()
++    await argvSeenFor(['agents', 'list'])
++    expect(mockPrintStartupScreen).toHaveBeenCalledTimes(1)
++  })
++
+   it('does not touch an `agents` token that is not the subcommand', async () => {
+     expect(await argvSeenFor(['-p', 'agents'])).toEqual([
+       'node',
+diff --git a/src/entrypoints/cli.tsx b/src/entrypoints/cli.tsx
+index acf87b51..63b71f52 100644
+--- a/src/entrypoints/cli.tsx
++++ b/src/entrypoints/cli.tsx
+@@ -608,7 +608,10 @@ export async function main(
+ 
+   // Print the gradient startup screen before the Ink UI loads. Plain CLI
+   // management subcommands should stay script-friendly and avoid the banner.
+-  if (args[0] !== 'skills') {
++  // Bare `agents` (the session view, rewritten to --resume --fleet below)
++  // draws its own small header, so the big logo would only push it down.
++  const isAgentsView = args.length === 1 && args[0] === 'agents'
++  if (args[0] !== 'skills' && !isAgentsView) {
+     const { printStartupScreen } = await importers.startupScreen()
+     printStartupScreen(earlyModelFlag)
+   }
+@@ -824,7 +827,7 @@ export async function main(
+   // this computer has worked on, newest first, Enter to carry one on. Rewriting
+   // argv here reuses the whole --resume startup path; the commander subcommand
+   // keeps listing configured subagents for `agents list` and the flag form.
+-  if (args.length === 1 && args[0] === 'agents') {
++  if (isAgentsView) {
+     process.argv = [process.argv[0]!, process.argv[1]!, '--resume', '--fleet'];
+   }
+ 
+diff --git a/src/types/logs.ts b/src/types/logs.ts
+index 363e8b6e..374a5722 100644
+--- a/src/types/logs.ts
++++ b/src/types/logs.ts
+@@ -76,6 +76,7 @@ export type LogOption = {
+   contentReplacements?: ContentReplacementRecord[] // Replacement decisions for resume reconstruction
+   goal?: GoalState | null // Last session goal state, if any
+   sessionBranch?: SessionBranchEntry // Conversation-branch lineage metadata, if this session is a branch
++  lastReply?: string // First line of the newest assistant text (lite read of the tail)
+ }
+ 
+ export type SummaryMessage = {
+diff --git a/src/utils/sessionLiveness.test.ts b/src/utils/sessionLiveness.test.ts
+new file mode 100644
+index 00000000..3bdb77eb
+--- /dev/null
++++ b/src/utils/sessionLiveness.test.ts
+@@ -0,0 +1,73 @@
++import { mkdtemp, rm, writeFile } from 'node:fs/promises'
++import { tmpdir } from 'node:os'
++import { join } from 'node:path'
++
++import { afterEach, beforeEach, describe, expect, it } from 'bun:test'
++
++import { fleetStatusOf, fleetStatusRank, readLiveSessions } from './sessionLiveness.js'
++
++describe('fleetStatusOf', () => {
++  it('maps the REPL status in the PID file to what the list shows', () => {
++    expect(fleetStatusOf(undefined)).toBe('done')
++    expect(fleetStatusOf({ pid: 1, sessionId: 's', status: 'busy' })).toBe('working')
++    expect(fleetStatusOf({ pid: 1, sessionId: 's', status: 'waiting' })).toBe('waiting')
++    expect(fleetStatusOf({ pid: 1, sessionId: 's', status: 'idle' })).toBe('done')
++    // A live process from a build that never wrote a status.
++    expect(fleetStatusOf({ pid: 1, sessionId: 's' })).toBe('working')
++  })
++
++  it('ranks the states that need the user first', () => {
++    expect(fleetStatusRank('waiting')).toBeLessThan(fleetStatusRank('working'))
++    expect(fleetStatusRank('working')).toBeLessThan(fleetStatusRank('done'))
++  })
++})
++
++describe('readLiveSessions', () => {
++  let dir: string
++  beforeEach(async () => {
++    dir = await mkdtemp(join(tmpdir(), 'furio-live-'))
++  })
++  afterEach(async () => {
++    await rm(dir, { recursive: true, force: true })
++  })
++
++  const write = (name: string, body: unknown) =>
++    writeFile(join(dir, name), typeof body === 'string' ? body : JSON.stringify(body))
++
++  it('keeps running sessions, skips dead PIDs, this process and junk', async () => {
++    await write('100.json', { pid: 100, sessionId: 'busy-one', status: 'busy' })
++    await write('101.json', { pid: 101, sessionId: 'waiting-one', status: 'waiting', waitingFor: 'approve Bash' })
++    await write('102.json', { pid: 102, sessionId: 'dead-one', status: 'busy' })
++    await write('103.json', { pid: 103, sessionId: 'me', status: 'waiting' })
++    await write('104.json', '{not json')
++    await write('105.json', { pid: 105 })
++    await write('2026-03-14_notes.json', { sessionId: 'not-a-pid-file' })
++
++    const live = await readLiveSessions({
++      dir,
++      isRunning: pid => pid !== 102,
++      selfPid: 103,
++    })
++    expect([...live.keys()].sort()).toEqual(['busy-one', 'waiting-one'])
++    expect(live.get('waiting-one')).toEqual({
++      pid: 101,
++      sessionId: 'waiting-one',
++      status: 'waiting',
++      waitingFor: 'approve Bash',
++    })
++    expect(live.get('busy-one')?.status).toBe('busy')
++  })
++
++  it('prefers the process that needs the user when a session is open twice', async () => {
++    await write('200.json', { pid: 200, sessionId: 'twice', status: 'idle' })
++    await write('201.json', { pid: 201, sessionId: 'twice', status: 'waiting' })
++    await write('202.json', { pid: 202, sessionId: 'twice', status: 'busy' })
++    const live = await readLiveSessions({ dir, isRunning: () => true, selfPid: 1 })
++    expect(live.get('twice')?.pid).toBe(201)
++  })
++
++  it('returns nothing when the directory does not exist', async () => {
++    const live = await readLiveSessions({ dir: join(dir, 'missing'), isRunning: () => true })
++    expect(live.size).toBe(0)
++  })
++})
+diff --git a/src/utils/sessionLiveness.ts b/src/utils/sessionLiveness.ts
+new file mode 100644
+index 00000000..4578557d
+--- /dev/null
++++ b/src/utils/sessionLiveness.ts
+@@ -0,0 +1,106 @@
++import { readdir, readFile } from 'fs/promises'
++import { join } from 'path'
++import { getClaudeConfigHomeDir } from './envUtils.js'
++import { isProcessRunning } from './genericProcessUtils.js'
++
++/** What the session list shows for a session. */
++export type FleetStatus = 'working' | 'waiting' | 'done'
++
++/**
++ * A session that has a process open right now, as its PID file says.
++ *
++ * Every interactive session writes `<config>/sessions/<pid>.json` at start
++ * (concurrentSessions.ts `registerSession`), keeps `sessionId` current across
++ * resumes, and pushes `status` from the REPL: `busy` while a turn runs,
++ * `waiting` while a permission prompt or dialog needs the user, `idle` at the
++ * prompt. The file is removed on a clean exit; a crash leaves it behind, which
++ * is why the PID is checked.
++ */
++export type LiveSession = {
++  pid: number
++  sessionId: string
++  status?: 'busy' | 'idle' | 'waiting'
++  waitingFor?: string
++}
++
++const STATUS_RANK: Record<FleetStatus, number> = { waiting: 0, working: 1, done: 2 }
++
++/**
++ * busy is Working and waiting is Waiting. idle means the turn finished and the
++ * prompt is empty, which is Done. A live file without a status comes from a
++ * build that never wrote one: all it proves is a running process, so Working.
++ * No live file means nothing is running the session: Done.
++ */
++export function fleetStatusOf(live: LiveSession | undefined): FleetStatus {
++  if (!live) return 'done'
++  if (live.status === 'waiting') return 'waiting'
++  if (live.status === 'idle') return 'done'
++  return 'working'
++}
++
++/** Sort key: sessions that need the user first, then running ones, then the rest. */
++export function fleetStatusRank(status: FleetStatus): number {
++  return STATUS_RANK[status]
++}
++
++export function getSessionPidDir(): string {
++  return join(getClaudeConfigHomeDir(), 'sessions')
++}
++
++/**
++ * Live sessions by session id. Files for dead processes are ignored (not
++ * deleted; countConcurrentSessions sweeps those), and so is this process: the
++ * view asking is not one of the sessions it lists. When two processes hold the
++ * same session, the one that needs the user wins, then the busy one.
++ */
++export async function readLiveSessions({
++  dir = getSessionPidDir(),
++  isRunning = isProcessRunning,
++  selfPid = process.pid,
++}: {
++  dir?: string
++  isRunning?: (pid: number) => boolean
++  selfPid?: number
++} = {}): Promise<Map<string, LiveSession>> {
++  const live = new Map<string, LiveSession>()
++  let files: string[]
++  try {
++    files = await readdir(dir)
++  } catch {
++    return live
++  }
++  await Promise.all(
++    files.map(async file => {
++      if (!/^\d+\.json$/.test(file)) return
++      const pid = Number.parseInt(file.slice(0, -5), 10)
++      if (pid === selfPid || !isRunning(pid)) return
++      let data: Record<string, unknown>
++      try {
++        data = JSON.parse(await readFile(join(dir, file), 'utf8'))
++      } catch {
++        return
++      }
++      if (typeof data?.sessionId !== 'string' || !data.sessionId) return
++      const status =
++        data.status === 'busy' || data.status === 'idle' || data.status === 'waiting'
++          ? data.status
++          : undefined
++      const entry: LiveSession = {
++        pid,
++        sessionId: data.sessionId,
++        ...(status ? { status } : {}),
++        ...(typeof data.waitingFor === 'string' && data.waitingFor
++          ? { waitingFor: data.waitingFor }
++          : {}),
++      }
++      const prior = live.get(entry.sessionId)
++      if (
++        !prior ||
++        fleetStatusRank(fleetStatusOf(entry)) < fleetStatusRank(fleetStatusOf(prior))
++      ) {
++        live.set(entry.sessionId, entry)
++      }
++    }),
++  )
++  return live
++}
+diff --git a/src/utils/sessionStorage.lastReply.test.ts b/src/utils/sessionStorage.lastReply.test.ts
+new file mode 100644
+index 00000000..8d63af3e
+--- /dev/null
++++ b/src/utils/sessionStorage.lastReply.test.ts
+@@ -0,0 +1,69 @@
++import { describe, expect, test } from 'bun:test'
++import { mkdtempSync, rmSync, statSync, writeFileSync } from 'fs'
++import { tmpdir } from 'os'
++import { join } from 'path'
++import { readLiteMetadata } from './sessionStorage.js'
++import { extractLastAssistantReply, LITE_READ_BUF_SIZE } from './sessionStoragePortable.js'
++
++const user = (text: string) =>
++  JSON.stringify({ type: 'user', message: { role: 'user', content: text }, cwd: '/work/app' })
++const assistant = (content: unknown) =>
++  JSON.stringify({ type: 'assistant', message: { role: 'assistant', content } })
++const toolUse = assistant([{ type: 'tool_use', id: 't1', name: 'Read', input: { file_path: '/a' } }])
++const toolResult = JSON.stringify({
++  type: 'user',
++  message: { role: 'user', content: [{ type: 'tool_result', tool_use_id: 't1', content: 'assistant said' }] },
++})
++
++describe('extractLastAssistantReply', () => {
++  test('takes the first line of the newest assistant text', () => {
++    const tail = [
++      user('first'),
++      assistant([{ type: 'text', text: 'Old answer.' }]),
++      user('second'),
++      assistant([
++        { type: 'thinking', thinking: 'hmm' },
++        { type: 'text', text: '\n## Fixed the build\n\nDetails follow.' },
++      ]),
++      '{"type":"last-prompt","lastPrompt":"second"}',
++    ].join('\n')
++    expect(extractLastAssistantReply(tail)).toBe('Fixed the build')
++  })
++
++  test('skips tool-only turns and reaches back to the last text', () => {
++    const tail = [assistant([{ type: 'text', text: '✅ **`a.md`** is written.' }]), toolUse, toolResult].join('\n')
++    expect(extractLastAssistantReply(tail)).toBe('✅ `a.md` is written.')
++  })
++
++  test('ignores a line cut by the chunk edge and code fences', () => {
++    const cut = assistant([{ type: 'text', text: 'never shown' }]).slice(20)
++    expect(extractLastAssistantReply(cut)).toBeUndefined()
++    const fenced = assistant([{ type: 'text', text: '```ts\nconst a = 1\n```' }])
++    expect(extractLastAssistantReply(fenced)).toBe('const a = 1')
++    expect(extractLastAssistantReply('')).toBeUndefined()
++  })
++
++  test('caps the length', () => {
++    const long = assistant([{ type: 'text', text: 'x'.repeat(1000) }])
++    expect(extractLastAssistantReply(long, 50)).toHaveLength(50)
++  })
++})
++
++describe('readLiteMetadata lastReply', () => {
++  test('reads the last reply from the transcript tail', async () => {
++    const dir = mkdtempSync(join(tmpdir(), 'lite-reply-'))
++    const file = join(dir, 'session.jsonl')
++    try {
++      writeFileSync(
++        file,
++        [user('빌드 고쳐줘'), toolUse, toolResult, assistant([{ type: 'text', text: '빌드가 다시 통과합니다.\n자세한 내용은…' }])].join('\n') +
++          '\n',
++      )
++      const meta = await readLiteMetadata(file, statSync(file).size, Buffer.alloc(LITE_READ_BUF_SIZE))
++      expect(meta.lastReply).toBe('빌드가 다시 통과합니다.')
++      expect(meta.firstPrompt).toBe('빌드 고쳐줘')
++    } finally {
++      rmSync(dir, { recursive: true, force: true })
++    }
++  })
++})
+diff --git a/src/utils/sessionStorage.ts b/src/utils/sessionStorage.ts
+index 4b02f119..ac2a3303 100644
+--- a/src/utils/sessionStorage.ts
++++ b/src/utils/sessionStorage.ts
+@@ -96,6 +96,7 @@ import {
+ import { sanitizePath } from './path.js'
+ import {
+   extractJsonStringField,
++  extractLastAssistantReply,
+   extractLastJsonStringField,
+   LITE_READ_BUF_SIZE,
+   readHeadAndTail,
+@@ -5707,6 +5708,7 @@ type LiteMetadata = {
+   prUrl?: string
+   prRepository?: string
+   sessionBranch?: SessionBranchEntry
++  lastReply?: string
+ }
+ 
+ const SESSION_BRANCH_ENTRY_PREFIX = '{"type":"session-branch"'
+@@ -6000,6 +6002,7 @@ export async function readLiteMetadata(
+     }
+   }
+   const sessionBranch = extractSessionBranchMetadata(head, tail, sessionId)
++  const lastReply = extractLastAssistantReply(tail)
+ 
+   return {
+     firstPrompt,
+@@ -6015,6 +6018,7 @@ export async function readLiteMetadata(
+     prUrl,
+     prRepository,
+     sessionBranch,
++    lastReply,
+   }
+ }
+ 
+@@ -6254,6 +6258,7 @@ async function enrichLog(
+     prUrl: meta.prUrl,
+     prRepository: meta.prRepository,
+     sessionBranch: meta.sessionBranch,
++    lastReply: meta.lastReply,
+     projectPath: meta.projectPath ?? log.projectPath,
+   }
+ 
+diff --git a/src/utils/sessionStoragePortable.ts b/src/utils/sessionStoragePortable.ts
+index 86b2b62e..21fc29a6 100644
+--- a/src/utils/sessionStoragePortable.ts
++++ b/src/utils/sessionStoragePortable.ts
+@@ -110,6 +110,65 @@ export function extractLastJsonStringField(
+   return lastValue
+ }
+ 
++// ---------------------------------------------------------------------------
++// Last assistant reply from tail chunk
++// ---------------------------------------------------------------------------
++
++/** First readable line of a reply, with the markdown that would show as noise removed. */
++function replyHeadline(text: string): string {
++  for (const raw of text.split('\n')) {
++    const line = raw
++      .replace(/^\s*(?:#{1,6}\s+|[-*+]\s+|>\s*)/, '')
++      .replace(/\*\*/g, '')
++      .replace(/\s+/g, ' ')
++      .trim()
++    if (line && !line.startsWith('```')) return line
++  }
++  return ''
++}
++
++/**
++ * The first line of the newest assistant text in a JSONL tail chunk: what the
++ * session last said, for one-line previews (`furio agents`). Turns that only
++ * call tools or only think are skipped. A line cut by the chunk edge does not
++ * parse and is skipped too, so a reply longer than the chunk gives nothing
++ * rather than a fragment.
++ */
++export function extractLastAssistantReply(
++  tail: string,
++  maxChars = 300,
++): string | undefined {
++  const lines = tail.split('\n')
++  for (let i = lines.length - 1; i >= 0; i--) {
++    const line = lines[i]!
++    if (!line.includes('"assistant"')) continue
++    let entry: { type?: unknown; message?: { content?: unknown } }
++    try {
++      entry = JSON.parse(line)
++    } catch {
++      continue
++    }
++    if (entry?.type !== 'assistant') continue
++    const content = entry.message?.content
++    const texts: string[] =
++      typeof content === 'string'
++        ? [content]
++        : Array.isArray(content)
++          ? content
++              .filter(
++                (b): b is { type: 'text'; text: string } =>
++                  b?.type === 'text' && typeof b.text === 'string',
++              )
++              .map(b => b.text)
++          : []
++    for (const text of texts) {
++      const headline = replyHeadline(text)
++      if (headline) return headline.slice(0, maxChars)
++    }
++  }
++  return undefined
++}
++
+ // ---------------------------------------------------------------------------
+ // First prompt extraction from head chunk
+ // ---------------------------------------------------------------------------
+-- 
+2.43.0
+
+
 From 1fa3cb960d3dc8ff9b0115a72845a203e124ca77 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 17:40:06 +0900
-Subject: [PATCH 44/45] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 45/48] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20/permissions=20=ED=83=AD=EC=97=90?=
  =?UTF-8?q?=EC=84=9C=20Bypass=20Permissions=C2=B7Full=20Access=20=EC=A0=9C?=
@@ -17060,10 +18659,635 @@ index a2012dcf..3616fc81 100644
 2.43.0
 
 
+From 1dce00de0aca2200ba5b40305fe85be740a83e76 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Mon, 26 Oct 2026 17:44:56 +0900
+Subject: [PATCH 46/48] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+ =?UTF-8?q?=EB=B0=98=EC=98=81:=20PID=20=ED=8C=8C=EC=9D=BC=20=EC=93=B0?=
+ =?UTF-8?q?=EA=B8=B0=EB=A5=BC=20=ED=95=9C=20=EC=A4=84=EB=A1=9C=20=EC=84=B8?=
+ =?UTF-8?q?=EC=9A=B0=EA=B3=A0=20=EB=A7=A4=EB=B2=88=20=ED=98=84=EC=9E=AC=20?=
+ =?UTF-8?q?sessionId=20=EB=A5=BC=20=EC=B0=8D=EC=96=B4=20resume=20=ED=95=9C?=
+ =?UTF-8?q?=20=EC=84=B8=EC=85=98=EC=9D=B4=20Working=20=EB=8C=80=EC=8B=A0?=
+ =?UTF-8?q?=20Done=20=EC=9C=BC=EB=A1=9C=20=EB=B3=B4=EC=9D=B4=EB=8D=98=20?=
+ =?UTF-8?q?=EB=AC=B8=EC=A0=9C=20=EC=88=98=EC=A0=95(=EC=A0=84=ED=99=98=20?=
+ =?UTF-8?q?=EA=B5=AC=EB=8F=85=EC=9D=80=20=EC=B2=AB=20=EC=93=B0=EA=B8=B0=20?=
+ =?UTF-8?q?=EC=A0=84=EC=97=90),=2050=EC=B9=B8=20=EB=AF=B8=EB=A7=8C?=
+ =?UTF-8?q?=EC=97=90=EC=84=A0=20FURIO=20=ED=91=9C=EC=8B=9D=EC=9D=84=20?=
+ =?UTF-8?q?=EB=B9=BC=EA=B3=A0=20=EB=A8=B8=EB=A6=AC=203=EC=A4=84=EC=9D=84?=
+ =?UTF-8?q?=20=EC=9E=98=EB=9D=BC=20=ED=95=9C=20=EC=A4=84=EC=94=A9=20?=
+ =?UTF-8?q?=EC=9C=A0=EC=A7=80,=20=EC=A4=84=20=EC=98=88=EC=82=B0=EC=9D=84?=
+ =?UTF-8?q?=20=EC=8B=A4=EC=A0=9C=20=EB=A8=B8=EB=A6=AC=C2=B7=EC=95=8C?=
+ =?UTF-8?q?=EB=A6=BC=20=EC=A4=84=20=EC=88=98=EB=A1=9C=20=EA=B3=84=EC=82=B0?=
+ =?UTF-8?q?,=20=EC=B0=BD=EC=9D=B4=20=EA=B7=B8=EB=A3=B9=20=EC=A4=91?=
+ =?UTF-8?q?=EA=B0=84=EC=97=90=EC=84=9C=20=EC=8B=9C=EC=9E=91=ED=95=98?=
+ =?UTF-8?q?=EB=A9=B4=20=EA=B7=B8=20=EB=94=94=EB=A0=89=ED=84=B0=EB=A6=AC=20?=
+ =?UTF-8?q?=EB=A8=B8=EB=A6=AC=EB=A5=BC=20=EC=9C=84=EC=97=90=20=EA=B3=A0?=
+ =?UTF-8?q?=EC=A0=95?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/components/FurioMark.tsx         |   2 +-
+ src/components/SessionFleet.test.tsx | 104 ++++++++++++++++++-
+ src/components/SessionFleet.tsx      |  93 ++++++++++++-----
+ src/utils/concurrentSessions.test.ts |  87 ++++++++++++++++
+ src/utils/concurrentSessions.ts      | 149 +++++++++++++++++----------
+ 5 files changed, 348 insertions(+), 87 deletions(-)
+ create mode 100644 src/utils/concurrentSessions.test.ts
+
+diff --git a/src/components/FurioMark.tsx b/src/components/FurioMark.tsx
+index 30f5c25c..26ba6ad2 100644
+--- a/src/components/FurioMark.tsx
++++ b/src/components/FurioMark.tsx
+@@ -67,7 +67,7 @@ export function furioMarkColors(): string[] {
+ export function FurioMark(): React.ReactNode {
+   const colors = React.useMemo(furioMarkColors, [])
+   return (
+-    <Box flexDirection="column" width={FURIO_MARK_WIDTH}>
++    <Box flexDirection="column" width={FURIO_MARK_WIDTH} flexShrink={0}>
+       {[0, 1, 2].map(row => (
+         <Text key={row}>
+           {LETTERS.map((letter, i) => (
+diff --git a/src/components/SessionFleet.test.tsx b/src/components/SessionFleet.test.tsx
+index 6639b212..6c0ce708 100644
+--- a/src/components/SessionFleet.test.tsx
++++ b/src/components/SessionFleet.test.tsx
+@@ -181,7 +181,8 @@ describe('fleetWindow', () => {
+     ),
+     '/home/u/repo',
+   )
+-  const lineCount = (start: number, end: number) =>
++  const lineCount = (start: number, end: number, pinned?: number) =>
++    (pinned === undefined ? 0 : 1) +
+     rows.slice(start, end).reduce((n, row, i) => n + (row.kind === 'group' && i > 0 ? 2 : 1), 0)
+ 
+   it('shows everything when it fits, counting the gap between groups', () => {
+@@ -192,14 +193,34 @@ describe('fleetWindow', () => {
+   it('keeps the focus in view and never spends more lines than it has', () => {
+     for (let focus = 0; focus < rows.length; focus++) {
+       for (const budget of [4, 6, 9]) {
+-        const { start, end } = fleetWindow(rows, focus, budget)
++        const { start, end, pinned } = fleetWindow(rows, focus, budget)
+         expect(start).toBeLessThanOrEqual(focus)
+         expect(end).toBeGreaterThan(focus)
+-        expect(lineCount(start, end)).toBeLessThanOrEqual(budget)
++        expect(lineCount(start, end, pinned)).toBeLessThanOrEqual(budget)
+         expect(rows[end - 1]!.kind).toBe('log')
+       }
+     }
+   })
++
++  it('pins the directory above a window that starts inside a group', () => {
++    for (let focus = 0; focus < rows.length; focus++) {
++      for (const budget of [2, 3, 4, 6, 9]) {
++        const { start, pinned } = fleetWindow(rows, focus, budget)
++        if (rows[start]!.kind === 'group') {
++          expect(pinned).toBeUndefined()
++          continue
++        }
++        // The nearest group header above the first row on screen.
++        let header = start - 1
++        while (rows[header]!.kind !== 'group') header--
++        expect(pinned).toBe(header)
++      }
++    }
++    // Focus deep in the second group: its header is pinned, not the first group's.
++    const { start, pinned } = fleetWindow(rows, 10, 4)
++    expect(rows[start]!.kind).toBe('log')
++    expect(rows[pinned!]).toMatchObject({ kind: 'group', label: '/home/u/other' })
++  })
+ })
+ 
+ type Harness = {
+@@ -402,6 +423,83 @@ test('at 80 columns rows stay on one line and the summary gives way first', asyn
+   }
+ })
+ 
++for (const [columns, rows] of [
++  [45, 24],
++  [40, 16],
++] as const) {
++  test(`at ${columns}x${rows} the header keeps three lines and the frame fits`, async () => {
++    const h = await mount(
++      <SessionFleet
++        {...baseProps}
++        logs={MANY_MIXED}
++        liveSessions={MIXED_LIVE}
++        onSelect={() => {}}
++        onNewSession={() => {}}
++        onDelete={() => {}}
++      />,
++      columns,
++      rows,
++    )
++    try {
++      await h.waitFor('describe a task')
++      const frame = h.output().replace(/\n+$/, '').split('\n')
++      // No mark this narrow: the header text starts at the left edge, one line each.
++      expect(frame[0]).toBe('FURIO v0.33.0')
++      expect(frame[1]).toStartWith('New sessions: ')
++      expect(frame[2]).toBe('1 working, 1 waiting, 14 done')
++      expect(frame[3]).toBe('')
++      expect(frame.join('\n')).not.toContain('█')
++      // The first group header is on screen above its sessions.
++      expect(frame[4]).toBe('/home/u/repo')
++      expect(frame.length).toBeLessThanOrEqual(rows - 1)
++      for (const line of frame) expect(stringWidth(line)).toBeLessThanOrEqual(columns)
++    } finally {
++      h.stop()
++    }
++  })
++}
++
++test('the mark comes back once the header has room beside it', async () => {
++  const h = await mount(<SessionFleet {...baseProps} logs={LOGS} onSelect={() => {}} />, 50, 24)
++  try {
++    await h.waitFor('New sessions:')
++    const lines = h.output().split('\n')
++    expect(lines[0]).toBe(`${FURIO_MARK_ROWS[0]}   FURIO v0.33.0`)
++    expect(lines[2]).toBe(`${FURIO_MARK_ROWS[2]}   3 done`)
++    for (const line of lines) expect(stringWidth(line)).toBeLessThanOrEqual(50)
++  } finally {
++    h.stop()
++  }
++})
++
++test('scrolled into a group, the list still shows that group\'s directory', async () => {
++  const h = await mount(
++    <SessionFleet
++      {...baseProps}
++      logs={MANY_MIXED}
++      liveSessions={MIXED_LIVE}
++      onSelect={() => {}}
++      onNewSession={() => {}}
++    />,
++    80,
++    18,
++  )
++  try {
++    await h.waitFor('describe a task')
++    for (let i = 0; i < 8; i++) await h.type(DOWN)
++    await Bun.sleep(60)
++    const frame = h.output().replace(/\n+$/, '').split('\n')
++    const firstRow = frame.findIndex(line => /^[❯ ] \S /.test(line) && STATUS_WORD.test(line))
++    expect(firstRow).toBeGreaterThan(0)
++    // Right above the first session on screen: its directory, then the scroll mark.
++    expect(frame[firstRow - 1]).toMatch(/^\/home\/u\//)
++    expect(frame[firstRow - 2]).toMatch(/↑ \d+ more/)
++    expect(frame.length).toBeLessThanOrEqual(17)
++  } finally {
++    h.stop()
++  }
++})
++
+ test('screen copy uses no decorative middle dots or dashes', async () => {
+   for (const props of [
+     { logs: MIXED, liveSessions: MIXED_LIVE },
+diff --git a/src/components/SessionFleet.tsx b/src/components/SessionFleet.tsx
+index f82a4087..30f1cc34 100644
+--- a/src/components/SessionFleet.tsx
++++ b/src/components/SessionFleet.tsx
+@@ -3,7 +3,7 @@ import * as React from 'react'
+ import { useRegisterOverlay } from '../context/overlayContext.js'
+ import { isClassEdition } from '../furio/edition.js'
+ import { useTerminalSize } from '../hooks/useTerminalSize.js'
+-import { Box, Text, useAnimationFrame, useInput } from '../ink.js'
++import { Box, Text, useAnimationFrame, useInput, wrapText } from '../ink.js'
+ import { stringWidth } from '../ink/stringWidth.js'
+ import type { LogOption } from '../types/logs.js'
+ import { formatRelativeTime, truncateToWidth } from '../utils/format.js'
+@@ -197,18 +197,30 @@ export function fleetLayout(
+   return { width, nameWidth, detailWidth: Math.max(0, rest(nameWidth)), statusWidth, prWidth, ageWidth }
+ }
+ 
++export type FleetWindow = {
++  start: number
++  end: number
++  /**
++   * The group header drawn above the window when it starts partway into a
++   * group, so the first sessions on screen still show their directory.
++   */
++  pinned?: number
++}
++
+ /**
+  * Which rows fit in `budget` screen lines, counting the blank line above each
+- * group header but the first. Keeps the focused row in view, about a third
+- * of the way down when the list is longer than the screen.
++ * group header but the first, and the pinned header when the window starts
++ * inside a group. Keeps the focused row in view, about a third of the way
++ * down when the list is longer than the screen.
+  */
+-export function fleetWindow(
+-  rows: FleetRow[],
+-  focus: number,
+-  budget: number,
+-): { start: number; end: number } {
++export function fleetWindow(rows: FleetRow[], focus: number, budget: number): FleetWindow {
++  const headerOf = (index: number): number | undefined => {
++    if (rows[index]?.kind !== 'log') return undefined
++    for (let i = index - 1; i >= 0; i--) if (rows[i]!.kind === 'group') return i
++    return undefined
++  }
+   const lines = (start: number, end: number): number => {
+-    let total = 0
++    let total = headerOf(start) === undefined ? 0 : 1
+     for (let i = start; i < end; i++) total += rows[i]!.kind === 'group' && i > start ? 2 : 1
+     return total
+   }
+@@ -221,9 +233,17 @@ export function fleetWindow(
+   while (start > 0 && lines(start - 1, end) <= budget) start--
+   // A group header with none of its sessions under it says nothing.
+   if (end - 1 > at && rows[end - 1]!.kind === 'group') end--
+-  return { start, end }
++  const pinned = headerOf(start)
++  return pinned === undefined ? { start, end } : { start, end, pinned }
+ }
+ 
++const MARK_GAP = 3
++/** Narrower than this, the mark would squeeze the header text into wrapping. */
++const MARK_MIN_COLUMNS = FURIO_MARK_WIDTH + MARK_GAP + 30
++
++/** Version, where new sessions start, and the counts: one line each. */
++const HEADER_LINES = 3
++
+ function padToWidth(text: string, width: number): string {
+   return text + ' '.repeat(Math.max(0, width - stringWidth(text)))
+ }
+@@ -433,24 +453,32 @@ export function SessionFleet({
+     [columns, logs, rows],
+   )
+ 
+-  // Everything but the list: header 3 + gap, box 3 + gap (or a gap), hint 1,
+-  // a line for a notice or the delete question, a line each for the scroll
+-  // marks, and the line the cursor rests on. Past the terminal height the top
+-  // of the frame would scroll away.
+-  const budget = Math.max(4, termRows - (hasBox ? 13 : 10))
+-  const { start, end } = fleetWindow(rows, focusIndex, budget)
+-  const window = rows.slice(start, end)
+-  const hiddenAbove = rows.slice(0, start).filter(row => row.kind === 'log').length
+-  const hiddenBelow = rows.slice(end).filter(row => row.kind === 'log').length
+-
+   const pendingTitle =
+     pendingDeleteKey && focusedLog && focusedLog.key === pendingDeleteKey
+       ? getLogDisplayTitle(focusedLog.log)
+       : undefined
++  const noticeText = notice ? `  ${notice}` : ''
++  const noticeLines = noticeText ? wrapText(noticeText, Math.max(1, columns), 'wrap').split('\n').length : 0
++
++  // Everything but the list: the header and the gap under it, the box and
++  // the gap above it (or just a gap), the hint, the notice and the delete
++  // question (one line kept for them even when empty), a line each for the
++  // scroll marks, and the line the cursor rests on. Past the terminal height
++  // the top of the frame would scroll away.
++  const fixedLines =
++    HEADER_LINES + 1 + (hasBox ? 4 : 1) + 1 + Math.max(1, noticeLines + (pendingTitle ? 1 : 0)) + 2 + 1
++  const budget = Math.max(2, termRows - fixedLines)
++  const { start, end, pinned } = fleetWindow(rows, focusIndex, budget)
++  const window = rows.slice(start, end)
++  const pinnedRow = pinned === undefined ? undefined : rows[pinned]
++  const hiddenAbove = rows.slice(0, start).filter(row => row.kind === 'log').length
++  const hiddenBelow = rows.slice(end).filter(row => row.kind === 'log').length
+ 
+   const shownModel = isClassEdition() ? undefined : model
+   const accent = React.useMemo(() => furioMarkColors()[2]!, [])
+-  const headerWidth = Math.max(10, columns - FURIO_MARK_WIDTH - 4)
++  // Without the mark the header text alone still reads fine.
++  const showMark = columns >= MARK_MIN_COLUMNS
++  const headerWidth = Math.max(10, columns - 1 - (showMark ? FURIO_MARK_WIDTH + MARK_GAP : 0))
+   const rule = '─'.repeat(Math.max(10, columns - 1))
+ 
+   const hints =
+@@ -465,10 +493,10 @@ export function SessionFleet({
+ 
+   return (
+     <Box flexDirection="column">
+-      <Box flexDirection="row" gap={3} marginBottom={1}>
+-        <FurioMark />
+-        <Box flexDirection="column">
+-          <Text>
++      <Box flexDirection="row" gap={MARK_GAP} marginBottom={1}>
++        {showMark ? <FurioMark /> : null}
++        <Box flexDirection="column" width={headerWidth}>
++          <Text wrap="truncate-end">
+             <Text bold>FURIO</Text> <Text dimColor>v{version}</Text>
+           </Text>
+           <Text dimColor wrap="truncate-end">
+@@ -477,7 +505,9 @@ export function SessionFleet({
+               headerWidth,
+             )}
+           </Text>
+-          <Text dimColor>{statusCountsLabel(rows)}</Text>
++          <Text dimColor wrap="truncate-end">
++            {truncateToWidth(statusCountsLabel(rows), headerWidth)}
++          </Text>
+         </Box>
+       </Box>
+ 
+@@ -489,6 +519,11 @@ export function SessionFleet({
+       ) : (
+         <Box flexDirection="column">
+           {hiddenAbove > 0 ? <Text dimColor>  ↑ {hiddenAbove} more</Text> : null}
++          {pinnedRow?.kind === 'group' ? (
++            <Text bold dimColor wrap="truncate-end">
++              {pinnedRow.label}
++            </Text>
++          ) : null}
+           {window.map((row, offset) => {
+             if (row.kind === 'group') {
+               return (
+@@ -541,9 +576,11 @@ export function SessionFleet({
+       ) : null}
+ 
+       <Box marginTop={hasBox ? 0 : 1} flexDirection="column">
+-        {notice ? <Text color="error">  {notice}</Text> : null}
++        {noticeText ? <Text color="error">{noticeText}</Text> : null}
+         {pendingTitle ? (
+-          <Text color="warning">  Press ctrl+x again to delete “{truncateToWidth(pendingTitle, 40)}”.</Text>
++          <Text color="warning" wrap="truncate-end">
++            {'  '}Press ctrl+x again to delete “{truncateToWidth(pendingTitle, 40)}”.
++          </Text>
+         ) : null}
+         {busy ? (
+           <Box>
+diff --git a/src/utils/concurrentSessions.test.ts b/src/utils/concurrentSessions.test.ts
+new file mode 100644
+index 00000000..8104c9a0
+--- /dev/null
++++ b/src/utils/concurrentSessions.test.ts
+@@ -0,0 +1,87 @@
++import { randomUUID } from 'node:crypto'
++import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
++import { tmpdir } from 'node:os'
++import { join } from 'node:path'
++
++import { afterEach, beforeEach, describe, expect, it } from 'bun:test'
++
++import { getSessionId, switchSession } from '../bootstrap/state.js'
++import { asSessionId } from '../types/ids.js'
++import { registerSession, updatePidFile, updateSessionName } from './concurrentSessions.js'
++import { setClaudeConfigHomeDirForTesting } from './envUtils.js'
++
++let dir: string
++const pidFile = (): string => join(dir, 'sessions', `${process.pid}.json`)
++const readPidFile = async (): Promise<Record<string, unknown>> =>
++  JSON.parse(await readFile(pidFile(), 'utf8'))
++
++/** The file as it settles: the switch listener's write is queued, not awaited. */
++async function settled(
++  until: (data: Record<string, unknown>) => boolean,
++): Promise<Record<string, unknown>> {
++  const startedAt = Date.now()
++  let data = await readPidFile()
++  while (!until(data) && Date.now() - startedAt < 1000) {
++    await Bun.sleep(10)
++    data = await readPidFile()
++  }
++  return data
++}
++
++beforeEach(async () => {
++  dir = await mkdtemp(join(tmpdir(), 'furio-pidfile-'))
++  setClaudeConfigHomeDirForTesting(dir)
++  switchSession(asSessionId(randomUUID()))
++})
++
++afterEach(async () => {
++  setClaudeConfigHomeDirForTesting(undefined)
++  await rm(dir, { recursive: true, force: true })
++})
++
++describe('PID file sessionId across a resume', () => {
++  it('follows a resume that lands while the file is first being written', async () => {
++    const fresh = getSessionId()
++    const resumed = randomUUID()
++    const registering = registerSession()
++    // --resume switches as soon as the transcript loads, before this write is done.
++    switchSession(asSessionId(resumed))
++    expect(await registering).toBe(true)
++    const data = await settled(d => d.sessionId === resumed)
++    expect(data.sessionId).toBe(resumed)
++    expect(data.sessionId).not.toBe(fresh)
++    expect(data.pid).toBe(process.pid)
++  })
++
++  it('keeps the resumed id when a status push races the switch', async () => {
++    expect(await registerSession()).toBe(true)
++    const resumed = randomUUID()
++    // The fleet's Enter path: the switch and the REPL's first status push fire together.
++    switchSession(asSessionId(resumed))
++    await updatePidFile({ status: 'busy', updatedAt: 1 })
++    const data = await settled(d => d.sessionId === resumed && d.status === 'busy')
++    expect(data.sessionId).toBe(resumed)
++    expect(data.status).toBe('busy')
++  })
++
++  it('repairs a file that names an earlier session on the next update', async () => {
++    expect(await registerSession()).toBe(true)
++    await writeFile(pidFile(), JSON.stringify({ ...(await readPidFile()), sessionId: 'stale' }))
++    await updatePidFile({ status: 'idle' })
++    const data = await readPidFile()
++    expect(data.sessionId).toBe(getSessionId())
++    expect(data.status).toBe('idle')
++  })
++
++  it('loses no field when many updates are fired at once', async () => {
++    expect(await registerSession()).toBe(true)
++    await Promise.all([
++      ...Array.from({ length: 12 }, (_, i) => updatePidFile({ [`k${i}`]: i })),
++      updateSessionName('bench'),
++    ])
++    const data = await readPidFile()
++    for (let i = 0; i < 12; i++) expect(data[`k${i}`]).toBe(i)
++    expect(data.name).toBe('bench')
++    expect(data.sessionId).toBe(getSessionId())
++  })
++})
+diff --git a/src/utils/concurrentSessions.ts b/src/utils/concurrentSessions.ts
+index f4af17d1..63ee2adb 100644
+--- a/src/utils/concurrentSessions.ts
++++ b/src/utils/concurrentSessions.ts
+@@ -45,6 +45,24 @@ export function isBgSession(): boolean {
+   return envSessionKind() === 'bg'
+ }
+ 
++let unsubscribeSessionSwitch: (() => void) | undefined
++
++/**
++ * Every write to this process's PID file runs here, one at a time. Each
++ * update reads the file, merges, and writes it back, so two at once lose one:
++ * at startup the resume switch and the REPL's first status push both land
++ * within a few milliseconds, and the later write put back the sessionId the
++ * process started with. That left a resumed session's file naming the wrong
++ * session for as long as the process lived.
++ */
++let pidFileQueue: Promise<void> = Promise.resolve()
++
++function queuePidFileWrite(write: () => Promise<void>): Promise<void> {
++  const next = pidFileQueue.then(write, write)
++  pidFileQueue = next.catch(() => {})
++  return next
++}
++
+ /**
+  * Write a PID file for this session and register cleanup.
+  *
+@@ -63,69 +81,90 @@ export async function registerSession(): Promise<boolean> {
+   const dir = getSessionsDir()
+   const pidFile = join(dir, `${process.pid}.json`)
+ 
+-  registerCleanup(async () => {
++  registerCleanup(() =>
++    queuePidFileWrite(async () => {
++      try {
++        await unlink(pidFile)
++      } catch {
++        // ENOENT is fine (already deleted or never written)
++      }
++    }),
++  )
++
++  // --resume / /resume mutates getSessionId() via switchSession. Without
++  // this, the PID file's sessionId goes stale and `claude ps` sparkline
++  // reads the wrong transcript. Subscribed before the first write: --resume
++  // can switch while that write is still in flight, and the queue puts the
++  // repair after it.
++  unsubscribeSessionSwitch?.()
++  unsubscribeSessionSwitch = onSessionSwitch(() => {
++    void updatePidFile({})
++  })
++
++  let registered = false
++  await queuePidFileWrite(async () => {
+     try {
+-      await unlink(pidFile)
+-    } catch {
+-      // ENOENT is fine (already deleted or never written)
++      await mkdir(dir, { recursive: true, mode: 0o700 })
++      await chmod(dir, 0o700)
++      await writeFile(
++        pidFile,
++        jsonStringify({
++          pid: process.pid,
++          sessionId: getSessionId(),
++          cwd: getOriginalCwd(),
++          startedAt: Date.now(),
++          kind,
++          entrypoint: process.env.CLAUDE_CODE_ENTRYPOINT,
++          ...(feature('UDS_INBOX')
++            ? { messagingSocketPath: process.env.CLAUDE_CODE_MESSAGING_SOCKET }
++            : {}),
++          ...(feature('BG_SESSIONS')
++            ? {
++                name: process.env.CLAUDE_CODE_SESSION_NAME,
++                logPath: process.env.CLAUDE_CODE_SESSION_LOG,
++                agent: process.env.CLAUDE_CODE_AGENT,
++              }
++            : {}),
++        }),
++      )
++      registered = true
++    } catch (e) {
++      logForDebugging(
++        `[concurrentSessions] register failed: ${errorMessage(e)}`,
++      )
+     }
+   })
+-
+-  try {
+-    await mkdir(dir, { recursive: true, mode: 0o700 })
+-    await chmod(dir, 0o700)
+-    await writeFile(
+-      pidFile,
+-      jsonStringify({
+-        pid: process.pid,
+-        sessionId: getSessionId(),
+-        cwd: getOriginalCwd(),
+-        startedAt: Date.now(),
+-        kind,
+-        entrypoint: process.env.CLAUDE_CODE_ENTRYPOINT,
+-        ...(feature('UDS_INBOX')
+-          ? { messagingSocketPath: process.env.CLAUDE_CODE_MESSAGING_SOCKET }
+-          : {}),
+-        ...(feature('BG_SESSIONS')
+-          ? {
+-              name: process.env.CLAUDE_CODE_SESSION_NAME,
+-              logPath: process.env.CLAUDE_CODE_SESSION_LOG,
+-              agent: process.env.CLAUDE_CODE_AGENT,
+-            }
+-          : {}),
+-      }),
+-    )
+-    // --resume / /resume mutates getSessionId() via switchSession. Without
+-    // this, the PID file's sessionId goes stale and `claude ps` sparkline
+-    // reads the wrong transcript.
+-    onSessionSwitch(id => {
+-      void updatePidFile({ sessionId: id })
+-    })
+-    return true
+-  } catch (e) {
+-    logForDebugging(`[concurrentSessions] register failed: ${errorMessage(e)}`)
+-    return false
++  if (!registered) {
++    unsubscribeSessionSwitch?.()
++    unsubscribeSessionSwitch = undefined
+   }
++  return registered
+ }
+ 
+ /**
+- * Update this session's name in its PID registry file so ListPeers
+- * can surface it. Best-effort: silently no-op if name is falsy, the
+- * file doesn't exist (session not registered), or read/write fails.
++ * Merge `patch` into this session's PID registry file. Every write also
++ * stamps the current sessionId, so any update (a status push, a rename)
++ * repairs a file left naming an earlier session. Best-effort: silently no-op
++ * if the file doesn't exist (session not registered) or read/write fails.
+  */
+-async function updatePidFile(patch: Record<string, unknown>): Promise<void> {
+-  const pidFile = join(getSessionsDir(), `${process.pid}.json`)
+-  try {
+-    const data = jsonParse(await readFile(pidFile, 'utf8')) as Record<
+-      string,
+-      unknown
+-    >
+-    await writeFile(pidFile, jsonStringify({ ...data, ...patch }))
+-  } catch (e) {
+-    logForDebugging(
+-      `[concurrentSessions] updatePidFile failed: ${errorMessage(e)}`,
+-    )
+-  }
++export function updatePidFile(patch: Record<string, unknown>): Promise<void> {
++  return queuePidFileWrite(async () => {
++    const pidFile = join(getSessionsDir(), `${process.pid}.json`)
++    try {
++      const data = jsonParse(await readFile(pidFile, 'utf8')) as Record<
++        string,
++        unknown
++      >
++      await writeFile(
++        pidFile,
++        jsonStringify({ ...data, ...patch, sessionId: getSessionId() }),
++      )
++    } catch (e) {
++      logForDebugging(
++        `[concurrentSessions] updatePidFile failed: ${errorMessage(e)}`,
++      )
++    }
++  })
+ }
+ 
+ export async function updateSessionName(
+-- 
+2.43.0
+
+
 From 98948fc62ba13057b5e624b8ff7684081fefc7aa Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 18:05:11 +0900
-Subject: [PATCH 45/45] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 47/48] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81=202:=20=EA=B1=B0=EC=A0=88=20=EB=B2=84?=
  =?UTF-8?q?=ED=8A=BC=20No,=20go=20back=20=EC=9D=80=20=EC=88=98=EC=97=85?=
@@ -17303,6 +19527,666 @@ index 30fca846..17437a5f 100644
  import type { Message } from '../../types/message.js'
  import type { SideQueryOptions } from '../sideQuery.js'
  import {
+-- 
+2.43.0
+
+
+From c461060b3067d87e273355be9319b940ce60af17 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Mon, 26 Oct 2026 18:27:03 +0900
+Subject: [PATCH 48/48] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+ =?UTF-8?q?=EB=B0=98=EC=98=81:=20=EB=AA=A9=EB=A1=9D=EC=97=90=EC=84=9C=20?=
+ =?UTF-8?q?=EA=B7=B8=20=EC=9E=90=EB=A6=AC=EB=A1=9C=20=EC=9D=B4=EC=96=B4=20?=
+ =?UTF-8?q?=EC=97=B0=20=EC=84=B8=EC=85=98=EC=97=90=EB=8F=84=20FURIO=20?=
+ =?UTF-8?q?=EC=8B=9C=EC=9E=91=20=ED=99=94=EB=A9=B4=EC=9D=84=20=EB=AA=A9?=
+ =?UTF-8?q?=EB=A1=9D=20=ED=94=84=EB=A0=88=EC=9E=84=20=EC=9E=90=EB=A6=AC?=
+ =?UTF-8?q?=EC=97=90=20=EC=B0=8D=EA=B3=A0(=EC=9C=84=20=EC=85=B8=20?=
+ =?UTF-8?q?=EC=A4=84=EC=9D=80=20=EA=B7=B8=EB=8C=80=EB=A1=9C,=20tmux=20?=
+ =?UTF-8?q?=EA=B8=B0=EB=A1=9D=EC=97=90=20=EB=B9=88=20=EC=A4=84=20=EC=95=88?=
+ =?UTF-8?q?=20=EB=82=A8=EA=B9=80),=20=EC=9E=85=EB=A0=A5=20=EC=83=81?=
+ =?UTF-8?q?=EC=9E=90=20=EC=A4=84=20=EC=88=98=EB=A5=BC=20=EC=A4=84=20?=
+ =?UTF-8?q?=EC=98=88=EC=82=B0=EC=97=90=20=EB=84=A3=EC=96=B4=20=EA=B8=B4=20?=
+ =?UTF-8?q?=EC=9E=91=EC=97=85=20=EA=B8=80=EC=9D=B4=20=EB=A8=B8=EB=A6=AC?=
+ =?UTF-8?q?=EB=A5=BC=20=EB=B0=80=EC=96=B4=EB=82=B4=EC=A7=80=20=EC=95=8A?=
+ =?UTF-8?q?=EA=B2=8C=20=ED=95=98=EA=B3=A0(=EC=B5=9C=EB=8C=80=205=EC=A4=84,?=
+ =?UTF-8?q?=20=EB=84=98=EC=9C=BC=EB=A9=B4=20=EC=83=81=EC=9E=90=20=EC=95=88?=
+ =?UTF-8?q?=EC=97=90=EC=84=9C=20=EC=8A=A4=ED=81=AC=EB=A1=A4),=20=EC=A7=A7?=
+ =?UTF-8?q?=EC=9D=80=20=ED=99=94=EB=A9=B4=EC=97=90=EC=84=A0=20=EB=A8=B8?=
+ =?UTF-8?q?=EB=A6=AC=EB=A5=BC=20=ED=95=9C=20=EC=A4=84=EB=A1=9C=20=EC=A0=91?=
+ =?UTF-8?q?=EA=B3=A0=20=EC=9E=90=EB=A6=AC=ED=91=9C=EC=8B=9C=20=EA=B8=80?=
+ =?UTF-8?q?=EC=9D=84=20=EC=83=81=EC=9E=90=20=ED=8F=AD=EC=97=90=20=EB=A7=9E?=
+ =?UTF-8?q?=EC=B6=B0=20=EC=9E=90=EB=A5=B4=EB=A9=B0,=20=EC=95=84=EC=A7=81?=
+ =?UTF-8?q?=20=EC=97=B4=EB=A0=A4=20=EC=9E=88=EB=8A=94=20=EC=84=B8=EC=85=98?=
+ =?UTF-8?q?=EC=9D=84=20ctrl+x=20=EB=A1=9C=20=EC=A7=80=EC=9A=B8=20=EB=95=90?=
+ =?UTF-8?q?=20=EC=97=B4=EB=A0=A4=20=EC=9E=88=EB=8B=A4=EA=B3=A0=20=EB=A8=BC?=
+ =?UTF-8?q?=EC=A0=80=20=EC=95=8C=EB=A6=BC?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/components/SessionFleet.test.tsx   | 105 ++++++++++++++++++++
+ src/components/SessionFleet.tsx        | 130 +++++++++++++++++++------
+ src/entrypoints/cli.tsx                |   3 +-
+ src/ink/eraseFrameForOutput.test.tsx   |  81 +++++++++++++++
+ src/ink/ink.tsx                        |  28 +++++-
+ src/screens/ResumeConversation.tsx     |   4 +
+ src/utils/startupScreenHandoff.test.ts |  58 +++++++++++
+ src/utils/startupScreenHandoff.ts      |  52 ++++++++++
+ 8 files changed, 431 insertions(+), 30 deletions(-)
+ create mode 100644 src/ink/eraseFrameForOutput.test.tsx
+ create mode 100644 src/utils/startupScreenHandoff.test.ts
+ create mode 100644 src/utils/startupScreenHandoff.ts
+
+diff --git a/src/components/SessionFleet.test.tsx b/src/components/SessionFleet.test.tsx
+index 6c0ce708..c9c5cd78 100644
+--- a/src/components/SessionFleet.test.tsx
++++ b/src/components/SessionFleet.test.tsx
+@@ -13,6 +13,8 @@ import { FURIO_MARK_ROWS } from './FurioMark.js'
+ import {
+   ageLabel,
+   buildFleetRows,
++  draftLineCount,
++  fleetChrome,
+   fleetLayout,
+   fleetWindow,
+   rowSummary,
+@@ -223,6 +225,44 @@ describe('fleetWindow', () => {
+   })
+ })
+ 
++describe('fleetChrome', () => {
++  // Header 3 + gap, box 3 + draft, hint, notice slot, two scroll marks, cursor line.
++  const height = (c: { compact: boolean; draftLines: number; budget: number }, notice = 0) =>
++    (c.compact ? 1 : 4) + 3 + c.draftLines + 1 + Math.max(1, notice) + 2 + 1 + c.budget
++
++  it('counts every line of the draft, so a long task cannot push the header off', () => {
++    expect(draftLineCount('', 74)).toBe(1)
++    expect(draftLineCount('short task', 74)).toBe(1)
++    expect(draftLineCount('가'.repeat(100), 74)).toBe(3) // 200 columns at 73 a line
++    expect(draftLineCount('one\ntwo\nthree', 74)).toBe(3)
++    for (const rows of [18, 24, 45]) {
++      for (const draft of [1, 2, 3, 5, 9]) {
++        const c = fleetChrome({ termRows: rows, hasBox: true, draftLines: draft, noticeLines: 0 })
++        expect(c.compact).toBe(false)
++        expect(c.draftLines).toBeLessThanOrEqual(draft)
++        expect(height(c)).toBeLessThanOrEqual(rows)
++        expect(c.budget).toBeGreaterThanOrEqual(3)
++      }
++    }
++    // Room to spare: the whole draft shows, up to five lines.
++    expect(fleetChrome({ termRows: 45, hasBox: true, draftLines: 4, noticeLines: 0 }).draftLines).toBe(4)
++    expect(fleetChrome({ termRows: 45, hasBox: true, draftLines: 9, noticeLines: 0 }).draftLines).toBe(5)
++    // 80x18: three draft lines, the rest scrolls inside the box.
++    expect(fleetChrome({ termRows: 18, hasBox: true, draftLines: 5, noticeLines: 0 }).draftLines).toBe(3)
++  })
++
++  it('folds the header into one line when the screen is too short for it', () => {
++    expect(fleetChrome({ termRows: 16, hasBox: true, draftLines: 1, noticeLines: 0 }).compact).toBe(false)
++    const short = fleetChrome({ termRows: 12, hasBox: true, draftLines: 3, noticeLines: 0 })
++    expect(short).toEqual({ compact: true, draftLines: 1, budget: 2 })
++    expect(height(short)).toBeLessThanOrEqual(12)
++    // A two-line notice and the delete question still fit two rows later.
++    const noticed = fleetChrome({ termRows: 14, hasBox: true, draftLines: 1, noticeLines: 3 })
++    expect(noticed.compact).toBe(true)
++    expect(height(noticed, 3)).toBeLessThanOrEqual(14)
++  })
++})
++
+ type Harness = {
+   output: () => string
+   /** Everything written since mount, never cleared by type(). */
+@@ -634,6 +674,71 @@ test('ctrl+x asks once and deletes on the second press; Esc leaves', async () =>
+   }
+ })
+ 
++test('ctrl+x on a session that is still open says so before deleting it', async () => {
++  const deleted: string[] = []
++  const h = await mount(
++    <SessionFleet
++      {...baseProps}
++      logs={MIXED}
++      liveSessions={new Map([...MIXED_LIVE, ['s-done', { pid: 103, sessionId: 's-done', status: 'idle' }]])}
++      onSelect={() => {}}
++      onDelete={l => deleted.push(l.sessionId!)}
++    />,
++  )
++  try {
++    await h.waitFor('New sessions:')
++    // Waiting, Working, and Done but still open in another window: all warn.
++    for (const [id, title] of [
++      ['s-wait', '서버 로그 정리해줘'],
++      ['s-work', 'npu status line'],
++      ['s-done', '빌드 고치기'],
++    ] as const) {
++      await h.type(CTRL_X)
++      await h.waitFor(`“${title}” is still open. Press ctrl+x again to delete it anyway.`)
++      expect(deleted).not.toContain(id)
++      await h.type(CTRL_X)
++      expect(deleted.at(-1)).toBe(id)
++      await h.type(DOWN)
++    }
++    // A closed session gets the plain question.
++    await h.type(CTRL_X)
++    await h.waitFor('Press ctrl+x again to delete “README 다듬기”.')
++    expect(h.output()).not.toContain('still open')
++  } finally {
++    h.stop()
++  }
++})
++
++test('a short terminal folds the header into one line and the frame still fits', async () => {
++  const h = await mount(
++    <SessionFleet
++      {...baseProps}
++      logs={MANY_MIXED}
++      liveSessions={MIXED_LIVE}
++      onSelect={() => {}}
++      onNewSession={() => {}}
++      onDelete={() => {}}
++    />,
++    30,
++    12,
++  )
++  try {
++    await h.waitFor('describe a task')
++    const frame = h.output().replace(/\n+$/, '').split('\n')
++    expect(frame[0]).toStartWith('FURIO v0.33.0  1 working')
++    expect(frame.join('\n')).not.toContain('New sessions:')
++    expect(frame.join('\n')).not.toContain('█')
++    // The placeholder is cut to the box and keeps to one line.
++    const box = frame.findIndex(line => line.startsWith('❯ describe'))
++    expect(frame[box]).toEndWith('…')
++    expect(frame[box + 1]).toMatch(/^─+$/)
++    expect(frame.length).toBeLessThanOrEqual(11)
++    for (const line of frame) expect(stringWidth(line)).toBeLessThanOrEqual(30)
++  } finally {
++    h.stop()
++  }
++})
++
+ test('ctrl+c leaves like Esc, and the wheel moves the focus', async () => {
+   const picked: string[] = []
+   let cancelled = 0
+diff --git a/src/components/SessionFleet.tsx b/src/components/SessionFleet.tsx
+index 30f1cc34..0cfe1319 100644
+--- a/src/components/SessionFleet.tsx
++++ b/src/components/SessionFleet.tsx
+@@ -6,6 +6,7 @@ import { useTerminalSize } from '../hooks/useTerminalSize.js'
+ import { Box, Text, useAnimationFrame, useInput, wrapText } from '../ink.js'
+ import { stringWidth } from '../ink/stringWidth.js'
+ import type { LogOption } from '../types/logs.js'
++import { MeasuredText } from '../utils/Cursor.js'
+ import { formatRelativeTime, truncateToWidth } from '../utils/format.js'
+ import { getLogDisplayTitle } from '../utils/log.js'
+ import {
+@@ -243,6 +244,62 @@ const MARK_MIN_COLUMNS = FURIO_MARK_WIDTH + MARK_GAP + 30
+ 
+ /** Version, where new sessions start, and the counts: one line each. */
+ const HEADER_LINES = 3
++/**
++ * Fewer list lines than this under the full header and the header folds into
++ * one line (version and counts), so a short terminal still shows sessions.
++ */
++const MIN_LIST_LINES = 3
++/** A long task in the box scrolls inside this many lines. */
++const MAX_DRAFT_LINES = 5
++const PLACEHOLDER = 'describe a task for a new session'
++
++/**
++ * Lines the text box takes for `draft` at `columns`, the width TextInput is
++ * given. TextInput wraps one column short to leave room for the cursor; an
++ * empty box shows the placeholder on one line.
++ */
++export function draftLineCount(draft: string, columns: number): number {
++  return draft ? new MeasuredText(draft, Math.max(1, columns - 1)).lineCount : 1
++}
++
++export type FleetChrome = {
++  /** The header folded into one line, with no mark and no gap under it. */
++  compact: boolean
++  /** Lines the text box shows; a longer draft scrolls inside them. */
++  draftLines: number
++  /** Screen lines left for the list, not counting the scroll marks. */
++  budget: number
++}
++
++/**
++ * How the screen is shared between the list and everything around it: the
++ * header and the gap under it, the box (gap, rules and the draft's lines) or
++ * just a gap, the hint, the notice and the delete question (one line kept for
++ * them even when empty), a line each for the scroll marks, and the line the
++ * cursor rests on. Past the terminal height the top of the frame would scroll
++ * away, so the draft is capped first and the header folds on a short screen.
++ */
++export function fleetChrome({
++  termRows,
++  hasBox,
++  draftLines: wantedDraftLines,
++  noticeLines,
++}: {
++  termRows: number
++  hasBox: boolean
++  /** Lines the whole draft takes (draftLineCount), before any cap. */
++  draftLines: number
++  /** The notice plus the delete question. */
++  noticeLines: number
++}): FleetChrome {
++  const fixed = (headerLines: number, draftLines: number): number =>
++    headerLines + (hasBox ? 3 + draftLines : 1) + 1 + Math.max(1, noticeLines) + 2 + 1
++  const compact = termRows - fixed(HEADER_LINES + 1, 1) < MIN_LIST_LINES
++  const headerLines = compact ? 1 : HEADER_LINES + 1
++  const cap = Math.max(1, Math.min(MAX_DRAFT_LINES, termRows - fixed(headerLines, 1) - MIN_LIST_LINES + 1))
++  const draftLines = hasBox ? Math.max(1, Math.min(cap, wantedDraftLines)) : 0
++  return { compact, draftLines, budget: Math.max(2, termRows - fixed(headerLines, draftLines)) }
++}
+ 
+ function padToWidth(text: string, width: number): string {
+   return text + ' '.repeat(Math.max(0, width - stringWidth(text)))
+@@ -457,17 +514,18 @@ export function SessionFleet({
+     pendingDeleteKey && focusedLog && focusedLog.key === pendingDeleteKey
+       ? getLogDisplayTitle(focusedLog.log)
+       : undefined
++  // A session with a process open keeps writing its transcript, so deleting
++  // it is worth a second look.
++  const pendingIsOpen = pendingTitle !== undefined && focusedLog?.live !== undefined
+   const noticeText = notice ? `  ${notice}` : ''
+   const noticeLines = noticeText ? wrapText(noticeText, Math.max(1, columns), 'wrap').split('\n').length : 0
+-
+-  // Everything but the list: the header and the gap under it, the box and
+-  // the gap above it (or just a gap), the hint, the notice and the delete
+-  // question (one line kept for them even when empty), a line each for the
+-  // scroll marks, and the line the cursor rests on. Past the terminal height
+-  // the top of the frame would scroll away.
+-  const fixedLines =
+-    HEADER_LINES + 1 + (hasBox ? 4 : 1) + 1 + Math.max(1, noticeLines + (pendingTitle ? 1 : 0)) + 2 + 1
+-  const budget = Math.max(2, termRows - fixedLines)
++  const inputColumns = Math.max(20, columns - 6)
++  const { compact, draftLines, budget } = fleetChrome({
++    termRows,
++    hasBox,
++    draftLines: draftLineCount(draft, inputColumns),
++    noticeLines: noticeLines + (pendingTitle ? 1 : 0),
++  })
+   const { start, end, pinned } = fleetWindow(rows, focusIndex, budget)
+   const window = rows.slice(start, end)
+   const pinnedRow = pinned === undefined ? undefined : rows[pinned]
+@@ -477,7 +535,7 @@ export function SessionFleet({
+   const shownModel = isClassEdition() ? undefined : model
+   const accent = React.useMemo(() => furioMarkColors()[2]!, [])
+   // Without the mark the header text alone still reads fine.
+-  const showMark = columns >= MARK_MIN_COLUMNS
++  const showMark = !compact && columns >= MARK_MIN_COLUMNS
+   const headerWidth = Math.max(10, columns - 1 - (showMark ? FURIO_MARK_WIDTH + MARK_GAP : 0))
+   const rule = '─'.repeat(Math.max(10, columns - 1))
+ 
+@@ -493,23 +551,33 @@ export function SessionFleet({
+ 
+   return (
+     <Box flexDirection="column">
+-      <Box flexDirection="row" gap={MARK_GAP} marginBottom={1}>
+-        {showMark ? <FurioMark /> : null}
+-        <Box flexDirection="column" width={headerWidth}>
+-          <Text wrap="truncate-end">
+-            <Text bold>FURIO</Text> <Text dimColor>v{version}</Text>
+-          </Text>
+-          <Text dimColor wrap="truncate-end">
+-            {truncateToWidth(
+-              `New sessions: ${shownModel ? `${shownModel}, ` : ''}${shortenHome(cwd)}`,
+-              headerWidth,
+-            )}
+-          </Text>
+-          <Text dimColor wrap="truncate-end">
+-            {truncateToWidth(statusCountsLabel(rows), headerWidth)}
++      {compact ? (
++        <Text wrap="truncate-end">
++          <Text bold>FURIO</Text> <Text dimColor>v{version}</Text>
++          <Text dimColor>
++            {'  '}
++            {truncateToWidth(statusCountsLabel(rows), Math.max(1, headerWidth - stringWidth(`FURIO v${version}  `)))}
+           </Text>
++        </Text>
++      ) : (
++        <Box flexDirection="row" gap={MARK_GAP} marginBottom={1}>
++          {showMark ? <FurioMark /> : null}
++          <Box flexDirection="column" width={headerWidth}>
++            <Text wrap="truncate-end">
++              <Text bold>FURIO</Text> <Text dimColor>v{version}</Text>
++            </Text>
++            <Text dimColor wrap="truncate-end">
++              {truncateToWidth(
++                `New sessions: ${shownModel ? `${shownModel}, ` : ''}${shortenHome(cwd)}`,
++                headerWidth,
++              )}
++            </Text>
++            <Text dimColor wrap="truncate-end">
++              {truncateToWidth(statusCountsLabel(rows), headerWidth)}
++            </Text>
++          </Box>
+         </Box>
+-      </Box>
++      )}
+ 
+       {rows.length === 0 ? (
+         <Text dimColor>
+@@ -560,8 +628,11 @@ export function SessionFleet({
+               onChange={setDraft}
+               cursorOffset={cursor}
+               onChangeCursorOffset={setCursor}
+-              columns={Math.max(20, columns - 6)}
+-              placeholder="describe a task for a new session"
++              columns={inputColumns}
++              maxVisibleLines={draftLines}
++              // Cut to the box here: a placeholder wider than the box is drawn
++              // on one line but laid out on two.
++              placeholder={truncateToWidth(PLACEHOLDER, Math.max(4, columns - 3))}
+               onHistoryUp={() => moveFocus(-1)}
+               onHistoryDown={() => moveFocus(1)}
+               onSubmit={value => {
+@@ -579,7 +650,10 @@ export function SessionFleet({
+         {noticeText ? <Text color="error">{noticeText}</Text> : null}
+         {pendingTitle ? (
+           <Text color="warning" wrap="truncate-end">
+-            {'  '}Press ctrl+x again to delete “{truncateToWidth(pendingTitle, 40)}”.
++            {'  '}
++            {pendingIsOpen
++              ? `“${truncateToWidth(pendingTitle, 40)}” is still open. Press ctrl+x again to delete it anyway.`
++              : `Press ctrl+x again to delete “${truncateToWidth(pendingTitle, 40)}”.`}
+           </Text>
+         ) : null}
+         {busy ? (
+diff --git a/src/entrypoints/cli.tsx b/src/entrypoints/cli.tsx
+index 63b71f52..1ac8dd79 100644
+--- a/src/entrypoints/cli.tsx
++++ b/src/entrypoints/cli.tsx
+@@ -609,7 +609,8 @@ export async function main(
+   // Print the gradient startup screen before the Ink UI loads. Plain CLI
+   // management subcommands should stay script-friendly and avoid the banner.
+   // Bare `agents` (the session view, rewritten to --resume --fleet below)
+-  // draws its own small header, so the big logo would only push it down.
++  // draws its own small header, so the big logo would only push it down. A
++  // session the view opens in place prints it then (ResumeConversation).
+   const isAgentsView = args.length === 1 && args[0] === 'agents'
+   if (args[0] !== 'skills' && !isAgentsView) {
+     const { printStartupScreen } = await importers.startupScreen()
+diff --git a/src/ink/eraseFrameForOutput.test.tsx b/src/ink/eraseFrameForOutput.test.tsx
+new file mode 100644
+index 00000000..57cb21d3
+--- /dev/null
++++ b/src/ink/eraseFrameForOutput.test.tsx
+@@ -0,0 +1,81 @@
++import { PassThrough } from 'node:stream'
++
++import { expect, test } from 'bun:test'
++import React from 'react'
++
++import { Box, render, Text } from '../ink.js'
++import instances from './instances.js'
++import { eraseLines } from './termio/csi.js'
++
++async function mount(lines: number, rows: number) {
++  let written = ''
++  const stdout = new PassThrough() as PassThrough & { isTTY: boolean; columns: number; rows: number }
++  stdout.isTTY = true
++  stdout.columns = 40
++  stdout.rows = rows
++  const stdin = new PassThrough() as PassThrough & {
++    isTTY: boolean
++    setRawMode: (mode: boolean) => void
++    ref: () => void
++    unref: () => void
++  }
++  stdin.isTTY = true
++  stdin.setRawMode = () => {}
++  stdin.ref = () => {}
++  stdin.unref = () => {}
++  stdout.on('data', chunk => {
++    written += chunk.toString()
++  })
++  const app = await render(
++    <Box flexDirection="column">
++      {Array.from({ length: lines }, (_, i) => (
++        <Text key={i}>row{i}</Text>
++      ))}
++    </Box>,
++    {
++      stdin: stdin as unknown as NodeJS.ReadStream,
++      stdout: stdout as unknown as NodeJS.WriteStream,
++      exitOnCtrlC: false,
++    },
++  )
++  await Bun.sleep(50)
++  const ink = instances.get(stdout as unknown as NodeJS.WriteStream)!
++  return {
++    ink,
++    takeWritten: () => {
++      const out = written
++      written = ''
++      return out
++    },
++    stop: () => {
++      // Off a TTY, unmount skips the terminal-mode resets it writes to fd 1.
++      stdout.isTTY = false
++      app.unmount()
++      stdin.end()
++      stdout.end()
++    },
++  }
++}
++
++test('eraseFrameForOutput erases the frame line by line and stops on its first line', async () => {
++  const h = await mount(3, 24)
++  try {
++    expect(h.takeWritten()).toContain('row2')
++    expect(h.ink.eraseFrameForOutput()).toBe(true)
++    // The cursor rests on the line under a three-line frame: four lines to erase.
++    expect(h.takeWritten()).toBe(eraseLines(4))
++  } finally {
++    h.stop()
++  }
++})
++
++test('eraseFrameForOutput refuses a frame as tall as the screen', async () => {
++  const h = await mount(12, 10)
++  try {
++    h.takeWritten()
++    expect(h.ink.eraseFrameForOutput()).toBe(false)
++    expect(h.takeWritten()).toBe('')
++  } finally {
++    h.stop()
++  }
++})
+diff --git a/src/ink/ink.tsx b/src/ink/ink.tsx
+index d3c8dc41..6aaef5dc 100644
+--- a/src/ink/ink.tsx
++++ b/src/ink/ink.tsx
+@@ -34,7 +34,7 @@ import { CellWidth, CharPool, cellAt, createScreen, HyperlinkPool, isEmptyCellAt
+ import { applySearchHighlight } from './searchHighlight.js';
+ import { applySelectionOverlay, captureScrolledRows, clearSelection, createSelectionState, extendSelection, type FocusMove, findPlainTextUrlAt, getSelectedText, hasSelection, moveFocus, type SelectionState, selectLineAt, selectWordAt, shiftAnchor, shiftSelection, shiftSelectionForFollow, startSelection, updateSelection } from './selection.js';
+ import { shouldSkipMainScreenSyncMarkers, shouldUseMainScreenRewrite, SYNC_OUTPUT_SUPPORTED, supportsExtendedKeys, type Terminal, writeDiffToTerminal } from './terminal.js';
+-import { CURSOR_HOME, cursorMove, cursorPosition, DISABLE_KITTY_KEYBOARD, DISABLE_MODIFY_OTHER_KEYS, ENABLE_KITTY_KEYBOARD, ENABLE_MODIFY_OTHER_KEYS, ERASE_SCREEN } from './termio/csi.js';
++import { CURSOR_HOME, cursorMove, cursorPosition, DISABLE_KITTY_KEYBOARD, DISABLE_MODIFY_OTHER_KEYS, ENABLE_KITTY_KEYBOARD, ENABLE_MODIFY_OTHER_KEYS, ERASE_SCREEN, eraseLines } from './termio/csi.js';
+ import { DBP, DFE, DISABLE_MOUSE_TRACKING, ENABLE_MOUSE_TRACKING, ENTER_ALT_SCREEN, EXIT_ALT_SCREEN, SHOW_CURSOR } from './termio/dec.js';
+ import { CLEAR_ITERM2_PROGRESS, CLEAR_TAB_STATUS, setClipboard, supportsTabStatus, wrapForMultiplexer } from './termio/osc.js';
+ import { TerminalWriteProvider } from './useTerminalNotification.js';
+@@ -876,6 +876,32 @@ export default class Ink {
+     this.prevFrameContaminated = true;
+   }
+ 
++  /**
++   * Main screen only: erase the rows the last frame drew and leave the
++   * cursor where that frame began, so text written next lands there and the
++   * next frame draws from scratch below it. Lines above the frame (the shell
++   * prompt, earlier output) stay as they are.
++   *
++   * Returns false without writing anything in the alt screen, off a TTY, or
++   * when the frame is as tall as the screen: its top may then sit in
++   * scrollback, where the cursor cannot reach.
++   */
++  eraseFrameForOutput(): boolean {
++    if (this.isUnmounted || this.altScreenActive || !this.options.stdout.isTTY) return false;
++    const frame = this.frontFrame;
++    if (frame.screen.height >= frame.viewport.height) return false;
++    // Both are in frame coordinates: row 0 is the frame's first line, and
++    // the frame's own cursor rests on the line under it.
++    const at = this.displayCursor ?? frame.cursor;
++    // From the line under the frame, erase each line up through the first.
++    // Line by line, not erase-below: tmux takes an erase-below from the
++    // top-left corner for a screen clear and pushes the screen into history.
++    this.options.stdout.write(cursorMove(0, frame.screen.height - at.y) + eraseLines(frame.screen.height + 1));
++    this.repaint();
++    this.prevFrameContaminated = true;
++    return true;
++  }
++
+   /**
+    * Called by the <AlternateScreen> component on mount/unmount.
+    * Controls cursor.y clamping in the renderer and gates alt-screen-aware
+diff --git a/src/screens/ResumeConversation.tsx b/src/screens/ResumeConversation.tsx
+index 0b564f14..07ca7775 100644
+--- a/src/screens/ResumeConversation.tsx
++++ b/src/screens/ResumeConversation.tsx
+@@ -32,6 +32,7 @@ import { logError } from '../utils/log.js';
+ import { createSystemMessage } from '../utils/messages.js';
+ import { relaunchInDir, relaunchInProjectDir } from '../utils/relaunchInProjectDir.js';
+ import { deleteSessionFiles } from '../utils/sessionDeletion.js';
++import { printStartupScreenAboveNextFrame } from '../utils/startupScreenHandoff.js';
+ import { computeStandaloneAgentContext, createForkSessionInfoMessage, restoreAgentFromSession, restoreWorktreeForResume } from '../utils/sessionRestore.js';
+ import { adoptResumedSessionFile, enrichLogs, getSessionIdFromLog, getTranscriptPathForSession, isCustomTitleEnabled, loadAllProjectsMessageLogsProgressive, loadSameRepoMessageLogsProgressive, recordContentReplacement, resetSessionFilePointer, restoreSessionMetadata, type SessionLogResult } from '../utils/sessionStorage.js';
+ import type { ModelSetting } from '../utils/model/model.js';
+@@ -300,6 +301,9 @@ export function ResumeConversation({
+         success: true,
+         resume_duration_ms: Math.round(performance.now() - resumeStart)
+       });
++      // `furio agents` drew no startup screen; the session it opens here
++      // gets one, like a session opened any other way.
++      if (fleet) printStartupScreenAboveNextFrame();
+       setLogs([]);
+       setResumeData({
+         messages: result_3.messages,
+diff --git a/src/utils/startupScreenHandoff.test.ts b/src/utils/startupScreenHandoff.test.ts
+new file mode 100644
+index 00000000..a6eadf47
+--- /dev/null
++++ b/src/utils/startupScreenHandoff.test.ts
+@@ -0,0 +1,58 @@
++import { describe, expect, it } from 'bun:test'
++import { CURSOR_HOME, ERASE_SCREEN } from '../ink/termio/csi.js'
++import { printStartupScreenAboveNextFrame, type RepaintableTerminal } from './startupScreenHandoff.js'
++
++function fakeInk({ altScreen = false, frameInReach = true } = {}) {
++  const calls: string[] = []
++  const ink: RepaintableTerminal = {
++    isAltScreenActive: altScreen,
++    eraseFrameForOutput: () => {
++      calls.push('erase-frame')
++      return frameInReach
++    },
++    repaint: () => calls.push('repaint'),
++    invalidatePrevFrame: () => calls.push('invalidate'),
++  }
++  return { ink, calls }
++}
++
++function run(ink: RepaintableTerminal | undefined, calls: string[], isTTY = true): boolean {
++  return printStartupScreenAboveNextFrame({
++    ink,
++    isTTY,
++    write: text => calls.push(`write:${JSON.stringify(text)}`),
++    print: () => calls.push('print'),
++  })
++}
++
++describe('printStartupScreenAboveNextFrame', () => {
++  it('prints the startup screen where the frame was, keeping the lines above', () => {
++    const { ink, calls } = fakeInk()
++    expect(run(ink, calls)).toBe(true)
++    expect(calls).toEqual(['erase-frame', 'print'])
++  })
++
++  it('clears the screen first when the frame top is out of reach', () => {
++    const { ink, calls } = fakeInk({ frameInReach: false })
++    expect(run(ink, calls)).toBe(true)
++    expect(calls).toEqual([
++      'erase-frame',
++      `write:${JSON.stringify(ERASE_SCREEN + CURSOR_HOME)}`,
++      'repaint',
++      'invalidate',
++      'print',
++    ])
++  })
++
++  it('leaves the alternate screen, a pipe and a missing Ink alone', () => {
++    for (const [ink, isTTY] of [
++      [fakeInk({ altScreen: true }).ink, true],
++      [fakeInk().ink, false],
++      [undefined, true],
++    ] as const) {
++      const calls: string[] = []
++      expect(run(ink, calls, isTTY)).toBe(false)
++      expect(calls).toEqual([])
++    }
++  })
++})
+diff --git a/src/utils/startupScreenHandoff.ts b/src/utils/startupScreenHandoff.ts
+new file mode 100644
+index 00000000..4d9d3eef
+--- /dev/null
++++ b/src/utils/startupScreenHandoff.ts
+@@ -0,0 +1,52 @@
++import { printStartupScreen } from '../components/StartupScreen.js'
++import instances from '../ink/instances.js'
++import { CURSOR_HOME, ERASE_SCREEN } from '../ink/termio/csi.js'
++
++/** The part of the Ink instance this touches; narrowed so tests can fake it. */
++export type RepaintableTerminal = {
++  isAltScreenActive: boolean
++  eraseFrameForOutput: () => boolean
++  repaint: () => void
++  invalidatePrevFrame: () => void
++}
++
++export type StartupScreenHandoffDeps = {
++  ink?: RepaintableTerminal | undefined
++  isTTY?: boolean
++  write?: (text: string) => void
++  print?: () => void
++}
++
++/**
++ * Print the startup screen where Ink's frame is and have Ink draw its next
++ * frame under it.
++ *
++ * `furio agents` skips the startup screen so its own header starts at the
++ * top. A session it opens in place should still look like every other way
++ * into a session (`furio`, `furio --resume <id>`, a relaunch in another
++ * directory), which all have the startup screen above the conversation.
++ *
++ * The frame is erased and the startup screen takes its place, leaving the
++ * lines above it alone. When the frame's top is out of reach the screen is
++ * cleared instead. Main screen only: in the alternate screen the text would
++ * land in a buffer that is thrown away. Returns whether anything was printed.
++ */
++export function printStartupScreenAboveNextFrame({
++  ink = instances.get(process.stdout),
++  isTTY = Boolean(process.stdout.isTTY),
++  write = text => {
++    process.stdout.write(text)
++  },
++  print = () => printStartupScreen(),
++}: StartupScreenHandoffDeps = {}): boolean {
++  if (!ink || !isTTY || ink.isAltScreenActive) return false
++  if (!ink.eraseFrameForOutput()) {
++    write(ERASE_SCREEN + CURSOR_HOME)
++    // Ink's frame buffers still hold the old frame; start over from the
++    // cursor, which is about to sit under the startup screen.
++    ink.repaint()
++    ink.invalidatePrevFrame()
++  }
++  print()
++  return true
++}
 -- 
 2.43.0
 
