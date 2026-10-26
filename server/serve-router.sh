@@ -13,6 +13,7 @@
 #   FURIO_LOGDIR      로그 폴더                         (기본: 이 폴더의 logs/)
 #   SDI_API_KEY       주면 라우터가 Bearer 인증을 요구한다(사내망 밖에 열 때 권장)
 #   ROUTER_PIN        수업 모드: 절대 내려가지 않는 모델(쉼표 구분, 예 gpt-oss-20b@dp4). 내리는 길은 POST /router/evict force 뿐
+#                     시작하자마자 적힌 순서대로 올린다(카드가 모자라면 로그만)
 #   ROUTER_FORCE_EVICT 0 이면 카드가 모자라도 사용 중인 백엔드를 강제로 내리지 않고 그 요청을 503 으로 실패시킨다(기본 1)
 #
 # 같은 폴더의 .env(gitignore, KEY=VALUE 한 줄씩)에 적어 두면 재시작마다 같은 값으로 뜬다.

@@ -1182,6 +1182,81 @@ class Router:
 ROUTER = Router()
 
 
+# ── 시작 핀 올리기(2026-10-26) ─────────────────────────────────────────────
+# 라우터를 재시작하면 핀 모델이 내려간 채로 남았다(전에는 바깥 preload 가 바로 와서 가려졌다 — 20:08 학생 서비스
+# 4분 끊김). serve 는 시작하자마자 ROUTER_PIN 순서대로 올린다. 데몬 스레드라 HTTP 는 바로 뜬다(그동안 오는 같은
+# 모델 preload·요청은 ensure 의 self.lock 에 줄 선다). 카드가 모자라면(옛 라우터가 남긴 serve 가 카드를 들고 있는 등)
+# 로그만 남기고 아무것도 내리지 않는다 — 다음 재시작이나 게이트웨이 수업 타이머의 preload 가 다시 해 본다.
+def pin_order(value=None):
+    """ROUTER_PIN 값(쉼표 구분) → 적힌 순서의 모델 ID 목록(빈 칸·겹침 뺌). PINNED 와 같게 자른다."""
+    out = []
+    for m in (value or "").split(","):
+        if m and m not in out:
+            out.append(m)
+    return out
+
+
+def preload_pins_at_start(router=None, models=None):
+    """핀 모델을 순서대로 올린다(블로킹 — start_pin_preload 가 스레드로 부른다) → {모델: 결과}.
+    결과: up(올라왔거나 이미 떠 있음) · no_cards(카드 부족, 로그만) · failed(올리다 실패, state 'error') ·
+    unknown(이 라우터가 띄울 수 없는 이름) · unavailable(결과물 폴더 없음) · unpinned(그새 핀에서 빠짐)."""
+    router = ROUTER if router is None else router
+    models = pin_order(os.environ.get("ROUTER_PIN", "")) if models is None else list(models)
+    npu_used_mem(fresh=True)   # 시작 직후엔 smi 캐시가 비어 남이 든 카드도 빈 것으로 보인다
+    registry_fresh()
+    known = set(all_model_ids())
+    out = {}
+    for model in models:
+        if model not in PINNED:
+            out[model] = "unpinned"
+            router._log(f"시작 핀 올리기: '{model}' 은 이제 핀이 아니라 건너뜀")
+            continue
+        base, tp, dp, pp = parse_variant(model)
+        if model not in known or REGISTRY[base].get("kind", "chat") != "chat":
+            out[model] = "unknown"
+            router._log(f"시작 핀 올리기: '{model}' 은 이 라우터가 띄울 수 없는 모델이라 건너뜀")
+            continue
+        b = router.running.get(model)
+        if b and b.usable():
+            out[model] = "up"
+            continue
+        available, why = model_availability(model)
+        if not available and why in LOCAL_MISSING:
+            out[model] = "unavailable"
+            router._log(f"시작 핀 올리기: '{model}' 건너뜀({why})")
+            continue
+        need = variant_cards(tp, dp, pp)
+        free = router._free_cards()
+        if len(free) < need:
+            out[model] = "no_cards"
+            router._log(f"시작 핀 올리기: '{model}' 카드 부족(필요 {need}장, 빈 카드 {len(free)}장 {free}). "
+                        f"아무것도 내리지 않고 건너뜀")
+            continue
+        router._log(f"시작 핀 올리기: '{model}' (카드 {need}장)")
+        router.mark_loading(model)
+        try:
+            router.ensure(model)
+        except Exception as e:
+            out[model] = "failed"
+            router._log(f"시작 핀 올리기: '{model}' 실패: {short_error(str(e))}")
+            b = router.running.get(model)
+            if not (b and b.usable()):
+                router._fail(model, e)   # _start 에 이르기 전 실패도 'loading' 으로 남지 않게(preload 와 같다)
+            continue
+        out[model] = "up"
+    return out
+
+
+def start_pin_preload(router=None):
+    """시작 핀 올리기를 데몬 스레드로. ROUTER_PIN 이 비었으면 스레드 없이 None."""
+    models = pin_order(os.environ.get("ROUTER_PIN", ""))
+    if not models:
+        return None
+    t = threading.Thread(target=preload_pins_at_start, args=(router, models), daemon=True, name="pin-preload")
+    t.start()
+    return t
+
+
 # ── FastAPI 앱 ─────────────────────────────────────────────────────────────
 def build_app():
     import httpx
@@ -1723,6 +1798,7 @@ def main():
         extra = sorted(set(REGISTRY) - set(_BUILTIN_REGISTRY))
         ROUTER._log(f"추가 모델 파일 {EXTRA_MODELS}: "
                     + (f"{len(extra)}개 {extra}" if os.path.exists(EXTRA_MODELS) else "없음(내장 목록만)"))
+        start_pin_preload()   # 핀 모델을 순서대로 올린다(스레드 — HTTP 는 바로 뜬다)
         uvicorn.run(build_app(), host=host, port=ROUTER_PORT, log_level="warning")
     else:
         print(__doc__)
