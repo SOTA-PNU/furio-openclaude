@@ -22,6 +22,7 @@ import pytest
 
 import furiosa_router as fr
 
+CARD_WAIT = fr.PIN_START_CARD_WAIT   # 모듈 값(아래 autouse 픽스처가 0 으로 바꾸기 전)
 PIN = "gpt-oss-20b@dp4"   # 수업 핀(카드 4장)
 SMALL = "Qwen3-4B-FP8"    # 카드 1장짜리
 
@@ -40,6 +41,10 @@ class FakeProc:
         pass
 
 
+def _no_sleep(seconds):
+    raise AssertionError(f"실제로 {seconds}초 기다리면 안 된다 — 시험은 가짜 시계로")
+
+
 @pytest.fixture(autouse=True)
 def no_npu(monkeypatch):
     def _forbidden(*a, **k):
@@ -51,6 +56,8 @@ def no_npu(monkeypatch):
     monkeypatch.setattr(fr, "free_port", _forbidden)
     monkeypatch.setattr(fr, "wait_cards_free", lambda cards, timeout=0: True)
     monkeypatch.setattr(fr, "model_availability", lambda m: (True, None))
+    monkeypatch.setattr(fr, "PIN_START_CARD_WAIT", 0)   # 카드 기다리기는 아래 시험에서 따로(가짜 시계)
+    monkeypatch.setattr(fr, "_sleep", _no_sleep)
     with fr._SMI_LOCK:
         fr._SMI_CACHE["v"] = {}
     yield
@@ -188,15 +195,135 @@ def test_marks_loading_before_ensure(monkeypatch):
 
 
 # ── 시작 ──────────────────────────────────────────────────────────────────
-def test_start_pin_preload_runs_in_daemon_thread(monkeypatch):
+def test_start_pin_preload_runs_in_daemon_thread_after_a_delay(monkeypatch):
+    """시작 핀 올리기는 PIN_START_DELAY 초 뒤에 — 그사이 게이트웨이 수업 타이머(매분) 가 지금 핀으로 맞추고 올릴 틈을 준다."""
     monkeypatch.setenv("ROUTER_PIN", f"{PIN}")
     monkeypatch.setattr(fr, "PINNED", {PIN})
-    got = []
+    got, slept = [], []
+    monkeypatch.setattr(fr, "_sleep", slept.append)
     monkeypatch.setattr(fr, "preload_pins_at_start", lambda router=None, models=None: got.append(models))
     t = fr.start_pin_preload()
     assert t is not None and t.daemon
     t.join(timeout=5)
-    assert got == [[PIN]]
+    assert got == [[PIN]] and slept == [fr.PIN_START_DELAY]
+    assert fr.PIN_START_DELAY == 90
+
+
+def test_pin_start_delay_from_env(monkeypatch):
+    assert fr.pin_start_delay({}) == 90
+    assert fr.pin_start_delay({"ROUTER_PIN_START_DELAY": "0"}) == 0
+    assert fr.pin_start_delay({"ROUTER_PIN_START_DELAY": " 30 "}) == 30
+    for bad in ("-5", "soon", ""):
+        assert fr.pin_start_delay({"ROUTER_PIN_START_DELAY": bad}) == 90
+
+
+# ── 검토 반영(2026-10-26): 게이트웨이 핀과 다를 때·카드가 늦게 빌 때 ─────────────────────────────
+def test_skips_when_the_gateway_set_another_pin_during_the_delay(monkeypatch):
+    """콘솔이 실행 중에 바꾼 핀(SMALL) 은 라우터 메모리에만 있어 재시작하면 ROUTER_PIN(PIN) 으로 돌아간다. 기다리는 사이 게이트웨이 타이머가
+    /router/pin 으로 SMALL 을 핀으로 하고 preload 하면, 시작 핀 올리기는 옛 핀(PIN) 을 올리지 않는다 — 전에는 시작하자마자 PIN 의 콜드
+    스타트가 self.lock 을 쥐어 SMALL 올리기가 PIN 적재·축출 뒤로 밀렸다."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    r, calls, logs = fake_router(monkeypatch)
+
+    def gateway_acts(seconds):
+        fr.set_pins([SMALL])
+        r.mark_loading(SMALL)
+
+    monkeypatch.setattr(fr, "_sleep", gateway_acts)
+    t = fr.start_pin_preload(r, models=[PIN], delay=90)
+    t.join(timeout=5)
+    assert calls == [] and r.state.get(PIN) is None and r.state[SMALL] == "loading"
+    assert any(PIN in line and "핀이 아니라" in line for line in logs)
+
+
+def test_skips_a_pin_someone_else_is_already_loading(monkeypatch):
+    """게이트웨이의 preload(또는 학생 요청) 가 이미 같은 핀을 올리는 중이면 손대지 않는다 — 카드 부족 로그로 헷갈리게 하지 않는다."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    r, calls, logs = fake_router(monkeypatch)
+    r.mark_loading(PIN)
+    assert fr.preload_pins_at_start(r, [PIN]) == {PIN: "loading"}
+    assert calls == [] and not any("카드" in line for line in logs)
+    # _start 가 running 에 넣고 준비를 기다리는 중(아직 usable 아님) 이어도 같다
+    r2, calls2, _logs2 = fake_router(monkeypatch)
+    b = fr.Backend(PIN, 8411, FakeProc(), [0, 1, 2, 3])
+    r2.running[PIN] = b
+    assert fr.preload_pins_at_start(r2, [PIN]) == {PIN: "loading"} and calls2 == []
+
+
+class FakeClock:
+    def __init__(self):
+        self.t = 1000.0
+        self.slept = []
+
+    def monotonic(self):
+        return self.t
+
+    def sleep(self, seconds):
+        self.slept.append(seconds)
+        self.t += seconds
+
+
+def test_waits_for_cards_the_old_serve_still_holds(monkeypatch):
+    """재시작 직후엔 옛 serve 가 카드 메모리를 아직 놓지 않았을 수 있다(serve-router.sh 는 pkill 뒤 3초만 쉰다 — Router._stop 도
+    wait_cards_free 로 기다린다). 카드가 모자라면 PIN_START_CARD_WAIT 초까지 smi 를 새로 읽으며 기다렸다가 올린다."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    clock = FakeClock()
+    monkeypatch.setattr(fr, "_monotonic", clock.monotonic)
+    monkeypatch.setattr(fr, "_sleep", clock.sleep)
+    reads = []
+
+    def smi():
+        reads.append(1)
+        busy = len(reads) <= 3  # 앞의 세 번은 옛 serve 가 카드를 쥐고 있다
+        mem = {c: (30.0 if busy else 0.0) for c in range(4)}
+        with fr._SMI_LOCK:
+            fr._SMI_CACHE["v"] = dict(mem)
+        return mem
+
+    monkeypatch.setattr(fr, "_smi_read", smi)
+    r, calls, logs = fake_router(monkeypatch)
+    assert fr.preload_pins_at_start(r, [PIN], card_wait=90) == {PIN: "up"}
+    assert calls == [PIN] and 0 < sum(clock.slept) < 90
+    assert CARD_WAIT == fr.CARD_FREE_TIMEOUT == 90
+
+
+def test_gives_up_when_cards_stay_busy(monkeypatch):
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    clock = FakeClock()
+    monkeypatch.setattr(fr, "_monotonic", clock.monotonic)
+    monkeypatch.setattr(fr, "_sleep", clock.sleep)
+
+    def smi():
+        mem = {0: 30.0, 1: 0.0, 2: 0.0, 3: 0.0}  # 남이 카드 0 을 계속 쓴다
+        with fr._SMI_LOCK:
+            fr._SMI_CACHE["v"] = dict(mem)
+        return mem
+
+    monkeypatch.setattr(fr, "_smi_read", smi)
+    r, calls, logs = fake_router(monkeypatch)
+    assert fr.preload_pins_at_start(r, [PIN], card_wait=20) == {PIN: "no_cards"}
+    assert calls == [] and 20 <= sum(clock.slept) <= 22
+    assert any("카드" in line and "20초" in line for line in logs)
+
+
+def test_stops_waiting_for_cards_when_the_pin_changes(monkeypatch):
+    """카드를 기다리는 사이 게이트웨이가 핀을 바꾸면 기다리기를 그만둔다."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    clock = FakeClock()
+    monkeypatch.setattr(fr, "_monotonic", clock.monotonic)
+
+    def sleep(seconds):
+        clock.sleep(seconds)
+        if len(clock.slept) == 2:
+            fr.set_pins([SMALL])
+
+    monkeypatch.setattr(fr, "_sleep", sleep)
+    monkeypatch.setattr(fr, "_smi_read", lambda: {0: 30.0})
+    with fr._SMI_LOCK:
+        fr._SMI_CACHE["v"] = {0: 30.0}
+    r, calls, logs = fake_router(monkeypatch)
+    assert fr.preload_pins_at_start(r, [PIN], card_wait=90) == {PIN: "unpinned"}
+    assert calls == [] and len(clock.slept) == 2
 
 
 def test_start_pin_preload_without_pins_starts_nothing(monkeypatch):

@@ -65,7 +65,8 @@ evict) 카드를 확보합니다. furiosa-llm 은 serve 1프로세스=모델 1�
 
 | 환경변수 | 기본 | 뜻 |
 |---|---|---|
-| `ROUTER_PIN` | 없음 | 쉼표 구분 모델 ID(변형 포함, 예 `gpt-oss-20b@dp4`). LRU·강제 축출 어느 경로로도 안 내려감. `serve` 는 시작하자마자 적힌 순서대로 올린다 |
+| `ROUTER_PIN` | 없음 | 쉼표 구분 모델 ID(변형 포함, 예 `gpt-oss-20b@dp4`). LRU·강제 축출 어느 경로로도 안 내려감. `serve` 는 시작하고 `ROUTER_PIN_START_DELAY` 초 뒤 적힌 순서대로 올린다 |
+| `ROUTER_PIN_START_DELAY` | `90` | 시작 핀 올리기 전에 기다리는 초(0 이상 정수, 아니면 90). 그사이 게이트웨이 수업 타이머가 지금 핀으로 맞춘다 |
 | `ROUTER_FORCE_EVICT` | `1` | `0` 이면 `ROUTER_EVICT_WAIT` 뒤 사용 중 백엔드 강제 종료 대신 그 요청을 503 으로 실패 |
 
 - 빈 카드 + 내릴 수 있는(비핀) 백엔드가 쥔 카드로 필요한 장수를 못 채우면(전부 핀, 핀이 3장을 쥐고
@@ -76,11 +77,15 @@ evict) 카드를 확보합니다. furiosa-llm 은 serve 1프로세스=모델 1�
   건너뛴다(수업 끝에 게이트웨이 타이머가 핀 모델을 내리는 길). `force` 는 JSON `true` 만 — `"true"`·`1` 은
   force 가 아니다.
 - `GET /router/status` 에 `pinned: [...]`·`force_evict: bool` 이 붙는다.
-- 시작 핀 올리기(2026-10-26): `serve` 는 HTTP 를 띄우면서 데몬 스레드로 `ROUTER_PIN` 의 모델을 적힌 순서대로 올린다
-  (`start_pin_preload` → `preload_pins_at_start`). 먼저 `furiosa-smi` 를 새로 읽고, 카드가 모자라면(옛 라우터가 남긴
-  serve 가 카드를 들고 있는 등) 로그 한 줄만 남기고 아무것도 내리지 않는다. 이미 떠 있거나 그새 핀에서 빠진 모델,
-  띄울 수 없는 이름, 결과물 폴더가 없는 모델은 건너뛴다. 전에는 시작 때 핀을 올리지 않아 라우터를 재시작하면 핀이
-  내려간 채로 남았다(10-26 20:08 학생 서비스 4분 끊김). 게이트웨이 수업 타이머도 수업이 열려 있으면 매분 핀을 확인한다.
+- 시작 핀 올리기(2026-10-26): `serve` 는 HTTP 를 띄우고 데몬 스레드에서 `ROUTER_PIN_START_DELAY`(기본 90) 초 기다린 뒤
+  `ROUTER_PIN` 의 모델을 적힌 순서대로 올린다(`start_pin_preload` → `preload_pins_at_start`). 기다리는 까닭: 콘솔이 실행 중에
+  바꾼 핀은 라우터 메모리에만 있어 재시작하면 `ROUTER_PIN` 으로 돌아간다. 곧바로 옛 핀을 올리면 그 콜드 스타트가 라우터 잠금을
+  쥐어 게이트웨이 수업 타이머(매분 `/router/pin`·`/router/preload`) 의 지금 핀이 옛 핀 적재와 축출 뒤로 밀린다. 그사이 핀에서
+  빠진 모델, 누가 이미 올리는 중인 모델(게이트웨이 preload·학생 요청), 이미 떠 있는 모델, 띄울 수 없는 이름, 결과물 폴더가
+  없는 모델은 건너뛴다. 카드가 모자라면 `furiosa-smi` 를 새로 읽으며 90초(`CARD_FREE_TIMEOUT`) 까지 기다리고(옛 serve 가
+  카드 메모리를 늦게 놓는다), 그래도 모자라면 로그 한 줄만 남기고 아무것도 내리지 않는다. 전에는 시작 때 핀을 올리지 않아
+  라우터를 재시작하면 핀이 내려간 채로 남았다(10-26 20:08 학생 서비스 4분 끊김). 게이트웨이 수업 타이머도 수업이 열려
+  있으면 매분 핀을 확인한다.
 - `POST /router/pin` `{"models": ["<id>", ...]}` → `{"ok": true, "pinned": [...]}`(2026-10-26). 실행 중 핀 목록을
   통째로 바꾼다(빈 목록 = 핀 없음). 모델을 올리지는 않는다(올리기는 `/router/preload`). 메모리에만 두므로
   재시작하면 다시 `ROUTER_PIN`. 목록이 아니면 `400`, 띄울 수 없는 이름(모르는 모델, 카드 4장을 넘는 변형)이
@@ -109,7 +114,7 @@ python3 -m venv ~/.venvs/router-test && ~/.venvs/router-test/bin/pip install pyt
 taskset -c 64-127 ~/.venvs/router-test/bin/python -m pytest \
   server/test_router_classmode.py server/test_router_catalog.py server/test_serve_router_env.py \
   server/test_router_startpins.py -q
-# 71 passed (2026-10-26)
+# 77 passed (2026-10-26)
 ```
 
 > 클라이언트도 함께 고쳐야 의미가 있습니다. openclaude 의 백그라운드 호출(세션 제목·주제

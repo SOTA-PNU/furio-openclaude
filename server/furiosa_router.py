@@ -1184,9 +1184,47 @@ ROUTER = Router()
 
 # ── 시작 핀 올리기(2026-10-26) ─────────────────────────────────────────────
 # 라우터를 재시작하면 핀 모델이 내려간 채로 남았다(전에는 바깥 preload 가 바로 와서 가려졌다 — 20:08 학생 서비스
-# 4분 끊김). serve 는 시작하자마자 ROUTER_PIN 순서대로 올린다. 데몬 스레드라 HTTP 는 바로 뜬다(그동안 오는 같은
-# 모델 preload·요청은 ensure 의 self.lock 에 줄 선다). 카드가 모자라면(옛 라우터가 남긴 serve 가 카드를 들고 있는 등)
-# 로그만 남기고 아무것도 내리지 않는다 — 다음 재시작이나 게이트웨이 수업 타이머의 preload 가 다시 해 본다.
+# 4분 끊김). serve 는 시작하고 PIN_START_DELAY 초 뒤 ROUTER_PIN 순서대로 올린다. 데몬 스레드라 HTTP 는 바로 뜬다.
+# 기다리는 까닭(검토 반영): 콘솔이 실행 중에 바꾼 핀은 라우터 메모리에만 있어 재시작하면 ROUTER_PIN 으로 돌아간다. 곧바로
+# 옛 핀을 올리면 그 콜드 스타트가 self.lock 을 쥐어, 게이트웨이 수업 타이머(매분) 가 /router/pin·/router/preload 로 맞추려는
+# 지금 핀이 옛 핀 적재·축출 뒤로 밀린다. 그사이 게이트웨이가 핀을 바꿨으면 옛 핀은 '핀이 아니라' 건너뛰고, 누가 이미 올리는
+# 중이면(게이트웨이 preload·학생 요청) 손대지 않는다. 카드가 모자라면 PIN_START_CARD_WAIT 초까지 smi 를 새로 읽으며
+# 기다리고(옛 serve 가 카드 메모리를 늦게 놓는다 — Router._stop 도 wait_cards_free 로 기다린다), 그래도 모자라면 로그만 남기고
+# 아무것도 내리지 않는다 — 다음 재시작이나 게이트웨이 수업 타이머의 preload 가 다시 해 본다.
+PIN_START_DELAY_DEFAULT = 90
+
+
+def pin_start_delay(env=None):
+    """ROUTER_PIN_START_DELAY(초, 0 이상 정수) — 아니면 기본 90."""
+    raw = (os.environ if env is None else env).get("ROUTER_PIN_START_DELAY", "").strip()
+    return int(raw) if raw.isdigit() else PIN_START_DELAY_DEFAULT
+
+
+PIN_START_DELAY = pin_start_delay()
+PIN_START_CARD_WAIT = CARD_FREE_TIMEOUT   # 시작 핀 올리기가 카드가 비기를 기다리는 최대 초
+PIN_START_POLL = 2.0
+
+
+def _sleep(seconds):
+    time.sleep(seconds)
+
+
+def _monotonic():
+    return time.monotonic()
+
+
+def _start_skip(router, model):
+    """시작 핀 올리기가 이 모델을 건너뛸 까닭 — unpinned(그새 핀에서 빠짐) · up(이미 떠 있음) · loading(누가 올리는 중), 아니면 None."""
+    if model not in PINNED:
+        return "unpinned"
+    b = router.running.get(model)
+    if b and b.usable():
+        return "up"
+    if router.state.get(model) == "loading" or (b and b.alive()):
+        return "loading"
+    return None
+
+
 def pin_order(value=None):
     """ROUTER_PIN 값(쉼표 구분) → 적힌 순서의 모델 ID 목록(빈 칸·겹침 뺌). PINNED 와 같게 자른다."""
     out = []
@@ -1196,12 +1234,38 @@ def pin_order(value=None):
     return out
 
 
-def preload_pins_at_start(router=None, models=None):
+def _skip_log(router, model, why):
+    if why == "unpinned":
+        router._log(f"시작 핀 올리기: '{model}' 은 이제 핀이 아니라 건너뜀")
+    elif why == "loading":
+        router._log(f"시작 핀 올리기: '{model}' 은 이미 올리는 중이라 건너뜀")
+
+
+def _wait_free_cards(router, model, need, wait):
+    """빈 카드가 need 장이 될 때까지 wait 초까지 smi 를 새로 읽으며 기다린다 → (빈 카드, 건너뛸 까닭 또는 None).
+    기다리는 사이 핀에서 빠지거나 누가 올리기 시작하면 그 까닭으로 멈춘다."""
+    deadline = _monotonic() + max(wait, 0)
+    while True:
+        free = router._free_cards()
+        if len(free) >= need:
+            return free, None
+        if _monotonic() >= deadline:
+            return free, None
+        _sleep(PIN_START_POLL)
+        npu_used_mem(fresh=True)
+        why = _start_skip(router, model)
+        if why is not None:
+            return free, why
+
+
+def preload_pins_at_start(router=None, models=None, card_wait=None):
     """핀 모델을 순서대로 올린다(블로킹 — start_pin_preload 가 스레드로 부른다) → {모델: 결과}.
-    결과: up(올라왔거나 이미 떠 있음) · no_cards(카드 부족, 로그만) · failed(올리다 실패, state 'error') ·
-    unknown(이 라우터가 띄울 수 없는 이름) · unavailable(결과물 폴더 없음) · unpinned(그새 핀에서 빠짐)."""
+    결과: up(올라왔거나 이미 떠 있음) · loading(누가 이미 올리는 중) · no_cards(card_wait 초 기다려도 카드 부족, 로그만) ·
+    failed(올리다 실패, state 'error') · unknown(이 라우터가 띄울 수 없는 이름) · unavailable(결과물 폴더 없음) ·
+    unpinned(그새 핀에서 빠짐 — 게이트웨이가 다른 핀으로 맞췄다)."""
     router = ROUTER if router is None else router
     models = pin_order(os.environ.get("ROUTER_PIN", "")) if models is None else list(models)
+    card_wait = PIN_START_CARD_WAIT if card_wait is None else card_wait
     npu_used_mem(fresh=True)   # 시작 직후엔 smi 캐시가 비어 남이 든 카드도 빈 것으로 보인다
     registry_fresh()
     known = set(all_model_ids())
@@ -1209,16 +1273,17 @@ def preload_pins_at_start(router=None, models=None):
     for model in models:
         if model not in PINNED:
             out[model] = "unpinned"
-            router._log(f"시작 핀 올리기: '{model}' 은 이제 핀이 아니라 건너뜀")
+            _skip_log(router, model, "unpinned")
             continue
         base, tp, dp, pp = parse_variant(model)
         if model not in known or REGISTRY[base].get("kind", "chat") != "chat":
             out[model] = "unknown"
             router._log(f"시작 핀 올리기: '{model}' 은 이 라우터가 띄울 수 없는 모델이라 건너뜀")
             continue
-        b = router.running.get(model)
-        if b and b.usable():
-            out[model] = "up"
+        why = _start_skip(router, model)
+        if why is not None:
+            out[model] = why
+            _skip_log(router, model, why)
             continue
         available, why = model_availability(model)
         if not available and why in LOCAL_MISSING:
@@ -1226,10 +1291,14 @@ def preload_pins_at_start(router=None, models=None):
             router._log(f"시작 핀 올리기: '{model}' 건너뜀({why})")
             continue
         need = variant_cards(tp, dp, pp)
-        free = router._free_cards()
+        free, why = _wait_free_cards(router, model, need, card_wait)
+        if why is not None:
+            out[model] = why
+            _skip_log(router, model, why)
+            continue
         if len(free) < need:
             out[model] = "no_cards"
-            router._log(f"시작 핀 올리기: '{model}' 카드 부족(필요 {need}장, 빈 카드 {len(free)}장 {free}). "
+            router._log(f"시작 핀 올리기: '{model}' 카드 부족(필요 {need}장, {card_wait}초 기다려도 빈 카드 {len(free)}장 {free}). "
                         f"아무것도 내리지 않고 건너뜀")
             continue
         router._log(f"시작 핀 올리기: '{model}' (카드 {need}장)")
@@ -1247,12 +1316,20 @@ def preload_pins_at_start(router=None, models=None):
     return out
 
 
-def start_pin_preload(router=None):
-    """시작 핀 올리기를 데몬 스레드로. ROUTER_PIN 이 비었으면 스레드 없이 None."""
-    models = pin_order(os.environ.get("ROUTER_PIN", ""))
+def _preload_pins_later(router, models, delay):
+    if delay > 0:
+        _sleep(delay)
+    preload_pins_at_start(router, models)
+
+
+def start_pin_preload(router=None, models=None, delay=None):
+    """시작 핀 올리기를 데몬 스레드로 — delay(기본 PIN_START_DELAY) 초 뒤에. ROUTER_PIN 이 비었으면 스레드 없이 None."""
+    models = pin_order(os.environ.get("ROUTER_PIN", "")) if models is None else list(models)
     if not models:
         return None
-    t = threading.Thread(target=preload_pins_at_start, args=(router, models), daemon=True, name="pin-preload")
+    delay = PIN_START_DELAY if delay is None else delay
+    (ROUTER if router is None else router)._log(f"시작 핀 올리기: {delay}초 뒤 {models}")
+    t = threading.Thread(target=_preload_pins_later, args=(router, models, delay), daemon=True, name="pin-preload")
     t.start()
     return t
 
@@ -1798,7 +1875,7 @@ def main():
         extra = sorted(set(REGISTRY) - set(_BUILTIN_REGISTRY))
         ROUTER._log(f"추가 모델 파일 {EXTRA_MODELS}: "
                     + (f"{len(extra)}개 {extra}" if os.path.exists(EXTRA_MODELS) else "없음(내장 목록만)"))
-        start_pin_preload()   # 핀 모델을 순서대로 올린다(스레드 — HTTP 는 바로 뜬다)
+        start_pin_preload()   # PIN_START_DELAY 초 뒤 핀 모델을 순서대로 올린다(스레드 — HTTP 는 바로 뜬다)
         uvicorn.run(build_app(), host=host, port=ROUTER_PORT, log_level="warning")
     else:
         print(__doc__)
