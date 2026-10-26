@@ -28,6 +28,7 @@ import sys
 import threading
 import time
 import atexit
+import copy
 import hashlib
 import hmac
 
@@ -396,6 +397,284 @@ def model_desc(model_id):
     ctx = reg["ctx"]
     ctxs = f"{ctx // 1024}k" if ctx >= 1024 else str(ctx)
     return f"tp{tp}·dp{dp}·pp{pp} · {cards}장 · ctx {ctxs} · {art}"
+
+
+# ── 모델 목록 다시 읽기·올릴 수 있는지(2026-10-26) ─────────────────────────────
+# 콘솔이 "이 서버에서 바로 올릴 수 있는 모델" 을 고르게 한다(설계 notes/2026-10-26-furio-model-control-compare-design.md 1절).
+#   · 목록 = 내장 REGISTRY + 추가 모델 파일(ROUTER_EXTRA_MODELS, yaml·json, 없으면 내장만). 추가 파일을 고치면
+#     다음 /router/models(그리고 /v1/models·preload·pin·요청) 때 저절로 다시 읽고, POST /router/rescan 은 바로 다시 읽는다.
+#   · /router/models 각 행의 available·reason: 그 변형이 쓰는 결과물이 디스크에 다 있나. 결과물 폴더(절대 경로)는
+#     폴더를, 프리빌트(HF 저장소 id)는 HF 캐시의 스냅숏을 본다. 없어도 목록에는 남긴다(콘솔이 흐리게 보인다).
+# 내장 목록의 처음 모습. rebuild_registry 가 매번 여기서 새로 짓는다(추가 파일을 지우면 내장 값으로 돌아간다).
+_BUILTIN_REGISTRY = copy.deepcopy(REGISTRY)
+_BUILTIN_TOOLS = dict(TOOL_SUPPORT)
+EXTRA_MODELS = os.environ.get("ROUTER_EXTRA_MODELS") or os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "extra-models.yaml")
+TP_VALUES = (1, 2, 4, 8, 16, 32)
+TOOLS_VALUES = ("ok", "weak", "no")
+KINDS = ("chat", "embedding", "reranker")
+_REG_LOCK = threading.RLock()
+_REG_SIG = None        # 지금 목록을 지을 때 본 추가 파일의 (mtime_ns, 크기). 파일이 없으면 None
+_REG_BAD_SIG = False   # 마지막으로 읽기에 실패한 추가 파일의 서명(같은 파일을 요청마다 다시 읽지 않게). 없으면 False
+_REG_KEPT = set()      # 목록에서 빠졌지만 떠 있어서 내려갈 때까지 남겨 둔 base
+# 올릴 수 있는지 판정을 이만큼(초) 기억한다. /router/models 가 자주 불려도 디스크를 매번 훑지 않게. rescan 은 지운다.
+AVAIL_TTL = 5.0
+_AVAIL = {}            # 경로 → (시각, (available, reason))
+_INDEX = {}            # 가중치 색인 경로 → ((mtime_ns, 크기), 조각 파일 이름들). MoE 색인은 수 MB 라 매번 읽지 않는다
+LOCAL_MISSING = ("파일 없음", "일부 파일 없음")   # 결과물 폴더 쪽 까닭(preload 를 받지 않는다)
+
+
+def _rlog(msg):
+    print(f"[router {time.strftime('%H:%M:%S')}] {msg}", flush=True)
+
+
+def _file_sig(path):
+    try:
+        st = os.stat(path)
+    except OSError:
+        return None
+    return (st.st_mtime_ns, st.st_size)
+
+
+def load_extra_models(path):
+    """추가 모델 파일 → ({base: reg}, {base: tools}). 파일이 없거나 비었으면 ({}, {}).
+    모양이 틀리면 ValueError(파일·모델·칸을 적는다). .json 은 JSON, 나머지는 YAML."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            text = f.read()
+    except FileNotFoundError:
+        return {}, {}
+    except OSError as e:
+        raise ValueError(f"{os.path.basename(path)}: 읽지 못했습니다: {e}")
+    name = os.path.basename(path)
+    if path.endswith(".json"):
+        try:
+            raw = json.loads(text) if text.strip() else None
+        except ValueError as e:
+            raise ValueError(f"{name}: JSON 모양이 틀렸습니다: {e}")
+    else:
+        try:
+            import yaml
+        except ImportError:
+            raise ValueError(f"{name}: pyyaml 이 없어 읽지 못합니다. JSON(.json)으로 쓰세요")
+        try:
+            raw = yaml.safe_load(text)
+        except yaml.YAMLError as e:
+            # 여러 줄 예외 문구 대신 한 줄(콘솔 배너에 그대로 보인다): 몇째 줄, 무엇이 틀렸나
+            mark, problem = getattr(e, "problem_mark", None), getattr(e, "problem", None)
+            at = f"({mark.line + 1}째 줄)" if mark is not None else ""
+            raise ValueError(f"{name}: YAML 모양이 틀렸습니다{at}: {problem or type(e).__name__}")
+    if raw is None:
+        return {}, {}
+    models = raw.get("models") if isinstance(raw, dict) else None
+    if isinstance(models, dict):      # {id: {...}} 꼴도 받는다(REGISTRY 와 같은 모양)
+        models = [dict(v, id=k) if isinstance(v, dict) else v for k, v in models.items()]
+    if not isinstance(models, list):
+        raise ValueError(f"{name}: 맨 위에 models 목록이 있어야 합니다")
+    regs, tools = {}, {}
+    for i, m in enumerate(models):
+        where = f"{name}: models[{i}]"
+        if not isinstance(m, dict):
+            raise ValueError(f"{where}: 항목은 이름: 값 묶음이어야 합니다")
+        mid = m.get("id")
+        if not isinstance(mid, str) or not mid.strip():
+            raise ValueError(f"{where}: id 가 필요합니다")
+        where = f"{name}: 모델 '{mid}'"
+        if "@" in mid or mid != mid.strip():
+            raise ValueError(f"{where}: id 에 @ 나 앞뒤 빈칸을 쓸 수 없습니다(@ 는 변형 표시)")
+        if mid in regs:
+            raise ValueError(f"{where}: id '{mid}' 가 두 번 나옵니다")
+        path = m.get("path")
+        if not isinstance(path, str) or not path.strip():
+            raise ValueError(f"{where}: path(HF 저장소 id 또는 결과물 폴더 절대 경로)가 필요합니다")
+        tp = m.get("tp", 8)
+        if isinstance(tp, bool) or tp not in TP_VALUES:
+            raise ValueError(f"{where}: tp 는 {', '.join(map(str, TP_VALUES))} 중 하나여야 합니다")
+        ctx = m.get("ctx")
+        if isinstance(ctx, bool) or not isinstance(ctx, int) or ctx <= 0:
+            raise ValueError(f"{where}: ctx(컨텍스트 토큰 수)는 0 보다 큰 정수여야 합니다")
+        tool, reasoning = m.get("tool"), m.get("reasoning")
+        for what, v in (("tool", tool), ("reasoning", reasoning)):
+            if v is not None and not (isinstance(v, str) and v):
+                raise ValueError(f"{where}: {what} 는 파서 이름(글자)이어야 합니다")
+        extra = m.get("extra", [])
+        if not isinstance(extra, list) or not all(
+                isinstance(a, (str, int, float)) and not isinstance(a, bool) for a in extra):
+            raise ValueError(f"{where}: extra 는 serve 인자 목록이어야 합니다")
+        kind = m.get("kind", "chat")
+        if kind not in KINDS:
+            raise ValueError(f"{where}: kind 는 {', '.join(KINDS)} 중 하나여야 합니다")
+        support = m.get("tools", "weak" if tool else "no")
+        if support not in TOOLS_VALUES:
+            raise ValueError(f"{where}: tools 는 {', '.join(TOOLS_VALUES)} 중 하나여야 합니다")
+        tps = m.get("tps") or {}
+        if not isinstance(tps, dict) or not all(
+                not isinstance(k, bool) and k in TP_VALUES and isinstance(v, str) and v for k, v in tps.items()):
+            raise ValueError(f"{where}: tps 는 {{tp: 결과물 폴더}} 묶음이어야 합니다")
+        reg = dict(path=os.path.expanduser(path.strip()), tp=tp, cards=cards_base(tp), pp=1,
+                   tool=tool, reasoning=reasoning, ctx=ctx, kind=kind)
+        if extra:
+            reg["extra"] = [str(a) for a in extra]
+        if tps:
+            reg["tps"] = {k: os.path.expanduser(v) for k, v in tps.items()}
+        for flag in ("greedy_default", "destream"):
+            if m.get(flag) is True:
+                reg[flag] = True
+        regs[mid] = reg
+        tools[mid] = support
+    return regs, tools
+
+
+def _active_bases():
+    """떠 있거나 오르내리는 중인 모델의 base. 목록을 다시 지어도 이것들은 빼지 않는다(evict 가 404 로 막히지 않게)."""
+    r = globals().get("ROUTER")
+    if r is None:
+        return set()
+    mids = list(r.running) + [m for m, st in list(r.state.items()) if st in ("loading", "stopping")]
+    return {parse_variant(m)[0] for m in mids}
+
+
+def rebuild_registry():
+    """REGISTRY·TOOL_SUPPORT 를 내장 목록 + 추가 파일로 다시 짓는다 → {"count", "added", "removed", "kept"}.
+    added·removed 는 /router/models 의 id(변형 포함) 기준, kept 는 빠져야 하지만 떠 있어서 남긴 base.
+    추가 파일이 틀렸으면 ValueError 이고 목록은 앞의 것 그대로. 새 dict 로 갈아 끼운다(읽는 쪽은 락 없이 옛 것이나 새 것을 본다)."""
+    global REGISTRY, TOOL_SUPPORT, _REG_SIG, _REG_BAD_SIG, _REG_KEPT
+    with _REG_LOCK:
+        sig = _file_sig(EXTRA_MODELS)
+        try:
+            extra, extra_tools = load_extra_models(EXTRA_MODELS)
+        except ValueError:
+            _REG_BAD_SIG = sig
+            raise
+        reg = copy.deepcopy(_BUILTIN_REGISTRY)
+        tools = dict(_BUILTIN_TOOLS)
+        reg.update(extra)
+        tools.update(extra_tools)
+        kept = sorted(b for b in _active_bases() if b in REGISTRY and b not in reg)
+        for b in kept:
+            reg[b] = REGISTRY[b]
+            if b in TOOL_SUPPORT:
+                tools[b] = TOOL_SUPPORT[b]
+        before = all_model_ids()
+        REGISTRY, TOOL_SUPPORT = reg, tools
+        _REG_SIG, _REG_BAD_SIG, _REG_KEPT = sig, False, set(kept)
+        _AVAIL.clear()
+        after = all_model_ids()
+        seen_before, seen_after = set(before), set(after)
+        return {"count": len(after),
+                "added": [m for m in after if m not in seen_before],
+                "removed": [m for m in before if m not in seen_after],
+                "kept": kept}
+
+
+def registry_fresh():
+    """추가 파일이 바뀌었거나(mtime·크기) 남겨 둔 모델이 내려갔으면 목록을 다시 짓는다. 바뀐 게 없으면 None.
+    틀린 파일은 운영 로그만 남기고 앞의 목록을 쓴다(그 파일이 다시 바뀔 때까지 또 읽지 않는다)."""
+    sig = _file_sig(EXTRA_MODELS)
+    if _REG_BAD_SIG is not False and sig == _REG_BAD_SIG:
+        return None
+    stale = bool(_REG_KEPT) and not _REG_KEPT <= _active_bases()
+    if sig == _REG_SIG and not stale:
+        return None
+    try:
+        res = rebuild_registry()
+    except ValueError as e:
+        _rlog(f"추가 모델 파일을 읽지 못해 앞의 목록을 씁니다: {e}")
+        return None
+    if res["added"] or res["removed"]:
+        _rlog(f"모델 목록을 다시 읽음({EXTRA_MODELS}): 더함 {res['added']}, 뺌 {res['removed']}")
+    return res
+
+
+def hub_caches():
+    """furiosa-llm(huggingface_hub)이 프리빌트 저장소를 찾는 HF 캐시 폴더 후보(앞이 먼저)."""
+    home = os.environ.get("HF_HOME")
+    out = []
+    for p in (os.environ.get("HF_HUB_CACHE"), os.environ.get("HUGGINGFACE_HUB_CACHE"),
+              os.path.join(home, "hub") if home else None, os.path.expanduser("~/.cache/huggingface/hub")):
+        if p and p not in out:
+            out.append(p)
+    return out
+
+
+def artifact_complete(d):
+    """폴더 하나가 serve 할 만큼 다 있나. v2 결과물 = artifact.json + binary_bundle.zip,
+    FXB 묶음(프리빌트) = *.fxb + 가중치(model.safetensors.index.json 의 조각 전부, 색인이 없으면 safetensors 하나 이상).
+    HF 캐시의 스냅숏은 받은 파일만 링크가 생기므로 받다 만 저장소는 여기서 걸린다."""
+    try:
+        names = set(os.listdir(d))
+    except OSError:
+        return False
+    if "artifact.json" in names:
+        return "binary_bundle.zip" in names
+    if not any(n.endswith(".fxb") for n in names):
+        return False
+    if "model.safetensors.index.json" in names:
+        idx = os.path.join(d, "model.safetensors.index.json")
+        sig = _file_sig(idx)
+        hit = _INDEX.get(idx)
+        if hit and hit[0] == sig:
+            shards = hit[1]
+        else:
+            try:
+                with open(idx, encoding="utf-8") as f:
+                    shards = frozenset(json.load(f)["weight_map"].values())
+            except Exception:
+                return False
+            _INDEX[idx] = (sig, shards)
+        return bool(shards) and all(os.path.exists(os.path.join(d, s)) for s in shards)
+    return any(n.endswith(".safetensors") for n in names)
+
+
+def _hub_availability(repo):
+    seen = False
+    for cache in hub_caches():
+        top = os.path.join(cache, "models--" + repo.replace("/", "--"))
+        if not os.path.isdir(top):
+            continue
+        seen = True
+        try:
+            revs = os.listdir(os.path.join(top, "snapshots"))
+        except OSError:
+            continue
+        if any(artifact_complete(os.path.join(top, "snapshots", rev)) for rev in revs):
+            return True, None
+    return False, ("일부만 내려받음" if seen else "내려받지 않음")
+
+
+def path_availability(p):
+    """serve 할 경로 하나 → (available, reason). 결과물 폴더는 '파일 없음'·'일부 파일 없음',
+    HF 저장소 id 는 '내려받지 않음'·'일부만 내려받음'. AVAIL_TTL 초 동안 기억한다."""
+    now = time.monotonic()
+    hit = _AVAIL.get(p)
+    if hit and now - hit[0] < AVAIL_TTL:
+        return hit[1]
+    if os.path.isabs(p):
+        if not os.path.exists(p):
+            res = (False, "파일 없음")
+        else:
+            res = (True, None) if artifact_complete(p) else (False, "일부 파일 없음")
+    elif re.fullmatch(r"[\w.-]+/[\w.-]+", p):
+        res = _hub_availability(p)
+    else:
+        res = (False, "파일 없음")
+    _AVAIL[p] = (now, res)
+    return res
+
+
+def model_availability(model_id):
+    """모델 id(변형 포함) → (available, reason). 그 변형이 쓰는 결과물(tps 대체 빌드면 그 폴더)을 본다."""
+    base, tp, dp, pp = parse_variant(model_id)
+    reg = REGISTRY.get(base)
+    if reg is None:
+        return False, "목록에 없음"
+    return path_availability(resolve_art(reg, tp))
+
+
+try:
+    rebuild_registry()           # 시작 때 추가 파일을 읽는다(없으면 내장만)
+except ValueError as _e:
+    _rlog(f"추가 모델 파일을 읽지 못해 내장 목록만 씁니다: {_e}")
 
 
 # ── NPU 카드 상태 ──────────────────────────────────────────────────────────
@@ -931,6 +1210,7 @@ def build_app():
     async def list_models():
         # 기본 모델 + dp/pp 변형을 함께 노출한다. 변형을 별도 필드가 아니라 모델 ID 로 싣는 이유는
         # OpenAI 호환 API 를 벗어나지 않기 위해서다(어떤 클라이언트든 그냥 고르면 동작).
+        registry_fresh()
         return {"object": "list",
                 "data": [{"id": m, "object": "model", "owned_by": "furiosa-npu"}
                          for m in all_model_ids()]}
@@ -987,6 +1267,7 @@ def build_app():
         except Exception:
             payload = {}
         model = payload.get("model") or ""
+        registry_fresh()
         base = parse_variant(model)[0]
         if base not in REGISTRY:
             return JSONResponse({"error": {"message": f"unknown model '{model}'"}}, status_code=404)
@@ -994,6 +1275,13 @@ def build_app():
             return JSONResponse({"ok": False, "reason": "not a chat model"}, status_code=400)
 
         router = ROUTER
+        # 결과물 폴더가 없으면 카드를 비우기(LRU 축출) 전에 거절한다 — 떠 있는 모델을 헛되이 내리고 시작에서 실패하지 않게.
+        # 내려받지 않은 프리빌트(HF 저장소)는 받는다: serve 가 내려받는다(READY_TIMEOUT 참고).
+        available, why = model_availability(model)
+        b = router.running.get(model)
+        if not available and why in LOCAL_MISSING and not (b and b.usable()):
+            return JSONResponse({"ok": False, "reason": "unavailable", "model": model,
+                                 "error": {"message": why, "code": "unavailable"}}, status_code=409)
         router.mark_loading(model)
 
         def _go():
@@ -1159,6 +1447,7 @@ def build_app():
             return JSONResponse({"ok": False, "reason": "bad_request",
                                  "error": {"message": '본문은 {"models": ["모델 ID", ...]} 이어야 합니다'}},
                                 status_code=400)
+        registry_fresh()
         known = set(all_model_ids())
         unknown = [m for m in models if m not in known]
         if unknown:
@@ -1169,25 +1458,48 @@ def build_app():
         ROUTER._log(f"핀 바꿈: {pinned}")
         return {"ok": True, "pinned": pinned}
 
+    @app.post("/router/rescan")
+    def rescan():
+        """모델 목록(내장 REGISTRY + 추가 파일 ROUTER_EXTRA_MODELS)을 바로 다시 읽는다 →
+        {"ok": true, "count": n, "added": [id...], "removed": [id...], "kept": [base...]}. 추가 파일이 틀렸으면
+        400 {"reason": "bad_catalog", "error": {"message"}} 이고 목록은 앞의 것 그대로. 떠 있는 모델은 빠져도
+        내려갈 때까지 남는다(kept). 라우터 키는 미들웨어가 다른 /router 길과 같게 본다. sync — 파일 읽기는 threadpool 에서."""
+        try:
+            res = rebuild_registry()
+        except ValueError as e:
+            ROUTER._log(f"rescan 실패: {e}")
+            return JSONResponse({"ok": False, "reason": "bad_catalog",
+                                 "error": {"message": str(e), "code": "bad_catalog"}}, status_code=400)
+        ROUTER._log(f"rescan: 모델 {res['count']}개, 더함 {res['added']}, 뺌 {res['removed']}"
+                    + (f", 떠 있어 남김 {res['kept']}" if res["kept"] else ""))
+        return {"ok": True, **res}
+
     @app.get("/router/status")
     def router_status():
         return {"running": ROUTER.status(), "free_cards": ROUTER._free_cards(),
                 "pinned": sorted(PINNED), "force_evict": FORCE_EVICT}
 
     @app.get("/router/models")
-    async def router_models():
+    def router_models():
+        # sync(threadpool) — 올릴 수 있는지 보느라 디스크를 훑는 동안 이벤트 루프를 막지 않게.
         # 표시명·컨텍스트·병렬구성 단일 출처 → 클라이언트(install.sh·모델 선택 UI)가 그대로 쓴다.
         # description 은 openclaude 가 "Detected from ..." 로 하드코딩하므로 클라이언트가
         # 이 값으로 덮어쓴다.
         # state·error(2026-10-26): 콘솔의 모델 고르기 목록이 버튼(올리기·올리는 중·내리기)을 바꾸는 근거.
         # status() 스냅샷 한 번으로 전 행을 채운다(락 없음 — 콜드스타트 중에도 즉답).
+        # available·reason(2026-10-26): 결과물이 디스크에 다 있나(model_availability). 없어도 행은 남긴다.
+        # 추가 모델 파일이 바뀌었으면 먼저 다시 읽는다(registry_fresh).
+        registry_fresh()
         snap = ROUTER.status()
         out = []
         for mid in all_model_ids():
             base, tp, dp, pp = parse_variant(mid)
-            reg = REGISTRY[base]
+            reg = REGISTRY.get(base)
+            if reg is None:
+                continue          # 그새 rescan 이 뺐다
             dps, pps = par_choices(base, tp)
             state, error = ROUTER.model_state(mid, snap)
+            available, why = model_availability(mid)
             out.append({
                 "id": mid, "base": base, "name": model_display_name(mid),
                 "description": model_desc(mid),
@@ -1199,6 +1511,7 @@ def build_app():
                 "artifact": "fxb" if is_fxb_variant(reg, tp) else "v2",
                 "tools": TOOL_SUPPORT.get(base, "ok"),
                 "state": state, "error": error,
+                "available": available, "reason": why,
             })
         return {"data": out}
 
@@ -1239,6 +1552,7 @@ def build_app():
             model = payload.get("model")
         except Exception:
             return JSONResponse({"error": {"message": "invalid JSON body"}}, status_code=400)
+        registry_fresh()
         if parse_variant(model or "")[0] not in REGISTRY:
             return JSONResponse({"error": {"message": f"unknown model '{model}'. /v1/models 참고."}}, status_code=404)
         # 확률 샘플러 패닉 방지: 아티팩트의 generation_config 가 do_sample=true 인 모델은 클라이언트가
@@ -1250,7 +1564,7 @@ def build_app():
         # 클라이언트 값을 존중하지 않는 이유: openclaude 는 항상 temperature=1 을 보내고(claude.ts:1933)
         # 그 값이 곧 패닉 경로다. 존중하면 코더 모델이 매번 죽어 사용 자체가 불가능하다.
         # top_k/top_p 도 함께 걷어낸다 — 남아 있으면 필터 후 가중치가 다시 0/NaN 이 될 수 있다.
-        if REGISTRY[parse_variant(model)[0]].get("greedy_default"):
+        if REGISTRY.get(parse_variant(model)[0], {}).get("greedy_default"):
             payload["temperature"] = 0
             payload.pop("top_p", None)
             payload.pop("top_k", None)
@@ -1406,6 +1720,9 @@ def main():
                     f"auth={authmode})  pid={os.getpid()}")
         if PINNED or not FORCE_EVICT:
             ROUTER._log(f"수업 모드: pin={sorted(PINNED)} force_evict={'on' if FORCE_EVICT else 'off'}")
+        extra = sorted(set(REGISTRY) - set(_BUILTIN_REGISTRY))
+        ROUTER._log(f"추가 모델 파일 {EXTRA_MODELS}: "
+                    + (f"{len(extra)}개 {extra}" if os.path.exists(EXTRA_MODELS) else "없음(내장 목록만)"))
         uvicorn.run(build_app(), host=host, port=ROUTER_PORT, log_level="warning")
     else:
         print(__doc__)
