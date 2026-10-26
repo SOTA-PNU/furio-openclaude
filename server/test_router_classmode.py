@@ -341,3 +341,182 @@ def test_registry_20b_ctx_and_flag():
     rows = {m["id"]: m for m in TestClient(fr.build_app()).get("/router/models").json()["data"]}
     assert rows[PIN]["context"] == 65536
     assert rows["gpt-oss-20b"]["context"] == 65536
+
+
+# ── 실행 중 핀 바꾸기(POST /router/pin)·모델 상태(/router/models 의 state·error) ──────────
+def _client(monkeypatch, r):
+    from fastapi.testclient import TestClient
+    monkeypatch.setattr(fr, "ROUTER", r)
+    return TestClient(fr.build_app())
+
+
+def _rows(c):
+    return {m["id"]: m for m in c.get("/router/models").json()["data"]}
+
+
+def test_pin_endpoint_replaces_pins(monkeypatch):
+    """POST /router/pin 은 실행 중 핀 목록을 통째로 바꾼다. status·evict·_evict_until 이 새 목록을 따른다."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    pinned = make_backend(PIN, [0, 1, 2])
+    idle = make_backend(IDLE, [3])
+    r, stopped = make_router(monkeypatch, pinned, idle)
+    c = _client(monkeypatch, r)
+
+    res = c.post("/router/pin", json={"models": [IDLE, BUSY, IDLE]})
+    assert res.status_code == 200
+    assert res.json() == {"ok": True, "pinned": sorted([IDLE, BUSY])}
+    assert c.get("/router/status").json()["pinned"] == sorted([IDLE, BUSY])
+
+    # 새 핀은 내릴 수 없고, 옛 핀은 이제 보통 모델처럼 내려간다
+    res = c.post("/router/evict", json={"model": IDLE})
+    assert (res.status_code, res.json()["reason"]) == (409, "pinned")
+    res = c.post("/router/evict", json={"model": PIN})
+    assert res.status_code == 200
+    assert stopped == [PIN]
+
+    # 빈 목록 = 핀 없음
+    res = c.post("/router/pin", json={"models": []})
+    assert res.json() == {"ok": True, "pinned": []}
+    assert c.get("/router/status").json()["pinned"] == []
+
+
+def test_pin_change_applies_to_lru(monkeypatch):
+    """핀을 바꾸면 _evict_until 도 새 핀을 건드리지 않는다(옛 핀은 희생양이 될 수 있다)."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    old = make_backend(PIN, [0, 1, 2], last_used=time.time() - 1000)
+    new = make_backend(IDLE, [3], last_used=time.time() - 2000)
+    r, stopped = make_router(monkeypatch, old, new)
+    c = _client(monkeypatch, r)
+
+    assert c.post("/router/pin", json={"models": [IDLE]}).status_code == 200
+    r._evict_until(1)
+    assert stopped == [PIN]
+    assert IDLE in r.running
+
+
+def test_pin_endpoint_rejects_bad_body(monkeypatch):
+    """모르는 이름·없는 변형(카드 4장을 넘는 dp8)은 404, 목록이 아니면 400. 어느 경우도 핀은 그대로."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    r, _ = make_router(monkeypatch)
+    c = _client(monkeypatch, r)
+
+    for bad in (["no-such-model"], [PIN, "gpt-oss-20b@dp8"]):
+        res = c.post("/router/pin", json={"models": bad})
+        assert res.status_code == 404, bad
+        assert res.json()["ok"] is False
+    for bad in ({"models": PIN}, {"models": [1]}, {"models": [""]}, {}, [PIN]):
+        res = c.post("/router/pin", json=bad)
+        assert res.status_code == 400, bad
+    res = c.post("/router/pin", content=b"not json")
+    assert res.status_code == 400
+    assert c.get("/router/status").json()["pinned"] == [PIN]
+
+
+def test_pin_endpoint_uses_router_key(monkeypatch):
+    """라우터 키가 있으면 preload·evict 처럼 /router/pin 도 Bearer 가 있어야 한다."""
+    from fastapi.testclient import TestClient
+
+    monkeypatch.setattr(fr, "PINNED", set())
+    monkeypatch.setenv("SDI_API_KEY", "test-router-key")
+    r, _ = make_router(monkeypatch)
+    monkeypatch.setattr(fr, "ROUTER", r)
+    c = TestClient(fr.build_app())
+
+    assert c.post("/router/pin", json={"models": [PIN]}).status_code == 401
+    res = c.post("/router/pin", json={"models": [PIN]},
+                 headers={"authorization": "Bearer test-router-key"})
+    assert res.status_code == 200
+    assert fr.PINNED == {PIN}
+
+
+def test_router_models_state_and_error(monkeypatch):
+    """/router/models 각 행: cards(필요 장수, 정수)·state(up·loading·stopping·down·error)·error(있으면 짧은 문구)."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    up = make_backend(PIN, [0, 1, 2, 3])
+    r, _ = make_router(monkeypatch, up)
+    r.state[IDLE] = "loading"
+    r.state["Qwen3-32B-FP8"] = "stopping"
+    r.state[BUSY] = "error"
+    r.errors[BUSY] = "serve process exited early:\nINFO loading\n\nRuntimeError: out of memory\n"
+    c = _client(monkeypatch, r)
+
+    rows = _rows(c)
+    assert rows[PIN]["state"] == "up" and rows[PIN]["error"] is None
+    assert rows[PIN]["cards"] == 4
+    assert rows[IDLE]["state"] == "loading"
+    assert rows["Qwen3-32B-FP8"]["state"] == "stopping"
+    assert rows["gpt-oss-120b"]["state"] == "down" and rows["gpt-oss-120b"]["error"] is None
+    assert rows["gpt-oss-120b"]["cards"] == 4
+    err = rows[BUSY]
+    assert err["state"] == "error"
+    assert "\n" not in err["error"] and len(err["error"]) <= 200
+    assert "out of memory" in err["error"]
+    # 기존 필드는 그대로
+    for key in ("id", "base", "name", "context", "kind", "tools", "dp", "pp", "tp"):
+        assert key in rows[PIN]
+
+
+def test_start_failure_records_error(monkeypatch):
+    """_start 가 실패하면 state 'error' 와 함께 errors 에 까닭을 남긴다(카드 부족·장수 초과 모두)."""
+    monkeypatch.setattr(fr, "EVICT_WAIT", 0)
+    monkeypatch.setattr(fr, "FORCE_EVICT", False)
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    pinned = make_backend(PIN, [0, 1, 2, 3])
+    r, _ = make_router(monkeypatch, pinned)
+
+    with pytest.raises(RuntimeError):
+        r._start(IDLE)
+    assert r.state[IDLE] == "error"
+    assert "카드 부족" in r.errors[IDLE]
+
+    with pytest.raises(RuntimeError):
+        r._start("gpt-oss-20b@dp8")
+    assert r.state["gpt-oss-20b@dp8"] == "error"
+    assert r.errors["gpt-oss-20b@dp8"]
+
+
+def _wait_for(pred, timeout=3.0):
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        if pred():
+            return True
+        time.sleep(0.02)
+    return False
+
+
+def test_preload_shows_loading_then_error(monkeypatch):
+    """preload 는 즉시 답하고, 올리기가 다른 모델 적재 뒤에 줄 서 있어도 그 모델은 곧바로 loading 으로 보인다.
+    뒤에서 실패하면 error 와 짧은 까닭."""
+    import threading as _th
+
+    monkeypatch.setattr(fr, "PINNED", set())
+    r, _ = make_router(monkeypatch)
+    gate = _th.Event()
+
+    def _ensure(model_id):
+        gate.wait(5)
+        raise RuntimeError("serve process exited early:\nboom: device busy")
+
+    monkeypatch.setattr(r, "ensure", _ensure)
+    c = _client(monkeypatch, r)
+
+    res = c.post("/router/preload", json={"model": IDLE})
+    assert res.json() == {"ok": True, "model": IDLE}
+    assert _rows(c)[IDLE]["state"] == "loading"
+    gate.set()
+    assert _wait_for(lambda: _rows(c)[IDLE]["state"] == "error")
+    assert "boom: device busy" in _rows(c)[IDLE]["error"]
+
+
+def test_preload_of_up_model_stays_up(monkeypatch):
+    """이미 올라온 모델의 preload 는 state 를 건드리지 않는다(up 그대로)."""
+    monkeypatch.setattr(fr, "PINNED", {PIN})
+    r, _ = make_router(monkeypatch, make_backend(PIN, [0, 1, 2, 3]))
+    calls = []
+    monkeypatch.setattr(r, "ensure", lambda m: calls.append(m) or 8410)
+    c = _client(monkeypatch, r)
+
+    assert c.post("/router/preload", json={"model": PIN}).json() == {"ok": True, "model": PIN}
+    assert _rows(c)[PIN]["state"] == "up"
+    assert _wait_for(lambda: calls == [PIN])
+    assert _rows(c)[PIN]["state"] == "up"

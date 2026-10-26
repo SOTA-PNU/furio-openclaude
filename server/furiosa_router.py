@@ -61,7 +61,32 @@ EVICT_GRACE = int(os.environ.get("ROUTER_EVICT_GRACE", "20"))
 # ROUTER_PIN: 쉼표로 구분한 모델 ID(변형 포함, 예 gpt-oss-20b@dp4). 핀 모델은 LRU·강제 축출 어느
 #   경로에서도 내려가지 않는다 — 25명이 쓰는 모델을 LAN 의 다른 사용자 한 명의 /model 이 내리면 수업
 #   전체가 선다. 내리는 길은 POST /router/evict {"force": true} 뿐(수업 끝 — 게이트웨이 타이머).
+#   ROUTER_PIN 은 시작 기본값일 뿐이다. 실행 중에는 POST /router/pin {"models": [...]} 가 목록을 통째로
+#   바꾼다(set_pins — 메모리에만, 재시작하면 다시 ROUTER_PIN). 콘솔이 모델을 바꾸는 길(2026-10-26 설계 1절).
 PINNED = set(filter(None, os.environ.get("ROUTER_PIN", "").split(",")))
+
+
+def set_pins(models):
+    """실행 중 핀 목록을 통째로 바꾼다. 새 set 으로 갈아 끼운다(제자리 수정이 아님) — 다른 스레드가
+    옛 set 을 순회하는 중이어도 깨지지 않고, 판정마다 그 순간의 목록을 본다."""
+    global PINNED
+    PINNED = set(models)
+    return sorted(PINNED)
+
+
+# /router/models 의 error 칸 길이. 콘솔 표의 한 줄 — 긴 로그 꼬리는 서버 로그(router-*.log)에서 본다.
+ERROR_SHORT = 200
+
+
+def short_error(msg):
+    """긴 실패 까닭(여러 줄 로그 꼬리 포함) → 한 줄. 첫 줄과 마지막 줄(로그 꼬리의 실제 오류)만 남긴다."""
+    lines = [ln.strip() for ln in str(msg).splitlines() if ln.strip()]
+    if not lines:
+        return "알 수 없는 오류"
+    text = lines[0] if len(lines) == 1 else f"{lines[0]} {lines[-1]}"
+    return text[:ERROR_SHORT]
+
+
 # ROUTER_FORCE_EVICT=0 이면 EVICT_WAIT 뒤 '사용 중인 백엔드 강제 종료' 를 하지 않고 그 요청을 실패시킨다
 #   (503, 핀·처리 중 백엔드는 그대로). 기본 1 = 예전처럼 교착 방지용 강제 축출.
 FORCE_EVICT = os.environ.get("ROUTER_FORCE_EVICT", "1") == "1"
@@ -467,6 +492,9 @@ class Router:
         # 클라이언트 LED 의 단일 출처 — "지금 올라가는 중"을 표현하려고 도입했다
         # (기존엔 running 에 들어간 뒤에야 보여서 콜드스타트 2분이 침묵이었다).
         self.state = {}
+        # model_id -> 마지막 실패 까닭(전문). state 가 'error' 일 때 /router/models 가 short_error 로 보인다.
+        # 다음 _start 가 지운다.
+        self.errors = {}
         self.lock = threading.RLock()
         # inflight/evicting 전용 짧은 락. self.lock 은 콜드스타트 동안 수 분간 잡혀 있어
         # 여기에 쓸 수 없다(warm 요청이 다 막힌다). 절대 오래 잡지 않는다.
@@ -595,7 +623,7 @@ class Router:
             reason = "핀 모델을 내릴 수 없음"
         else:
             reason = "내릴 수 있는 백엔드를 다 내려도 모자람(외부 점유?)"
-        return (f"카드 부족 — {reason} (need {need}, free {len(self._free_cards())}, "
+        return (f"카드 부족: {reason} (need {need}, free {len(self._free_cards())}, "
                 f"핀 {pinned}, 처리 중 {busy}, force_evict={'on' if FORCE_EVICT else 'off'})")
 
     def _start(self, model_id):
@@ -607,20 +635,24 @@ class Router:
         #   · tp>8  → 인스턴스당 ceil(tp/8) 장(예: tp32 → 4장 npu:0,1,2,3).
         slots = dp * pp
         need = variant_cards(tp, dp, pp)
+        self.errors.pop(model_id, None)
         if need > len(ALL_CARDS):
-            raise RuntimeError(f"{need}장 필요 — 카드는 {len(ALL_CARDS)}장뿐")
+            msg = f"카드 {need}장이 필요한데 이 서버에는 {len(ALL_CARDS)}장뿐입니다"
+            self._fail(model_id, msg)
+            raise RuntimeError(msg)
         self.state[model_id] = "loading"
         try:
             self._evict_until(need)
         except RuntimeError as e:
             # 핀·FORCE_EVICT=0 으로 카드를 못 만든 경우. 'loading' 으로 남겨 두면 LED 가 영원히 노랑이다.
-            self.state[model_id] = "error"
+            self._fail(model_id, e)
             self._log(f"start '{model_id}' 포기: {e}")
             raise
         free = self._free_cards()
         if len(free) < need:
-            self.state[model_id] = "error"
-            raise RuntimeError(f"need {need} cards, only {len(free)} free")
+            msg = f"need {need} cards, only {len(free)} free"
+            self._fail(model_id, msg)
+            raise RuntimeError(msg)
         cards = free[:need]
         if tp < 8:
             # 각 그룹을 카드 안의 tp-크기 PE 구간에 순서대로 채운다.
@@ -667,8 +699,8 @@ class Router:
         self.running[model_id] = b
         try:
             self._wait_ready(b, logpath)
-        except Exception:
-            self.state[model_id] = "error"
+        except Exception as e:
+            self._fail(model_id, e)
             self._stop(b)
             raise
         # HTTP 서버가 실제로 뜬 뒤에야 usable — 이 전에는 프록시가 붙으면 ConnectError 다.
@@ -678,6 +710,29 @@ class Router:
         self.state[model_id] = "up"
         self._log(f"ready '{model_id}' on :{port}")
         return b
+
+    def _fail(self, model_id, why):
+        """state 'error' + 까닭 기록(/router/models 의 error 칸)."""
+        self.state[model_id] = "error"
+        self.errors[model_id] = str(why)
+
+    def model_state(self, model_id, snapshot=None):
+        """(state, error) — /router/models 한 행의 상태. snapshot 은 status() 결과(행마다 다시 만들지 않게).
+        status() 에 없으면 'down'. error 는 state 가 'error' 일 때만 짧은 문구, 아니면 None."""
+        snap = self.status() if snapshot is None else snapshot
+        st = (snap.get(model_id) or {}).get("state") or "down"
+        if st != "error":
+            return st, None
+        return st, short_error(self.errors.get(model_id) or "올리지 못했습니다")
+
+    def mark_loading(self, model_id):
+        """preload 를 받은 즉시 'loading' 으로 보인다 — 다른 모델 적재가 self.lock 을 쥐고 있어 줄 서 있는
+        동안에도 콘솔이 '올리는 중' 을 볼 수 있게. 이미 쓸 수 있는(up) 백엔드는 건드리지 않는다."""
+        b = self.running.get(model_id)
+        if b and b.usable():
+            return
+        self.errors.pop(model_id, None)
+        self.state[model_id] = "loading"
 
     def _wait_ready(self, b, logpath):
         import httpx
@@ -699,7 +754,7 @@ class Router:
                 pass
             time.sleep(2)
         raise RuntimeError(
-            f"serve not ready within {READY_TIMEOUT}s — 첫 사용 모델이면 가중치 다운로드가 진행 중이었을 수 "
+            f"serve not ready within {READY_TIMEOUT}s. 첫 사용 모델이면 가중치 다운로드가 진행 중이었을 수 "
             f"있습니다. 재시도하면 다운로드를 이어받습니다(또는 ROUTER_READY_TIMEOUT 을 늘려 재기동).")
 
     def ensure(self, model_id):
@@ -905,11 +960,19 @@ def build_app():
         if REGISTRY[base].get("kind", "chat") != "chat":
             return JSONResponse({"ok": False, "reason": "not a chat model"}, status_code=400)
 
+        router = ROUTER
+        router.mark_loading(model)
+
         def _go():
             try:
-                ROUTER.ensure(model)
+                router.ensure(model)
             except Exception as e:
-                ROUTER._log(f"preload '{model}' failed: {e}")
+                router._log(f"preload '{model}' failed: {e}")
+                # _start 가 이미 error 를 남겼으면 같은 값이다. _start 에 이르기 전에 난 실패도
+                # 'loading' 으로 영원히 남지 않게 여기서 한 번 더 막는다.
+                b = router.running.get(model)
+                if not (b and b.usable()):
+                    router._fail(model, e)
 
         threading.Thread(target=_go, daemon=True).start()
         return {"ok": True, "model": model}
@@ -1048,6 +1111,31 @@ def build_app():
         return {"total": len(rows), "counts": counts,
                 "comments": comments[-20:], "path": SURVEY_PATH}
 
+    @app.post("/router/pin")
+    async def pin(request: Request):
+        """실행 중 핀 목록을 통째로 바꾼다. 본문 {"models": [id, ...]} → {"ok": true, "pinned": [...]}.
+        목록이 아니거나 빈 이름·문자열 아닌 값이면 400, 이 라우터가 띄울 수 없는 이름(모르는 모델·카드 4장을
+        넘는 변형)이 하나라도 있으면 404 — 어느 경우도 핀은 그대로다. 빈 목록은 '핀 없음'.
+        모델을 올리지는 않는다(올리기는 /router/preload). 라우터 키는 미들웨어가 다른 /router 길과 같게 본다."""
+        try:
+            payload = json.loads(await request.body() or b"{}")
+        except Exception:
+            payload = None
+        models = payload.get("models") if isinstance(payload, dict) else None
+        if not isinstance(models, list) or not all(isinstance(m, str) and m for m in models):
+            return JSONResponse({"ok": False, "reason": "bad_request",
+                                 "error": {"message": '본문은 {"models": ["모델 ID", ...]} 이어야 합니다'}},
+                                status_code=400)
+        known = set(all_model_ids())
+        unknown = [m for m in models if m not in known]
+        if unknown:
+            return JSONResponse({"ok": False, "reason": "unknown", "models": unknown,
+                                 "error": {"message": f"이 서버에 없는 모델: {', '.join(unknown)}"}},
+                                status_code=404)
+        pinned = set_pins(models)
+        ROUTER._log(f"핀 바꿈: {pinned}")
+        return {"ok": True, "pinned": pinned}
+
     @app.get("/router/status")
     def router_status():
         return {"running": ROUTER.status(), "free_cards": ROUTER._free_cards(),
@@ -1058,11 +1146,15 @@ def build_app():
         # 표시명·컨텍스트·병렬구성 단일 출처 → 클라이언트(install.sh·모델 선택 UI)가 그대로 쓴다.
         # description 은 openclaude 가 "Detected from ..." 로 하드코딩하므로 클라이언트가
         # 이 값으로 덮어쓴다.
+        # state·error(2026-10-26): 콘솔의 모델 고르기 목록이 버튼(올리기·올리는 중·내리기)을 바꾸는 근거.
+        # status() 스냅샷 한 번으로 전 행을 채운다(락 없음 — 콜드스타트 중에도 즉답).
+        snap = ROUTER.status()
         out = []
         for mid in all_model_ids():
             base, tp, dp, pp = parse_variant(mid)
             reg = REGISTRY[base]
             dps, pps = par_choices(base, tp)
+            state, error = ROUTER.model_state(mid, snap)
             out.append({
                 "id": mid, "base": base, "name": model_display_name(mid),
                 "description": model_desc(mid),
@@ -1073,6 +1165,7 @@ def build_app():
                 "dp_choices": dps, "pp_choices": pps,
                 "artifact": "fxb" if is_fxb_variant(reg, tp) else "v2",
                 "tools": TOOL_SUPPORT.get(base, "ok"),
+                "state": state, "error": error,
             })
         return {"data": out}
 
