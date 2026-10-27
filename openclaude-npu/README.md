@@ -1,7 +1,7 @@
 # NPU 패치 — openclaude 를 furio 클라이언트로
 
 furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude Code 계열 TUI)다.
-`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 60개다.
+`openclaude-npu.patch` 는 거기에 NPU 연동을 더한 커밋 61개다.
 
 - 상태줄에 모델별 LED — 라우터의 `/router/status` 를 폴링해 올라오는 중(노랑)/사용 가능(초록)을 보여준다
 - `/model` 창에서 tp·dp·pp 를 따로 고른다(라우터가 주는 변형 목록 기준)
@@ -30,7 +30,7 @@ furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude 
   닮아 있었다. 글자 폭이 제각각이라(FURIO 의 I 만 3칸) 칸 너비를 그림 옆에 데이터로 둔다.
   업스트림 팔레트 5종은 그대로라 `/logo` 로 언제든 바꿀 수 있다
 - 수업판(`FURIO_EDITION=class`)만: `/login`·`/logout` 이 furio 게이트웨이 계정용으로 바뀐다 — 터미널에 기기 코드,
-  브라우저에서 이메일 계정으로 로그인·승인, 토큰은 `~/.furio/key`(0600). 상태줄에 계정 이메일·`로그인 필요: /login`·
+  브라우저에 터미널의 코드와 이메일, 비밀번호를 넣어 로그인, 토큰은 `~/.furio/key`(0600). 상태줄에 계정 이메일·`로그인 필요: /login`·
   계정 정지·`수업 닫힘 · 다음 …`·공지. 공식 마켓 자동 설치·선언된 마켓 백그라운드 reconcile·`/ads` 를 꺼서
   학생 PC 는 게이트웨이 밖으로 나가지 않는다. 일반판은 그대로
 
@@ -51,7 +51,7 @@ furio 의 화면은 [openclaude](https://github.com/Twigpine/openclaude)(Claude 
 git clone https://github.com/Twigpine/openclaude.git
 cd openclaude
 git checkout v0.33.0
-git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 60개
+git am /path/to/furio-openclaude/openclaude-npu/openclaude-npu.patch   # 커밋 61개
 
 bun install
 bun run build          # → dist/cli.mjs, dist/sdk.mjs   (일반판 = lab, 설문 없음)
