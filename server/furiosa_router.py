@@ -33,6 +33,7 @@ import atexit
 import copy
 import hashlib
 import hmac
+import math
 
 # 옛 로컬 아티팩트 폴더(상대경로 레지스트리 항목 호환용). 배포본에선 환경변수로 옮길 수 있다.
 ART = os.environ.get("FURIO_ARTIFACTS_LEGACY", "/home/jun/RNGD-proj/Model_Benchmark/rngd-npu/artifacts")
@@ -65,7 +66,8 @@ EVICT_GRACE = int(os.environ.get("ROUTER_EVICT_GRACE", "20"))
 #   경로에서도 내려가지 않는다 — 25명이 쓰는 모델을 LAN 의 다른 사용자 한 명의 /model 이 내리면 수업
 #   전체가 선다. 내리는 길은 POST /router/evict {"force": true} 뿐(수업 끝 — 게이트웨이 타이머).
 #   ROUTER_PIN 은 시작 기본값일 뿐이다. 실행 중에는 POST /router/pin {"models": [...]} 가 목록을 통째로
-#   바꾼다(set_pins — 메모리에만, 재시작하면 다시 ROUTER_PIN). 콘솔이 모델을 바꾸는 길(2026-10-26 설계 1절).
+#   바꾼다(set_pins, 메모리에만). 콘솔이 모델을 바꾸는 길(2026-10-26 설계 1절). 콘솔의 다시 시작(POST /router/restart)은
+#   그 핀을 다시 시작 기록(RESUME_FILE)으로 새 라우터에 넘기고, 손으로 serve-router.sh 를 띄우면 다시 ROUTER_PIN.
 PINNED = set(filter(None, os.environ.get("ROUTER_PIN", "").split(",")))
 
 
@@ -803,6 +805,9 @@ class Router:
         # inflight/evicting 전용 짧은 락. self.lock 은 콜드스타트 동안 수 분간 잡혀 있어
         # 여기에 쓸 수 없다(warm 요청이 다 막힌다). 절대 오래 잡지 않는다.
         self.ilock = threading.Lock()
+        # 시작 핀 올리기가 아직 올리지 않은 모델(순서대로)과 그 가운데 지금도 핀이어야 올리는 모델. 다시 시작 기록이
+        # 함께 적는다(시작 핀 올리기를 기다리는 사이에 또 다시 시작해도 올리려던 모델을 잃지 않게)
+        self.start_pending = ([], frozenset())
         atexit.register(self.shutdown_all)
 
     # 현재 비어 있는 카드: 내 백엔드가 점유 중이지도 않고, furiosa-smi 상 실제로도 비어
@@ -1191,7 +1196,8 @@ ROUTER = Router()
 # ── 시작 핀 올리기(2026-10-26) ─────────────────────────────────────────────
 # 라우터를 재시작하면 핀 모델이 내려간 채로 남았다(전에는 바깥 preload 가 바로 와서 가려졌다 — 20:08 학생 서비스
 # 4분 끊김). serve 는 시작하고 PIN_START_DELAY 초 뒤 ROUTER_PIN 순서대로 올린다. 데몬 스레드라 HTTP 는 바로 뜬다.
-# 기다리는 까닭(검토 반영): 콘솔이 실행 중에 바꾼 핀은 라우터 메모리에만 있어 재시작하면 ROUTER_PIN 으로 돌아간다. 곧바로
+# 콘솔의 다시 시작이면(다시 시작 기록, 2026-10-27) ROUTER_PIN 대신 누르기 전에 떠 있던 모델을 같은 길로 올린다(restore_pins).
+# 기다리는 까닭(검토 반영): 콘솔이 실행 중에 바꾼 핀은 라우터 메모리에만 있어 손으로 다시 띄우면 ROUTER_PIN 으로 돌아간다. 곧바로
 # 옛 핀을 올리면 그 콜드 스타트가 self.lock 을 쥐어, 게이트웨이 수업 타이머(매분) 가 /router/pin·/router/preload 로 맞추려는
 # 지금 핀이 옛 핀 적재·축출 뒤로 밀린다. 그사이 게이트웨이가 핀을 바꿨으면 옛 핀은 '핀이 아니라' 건너뛰고, 누가 이미 올리는
 # 중이면(게이트웨이 preload·학생 요청) 손대지 않는다. 카드가 모자라면 PIN_START_CARD_WAIT 초까지 smi 를 새로 읽으며
@@ -1219,9 +1225,10 @@ def _monotonic():
     return time.monotonic()
 
 
-def _start_skip(router, model):
-    """시작 핀 올리기가 이 모델을 건너뛸 까닭 — unpinned(그새 핀에서 빠짐) · up(이미 떠 있음) · loading(누가 올리는 중), 아니면 None."""
-    if model not in PINNED:
+def _start_skip(router, model, need_pin=True):
+    """시작 핀 올리기가 이 모델을 건너뛸 까닭 — unpinned(그새 핀에서 빠짐) · up(이미 떠 있음) · loading(누가 올리는 중), 아니면 None.
+    need_pin=False(다시 시작 전에 핀이 아니던 모델)면 핀인지 보지 않는다."""
+    if need_pin and model not in PINNED:
         return "unpinned"
     b = router.running.get(model)
     if b and b.usable():
@@ -1229,6 +1236,11 @@ def _start_skip(router, model):
     if router.state.get(model) == "loading" or (b and b.alive()):
         return "loading"
     return None
+
+
+def _pin_gated(models, restore_pins):
+    """올리기 전에 지금도 핀인지 봐야 하는 모델: ROUTER_PIN 이면 전부, 다시 시작 기록이면 그때 핀이던 모델만."""
+    return frozenset(models) if restore_pins is None else frozenset(models) & frozenset(restore_pins)
 
 
 def pin_order(value=None):
@@ -1247,9 +1259,9 @@ def _skip_log(router, model, why):
         router._log(f"시작 핀 올리기: '{model}' 은 이미 올리는 중이라 건너뜀")
 
 
-def _wait_free_cards(router, model, need, wait):
+def _wait_free_cards(router, model, need, wait, need_pin=True):
     """빈 카드가 need 장이 될 때까지 wait 초까지 smi 를 새로 읽으며 기다린다 → (빈 카드, 건너뛸 까닭 또는 None).
-    기다리는 사이 핀에서 빠지거나 누가 올리기 시작하면 그 까닭으로 멈춘다."""
+    기다리는 사이 핀에서 빠지거나(need_pin 일 때만) 누가 올리기 시작하면 그 까닭으로 멈춘다."""
     deadline = _monotonic() + max(wait, 0)
     while True:
         free = router._free_cards()
@@ -1259,34 +1271,40 @@ def _wait_free_cards(router, model, need, wait):
             return free, None
         _sleep(PIN_START_POLL)
         npu_used_mem(fresh=True)
-        why = _start_skip(router, model)
+        why = _start_skip(router, model, need_pin)
         if why is not None:
             return free, why
 
 
-def preload_pins_at_start(router=None, models=None, card_wait=None):
+def preload_pins_at_start(router=None, models=None, card_wait=None, restore_pins=None):
     """핀 모델을 순서대로 올린다(블로킹 — start_pin_preload 가 스레드로 부른다) → {모델: 결과}.
     결과: up(올라왔거나 이미 떠 있음) · loading(누가 이미 올리는 중) · no_cards(card_wait 초 기다려도 카드 부족, 로그만) ·
     failed(올리다 실패, state 'error') · unknown(이 라우터가 띄울 수 없는 이름) · unavailable(결과물 폴더 없음) ·
-    unpinned(그새 핀에서 빠짐 — 게이트웨이가 다른 핀으로 맞췄다)."""
+    unpinned(그새 핀에서 빠짐 — 게이트웨이가 다른 핀으로 맞췄다).
+    restore_pins(다시 시작 기록의 핀)를 주면 다시 시작 전 상태로 올린다: models 는 그때 올라와 있던 모델이고, 그때 핀이던 모델만
+    지금도 핀이어야 한다(그새 콘솔이 다른 모델로 바꿨으면 건너뜀). 핀이 아니던 모델, 채팅 모델이 아닌 것도 떠 있던 그대로 올린다."""
     router = ROUTER if router is None else router
     models = pin_order(os.environ.get("ROUTER_PIN", "")) if models is None else list(models)
     card_wait = PIN_START_CARD_WAIT if card_wait is None else card_wait
+    restoring = restore_pins is not None
+    gated = _pin_gated(models, restore_pins)
     npu_used_mem(fresh=True)   # 시작 직후엔 smi 캐시가 비어 남이 든 카드도 빈 것으로 보인다
     registry_fresh()
     known = set(all_model_ids())
     out = {}
-    for model in models:
-        if model not in PINNED:
+    for i, model in enumerate(models):
+        router.start_pending = (models[i:], gated)   # 다시 시작 기록용: 이 모델부터는 아직 올리기 전
+        need_pin = model in gated
+        if need_pin and model not in PINNED:
             out[model] = "unpinned"
             _skip_log(router, model, "unpinned")
             continue
         base, tp, dp, pp = parse_variant(model)
-        if model not in known or REGISTRY[base].get("kind", "chat") != "chat":
+        if model not in known or (not restoring and REGISTRY[base].get("kind", "chat") != "chat"):
             out[model] = "unknown"
             router._log(f"시작 핀 올리기: '{model}' 은 이 라우터가 띄울 수 없는 모델이라 건너뜀")
             continue
-        why = _start_skip(router, model)
+        why = _start_skip(router, model, need_pin)
         if why is not None:
             out[model] = why
             _skip_log(router, model, why)
@@ -1297,7 +1315,7 @@ def preload_pins_at_start(router=None, models=None, card_wait=None):
             router._log(f"시작 핀 올리기: '{model}' 건너뜀({why})")
             continue
         need = variant_cards(tp, dp, pp)
-        free, why = _wait_free_cards(router, model, need, card_wait)
+        free, why = _wait_free_cards(router, model, need, card_wait, need_pin)
         if why is not None:
             out[model] = why
             _skip_log(router, model, why)
@@ -1319,23 +1337,28 @@ def preload_pins_at_start(router=None, models=None, card_wait=None):
                 router._fail(model, e)   # _start 에 이르기 전 실패도 'loading' 으로 남지 않게(preload 와 같다)
             continue
         out[model] = "up"
+    router.start_pending = ([], frozenset())
     return out
 
 
-def _preload_pins_later(router, models, delay):
+def _preload_pins_later(router, models, delay, restore_pins=None):
     if delay > 0:
         _sleep(delay)
-    preload_pins_at_start(router, models)
+    preload_pins_at_start(router, models, restore_pins=restore_pins)
 
 
-def start_pin_preload(router=None, models=None, delay=None):
-    """시작 핀 올리기를 데몬 스레드로 — delay(기본 PIN_START_DELAY) 초 뒤에. ROUTER_PIN 이 비었으면 스레드 없이 None."""
+def start_pin_preload(router=None, models=None, delay=None, restore_pins=None):
+    """시작 핀 올리기를 데몬 스레드로 — delay(기본 PIN_START_DELAY) 초 뒤에. models 가 비었으면(ROUTER_PIN 이 비었거나 다시 시작
+    기록의 올림이 비었으면) 스레드 없이 None. restore_pins 는 preload_pins_at_start 참고."""
     models = pin_order(os.environ.get("ROUTER_PIN", "")) if models is None else list(models)
     if not models:
         return None
     delay = PIN_START_DELAY if delay is None else delay
-    (ROUTER if router is None else router)._log(f"시작 핀 올리기: {delay}초 뒤 {models}")
-    t = threading.Thread(target=_preload_pins_later, args=(router, models, delay), daemon=True, name="pin-preload")
+    r = ROUTER if router is None else router
+    r.start_pending = (list(models), _pin_gated(models, restore_pins))   # 기다리는 동안에도 다시 시작 기록에 들어간다
+    r._log(f"시작 핀 올리기: {delay}초 뒤 {models}")
+    t = threading.Thread(target=_preload_pins_later, args=(router, models, delay, restore_pins), daemon=True,
+                         name="pin-preload")
     t.start()
     return t
 
@@ -1347,10 +1370,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 STARTED_AT = time.monotonic()
 ROUTER_LOG = os.path.join(LOGDIR, "router.log")      # serve-router.sh 가 라우터 stdout 을 여기로 보낸다
 RESTART_LOG = os.path.join(LOGDIR, "restart.log")    # 재시작 요청 줄 + 재시작 스크립트 출력(덧붙이기만 한다)
+RESUME_FILE = os.path.join(LOGDIR, "router-resume.json")   # 다시 시작 기록: 누르기 직전의 핀과 올라와 있던 모델(새 라우터가 한 번 읽고 지운다)
 HWMON_ROOT = "/sys/class/hwmon"                      # rngdN 의 power1_average(µW)·temp*_input(m°C)
 ACCEL_TTL = 5.0          # 가속기 상태를 기억하는 초(콘솔이 자주 불러도 furiosa-smi 는 5초에 한 번)
 ACCEL_TIMEOUT = 8        # furiosa-smi 한 번 기다리는 초(모델을 올리는 중엔 느려진다 — npu_used_mem 참고)
 RESTART_GUARD_S = 60     # 재시작 뒤 이만큼은 다시 받지 않는다(409 restart_in_progress)
+RESUME_MAX_AGE_S = 600   # 이보다 오래된 다시 시작 기록은 무시한다(재시작이 중간에 멈추고 한참 뒤 손으로 띄운 경우)
 LOG_N_DEFAULT, LOG_N_MIN, LOG_N_MAX = 200, 20, 2000
 LOG_READ_MAX = 8 << 20   # 꼬리를 찾으며 뒤에서부터 읽는 최대 바이트
 REASON_MAX = 200
@@ -1712,6 +1737,94 @@ def clean_reason(v):
     return _CTRL.sub("", text)[:REASON_MAX] or "(없음)"
 
 
+# ── 다시 시작 기록(2026-10-27) ────────────────────────────────────────────────────────────────
+# 콘솔의 다시 시작은 누르기 직전 상태로 돌아온다. do_restart 가 재시작 스크립트를 띄우기 전에 그 순간의 핀(실행 중에
+# /router/pin 으로 바꾼 것)과 올라와 있거나 올리는 중인 모델(올린 순서)을 RESUME_FILE 에 쓰고, 새 라우터의 serve 가 시작 때
+# 한 번 읽고 지운다(take_resume). RESUME_MAX_AGE_S 안이면 ROUTER_PIN 대신 그 핀, 시작 핀 올리기는 ROUTER_PIN 대신 그 모델들
+# (같은 길, 같은 PIN_START_DELAY, 비었으면 아무것도 올리지 않는다). 손으로 serve-router.sh 를 띄우면 기록이 없어 예전처럼 ROUTER_PIN.
+def save_resume(reason, router=None):
+    """다시 시작 기록 {"at", "pinned", "up", "reason"} 을 쓴다 → 쓴 기록, 못 쓰면 None(로그 한 줄. 재시작은 그대로 하고
+    새 라우터는 ROUTER_PIN 으로 시작한다). 임시 파일에 쓴 뒤 os.replace 로 바꿔 넣는다(읽는 쪽은 다 쓴 파일만 본다).
+    up 은 status() 순서 그대로다: 떠 있는 백엔드를 띄운 순서, 그 뒤 줄 서 있는(loading) 모델. 내리는 중·실패는 넣지 않는다.
+    시작 핀 올리기가 아직 올리지 않은 모델도 그 뒤에 붙인다(그새 핀에서 빠져 시작 핀 올리기도 건너뛸 모델은 빼고)."""
+    router = ROUTER if router is None else router
+    up = [mid for mid, s in router.status().items() if s.get("state") in ("up", "loading")]
+    pending, gated = router.start_pending
+    up += [m for m in pending if m not in up and (m not in gated or m in PINNED)]
+    rec = {"at": time.time(), "pinned": sorted(PINNED), "up": up, "reason": reason}
+    path = RESUME_FILE
+    tmp = path + ".tmp"
+    try:
+        os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(rec, f, ensure_ascii=False)
+        os.replace(tmp, path)
+    except OSError as e:
+        _rlog(f"다시 시작 기록을 쓰지 못했습니다({path}): {e}. 새 라우터는 ROUTER_PIN 으로 시작합니다")
+        try:
+            os.remove(tmp)
+        except OSError:
+            pass
+        return None
+    _rlog(f"다시 시작 기록: 핀 {rec['pinned']}, 올림 {up}")
+    return rec
+
+
+def drop_resume(path=None):
+    """다시 시작 기록을 지운다(없으면 그만). 못 지우면 로그 한 줄."""
+    path = RESUME_FILE if path is None else path
+    try:
+        os.remove(path)
+    except FileNotFoundError:
+        pass
+    except OSError as e:
+        _rlog(f"다시 시작 기록을 지우지 못했습니다({path}): {e}")
+
+
+def _epoch(v):
+    """기록의 at → 유한한 초(float). 글자, 참거짓, NaN, 너무 큰 수는 None."""
+    if isinstance(v, bool) or not isinstance(v, (int, float)):
+        return None
+    try:
+        v = float(v)
+    except OverflowError:
+        return None
+    return v if math.isfinite(v) else None
+
+
+def _model_list(v):
+    """모델 id 목록 → 겹침 뺀 목록(순서 그대로). 목록이 아니거나 빈 이름, 글자 아닌 값이 있으면 None."""
+    if not isinstance(v, list) or not all(isinstance(m, str) and m for m in v):
+        return None
+    return list(dict.fromkeys(v))
+
+
+def take_resume(path=None):
+    """serve 시작 때 한 번: 다시 시작 기록을 읽고 지운다 → {"pinned": [...], "up": [...]} 또는 None.
+    None = 기록 없음(손으로 serve-router.sh), 읽지 못함, RESUME_MAX_AGE_S 보다 오래됨. 뒤의 둘은 로그 한 줄. 어느 쪽이든 예전처럼 ROUTER_PIN."""
+    path = RESUME_FILE if path is None else path
+    if not os.path.lexists(path):
+        return None
+    rec = None
+    try:
+        with open(path, "rb") as f:
+            rec = json.loads(f.read())
+    except (OSError, ValueError):
+        pass
+    drop_resume(path)
+    if not isinstance(rec, dict):
+        rec = {}
+    at, pinned, up = _epoch(rec.get("at")), _model_list(rec.get("pinned")), _model_list(rec.get("up"))
+    if at is None or pinned is None or up is None:
+        _rlog(f"다시 시작 기록을 읽지 못해 무시합니다({path}). ROUTER_PIN 으로 시작합니다")
+        return None
+    age = time.time() - at
+    if age > RESUME_MAX_AGE_S:
+        _rlog(f"다시 시작 기록이 오래돼({int(age)}초 전) 무시합니다. ROUTER_PIN 으로 시작합니다")
+        return None
+    return {"pinned": pinned, "up": up}
+
+
 _RESTART = {"at": None}
 _RESTART_LOCK = threading.Lock()
 
@@ -1729,7 +1842,8 @@ def claim_restart():
 def spawn_restart(script=None, logpath=None, env=None):
     """재시작 스크립트(기본 serve-router.sh)를 이 라우터와 완전히 떼어 띄운다: setsid nohup bash <script>, 출력은
     logpath(기본 LOGDIR/restart.log)에 덧붙인다. 스크립트가 지금 라우터·백엔드를 내리고 새 라우터를 띄운다 —
-    새 세션이라 라우터가 죽어도 같이 죽지 않는다. 핀 모델은 새 라우터의 시작 핀 올리기(ROUTER_PIN_START_DELAY)가 올린다."""
+    새 세션이라 라우터가 죽어도 같이 죽지 않는다. 모델은 새 라우터의 시작 핀 올리기(ROUTER_PIN_START_DELAY)가 올린다
+    (콘솔 다시 시작이면 다시 시작 기록의 모델, 아니면 ROUTER_PIN)."""
     script = RESTART_SCRIPT if script is None else script
     logpath = RESTART_LOG if logpath is None else logpath
     os.makedirs(os.path.dirname(os.path.abspath(logpath)), exist_ok=True)
@@ -1742,7 +1856,8 @@ def spawn_restart(script=None, logpath=None, env=None):
 
 
 def do_restart(reason):
-    """POST /router/restart 의 응답을 보낸 뒤에 돈다. spawn 이 실패하면 자리를 풀어 다시 누를 수 있게 한다."""
+    """POST /router/restart 의 응답을 보낸 뒤에 돈다. 재시작 스크립트를 띄우기 전에 다시 시작 기록을 쓴다(새 라우터가 이 핀과
+    모델로 시작한다). spawn 이 실패하면 기록을 지우고(다시 시작은 일어나지 않았다) 자리를 풀어 다시 누를 수 있게 한다."""
     stamp = datetime.datetime.now().astimezone().isoformat(timespec="seconds")
     try:
         os.makedirs(os.path.dirname(os.path.abspath(RESTART_LOG)), exist_ok=True)
@@ -1750,9 +1865,11 @@ def do_restart(reason):
             f.write(f"[{stamp}] restart requested: {reason}\n")
     except OSError:
         pass
+    save_resume(reason)
     try:
         spawn_restart(script=RESTART_SCRIPT, logpath=RESTART_LOG, env=restart_env())
     except Exception as e:
+        drop_resume()
         with _RESTART_LOCK:
             _RESTART["at"] = None
         _rlog(f"restart 실패(스크립트를 띄우지 못함): {e}")
@@ -2083,8 +2200,9 @@ def build_app():
     @app.post("/router/restart")
     async def router_restart(request: Request):
         """라우터를 다시 띄운다. 본문 {"reason"?: 글자}(없어도 된다) → 202 {"ok": true, "restarting": true}.
-        응답을 보낸 뒤 serve-router.sh 를 떼어 띄운다(spawn_restart) — 지금 라우터·백엔드를 내리고 새 라우터를 띄우며,
-        핀 모델은 새 라우터의 시작 핀 올리기가 올린다. RESTART_GUARD_S 초 안에 또 오면 409 restart_in_progress."""
+        응답을 보낸 뒤 다시 시작 기록(지금 핀, 올라와 있거나 올리는 중인 모델)을 쓰고 serve-router.sh 를 떼어 띄운다(do_restart).
+        스크립트가 지금 라우터와 백엔드를 내리고 새 라우터를 띄우며, 새 라우터는 그 핀으로 시작해 그 모델들을 시작 핀 올리기로 올린다.
+        RESTART_GUARD_S 초 안에 또 오면 409 restart_in_progress."""
         raw = await request.body()
         try:
             payload = json.loads(raw) if raw.strip() else {}
@@ -2342,12 +2460,20 @@ def main():
         nvar = len(all_model_ids()) - len(REGISTRY)
         ROUTER._log(f"furiosa-router up on {host}:{ROUTER_PORT}  ({len(REGISTRY)} models + {nvar} dp/pp variants, "
                     f"auth={authmode})  pid={os.getpid()}")
+        resume = take_resume()   # 콘솔 다시 시작이 남긴 기록(10분 안). 있으면 ROUTER_PIN 대신 누르기 전 핀과 모델로
+        if resume is not None:
+            set_pins(resume["pinned"])
+            ROUTER._log(f"다시 시작 전 상태로: 핀 {resume['pinned']}, 올림 {resume['up']}")
         if PINNED or not FORCE_EVICT:
             ROUTER._log(f"수업 모드: pin={sorted(PINNED)} force_evict={'on' if FORCE_EVICT else 'off'}")
         extra = sorted(set(REGISTRY) - set(_BUILTIN_REGISTRY))
         ROUTER._log(f"추가 모델 파일 {EXTRA_MODELS}: "
                     + (f"{len(extra)}개 {extra}" if os.path.exists(EXTRA_MODELS) else "없음(내장 목록만)"))
-        start_pin_preload()   # PIN_START_DELAY 초 뒤 핀 모델을 순서대로 올린다(스레드 — HTTP 는 바로 뜬다)
+        # PIN_START_DELAY 초 뒤 모델을 순서대로 올린다(스레드라 HTTP 는 바로 뜬다). 기록이 있으면 그때 올라와 있던 모델(비었으면 없음)
+        if resume is None:
+            start_pin_preload()
+        else:
+            start_pin_preload(models=resume["up"], restore_pins=resume["pinned"])
         uvicorn.run(build_app(), host=host, port=ROUTER_PORT, log_level="warning")
     else:
         print(__doc__)

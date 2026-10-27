@@ -84,6 +84,7 @@ def isolate(monkeypatch, tmp_path):
     monkeypatch.setattr(fr, "LOGDIR", str(logdir))
     monkeypatch.setattr(fr, "ROUTER_LOG", str(logdir / "router.log"))
     monkeypatch.setattr(fr, "RESTART_LOG", str(logdir / "restart.log"))
+    monkeypatch.setattr(fr, "RESUME_FILE", str(logdir / "router-resume.json"))
     monkeypatch.setattr(fr, "HWMON_ROOT", str(tmp_path / "hwmon-none"))
     monkeypatch.setattr(fr, "RESTART_SCRIPT", str(tmp_path / "no-such-script.sh"))
     monkeypatch.setattr(fr, "_ACCEL_CACHE", {"t": None, "v": None})

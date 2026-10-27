@@ -65,7 +65,7 @@ evict) 카드를 확보합니다. furiosa-llm 은 serve 1프로세스=모델 1�
 
 | 환경변수 | 기본 | 뜻 |
 |---|---|---|
-| `ROUTER_PIN` | 없음 | 쉼표 구분 모델 ID(변형 포함, 예 `gpt-oss-20b@dp4`). LRU·강제 축출 어느 경로로도 안 내려감. `serve` 는 시작하고 `ROUTER_PIN_START_DELAY` 초 뒤 적힌 순서대로 올린다 |
+| `ROUTER_PIN` | 없음 | 쉼표 구분 모델 ID(변형 포함, 예 `gpt-oss-20b@dp4`). LRU·강제 축출 어느 경로로도 안 내려감. `serve` 는 시작하고 `ROUTER_PIN_START_DELAY` 초 뒤 적힌 순서대로 올린다. 콘솔 다시 시작 뒤에는 다시 시작 기록이 대신한다(원격 관리 절) |
 | `ROUTER_PIN_START_DELAY` | `90` | 시작 핀 올리기 전에 기다리는 초(0 이상 정수, 아니면 90). 그사이 게이트웨이 수업 타이머가 지금 핀으로 맞춘다 |
 | `ROUTER_FORCE_EVICT` | `1` | `0` 이면 `ROUTER_EVICT_WAIT` 뒤 사용 중 백엔드 강제 종료 대신 그 요청을 503 으로 실패 |
 
@@ -79,7 +79,7 @@ evict) 카드를 확보합니다. furiosa-llm 은 serve 1프로세스=모델 1�
 - `GET /router/status` 에 `pinned: [...]`·`force_evict: bool` 이 붙는다.
 - 시작 핀 올리기(2026-10-26): `serve` 는 HTTP 를 띄우고 데몬 스레드에서 `ROUTER_PIN_START_DELAY`(기본 90) 초 기다린 뒤
   `ROUTER_PIN` 의 모델을 적힌 순서대로 올린다(`start_pin_preload` → `preload_pins_at_start`). 기다리는 까닭: 콘솔이 실행 중에
-  바꾼 핀은 라우터 메모리에만 있어 재시작하면 `ROUTER_PIN` 으로 돌아간다. 곧바로 옛 핀을 올리면 그 콜드 스타트가 라우터 잠금을
+  바꾼 핀은 라우터 메모리에만 있어 손으로 다시 띄우면 `ROUTER_PIN` 으로 돌아간다. 곧바로 옛 핀을 올리면 그 콜드 스타트가 라우터 잠금을
   쥐어 게이트웨이 수업 타이머(매분 `/router/pin`·`/router/preload`) 의 지금 핀이 옛 핀 적재와 축출 뒤로 밀린다. 그사이 핀에서
   빠진 모델, 누가 이미 올리는 중인 모델(게이트웨이 preload·학생 요청), 이미 떠 있는 모델, 띄울 수 없는 이름, 결과물 폴더가
   없는 모델은 건너뛴다. 카드가 모자라면 `furiosa-smi` 를 새로 읽으며 90초(`CARD_FREE_TIMEOUT`) 까지 기다리고(옛 serve 가
@@ -87,8 +87,8 @@ evict) 카드를 확보합니다. furiosa-llm 은 serve 1프로세스=모델 1�
   라우터를 재시작하면 핀이 내려간 채로 남았다(10-26 20:08 학생 서비스 4분 끊김). 게이트웨이 수업 타이머도 수업이 열려
   있으면 매분 핀을 확인한다.
 - `POST /router/pin` `{"models": ["<id>", ...]}` → `{"ok": true, "pinned": [...]}`(2026-10-26). 실행 중 핀 목록을
-  통째로 바꾼다(빈 목록 = 핀 없음). 모델을 올리지는 않는다(올리기는 `/router/preload`). 메모리에만 두므로
-  재시작하면 다시 `ROUTER_PIN`. 목록이 아니면 `400`, 띄울 수 없는 이름(모르는 모델, 카드 4장을 넘는 변형)이
+  통째로 바꾼다(빈 목록 = 핀 없음). 모델을 올리지는 않는다(올리기는 `/router/preload`). 메모리에만 둔다. 콘솔
+  다시 시작은 다시 시작 기록으로 이어 가고, 손으로 `serve-router.sh` 를 띄우면 다시 `ROUTER_PIN`. 목록이 아니면 `400`, 띄울 수 없는 이름(모르는 모델, 카드 4장을 넘는 변형)이
   하나라도 있으면 `404 {"reason":"unknown","models":[...]}` 이고 핀은 그대로. 라우터 키는 preload·evict 와 같다.
   콘솔이 모델을 바꾸는 순서: (옛 핀 `force` evict →) `/router/pin` → `/router/preload`.
 - `GET /router/models` 각 행에 `state`(`up`·`loading`·`stopping`·`down`·`error`)·`error`(`state` 가 `error` 일 때
@@ -113,8 +113,8 @@ FURIO_CLIENT_DIST=/home/jun/NPU_AIP/openclaude-fork/dist
 python3 -m venv ~/.venvs/router-test && ~/.venvs/router-test/bin/pip install pytest fastapi httpx pyyaml
 taskset -c 64-127 ~/.venvs/router-test/bin/python -m pytest \
   server/test_router_classmode.py server/test_router_catalog.py server/test_serve_router_env.py \
-  server/test_router_startpins.py server/test_router_remote.py -q
-# 104 passed (10월 27일)
+  server/test_router_startpins.py server/test_router_remote.py server/test_router_resume.py -q
+# 130 passed (10월 27일)
 ```
 
 > 클라이언트도 함께 고쳐야 의미가 있습니다. openclaude 의 백그라운드 호출(세션 제목·주제
@@ -161,7 +161,7 @@ curl -s localhost:8400/router/models | python3 -c 'import json,sys; [print(m["id
 |---|---|
 | `GET /router/health` | `{"ok", "server_time", "uptime_s", "host": {"mem_total", "mem_avail", "load1", "disk": [{"path", "total", "free"}]}, "accel": [{"id", "kind", "util_pct", "mem_used", "mem_total", "power_w", "temp_c"}], "backends": [{"model", "pid", "port", "state", "rss"}]}`. 바이트 단위, 모르는 값은 `null` |
 | `GET /router/logs?name=<이름>&n=200` | `{"name", "lines", "names"}`. `n` 은 20~2000, 색 코드를 뗀다. `names` 에 없는 이름은 404(경로는 받지 않는다) |
-| `POST /router/restart {"reason": "..."}` | `202 {"ok": true, "restarting": true}`. 응답 뒤 `setsid nohup bash server/serve-router.sh`. 60초 안에 또 오면 `409 {"code": "restart_in_progress"}` |
+| `POST /router/restart {"reason": "..."}` | `202 {"ok": true, "restarting": true}`. 응답 뒤 다시 시작 기록 `logs/router-resume.json` 을 쓰고 `setsid nohup bash server/serve-router.sh`. 60초 안에 또 오면 `409 {"code": "restart_in_progress"}` |
 
 `accel`, `host`, `backends` 출처:
 
@@ -195,11 +195,27 @@ curl -s localhost:8400/router/models | python3 -c 'import json,sys; [print(m["id
 
 ```
 POST /router/restart → 202, router.log 와 restart.log 에 "restart requested: <까닭>"
-  → setsid nohup bash serve-router.sh(출력 logs/restart.log)
+  → logs/router-resume.json 에 지금 핀과 올라와 있거나 올리는 중인 모델(올린 순서)을 쓴다(임시 파일 → 바꿔 넣기)
+     시작 핀 올리기를 기다리는 중이면 아직 올리지 않은 모델도(그새 핀에서 빠진 것은 빼고)
+  → setsid nohup bash serve-router.sh(출력 logs/restart.log). 띄우지 못하면 기록을 지운다
      → 지금 라우터 SIGTERM, 백엔드 종료, 라우터가 끝날 때까지 최대 30초(넘으면 SIGKILL), 백엔드 한 번 더 종료
      → router.log 를 router.prev.log 로 옮기고 새 라우터 :8400
-     → ROUTER_PIN_START_DELAY(기본 90초) 뒤 ROUTER_PIN 모델을 올린다
+     → 새 라우터가 기록을 읽고 지운다. 핀은 기록대로, router.log 에 "다시 시작 전 상태로: 핀 [...], 올림 [...]"
+     → ROUTER_PIN_START_DELAY(기본 90초) 뒤 기록의 모델을 그 순서대로 올린다(비었으면 아무것도 올리지 않는다)
 ```
+
+다시 시작 기록(10월 27일, 임시 폴더에서 `save_resume` → `take_resume` 실행):
+
+```
+{"at": 1793091224.1102211, "pinned": ["gpt-oss-20b@dp4"], "up": ["gpt-oss-20b@dp4"], "reason": "FURIO console: admin"}
+[router 17:53:44] 다시 시작 전 상태로: 핀 ['gpt-oss-20b@dp4'], 올림 ['gpt-oss-20b@dp4']
+```
+
+| 새 라우터가 시작 때 본 기록 | 핀 | 올리는 모델 |
+|---|---|---|
+| 10분 안 | 기록의 `pinned` | 기록의 `up`(비었으면 없음). 그사이 콘솔이 핀을 바꿔 기록에서 핀이던 모델이 빠졌으면 건너뜀 |
+| 10분보다 오래됨, 읽지 못함 | `ROUTER_PIN`(로그 한 줄, 기록은 지운다) | `ROUTER_PIN` |
+| 없음(손으로 `serve-router.sh`) | `ROUTER_PIN` | `ROUTER_PIN` |
 
 ```bash
 H="Authorization: Bearer $SDI_API_KEY"      # 키를 안 걸었으면 무시된다
@@ -210,7 +226,8 @@ curl -s -H "$H" -X POST localhost:8400/router/restart -H 'Content-Type: applicat
 
 - ★ 재시작은 처리 중인 요청을 끊는다.
 - ★ 재시작 때 `.env` 를 새로 읽는다. 라우터 환경에서 시작 때 `.env` 값과 같은 키는 빼고 넘기기 때문이다(셸에서 다른 값을 준 키는 그대로 우선).
-- ★ 실행 중에 `/router/pin` 으로 바꾼 핀은 메모리에만 있어 재시작하면 `ROUTER_PIN` 으로 돌아간다. 게이트웨이 수업 타이머가 다시 맞추고, 시작 핀 올리기는 그새 핀에서 빠진 모델을 건너뛴다.
+- ★ 콘솔 다시 시작은 누르기 전 핀과 모델로 돌아온다. 관리자가 내려 둔 모델은 다시 올라오지 않는다. `.env` 의 `ROUTER_PIN` 을 바꿔 적용하려면 손으로 `bash server/serve-router.sh`(기록이 없다).
+- ★ 다시 시작이 중간에 멈춘 뒤(`.env` 오류, 새 라우터가 바로 죽음) 10분 안에 손으로 띄우면 남은 기록대로 시작한다. `ROUTER_PIN` 으로 띄우려면 `rm server/logs/router-resume.json` 뒤에.
 - ★ `.env` 가 틀려 serve-router.sh 가 멈추면 옛 라우터가 그대로 돈다. 까닭은 `logs?name=restart` 로 본다.
 - 시험은 재시작 스크립트를 가짜로 바꾸고, 진짜 spawn 함수는 임시 폴더의 가짜 스크립트로만 띄운다(새 세션인지, restart.log 에 출력이 붙는지).
 
