@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/54] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/58] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/54] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/58] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/54] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/58] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/54] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/58] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/54] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/58] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/54] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/58] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/54] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/58] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/54] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/58] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/54] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/58] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/54] statusline: separate the current-model marker from the
+Subject: [PATCH 10/58] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/54] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/58] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/54] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/58] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/54] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/58] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/54] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/58] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/54] model picker: support a per-model default pp (large
+Subject: [PATCH 15/58] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/54] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/58] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/54] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/58] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/54] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/58] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/54] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/58] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/54] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/58] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/54] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/58] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/54] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/58] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/54] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/58] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5563,7 +5563,7 @@ index 522362ad..1c509b74 100644
 From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/54] brand: give each logo letter its own color from a cool
+Subject: [PATCH 24/58] brand: give each logo letter its own color from a cool
  spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5756,7 +5756,7 @@ index 94af8b4c..3e2cf093 100644
 From 9cf8784b2009e6734c8bd3d24740e72ccc69a6ea Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:07:48 +0900
-Subject: [PATCH 25/54] startup: drop the provider box, keep the mark and one
+Subject: [PATCH 25/58] startup: drop the provider box, keep the mark and one
  line
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5913,7 +5913,7 @@ index c21c8def..9b775d33 100644
 From bf4d4d421cbaa00a9c49fb6851a4d713b11729b9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:37:56 +0900
-Subject: [PATCH 26/54] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
+Subject: [PATCH 26/58] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
  =?UTF-8?q?=EA=B8=B0:=20agents=20=ED=95=9C=20=EB=8B=A8=EC=96=B4=EB=A1=9C?=
  =?UTF-8?q?=20=EC=9D=B4=20=EC=BB=B4=ED=93=A8=ED=84=B0=EC=9D=98=20=EC=84=B8?=
  =?UTF-8?q?=EC=85=98=EC=9D=84=20=EC=97=B4=EA=B3=A0=20=EB=8B=A4=EB=A5=B8=20?=
@@ -6389,7 +6389,7 @@ index 00000000..fb864cb2
 From 032cb8ae9935682e0a02e8fff4a8c09b355ad0d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:16:30 +0900
-Subject: [PATCH 27/54] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
+Subject: [PATCH 27/58] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
  =?UTF-8?q?=20=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=95=88=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EC=82=AC=EC=9A=A9=20=EA=B2=BD=ED=97=98=EC=9D=84=20=EB=B0=9B?=
  =?UTF-8?q?=EC=95=84=20=EB=9D=BC=EC=9A=B0=ED=84=B0=EB=A1=9C=20=EB=B3=B4?=
@@ -7711,7 +7711,7 @@ index 00000000..e41d7a38
 From 4c1dd2e0ccbe99a2b09c45f2482d67aea3db94d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:59:23 +0900
-Subject: [PATCH 28/54] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 28/58] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20agents=20=EB=A5=BC=20claude=20agents=20=EC=8B=9D=20=EA=B5=AC?=
  =?UTF-8?q?=EC=84=B1=EC=9C=BC=EB=A1=9C,=20=EB=B9=88=20=ED=94=84=EB=A1=AC?=
  =?UTF-8?q?=ED=94=84=ED=8A=B8=EC=97=90=EC=84=9C=20=E2=86=90=20=EB=A1=9C?=
@@ -8811,7 +8811,7 @@ index fb864cb2..858a1faa 100644
 From c969ee7ee1a65e2c6036a3dd28ee8b28b6bf8cbf Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 18:42:09 +0900
-Subject: [PATCH 29/54] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 29/58] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20=EC=84=B8=EC=85=98=20=EC=95=88=EC=9D=98=20=EC=84=A0=ED=83=9D?=
  =?UTF-8?q?=EC=B0=BD=EC=9D=84=20=EB=8C=80=EC=B2=B4=20=ED=99=94=EB=A9=B4?=
  =?UTF-8?q?=EC=97=90=20=EB=9D=84=EC=9B=8C=20=EC=9E=90=EB=A6=AC=EB=A5=BC=20?=
@@ -9162,7 +9162,7 @@ index 858a1faa..4549b875 100644
 From 5f7367539a9ac62b25088f69a1ad0a1b9e15e1d8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 22:41:22 +0900
-Subject: [PATCH 30/54] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
+Subject: [PATCH 30/58] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
  =?UTF-8?q?=EA=B0=92=EC=9D=84=20=EB=AF=B8=EB=A6=AC=20=EA=B3=A0=EB=A5=B8=20?=
  =?UTF-8?q?=EB=8B=B5(=EC=B4=88=EB=A1=9D)=EC=9C=BC=EB=A1=9C=20=EA=B7=B8?=
  =?UTF-8?q?=EB=A6=AC=EC=A7=80=20=EC=95=8A=EA=B3=A0=20=EC=BB=A4=EC=84=9C=20?=
@@ -9203,7 +9203,7 @@ index ef2b04a9..d16156ab 100644
 From cacc5fb703bf009ba3c25d3530d319c2de787022 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Sun, 25 Oct 2026 00:31:57 +0900
-Subject: [PATCH 31/54] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
+Subject: [PATCH 31/58] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
  =?UTF-8?q?=EC=9C=84=EC=B9=98:=20=EC=9D=BC=EB=B0=98=ED=8C=90(lab)=C2=B7?=
  =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90(class)=EC=9D=84=20=ED=95=9C=20?=
  =?UTF-8?q?=EC=86=8C=EC=8A=A4=EC=97=90=EC=84=9C=20=EB=B9=8C=EB=93=9C?=
@@ -9632,7 +9632,7 @@ index e41d7a38..54e24ea7 100644
 From e3b9f75537b51b3a459ba9fa001f02706d13a6de Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 02:38:42 +0900
-Subject: [PATCH 32/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/l?=
+Subject: [PATCH 32/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/l?=
  =?UTF-8?q?ogin=C2=B7/logout(=EA=B8=B0=EA=B8=B0=20=EC=BD=94=EB=93=9C),=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84=20=EA=B3=84=EC=A0=95=C2=B7=EB=A1=9C?=
  =?UTF-8?q?=EA=B7=B8=EC=9D=B8=20=ED=95=84=EC=9A=94=C2=B7=EC=88=98=EC=97=85?=
@@ -10814,7 +10814,7 @@ index 88eec592..11ec25df 100644
 From 5ceec773cb628a56a9d1443a5f4ba56de414a328 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 03:02:22 +0900
-Subject: [PATCH 33/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 33/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20403=C2=B75xx=20?=
  =?UTF-8?q?=EC=97=90=EB=8F=84=20=EC=83=81=ED=83=9C=EC=A4=84=20=EC=9C=A0?=
  =?UTF-8?q?=EC=A7=80,=20/login=20=EC=9D=80=20=EC=9D=BC=EC=8B=9C=20?=
@@ -11476,7 +11476,7 @@ index 11ec25df..ce796cdd 100644
 From e6883f42491fab75ade11f18581e905f679ae8c6 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 03:18:36 +0900
-Subject: [PATCH 34/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 34/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=202:=20=ED=8F=B4?=
  =?UTF-8?q?=EB=A7=81=20=EC=A4=91=20/login=C2=B7/logout=20=EA=B0=B1?=
  =?UTF-8?q?=EC=8B=A0=EC=9D=B4=20=EB=91=90=20=EB=B2=88=EC=A7=B8=20=ED=8F=B4?=
@@ -11725,7 +11725,7 @@ index ce796cdd..b1d82ffd 100644
 From 26b1ff94693af6a9b65a3ba591492550e475b46c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 05:51:31 +0900
-Subject: [PATCH 35/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 35/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84:=20=EA=B2=8C=EC=9D=B4=ED=8A=B8?=
  =?UTF-8?q?=EC=9B=A8=EC=9D=B4=20=EC=98=A4=EB=A5=98=20=EB=B3=B8=EB=AC=B8=20?=
  =?UTF-8?q?{"error":{message,code}}=20=ED=8C=8C=EC=8B=B1,=20403=20suspende?=
@@ -11983,7 +11983,7 @@ index b1d82ffd..f8d2a7bd 100644
 From 90865c80ebc4263917693b318403c1e6122d2492 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 06:07:17 +0900
-Subject: [PATCH 36/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 36/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=203:=20/login=C2=B7?=
  =?UTF-8?q?=EC=84=A4=EB=AC=B8=20=EC=A0=84=EC=86=A1=EC=9D=98=20AbortSignal.?=
  =?UTF-8?q?timeout=20=EC=9D=84=20=EC=A0=95=EB=A6=AC=EB=90=98=EB=8A=94=20?=
@@ -12097,7 +12097,7 @@ index 17a9405d..92cbe0e0 100644
 From ab997ad7bb833f4327d80ba4c112b179e022fe5f Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 03:02:30 +0900
-Subject: [PATCH 37/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20?=
+Subject: [PATCH 37/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20?=
  =?UTF-8?q?=EA=B3=B5=EC=8B=9D=20=EB=A7=88=EC=BC=93=20=EC=9E=90=EB=8F=99=20?=
  =?UTF-8?q?=EC=84=A4=EC=B9=98=EB=A5=BC=20=EB=8F=8C=EB=A6=AC=EC=A7=80=20?=
  =?UTF-8?q?=EC=95=8A=EB=8A=94=EB=8B=A4(=ED=95=99=EC=83=9D=20PC=20=EB=B0=94?=
@@ -12340,7 +12340,7 @@ index 1dead1d4..050d39ae 100644
 From 408110b5e22ff4be18b6f5c70ad133b04afd183c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 03:29:03 +0900
-Subject: [PATCH 38/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/a?=
+Subject: [PATCH 38/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/a?=
  =?UTF-8?q?ds=20=EC=88=A8=EA=B9=80=C2=B7=EA=B4=91=EA=B3=A0=20=ED=8C=81=20?=
  =?UTF-8?q?=EB=81=94=C2=B7=EC=84=A0=EC=96=B8=EB=90=9C=20=EB=A7=88=EC=BC=93?=
  =?UTF-8?q?=20=EB=B0=B1=EA=B7=B8=EB=9D=BC=EC=9A=B4=EB=93=9C=20reconcile=20?=
@@ -12659,7 +12659,7 @@ index 8157a324..bce161cb 100644
 From 9b35c4b683c791144341240c1c668fa293066971 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 12:17:28 +0900
-Subject: [PATCH 39/54] =?UTF-8?q?furio=20=ED=99=94=EB=A9=B4=20=EB=AC=B8?=
+Subject: [PATCH 39/58] =?UTF-8?q?furio=20=ED=99=94=EB=A9=B4=20=EB=AC=B8?=
  =?UTF-8?q?=EA=B5=AC=20=EC=A0=95=EB=A6=AC:=20=EB=8C=80=EC=8B=9C=C2=B7?=
  =?UTF-8?q?=EC=9E=A5=EC=8B=9D=20=EA=B0=80=EC=9A=B4=EB=8E=83=EC=A0=90=C2=B7?=
  =?UTF-8?q?TMI=20=EC=A0=9C=EA=B1=B0,=20=ED=99=94=EB=A9=B4=20=ED=91=9C?=
@@ -13129,7 +13129,7 @@ index 54e24ea7..82a2f3ea 100644
 From 95f428a2c0f238f2e0996e74a29d598620e39290 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 12:44:14 +0900
-Subject: [PATCH 40/54] =?UTF-8?q?furio=20=EB=AC=B8=EA=B5=AC=20=EC=A0=95?=
+Subject: [PATCH 40/58] =?UTF-8?q?furio=20=EB=AC=B8=EA=B5=AC=20=EC=A0=95?=
  =?UTF-8?q?=EB=A6=AC=20=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20?=
  =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4=20=EB=8C=80=EC=8B=9C?=
  =?UTF-8?q?=C2=B7=EC=9E=A5=EC=8B=9D=20=EA=B0=80=EC=9A=B4=EB=8E=83=EC=A0=90?=
@@ -13304,7 +13304,7 @@ index 1b12e5bd..e6bf289f 100644
 From d5b8b13efd9b646e3e3241050b67a521a3523aca Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:17:59 +0900
-Subject: [PATCH 41/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 41/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84:=20=EB=AA=A8=EB=8D=B8=20=EC=9D=B4?=
  =?UTF-8?q?=EB=A6=84=C2=B7NPU=20=EC=B9=B4=EB=93=9C=C2=B7=EC=8A=A4=EC=9C=84?=
  =?UTF-8?q?=EC=B2=98=20=ED=9E=8C=ED=8A=B8=EB=A5=BC=20=EC=88=A8=EA=B8=B0?=
@@ -14293,7 +14293,7 @@ index f8d2a7bd..5422edb8 100644
 From e557fa4d78691d8a0dcf4e0f2a5a3e5ea64ec0a0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:48:53 +0900
-Subject: [PATCH 42/54] =?UTF-8?q?furio=20=EC=83=81=ED=83=9C=EC=A4=84=20?=
+Subject: [PATCH 42/58] =?UTF-8?q?furio=20=EC=83=81=ED=83=9C=EC=A4=84=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20=EA=B5=AC=ED=9A=8D?=
  =?UTF-8?q?=20=EB=84=88=EB=B9=84=EB=A5=BC=20=ED=84=B0=EB=AF=B8=EB=84=90=20?=
  =?UTF-8?q?=EC=B9=B8(stringWidth)=EC=9C=BC=EB=A1=9C=20=EC=9E=AC=EC=84=9C?=
@@ -14615,7 +14615,7 @@ index 6e6023d3..ace10d0f 100644
 From 263341600a8e36c38fe5469fa860b086b1ee66a3 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:55:11 +0900
-Subject: [PATCH 43/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 43/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C:=20Shift+Tab=20?=
  =?UTF-8?q?=EC=88=9C=ED=99=98=20default=E2=86=92acceptEdits=E2=86=92plan?=
  =?UTF-8?q?=E2=86=92auto=E2=86=92fullAccess(bypassPermissions=20=EC=97=86?=
@@ -16358,7 +16358,7 @@ index 9936421e..889418e7 100644
 From f7b8959fa133f711e880e2d22b062ac48c0d3cf5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 17:15:50 +0900
-Subject: [PATCH 44/54] =?UTF-8?q?furio=20agents=20=ED=99=94=EB=A9=B4?=
+Subject: [PATCH 44/58] =?UTF-8?q?furio=20agents=20=ED=99=94=EB=A9=B4?=
  =?UTF-8?q?=EC=9D=84=20Claude=20agents=20=EC=B2=98=EB=9F=BC=20=EC=A0=95?=
  =?UTF-8?q?=EB=A6=AC:=20=ED=81=B0=20=EB=B0=B0=EB=84=88=C2=B7=EB=9D=A0=20?=
  =?UTF-8?q?=EB=A8=B8=EB=A6=AC=20=EB=8C=80=EC=8B=A0=20=EC=9E=91=EC=9D=80=20?=
@@ -17957,7 +17957,7 @@ index 86b2b62e..21fc29a6 100644
 From 1fa3cb960d3dc8ff9b0115a72845a203e124ca77 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 17:40:06 +0900
-Subject: [PATCH 45/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 45/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20/permissions=20=ED=83=AD=EC=97=90?=
  =?UTF-8?q?=EC=84=9C=20Bypass=20Permissions=C2=B7Full=20Access=20=EC=A0=9C?=
@@ -18662,7 +18662,7 @@ index a2012dcf..3616fc81 100644
 From 1dce00de0aca2200ba5b40305fe85be740a83e76 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 17:44:56 +0900
-Subject: [PATCH 46/54] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 46/58] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20PID=20=ED=8C=8C=EC=9D=BC=20=EC=93=B0?=
  =?UTF-8?q?=EA=B8=B0=EB=A5=BC=20=ED=95=9C=20=EC=A4=84=EB=A1=9C=20=EC=84=B8?=
  =?UTF-8?q?=EC=9A=B0=EA=B3=A0=20=EB=A7=A4=EB=B2=88=20=ED=98=84=EC=9E=AC=20?=
@@ -19287,7 +19287,7 @@ index f4af17d1..63ee2adb 100644
 From 98948fc62ba13057b5e624b8ff7684081fefc7aa Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 18:05:11 +0900
-Subject: [PATCH 47/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 47/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81=202:=20=EA=B1=B0=EC=A0=88=20=EB=B2=84?=
  =?UTF-8?q?=ED=8A=BC=20No,=20go=20back=20=EC=9D=80=20=EC=88=98=EC=97=85?=
@@ -19534,7 +19534,7 @@ index 30fca846..17437a5f 100644
 From c461060b3067d87e273355be9319b940ce60af17 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 18:27:03 +0900
-Subject: [PATCH 48/54] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 48/58] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20=EB=AA=A9=EB=A1=9D=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EA=B7=B8=20=EC=9E=90=EB=A6=AC=EB=A1=9C=20=EC=9D=B4=EC=96=B4=20?=
  =?UTF-8?q?=EC=97=B0=20=EC=84=B8=EC=85=98=EC=97=90=EB=8F=84=20FURIO=20?=
@@ -20194,7 +20194,7 @@ index 00000000..4d9d3eef
 From 10d7b8470f1024b1352ab89d10fa8d0b3b017eda Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 21:23:44 +0900
-Subject: [PATCH 49/54] =?UTF-8?q?furio=20agents=20=EC=84=B8=EC=85=98=20?=
+Subject: [PATCH 49/58] =?UTF-8?q?furio=20agents=20=EC=84=B8=EC=85=98=20?=
  =?UTF-8?q?=EC=95=88=20=EB=AA=A9=EB=A1=9D=EC=9D=84=20=EC=B2=98=EC=9D=8C=20?=
  =?UTF-8?q?=ED=99=94=EB=A9=B4=EA=B3=BC=20=EA=B0=99=EA=B2=8C:=20=E2=86=90?=
  =?UTF-8?q?=C2=B7/switch=20=EB=AA=A9=EB=A1=9D=EC=97=90=20=EC=9E=85?=
@@ -21319,7 +21319,7 @@ index 79f37795..ccc72d15 100644
 From a1ae03626e3f3c67506789512a2ba4ad67184387 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 21:36:47 +0900
-Subject: [PATCH 50/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 50/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=82=BC=EC=A7=80=EC=84=A0?=
  =?UTF-8?q?=EB=8B=A4:=20=EB=8C=80=EC=83=81=20=ED=84=B4=EC=9D=98=20?=
  =?UTF-8?q?=ED=99=88=20=EB=8B=B5=EC=97=90=20=EC=BD=94=EB=93=9C(=EC=BD=94?=
@@ -24889,7 +24889,7 @@ index 00000000..057ed5b7
 From ed1dac1832c69f7b53c9d5a9a81706cbce3cf829 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 21:57:57 +0900
-Subject: [PATCH 51/54] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 51/58] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20/switch=20=EB=AA=A9=EB=A1=9D=20=EC=8B=9C?=
  =?UTF-8?q?=ED=97=98=EC=9D=B4=20=EC=B2=AB=20=ED=94=84=EB=A0=88=EC=9E=84=20?=
  =?UTF-8?q?=EC=A7=81=ED=9B=84=20=ED=82=A4=EB=A5=BC=20=EB=B3=B4=EB=82=B4=20?=
@@ -24965,7 +24965,7 @@ index 451779ce..8b2f0f36 100644
 From 19f38e896aec0a9c754203444d7e07635ff89099 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 22:09:17 +0900
-Subject: [PATCH 52/54] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 52/58] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=82=BC=EC=A7=80=EC=84=A0?=
  =?UTF-8?q?=EB=8B=A4=20=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20?=
  =?UTF-8?q?=EB=B9=84=EA=B5=90=20=ED=84=B4=EC=9D=B4=20QueryGuard=20?=
@@ -25760,7 +25760,7 @@ index f8b51fc5..d159dfdc 100644
 From 2cf74ea3ce64598d64f48d4f55059d0b60be4d2f Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 23:06:51 +0900
-Subject: [PATCH 53/54] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 53/58] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81=202:=20=EC=84=B8=EC=85=98=20=EC=95=88=20?=
  =?UTF-8?q?=EB=AA=A9=EB=A1=9D(=E2=86=90=C2=B7/switch)=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EB=8B=A4=EB=A5=B8=20=ED=8F=B4=EB=8D=94=20=EC=84=B8=EC=85=98?=
@@ -26235,7 +26235,7 @@ index 4549b875..1f2eef5a 100644
 From d15dbcf1cbca6a4c785116d33dd61ca024461a57 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 00:08:36 +0900
-Subject: [PATCH 54/54] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 54/58] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81=203:=20=EB=8B=A4=EB=A5=B8=20=ED=8F=B4?=
  =?UTF-8?q?=EB=8D=94=20=EC=84=B8=EC=85=98=EC=9C=BC=EB=A1=9C=20=EB=84=98?=
  =?UTF-8?q?=EA=B8=B0=EA=B8=B0=20=EC=A0=84=EC=97=90=20PID=20=ED=8C=8C?=
@@ -27344,6 +27344,1249 @@ index 1f2eef5a..752b32d1 100644
 +): RelaunchOutcome {
    return relaunchInDir(projectPath, ['--resume', sessionId], deps)
  }
+-- 
+2.43.0
+
+
+From e5b3a8f868ea2a2f62c215121a83bc726925f746 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Tue, 27 Oct 2026 10:42:59 +0900
+Subject: [PATCH 55/58] =?UTF-8?q?furio=20agents=20=EC=A7=A7=EC=9D=80=20?=
+ =?UTF-8?q?=ED=99=94=EB=A9=B4(80x24=20=EB=93=B1)=EC=97=90=EC=84=9C=20?=
+ =?UTF-8?q?=EB=AA=A9=EB=A1=9D=EC=9D=B4=20=EA=B7=B8=20=EC=9E=90=EB=A6=AC?=
+ =?UTF-8?q?=EC=97=90=EC=84=9C=20=EC=97=B0=20=EC=84=B8=EC=85=98=EB=8F=84=20?=
+ =?UTF-8?q?=EB=A1=9C=EA=B3=A0=20=EB=8C=80=EC=8B=A0=20=ED=95=9C=20=EC=A4=84?=
+ =?UTF-8?q?=20=EB=A8=B8=EB=A6=AC=EB=A5=BC=20=EC=B0=8D=EC=96=B4,=20?=
+ =?UTF-8?q?=EB=8B=A4=EB=A5=B8=20=ED=8F=B4=EB=8D=94=20=EC=84=B8=EC=85=98?=
+ =?UTF-8?q?=EC=9C=BC=EB=A1=9C=20=EB=84=98=EC=96=B4=EA=B0=84=20=EB=92=A4=20?=
+ =?UTF-8?q?=EC=8A=A4=ED=81=AC=EB=A1=A4=20=EA=B8=B0=EB=A1=9D=EC=97=90=20?=
+ =?UTF-8?q?=EC=9E=98=EB=A6=B0=20=EB=A1=9C=EA=B3=A0=20=EC=A1=B0=EA=B0=81?=
+ =?UTF-8?q?=EC=9D=B4=20=EB=82=A8=EB=8D=98=20=EB=AC=B8=EC=A0=9C=20=EC=88=98?=
+ =?UTF-8?q?=EC=A0=95?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/components/StartupScreen.ts        |  6 ++-
+ src/utils/startupScreenHandoff.test.ts | 53 ++++++++++++++++++++++++++
+ src/utils/startupScreenHandoff.ts      |  8 +++-
+ 3 files changed, 64 insertions(+), 3 deletions(-)
+
+diff --git a/src/components/StartupScreen.ts b/src/components/StartupScreen.ts
+index 47daefc2..2b349695 100644
+--- a/src/components/StartupScreen.ts
++++ b/src/components/StartupScreen.ts
+@@ -243,8 +243,10 @@ const ROOM_UNDER_STARTUP_SCREEN = 12
+  * A furio handed the terminal by another starts at the top of a cleared
+  * screen. When the logo and the session under it do not fit there, the top of
+  * the logo scrolls into the scrollback, and every hop between folders adds
+- * another cut-off copy. Those starts print one line instead. Unless the
+- * caller says, the parent's mark in the environment tells (and is taken).
++ * another cut-off copy. Those starts print one line instead, and so does a
++ * session the `furio agents` list opens in place (startupScreenHandoff.ts).
++ * Unless the caller says, the parent's mark in the environment tells (and is
++ * taken).
+  */
+ export function printStartupScreen(
+   _modelOverride?: string,
+diff --git a/src/utils/startupScreenHandoff.test.ts b/src/utils/startupScreenHandoff.test.ts
+index a6eadf47..09397386 100644
+--- a/src/utils/startupScreenHandoff.test.ts
++++ b/src/utils/startupScreenHandoff.test.ts
+@@ -1,4 +1,6 @@
+ import { describe, expect, it } from 'bun:test'
++import { stripVTControlCharacters as stripAnsi } from 'node:util'
++import { HANDED_OVER_ENV } from '../components/StartupScreen.js'
+ import { CURSOR_HOME, ERASE_SCREEN } from '../ink/termio/csi.js'
+ import { printStartupScreenAboveNextFrame, type RepaintableTerminal } from './startupScreenHandoff.js'
+ 
+@@ -25,6 +27,42 @@ function run(ink: RepaintableTerminal | undefined, calls: string[], isTTY = true
+   })
+ }
+ 
++/** The real startup screen, printed through the hand-off on a `columns` x `rows` terminal; the plain text it wrote. */
++function printForReal(columns: number, rows: number): string {
++  const stdout = process.stdout as unknown as Record<string, unknown>
++  const saved = ['isTTY', 'columns', 'rows'].map(key => [key, Object.getOwnPropertyDescriptor(stdout, key)] as const)
++  const originalWrite = process.stdout.write
++  const savedMacro = (globalThis as Record<string, unknown>).MACRO
++  const savedCi = process.env.CI
++  ;(globalThis as Record<string, unknown>).MACRO = { VERSION: 'test-version' }
++  delete process.env.CI
++  delete process.env[HANDED_OVER_ENV]
++  for (const [key, value] of [
++    ['isTTY', true],
++    ['columns', columns],
++    ['rows', rows],
++  ] as const) {
++    Object.defineProperty(stdout, key, { configurable: true, value })
++  }
++  let output = ''
++  process.stdout.write = ((chunk: string | Uint8Array) => {
++    output += chunk.toString()
++    return true
++  }) as typeof process.stdout.write
++  try {
++    expect(printStartupScreenAboveNextFrame({ ink: fakeInk().ink, isTTY: true })).toBe(true)
++  } finally {
++    process.stdout.write = originalWrite
++    for (const [key, descriptor] of saved) {
++      if (descriptor) Object.defineProperty(stdout, key, descriptor)
++      else delete stdout[key]
++    }
++    ;(globalThis as Record<string, unknown>).MACRO = savedMacro
++    if (savedCi !== undefined) process.env.CI = savedCi
++  }
++  return stripAnsi(output)
++}
++
+ describe('printStartupScreenAboveNextFrame', () => {
+   it('prints the startup screen where the frame was, keeping the lines above', () => {
+     const { ink, calls } = fakeInk()
+@@ -44,6 +82,21 @@ describe('printStartupScreenAboveNextFrame', () => {
+     ])
+   })
+ 
++  it('prints one line instead of the logo on a screen too short for both, as after a hand-over', () => {
++    // 80x24: the stacked logo did not fit with the session under it, so its top
++    // was in the scrollback as soon as the session opened, and the next hop to
++    // another folder (which clears only what is on screen) left it there cut.
++    const out = printForReal(80, 24)
++    expect(out).not.toContain('█')
++    const lines = out.split('\n').filter(line => line.trim() !== '')
++    expect(lines).toHaveLength(1)
++    expect(lines[0]).toContain('FURIO vtest-version')
++  })
++
++  it('keeps the logo when the screen has room for it', () => {
++    expect(printForReal(120, 40)).toContain('█')
++  })
++
+   it('leaves the alternate screen, a pipe and a missing Ink alone', () => {
+     for (const [ink, isTTY] of [
+       [fakeInk({ altScreen: true }).ink, true],
+diff --git a/src/utils/startupScreenHandoff.ts b/src/utils/startupScreenHandoff.ts
+index 4d9d3eef..e981607c 100644
+--- a/src/utils/startupScreenHandoff.ts
++++ b/src/utils/startupScreenHandoff.ts
+@@ -30,6 +30,12 @@ export type StartupScreenHandoffDeps = {
+  * lines above it alone. When the frame's top is out of reach the screen is
+  * cleared instead. Main screen only: in the alternate screen the text would
+  * land in a buffer that is thrown away. Returns whether anything was printed.
++ *
++ * It looks like a session the list handed to another furio (another folder,
++ * or a new session from the box), short screen included: there the logo and
++ * the session under it do not fit, the top of the logo scrolls into the
++ * scrollback as soon as the session opens, and the next hop to another folder
++ * clears only what is on screen, so a cut logo would stay up there.
+  */
+ export function printStartupScreenAboveNextFrame({
+   ink = instances.get(process.stdout),
+@@ -37,7 +43,7 @@ export function printStartupScreenAboveNextFrame({
+   write = text => {
+     process.stdout.write(text)
+   },
+-  print = () => printStartupScreen(),
++  print = () => printStartupScreen(undefined, { handedOver: true }),
+ }: StartupScreenHandoffDeps = {}): boolean {
+   if (!ink || !isTTY || ink.isAltScreenActive) return false
+   if (!ink.eraseFrameForOutput()) {
+-- 
+2.43.0
+
+
+From c1805979d05d0e27667a7e57f75946eefae20d3a Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Tue, 27 Oct 2026 12:19:20 +0900
+Subject: [PATCH 56/58] =?UTF-8?q?furio=20agents=20=EC=8A=A4=ED=81=AC?=
+ =?UTF-8?q?=EB=A1=A4=20=EA=B8=B0=EB=A1=9D=EC=9D=98=20=EC=9E=98=EB=A6=B0=20?=
+ =?UTF-8?q?=EB=A1=9C=EA=B3=A0=20=ED=95=9C=20=EB=B2=88=EC=97=90=20=EC=A0=95?=
+ =?UTF-8?q?=EB=A6=AC:=20=EB=84=98=EA=B2=A8=EB=B0=9B=EC=9D=80=20furio=20?=
+ =?UTF-8?q?=EC=99=80=20=EB=AA=A9=EB=A1=9D=EC=9D=B4=20=EA=B7=B8=20=EC=9E=90?=
+ =?UTF-8?q?=EB=A6=AC=EC=97=90=EC=84=9C=20=EC=97=B0=20=EC=84=B8=EC=85=98?=
+ =?UTF-8?q?=EC=9D=80=20=ED=99=94=EB=A9=B4=20=ED=81=AC=EA=B8=B0=EC=99=80=20?=
+ =?UTF-8?q?=EB=8C=80=ED=99=94=20=EA=B8=B8=EC=9D=B4=EC=97=90=20=EC=83=81?=
+ =?UTF-8?q?=EA=B4=80=EC=97=86=EC=9D=B4=20=EB=A1=9C=EA=B3=A0=20=EB=8C=80?=
+ =?UTF-8?q?=EC=8B=A0=20=ED=95=9C=20=EC=A4=84=20=EB=A8=B8=EB=A6=AC=EB=A5=BC?=
+ =?UTF-8?q?=20=EC=B0=8D=EA=B3=A0,=20=EC=86=90=EC=9C=BC=EB=A1=9C=20?=
+ =?UTF-8?q?=EC=97=B0=20furio=20=EA=B0=80=20=EB=A1=9C=EA=B3=A0=20=EC=9C=97?=
+ =?UTF-8?q?=EC=A4=84=EC=9D=B4=20=EC=8A=A4=ED=81=AC=EB=A1=A4=20=EA=B8=B0?=
+ =?UTF-8?q?=EB=A1=9D=EC=9C=BC=EB=A1=9C=20=EC=98=AC=EB=9D=BC=EA=B0=84=20?=
+ =?UTF-8?q?=EC=B1=84=20=EB=8B=A4=EB=A5=B8=20=ED=8F=B4=EB=8D=94=EB=A1=9C=20?=
+ =?UTF-8?q?=EB=84=98=EA=B8=B8=20=EB=95=8C=EB=8A=94=20=EB=82=A8=EC=9D=80=20?=
+ =?UTF-8?q?=EB=A1=9C=EA=B3=A0=20=EC=A4=84=EC=9D=84=20=EB=A7=88=EC=A0=80=20?=
+ =?UTF-8?q?=EC=98=AC=EB=A0=A4=20=EB=A1=9C=EA=B3=A0=EA=B0=80=20=ED=86=B5?=
+ =?UTF-8?q?=EC=A7=B8=EB=A1=9C=20=EB=82=A8=EA=B2=8C=20=ED=95=A8?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Claude-Session: https://claude.ai/code/session_01Awg9EDmFe6qrrwt2T4HiDJ
+---
+ src/components/StartupScreen.test.ts   | 37 +++++++++++++------
+ src/components/StartupScreen.ts        | 51 +++++++++++++++++---------
+ src/entrypoints/cli.tsx                |  3 +-
+ src/ink/eraseFrameForOutput.test.tsx   | 24 ++++++++++++
+ src/ink/ink.tsx                        | 11 ++++++
+ src/screens/ResumeConversation.tsx     |  4 +-
+ src/utils/relaunchInProjectDir.test.ts | 33 ++++++++++++++++-
+ src/utils/relaunchInProjectDir.ts      | 33 +++++++++++++++--
+ src/utils/startupScreenHandoff.test.ts | 30 ++++++++-------
+ src/utils/startupScreenHandoff.ts      | 15 ++++----
+ 10 files changed, 184 insertions(+), 57 deletions(-)
+
+diff --git a/src/components/StartupScreen.test.ts b/src/components/StartupScreen.test.ts
+index 96aef9cd..3f30c9f6 100644
+--- a/src/components/StartupScreen.test.ts
++++ b/src/components/StartupScreen.test.ts
+@@ -27,6 +27,7 @@ import {
+   detectProvider,
+   HANDED_OVER_ENV,
+   printStartupScreen,
++  startupLogoLines,
+   takeHandOverMark,
+ } from './StartupScreen.js'
+ import {
+@@ -249,12 +250,18 @@ describe('printStartupScreen layout', () => {
+ // --- A furio handed the terminal by another (relaunchInDir) ---
+ 
+ describe('printStartupScreen after a hand-over', () => {
+-  test('on a screen too short for the logo and the prompt, one line takes its place', () => {
+-    // 80x24 is the default macOS terminal. Every hop to another folder would
+-    // otherwise push the top of the logo into the scrollback again.
++  test('one line takes the place of the logo, whatever the screen size', () => {
++    // How tall the session under it gets is not known here: a resumed
++    // conversation a few lines taller than the screen pushes the top of the
++    // logo into the scrollback on any size, and the next hop to another
++    // folder clears only what is on screen, so the cut rows stay up there.
+     for (const [columns, rows] of [
+-      [80, 24],
+       [50, 16],
++      [80, 24],
++      [100, 30],
++      [120, 40],
++      [160, 45],
++      [250, 80],
+     ] as const) {
+       const out = renderStartupScreen(columns, { rows, handedOver: true })
+       expect(logoLines(out)).toHaveLength(0)
+@@ -266,20 +273,28 @@ describe('printStartupScreen after a hand-over', () => {
+     }
+   })
+ 
+-  test('with room to spare the logo stays, as on any other start', () => {
+-    expect(logoLines(renderStartupScreen(120, { rows: 36, handedOver: true }))).toHaveLength(6)
+-  })
+-
+-  test('started by hand, a short screen still gets the logo', () => {
++  test('started by hand, any screen still gets the logo', () => {
+     expect(logoLines(renderStartupScreen(80, { rows: 24 }))).toHaveLength(12)
+     expect(logoLines(renderStartupScreen(80, { rows: 24, handedOver: false }))).toHaveLength(12)
++    expect(logoLines(renderStartupScreen(120, { rows: 40, handedOver: false }))).toHaveLength(6)
+   })
+ 
+   test('reads the mark the parent left in the environment, and only once', () => {
+     process.env[HANDED_OVER_ENV] = '1'
+-    expect(logoLines(renderStartupScreen(80, { rows: 24 }))).toHaveLength(0)
++    expect(logoLines(renderStartupScreen(120, { rows: 40 }))).toHaveLength(0)
+     expect(process.env[HANDED_OVER_ENV]).toBeUndefined()
+-    expect(logoLines(renderStartupScreen(80, { rows: 24 }))).toHaveLength(12)
++    expect(logoLines(renderStartupScreen(120, { rows: 40 }))).toHaveLength(6)
++  })
++
++  test('remembers how many lines the logo took, for the next hand-over to finish scrolling it up', () => {
++    const wide = renderStartupScreen(120, { rows: 40 })
++    expect(startupLogoLines()).toBe(wide.split('\n').length - 1)
++    expect(startupLogoLines()).toBe(12)
++    renderStartupScreen(80, { rows: 24 })
++    expect(startupLogoLines()).toBe(19)
++    // One line can not be cut: nothing to finish.
++    renderStartupScreen(120, { rows: 40, handedOver: true })
++    expect(startupLogoLines()).toBe(0)
+   })
+ 
+   test('the mark is read once and taken out of the environment', () => {
+diff --git a/src/components/StartupScreen.ts b/src/components/StartupScreen.ts
+index 2b349695..fa8aba0b 100644
+--- a/src/components/StartupScreen.ts
++++ b/src/components/StartupScreen.ts
+@@ -232,21 +232,34 @@ export function takeHandOverMark(env: NodeJS.ProcessEnv = process.env): boolean
+   return marked
+ }
+ 
+-/** Lines a session needs under the startup screen: the prompt box, its footer and the start of the conversation. */
+-const ROOM_UNDER_STARTUP_SCREEN = 12
++/** Lines the logo screen this process printed took; 0 after the one line, or before anything. */
++let logoLinesPrinted = 0
++
++/**
++ * How many lines the logo screen this process printed took, ending on the
++ * line Ink's first frame starts on. 0 when it printed the one line of a
++ * handed-over furio (which can not be cut) or nothing.
++ */
++export function startupLogoLines(): number {
++  return logoLinesPrinted
++}
+ 
+ /**
+  * 로고와 한 줄 소개만 찍는다. 예전에는 Provider/Model/Endpoint 박스도 같이 찍었는데,
+  * 같은 정보가 TUI 상태줄과 /model 에 이미 있어 화면만 길어져 걷어냈다.
+  * 첫 인자는 업스트림 호출부와 모양을 맞추려고 남겨 둔다(지금은 쓰지 않는다).
+  *
+- * A furio handed the terminal by another starts at the top of a cleared
+- * screen. When the logo and the session under it do not fit there, the top of
+- * the logo scrolls into the scrollback, and every hop between folders adds
+- * another cut-off copy. Those starts print one line instead, and so does a
+- * session the `furio agents` list opens in place (startupScreenHandoff.ts).
+- * Unless the caller says, the parent's mark in the environment tells (and is
+- * taken).
++ * A furio handed the terminal by another prints one line instead of the logo,
++ * on every screen size, and so does a session the `furio agents` list opens
++ * in place (startupScreenHandoff.ts). Such a session can be left again for
++ * another folder, and that hop clears only what is on screen: whenever the
++ * conversation under the logo is taller than the room left, the top of the
++ * logo has already scrolled into the scrollback and stays there cut. How tall
++ * the conversation gets is not known here, so no screen size is safe. Only a
++ * furio started by hand prints the logo; when it hands the terminal on with
++ * the logo partly scrolled up, it scrolls the rest up too (startupLogoLines,
++ * releaseTerminalToChild). Unless the caller says, the parent's mark in the
++ * environment tells (and is taken).
+  */
+ export function printStartupScreen(
+   _modelOverride?: string,
+@@ -264,6 +277,16 @@ export function printStartupScreen(
+   const columns = process.stdout.columns || 80
+   const centerPad = (visibleLen: number): string =>
+     ' '.repeat(Math.max(0, Math.floor((columns - visibleLen) / 2)))
++  const version = MACRO.DISPLAY_VERSION ?? MACRO.VERSION
++  const versionText = `FURIO v${version}`
++
++  if (handedOver) {
++    const line = `${centerPad(versionText.length)}${BOLD}${ansiRgb(...CREAM)}FURIO${RESET} ${ansiRgb(...ACCENT)}v${version}${RESET}`
++    process.stdout.write(`${line}\n\n`)
++    logoLinesPrinted = 0
++    return
++  }
++
+   const out: string[] = []
+ 
+   out.push('')
+@@ -312,17 +335,9 @@ export function printStartupScreen(
+   out.push(`${centerPad(BRAND_TAGLINE.length + 4)}${ansiRgb(...ACCENT)}\u2726${RESET} ${ansiRgb(...CREAM)}${BRAND_TAGLINE}${RESET} ${ansiRgb(...ACCENT)}\u2726${RESET}`)
+   out.push('')
+ 
+-  const version = MACRO.DISPLAY_VERSION ?? MACRO.VERSION
+-  const versionText = `FURIO v${version}`
+   out.push(`${centerPad(versionText.length)}${DIM}${ansiRgb(...DIMCOL)}FURIO ${RESET}${ansiRgb(...ACCENT)}v${version}${RESET}`)
+   out.push('')
+ 
+-  const rows = process.stdout.rows || 24
+-  if (handedOver && rows < out.length + ROOM_UNDER_STARTUP_SCREEN) {
+-    const line = `${centerPad(versionText.length)}${BOLD}${ansiRgb(...CREAM)}FURIO${RESET} ${ansiRgb(...ACCENT)}v${version}${RESET}`
+-    process.stdout.write(`${line}\n\n`)
+-    return
+-  }
+-
+   process.stdout.write(out.join('\n') + '\n')
++  logoLinesPrinted = out.length
+ }
+diff --git a/src/entrypoints/cli.tsx b/src/entrypoints/cli.tsx
+index 1ac8dd79..e74df8e1 100644
+--- a/src/entrypoints/cli.tsx
++++ b/src/entrypoints/cli.tsx
+@@ -610,7 +610,8 @@ export async function main(
+   // management subcommands should stay script-friendly and avoid the banner.
+   // Bare `agents` (the session view, rewritten to --resume --fleet below)
+   // draws its own small header, so the big logo would only push it down. A
+-  // session the view opens in place prints it then (ResumeConversation).
++  // session the view opens in place prints the one line of a handed-over
++  // furio then (ResumeConversation).
+   const isAgentsView = args.length === 1 && args[0] === 'agents'
+   if (args[0] !== 'skills' && !isAgentsView) {
+     const { printStartupScreen } = await importers.startupScreen()
+diff --git a/src/ink/eraseFrameForOutput.test.tsx b/src/ink/eraseFrameForOutput.test.tsx
+index 57cb21d3..3618f905 100644
+--- a/src/ink/eraseFrameForOutput.test.tsx
++++ b/src/ink/eraseFrameForOutput.test.tsx
+@@ -79,3 +79,27 @@ test('eraseFrameForOutput refuses a frame as tall as the screen', async () => {
+     h.stop()
+   }
+ })
++
++test('frameRowsUsed counts the frame and the line under it, where the cursor rests', async () => {
++  // A furio handing the terminal on works out from this how much of its
++  // startup screen above the frame has scrolled up.
++  const h = await mount(3, 24)
++  try {
++    expect(h.ink.frameRowsUsed()).toBe(4)
++  } finally {
++    h.stop()
++  }
++})
++
++test('frameRowsUsed knows no main screen frame while the alternate screen is up', async () => {
++  const h = await mount(3, 24)
++  try {
++    h.ink.setAltScreenActive(true)
++    expect(h.ink.frameRowsUsed()).toBeUndefined()
++    // Back on the main screen it is the frame from before.
++    h.ink.setAltScreenActive(false)
++    expect(h.ink.frameRowsUsed()).toBe(4)
++  } finally {
++    h.stop()
++  }
++})
+diff --git a/src/ink/ink.tsx b/src/ink/ink.tsx
+index 1917e054..c7f98f11 100644
+--- a/src/ink/ink.tsx
++++ b/src/ink/ink.tsx
+@@ -922,6 +922,17 @@ export default class Ink {
+     return true;
+   }
+ 
++  /**
++   * Main screen only: the rows the last frame has taken, from its first line
++   * through the line under it where the cursor rests (a frame as tall as the
++   * screen has pushed one line into the scrollback). Undefined while the
++   * alternate screen is up; leaving it brings the main screen frame back.
++   */
++  frameRowsUsed(): number | undefined {
++    if (this.altScreenActive) return undefined;
++    return this.frontFrame.screen.height + 1;
++  }
++
+   /**
+    * Called by the <AlternateScreen> component on mount/unmount.
+    * Controls cursor.y clamping in the renderer and gates alt-screen-aware
+diff --git a/src/screens/ResumeConversation.tsx b/src/screens/ResumeConversation.tsx
+index 64eae689..760fe237 100644
+--- a/src/screens/ResumeConversation.tsx
++++ b/src/screens/ResumeConversation.tsx
+@@ -310,7 +310,9 @@ export function ResumeConversation({
+         resume_duration_ms: Math.round(performance.now() - resumeStart)
+       });
+       // `furio agents` drew no startup screen; the session it opens here
+-      // gets one, like a session opened any other way.
++      // gets the one line a session handed over from the list gets (another
++      // folder, or a new session from the box), not the logo of a furio
++      // started by hand.
+       if (fleet) printStartupScreenAboveNextFrame();
+       setLogs([]);
+       setResumeData({
+diff --git a/src/utils/relaunchInProjectDir.test.ts b/src/utils/relaunchInProjectDir.test.ts
+index 47902a4b..1a93fa57 100644
+--- a/src/utils/relaunchInProjectDir.test.ts
++++ b/src/utils/relaunchInProjectDir.test.ts
+@@ -253,7 +253,7 @@ describe('relaunchInDir', () => {
+ describe('releaseTerminalToChild', () => {
+   const ROWS = 36
+ 
+-  function fakeInk(isAltScreenActive: boolean, frameErasable = true) {
++  function fakeInk(isAltScreenActive: boolean, frameErasable = true, frameRows: number | null = 20) {
+     const calls: string[] = []
+     const ink: TerminalOwner = {
+       pause: () => calls.push('pause'),
+@@ -264,6 +264,7 @@ describe('releaseTerminalToChild', () => {
+         calls.push('eraseFrameForOutput')
+         return frameErasable
+       },
++      frameRowsUsed: () => frameRows ?? undefined,
+       detachForShutdown: () => calls.push('detachForShutdown'),
+     }
+     const written: string[] = []
+@@ -272,7 +273,7 @@ describe('releaseTerminalToChild', () => {
+ 
+   it('from the furio agents list, erases the list so the child starts where it was', () => {
+     const f = fakeInk(false)
+-    releaseTerminalToChild(f.ink, f.write, ROWS)
++    releaseTerminalToChild(f.ink, f.write, ROWS, 12)
+     // The shell lines above the list stay; nothing else is written.
+     expect(f.calls).toEqual(['pause', 'suspendStdin', 'eraseFrameForOutput', 'detachForShutdown'])
+     expect(f.written).toEqual([])
+@@ -296,6 +297,34 @@ describe('releaseTerminalToChild', () => {
+     expect(f.written).toEqual([DISABLE_MOUSE_TRACKING + EXIT_ALT_SCREEN, clearVisibleScreen(ROWS)])
+   })
+ 
++  it('from a session whose logo has partly scrolled up, scrolls the rest of it up first', () => {
++    // furio --resume by hand on 100x30: the 12-line startup screen and a
++    // conversation taking 22 rows under it. The first 4 lines of the startup
++    // screen are in the scrollback; clearing only the screen would leave the
++    // top of the logo up there cut. Scrolling the other 8 up completes it.
++    const f = fakeInk(true, true, 22)
++    releaseTerminalToChild(f.ink, f.write, 30, 12)
++    expect(f.written).toEqual([
++      DISABLE_MOUSE_TRACKING + EXIT_ALT_SCREEN,
++      cursorPosition(30, 1) + '\n'.repeat(8) + clearVisibleScreen(30),
++    ])
++  })
++
++  it('scrolls nothing up when the logo is all on screen, all scrolled up, or was one line', () => {
++    for (const [frameRows, logoLines] of [
++      [18, 12], // 12 + 18 = 30 rows: the logo is still all on screen
++      [6, 12],
++      [30, 12], // 12 + 30 = 42: all 12 lines of the startup screen are up already
++      [60, 12],
++      [22, 0], // a handed-over furio printed one line, not the logo
++      [null, 12], // no main screen frame to go by
++    ] as const) {
++      const f = fakeInk(true, true, frameRows)
++      releaseTerminalToChild(f.ink, f.write, 30, logoLines)
++      expect(f.written).toEqual([DISABLE_MOUSE_TRACKING + EXIT_ALT_SCREEN, clearVisibleScreen(30)])
++    }
++  })
++
+   it('never writes to the terminal after the hand-over', () => {
+     // We exit once the child does. Our exit would otherwise unmount the
+     // alternate screen again, and its ?1049l puts the cursor back where it
+diff --git a/src/utils/relaunchInProjectDir.ts b/src/utils/relaunchInProjectDir.ts
+index 752b32d1..93d99b85 100644
+--- a/src/utils/relaunchInProjectDir.ts
++++ b/src/utils/relaunchInProjectDir.ts
+@@ -1,7 +1,7 @@
+ import { spawnSync } from 'child_process'
+ import { statSync, writeSync } from 'fs'
+ import { homedir } from 'os'
+-import { HANDED_OVER_ENV } from '../components/StartupScreen.js'
++import { HANDED_OVER_ENV, startupLogoLines } from '../components/StartupScreen.js'
+ import instances from '../ink/instances.js'
+ import { cursorPosition, eraseLines } from '../ink/termio/csi.js'
+ import { DISABLE_MOUSE_TRACKING, EXIT_ALT_SCREEN } from '../ink/termio/dec.js'
+@@ -75,6 +75,8 @@ export type TerminalOwner = {
+   isAltScreenActive: boolean
+   setAltScreenActive: (active: boolean) => void
+   eraseFrameForOutput: () => boolean
++  /** Main screen rows the frame has taken, the line under it included; undefined in the alternate screen. */
++  frameRowsUsed: () => number | undefined
+   detachForShutdown: () => void
+ }
+ 
+@@ -89,6 +91,26 @@ export function clearVisibleScreen(rows: number): string {
+   return cursorPosition(rows, 1) + eraseLines(rows)
+ }
+ 
++/**
++ * What to write before the screen is cleared so the logo this furio printed
++ * at its start is not left cut in the scrollback.
++ *
++ * Ink's first frame starts on the line under the startup screen, so of its
++ * `logoLines` lines, `logoLines + frameRows - rows` have scrolled up, however
++ * far down the screen the logo started. When that is some but not all of
++ * them, the rest is scrolled up too (line feeds on the bottom row), and the
++ * scrollback holds the whole logo instead of its top rows. All of it on
++ * screen is cleared with the screen; all of it scrolled up is already whole.
++ * Once Ink has redrawn from the top (a resize, ctrl+l) the logo is no longer
++ * where this counts, and what goes up is conversation, never a logo row.
++ */
++export function scrollRestOfLogoUp(logoLines: number, frameRows: number | undefined, rows: number): string {
++  if (logoLines <= 0 || frameRows === undefined) return ''
++  const scrolledUp = logoLines + frameRows - rows
++  if (scrolledUp <= 0 || scrolledUp >= logoLines) return ''
++  return cursorPosition(rows, 1) + '\n'.repeat(logoLines - scrolledUp)
++}
++
+ /**
+  * Stop drawing and let go of the keyboard and the screen before a child
+  * takes the terminal.
+@@ -110,7 +132,9 @@ export function clearVisibleScreen(rows: number): string {
+  *   session under the first. That includes shell lines still showing above
+  *   the session: Ink knows its own frame, not how many lines the startup
+  *   screen and anything before it took, and a short guess would leave cut
+- *   pieces of the logo above the child. Lines already scrolled up stay.
++ *   pieces of the logo above the child. Lines already scrolled up stay;
++ *   when they hold the top of this furio's logo, the rest of it is scrolled
++ *   up to join them first (scrollRestOfLogoUp).
+  *
+  * After that we never write again. Where we wait for the child, our exit
+  * would otherwise unmount the alternate screen a second time, and that ?1049l
+@@ -123,6 +147,7 @@ export function releaseTerminalToChild(
+     process.stdout.write(text)
+   },
+   rows: number | undefined = process.stdout.isTTY ? process.stdout.rows : undefined,
++  logoLines: number = startupLogoLines(),
+ ): void {
+   if (!ink) return
+   ink.pause()
+@@ -135,7 +160,9 @@ export function releaseTerminalToChild(
+   // Main screen: erase just the frame; if its top has scrolled out of
+   // reach, the whole screen like from a session.
+   const cleared = !fromSession && ink.eraseFrameForOutput()
+-  if (!cleared && rows) write(clearVisibleScreen(rows))
++  if (!cleared && rows) {
++    write(scrollRestOfLogoUp(logoLines, ink.frameRowsUsed(), rows) + clearVisibleScreen(rows))
++  }
+   ink.detachForShutdown()
+ }
+ 
+diff --git a/src/utils/startupScreenHandoff.test.ts b/src/utils/startupScreenHandoff.test.ts
+index 09397386..74d5f1bf 100644
+--- a/src/utils/startupScreenHandoff.test.ts
++++ b/src/utils/startupScreenHandoff.test.ts
+@@ -82,19 +82,23 @@ describe('printStartupScreenAboveNextFrame', () => {
+     ])
+   })
+ 
+-  it('prints one line instead of the logo on a screen too short for both, as after a hand-over', () => {
+-    // 80x24: the stacked logo did not fit with the session under it, so its top
+-    // was in the scrollback as soon as the session opened, and the next hop to
+-    // another folder (which clears only what is on screen) left it there cut.
+-    const out = printForReal(80, 24)
+-    expect(out).not.toContain('█')
+-    const lines = out.split('\n').filter(line => line.trim() !== '')
+-    expect(lines).toHaveLength(1)
+-    expect(lines[0]).toContain('FURIO vtest-version')
+-  })
+-
+-  it('keeps the logo when the screen has room for it', () => {
+-    expect(printForReal(120, 40)).toContain('█')
++  it('prints one line instead of the logo on every screen size, as after a hand-over', () => {
++    // A session taller than the screen pushes the top of the logo into the
++    // scrollback as soon as it opens (80x24 with one exchange, 160x45 with
++    // eight), and the next hop to another folder, which clears only what is
++    // on screen, left it there cut.
++    for (const [columns, rows] of [
++      [80, 24],
++      [100, 30],
++      [120, 40],
++      [160, 45],
++    ] as const) {
++      const out = printForReal(columns, rows)
++      expect(out).not.toContain('█')
++      const lines = out.split('\n').filter(line => line.trim() !== '')
++      expect(lines).toHaveLength(1)
++      expect(lines[0]).toContain('FURIO vtest-version')
++    }
+   })
+ 
+   it('leaves the alternate screen, a pipe and a missing Ink alone', () => {
+diff --git a/src/utils/startupScreenHandoff.ts b/src/utils/startupScreenHandoff.ts
+index e981607c..6f9341da 100644
+--- a/src/utils/startupScreenHandoff.ts
++++ b/src/utils/startupScreenHandoff.ts
+@@ -22,20 +22,19 @@ export type StartupScreenHandoffDeps = {
+  * frame under it.
+  *
+  * `furio agents` skips the startup screen so its own header starts at the
+- * top. A session it opens in place should still look like every other way
+- * into a session (`furio`, `furio --resume <id>`, a relaunch in another
+- * directory), which all have the startup screen above the conversation.
++ * top. A session it opens in place still gets one above the conversation.
+  *
+  * The frame is erased and the startup screen takes its place, leaving the
+  * lines above it alone. When the frame's top is out of reach the screen is
+  * cleared instead. Main screen only: in the alternate screen the text would
+  * land in a buffer that is thrown away. Returns whether anything was printed.
+  *
+- * It looks like a session the list handed to another furio (another folder,
+- * or a new session from the box), short screen included: there the logo and
+- * the session under it do not fit, the top of the logo scrolls into the
+- * scrollback as soon as the session opens, and the next hop to another folder
+- * clears only what is on screen, so a cut logo would stay up there.
++ * It is the one line of a session the list handed to another furio (another
++ * folder, or a new session from the box), on every screen size: a
++ * conversation taller than the room under the logo pushes the top of the logo
++ * into the scrollback as soon as the session opens, and the next hop to
++ * another folder clears only what is on screen, so a cut logo would stay up
++ * there.
+  */
+ export function printStartupScreenAboveNextFrame({
+   ink = instances.get(process.stdout),
+-- 
+2.43.0
+
+
+From b9a2f5d8e5ddf21c7fd1c92fb5b9a04187d9ac37 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Tue, 27 Oct 2026 15:46:51 +0900
+Subject: [PATCH 57/58] =?UTF-8?q?=ED=8F=B4=EB=8D=94=20=EC=8B=A0=EB=A2=B0?=
+ =?UTF-8?q?=20=ED=99=95=EC=9D=B8=20=EC=B0=BD=EA=B3=BC=20=EC=9D=B4=EC=96=B4?=
+ =?UTF-8?q?=20=EC=93=B0=EA=B8=B0=20=ED=8C=81=EC=97=90=20OpenClaude=20?=
+ =?UTF-8?q?=EB=8C=80=EC=8B=A0=20FURIO=20=EC=9D=B4=EB=A6=84?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Claude-Session: https://claude.ai/code/session_011ZL47QEEFZgRNZUfebbGRU
+---
+ src/components/TrustDialog/TrustDialog.tsx |  3 ++-
+ src/furio/brandText.test.ts                | 20 ++++++++++++++++++++
+ src/services/tips/tipRegistry.ts           |  3 ++-
+ 3 files changed, 24 insertions(+), 2 deletions(-)
+ create mode 100644 src/furio/brandText.test.ts
+
+diff --git a/src/components/TrustDialog/TrustDialog.tsx b/src/components/TrustDialog/TrustDialog.tsx
+index c7d27aa8..c3c21276 100644
+--- a/src/components/TrustDialog/TrustDialog.tsx
++++ b/src/components/TrustDialog/TrustDialog.tsx
+@@ -7,6 +7,7 @@ import type { Command } from '../../commands.js';
+ import { useExitOnCtrlCDWithKeybindings } from '../../hooks/useExitOnCtrlCDWithKeybindings.js';
+ import { Box, Link, Text } from '../../ink.js';
+ import { useKeybinding } from '../../keybindings/useKeybinding.js';
++import { BRAND_NAME } from '../../constants/brand.js';
+ import { getMcpConfigsByScope } from '../../services/mcp/config.js';
+ import { BASH_TOOL_NAME } from '../../tools/BashTool/toolName.js';
+ import { checkHasTrustDialogAccepted, saveCurrentProjectConfig } from '../../utils/config.js';
+@@ -206,7 +207,7 @@ export function TrustDialog(t0) {
+   if ($[20] === Symbol.for("react.memo_cache_sentinel")) {
+     t16 = <Text bold={true}>{getFsImplementation().cwd()}</Text>;
+     t17 = <Text>Quick safety check: Is this a project you created or one you trust? (Like your own code, a well-known open source project, or work from your team). If not, take a moment to review what{"'"}s in this folder first.</Text>;
+-    t18 = <Text>OpenClaude{"'"}ll be able to read, edit, and execute files here.</Text>;
++    t18 = <Text>{BRAND_NAME} will be able to read, edit, and execute files here.</Text>;
+     $[20] = t16;
+     $[21] = t17;
+     $[22] = t18;
+diff --git a/src/furio/brandText.test.ts b/src/furio/brandText.test.ts
+new file mode 100644
+index 00000000..44b68d43
+--- /dev/null
++++ b/src/furio/brandText.test.ts
+@@ -0,0 +1,20 @@
++import { describe, expect, test } from 'bun:test'
++import { readFileSync } from 'fs'
++import { join } from 'path'
++
++// 학생이 처음 보는 화면에 upstream 이름(OpenClaude, openclaude 명령)이 나오지 않게 고정한다.
++const root = join(import.meta.dir, '..')
++
++describe('FURIO 이름', () => {
++  test('폴더 신뢰 확인 창은 FURIO 이름을 쓴다', () => {
++    const src = readFileSync(join(root, 'components/TrustDialog/TrustDialog.tsx'), 'utf8')
++    expect(src).toContain('{BRAND_NAME} will be able to read, edit, and execute files here.')
++    expect(src).not.toContain('OpenClaude{"\'"}ll be able to')
++  })
++
++  test('이어 쓰기 팁은 furio 명령을 쓴다', () => {
++    const src = readFileSync(join(root, 'services/tips/tipRegistry.ts'), 'utf8')
++    expect(src).not.toContain('openclaude --continue')
++    expect(src).toContain('${BRAND_COMMAND} --continue')
++  })
++})
+diff --git a/src/services/tips/tipRegistry.ts b/src/services/tips/tipRegistry.ts
+index b74e5b89..47fd7f11 100644
+--- a/src/services/tips/tipRegistry.ts
++++ b/src/services/tips/tipRegistry.ts
+@@ -1,4 +1,5 @@
+ import chalk from 'chalk'
++import { BRAND_COMMAND } from '../../constants/brand.js'
+ import { logForDebugging } from 'src/utils/debug.js'
+ import { fileHistoryEnabled } from 'src/utils/fileHistory.js'
+ import {
+@@ -381,7 +382,7 @@ const externalTips: Tip[] = [
+   {
+     id: 'continue',
+     content: async () =>
+-      'Run openclaude --continue or openclaude --resume to resume a conversation',
++      `Run ${BRAND_COMMAND} --continue or ${BRAND_COMMAND} --resume to resume a conversation`,
+     cooldownSessions: 10,
+     isRelevant: async () => true,
+   },
+-- 
+2.43.0
+
+
+From 8a366fc82e262369d1d32634b2dff637e17f743c Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Tue, 27 Oct 2026 16:56:49 +0900
+Subject: [PATCH 58/58] =?UTF-8?q?furio=20agents=20=EB=84=98=EA=B8=B0?=
+ =?UTF-8?q?=EA=B8=B0=EC=9D=98=20=EC=9E=98=EB=A6=B0=20=EB=A1=9C=EA=B3=A0=20?=
+ =?UTF-8?q?=EB=A7=88=EC=A0=80=20=EC=A0=95=EB=A6=AC:=20=EB=82=A8=EC=9D=80?=
+ =?UTF-8?q?=20=EB=A1=9C=EA=B3=A0=20=EC=A4=84=EC=9D=84=20=EC=A7=80=EA=B8=88?=
+ =?UTF-8?q?=20=ED=94=84=EB=A0=88=EC=9E=84=EC=9D=B4=20=EC=95=84=EB=8B=88?=
+ =?UTF-8?q?=EB=9D=BC=20=EB=A1=9C=EA=B3=A0=20=EC=95=84=EB=9E=98=20=EA=B0=80?=
+ =?UTF-8?q?=EC=9E=A5=20=EC=BB=B8=EB=8D=98=20=ED=94=84=EB=A0=88=EC=9E=84?=
+ =?UTF-8?q?=EC=9C=BC=EB=A1=9C=20=EC=84=B8=EC=96=B4=20/=20=EB=A9=94?=
+ =?UTF-8?q?=EB=89=B4,=20=EB=8B=B5=20=EA=B8=B0=EB=8B=A4=EB=A6=AC=EB=8A=94?=
+ =?UTF-8?q?=20=EC=8A=A4=ED=94=BC=EB=84=88=EC=99=80=20=ED=8C=81,=20?=
+ =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EC=B0=BD=EC=9D=B4=20=EC=BB=A4=EC=A1=8C?=
+ =?UTF-8?q?=EB=8B=A4=20=EC=A4=84=EC=96=B4=EB=93=A0=20=EB=92=A4=20=EB=84=98?=
+ =?UTF-8?q?=EA=B2=A8=EB=8F=84=20=EC=8A=A4=ED=81=AC=EB=A1=A4=20=EA=B8=B0?=
+ =?UTF-8?q?=EB=A1=9D=EC=97=90=20=EB=A1=9C=EA=B3=A0=EA=B0=80=20=ED=86=B5?=
+ =?UTF-8?q?=EC=A7=B8=EB=A1=9C=20=EB=82=A8=EA=B3=A0,=20=ED=81=AC=EA=B8=B0?=
+ =?UTF-8?q?=20=EB=B3=80=EA=B2=BD=EC=9D=B4=EB=82=98=20ctrl+l=20=EB=A1=9C=20?=
+ =?UTF-8?q?Ink=20=EA=B0=80=20=ED=99=94=EB=A9=B4=EC=9D=84=20=EC=A7=80?=
+ =?UTF-8?q?=EC=9A=B0=EB=A9=B4=20=EB=A1=9C=EA=B3=A0=20=EC=A4=84=20=EC=88=98?=
+ =?UTF-8?q?=EB=A5=BC=200=20=EC=9C=BC=EB=A1=9C=20=EB=90=98=EB=8F=8C?=
+ =?UTF-8?q?=EB=A0=A4=20=EB=8B=A4=EC=9D=8C=20=EB=84=98=EA=B8=B0=EA=B8=B0?=
+ =?UTF-8?q?=EA=B0=80=20=EB=8C=80=ED=99=94=20=EC=A4=84=EC=9D=84=20=EC=8A=A4?=
+ =?UTF-8?q?=ED=81=AC=EB=A1=A4=20=EA=B8=B0=EB=A1=9D=EC=9C=BC=EB=A1=9C=20?=
+ =?UTF-8?q?=EB=B0=80=EC=96=B4=20=EC=98=AC=EB=A6=AC=EC=A7=80=20=EC=95=8A?=
+ =?UTF-8?q?=EC=9D=8C?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Claude-Session: https://claude.ai/code/session_011ZL47QEEFZgRNZUfebbGRU
+---
+ src/components/StartupScreen.test.ts |  19 +++
+ src/components/StartupScreen.ts      |  17 ++-
+ src/ink/eraseFrameForOutput.test.tsx | 174 ++++++++++++++++++++++++---
+ src/ink/ink.tsx                      |  46 ++++++-
+ src/ink/mainScreenCleared.ts         |  23 ++++
+ src/utils/relaunchInProjectDir.ts    |  23 ++--
+ 6 files changed, 273 insertions(+), 29 deletions(-)
+ create mode 100644 src/ink/mainScreenCleared.ts
+
+diff --git a/src/components/StartupScreen.test.ts b/src/components/StartupScreen.test.ts
+index 3f30c9f6..6bbe08ac 100644
+--- a/src/components/StartupScreen.test.ts
++++ b/src/components/StartupScreen.test.ts
+@@ -30,6 +30,7 @@ import {
+   startupLogoLines,
+   takeHandOverMark,
+ } from './StartupScreen.js'
++import { notifyMainScreenCleared } from '../ink/mainScreenCleared.js'
+ import {
+   type GlobalConfig,
+   getGlobalConfig,
+@@ -297,6 +298,24 @@ describe('printStartupScreen after a hand-over', () => {
+     expect(startupLogoLines()).toBe(0)
+   })
+ 
++  test('forgets the logo once Ink clears the screen to draw from the top', () => {
++    // A resize clears the screen and the scrollback, ctrl+l the screen, and
++    // the logo goes with them. Still counting it, the next hand-over would
++    // push the top lines of the conversation into the scrollback.
++    try {
++      renderStartupScreen(120, { rows: 40 })
++      expect(startupLogoLines()).toBe(12)
++      notifyMainScreenCleared()
++      expect(startupLogoLines()).toBe(0)
++      // A logo printed after that counts again.
++      renderStartupScreen(80, { rows: 24 })
++      expect(startupLogoLines()).toBe(19)
++    } finally {
++      // The count is process-wide: leave none for the tests after this one.
++      notifyMainScreenCleared()
++    }
++  })
++
+   test('the mark is read once and taken out of the environment', () => {
+     // Left in place it would reach every command the session runs, and a
+     // furio started from one of them would think it was handed over.
+diff --git a/src/components/StartupScreen.ts b/src/components/StartupScreen.ts
+index fa8aba0b..f1b09a9a 100644
+--- a/src/components/StartupScreen.ts
++++ b/src/components/StartupScreen.ts
+@@ -19,6 +19,7 @@ import { getSettings_DEPRECATED } from '../utils/settings/settings.js'
+ import { parseUserSpecifiedModel } from '../utils/model/model.js'
+ import { DEFAULT_GEMINI_MODEL } from '../utils/providerProfile.js'
+ import { BRAND_TAGLINE } from '../constants/brand.js'
++import { onMainScreenCleared } from '../ink/mainScreenCleared.js'
+ import { getGlobalConfig } from '../utils/config.js'
+ import { ANSI_DIM, ANSI_RESET, ansiRgb } from '../utils/terminalAnsi.js'
+ import {
+@@ -232,13 +233,25 @@ export function takeHandOverMark(env: NodeJS.ProcessEnv = process.env): boolean
+   return marked
+ }
+ 
+-/** Lines the logo screen this process printed took; 0 after the one line, or before anything. */
++/**
++ * Lines the logo screen this process printed took; 0 after the one line,
++ * before anything, or once Ink cleared the screen.
++ */
+ let logoLinesPrinted = 0
+ 
++// Ink clearing the screen to draw from the top (a resize clears the
++// scrollback too, ctrl+l the screen) takes the logo with it. Still counting
++// it, the next hand-over would push the top lines of the conversation into
++// the scrollback instead.
++onMainScreenCleared(() => {
++  logoLinesPrinted = 0
++})
++
+ /**
+  * How many lines the logo screen this process printed took, ending on the
+  * line Ink's first frame starts on. 0 when it printed the one line of a
+- * handed-over furio (which can not be cut) or nothing.
++ * handed-over furio (which can not be cut) or nothing, and once Ink has
++ * cleared the screen since.
+  */
+ export function startupLogoLines(): number {
+   return logoLinesPrinted
+diff --git a/src/ink/eraseFrameForOutput.test.tsx b/src/ink/eraseFrameForOutput.test.tsx
+index 3618f905..9eb765d5 100644
+--- a/src/ink/eraseFrameForOutput.test.tsx
++++ b/src/ink/eraseFrameForOutput.test.tsx
+@@ -1,11 +1,31 @@
+ import { PassThrough } from 'node:stream'
+ 
+-import { expect, test } from 'bun:test'
+-import React from 'react'
++import { expect, mock, test } from 'bun:test'
++import React, { useContext } from 'react'
+ 
+ import { Box, render, Text } from '../ink.js'
++import { clearVisibleScreen, releaseTerminalToChild, type TerminalOwner } from '../utils/relaunchInProjectDir.js'
++import { TerminalSizeContext } from './components/TerminalSizeContext.js'
+ import instances from './instances.js'
+-import { eraseLines } from './termio/csi.js'
++import { onMainScreenCleared } from './mainScreenCleared.js'
++import { cursorPosition, ERASE_SCROLLBACK, eraseLines } from './termio/csi.js'
++import { DISABLE_MOUSE_TRACKING, EXIT_ALT_SCREEN } from './termio/dec.js'
++
++function Lines({ count }: { count: number }) {
++  // The first line follows the screen size, like the app's own lines do: a
++  // resize that changes nothing on screen draws no frame.
++  const size = useContext(TerminalSizeContext)
++  return (
++    <Box flexDirection="column">
++      {Array.from({ length: count }, (_, i) => (
++        <Text key={i}>
++          row{i}
++          {i === 0 && size ? ` (${size.columns}x${size.rows})` : ''}
++        </Text>
++      ))}
++    </Box>
++  )
++}
+ 
+ async function mount(lines: number, rows: number) {
+   let written = ''
+@@ -26,22 +46,22 @@ async function mount(lines: number, rows: number) {
+   stdout.on('data', chunk => {
+     written += chunk.toString()
+   })
+-  const app = await render(
+-    <Box flexDirection="column">
+-      {Array.from({ length: lines }, (_, i) => (
+-        <Text key={i}>row{i}</Text>
+-      ))}
+-    </Box>,
+-    {
+-      stdin: stdin as unknown as NodeJS.ReadStream,
+-      stdout: stdout as unknown as NodeJS.WriteStream,
+-      exitOnCtrlC: false,
+-    },
+-  )
++  const app = await render(<Lines count={lines} />, {
++    stdin: stdin as unknown as NodeJS.ReadStream,
++    stdout: stdout as unknown as NodeJS.WriteStream,
++    exitOnCtrlC: false,
++  })
+   await Bun.sleep(50)
+   const ink = instances.get(stdout as unknown as NodeJS.WriteStream)!
+   return {
+     ink,
++    /** Draw the next frame with `count` lines. */
++    setLines: (count: number) => app.rerender(<Lines count={count} />),
++    resize: (columns: number, newRows: number) => {
++      stdout.columns = columns
++      stdout.rows = newRows
++      stdout.emit('resize')
++    },
+     takeWritten: () => {
+       const out = written
+       written = ''
+@@ -103,3 +123,127 @@ test('frameRowsUsed knows no main screen frame while the alternate screen is up'
+     h.stop()
+   }
+ })
++
++test('frameRowsUsed keeps the tallest frame: a frame that shrinks gives no rows back', async () => {
++  // The / menu, the spinner with its tip, a permission dialog: the frame
++  // grows past the bottom, the screen scrolls, and when the frame shrinks
++  // again the screen does not scroll back. The lines above stay as far up as
++  // the tallest frame put them.
++  const h = await mount(3, 24)
++  try {
++    h.setLines(15)
++    h.setLines(5)
++    expect(h.ink.frameRowsUsed()).toBe(16)
++    h.setLines(9)
++    expect(h.ink.frameRowsUsed()).toBe(16)
++  } finally {
++    h.stop()
++  }
++})
++
++test('a hand-over after a frame grew and shrank scrolls up just the rest of the logo', async () => {
++  // 24 rows with a 12-line logo above the frame. The 15-line frame and the
++  // line under it pushed 4 lines of the logo into the scrollback; the frame
++  // is 5 lines again when the ← list hands the terminal on. The other 8 go
++  // up too, so the scrollback holds the whole logo. Going by the 5-line
++  // frame, nothing would have gone up and the cleared screen would have
++  // left the top 4 lines up there cut.
++  const h = await mount(3, 24)
++  try {
++    h.setLines(15)
++    h.setLines(5)
++    h.ink.setAltScreenActive(true)
++    const written: string[] = []
++    // The real Ink keeps its own frames; only what would let go of the test
++    // runner's terminal is left out.
++    const owner: TerminalOwner = {
++      pause: () => {},
++      suspendStdin: () => {},
++      get isAltScreenActive() {
++        return h.ink.isAltScreenActive
++      },
++      setAltScreenActive: active => h.ink.setAltScreenActive(active),
++      eraseFrameForOutput: () => h.ink.eraseFrameForOutput(),
++      frameRowsUsed: () => h.ink.frameRowsUsed(),
++      detachForShutdown: () => {},
++    }
++    releaseTerminalToChild(owner, text => written.push(text), 24, 12)
++    expect(written).toEqual([
++      DISABLE_MOUSE_TRACKING + EXIT_ALT_SCREEN,
++      cursorPosition(24, 1) + '\n'.repeat(8) + clearVisibleScreen(24),
++    ])
++  } finally {
++    h.stop()
++  }
++})
++
++test('a full reset counts the rows again from the top and says the screen was cleared', async () => {
++  // A narrower screen: Ink clears the screen and the scrollback and draws
++  // the frame from the top. Nothing printed before the frame is left, the
++  // startup screen included, and the rows count from the new frame.
++  const h = await mount(3, 24)
++  const cleared = mock(() => {})
++  const stopListening = onMainScreenCleared(cleared)
++  try {
++    h.setLines(15)
++    h.setLines(5)
++    expect(cleared).not.toHaveBeenCalled()
++    h.takeWritten()
++    h.resize(30, 24)
++    expect(h.takeWritten()).toContain(ERASE_SCROLLBACK)
++    expect(cleared).toHaveBeenCalledTimes(1)
++    expect(h.ink.frameRowsUsed()).toBe(6)
++  } finally {
++    stopListening()
++    h.stop()
++  }
++})
++
++test('ctrl+l clears the screen as well: the count starts again from the top', async () => {
++  const h = await mount(3, 24)
++  const cleared = mock(() => {})
++  const stopListening = onMainScreenCleared(cleared)
++  try {
++    h.setLines(15)
++    h.setLines(5)
++    h.ink.forceRedraw()
++    expect(cleared).toHaveBeenCalledTimes(1)
++    expect(h.ink.frameRowsUsed()).toBe(6)
++  } finally {
++    stopListening()
++    h.stop()
++  }
++})
++
++test('a taller screen is no full reset: the rows stay counted', async () => {
++  // Ink keeps its frame and the terminal brings lines back down from the
++  // scrollback, as many as the screen grew by (tmux, xterm.js), so the
++  // count against the new height still says how much of the logo is up.
++  const h = await mount(3, 24)
++  const cleared = mock(() => {})
++  const stopListening = onMainScreenCleared(cleared)
++  try {
++    h.setLines(15)
++    h.setLines(5)
++    h.resize(40, 30)
++    expect(cleared).not.toHaveBeenCalled()
++    expect(h.ink.frameRowsUsed()).toBe(16)
++  } finally {
++    stopListening()
++    h.stop()
++  }
++})
++
++test('the frame after eraseFrameForOutput is counted from where it starts again', async () => {
++  // A session the furio agents list opens in place prints its startup screen
++  // where the list was; the session's frames start under it.
++  const h = await mount(3, 24)
++  try {
++    h.setLines(15)
++    expect(h.ink.eraseFrameForOutput()).toBe(true)
++    h.setLines(4)
++    expect(h.ink.frameRowsUsed()).toBe(5)
++  } finally {
++    h.stop()
++  }
++})
+diff --git a/src/ink/ink.tsx b/src/ink/ink.tsx
+index c7f98f11..f104b664 100644
+--- a/src/ink/ink.tsx
++++ b/src/ink/ink.tsx
+@@ -22,6 +22,7 @@ import { emptyFrame, type Frame, type FrameEvent } from './frame.js';
+ import { dispatchClick, dispatchHover } from './hit-test.js';
+ import instances from './instances.js';
+ import { LogUpdate } from './log-update.js';
++import { notifyMainScreenCleared } from './mainScreenCleared.js';
+ import { nodeCache } from './node-cache.js';
+ import { optimize } from './optimizer.js';
+ import Output from './output.js';
+@@ -173,6 +174,17 @@ export default class Ink {
+   // one full-render frame; steady-state frames after clear it and regain
+   // the blit + narrow-damage fast path.
+   private prevFrameContaminated = false;
++  // Main screen rows the frames have taken from where they started: the
++  // tallest frame drawn, plus the line under it where the cursor rests. A
++  // frame that grows past the bottom scrolls the screen, and one that shrinks
++  // again does not scroll it back, so this, not the last frame, tells how far
++  // up the lines above the frames have gone (frameRowsUsed).
++  private mainScreenRowsUsed = 0;
++  // Set when the frame buffers are dropped (repaint, SIGCONT): the next main
++  // screen frame is drawn whole from wherever the cursor is then, and the
++  // rows are counted from there. Left until that frame, so the count still
++  // stands for a screen nothing is drawn on any more (a hand-over).
++  private recountMainScreenRows = false;
+   // Set by handleResize: prepend ERASE_SCREEN to the next onRender's patches
+   // INSIDE the BSU/ESU block so clear+paint is atomic. Writing ERASE_SCREEN
+   // synchronously in handleResize would leave the screen blank for the ~80ms
+@@ -338,6 +350,7 @@ export default class Ink {
+     // suspend. Clear displayCursor so the next frame's cursor preamble
+     // doesn't emit a relative move from a stale park position.
+     this.displayCursor = null;
++    this.recountMainScreenRows = true;
+   };
+ 
+   // NOT debounced. A debounce opens a window where stdout.columns is NEW
+@@ -647,8 +660,10 @@ export default class Ink {
+       this.lastPoolResetTime = renderStart;
+     }
+     const flickers: FrameEvent['flickers'] = [];
++    let clearsTerminal = false;
+     for (const patch of diff) {
+       if (patch.type === 'clearTerminal') {
++        clearsTerminal = true;
+         flickers.push({
+           desiredHeight: frame.screen.height,
+           availableHeight: frame.viewport.height,
+@@ -781,6 +796,17 @@ export default class Ink {
+     const skipSyncMarkers = this.altScreenActive ? !SYNC_OUTPUT_SUPPORTED : rewriteMainScreen || shouldSkipMainScreenSyncMarkers();
+     writeDiffToTerminal(this.terminal, optimized, skipSyncMarkers);
+     const writeMs = performance.now() - tWrite;
++    if (!this.altScreenActive) {
++      // A full reset cleared the screen and the scrollback and drew this
++      // frame from the top; after dropped buffers it starts at the cursor.
++      // Either way the rows count from this frame on.
++      if (clearsTerminal || this.recountMainScreenRows) {
++        this.mainScreenRowsUsed = 0;
++        this.recountMainScreenRows = false;
++      }
++      this.mainScreenRowsUsed = Math.max(this.mainScreenRowsUsed, frame.screen.height + 1);
++      if (clearsTerminal) notifyMainScreenCleared();
++    }
+ 
+     // Update blit safety for the NEXT frame. The frame just rendered
+     // becomes frontFrame (= next frame's prevScreen). If we applied the
+@@ -857,6 +883,7 @@ export default class Ink {
+     // Clear displayCursor so the cursor preamble doesn't emit a stale
+     // relative move from where we last parked it.
+     this.displayCursor = null;
++    this.recountMainScreenRows = true;
+   }
+ 
+   /**
+@@ -878,6 +905,8 @@ export default class Ink {
+       // frame's blit optimization copies from that empty screen and the
+       // diff sees no content. onRender resets the flag at frame end.
+       this.prevFrameContaminated = true;
++      // What was printed above the frame went with the screen.
++      notifyMainScreenCleared();
+     }
+     this.onRender();
+   }
+@@ -923,14 +952,21 @@ export default class Ink {
+   }
+ 
+   /**
+-   * Main screen only: the rows the last frame has taken, from its first line
+-   * through the line under it where the cursor rests (a frame as tall as the
+-   * screen has pushed one line into the scrollback). Undefined while the
+-   * alternate screen is up; leaving it brings the main screen frame back.
++   * Main screen only: the rows the frames have taken from where they started,
++   * from the first line of the tallest one through the line under it where
++   * the cursor rested (a frame as tall as the screen has pushed one line into
++   * the scrollback). The screen scrolled for that frame and did not scroll
++   * back when later ones were shorter (the / menu or the spinner and its tip
++   * gone again), so this is how far up the lines above the frames have gone.
++   * Counted again from the top once Ink clears the screen (a full reset,
++   * ctrl+l), and from the first line of the next frame once the buffers are
++   * dropped (repaint: eraseFrameForOutput with a startup screen printed in
++   * the frame's place, SIGCONT). Undefined while the alternate screen is up;
++   * leaving it brings the main screen frame back.
+    */
+   frameRowsUsed(): number | undefined {
+     if (this.altScreenActive) return undefined;
+-    return this.frontFrame.screen.height + 1;
++    return Math.max(this.mainScreenRowsUsed, this.frontFrame.screen.height + 1);
+   }
+ 
+   /**
+diff --git a/src/ink/mainScreenCleared.ts b/src/ink/mainScreenCleared.ts
+new file mode 100644
+index 00000000..22f5e58e
+--- /dev/null
++++ b/src/ink/mainScreenCleared.ts
+@@ -0,0 +1,23 @@
++/**
++ * Who wants to know when Ink clears the main screen to draw its frame from
++ * the top: a full reset (a resize, or a change in rows of a tall frame that
++ * have scrolled out of reach), which takes the scrollback too, or ctrl+l.
++ * Whatever was printed above the frame before, like the startup screen, is
++ * not above it any more.
++ *
++ * Kept apart from ink.tsx so a listener (the startup screen) need not load
++ * Ink to hear it.
++ */
++const listeners = new Set<() => void>()
++
++/** Calls `listener` on every such clear; returns what stops it. */
++export function onMainScreenCleared(listener: () => void): () => void {
++  listeners.add(listener)
++  return () => {
++    listeners.delete(listener)
++  }
++}
++
++export function notifyMainScreenCleared(): void {
++  for (const listener of listeners) listener()
++}
+diff --git a/src/utils/relaunchInProjectDir.ts b/src/utils/relaunchInProjectDir.ts
+index 93d99b85..b30aae36 100644
+--- a/src/utils/relaunchInProjectDir.ts
++++ b/src/utils/relaunchInProjectDir.ts
+@@ -75,7 +75,11 @@ export type TerminalOwner = {
+   isAltScreenActive: boolean
+   setAltScreenActive: (active: boolean) => void
+   eraseFrameForOutput: () => boolean
+-  /** Main screen rows the frame has taken, the line under it included; undefined in the alternate screen. */
++  /**
++   * Main screen rows the frames have taken: the tallest since they started
++   * or since the screen was cleared, the line under it included; undefined
++   * in the alternate screen.
++   */
+   frameRowsUsed: () => number | undefined
+   detachForShutdown: () => void
+ }
+@@ -97,12 +101,17 @@ export function clearVisibleScreen(rows: number): string {
+  *
+  * Ink's first frame starts on the line under the startup screen, so of its
+  * `logoLines` lines, `logoLines + frameRows - rows` have scrolled up, however
+- * far down the screen the logo started. When that is some but not all of
+- * them, the rest is scrolled up too (line feeds on the bottom row), and the
+- * scrollback holds the whole logo instead of its top rows. All of it on
+- * screen is cleared with the screen; all of it scrolled up is already whole.
+- * Once Ink has redrawn from the top (a resize, ctrl+l) the logo is no longer
+- * where this counts, and what goes up is conversation, never a logo row.
++ * far down the screen the logo started. `frameRows` is the most rows the
++ * frames have taken (Ink's frameRowsUsed), not the last frame's: the / menu,
++ * the spinner with its tip or a permission dialog grow the frame, the screen
++ * scrolls, and it does not scroll back when they are gone.
++ *
++ * When some but not all of the logo has scrolled up, the rest is scrolled up
++ * too (line feeds on the bottom row), and the scrollback holds the whole logo
++ * instead of its top rows. All of it on screen is cleared with the screen;
++ * all of it scrolled up is already whole. Once Ink has cleared the screen to
++ * redraw from the top (a resize, ctrl+l) the logo is gone and `logoLines` is
++ * 0 (startupLogoLines), so no line of the conversation goes up in its place.
+  */
+ export function scrollRestOfLogoUp(logoLines: number, frameRows: number | undefined, rows: number): string {
+   if (logoLines <= 0 || frameRows === undefined) return ''
 -- 
 2.43.0
 
