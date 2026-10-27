@@ -113,8 +113,8 @@ FURIO_CLIENT_DIST=/home/jun/NPU_AIP/openclaude-fork/dist
 python3 -m venv ~/.venvs/router-test && ~/.venvs/router-test/bin/pip install pytest fastapi httpx pyyaml
 taskset -c 64-127 ~/.venvs/router-test/bin/python -m pytest \
   server/test_router_classmode.py server/test_router_catalog.py server/test_serve_router_env.py \
-  server/test_router_startpins.py -q
-# 77 passed (2026-10-26)
+  server/test_router_startpins.py server/test_router_remote.py -q
+# 104 passed (10월 27일)
 ```
 
 > 클라이언트도 함께 고쳐야 의미가 있습니다. openclaude 의 백그라운드 호출(세션 제목·주제
@@ -152,6 +152,67 @@ curl -s localhost:8400/router/models | python3 -c 'import json,sys; [print(m["id
 ```
 
 이 서버 실측(2026-10-26): 내장 chat 모델 16종은 전부 `available: true`(프리빌트는 `/mnt/nvme2n1p1/models/hf/hub`, Llama-3.1-8B 는 `/mnt/nvme2n1p1/models/artifacts/llama31-8b-tp8`). `Qwen3-Reranker-8B` 만 `일부만 내려받음`(스냅숏에 `artifact.json` 뿐).
+
+### 원격 관리: 상태, 로그, 재시작
+
+콘솔이 서버에 들어가지 않고 쓰는 길이다. 라우터 키(`SDI_API_KEY`)는 다른 `/router` 길과 같다. ATOM, GPU 의 모델 관리자(furio-class `server-kit/model_manager.py`)도 같은 모양이다.
+
+| 길 | 답 |
+|---|---|
+| `GET /router/health` | `{"ok", "server_time", "uptime_s", "host": {"mem_total", "mem_avail", "load1", "disk": [{"path", "total", "free"}]}, "accel": [{"id", "kind", "util_pct", "mem_used", "mem_total", "power_w", "temp_c"}], "backends": [{"model", "pid", "port", "state", "rss"}]}`. 바이트 단위, 모르는 값은 `null` |
+| `GET /router/logs?name=<이름>&n=200` | `{"name", "lines", "names"}`. `n` 은 20~2000, 색 코드를 뗀다. `names` 에 없는 이름은 404(경로는 받지 않는다) |
+| `POST /router/restart {"reason": "..."}` | `202 {"ok": true, "restarting": true}`. 응답 뒤 `setsid nohup bash server/serve-router.sh`. 60초 안에 또 오면 `409 {"code": "restart_in_progress"}` |
+
+`accel`, `host`, `backends` 출처:
+
+| 칸 | 출처 |
+|---|---|
+| `util_pct` | `furiosa-smi status --format json` 의 `pe_utilization` 8개 평균 × 100(0~1 비율로 본다, `RNGD-proj/ntop.py` 와 같다) |
+| `mem_used` `mem_total` | 같은 출력의 `memory.used_size` `total_size` |
+| `power_w` `temp_c` | hwmon `rngdN` 의 `power1_average`(µW), `PEAK` 온도. hwmon 이 없으면 `furiosa-smi info --format json` |
+| `accel_error` | smi 가 없거나 시간 초과(8초)거나 출력을 못 읽으면 한 줄. 이때 `accel` 은 hwmon 의 전력, 온도만(나머지 `null`), hwmon 도 없으면 `[]`. 500 은 내지 않는다. 가속기 값은 5초 기억한다 |
+| `host.disk` | `/`, `FURIO_ARTIFACTS`, HF 캐시, fxb 캐시, 로그 폴더. 같은 파일시스템은 하나만 |
+| `backends.rss` | 백엔드 serve 의 프로세스 그룹 합 |
+
+이 서버 값(10월 27일, `health_snapshot()` 을 라우터 밖에서 직접 불러 읽기만 함, 카드 4장 모두 같은 꼴):
+
+```
+"accel": [{"id": "npu0", "kind": "npu", "util_pct": 0.0, "mem_used": 40998998016, "mem_total": 51002736640, "power_w": 40.0, "temp_c": 36.3}, ...]
+"disk": [{"path": "/", ...}, {"path": "/mnt/nvme2n1p1/models/artifacts", ...}]
+첫 호출 0.14 s, 5초 안의 다음 호출 0.014 s
+```
+
+`logs` 이름:
+
+| 이름 | 파일 |
+|---|---|
+| `router` | `logs/router.log`(지금 라우터) |
+| `router.prev` | `logs/router.prev.log`(지난 실행. serve-router.sh 가 새로 띄우기 전에 남긴다) |
+| `restart` | `logs/restart.log`(재시작 요청 줄과 재시작 스크립트 출력, 덧붙이기만) |
+| 모델 id(`gpt-oss-20b@dp4`) | `logs/router-gpt-oss-20b_dp4.log`(백엔드 serve) |
+
+재시작 순서:
+
+```
+POST /router/restart → 202, router.log 와 restart.log 에 "restart requested: <까닭>"
+  → setsid nohup bash serve-router.sh(출력 logs/restart.log)
+     → 지금 라우터 SIGTERM, 백엔드 종료, 라우터가 끝날 때까지 최대 30초(넘으면 SIGKILL), 백엔드 한 번 더 종료
+     → router.log 를 router.prev.log 로 옮기고 새 라우터 :8400
+     → ROUTER_PIN_START_DELAY(기본 90초) 뒤 ROUTER_PIN 모델을 올린다
+```
+
+```bash
+H="Authorization: Bearer $SDI_API_KEY"      # 키를 안 걸었으면 무시된다
+curl -s -H "$H" localhost:8400/router/health | python3 -m json.tool
+curl -s -H "$H" 'localhost:8400/router/logs?name=router&n=50' | python3 -c 'import json,sys; print("\n".join(json.load(sys.stdin)["lines"]))'
+curl -s -H "$H" -X POST localhost:8400/router/restart -H 'Content-Type: application/json' -d '{"reason": "백엔드 멈춤"}'
+```
+
+- ★ 재시작은 처리 중인 요청을 끊는다.
+- ★ 재시작 때 `.env` 를 새로 읽는다. 라우터 환경에서 시작 때 `.env` 값과 같은 키는 빼고 넘기기 때문이다(셸에서 다른 값을 준 키는 그대로 우선).
+- ★ 실행 중에 `/router/pin` 으로 바꾼 핀은 메모리에만 있어 재시작하면 `ROUTER_PIN` 으로 돌아간다. 게이트웨이 수업 타이머가 다시 맞추고, 시작 핀 올리기는 그새 핀에서 빠진 모델을 건너뛴다.
+- ★ `.env` 가 틀려 serve-router.sh 가 멈추면 옛 라우터가 그대로 돈다. 까닭은 `logs?name=restart` 로 본다.
+- 시험은 재시작 스크립트를 가짜로 바꾸고, 진짜 spawn 함수는 임시 폴더의 가짜 스크립트로만 띄운다(새 세션인지, restart.log 에 출력이 붙는지).
 
 ### 사용법 (2줄)
 

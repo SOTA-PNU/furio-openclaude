@@ -4,6 +4,7 @@
 #
 #   bash serve-router.sh          # 기동 (:8400)
 #   bash serve-router.sh stop     # 라우터 + 백엔드 전부 종료
+#   콘솔의 재시작(POST /router/restart)도 이 파일을 setsid nohup 으로 띄운다(출력은 로그 폴더의 restart.log)
 #
 # 환경변수(전부 선택):
 #   FURIO_VENV        furiosa-llm 이 설치된 venv        (기본: ~/furiosa)
@@ -58,10 +59,23 @@ fi
 echo "[..] 기존 라우터·백엔드 정리 (라우터가 NPU 카드를 직접 스케줄링한다)"
 stop_router
 pkill -f 'furiosa-llm[ ]serve' 2>/dev/null || true
+# 옛 라우터가 끝날 때까지(최대 30초) 기다린다. 처리 중이던 요청이 끝나야 내려가는데, 아직 :8400 을 쥐고 있으면
+# 새 라우터가 포트를 못 잡고 바로 죽어 아무 라우터도 없게 된다(콘솔 재시작도 다시 못 누른다). 넘기면 SIGKILL.
+for _ in $(seq 1 30); do
+  pgrep -u "$(id -u)" -f 'furiosa_router[.]py serve' >/dev/null 2>&1 || break
+  sleep 1
+done
+if pgrep -u "$(id -u)" -f 'furiosa_router[.]py serve' >/dev/null 2>&1; then
+  pkill -9 -u "$(id -u)" -f 'furiosa_router[.]py serve' 2>/dev/null || true
+  echo "  라우터가 30초 안에 끝나지 않아 강제 종료"
+fi
+pkill -f 'furiosa-llm[ ]serve' 2>/dev/null || true   # 내려가던 라우터가 그사이 띄운 백엔드까지
 sleep 3
 
 echo "[..] 라우터 기동 → :8400   (로그: $LOG)"
 mkdir -p "$LOGDIR"
+# 지난 실행의 로그는 router.prev.log 로 하나 남긴다(재시작 까닭을 콘솔 로그 보기·tail 로 볼 수 있게)
+if [ -s "$LOG" ]; then mv -f "$LOG" "$LOGDIR/router.prev.log" || true; fi
 : > "$LOG"
 nohup python3 "$HERE/furiosa_router.py" serve >> "$LOG" 2>&1 &
 echo $! > "$PIDFILE"

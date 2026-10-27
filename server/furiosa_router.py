@@ -19,9 +19,11 @@ OpenAI 호환 엔드포인트 1개를 열어서, rngd-npu/artifacts 의 모든 �
   python3 furiosa_router.py gen-config PATH    # opencode.json 생성(전 모델 등록)
   python3 furiosa_router.py list               # 등록 모델/플래그 출력
 """
+import datetime
 import json
 import os
 import re
+import shutil
 import socket
 import subprocess
 import sys
@@ -745,6 +747,11 @@ def wait_cards_free(cards, timeout=CARD_FREE_TIMEOUT):
     return False
 
 
+def backend_log_path(model_id):
+    """백엔드 serve 로그 파일(LOGDIR/router-<모델 id, 글자 아닌 것은 _>.log). _start 가 쓰고 /router/logs 가 읽는다."""
+    return os.path.join(LOGDIR, "router-" + re.sub(r"[^A-Za-z0-9._-]", "_", model_id) + ".log")
+
+
 def free_port(start=BACKEND_PORT_BASE):
     for p in range(start, start + 50):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -976,8 +983,7 @@ class Router:
                     devs.append(f"npu:{c}")
             devices = ",".join(devs)
         port = free_port()
-        safe = re.sub(r"[^A-Za-z0-9._-]", "_", model_id)
-        logpath = os.path.join(LOGDIR, f"router-{safe}.log")
+        logpath = backend_log_path(model_id)
         cmd = [
             FURIOSA_LLM, "serve", resolve_art(reg, tp),
             "--served-model-name", model_id,
@@ -1334,6 +1340,424 @@ def start_pin_preload(router=None, models=None, delay=None):
     return t
 
 
+# ── 원격 관리(2026-10-27): /router/health · /router/logs · /router/restart ─────────────────
+# 콘솔이 서버에 들어가지 않고 상태를 보고(health), 로그를 읽고(logs), 라우터를 다시 띄운다(restart).
+# 같은 길이 ATOM·GPU 의 모델 관리자(furio-class server-kit/model_manager.py)에도 있다.
+HERE = os.path.dirname(os.path.abspath(__file__))
+STARTED_AT = time.monotonic()
+ROUTER_LOG = os.path.join(LOGDIR, "router.log")      # serve-router.sh 가 라우터 stdout 을 여기로 보낸다
+RESTART_LOG = os.path.join(LOGDIR, "restart.log")    # 재시작 요청 줄 + 재시작 스크립트 출력(덧붙이기만 한다)
+HWMON_ROOT = "/sys/class/hwmon"                      # rngdN 의 power1_average(µW)·temp*_input(m°C)
+ACCEL_TTL = 5.0          # 가속기 상태를 기억하는 초(콘솔이 자주 불러도 furiosa-smi 는 5초에 한 번)
+ACCEL_TIMEOUT = 8        # furiosa-smi 한 번 기다리는 초(모델을 올리는 중엔 느려진다 — npu_used_mem 참고)
+RESTART_GUARD_S = 60     # 재시작 뒤 이만큼은 다시 받지 않는다(409 restart_in_progress)
+LOG_N_DEFAULT, LOG_N_MIN, LOG_N_MAX = 200, 20, 2000
+LOG_READ_MAX = 8 << 20   # 꼬리를 찾으며 뒤에서부터 읽는 최대 바이트
+REASON_MAX = 200
+_CTRL = re.compile(r"[\x00-\x08\x0b-\x1f\x7f]")
+_ENV_KEY = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
+
+
+def _default_restart_script():
+    return os.path.join(HERE, "serve-router.sh")
+
+
+RESTART_SCRIPT = _default_restart_script()   # 시험은 가짜 스크립트로 바꾼다
+
+
+def read_dotenv(path):
+    """.env → {키: 값}. load-env.sh 와 같은 규칙(빈 줄·# 주석·CRLF 건너뜀, 값은 글자 그대로). 꼴이 틀린 줄은 건너뛴다."""
+    out = {}
+    try:
+        with open(path, encoding="utf-8", errors="replace") as f:
+            text = f.read()
+    except OSError:
+        return out
+    for line in text.splitlines():
+        line = line.rstrip("\r")
+        if not line.strip() or line.lstrip().startswith("#") or "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        if _ENV_KEY.fullmatch(k):
+            out[k] = v
+    return out
+
+
+_DOTENV_AT_START = read_dotenv(os.path.join(HERE, ".env"))   # 이 라우터가 시작할 때의 .env
+
+
+def restart_env():
+    """재시작 스크립트에 줄 환경. 지금 환경에서 시작 때 .env 와 같은 값인 키는 뺀다 — 셸에서 이미 준 변수가 .env 보다
+    우선하므로(load-env.sh), 그대로 넘기면 그새 고친 .env 가 먹지 않는다. 셸에서 다른 값을 준 키는 그대로 둔다."""
+    env = dict(os.environ)
+    for k, v in _DOTENV_AT_START.items():
+        if env.get(k) == v:
+            env.pop(k)
+    return env
+
+
+def _run_tool(argv, timeout):
+    """도구 하나 실행 → stdout. 없으면 FileNotFoundError, 시간 초과 TimeoutExpired, 0 아닌 종료는 RuntimeError."""
+    p = subprocess.run(argv, capture_output=True, encoding="utf-8", errors="replace", timeout=timeout)
+    if p.returncode != 0:
+        raise RuntimeError(f"{os.path.basename(argv[0])} 실패(종료 코드 {p.returncode})")
+    return p.stdout
+
+
+def _num(v):
+    """'36.51°C'·'39 W'·12 → 앞의 수(float). 모르면 None."""
+    if isinstance(v, bool):
+        return None
+    if isinstance(v, (int, float)):
+        return float(v)
+    m = re.match(r"\s*(-?\d+(?:\.\d+)?)", str(v or ""))
+    return float(m.group(1)) if m else None
+
+
+def _int_or_none(v):
+    if isinstance(v, bool):
+        return None
+    try:
+        return int(v)
+    except (TypeError, ValueError):
+        return None
+
+
+def _read_text(path):
+    try:
+        with open(path, encoding="utf-8", errors="replace") as f:
+            return f.read().strip()
+    except OSError:
+        return None
+
+
+def _dev_key(dev_id):
+    m = re.search(r"(\d+)$", dev_id)
+    return (int(m.group(1)) if m else 1 << 30, dev_id)
+
+
+def rngd_hwmon(root=None):
+    """hwmon 의 rngdN → {"npuN": {"power_w", "temp_c"}}. 전력은 power1_average(µW), 온도는 PEAK(없으면 가장 높은 값)."""
+    root = HWMON_ROOT if root is None else root
+    out = {}
+    try:
+        entries = sorted(os.listdir(root))
+    except OSError:
+        return out
+    for h in entries:
+        d = os.path.join(root, h)
+        m = re.fullmatch(r"rngd(\d+)", _read_text(os.path.join(d, "name")) or "")
+        if not m:
+            continue
+        power = _num(_read_text(os.path.join(d, "power1_average")))
+        temps = {}
+        try:
+            files = os.listdir(d)
+        except OSError:
+            files = []
+        for fn in files:
+            t = re.fullmatch(r"temp(\d+)_input", fn)
+            val = _num(_read_text(os.path.join(d, fn))) if t else None
+            if val is not None:
+                temps[_read_text(os.path.join(d, f"temp{t.group(1)}_label")) or fn] = val / 1000
+        temp = temps.get("PEAK", max(temps.values()) if temps else None)
+        out[f"npu{m.group(1)}"] = {"power_w": None if power is None else round(power / 1e6, 1),
+                                   "temp_c": None if temp is None else round(temp, 1)}
+    return out
+
+
+def _accel_row(dev):
+    return {"id": dev, "kind": "npu", "util_pct": None, "mem_used": None, "mem_total": None,
+            "power_w": None, "temp_c": None}
+
+
+def accel_rngd():
+    """RNGD 카드 → ([{id, kind, util_pct, mem_used, mem_total, power_w, temp_c}], 오류 한 줄 또는 None).
+    사용률·메모리는 furiosa-smi status --format json, 전력·온도는 hwmon(없으면 furiosa-smi info --format json).
+    pe_utilization 은 0~1 비율로 본다(RNGD-proj/ntop.py 와 같다). 1 을 넘는 값이 있으면 이미 백분율이다.
+    smi 가 없거나 출력을 못 읽어도 hwmon 의 전력·온도는 남긴다(나머지 칸 null)."""
+    hw = rngd_hwmon()
+    rows, err = {}, None
+    try:
+        data = json.loads(_run_tool(["furiosa-smi", "status", "--format", "json"], ACCEL_TIMEOUT))
+        if not isinstance(data, list):
+            raise ValueError("목록이 아님")
+        for d in data:
+            dev = str(d.get("device") or "")
+            if not dev:
+                continue
+            mem = d.get("memory") or {}
+            mem = mem.get("DRAM") or mem       # 2026.4.0 부터 DRAM 단계 없이 memory 에 바로
+            utils = [float(pe["pe_utilization"]) for pe in d.get("pe_utilizations") or []
+                     if isinstance(pe, dict) and isinstance(pe.get("pe_utilization"), (int, float))]
+            util = None
+            if utils:
+                avg = sum(utils) / len(utils)
+                util = round(avg if max(utils) > 1.0 else avg * 100, 1)
+            row = _accel_row(dev)
+            row.update(util_pct=util, mem_used=_int_or_none(mem.get("used_size")),
+                       mem_total=_int_or_none(mem.get("total_size")))
+            rows[dev] = row
+    except FileNotFoundError:
+        err = "furiosa-smi 가 없습니다"
+    except subprocess.TimeoutExpired:
+        err = f"furiosa-smi 응답 시간 초과({ACCEL_TIMEOUT}초)"
+    except (ValueError, TypeError, AttributeError, KeyError):
+        err = "furiosa-smi 출력을 읽지 못했습니다"
+    except Exception as e:
+        err = short_error(str(e)) or type(e).__name__
+    if rows and not hw:
+        try:
+            info = json.loads(_run_tool(["furiosa-smi", "info", "--format", "json"], ACCEL_TIMEOUT))
+            for d in info if isinstance(info, list) else []:
+                if isinstance(d, dict) and d.get("dev_name"):
+                    p, t = _num(d.get("power")), _num(d.get("temperature"))
+                    hw[str(d["dev_name"])] = {"power_w": None if p is None else round(p, 1),
+                                              "temp_c": None if t is None else round(t, 1)}
+        except Exception:
+            pass                      # 전력·온도만 null
+    for dev, v in hw.items():
+        rows.setdefault(dev, _accel_row(dev)).update(v)
+    return sorted(rows.values(), key=lambda r: _dev_key(r["id"])), err
+
+
+_ACCEL_CACHE = {"t": None, "v": None}
+_ACCEL_LOCK = threading.Lock()
+
+
+def accel_cached():
+    """accel_rngd 를 ACCEL_TTL 초 기억한다(실패도). 동시에 여러 번 불려도 smi 는 한 번만 돈다."""
+    with _ACCEL_LOCK:
+        t = _ACCEL_CACHE["t"]
+        if t is not None and _monotonic() - t < ACCEL_TTL:
+            return _ACCEL_CACHE["v"]
+        try:
+            v = accel_rngd()
+        except Exception as e:      # 여기까지 오면 안 되지만 health 는 500 을 내지 않는다
+            v = ([], f"가속기 상태를 읽지 못했습니다: {type(e).__name__}")
+        _ACCEL_CACHE["t"], _ACCEL_CACHE["v"] = _monotonic(), v
+        return v
+
+
+def _meminfo():
+    out = {}
+    with open("/proc/meminfo", encoding="ascii", errors="replace") as f:
+        for line in f:
+            k, _, rest = line.partition(":")
+            parts = rest.split()
+            if parts and parts[0].isdigit():
+                out[k] = int(parts[0]) * (1024 if len(parts) > 1 and parts[1] == "kB" else 1)
+    return out
+
+
+def disk_usage(paths):
+    """경로들 → [{path, total, free}](바이트). 없는 경로는 빼고, 같은 파일시스템은 처음 것 하나만."""
+    out, seen = [], set()
+    for p in paths:
+        if not p:
+            continue
+        try:
+            dev = os.stat(p).st_dev
+            du = shutil.disk_usage(p)
+        except OSError:
+            continue
+        if dev in seen:
+            continue
+        seen.add(dev)
+        out.append({"path": p, "total": du.total, "free": du.free})
+    return out
+
+
+def disk_paths():
+    """이 라우터의 결과물·모델 폴더와 / . 순서: / 먼저, 그다음 결과물(tp8 v2), HF 캐시, fxb 캐시, 로그 폴더.
+    옛 결과물 폴더(ART)는 비어 있어 뺀다."""
+    return ["/", NVME_ART, *hub_caches(), FXB_CACHE, LOGDIR]
+
+
+def host_stats(paths):
+    mem_total = mem_avail = load1 = None
+    try:
+        mi = _meminfo()
+        mem_total, mem_avail = mi.get("MemTotal"), mi.get("MemAvailable")
+    except OSError:
+        pass
+    try:
+        load1 = round(os.getloadavg()[0], 2)
+    except OSError:
+        pass
+    return {"mem_total": mem_total, "mem_avail": mem_avail, "load1": load1, "disk": disk_usage(paths)}
+
+
+def _rss_by_pgid():
+    """/proc 를 한 번 훑어 프로세스 그룹별 RSS 합(바이트). 좀비는 뺀다."""
+    page = os.sysconf("SC_PAGE_SIZE")
+    out = {}
+    try:
+        names = os.listdir("/proc")
+    except OSError:
+        return out
+    for d in names:
+        if not d.isdigit():
+            continue
+        try:
+            with open(f"/proc/{d}/stat", "rb") as f:
+                rest = f.read().rsplit(b")", 1)[1].split()
+            if rest[0] == b"Z":
+                continue
+            pgid = int(rest[2])
+            out[pgid] = out.get(pgid, 0) + int(rest[21]) * page
+        except (OSError, IndexError, ValueError):
+            continue
+    return out
+
+
+def _pid_rss(pid):
+    try:
+        with open(f"/proc/{pid}/statm") as f:
+            return int(f.read().split()[1]) * os.sysconf("SC_PAGE_SIZE")
+    except (OSError, IndexError, ValueError):
+        return None
+
+
+def backends_snapshot(router):
+    """떠 있는 백엔드 → [{model, pid, port, state, rss}]. rss 는 serve 의 프로세스 그룹 합(start_new_session 이라
+    pgid == pid), 그룹이 안 보이면 그 프로세스 하나."""
+    snap = router.status()
+    rss = _rss_by_pgid()
+    out = []
+    for mid, b in list(router.running.items()):
+        if not b.alive():
+            continue
+        pid = getattr(b.proc, "pid", None)
+        size = rss.get(pid) if pid else None
+        out.append({"model": mid, "pid": pid, "port": b.port,
+                    "state": (snap.get(mid) or {}).get("state") or "up",
+                    "rss": size if size else (_pid_rss(pid) if pid else None)})
+    return out
+
+
+def health_snapshot(router=None):
+    """GET /router/health 의 본문. 어느 칸이 실패해도 500 을 내지 않는다(모르는 값은 null, 가속기는 accel_error)."""
+    router = ROUTER if router is None else router
+    out = {"ok": True, "server_time": datetime.datetime.now().astimezone().isoformat(timespec="seconds"),
+           "uptime_s": int(time.monotonic() - STARTED_AT)}
+    try:
+        out["host"] = host_stats(disk_paths())
+    except Exception:
+        out["host"] = {"mem_total": None, "mem_avail": None, "load1": None, "disk": []}
+    accel, err = accel_cached()
+    out["accel"] = [dict(a) for a in accel]
+    if err:
+        out["accel_error"] = str(err)[:ERROR_SHORT]
+    try:
+        out["backends"] = backends_snapshot(router)
+    except Exception:
+        out["backends"] = []
+    return out
+
+
+def log_files(router=None):
+    """/router/logs 가 읽을 수 있는 로그 {이름: 파일}. 있는 파일만. 경로는 받지 않는다 — 이름은 여기서만 만든다.
+    router(이 라우터) · router.prev(지난 실행, serve-router.sh 가 남김) · restart(재시작 기록) · 모델 id(백엔드 serve 로그)."""
+    router = ROUTER if router is None else router
+    out = {}
+    for name, path in (("router", ROUTER_LOG), ("router.prev", os.path.join(LOGDIR, "router.prev.log")),
+                       ("restart", RESTART_LOG)):
+        if os.path.isfile(path):
+            out[name] = path
+    for mid in list(router.running) + all_model_ids():
+        if mid not in out:
+            p = backend_log_path(mid)
+            if os.path.isfile(p):
+                out[mid] = p
+    return out
+
+
+def clamp_lines(n):
+    try:
+        n = int(n)
+    except (TypeError, ValueError):
+        return LOG_N_DEFAULT
+    return max(LOG_N_MIN, min(LOG_N_MAX, n))
+
+
+def _clean_tail_line(raw):
+    text = raw.decode("utf-8", "replace")
+    parts = [p for p in text.split("\r") if p]      # 진행 막대(\r 덮어쓰기)는 마지막 모습만
+    text = parts[-1] if parts else ""
+    return _CTRL.sub("", _ANSI.sub("", text)).rstrip()
+
+
+def tail_lines(path, n):
+    """파일 끝 n 줄(색 코드·제어 문자 뗌, 깨진 UTF-8 은 �). 뒤에서부터 LOG_READ_MAX 바이트까지만 읽는다."""
+    with open(path, "rb") as f:
+        f.seek(0, os.SEEK_END)
+        size = pos = f.tell()
+        data = b""
+        while pos > 0 and data.count(b"\n") <= n and size - pos < LOG_READ_MAX:
+            step = min(64 << 10, pos)
+            pos -= step
+            f.seek(pos)
+            data = f.read(step) + data
+    lines = data.split(b"\n")
+    if lines and lines[-1] == b"":
+        lines.pop()
+    if pos > 0 and lines:
+        lines = lines[1:]          # 잘린 첫 줄
+    return [_clean_tail_line(ln) for ln in lines[-n:]]
+
+
+def clean_reason(v):
+    text = " ".join(str(v).split()) if isinstance(v, str) else ""
+    return _CTRL.sub("", text)[:REASON_MAX] or "(없음)"
+
+
+_RESTART = {"at": None}
+_RESTART_LOCK = threading.Lock()
+
+
+def claim_restart():
+    """재시작 자리 잡기. RESTART_GUARD_S 초 안에 또 오면 False."""
+    with _RESTART_LOCK:
+        now, at = _monotonic(), _RESTART["at"]
+        if at is not None and now - at < RESTART_GUARD_S:
+            return False
+        _RESTART["at"] = now
+        return True
+
+
+def spawn_restart(script=None, logpath=None, env=None):
+    """재시작 스크립트(기본 serve-router.sh)를 이 라우터와 완전히 떼어 띄운다: setsid nohup bash <script>, 출력은
+    logpath(기본 LOGDIR/restart.log)에 덧붙인다. 스크립트가 지금 라우터·백엔드를 내리고 새 라우터를 띄운다 —
+    새 세션이라 라우터가 죽어도 같이 죽지 않는다. 핀 모델은 새 라우터의 시작 핀 올리기(ROUTER_PIN_START_DELAY)가 올린다."""
+    script = RESTART_SCRIPT if script is None else script
+    logpath = RESTART_LOG if logpath is None else logpath
+    os.makedirs(os.path.dirname(os.path.abspath(logpath)), exist_ok=True)
+    argv = (["setsid"] if shutil.which("setsid") else []) + ["nohup", "bash", script]
+    with open(logpath, "ab") as logf:
+        return subprocess.Popen(argv, stdin=subprocess.DEVNULL, stdout=logf, stderr=subprocess.STDOUT,
+                                env=restart_env() if env is None else env,
+                                cwd=os.path.dirname(os.path.abspath(script)),
+                                start_new_session=True, close_fds=True)
+
+
+def do_restart(reason):
+    """POST /router/restart 의 응답을 보낸 뒤에 돈다. spawn 이 실패하면 자리를 풀어 다시 누를 수 있게 한다."""
+    stamp = datetime.datetime.now().astimezone().isoformat(timespec="seconds")
+    try:
+        os.makedirs(os.path.dirname(os.path.abspath(RESTART_LOG)), exist_ok=True)
+        with open(RESTART_LOG, "a", encoding="utf-8") as f:
+            f.write(f"[{stamp}] restart requested: {reason}\n")
+    except OSError:
+        pass
+    try:
+        spawn_restart(script=RESTART_SCRIPT, logpath=RESTART_LOG, env=restart_env())
+    except Exception as e:
+        with _RESTART_LOCK:
+            _RESTART["at"] = None
+        _rlog(f"restart 실패(스크립트를 띄우지 못함): {e}")
+
+
 # ── FastAPI 앱 ─────────────────────────────────────────────────────────────
 def build_app():
     import httpx
@@ -1630,6 +2054,54 @@ def build_app():
     def router_status():
         return {"running": ROUTER.status(), "free_cards": ROUTER._free_cards(),
                 "pinned": sorted(PINNED), "force_evict": FORCE_EVICT}
+
+    # ── 원격 관리(2026-10-27) — 콘솔이 서버에 들어가지 않고 쓰는 길. 라우터 키는 미들웨어가 다른 /router 길과 같게 본다.
+    @app.get("/router/health")
+    def router_health():
+        """{"ok", "server_time", "uptime_s", "host": {mem_total, mem_avail, load1, disk}, "accel": [...],
+        "accel_error"?, "backends": [...]}. sync(threadpool) — furiosa-smi 를 기다리는 동안 이벤트 루프를 막지 않게."""
+        return health_snapshot()
+
+    @app.get("/router/logs")
+    def router_logs(name: str = "", n: str = ""):
+        """로그 꼬리 {"name", "lines", "names"}. name 은 names 중 하나(경로는 받지 않는다), 아니면 404.
+        n 은 20~2000 으로 자른다(기본 200)."""
+        files = log_files()
+        path = files.get(name)
+        lines = None
+        if path is not None:
+            try:
+                lines = tail_lines(path, clamp_lines(n))
+            except OSError:
+                lines = None          # 그새 지워졌다
+        if lines is None:
+            return JSONResponse({"ok": False, "name": name, "names": list(files),
+                                 "error": {"message": f"모르는 로그: {name}", "code": "unknown_log"}},
+                                status_code=404)
+        return {"name": name, "lines": lines, "names": list(files)}
+
+    @app.post("/router/restart")
+    async def router_restart(request: Request):
+        """라우터를 다시 띄운다. 본문 {"reason"?: 글자}(없어도 된다) → 202 {"ok": true, "restarting": true}.
+        응답을 보낸 뒤 serve-router.sh 를 떼어 띄운다(spawn_restart) — 지금 라우터·백엔드를 내리고 새 라우터를 띄우며,
+        핀 모델은 새 라우터의 시작 핀 올리기가 올린다. RESTART_GUARD_S 초 안에 또 오면 409 restart_in_progress."""
+        raw = await request.body()
+        try:
+            payload = json.loads(raw) if raw.strip() else {}
+        except Exception:
+            payload = None
+        if not isinstance(payload, dict):
+            return JSONResponse({"ok": False, "code": "bad_request",
+                                 "error": {"message": '본문은 {"reason": "까닭"} 이어야 합니다', "code": "bad_request"}},
+                                status_code=400)
+        reason = clean_reason(payload.get("reason"))
+        if not claim_restart():
+            return JSONResponse({"ok": False, "code": "restart_in_progress",
+                                 "error": {"message": f"방금 재시작을 시작했습니다. {RESTART_GUARD_S}초 뒤에 다시 누르세요",
+                                           "code": "restart_in_progress"}}, status_code=409)
+        ROUTER._log(f"restart requested: {reason}")
+        return JSONResponse({"ok": True, "restarting": True}, status_code=202,
+                            background=BackgroundTask(do_restart, reason))
 
     @app.get("/router/models")
     def router_models():
