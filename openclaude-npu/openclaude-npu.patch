@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/59] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/60] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/59] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/60] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/59] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/60] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/59] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/60] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/59] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/60] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/59] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/60] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/59] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/60] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/59] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/60] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/59] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/60] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/59] statusline: separate the current-model marker from the
+Subject: [PATCH 10/60] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/59] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/60] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/59] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/60] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/59] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/60] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/59] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/60] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/59] model picker: support a per-model default pp (large
+Subject: [PATCH 15/60] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/59] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/60] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/59] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/60] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/59] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/60] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/59] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/60] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/59] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/60] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/59] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/60] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/59] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/60] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/59] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/60] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5563,7 +5563,7 @@ index 522362ad..1c509b74 100644
 From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/59] brand: give each logo letter its own color from a cool
+Subject: [PATCH 24/60] brand: give each logo letter its own color from a cool
  spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5756,7 +5756,7 @@ index 94af8b4c..3e2cf093 100644
 From 9cf8784b2009e6734c8bd3d24740e72ccc69a6ea Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:07:48 +0900
-Subject: [PATCH 25/59] startup: drop the provider box, keep the mark and one
+Subject: [PATCH 25/60] startup: drop the provider box, keep the mark and one
  line
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5913,7 +5913,7 @@ index c21c8def..9b775d33 100644
 From bf4d4d421cbaa00a9c49fb6851a4d713b11729b9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:37:56 +0900
-Subject: [PATCH 26/59] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
+Subject: [PATCH 26/60] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
  =?UTF-8?q?=EA=B8=B0:=20agents=20=ED=95=9C=20=EB=8B=A8=EC=96=B4=EB=A1=9C?=
  =?UTF-8?q?=20=EC=9D=B4=20=EC=BB=B4=ED=93=A8=ED=84=B0=EC=9D=98=20=EC=84=B8?=
  =?UTF-8?q?=EC=85=98=EC=9D=84=20=EC=97=B4=EA=B3=A0=20=EB=8B=A4=EB=A5=B8=20?=
@@ -6389,7 +6389,7 @@ index 00000000..fb864cb2
 From 032cb8ae9935682e0a02e8fff4a8c09b355ad0d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:16:30 +0900
-Subject: [PATCH 27/59] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
+Subject: [PATCH 27/60] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
  =?UTF-8?q?=20=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=95=88=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EC=82=AC=EC=9A=A9=20=EA=B2=BD=ED=97=98=EC=9D=84=20=EB=B0=9B?=
  =?UTF-8?q?=EC=95=84=20=EB=9D=BC=EC=9A=B0=ED=84=B0=EB=A1=9C=20=EB=B3=B4?=
@@ -7711,7 +7711,7 @@ index 00000000..e41d7a38
 From 4c1dd2e0ccbe99a2b09c45f2482d67aea3db94d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:59:23 +0900
-Subject: [PATCH 28/59] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 28/60] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20agents=20=EB=A5=BC=20claude=20agents=20=EC=8B=9D=20=EA=B5=AC?=
  =?UTF-8?q?=EC=84=B1=EC=9C=BC=EB=A1=9C,=20=EB=B9=88=20=ED=94=84=EB=A1=AC?=
  =?UTF-8?q?=ED=94=84=ED=8A=B8=EC=97=90=EC=84=9C=20=E2=86=90=20=EB=A1=9C?=
@@ -8811,7 +8811,7 @@ index fb864cb2..858a1faa 100644
 From c969ee7ee1a65e2c6036a3dd28ee8b28b6bf8cbf Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 18:42:09 +0900
-Subject: [PATCH 29/59] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 29/60] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20=EC=84=B8=EC=85=98=20=EC=95=88=EC=9D=98=20=EC=84=A0=ED=83=9D?=
  =?UTF-8?q?=EC=B0=BD=EC=9D=84=20=EB=8C=80=EC=B2=B4=20=ED=99=94=EB=A9=B4?=
  =?UTF-8?q?=EC=97=90=20=EB=9D=84=EC=9B=8C=20=EC=9E=90=EB=A6=AC=EB=A5=BC=20?=
@@ -9162,7 +9162,7 @@ index 858a1faa..4549b875 100644
 From 5f7367539a9ac62b25088f69a1ad0a1b9e15e1d8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 22:41:22 +0900
-Subject: [PATCH 30/59] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
+Subject: [PATCH 30/60] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
  =?UTF-8?q?=EA=B0=92=EC=9D=84=20=EB=AF=B8=EB=A6=AC=20=EA=B3=A0=EB=A5=B8=20?=
  =?UTF-8?q?=EB=8B=B5(=EC=B4=88=EB=A1=9D)=EC=9C=BC=EB=A1=9C=20=EA=B7=B8?=
  =?UTF-8?q?=EB=A6=AC=EC=A7=80=20=EC=95=8A=EA=B3=A0=20=EC=BB=A4=EC=84=9C=20?=
@@ -9203,7 +9203,7 @@ index ef2b04a9..d16156ab 100644
 From cacc5fb703bf009ba3c25d3530d319c2de787022 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Sun, 25 Oct 2026 00:31:57 +0900
-Subject: [PATCH 31/59] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
+Subject: [PATCH 31/60] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
  =?UTF-8?q?=EC=9C=84=EC=B9=98:=20=EC=9D=BC=EB=B0=98=ED=8C=90(lab)=C2=B7?=
  =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90(class)=EC=9D=84=20=ED=95=9C=20?=
  =?UTF-8?q?=EC=86=8C=EC=8A=A4=EC=97=90=EC=84=9C=20=EB=B9=8C=EB=93=9C?=
@@ -9632,7 +9632,7 @@ index e41d7a38..54e24ea7 100644
 From e3b9f75537b51b3a459ba9fa001f02706d13a6de Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 02:38:42 +0900
-Subject: [PATCH 32/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/l?=
+Subject: [PATCH 32/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/l?=
  =?UTF-8?q?ogin=C2=B7/logout(=EA=B8=B0=EA=B8=B0=20=EC=BD=94=EB=93=9C),=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84=20=EA=B3=84=EC=A0=95=C2=B7=EB=A1=9C?=
  =?UTF-8?q?=EA=B7=B8=EC=9D=B8=20=ED=95=84=EC=9A=94=C2=B7=EC=88=98=EC=97=85?=
@@ -10814,7 +10814,7 @@ index 88eec592..11ec25df 100644
 From 5ceec773cb628a56a9d1443a5f4ba56de414a328 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 03:02:22 +0900
-Subject: [PATCH 33/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 33/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20403=C2=B75xx=20?=
  =?UTF-8?q?=EC=97=90=EB=8F=84=20=EC=83=81=ED=83=9C=EC=A4=84=20=EC=9C=A0?=
  =?UTF-8?q?=EC=A7=80,=20/login=20=EC=9D=80=20=EC=9D=BC=EC=8B=9C=20?=
@@ -11476,7 +11476,7 @@ index 11ec25df..ce796cdd 100644
 From e6883f42491fab75ade11f18581e905f679ae8c6 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 03:18:36 +0900
-Subject: [PATCH 34/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 34/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=202:=20=ED=8F=B4?=
  =?UTF-8?q?=EB=A7=81=20=EC=A4=91=20/login=C2=B7/logout=20=EA=B0=B1?=
  =?UTF-8?q?=EC=8B=A0=EC=9D=B4=20=EB=91=90=20=EB=B2=88=EC=A7=B8=20=ED=8F=B4?=
@@ -11725,7 +11725,7 @@ index ce796cdd..b1d82ffd 100644
 From 26b1ff94693af6a9b65a3ba591492550e475b46c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 05:51:31 +0900
-Subject: [PATCH 35/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 35/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84:=20=EA=B2=8C=EC=9D=B4=ED=8A=B8?=
  =?UTF-8?q?=EC=9B=A8=EC=9D=B4=20=EC=98=A4=EB=A5=98=20=EB=B3=B8=EB=AC=B8=20?=
  =?UTF-8?q?{"error":{message,code}}=20=ED=8C=8C=EC=8B=B1,=20403=20suspende?=
@@ -11983,7 +11983,7 @@ index b1d82ffd..f8d2a7bd 100644
 From 90865c80ebc4263917693b318403c1e6122d2492 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 06:07:17 +0900
-Subject: [PATCH 36/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 36/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=203:=20/login=C2=B7?=
  =?UTF-8?q?=EC=84=A4=EB=AC=B8=20=EC=A0=84=EC=86=A1=EC=9D=98=20AbortSignal.?=
  =?UTF-8?q?timeout=20=EC=9D=84=20=EC=A0=95=EB=A6=AC=EB=90=98=EB=8A=94=20?=
@@ -12097,7 +12097,7 @@ index 17a9405d..92cbe0e0 100644
 From ab997ad7bb833f4327d80ba4c112b179e022fe5f Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 03:02:30 +0900
-Subject: [PATCH 37/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20?=
+Subject: [PATCH 37/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20?=
  =?UTF-8?q?=EA=B3=B5=EC=8B=9D=20=EB=A7=88=EC=BC=93=20=EC=9E=90=EB=8F=99=20?=
  =?UTF-8?q?=EC=84=A4=EC=B9=98=EB=A5=BC=20=EB=8F=8C=EB=A6=AC=EC=A7=80=20?=
  =?UTF-8?q?=EC=95=8A=EB=8A=94=EB=8B=A4(=ED=95=99=EC=83=9D=20PC=20=EB=B0=94?=
@@ -12340,7 +12340,7 @@ index 1dead1d4..050d39ae 100644
 From 408110b5e22ff4be18b6f5c70ad133b04afd183c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 03:29:03 +0900
-Subject: [PATCH 38/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/a?=
+Subject: [PATCH 38/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/a?=
  =?UTF-8?q?ds=20=EC=88=A8=EA=B9=80=C2=B7=EA=B4=91=EA=B3=A0=20=ED=8C=81=20?=
  =?UTF-8?q?=EB=81=94=C2=B7=EC=84=A0=EC=96=B8=EB=90=9C=20=EB=A7=88=EC=BC=93?=
  =?UTF-8?q?=20=EB=B0=B1=EA=B7=B8=EB=9D=BC=EC=9A=B4=EB=93=9C=20reconcile=20?=
@@ -12659,7 +12659,7 @@ index 8157a324..bce161cb 100644
 From 9b35c4b683c791144341240c1c668fa293066971 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 12:17:28 +0900
-Subject: [PATCH 39/59] =?UTF-8?q?furio=20=ED=99=94=EB=A9=B4=20=EB=AC=B8?=
+Subject: [PATCH 39/60] =?UTF-8?q?furio=20=ED=99=94=EB=A9=B4=20=EB=AC=B8?=
  =?UTF-8?q?=EA=B5=AC=20=EC=A0=95=EB=A6=AC:=20=EB=8C=80=EC=8B=9C=C2=B7?=
  =?UTF-8?q?=EC=9E=A5=EC=8B=9D=20=EA=B0=80=EC=9A=B4=EB=8E=83=EC=A0=90=C2=B7?=
  =?UTF-8?q?TMI=20=EC=A0=9C=EA=B1=B0,=20=ED=99=94=EB=A9=B4=20=ED=91=9C?=
@@ -13129,7 +13129,7 @@ index 54e24ea7..82a2f3ea 100644
 From 95f428a2c0f238f2e0996e74a29d598620e39290 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 12:44:14 +0900
-Subject: [PATCH 40/59] =?UTF-8?q?furio=20=EB=AC=B8=EA=B5=AC=20=EC=A0=95?=
+Subject: [PATCH 40/60] =?UTF-8?q?furio=20=EB=AC=B8=EA=B5=AC=20=EC=A0=95?=
  =?UTF-8?q?=EB=A6=AC=20=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20?=
  =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4=20=EB=8C=80=EC=8B=9C?=
  =?UTF-8?q?=C2=B7=EC=9E=A5=EC=8B=9D=20=EA=B0=80=EC=9A=B4=EB=8E=83=EC=A0=90?=
@@ -13304,7 +13304,7 @@ index 1b12e5bd..e6bf289f 100644
 From d5b8b13efd9b646e3e3241050b67a521a3523aca Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:17:59 +0900
-Subject: [PATCH 41/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 41/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84:=20=EB=AA=A8=EB=8D=B8=20=EC=9D=B4?=
  =?UTF-8?q?=EB=A6=84=C2=B7NPU=20=EC=B9=B4=EB=93=9C=C2=B7=EC=8A=A4=EC=9C=84?=
  =?UTF-8?q?=EC=B2=98=20=ED=9E=8C=ED=8A=B8=EB=A5=BC=20=EC=88=A8=EA=B8=B0?=
@@ -14293,7 +14293,7 @@ index f8d2a7bd..5422edb8 100644
 From e557fa4d78691d8a0dcf4e0f2a5a3e5ea64ec0a0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:48:53 +0900
-Subject: [PATCH 42/59] =?UTF-8?q?furio=20=EC=83=81=ED=83=9C=EC=A4=84=20?=
+Subject: [PATCH 42/60] =?UTF-8?q?furio=20=EC=83=81=ED=83=9C=EC=A4=84=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20=EA=B5=AC=ED=9A=8D?=
  =?UTF-8?q?=20=EB=84=88=EB=B9=84=EB=A5=BC=20=ED=84=B0=EB=AF=B8=EB=84=90=20?=
  =?UTF-8?q?=EC=B9=B8(stringWidth)=EC=9C=BC=EB=A1=9C=20=EC=9E=AC=EC=84=9C?=
@@ -14615,7 +14615,7 @@ index 6e6023d3..ace10d0f 100644
 From 263341600a8e36c38fe5469fa860b086b1ee66a3 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:55:11 +0900
-Subject: [PATCH 43/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 43/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C:=20Shift+Tab=20?=
  =?UTF-8?q?=EC=88=9C=ED=99=98=20default=E2=86=92acceptEdits=E2=86=92plan?=
  =?UTF-8?q?=E2=86=92auto=E2=86=92fullAccess(bypassPermissions=20=EC=97=86?=
@@ -16358,7 +16358,7 @@ index 9936421e..889418e7 100644
 From f7b8959fa133f711e880e2d22b062ac48c0d3cf5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 17:15:50 +0900
-Subject: [PATCH 44/59] =?UTF-8?q?furio=20agents=20=ED=99=94=EB=A9=B4?=
+Subject: [PATCH 44/60] =?UTF-8?q?furio=20agents=20=ED=99=94=EB=A9=B4?=
  =?UTF-8?q?=EC=9D=84=20Claude=20agents=20=EC=B2=98=EB=9F=BC=20=EC=A0=95?=
  =?UTF-8?q?=EB=A6=AC:=20=ED=81=B0=20=EB=B0=B0=EB=84=88=C2=B7=EB=9D=A0=20?=
  =?UTF-8?q?=EB=A8=B8=EB=A6=AC=20=EB=8C=80=EC=8B=A0=20=EC=9E=91=EC=9D=80=20?=
@@ -17957,7 +17957,7 @@ index 86b2b62e..21fc29a6 100644
 From 1fa3cb960d3dc8ff9b0115a72845a203e124ca77 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 17:40:06 +0900
-Subject: [PATCH 45/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 45/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20/permissions=20=ED=83=AD=EC=97=90?=
  =?UTF-8?q?=EC=84=9C=20Bypass=20Permissions=C2=B7Full=20Access=20=EC=A0=9C?=
@@ -18662,7 +18662,7 @@ index a2012dcf..3616fc81 100644
 From 1dce00de0aca2200ba5b40305fe85be740a83e76 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 17:44:56 +0900
-Subject: [PATCH 46/59] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 46/60] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20PID=20=ED=8C=8C=EC=9D=BC=20=EC=93=B0?=
  =?UTF-8?q?=EA=B8=B0=EB=A5=BC=20=ED=95=9C=20=EC=A4=84=EB=A1=9C=20=EC=84=B8?=
  =?UTF-8?q?=EC=9A=B0=EA=B3=A0=20=EB=A7=A4=EB=B2=88=20=ED=98=84=EC=9E=AC=20?=
@@ -19287,7 +19287,7 @@ index f4af17d1..63ee2adb 100644
 From 98948fc62ba13057b5e624b8ff7684081fefc7aa Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 18:05:11 +0900
-Subject: [PATCH 47/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 47/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81=202:=20=EA=B1=B0=EC=A0=88=20=EB=B2=84?=
  =?UTF-8?q?=ED=8A=BC=20No,=20go=20back=20=EC=9D=80=20=EC=88=98=EC=97=85?=
@@ -19534,7 +19534,7 @@ index 30fca846..17437a5f 100644
 From c461060b3067d87e273355be9319b940ce60af17 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 18:27:03 +0900
-Subject: [PATCH 48/59] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 48/60] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20=EB=AA=A9=EB=A1=9D=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EA=B7=B8=20=EC=9E=90=EB=A6=AC=EB=A1=9C=20=EC=9D=B4=EC=96=B4=20?=
  =?UTF-8?q?=EC=97=B0=20=EC=84=B8=EC=85=98=EC=97=90=EB=8F=84=20FURIO=20?=
@@ -20194,7 +20194,7 @@ index 00000000..4d9d3eef
 From 10d7b8470f1024b1352ab89d10fa8d0b3b017eda Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 21:23:44 +0900
-Subject: [PATCH 49/59] =?UTF-8?q?furio=20agents=20=EC=84=B8=EC=85=98=20?=
+Subject: [PATCH 49/60] =?UTF-8?q?furio=20agents=20=EC=84=B8=EC=85=98=20?=
  =?UTF-8?q?=EC=95=88=20=EB=AA=A9=EB=A1=9D=EC=9D=84=20=EC=B2=98=EC=9D=8C=20?=
  =?UTF-8?q?=ED=99=94=EB=A9=B4=EA=B3=BC=20=EA=B0=99=EA=B2=8C:=20=E2=86=90?=
  =?UTF-8?q?=C2=B7/switch=20=EB=AA=A9=EB=A1=9D=EC=97=90=20=EC=9E=85?=
@@ -21319,7 +21319,7 @@ index 79f37795..ccc72d15 100644
 From a1ae03626e3f3c67506789512a2ba4ad67184387 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 21:36:47 +0900
-Subject: [PATCH 50/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 50/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=82=BC=EC=A7=80=EC=84=A0?=
  =?UTF-8?q?=EB=8B=A4:=20=EB=8C=80=EC=83=81=20=ED=84=B4=EC=9D=98=20?=
  =?UTF-8?q?=ED=99=88=20=EB=8B=B5=EC=97=90=20=EC=BD=94=EB=93=9C(=EC=BD=94?=
@@ -24889,7 +24889,7 @@ index 00000000..057ed5b7
 From ed1dac1832c69f7b53c9d5a9a81706cbce3cf829 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 21:57:57 +0900
-Subject: [PATCH 51/59] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 51/60] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20/switch=20=EB=AA=A9=EB=A1=9D=20=EC=8B=9C?=
  =?UTF-8?q?=ED=97=98=EC=9D=B4=20=EC=B2=AB=20=ED=94=84=EB=A0=88=EC=9E=84=20?=
  =?UTF-8?q?=EC=A7=81=ED=9B=84=20=ED=82=A4=EB=A5=BC=20=EB=B3=B4=EB=82=B4=20?=
@@ -24965,7 +24965,7 @@ index 451779ce..8b2f0f36 100644
 From 19f38e896aec0a9c754203444d7e07635ff89099 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 22:09:17 +0900
-Subject: [PATCH 52/59] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 52/60] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=82=BC=EC=A7=80=EC=84=A0?=
  =?UTF-8?q?=EB=8B=A4=20=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20?=
  =?UTF-8?q?=EB=B9=84=EA=B5=90=20=ED=84=B4=EC=9D=B4=20QueryGuard=20?=
@@ -25760,7 +25760,7 @@ index f8b51fc5..d159dfdc 100644
 From 2cf74ea3ce64598d64f48d4f55059d0b60be4d2f Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 23:06:51 +0900
-Subject: [PATCH 53/59] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 53/60] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81=202:=20=EC=84=B8=EC=85=98=20=EC=95=88=20?=
  =?UTF-8?q?=EB=AA=A9=EB=A1=9D(=E2=86=90=C2=B7/switch)=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EB=8B=A4=EB=A5=B8=20=ED=8F=B4=EB=8D=94=20=EC=84=B8=EC=85=98?=
@@ -26235,7 +26235,7 @@ index 4549b875..1f2eef5a 100644
 From d15dbcf1cbca6a4c785116d33dd61ca024461a57 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 00:08:36 +0900
-Subject: [PATCH 54/59] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 54/60] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81=203:=20=EB=8B=A4=EB=A5=B8=20=ED=8F=B4?=
  =?UTF-8?q?=EB=8D=94=20=EC=84=B8=EC=85=98=EC=9C=BC=EB=A1=9C=20=EB=84=98?=
  =?UTF-8?q?=EA=B8=B0=EA=B8=B0=20=EC=A0=84=EC=97=90=20PID=20=ED=8C=8C?=
@@ -27351,7 +27351,7 @@ index 1f2eef5a..752b32d1 100644
 From e5b3a8f868ea2a2f62c215121a83bc726925f746 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 10:42:59 +0900
-Subject: [PATCH 55/59] =?UTF-8?q?furio=20agents=20=EC=A7=A7=EC=9D=80=20?=
+Subject: [PATCH 55/60] =?UTF-8?q?furio=20agents=20=EC=A7=A7=EC=9D=80=20?=
  =?UTF-8?q?=ED=99=94=EB=A9=B4(80x24=20=EB=93=B1)=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EB=AA=A9=EB=A1=9D=EC=9D=B4=20=EA=B7=B8=20=EC=9E=90=EB=A6=AC?=
  =?UTF-8?q?=EC=97=90=EC=84=9C=20=EC=97=B0=20=EC=84=B8=EC=85=98=EB=8F=84=20?=
@@ -27500,7 +27500,7 @@ index 4d9d3eef..e981607c 100644
 From c1805979d05d0e27667a7e57f75946eefae20d3a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 12:19:20 +0900
-Subject: [PATCH 56/59] =?UTF-8?q?furio=20agents=20=EC=8A=A4=ED=81=AC?=
+Subject: [PATCH 56/60] =?UTF-8?q?furio=20agents=20=EC=8A=A4=ED=81=AC?=
  =?UTF-8?q?=EB=A1=A4=20=EA=B8=B0=EB=A1=9D=EC=9D=98=20=EC=9E=98=EB=A6=B0=20?=
  =?UTF-8?q?=EB=A1=9C=EA=B3=A0=20=ED=95=9C=20=EB=B2=88=EC=97=90=20=EC=A0=95?=
  =?UTF-8?q?=EB=A6=AC:=20=EB=84=98=EA=B2=A8=EB=B0=9B=EC=9D=80=20furio=20?=
@@ -27999,7 +27999,7 @@ index e981607c..6f9341da 100644
 From b9a2f5d8e5ddf21c7fd1c92fb5b9a04187d9ac37 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 15:46:51 +0900
-Subject: [PATCH 57/59] =?UTF-8?q?=ED=8F=B4=EB=8D=94=20=EC=8B=A0=EB=A2=B0?=
+Subject: [PATCH 57/60] =?UTF-8?q?=ED=8F=B4=EB=8D=94=20=EC=8B=A0=EB=A2=B0?=
  =?UTF-8?q?=20=ED=99=95=EC=9D=B8=20=EC=B0=BD=EA=B3=BC=20=EC=9D=B4=EC=96=B4?=
  =?UTF-8?q?=20=EC=93=B0=EA=B8=B0=20=ED=8C=81=EC=97=90=20OpenClaude=20?=
  =?UTF-8?q?=EB=8C=80=EC=8B=A0=20FURIO=20=EC=9D=B4=EB=A6=84?=
@@ -28088,7 +28088,7 @@ index b74e5b89..47fd7f11 100644
 From 8a366fc82e262369d1d32634b2dff637e17f743c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 16:56:49 +0900
-Subject: [PATCH 58/59] =?UTF-8?q?furio=20agents=20=EB=84=98=EA=B8=B0?=
+Subject: [PATCH 58/60] =?UTF-8?q?furio=20agents=20=EB=84=98=EA=B8=B0?=
  =?UTF-8?q?=EA=B8=B0=EC=9D=98=20=EC=9E=98=EB=A6=B0=20=EB=A1=9C=EA=B3=A0=20?=
  =?UTF-8?q?=EB=A7=88=EC=A0=80=20=EC=A0=95=EB=A6=AC:=20=EB=82=A8=EC=9D=80?=
  =?UTF-8?q?=20=EB=A1=9C=EA=B3=A0=20=EC=A4=84=EC=9D=84=20=EC=A7=80=EA=B8=88?=
@@ -28594,7 +28594,7 @@ index 93d99b85..b30aae36 100644
 From 3cd3b3a9d5e0c4768cfdeae2759b74c788d01972 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 19:58:28 +0900
-Subject: [PATCH 59/59] =?UTF-8?q?=EB=B9=84=EA=B5=90=20=ED=8F=89=EA=B0=80?=
+Subject: [PATCH 59/60] =?UTF-8?q?=EB=B9=84=EA=B5=90=20=ED=8F=89=EA=B0=80?=
  =?UTF-8?q?=20=ED=99=94=EB=A9=B4=EC=9D=84=20=EA=B5=AC=ED=9A=8D=EB=A7=88?=
  =?UTF-8?q?=EB=8B=A4=20=ED=8B=80=EB=A1=9C=20=EB=82=98=EB=88=94:=20?=
  =?UTF-8?q?=EB=A7=A8=20=EC=9C=97=EC=A4=84=EC=97=90=20=EB=B9=84=EA=B5=90=20?=
@@ -28964,6 +28964,132 @@ index d159dfdc..a1f98574 100644
  
      def pane(self, ansi=False):
          args = ["tmux", "capture-pane", "-p", "-t", self.name]
+-- 
+2.43.0
+
+
+From 7ad7a22045c199dad02141b75c9dd7b2c184463a Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Tue, 27 Oct 2026 20:09:59 +0900
+Subject: [PATCH 60/60] =?UTF-8?q?=EB=B9=84=EA=B5=90=20=ED=8F=89=EA=B0=80?=
+ =?UTF-8?q?=20=ED=99=94=EB=A9=B4=EC=9D=B4=2060=EC=97=B4=20=EB=82=A8?=
+ =?UTF-8?q?=EC=A7=93=EC=97=90=EC=84=9C=20=EC=A0=9C=EC=95=88=ED=95=9C=20?=
+ =?UTF-8?q?=EC=9E=91=EC=97=85=20=EC=B2=AB=20=EC=A4=84=EC=9D=84=20=EC=9E=83?=
+ =?UTF-8?q?=EB=8D=98=20=EA=B2=83=20=EA=B3=A0=EC=B9=A8:=20=EC=83=81?=
+ =?UTF-8?q?=EC=9E=90=20=EC=95=88=20=EC=95=88=EB=82=B4=EC=99=80=20=ED=82=A4?=
+ =?UTF-8?q?=20=EC=95=88=EB=82=B4=EB=A5=BC=20Ink=20=EA=B0=80=20=EC=A0=91?=
+ =?UTF-8?q?=EA=B2=8C=20=EB=91=90=EC=A7=80=20=EC=95=8A=EA=B3=A0=20=EB=AF=B8?=
+ =?UTF-8?q?=EB=A6=AC=20=EC=A4=84=EC=9D=84=20=EB=82=98=EB=88=A0=20=EB=84=A3?=
+ =?UTF-8?q?=EC=96=B4=20=EC=83=81=EC=9E=90=20=EB=86=92=EC=9D=B4=EA=B0=80=20?=
+ =?UTF-8?q?=EA=B3=84=EC=82=B0=EA=B3=BC=20=EA=B0=99=EA=B2=8C,=20=ED=8F=AD?=
+ =?UTF-8?q?=EB=A7=88=EB=8B=A4=20=EA=B7=B8=EB=A6=B0=20=EC=A4=84=20=EC=88=98?=
+ =?UTF-8?q?=EA=B0=80=20=EA=B3=84=EC=82=B0=EA=B3=BC=20=EA=B0=99=EC=9D=80?=
+ =?UTF-8?q?=EC=A7=80=20=EB=B3=B4=EB=8A=94=20=EC=8B=9C=ED=97=98=20=EC=B6=94?=
+ =?UTF-8?q?=EA=B0=80?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ src/components/furio/ComparePicker.test.tsx | 16 +++++++++++
+ src/components/furio/ComparePicker.tsx      | 31 +++++++++++++++++----
+ 2 files changed, 41 insertions(+), 6 deletions(-)
+
+diff --git a/src/components/furio/ComparePicker.test.tsx b/src/components/furio/ComparePicker.test.tsx
+index d41d23fb..d01fb260 100644
+--- a/src/components/furio/ComparePicker.test.tsx
++++ b/src/components/furio/ComparePicker.test.tsx
+@@ -205,6 +205,22 @@ test('the hint says what each key does, Esc included', async () => {
+   }
+ })
+ 
++test('the frame is as tall as the layout says and keeps every line, at any width', async () => {
++  for (const columns of [50, 60, 61, 62, 80, 100]) {
++    const h = await mount(() => {}, columns, 40)
++    try {
++      const lines = h.output().split('\n')
++      // the first frame ends with the hint, whose last word is 취소
++      const rendered = lines.findIndex(line => line.includes('취소')) + 1
++      expect({ columns, rendered }).toEqual({ columns, rendered: pickerLayout(CANDIDATES[0]!, columns, 40).totalRows })
++      // the note under the proposed calls wraps at 60 columns; the call above it stays
++      expect(lines.join('\n')).toMatch(/╭─ 제안한 작업 ─+╮\n\s*│ Write hello\.py 1줄/)
++    } finally {
++      h.stop()
++    }
++  }
++})
++
+ test('many proposed calls still leave the title and tabs on a 24 row screen', async () => {
+   const layout = pickerLayout(MANY_CALLS, 80, 24)
+   expect(layout.totalRows).toBeLessThanOrEqual(23)
+diff --git a/src/components/furio/ComparePicker.tsx b/src/components/furio/ComparePicker.tsx
+index ff8e1825..2cd6194b 100644
+--- a/src/components/furio/ComparePicker.tsx
++++ b/src/components/furio/ComparePicker.tsx
+@@ -91,8 +91,18 @@ export function pickerBodyLines(candidate: PickCandidate, width: number): string
+   return bodyRows(candidate, width).map(row => (row.lineNo ?? '') + row.text)
+ }
+ 
+-function rowsOf(text: string, width: number): number {
+-  return wrapText(text, Math.max(1, width), 'wrap').split('\n').length
++/**
++ * Lines are wrapped here, not by Ink: a Text that Ink wraps inside a bordered
++ * box can be measured a row short, and the box then squeezes out the line
++ * above it (the first proposed call went missing at 60 columns).
++ */
++function linesOf(text: string, width: number): string[] {
++  return wrapText(text, Math.max(1, width), 'wrap').split('\n')
++}
++
++/** The hint sits under the rule, outside the boxes: two columns spare there too. */
++function hintWidth(columns: number): number {
++  return Math.max(16, columns - 4)
+ }
+ 
+ export type PickerLayout = {
+@@ -117,10 +127,10 @@ export function pickerLayout(candidate: PickCandidate, columns: number, rows: nu
+   const bodyLength = bodyRows(candidate, width).length
+   // margin, titled top line, question, gap, tabs, answer box top and bottom,
+   // rule above the hint, hint
+-  const base = 8 + rowsOf(HINT, Math.max(16, columns - 4))
++  const base = 8 + linesOf(HINT, hintWidth(columns)).length
+   const toolCount = candidate.toolCalls.length
+   // box top and bottom, the not-run-yet note
+-  const toolFrame = toolCount === 0 ? 0 : 2 + rowsOf(NOT_RUN, width)
++  const toolFrame = toolCount === 0 ? 0 : 2 + linesOf(NOT_RUN, width).length
+   // (listed calls), the count line
+   const toolChrome = (shown: number) => (toolCount === 0 ? 0 : toolFrame + shown + (shown < toolCount ? 1 : 0))
+   // lines left for the listed calls and the count line once the answer box
+@@ -261,18 +271,27 @@ export function ComparePicker({ candidates, onPick, onCancel }: Props): React.Re
+             <Text key={i}>{truncateToWidth(call.summary, width)}</Text>
+           ))}
+           {shownCalls < toolCount && <Text>{`그 밖에 ${toolCount - shownCalls}개`}</Text>}
+-          <Text dimColor>{NOT_RUN}</Text>
++          {linesOf(NOT_RUN, width).map((line, i) => (
++            <Text key={`note${i}`} dimColor>
++              {line}
++            </Text>
++          ))}
+         </Box>
+       )}
+       <Box
+         marginX={1}
++        flexDirection="column"
+         borderStyle="single"
+         borderDimColor
+         borderLeft={false}
+         borderRight={false}
+         borderBottom={false}
+       >
+-        <Text dimColor>{HINT}</Text>
++        {linesOf(HINT, hintWidth(columns)).map((line, i) => (
++          <Text key={`hint${i}`} dimColor>
++            {line}
++          </Text>
++        ))}
+       </Box>
+     </Box>
+   )
 -- 
 2.43.0
 
