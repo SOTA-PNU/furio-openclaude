@@ -201,7 +201,7 @@ def test_start_pin_preload_runs_in_daemon_thread_after_a_delay(monkeypatch):
     monkeypatch.setattr(fr, "PINNED", {PIN})
     got, slept = [], []
     monkeypatch.setattr(fr, "_sleep", slept.append)
-    monkeypatch.setattr(fr, "preload_pins_at_start", lambda router=None, models=None: got.append(models))
+    monkeypatch.setattr(fr, "preload_pins_at_start", lambda router=None, models=None, **kw: got.append(models))
     t = fr.start_pin_preload()
     assert t is not None and t.daemon
     t.join(timeout=5)
@@ -341,6 +341,7 @@ def test_serve_starts_pin_preload(monkeypatch, tmp_path):
     monkeypatch.setattr(fr, "build_app", lambda: object())
     monkeypatch.setitem(sys.modules, "uvicorn", types.SimpleNamespace(run=lambda *a, **k: order.append("uvicorn")))
     monkeypatch.setattr(fr, "__file__", str(tmp_path / "furiosa_router.py"))  # .router.pid 를 임시 폴더에
+    monkeypatch.setattr(fr, "RESUME_FILE", str(tmp_path / "router-resume.json"))   # 다시 시작 기록 없음(손으로 띄운 시작)
     monkeypatch.setattr(sys, "argv", ["furiosa_router.py", "serve"])
     fr.main()
     assert order == ["smi", "pins", "uvicorn"]
