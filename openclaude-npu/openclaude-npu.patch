@@ -1,7 +1,7 @@
 From 82de783a02303cf7cb2413ae5c67bc617fe3be71 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:11:42 +0900
-Subject: [PATCH 01/61] statusline: show Furiosa NPU model state with per-model
+Subject: [PATCH 01/69] statusline: show Furiosa NPU model state with per-model
  LEDs
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -381,7 +381,7 @@ index 00000000..5fb053a4
 From c384949766e391e32ce4479196fa1fb289991298 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:19:21 +0900
-Subject: [PATCH 02/61] model picker: use backend-supplied model descriptions
+Subject: [PATCH 02/69] model picker: use backend-supplied model descriptions
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -465,7 +465,7 @@ index 69f62843..a4615938 100644
 From ae55392197e09054c230d79595af16389526d5f3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 14:29:26 +0900
-Subject: [PATCH 03/61] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
+Subject: [PATCH 03/69] =?UTF-8?q?model=20picker:=20adjust=20NPU=20dp/pp=20?=
  =?UTF-8?q?with=20=E2=86=90=20=E2=86=92?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -717,7 +717,7 @@ index 00000000..6949f79d
 From b35720886e5b34fb49c658f697244ebcff93bfca Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 22 Jul 2026 23:52:39 +0900
-Subject: [PATCH 04/61] model picker: say why the NPU config row is absent
+Subject: [PATCH 04/69] model picker: say why the NPU config row is absent
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -769,7 +769,7 @@ index a7ce959b..f2ff7fa4 100644
 From ab005af7b14af83a999f6eafdc7825a50acd4bbd Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:00:52 +0900
-Subject: [PATCH 05/61] model picker: pick the model and its dp/pp separately
+Subject: [PATCH 05/69] model picker: pick the model and its dp/pp separately
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1065,7 +1065,7 @@ index 6949f79d..0f41e51d 100644
 From 9305efabf0c57d16e93194ac6e0e253304a1dd86 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:11:30 +0900
-Subject: [PATCH 06/61] model picker: apply NPU collapsing and descriptions on
+Subject: [PATCH 06/69] model picker: apply NPU collapsing and descriptions on
  the cached path
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1167,7 +1167,7 @@ index 0f41e51d..d6de5f48 100644
 From 6ddb636ad6a0069e5589f449d17ca09371fbe5be Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:30:39 +0900
-Subject: [PATCH 07/61] model picker: apply NPU presentation where every path
+Subject: [PATCH 07/69] model picker: apply NPU presentation where every path
  converges
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1274,7 +1274,7 @@ index d6de5f48..239767cd 100644
 From 9fac9610ac516823d08dd38a92918e9231766dd6 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 00:48:44 +0900
-Subject: [PATCH 08/61] model picker: adjust dp and pp as separate axes
+Subject: [PATCH 08/69] model picker: adjust dp and pp as separate axes
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1554,7 +1554,7 @@ index 239767cd..0f339933 100644
 From 1ac1005d5e20748fe19a6427594b4c5e5faf4090 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:03:05 +0900
-Subject: [PATCH 09/61] model picker: stop the dp/pp row from reflowing
+Subject: [PATCH 09/69] model picker: stop the dp/pp row from reflowing
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -1656,7 +1656,7 @@ index 0f339933..b00fbc38 100644
 From e02935facc5e093c0f5cf10da35f293c876012c3 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 01:51:34 +0900
-Subject: [PATCH 10/61] statusline: separate the current-model marker from the
+Subject: [PATCH 10/69] statusline: separate the current-model marker from the
  LED
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1693,7 +1693,7 @@ index ea77786a..f6657b6c 100644
 From 6cb6e0727527b34daea6471745c1bb912de313b4 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 23 Jul 2026 02:07:35 +0900
-Subject: [PATCH 11/61] model picker: start loading the model as soon as it is
+Subject: [PATCH 11/69] model picker: start loading the model as soon as it is
  picked
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -1778,7 +1778,7 @@ index 5c7facc8..8c5ff49e 100644
 From 67789801d8b128a1b700bbb5683c6804b469fb77 Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 02:51:37 +0900
-Subject: [PATCH 12/61] npu: react to a model pick immediately, and show every
+Subject: [PATCH 12/69] npu: react to a model pick immediately, and show every
  loaded model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -2778,7 +2778,7 @@ index b00fbc38..efa22d38 100644
 From da19bc7f6e686d5768b96383ce0c76256db562cc Mon Sep 17 00:00:00 2001
 From: Claude <plab2090@gmail.com>
 Date: Thu, 23 Jul 2026 13:53:24 +0900
-Subject: [PATCH 13/61] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
+Subject: [PATCH 13/69] =?UTF-8?q?npu:=20reflect=20real=20server=20state=20?=
  =?UTF-8?q?=E2=80=94=20drop=20the=20default,=20remember=20what=20was=20loa?=
  =?UTF-8?q?ded?=
 MIME-Version: 1.0
@@ -3249,7 +3249,7 @@ index 6c8bdcca..be3eb5ae 100644
 From aaf5a1114c5e46eb123e6682abc18f0ab3c8b310 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 4 Aug 2026 13:20:47 +0900
-Subject: [PATCH 14/61] model picker: add tp as a third parallel axis
+Subject: [PATCH 14/69] model picker: add tp as a third parallel axis
  (tp/dp/pp)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -3973,7 +3973,7 @@ index efa22d38..f429c2ef 100644
 From 364496a6e7dbb9d8f59ddabb2841bb3f9886b2c8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 13:47:34 +0900
-Subject: [PATCH 15/61] model picker: support a per-model default pp (large
+Subject: [PATCH 15/69] model picker: support a per-model default pp (large
  models like bf16 coder)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4111,7 +4111,7 @@ index f429c2ef..6f87b921 100644
 From dffb86aa1edc69fc2271af5ea901a17a109d02d0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 14:43:49 +0900
-Subject: [PATCH 16/61] model picker: resolve the active pp to pp_default
+Subject: [PATCH 16/69] model picker: resolve the active pp to pp_default
  (fixes bf16 coder showing pp1)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4245,7 +4245,7 @@ index 436b00f0..df63c88f 100644
 From c1534874a27c2d4deaf33ef59d13682936cb2384 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 15:39:27 +0900
-Subject: [PATCH 17/61] npu: fetch router metadata live + ease off status
+Subject: [PATCH 17/69] npu: fetch router metadata live + ease off status
  polling on long loads
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4465,7 +4465,7 @@ index 6f87b921..3265bf0d 100644
 From c28b483ae03de4900887fd98239ba5ee91e5a0e2 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 5 Aug 2026 16:13:42 +0900
-Subject: [PATCH 18/61] fix: runtime router-metadata fetch hit
+Subject: [PATCH 18/69] fix: runtime router-metadata fetch hit
  /v1/router/models (404)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4507,7 +4507,7 @@ index 57f5de8a..54fc369f 100644
 From 358e3882965eccffd5f47846536ca47cf66998c5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 6 Aug 2026 00:33:47 +0900
-Subject: [PATCH 19/61] npu: keep the LEDs alive through hiccups, and stop
+Subject: [PATCH 19/69] npu: keep the LEDs alive through hiccups, and stop
  repainting the picker on blink
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4729,7 +4729,7 @@ index 5fb053a4..9b1e613e 100644
 From 9f179b5517be1014762850c06bda6d76c0e7c1fe Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 14:16:17 +0900
-Subject: [PATCH 20/61] npu: cap the model switcher at four, ordered by when
+Subject: [PATCH 20/69] npu: cap the model switcher at four, ordered by when
  you picked them
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -4990,7 +4990,7 @@ index 54fc369f..99fe43a3 100644
 From 0e8f078c651831ace7bdc82ef48f72dfeff3823a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 11 Aug 2026 16:11:43 +0900
-Subject: [PATCH 21/61] npu: background calls must follow the /model switch,
+Subject: [PATCH 21/69] npu: background calls must follow the /model switch,
  not the launch model
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5128,7 +5128,7 @@ index a3138ed2..9e2009c4 100644
 From 90432ff0d66b27cd6956d044dceda5ab05d460ec Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Thu, 13 Aug 2026 11:58:43 +0900
-Subject: [PATCH 22/61] npu: Enter on the switcher loads the model, even the
+Subject: [PATCH 22/69] npu: Enter on the switcher loads the model, even the
  one already selected
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5262,7 +5262,7 @@ index 75f92ddc..88eec592 100644
 From ff4585fb14902a834efd3870452d802ec6a8ea6c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 02:17:22 +0900
-Subject: [PATCH 23/61] brand: show the SOTA / furio wordmark instead of
+Subject: [PATCH 23/69] brand: show the SOTA / furio wordmark instead of
  OpenClaude
 
 The lab runs this fork as `furio` against its Furiosa RNGD NPU server, so the
@@ -5563,7 +5563,7 @@ index 522362ad..1c509b74 100644
 From f531895ffa54ecd261147b3bb938f0427434f095 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 03:07:23 +0900
-Subject: [PATCH 24/61] brand: give each logo letter its own color from a cool
+Subject: [PATCH 24/69] brand: give each logo letter its own color from a cool
  spectrum
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5756,7 +5756,7 @@ index 94af8b4c..3e2cf093 100644
 From 9cf8784b2009e6734c8bd3d24740e72ccc69a6ea Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:07:48 +0900
-Subject: [PATCH 25/61] startup: drop the provider box, keep the mark and one
+Subject: [PATCH 25/69] startup: drop the provider box, keep the mark and one
  line
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -5913,7 +5913,7 @@ index c21c8def..9b775d33 100644
 From bf4d4d421cbaa00a9c49fb6851a4d713b11729b9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 16:37:56 +0900
-Subject: [PATCH 26/61] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
+Subject: [PATCH 26/69] =?UTF-8?q?=EC=84=B8=EC=85=98=20=EA=B3=A0=EB=A5=B4?=
  =?UTF-8?q?=EA=B8=B0:=20agents=20=ED=95=9C=20=EB=8B=A8=EC=96=B4=EB=A1=9C?=
  =?UTF-8?q?=20=EC=9D=B4=20=EC=BB=B4=ED=93=A8=ED=84=B0=EC=9D=98=20=EC=84=B8?=
  =?UTF-8?q?=EC=85=98=EC=9D=84=20=EC=97=B4=EA=B3=A0=20=EB=8B=A4=EB=A5=B8=20?=
@@ -6389,7 +6389,7 @@ index 00000000..fb864cb2
 From 032cb8ae9935682e0a02e8fff4a8c09b355ad0d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:16:30 +0900
-Subject: [PATCH 27/61] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
+Subject: [PATCH 27/69] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20/survey=20=EB=A1=9C?=
  =?UTF-8?q?=20=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=95=88=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EC=82=AC=EC=9A=A9=20=EA=B2=BD=ED=97=98=EC=9D=84=20=EB=B0=9B?=
  =?UTF-8?q?=EC=95=84=20=EB=9D=BC=EC=9A=B0=ED=84=B0=EB=A1=9C=20=EB=B3=B4?=
@@ -7711,7 +7711,7 @@ index 00000000..e41d7a38
 From 4c1dd2e0ccbe99a2b09c45f2482d67aea3db94d9 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 17:59:23 +0900
-Subject: [PATCH 28/61] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 28/69] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20agents=20=EB=A5=BC=20claude=20agents=20=EC=8B=9D=20=EA=B5=AC?=
  =?UTF-8?q?=EC=84=B1=EC=9C=BC=EB=A1=9C,=20=EB=B9=88=20=ED=94=84=EB=A1=AC?=
  =?UTF-8?q?=ED=94=84=ED=8A=B8=EC=97=90=EC=84=9C=20=E2=86=90=20=EB=A1=9C?=
@@ -8811,7 +8811,7 @@ index fb864cb2..858a1faa 100644
 From c969ee7ee1a65e2c6036a3dd28ee8b28b6bf8cbf Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 18:42:09 +0900
-Subject: [PATCH 29/61] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
+Subject: [PATCH 29/69] =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4:?=
  =?UTF-8?q?=20=EC=84=B8=EC=85=98=20=EC=95=88=EC=9D=98=20=EC=84=A0=ED=83=9D?=
  =?UTF-8?q?=EC=B0=BD=EC=9D=84=20=EB=8C=80=EC=B2=B4=20=ED=99=94=EB=A9=B4?=
  =?UTF-8?q?=EC=97=90=20=EB=9D=84=EC=9B=8C=20=EC=9E=90=EB=A6=AC=EB=A5=BC=20?=
@@ -9162,7 +9162,7 @@ index 858a1faa..4549b875 100644
 From 5f7367539a9ac62b25088f69a1ad0a1b9e15e1d8 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Fri, 23 Oct 2026 22:41:22 +0900
-Subject: [PATCH 30/61] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
+Subject: [PATCH 30/69] =?UTF-8?q?=EC=84=A4=EB=AC=B8:=20=EA=B8=B0=EB=B3=B8?=
  =?UTF-8?q?=EA=B0=92=EC=9D=84=20=EB=AF=B8=EB=A6=AC=20=EA=B3=A0=EB=A5=B8=20?=
  =?UTF-8?q?=EB=8B=B5(=EC=B4=88=EB=A1=9D)=EC=9C=BC=EB=A1=9C=20=EA=B7=B8?=
  =?UTF-8?q?=EB=A6=AC=EC=A7=80=20=EC=95=8A=EA=B3=A0=20=EC=BB=A4=EC=84=9C=20?=
@@ -9203,7 +9203,7 @@ index ef2b04a9..d16156ab 100644
 From cacc5fb703bf009ba3c25d3530d319c2de787022 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Sun, 25 Oct 2026 00:31:57 +0900
-Subject: [PATCH 31/61] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
+Subject: [PATCH 31/69] =?UTF-8?q?=EC=97=90=EB=94=94=EC=85=98=20=EC=8A=A4?=
  =?UTF-8?q?=EC=9C=84=EC=B9=98:=20=EC=9D=BC=EB=B0=98=ED=8C=90(lab)=C2=B7?=
  =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90(class)=EC=9D=84=20=ED=95=9C=20?=
  =?UTF-8?q?=EC=86=8C=EC=8A=A4=EC=97=90=EC=84=9C=20=EB=B9=8C=EB=93=9C?=
@@ -9632,7 +9632,7 @@ index e41d7a38..54e24ea7 100644
 From e3b9f75537b51b3a459ba9fa001f02706d13a6de Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 02:38:42 +0900
-Subject: [PATCH 32/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/l?=
+Subject: [PATCH 32/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/l?=
  =?UTF-8?q?ogin=C2=B7/logout(=EA=B8=B0=EA=B8=B0=20=EC=BD=94=EB=93=9C),=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84=20=EA=B3=84=EC=A0=95=C2=B7=EB=A1=9C?=
  =?UTF-8?q?=EA=B7=B8=EC=9D=B8=20=ED=95=84=EC=9A=94=C2=B7=EC=88=98=EC=97=85?=
@@ -10814,7 +10814,7 @@ index 88eec592..11ec25df 100644
 From 5ceec773cb628a56a9d1443a5f4ba56de414a328 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 03:02:22 +0900
-Subject: [PATCH 33/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 33/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20403=C2=B75xx=20?=
  =?UTF-8?q?=EC=97=90=EB=8F=84=20=EC=83=81=ED=83=9C=EC=A4=84=20=EC=9C=A0?=
  =?UTF-8?q?=EC=A7=80,=20/login=20=EC=9D=80=20=EC=9D=BC=EC=8B=9C=20?=
@@ -11476,7 +11476,7 @@ index 11ec25df..ce796cdd 100644
 From e6883f42491fab75ade11f18581e905f679ae8c6 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 03:18:36 +0900
-Subject: [PATCH 34/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 34/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=202:=20=ED=8F=B4?=
  =?UTF-8?q?=EB=A7=81=20=EC=A4=91=20/login=C2=B7/logout=20=EA=B0=B1?=
  =?UTF-8?q?=EC=8B=A0=EC=9D=B4=20=EB=91=90=20=EB=B2=88=EC=A7=B8=20=ED=8F=B4?=
@@ -11725,7 +11725,7 @@ index ce796cdd..b1d82ffd 100644
 From 26b1ff94693af6a9b65a3ba591492550e475b46c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 05:51:31 +0900
-Subject: [PATCH 35/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 35/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84:=20=EA=B2=8C=EC=9D=B4=ED=8A=B8?=
  =?UTF-8?q?=EC=9B=A8=EC=9D=B4=20=EC=98=A4=EB=A5=98=20=EB=B3=B8=EB=AC=B8=20?=
  =?UTF-8?q?{"error":{message,code}}=20=ED=8C=8C=EC=8B=B1,=20403=20suspende?=
@@ -11983,7 +11983,7 @@ index b1d82ffd..f8d2a7bd 100644
 From 90865c80ebc4263917693b318403c1e6122d2492 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Sun, 25 Oct 2026 06:07:17 +0900
-Subject: [PATCH 36/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 36/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81=203:=20/login=C2=B7?=
  =?UTF-8?q?=EC=84=A4=EB=AC=B8=20=EC=A0=84=EC=86=A1=EC=9D=98=20AbortSignal.?=
  =?UTF-8?q?timeout=20=EC=9D=84=20=EC=A0=95=EB=A6=AC=EB=90=98=EB=8A=94=20?=
@@ -12097,7 +12097,7 @@ index 17a9405d..92cbe0e0 100644
 From ab997ad7bb833f4327d80ba4c112b179e022fe5f Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 03:02:30 +0900
-Subject: [PATCH 37/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20?=
+Subject: [PATCH 37/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20?=
  =?UTF-8?q?=EA=B3=B5=EC=8B=9D=20=EB=A7=88=EC=BC=93=20=EC=9E=90=EB=8F=99=20?=
  =?UTF-8?q?=EC=84=A4=EC=B9=98=EB=A5=BC=20=EB=8F=8C=EB=A6=AC=EC=A7=80=20?=
  =?UTF-8?q?=EC=95=8A=EB=8A=94=EB=8B=A4(=ED=95=99=EC=83=9D=20PC=20=EB=B0=94?=
@@ -12340,7 +12340,7 @@ index 1dead1d4..050d39ae 100644
 From 408110b5e22ff4be18b6f5c70ad133b04afd183c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 03:29:03 +0900
-Subject: [PATCH 38/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/a?=
+Subject: [PATCH 38/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90:=20/a?=
  =?UTF-8?q?ds=20=EC=88=A8=EA=B9=80=C2=B7=EA=B4=91=EA=B3=A0=20=ED=8C=81=20?=
  =?UTF-8?q?=EB=81=94=C2=B7=EC=84=A0=EC=96=B8=EB=90=9C=20=EB=A7=88=EC=BC=93?=
  =?UTF-8?q?=20=EB=B0=B1=EA=B7=B8=EB=9D=BC=EC=9A=B4=EB=93=9C=20reconcile=20?=
@@ -12659,7 +12659,7 @@ index 8157a324..bce161cb 100644
 From 9b35c4b683c791144341240c1c668fa293066971 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 12:17:28 +0900
-Subject: [PATCH 39/61] =?UTF-8?q?furio=20=ED=99=94=EB=A9=B4=20=EB=AC=B8?=
+Subject: [PATCH 39/69] =?UTF-8?q?furio=20=ED=99=94=EB=A9=B4=20=EB=AC=B8?=
  =?UTF-8?q?=EA=B5=AC=20=EC=A0=95=EB=A6=AC:=20=EB=8C=80=EC=8B=9C=C2=B7?=
  =?UTF-8?q?=EC=9E=A5=EC=8B=9D=20=EA=B0=80=EC=9A=B4=EB=8E=83=EC=A0=90=C2=B7?=
  =?UTF-8?q?TMI=20=EC=A0=9C=EA=B1=B0,=20=ED=99=94=EB=A9=B4=20=ED=91=9C?=
@@ -13129,7 +13129,7 @@ index 54e24ea7..82a2f3ea 100644
 From 95f428a2c0f238f2e0996e74a29d598620e39290 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 12:44:14 +0900
-Subject: [PATCH 40/61] =?UTF-8?q?furio=20=EB=AC=B8=EA=B5=AC=20=EC=A0=95?=
+Subject: [PATCH 40/69] =?UTF-8?q?furio=20=EB=AC=B8=EA=B5=AC=20=EC=A0=95?=
  =?UTF-8?q?=EB=A6=AC=20=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20?=
  =?UTF-8?q?=EC=84=B8=EC=85=98=20=ED=99=94=EB=A9=B4=20=EB=8C=80=EC=8B=9C?=
  =?UTF-8?q?=C2=B7=EC=9E=A5=EC=8B=9D=20=EA=B0=80=EC=9A=B4=EB=8E=83=EC=A0=90?=
@@ -13304,7 +13304,7 @@ index 1b12e5bd..e6bf289f 100644
 From d5b8b13efd9b646e3e3241050b67a521a3523aca Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:17:59 +0900
-Subject: [PATCH 41/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 41/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EC=83=81=ED=83=9C=EC=A4=84:=20=EB=AA=A8=EB=8D=B8=20=EC=9D=B4?=
  =?UTF-8?q?=EB=A6=84=C2=B7NPU=20=EC=B9=B4=EB=93=9C=C2=B7=EC=8A=A4=EC=9C=84?=
  =?UTF-8?q?=EC=B2=98=20=ED=9E=8C=ED=8A=B8=EB=A5=BC=20=EC=88=A8=EA=B8=B0?=
@@ -14293,7 +14293,7 @@ index f8d2a7bd..5422edb8 100644
 From e557fa4d78691d8a0dcf4e0f2a5a3e5ea64ec0a0 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:48:53 +0900
-Subject: [PATCH 42/61] =?UTF-8?q?furio=20=EC=83=81=ED=83=9C=EC=A4=84=20?=
+Subject: [PATCH 42/69] =?UTF-8?q?furio=20=EC=83=81=ED=83=9C=EC=A4=84=20?=
  =?UTF-8?q?=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20=EA=B5=AC=ED=9A=8D?=
  =?UTF-8?q?=20=EB=84=88=EB=B9=84=EB=A5=BC=20=ED=84=B0=EB=AF=B8=EB=84=90=20?=
  =?UTF-8?q?=EC=B9=B8(stringWidth)=EC=9C=BC=EB=A1=9C=20=EC=9E=AC=EC=84=9C?=
@@ -14615,7 +14615,7 @@ index 6e6023d3..ace10d0f 100644
 From 263341600a8e36c38fe5469fa860b086b1ee66a3 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 16:55:11 +0900
-Subject: [PATCH 43/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 43/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C:=20Shift+Tab=20?=
  =?UTF-8?q?=EC=88=9C=ED=99=98=20default=E2=86=92acceptEdits=E2=86=92plan?=
  =?UTF-8?q?=E2=86=92auto=E2=86=92fullAccess(bypassPermissions=20=EC=97=86?=
@@ -16358,7 +16358,7 @@ index 9936421e..889418e7 100644
 From f7b8959fa133f711e880e2d22b062ac48c0d3cf5 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 17:15:50 +0900
-Subject: [PATCH 44/61] =?UTF-8?q?furio=20agents=20=ED=99=94=EB=A9=B4?=
+Subject: [PATCH 44/69] =?UTF-8?q?furio=20agents=20=ED=99=94=EB=A9=B4?=
  =?UTF-8?q?=EC=9D=84=20Claude=20agents=20=EC=B2=98=EB=9F=BC=20=EC=A0=95?=
  =?UTF-8?q?=EB=A6=AC:=20=ED=81=B0=20=EB=B0=B0=EB=84=88=C2=B7=EB=9D=A0=20?=
  =?UTF-8?q?=EB=A8=B8=EB=A6=AC=20=EB=8C=80=EC=8B=A0=20=EC=9E=91=EC=9D=80=20?=
@@ -17957,7 +17957,7 @@ index 86b2b62e..21fc29a6 100644
 From 1fa3cb960d3dc8ff9b0115a72845a203e124ca77 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 17:40:06 +0900
-Subject: [PATCH 45/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 45/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20/permissions=20=ED=83=AD=EC=97=90?=
  =?UTF-8?q?=EC=84=9C=20Bypass=20Permissions=C2=B7Full=20Access=20=EC=A0=9C?=
@@ -18662,7 +18662,7 @@ index a2012dcf..3616fc81 100644
 From 1dce00de0aca2200ba5b40305fe85be740a83e76 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 17:44:56 +0900
-Subject: [PATCH 46/61] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 46/69] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20PID=20=ED=8C=8C=EC=9D=BC=20=EC=93=B0?=
  =?UTF-8?q?=EA=B8=B0=EB=A5=BC=20=ED=95=9C=20=EC=A4=84=EB=A1=9C=20=EC=84=B8?=
  =?UTF-8?q?=EC=9A=B0=EA=B3=A0=20=EB=A7=A4=EB=B2=88=20=ED=98=84=EC=9E=AC=20?=
@@ -19287,7 +19287,7 @@ index f4af17d1..63ee2adb 100644
 From 98948fc62ba13057b5e624b8ff7684081fefc7aa Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 18:05:11 +0900
-Subject: [PATCH 47/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 47/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=EA=B6=8C=ED=95=9C=20=EB=AA=A8=EB=93=9C=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81=202:=20=EA=B1=B0=EC=A0=88=20=EB=B2=84?=
  =?UTF-8?q?=ED=8A=BC=20No,=20go=20back=20=EC=9D=80=20=EC=88=98=EC=97=85?=
@@ -19534,7 +19534,7 @@ index 30fca846..17437a5f 100644
 From c461060b3067d87e273355be9319b940ce60af17 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 18:27:03 +0900
-Subject: [PATCH 48/61] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 48/69] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20=EB=AA=A9=EB=A1=9D=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EA=B7=B8=20=EC=9E=90=EB=A6=AC=EB=A1=9C=20=EC=9D=B4=EC=96=B4=20?=
  =?UTF-8?q?=EC=97=B0=20=EC=84=B8=EC=85=98=EC=97=90=EB=8F=84=20FURIO=20?=
@@ -20194,7 +20194,7 @@ index 00000000..4d9d3eef
 From 10d7b8470f1024b1352ab89d10fa8d0b3b017eda Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 21:23:44 +0900
-Subject: [PATCH 49/61] =?UTF-8?q?furio=20agents=20=EC=84=B8=EC=85=98=20?=
+Subject: [PATCH 49/69] =?UTF-8?q?furio=20agents=20=EC=84=B8=EC=85=98=20?=
  =?UTF-8?q?=EC=95=88=20=EB=AA=A9=EB=A1=9D=EC=9D=84=20=EC=B2=98=EC=9D=8C=20?=
  =?UTF-8?q?=ED=99=94=EB=A9=B4=EA=B3=BC=20=EA=B0=99=EA=B2=8C:=20=E2=86=90?=
  =?UTF-8?q?=C2=B7/switch=20=EB=AA=A9=EB=A1=9D=EC=97=90=20=EC=9E=85?=
@@ -21319,7 +21319,7 @@ index 79f37795..ccc72d15 100644
 From a1ae03626e3f3c67506789512a2ba4ad67184387 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 21:36:47 +0900
-Subject: [PATCH 50/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 50/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=82=BC=EC=A7=80=EC=84=A0?=
  =?UTF-8?q?=EB=8B=A4:=20=EB=8C=80=EC=83=81=20=ED=84=B4=EC=9D=98=20?=
  =?UTF-8?q?=ED=99=88=20=EB=8B=B5=EC=97=90=20=EC=BD=94=EB=93=9C(=EC=BD=94?=
@@ -24889,7 +24889,7 @@ index 00000000..057ed5b7
 From ed1dac1832c69f7b53c9d5a9a81706cbce3cf829 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 21:57:57 +0900
-Subject: [PATCH 51/61] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 51/69] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81:=20/switch=20=EB=AA=A9=EB=A1=9D=20=EC=8B=9C?=
  =?UTF-8?q?=ED=97=98=EC=9D=B4=20=EC=B2=AB=20=ED=94=84=EB=A0=88=EC=9E=84=20?=
  =?UTF-8?q?=EC=A7=81=ED=9B=84=20=ED=82=A4=EB=A5=BC=20=EB=B3=B4=EB=82=B4=20?=
@@ -24965,7 +24965,7 @@ index 451779ce..8b2f0f36 100644
 From 19f38e896aec0a9c754203444d7e07635ff89099 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 22:09:17 +0900
-Subject: [PATCH 52/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
+Subject: [PATCH 52/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20?=
  =?UTF-8?q?=ED=84=B0=EB=AF=B8=EB=84=90=20=EC=82=BC=EC=A7=80=EC=84=A0?=
  =?UTF-8?q?=EB=8B=A4=20=EA=B2=80=ED=86=A0=20=EB=B0=98=EC=98=81:=20?=
  =?UTF-8?q?=EB=B9=84=EA=B5=90=20=ED=84=B4=EC=9D=B4=20QueryGuard=20?=
@@ -25760,7 +25760,7 @@ index f8b51fc5..d159dfdc 100644
 From 2cf74ea3ce64598d64f48d4f55059d0b60be4d2f Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Mon, 26 Oct 2026 23:06:51 +0900
-Subject: [PATCH 53/61] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 53/69] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81=202:=20=EC=84=B8=EC=85=98=20=EC=95=88=20?=
  =?UTF-8?q?=EB=AA=A9=EB=A1=9D(=E2=86=90=C2=B7/switch)=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EB=8B=A4=EB=A5=B8=20=ED=8F=B4=EB=8D=94=20=EC=84=B8=EC=85=98?=
@@ -26235,7 +26235,7 @@ index 4549b875..1f2eef5a 100644
 From d15dbcf1cbca6a4c785116d33dd61ca024461a57 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 00:08:36 +0900
-Subject: [PATCH 54/61] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
+Subject: [PATCH 54/69] =?UTF-8?q?furio=20agents=20=EA=B2=80=ED=86=A0=20?=
  =?UTF-8?q?=EB=B0=98=EC=98=81=203:=20=EB=8B=A4=EB=A5=B8=20=ED=8F=B4?=
  =?UTF-8?q?=EB=8D=94=20=EC=84=B8=EC=85=98=EC=9C=BC=EB=A1=9C=20=EB=84=98?=
  =?UTF-8?q?=EA=B8=B0=EA=B8=B0=20=EC=A0=84=EC=97=90=20PID=20=ED=8C=8C?=
@@ -27351,7 +27351,7 @@ index 1f2eef5a..752b32d1 100644
 From e5b3a8f868ea2a2f62c215121a83bc726925f746 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 10:42:59 +0900
-Subject: [PATCH 55/61] =?UTF-8?q?furio=20agents=20=EC=A7=A7=EC=9D=80=20?=
+Subject: [PATCH 55/69] =?UTF-8?q?furio=20agents=20=EC=A7=A7=EC=9D=80=20?=
  =?UTF-8?q?=ED=99=94=EB=A9=B4(80x24=20=EB=93=B1)=EC=97=90=EC=84=9C=20?=
  =?UTF-8?q?=EB=AA=A9=EB=A1=9D=EC=9D=B4=20=EA=B7=B8=20=EC=9E=90=EB=A6=AC?=
  =?UTF-8?q?=EC=97=90=EC=84=9C=20=EC=97=B0=20=EC=84=B8=EC=85=98=EB=8F=84=20?=
@@ -27500,7 +27500,7 @@ index 4d9d3eef..e981607c 100644
 From c1805979d05d0e27667a7e57f75946eefae20d3a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 12:19:20 +0900
-Subject: [PATCH 56/61] =?UTF-8?q?furio=20agents=20=EC=8A=A4=ED=81=AC?=
+Subject: [PATCH 56/69] =?UTF-8?q?furio=20agents=20=EC=8A=A4=ED=81=AC?=
  =?UTF-8?q?=EB=A1=A4=20=EA=B8=B0=EB=A1=9D=EC=9D=98=20=EC=9E=98=EB=A6=B0=20?=
  =?UTF-8?q?=EB=A1=9C=EA=B3=A0=20=ED=95=9C=20=EB=B2=88=EC=97=90=20=EC=A0=95?=
  =?UTF-8?q?=EB=A6=AC:=20=EB=84=98=EA=B2=A8=EB=B0=9B=EC=9D=80=20furio=20?=
@@ -27999,7 +27999,7 @@ index e981607c..6f9341da 100644
 From b9a2f5d8e5ddf21c7fd1c92fb5b9a04187d9ac37 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 15:46:51 +0900
-Subject: [PATCH 57/61] =?UTF-8?q?=ED=8F=B4=EB=8D=94=20=EC=8B=A0=EB=A2=B0?=
+Subject: [PATCH 57/69] =?UTF-8?q?=ED=8F=B4=EB=8D=94=20=EC=8B=A0=EB=A2=B0?=
  =?UTF-8?q?=20=ED=99=95=EC=9D=B8=20=EC=B0=BD=EA=B3=BC=20=EC=9D=B4=EC=96=B4?=
  =?UTF-8?q?=20=EC=93=B0=EA=B8=B0=20=ED=8C=81=EC=97=90=20OpenClaude=20?=
  =?UTF-8?q?=EB=8C=80=EC=8B=A0=20FURIO=20=EC=9D=B4=EB=A6=84?=
@@ -28088,7 +28088,7 @@ index b74e5b89..47fd7f11 100644
 From 8a366fc82e262369d1d32634b2dff637e17f743c Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 16:56:49 +0900
-Subject: [PATCH 58/61] =?UTF-8?q?furio=20agents=20=EB=84=98=EA=B8=B0?=
+Subject: [PATCH 58/69] =?UTF-8?q?furio=20agents=20=EB=84=98=EA=B8=B0?=
  =?UTF-8?q?=EA=B8=B0=EC=9D=98=20=EC=9E=98=EB=A6=B0=20=EB=A1=9C=EA=B3=A0=20?=
  =?UTF-8?q?=EB=A7=88=EC=A0=80=20=EC=A0=95=EB=A6=AC:=20=EB=82=A8=EC=9D=80?=
  =?UTF-8?q?=20=EB=A1=9C=EA=B3=A0=20=EC=A4=84=EC=9D=84=20=EC=A7=80=EA=B8=88?=
@@ -28594,7 +28594,7 @@ index 93d99b85..b30aae36 100644
 From 3cd3b3a9d5e0c4768cfdeae2759b74c788d01972 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 19:58:28 +0900
-Subject: [PATCH 59/61] =?UTF-8?q?=EB=B9=84=EA=B5=90=20=ED=8F=89=EA=B0=80?=
+Subject: [PATCH 59/69] =?UTF-8?q?=EB=B9=84=EA=B5=90=20=ED=8F=89=EA=B0=80?=
  =?UTF-8?q?=20=ED=99=94=EB=A9=B4=EC=9D=84=20=EA=B5=AC=ED=9A=8D=EB=A7=88?=
  =?UTF-8?q?=EB=8B=A4=20=ED=8B=80=EB=A1=9C=20=EB=82=98=EB=88=94:=20?=
  =?UTF-8?q?=EB=A7=A8=20=EC=9C=97=EC=A4=84=EC=97=90=20=EB=B9=84=EA=B5=90=20?=
@@ -28971,7 +28971,7 @@ index d159dfdc..a1f98574 100644
 From 7ad7a22045c199dad02141b75c9dd7b2c184463a Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Tue, 27 Oct 2026 20:09:59 +0900
-Subject: [PATCH 60/61] =?UTF-8?q?=EB=B9=84=EA=B5=90=20=ED=8F=89=EA=B0=80?=
+Subject: [PATCH 60/69] =?UTF-8?q?=EB=B9=84=EA=B5=90=20=ED=8F=89=EA=B0=80?=
  =?UTF-8?q?=20=ED=99=94=EB=A9=B4=EC=9D=B4=2060=EC=97=B4=20=EB=82=A8?=
  =?UTF-8?q?=EC=A7=93=EC=97=90=EC=84=9C=20=EC=A0=9C=EC=95=88=ED=95=9C=20?=
  =?UTF-8?q?=EC=9E=91=EC=97=85=20=EC=B2=AB=20=EC=A4=84=EC=9D=84=20=EC=9E=83?=
@@ -29097,7 +29097,7 @@ index ff8e1825..2cd6194b 100644
 From 6827f3ed2485abee608a911ddfee7b5b7f753480 Mon Sep 17 00:00:00 2001
 From: hyunjun1234 <plab2090@gmail.com>
 Date: Wed, 28 Oct 2026 05:35:41 +0900
-Subject: [PATCH 61/61] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20/lo?=
+Subject: [PATCH 61/69] =?UTF-8?q?furio=20=EC=88=98=EC=97=85=ED=8C=90=20/lo?=
  =?UTF-8?q?gin:=20=EC=BD=94=EB=93=9C=EB=8A=94=20=EB=B6=99=EC=97=AC=20?=
  =?UTF-8?q?=EC=8D=A8=EC=84=9C=20=EB=B3=B4=EC=9D=B4=EA=B3=A0=20=EB=B8=8C?=
  =?UTF-8?q?=EB=9D=BC=EC=9A=B0=EC=A0=80=20/device=20=EC=97=90=20=EC=BD=94?=
@@ -29619,6 +29619,3344 @@ index 5c896849..92a206a5 100644
    }
    const raw = (await res.json()) as Record<string, unknown>
    const deviceCode = str(raw.device_code)
+-- 
+2.43.0
+
+
+From 4774b18f7023ed6bb66c880af2f3c104f2cd6919 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Thu, 5 Nov 2026 19:04:51 +0900
+Subject: [PATCH 62/69] =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90=20=EB=B9=84?=
+ =?UTF-8?q?=EA=B5=90:=20=EB=8B=B5=ED=95=9C=20=EC=84=9C=EB=B2=84=20?=
+ =?UTF-8?q?=EB=A9=94=EB=AA=A8,=20=ED=95=99=EC=83=9D=20=EB=AC=B4=EC=9E=A5,?=
+ =?UTF-8?q?=20=ED=95=99=EC=83=9D=20=EC=84=A4=EC=A0=95=20=EC=B9=B8,=20?=
+ =?UTF-8?q?=EB=B9=84=EA=B5=90=20=EC=A2=85=EB=A5=98=20=ED=97=A4=EB=8D=94?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- capture.ts: X-Furio-Answer-Tag 꼬리표(프로세스 밖으로 안 나감), noteAnswerServer/peek/take/waitAnswerServer
+- openaiShim: 꼬리표(없으면 capture 꼬리표)로 200 응답의 X-Furio-Server 헤더를 적음
+- 새 answeredServer.ts(상태줄용 저장소), compare/studentArm.ts(학생 무장)
+- parseCompareConfig: student, studentReason, names. CompareRecord.kind
+- replay: student 일 때만 X-Furio-Compare-Kind: student
+- AssistantMessage.furioServer(기록에만 남음)
+---
+ src/furio/answeredServer.test.ts      |  36 +++++++++
+ src/furio/answeredServer.ts           |  37 +++++++++
+ src/furio/compare/capture.ts          | 103 ++++++++++++++++++++++++--
+ src/furio/compare/decide.test.ts      |   3 +
+ src/furio/compare/decide.ts           |   6 ++
+ src/furio/compare/gateway.test.ts     |  38 +++++++++-
+ src/furio/compare/gateway.ts          |  24 +++++-
+ src/furio/compare/replay.test.ts      |  31 +++++++-
+ src/furio/compare/replay.ts           |   4 +
+ src/furio/compare/shimCapture.test.ts |  41 ++++++++++
+ src/furio/compare/studentArm.ts       |  45 +++++++++++
+ src/furio/compare/turn.test.ts        |  11 ++-
+ src/furio/compare/turn.ts             |   1 +
+ src/services/api/openaiShim.ts        |  18 ++++-
+ src/types/message.ts                  |   2 +
+ 15 files changed, 383 insertions(+), 17 deletions(-)
+ create mode 100644 src/furio/answeredServer.test.ts
+ create mode 100644 src/furio/answeredServer.ts
+ create mode 100644 src/furio/compare/studentArm.ts
+
+diff --git a/src/furio/answeredServer.test.ts b/src/furio/answeredServer.test.ts
+new file mode 100644
+index 00000000..3c1d394d
+--- /dev/null
++++ b/src/furio/answeredServer.test.ts
+@@ -0,0 +1,36 @@
++import { afterEach, expect, test } from 'bun:test'
++import { __resetAnsweredServerForTest, getAnsweredServer, setAnsweredServer, subscribeAnsweredServer } from './answeredServer.js'
++import { __resetStudentArmForTest, armStudentCompare, consumeStudentArm, isStudentArmed, subscribeStudentArm } from './compare/studentArm.js'
++
++afterEach(() => {
++  __resetAnsweredServerForTest()
++  __resetStudentArmForTest()
++})
++
++test('answered server keeps the latest and tells subscribers once per change', () => {
++  let calls = 0
++  const off = subscribeAnsweredServer(() => calls++)
++  expect(getAnsweredServer()).toBeNull()
++  setAnsweredServer({ id: 'rngd', name: 'RNGD' })
++  setAnsweredServer({ id: 'rngd', name: 'RNGD' })
++  expect(calls).toBe(1)
++  setAnsweredServer({ id: 'atom', name: 'ATOM MAX' })
++  expect(getAnsweredServer()).toEqual({ id: 'atom', name: 'ATOM MAX' })
++  expect(calls).toBe(2)
++  off()
++  setAnsweredServer({ id: 'rngd', name: 'RNGD' })
++  expect(calls).toBe(2)
++})
++
++test('student arm is used by one turn', () => {
++  let calls = 0
++  const off = subscribeStudentArm(() => calls++)
++  expect(isStudentArmed()).toBe(false)
++  armStudentCompare()
++  expect(isStudentArmed()).toBe(true)
++  expect(consumeStudentArm()).toBe(true)
++  expect(consumeStudentArm()).toBe(false)
++  expect(isStudentArmed()).toBe(false)
++  expect(calls).toBe(2)
++  off()
++})
+diff --git a/src/furio/answeredServer.ts b/src/furio/answeredServer.ts
+new file mode 100644
+index 00000000..af631720
+--- /dev/null
++++ b/src/furio/answeredServer.ts
+@@ -0,0 +1,37 @@
++/**
++ * furio class edition: which server gave the answer the student is reading.
++ * turn.ts sets it after each main-thread answer (from the gateway's
++ * X-Furio-Server headers, or the server the student picked in a comparison);
++ * the status line reads it with useSyncExternalStore. React-free.
++ */
++
++export type AnsweredServer = {
++  /** Gateway server id: `rngd`, `atom`. */
++  id: string
++  /** Name to show: `RNGD`, `ATOM MAX`. */
++  name: string
++}
++
++let current: AnsweredServer | null = null
++const listeners = new Set<() => void>()
++
++export function getAnsweredServer(): AnsweredServer | null {
++  return current
++}
++
++/** Listeners hear only real changes, so a repeated answer from the same server is quiet. */
++export function setAnsweredServer(server: AnsweredServer): void {
++  if (current && current.id === server.id && current.name === server.name) return
++  current = { id: server.id, name: server.name }
++  for (const listener of listeners) listener()
++}
++
++export function subscribeAnsweredServer(listener: () => void): () => void {
++  listeners.add(listener)
++  return () => listeners.delete(listener)
++}
++
++export function __resetAnsweredServerForTest(): void {
++  current = null
++  listeners.clear()
++}
+diff --git a/src/furio/compare/capture.ts b/src/furio/compare/capture.ts
+index f9a63c60..d47d0b85 100644
+--- a/src/furio/compare/capture.ts
++++ b/src/furio/compare/capture.ts
+@@ -9,6 +9,8 @@
+  * Retries overwrite the entry, so what is kept is the attempt that answered.
+  */
+ 
++import type { AnsweredServer } from '../answeredServer.js'
++
+ /** Internal only: never leaves the process (the shim removes it). */
+ export const COMPARE_CAPTURE_HEADER = 'X-Furio-Compare-Capture'
+ 
+@@ -26,20 +28,36 @@ const MAX_CAPTURES = 8
+ const captures = new Map<string, CapturedRequest>()
+ 
+ /**
+- * Splits the capture tag off a request's extra headers. Returns the headers
+- * unchanged (same object) when there is no tag.
++ * Internal only, like the capture tag: marks a main-thread model call so the
++ * shim can note which server answered it. The shim removes it before sending.
+  */
+-export function splitCompareCaptureHeader(
+-  headers: Record<string, string> | undefined,
+-): { captureId: string | null; headers: Record<string, string> | undefined } {
+-  if (!headers) return { captureId: null, headers }
++export const ANSWER_TAG_HEADER = 'X-Furio-Answer-Tag'
++/** Gateway response headers: the backend that actually answered, and its name. */
++export const SERVER_HEADER = 'X-Furio-Server'
++export const SERVER_NAME_HEADER = 'X-Furio-Server-Name'
++
++/**
++ * Splits the capture tag and the answer tag off a request's extra headers.
++ * Returns the headers unchanged (same object) when there is neither.
++ */
++export function splitCompareCaptureHeader(headers: Record<string, string> | undefined): {
++  captureId: string | null
++  answerTag: string | null
++  headers: Record<string, string> | undefined
++} {
++  if (!headers) return { captureId: null, answerTag: null, headers }
+   let captureId: string | null = null
++  let answerTag: string | null = null
+   const rest: Record<string, string> = {}
+   for (const [name, value] of Object.entries(headers)) {
+-    if (name.toLowerCase() === COMPARE_CAPTURE_HEADER.toLowerCase()) captureId = value
++    const lower = name.toLowerCase()
++    if (lower === COMPARE_CAPTURE_HEADER.toLowerCase()) captureId = value
++    else if (lower === ANSWER_TAG_HEADER.toLowerCase()) answerTag = value
+     else rest[name] = value
+   }
+-  return captureId === null ? { captureId, headers } : { captureId, headers: rest }
++  return captureId === null && answerTag === null
++    ? { captureId, answerTag, headers }
++    : { captureId, answerTag, headers: rest }
+ }
+ 
+ function headersToRecord(headers: HeadersInit | undefined): Record<string, string> {
+@@ -76,3 +94,72 @@ export function takeCompareCapture(captureId: string): CapturedRequest | undefin
+   captures.delete(captureId)
+   return capture
+ }
++
++// Which server answered each tagged call, from the gateway's response
++// headers. Taken when the turn settles; only calls that die in between leave
++// entries behind. Keep the newest few.
++const MAX_SERVER_NOTES = 32
++const serverNotes = new Map<string, AnsweredServer>()
++const serverWaiters = new Map<string, Set<(server: AnsweredServer) => void>>()
++
++/**
++ * Notes the answering server of a tagged call. Only an ok response with a
++ * server id counts; a retry overwrites. A missing name falls back to the id.
++ */
++export function noteAnswerServer(tag: string, res: Response): void {
++  if (!res.ok) return
++  const id = res.headers.get(SERVER_HEADER)?.trim()
++  if (!id) return
++  const server: AnsweredServer = { id, name: res.headers.get(SERVER_NAME_HEADER)?.trim() || id }
++  serverNotes.delete(tag)
++  serverNotes.set(tag, server)
++  while (serverNotes.size > MAX_SERVER_NOTES) {
++    const oldest = serverNotes.keys().next().value
++    if (oldest === undefined) break
++    serverNotes.delete(oldest)
++  }
++  const waiters = serverWaiters.get(tag)
++  serverWaiters.delete(tag)
++  for (const wake of waiters ?? []) wake(server)
++}
++
++export function peekAnswerServer(tag: string): AnsweredServer | null {
++  return serverNotes.get(tag) ?? null
++}
++
++/** Hands over (and forgets) the server noted under this tag. */
++export function takeAnswerServer(tag: string): AnsweredServer | null {
++  const server = serverNotes.get(tag) ?? null
++  serverNotes.delete(tag)
++  return server
++}
++
++/**
++ * Resolves as soon as the server is noted (at once if it already is), or
++ * with null when `signal` aborts first: the caller aborts it once the call
++ * is over, so a call that never got a server header gives null.
++ */
++export function waitAnswerServer(tag: string, signal: AbortSignal): Promise<AnsweredServer | null> {
++  const noted = serverNotes.get(tag)
++  if (noted) return Promise.resolve(noted)
++  if (signal.aborted) return Promise.resolve(null)
++  return new Promise(resolve => {
++    const wake = (server: AnsweredServer): void => {
++      signal.removeEventListener('abort', onAbort)
++      resolve(server)
++    }
++    const onAbort = (): void => {
++      const waiters = serverWaiters.get(tag)
++      waiters?.delete(wake)
++      if (waiters?.size === 0) serverWaiters.delete(tag)
++      resolve(null)
++    }
++    let waiters = serverWaiters.get(tag)
++    if (!waiters) {
++      waiters = new Set()
++      serverWaiters.set(tag, waiters)
++    }
++    waiters.add(wake)
++    signal.addEventListener('abort', onAbort, { once: true })
++  })
++}
+diff --git a/src/furio/compare/decide.test.ts b/src/furio/compare/decide.test.ts
+index 93764c92..ce1da571 100644
+--- a/src/furio/compare/decide.test.ts
++++ b/src/furio/compare/decide.test.ts
+@@ -18,6 +18,9 @@ const ON: CompareConfig = {
+   rate: 1,
+   codeOnly: true,
+   timeoutS: 240,
++  student: false,
++  studentReason: 'off',
++  names: {},
+ }
+ 
+ describe('wantsCode (the web compare.py cue list)', () => {
+diff --git a/src/furio/compare/decide.ts b/src/furio/compare/decide.ts
+index 0ef955b5..d31aa530 100644
+--- a/src/furio/compare/decide.ts
++++ b/src/furio/compare/decide.ts
+@@ -26,6 +26,12 @@ export type CompareConfig = {
+   codeOnly: boolean
+   /** How long to wait for the other servers, in seconds. */
+   timeoutS: number
++  /** The student may ask for a comparison of their next question. */
++  student: boolean
++  /** Why the student cannot ask: the admin turned it off, or too few servers. */
++  studentReason: 'off' | 'few_servers' | null
++  /** Server id to the name shown to students (`rngd` to `RNGD`). */
++  names: Record<string, string>
+ }
+ 
+ export const COMPARE_LABELS = ['A', 'B', 'C'] as const
+diff --git a/src/furio/compare/gateway.test.ts b/src/furio/compare/gateway.test.ts
+index b04f2df2..551bf265 100644
+--- a/src/furio/compare/gateway.test.ts
++++ b/src/furio/compare/gateway.test.ts
+@@ -42,7 +42,7 @@ describe('parseCompareConfig', () => {
+   it('reads the gateway shape', () => {
+     expect(
+       parseCompareConfig({ enabled: true, servers: ['rngd', 'atom', 'gpu'], rate: 0.3, code_only: true, timeout_s: 120 }),
+-    ).toEqual({ enabled: true, servers: ['rngd', 'atom', 'gpu'], rate: 0.3, codeOnly: true, timeoutS: 120 })
++    ).toEqual({ enabled: true, servers: ['rngd', 'atom', 'gpu'], rate: 0.3, codeOnly: true, timeoutS: 120, student: false, studentReason: 'off', names: {} })
+   })
+ 
+   it('fills safe defaults and caps servers at three', () => {
+@@ -52,6 +52,9 @@ describe('parseCompareConfig', () => {
+       rate: 0,
+       codeOnly: true,
+       timeoutS: 240,
++      student: false,
++      studentReason: 'off',
++      names: {},
+     })
+   })
+ 
+@@ -67,7 +70,7 @@ describe('fetchCompareConfig', () => {
+     const config = await fetchCompareConfig('http://gw', impl)
+     expect(calls[0]!.url).toBe('http://gw/client/compare')
+     expect(new Headers(calls[0]!.init?.headers).get('authorization')).toBe('Bearer furio_tok')
+-    expect(config).toEqual({ enabled: true, servers: ['rngd', 'gpu'], rate: 1, codeOnly: false, timeoutS: 30 })
++    expect(config).toEqual({ enabled: true, servers: ['rngd', 'gpu'], rate: 1, codeOnly: false, timeoutS: 30, student: false, studentReason: 'off', names: {} })
+   })
+ 
+   it('does not send the installer placeholder as a token', async () => {
+@@ -84,6 +87,9 @@ describe('fetchCompareConfig', () => {
+       rate: 0,
+       codeOnly: true,
+       timeoutS: 240,
++      student: false,
++      studentReason: 'off',
++      names: {},
+     })
+     expect(await fetchCompareConfig('http://gw', stub(() => json({}, 502)).impl)).toBeNull()
+     expect(
+@@ -130,6 +136,7 @@ describe('ensureCompareConfig', () => {
+ describe('postCompareRecord / postCompareChoice', () => {
+   const record: CompareRecord = {
+     compare_id: '6d0f6a1e-1111-4222-8333-444455556666',
++    kind: 'sample',
+     prompt: 'hello.py 만드는 코드 짜 줘',
+     responses: [
+       {
+@@ -172,3 +179,30 @@ describe('postCompareRecord / postCompareChoice', () => {
+     expect(await postCompareChoice('http://gw', 42, 'skip', stub(() => json({}, 404)).impl)).toBe(false)
+   })
+ })
++
++import { parseCompareConfig as parseStudentConfig } from './gateway.js'
++
++describe('student request fields', () => {
++  it('parses student, student_reason, names', () => {
++    const on = parseStudentConfig({
++      enabled: false,
++      servers: ['rngd', 'atom'],
++      student: true,
++      student_reason: null,
++      names: { rngd: 'RNGD', atom: 'ATOM MAX', bad: 3 },
++    })
++    expect(on?.student).toBe(true)
++    expect(on?.studentReason).toBeNull()
++    expect(on?.names).toEqual({ rngd: 'RNGD', atom: 'ATOM MAX' })
++    const few = parseStudentConfig({ servers: ['rngd'], student: false, student_reason: 'few_servers' })
++    expect(few?.student).toBe(false)
++    expect(few?.studentReason).toBe('few_servers')
++  })
++
++  it('missing student fields mean off', () => {
++    const old = parseStudentConfig({ enabled: true, servers: ['rngd', 'atom'], rate: 1 })
++    expect(old?.student).toBe(false)
++    expect(old?.studentReason).toBe('off')
++    expect(old?.names).toEqual({})
++  })
++})
+diff --git a/src/furio/compare/gateway.ts b/src/furio/compare/gateway.ts
+index eb71ed3c..c7b567d6 100644
+--- a/src/furio/compare/gateway.ts
++++ b/src/furio/compare/gateway.ts
+@@ -25,7 +25,16 @@ const RETRY_AFTER_FAILURE_MS = 30_000
+ const DEFAULT_TIMEOUT_S = 240
+ const MAX_SERVERS = 3
+ 
+-const OFF: CompareConfig = { enabled: false, servers: [], rate: 0, codeOnly: true, timeoutS: DEFAULT_TIMEOUT_S }
++const OFF: CompareConfig = {
++  enabled: false,
++  servers: [],
++  rate: 0,
++  codeOnly: true,
++  timeoutS: DEFAULT_TIMEOUT_S,
++  student: false,
++  studentReason: 'off',
++  names: {},
++}
+ 
+ /** One answer as `POST /compare/cli` records it. */
+ export type CompareResponseRecord = {
+@@ -42,6 +51,8 @@ export type CompareResponseRecord = {
+ 
+ export type CompareRecord = {
+   compare_id: string
++  /** sample: the gateway picked the turn; student: the student asked. */
++  kind: 'sample' | 'student'
+   prompt: string
+   responses: CompareResponseRecord[]
+ }
+@@ -97,12 +108,23 @@ export function parseCompareConfig(raw: unknown): CompareConfig | null {
+     ? r.servers.filter((s): s is string => typeof s === 'string' && s.length > 0).slice(0, MAX_SERVERS)
+     : []
+   const timeoutS = finiteNumber(r.timeout_s, DEFAULT_TIMEOUT_S)
++  const student = r.student === true
++  const names: Record<string, string> = {}
++  if (r.names && typeof r.names === 'object' && !Array.isArray(r.names)) {
++    for (const [id, name] of Object.entries(r.names)) {
++      if (typeof name === 'string' && name.length > 0) names[id] = name
++    }
++  }
+   return {
+     enabled: r.enabled === true,
+     servers,
+     rate: Math.min(1, Math.max(0, finiteNumber(r.rate, 0))),
+     codeOnly: r.code_only !== false,
+     timeoutS: timeoutS > 0 ? timeoutS : DEFAULT_TIMEOUT_S,
++    student,
++    studentReason:
++      r.student_reason === 'off' || r.student_reason === 'few_servers' ? r.student_reason : student ? null : 'off',
++    names,
+   }
+ }
+ 
+diff --git a/src/furio/compare/replay.test.ts b/src/furio/compare/replay.test.ts
+index 13c48d6c..b21a382f 100644
+--- a/src/furio/compare/replay.test.ts
++++ b/src/furio/compare/replay.test.ts
+@@ -37,9 +37,10 @@ const chunk = (delta: Record<string, unknown>, finish: string | null = null, usa
+ describe('capture', () => {
+   it('splits the capture tag off and leaves other headers alone', () => {
+     const plain = { 'x-a': '1' }
+-    expect(splitCompareCaptureHeader(plain)).toEqual({ captureId: null, headers: plain })
++    expect(splitCompareCaptureHeader(plain)).toEqual({ captureId: null, answerTag: null, headers: plain })
+     expect(splitCompareCaptureHeader({ 'x-a': '1', [COMPARE_CAPTURE_HEADER]: 'cap1' })).toEqual({
+       captureId: 'cap1',
++      answerTag: null,
+       headers: { 'x-a': '1' },
+     })
+   })
+@@ -179,3 +180,31 @@ describe('replayToServer', () => {
+     expect((await pending).error).toBe('aborted')
+   })
+ })
++
++import { COMPARE_KIND_HEADER } from './replay.js'
++
++describe('compare kind', () => {
++  it('student kind header sent, sample sends none', async () => {
++    const sent: Headers[] = []
++    const fetchImpl = (async (_url: unknown, init?: RequestInit) => {
++      sent.push(new Headers(init?.headers))
++      return new Response('{"error":{"code":"compare_unavailable"}}', {
++        status: 409,
++        headers: { 'Content-Type': 'application/json' },
++      })
++    }) as never
++    const capture = {
++      url: 'http://gw/v1/chat/completions',
++      headers: { authorization: 'Bearer furio_tok' },
++      body: '{"model":"gpt-oss-20b","stream":true,"messages":[]}',
++      model: 'gpt-oss-20b',
++    }
++    const student = await replayToServer(capture, { compareId: 'c1', server: 'atom', timeoutMs: 1000, fetchImpl, kind: 'student' })
++    await replayToServer(capture, { compareId: 'c2', server: 'atom', timeoutMs: 1000, fetchImpl, kind: 'sample' })
++    await replayToServer(capture, { compareId: 'c3', server: 'atom', timeoutMs: 1000, fetchImpl })
++    expect(student.error).toBe('compare_unavailable')
++    expect(sent[0]!.get(COMPARE_KIND_HEADER)).toBe('student')
++    expect(sent[1]!.has(COMPARE_KIND_HEADER)).toBe(false)
++    expect(sent[2]!.has(COMPARE_KIND_HEADER)).toBe(false)
++  })
++})
+diff --git a/src/furio/compare/replay.ts b/src/furio/compare/replay.ts
+index c32eac7c..be2c9d10 100644
+--- a/src/furio/compare/replay.ts
++++ b/src/furio/compare/replay.ts
+@@ -16,6 +16,8 @@ import type { CapturedRequest } from './capture.js'
+ 
+ export const COMPARE_ID_HEADER = 'X-Furio-Compare-Id'
+ export const COMPARE_SERVER_HEADER = 'X-Furio-Compare-Server'
++/** Sent only for a comparison the student asked for; none means sample. */
++export const COMPARE_KIND_HEADER = 'X-Furio-Compare-Kind'
+ 
+ /** A content block as streamed: tool inputs are still JSON text. */
+ export type RawBlock = {
+@@ -98,6 +100,7 @@ export async function replayToServer(
+     timeoutMs: number
+     signal?: AbortSignal
+     fetchImpl?: FetchLike
++    kind?: 'sample' | 'student'
+   },
+ ): Promise<ReplayResult> {
+   const started = Date.now()
+@@ -129,6 +132,7 @@ export async function replayToServer(
+         ...capture.headers,
+         [COMPARE_ID_HEADER]: opts.compareId,
+         [COMPARE_SERVER_HEADER]: opts.server,
++        ...(opts.kind === 'student' ? { [COMPARE_KIND_HEADER]: 'student' } : {}),
+       },
+       body: capture.body,
+       signal: controller.signal,
+diff --git a/src/furio/compare/shimCapture.test.ts b/src/furio/compare/shimCapture.test.ts
+index 7f01f450..56533512 100644
+--- a/src/furio/compare/shimCapture.test.ts
++++ b/src/furio/compare/shimCapture.test.ts
+@@ -76,3 +76,44 @@ test('a request without the tag files nothing', async () => {
+   await client.beta.messages.create(params, { headers: { 'x-other': 'kept' } })
+   expect(takeCompareCapture('cap-1')).toBeUndefined()
+ })
++
++import { ANSWER_TAG_HEADER, noteAnswerServer, peekAnswerServer, takeAnswerServer } from './capture.js'
++
++test('answer tag never leaves the process', async () => {
++  const seen = stubFetch()
++  const client = createOpenAIShimClient({}) as ShimClient
++  await client.beta.messages.create(params, { headers: { [ANSWER_TAG_HEADER]: 'tag-1', 'x-other': 'kept' } })
++  expect(seen.length).toBe(1)
++  const sent = new Headers(seen[0]!.init?.headers)
++  expect(sent.has(ANSWER_TAG_HEADER)).toBe(false)
++  expect(sent.get('x-other')).toBe('kept')
++  // the stub answered without server headers: nothing to note
++  expect(takeAnswerServer('tag-1')).toBeNull()
++})
++
++test('server noted only for ok responses', async () => {
++  globalThis.fetch = (async () =>
++    new Response(
++      JSON.stringify({
++        id: 'chatcmpl-2',
++        model: 'gpt-oss-20b',
++        choices: [{ message: { role: 'assistant', content: 'ok' }, finish_reason: 'stop' }],
++        usage: { prompt_tokens: 3, completion_tokens: 1, total_tokens: 4 },
++      }),
++      { headers: { 'Content-Type': 'application/json', 'X-Furio-Server': 'atom', 'X-Furio-Server-Name': 'ATOM MAX' } },
++    )) as unknown as typeof fetch
++  const client = createOpenAIShimClient({}) as ShimClient
++  await client.beta.messages.create(params, { headers: { [ANSWER_TAG_HEADER]: 'tag-ok' } })
++  expect(peekAnswerServer('tag-ok')).toEqual({ id: 'atom', name: 'ATOM MAX' })
++  expect(takeAnswerServer('tag-ok')).toEqual({ id: 'atom', name: 'ATOM MAX' })
++  expect(takeAnswerServer('tag-ok')).toBeNull()
++  // without an answer tag the capture tag is the key
++  await client.beta.messages.create(params, { headers: { [COMPARE_CAPTURE_HEADER]: 'cap-srv' } })
++  expect(takeAnswerServer('cap-srv')).toEqual({ id: 'atom', name: 'ATOM MAX' })
++  takeCompareCapture('cap-srv')
++  const failed = new Response('{}', { status: 503, headers: { 'X-Furio-Server': 'rngd', 'X-Furio-Server-Name': 'RNGD' } })
++  noteAnswerServer('tag-503', failed)
++  expect(peekAnswerServer('tag-503')).toBeNull()
++  noteAnswerServer('tag-old', new Response('{}', { status: 200 }))
++  expect(peekAnswerServer('tag-old')).toBeNull()
++})
+diff --git a/src/furio/compare/studentArm.ts b/src/furio/compare/studentArm.ts
+new file mode 100644
+index 00000000..75cf335d
+--- /dev/null
++++ b/src/furio/compare/studentArm.ts
+@@ -0,0 +1,45 @@
++/**
++ * furio class edition: the student's own comparison request. A command arms
++ * it; the next main-thread turn takes it (consumeStudentArm) and compares
++ * that one answer across servers. One arm serves one turn. React-free: the
++ * screen reads it with useSyncExternalStore.
++ */
++
++let armed = false
++const listeners = new Set<() => void>()
++
++function set(next: boolean): void {
++  if (armed === next) return
++  armed = next
++  for (const listener of listeners) listener()
++}
++
++export function armStudentCompare(): void {
++  set(true)
++}
++
++/** True when an arm was waiting; it is used up either way. */
++export function consumeStudentArm(): boolean {
++  if (!armed) return false
++  set(false)
++  return true
++}
++
++/** Clears an arm without using it (the student changed their mind). */
++export function disarmStudentCompare(): void {
++  set(false)
++}
++
++export function isStudentArmed(): boolean {
++  return armed
++}
++
++export function subscribeStudentArm(listener: () => void): () => void {
++  listeners.add(listener)
++  return () => listeners.delete(listener)
++}
++
++export function __resetStudentArmForTest(): void {
++  armed = false
++  listeners.clear()
++}
+diff --git a/src/furio/compare/turn.test.ts b/src/furio/compare/turn.test.ts
+index 8c058d23..8ee1375e 100644
+--- a/src/furio/compare/turn.test.ts
++++ b/src/furio/compare/turn.test.ts
+@@ -8,7 +8,16 @@ import type { RawBlock, ReplayResult } from './replay.js'
+ import { __resetCompareTurnForTest, type CompareTurnDeps, createCompareCallModel } from './turn.js'
+ import { __resetCompareUiForTest, type PickCandidate, type PickResult } from './ui.js'
+ 
+-const CONFIG: CompareConfig = { enabled: true, servers: ['rngd', 'atom', 'gpu'], rate: 1, codeOnly: true, timeoutS: 240 }
++const CONFIG: CompareConfig = {
++  enabled: true,
++  servers: ['rngd', 'atom', 'gpu'],
++  rate: 1,
++  codeOnly: true,
++  timeoutS: 240,
++  student: true,
++  studentReason: null,
++  names: { rngd: 'RNGD', atom: 'ATOM MAX', gpu: 'GPU' },
++}
+ const BODY = '{"model":"gpt-oss-20b","stream":true,"messages":[]}'
+ 
+ type Block = { type: string; id?: string; name?: string; input?: unknown; text?: string; thinking?: string }
+diff --git a/src/furio/compare/turn.ts b/src/furio/compare/turn.ts
+index 642adf21..907785ca 100644
+--- a/src/furio/compare/turn.ts
++++ b/src/furio/compare/turn.ts
+@@ -379,6 +379,7 @@ export function createCompareCallModel<F extends (args: never) => AsyncGenerator
+ 
+     const recordId = deps.postRecord(base, {
+       compare_id: compareId,
++      kind: 'sample',
+       prompt: state.question,
+       responses: labeled.map(({ label, item }) => responseRecord(label, item)),
+     }).catch(() => null)
+diff --git a/src/services/api/openaiShim.ts b/src/services/api/openaiShim.ts
+index c0cc6fae..8523532d 100644
+--- a/src/services/api/openaiShim.ts
++++ b/src/services/api/openaiShim.ts
+@@ -88,6 +88,7 @@ import {
+ export { getApiTimeoutMs } from './openaiShim/transport.js'
+ import { executeOpenAIRequest } from './openaiShim/requestExecutor.js'
+ import {
++  noteAnswerServer,
+   recordCompareCapture,
+   splitCompareCaptureHeader,
+ } from '../../furio/compare/capture.js'
+@@ -456,10 +457,10 @@ class OpenAIShimMessages {
+     // furio class edition: the answer-comparison flow tags its home call so
+     // the exact chat request can be sent again to the other servers. The tag
+     // never leaves the process (src/furio/compare/capture.ts).
+-    const { captureId: compareCaptureId, headers: requestHeaders } =
++    const { captureId: compareCaptureId, answerTag, headers: requestHeaders } =
+       splitCompareCaptureHeader(requestOptions?.headers)
+     const options =
+-      compareCaptureId === null
++      compareCaptureId === null && answerTag === null
+         ? requestOptions
+         : { ...requestOptions, headers: requestHeaders }
+     const codexResponse = await dispatchCodexRequest({
+@@ -485,7 +486,7 @@ class OpenAIShimMessages {
+     })
+     if (codexResponse) return codexResponse
+ 
+-    return this._doOpenAIRequest(request, params, options, requestProcessEnv, compareCaptureId)
++    return this._doOpenAIRequest(request, params, options, requestProcessEnv, compareCaptureId, answerTag)
+   }
+ 
+   private async _doOpenAIRequest(
+@@ -494,8 +495,12 @@ class OpenAIShimMessages {
+     options?: { signal?: AbortSignal; headers?: Record<string, string> },
+     requestProcessEnv: NodeJS.ProcessEnv = process.env,
+     compareCaptureId: string | null = null,
++    answerTag: string | null = null,
+   ): Promise<Response> {
+     const apiTimeoutMs = getApiTimeoutMs()
++    // furio class edition: the server that answered is noted under the answer
++    // tag (or the capture tag) for turn.ts; nothing else reads the headers.
++    const serverTag = answerTag ?? compareCaptureId
+     const prepared = prepareOpenAIRequest({
+       request,
+       params,
+@@ -539,7 +544,12 @@ class OpenAIShimMessages {
+       getCredentialPool: value => this.getCredentialPool(value),
+       filterAnthropicHeaders, isGeminiMode, resolveRouteCredentialValue, isXaiBaseUrl, isLongcatBaseUrl, parseCredentialList, resolveXaiAccessToken, hasInvalidCredentialPlaceholder, buildOpenAICompatibilityErrorMessage, isAzureStyleBaseUrl, resolveGeminiCredential, COPILOT_HEADERS, getSessionId, getLocalProviderRetryBaseUrls, buildOllamaChatUrl, logForDebugging, redactUrlForDiagnostics, redactSecretValueForDisplay, headersWithRequestUrl, classifyOpenAINetworkFailure, classifyOpenAIHttpFailure, markOpenAIRequestNonReplayable, fetchRequest: (url, init) => {
+         if (compareCaptureId !== null) recordCompareCapture(compareCaptureId, url, init)
+-        return fetchWithHeadersDeadline(url, init, { callerSignal: options?.signal, timeoutMs: apiTimeoutMs })
++        const response = fetchWithHeadersDeadline(url, init, { callerSignal: options?.signal, timeoutMs: apiTimeoutMs })
++        if (serverTag === null) return response
++        return response.then(res => {
++          noteAnswerServer(serverTag, res)
++          return res
++        })
+       }, isResponseHeadersTimeout: error => error instanceof ResponseHeadersTimeoutError, requestBodyContainsImages, formatRetryAfterHint, redactUrlsInMessage, sleepMs, shouldAttemptLocalToollessRetry, refreshCopilotTokenOn401, isCopilotTokenExpiredError, convertOllamaStreamingResponse, convertOllamaNonStreamingResponse, logApiCallStart, logApiCallEnd, stableStringifyJson, APIError, GITHUB_429_MAX_RETRIES, GITHUB_429_BASE_DELAY_SEC, GITHUB_429_MAX_DELAY_SEC, request, params, options, requestProcessEnv, fastPath, shimConfig, runtimeShimContext, body, effectiveTransport, useNativeOllamaChat, buildResponsesBody, serializeBody, isLocal, isGithub, isGithubCopilot, isGithubModels, omitTools,
+     })
+   }
+diff --git a/src/types/message.ts b/src/types/message.ts
+index a774b6a5..15434dd3 100644
+--- a/src/types/message.ts
++++ b/src/types/message.ts
+@@ -167,6 +167,8 @@ export interface AssistantMessage<T = BetaContentBlock> {
+   requestId?: string
+   /** Coarse error tag, e.g. 'max_output_tokens' | 'max_tokens_too_high'. */
+   apiError?: string
++  /** furio class edition: id of the server that gave this answer (`rngd`). Kept in the transcript only. */
++  furioServer?: string
+   /** SDKAssistantMessageError — kept permissive to avoid an entrypoint dep. */
+   error?: any
+   errorDetails?: string
+-- 
+2.43.0
+
+
+From 7725be5a0d936984497ba8b6ebf4c8c2058626ac Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Thu, 5 Nov 2026 19:16:59 +0900
+Subject: [PATCH 63/69] =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90=20=EB=B9=84?=
+ =?UTF-8?q?=EA=B5=90:=20=ED=95=99=EC=83=9D=20=EC=9A=94=EC=B2=AD=20?=
+ =?UTF-8?q?=EB=B9=84=EA=B5=90=20=ED=9D=90=EB=A6=84,=20=EB=8B=B5=ED=95=9C?=
+ =?UTF-8?q?=20=EC=84=9C=EB=B2=84=20=EC=83=81=ED=83=9C=EC=A4=84=EA=B3=BC=20?=
+ =?UTF-8?q?furioServer?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- turn: 수업판 주 스레드의 보통 호출은 꼬리표를 달고(passThrough) 답을 다 내보낸 뒤 헤더 서버로 상태줄 갱신(settle), assistant 메시지마다 furioServer
+- 턴 종류 = 학생 무장 소비 ? student : 표본 판정 ? sample : 없음. student 는 코드 검사를 건너뛰고 홈 오류 검사는 남김
+- 홈 서버 = 응답 헤더 서버, 없으면 servers[0](기록용). 다시 보낼 곳 = servers 에서 홈을 뺀 것
+- student: 홈 헤더가 오는 순간 나머지 서버로 다시 보냄, 헤더 없으면 비교 안 함, 라벨은 홈 먼저, 피커에 서버 이름, 성공 1개면 한도 문구나 실패 문구 한 줄 뒤 그 답으로 이어 감
+- 상태줄은 고른 답(또는 이어 가는 답)이 정해질 때만 바꿈. 헤더가 없던 홈 답은 서버를 짐작하지 않음(상태줄, furioServer 비움)
+- 기록과 다시 보내기에 kind
+- ui: PickCandidate.serverName(학생만)
+- 시험: answered server 12개, 기존 시험 기대값 갱신(꼬리표 헤더, 헤더 없는 홈 답의 상태줄), studentArm 시험
+---
+ src/furio/compare/studentArm.test.ts |  36 +++
+ src/furio/compare/turn.test.ts       | 216 +++++++++++++-
+ src/furio/compare/turn.ts            | 404 +++++++++++++++++----------
+ src/furio/compare/ui.ts              |   2 +
+ 4 files changed, 505 insertions(+), 153 deletions(-)
+ create mode 100644 src/furio/compare/studentArm.test.ts
+
+diff --git a/src/furio/compare/studentArm.test.ts b/src/furio/compare/studentArm.test.ts
+new file mode 100644
+index 00000000..0bdf9769
+--- /dev/null
++++ b/src/furio/compare/studentArm.test.ts
+@@ -0,0 +1,36 @@
++import { afterEach, describe, expect, it } from 'bun:test'
++import {
++  __resetStudentArmForTest,
++  armStudentCompare,
++  consumeStudentArm,
++  disarmStudentCompare,
++  isStudentArmed,
++  subscribeStudentArm,
++} from './studentArm.js'
++
++afterEach(() => __resetStudentArmForTest())
++
++describe('student arm', () => {
++  it('is used by one turn and then gone', () => {
++    expect(consumeStudentArm()).toBe(false)
++    armStudentCompare()
++    expect(isStudentArmed()).toBe(true)
++    expect(consumeStudentArm()).toBe(true)
++    expect(isStudentArmed()).toBe(false)
++    expect(consumeStudentArm()).toBe(false)
++  })
++
++  it('tells listeners only when the state changes', () => {
++    const seen: boolean[] = []
++    const stop = subscribeStudentArm(() => seen.push(isStudentArmed()))
++    armStudentCompare()
++    armStudentCompare()
++    disarmStudentCompare()
++    disarmStudentCompare()
++    armStudentCompare()
++    consumeStudentArm()
++    stop()
++    armStudentCompare()
++    expect(seen).toEqual([true, false, true, false])
++  })
++})
+diff --git a/src/furio/compare/turn.test.ts b/src/furio/compare/turn.test.ts
+index 8ee1375e..ebfcef4f 100644
+--- a/src/furio/compare/turn.test.ts
++++ b/src/furio/compare/turn.test.ts
+@@ -1,7 +1,14 @@
+ import { afterEach, beforeEach, describe, expect, it } from 'bun:test'
+ import type { QueryActivity } from '../../Tool.js'
+ import { QueryGuard } from '../../utils/QueryGuard.js'
+-import { COMPARE_CAPTURE_HEADER, recordCompareCapture } from './capture.js'
++import {
++  ANSWER_TAG_HEADER,
++  COMPARE_CAPTURE_HEADER,
++  noteAnswerServer,
++  recordCompareCapture,
++  SERVER_HEADER,
++  SERVER_NAME_HEADER,
++} from './capture.js'
+ import type { CompareConfig } from './decide.js'
+ import type { CompareRecord } from './gateway.js'
+ import type { RawBlock, ReplayResult } from './replay.js'
+@@ -130,7 +137,9 @@ function okReplay(server: string, blocks: RawBlock[]): ReplayResult {
+ 
+ type Harness = {
+   deps: CompareTurnDeps
+-  replays: Array<{ server: string; compareId: string; body: string }>
++  replays: Array<{ server: string; compareId: string; body: string; kind?: string }>
++  served: Array<{ id: string; name: string }>
++  notes: string[]
+   picks: PickCandidate[][]
+   records: CompareRecord[]
+   choices: Array<{ id: string | number; choice: PickResult }>
+@@ -142,7 +151,7 @@ function harness(
+     pickAnswer?: (candidates: PickCandidate[]) => PickResult | 'aborted'
+   } = {},
+ ): Harness {
+-  const h: Harness = { replays: [], picks: [], records: [], choices: [], deps: undefined as never }
++  const h: Harness = { replays: [], picks: [], records: [], choices: [], served: [], notes: [], deps: undefined as never }
+   h.deps = {
+     isClassEdition: () => true,
+     hasPickerHost: () => true,
+@@ -150,7 +159,7 @@ function harness(
+     base: () => 'http://gw',
+     rng: () => 0,
+     replay: async (capture, opts) => {
+-      h.replays.push({ server: opts.server, compareId: opts.compareId, body: capture.body })
++      h.replays.push({ server: opts.server, compareId: opts.compareId, body: capture.body, kind: opts.kind })
+       return (
+         overrides.replayResults?.[opts.server] ??
+         okReplay(opts.server, [
+@@ -172,6 +181,14 @@ function harness(
+       return true
+     },
+     setPreparing: () => {},
++    setAnsweredServer: server => {
++      h.served.push(server)
++    },
++    consumeStudentArm: () => false,
++    notify: text => {
++      h.notes.push(text)
++      return { type: 'system', content: text }
++    },
+     ...overrides,
+   }
+   return h
+@@ -313,6 +330,8 @@ describe('target turn', () => {
+     const { callModel } = fakeCallModel([[home]])
+     const out = await collect(wrap(callModel, h.deps)(args([userPrompt('u1', '코드 짜 줘')]) as never))
+     expect(out).toEqual([home])
++    // without a server header the home server is not guessed
++    expect(h.served).toEqual([])
+     await settle()
+     expect(h.choices).toEqual([{ id: 77, choice: 'skip' }])
+   })
+@@ -345,7 +364,7 @@ describe('target turn', () => {
+     expect(h.picks.length).toBe(1)
+     // the second round trip streams normally again
+     expect(second.map(m => m.type)).toEqual(['stream_event', 'assistant', 'stream_event'])
+-    expect(calls[1]!.options?.extraRequestHeaders).toBeUndefined()
++    expect(Object.keys(calls[1]!.options?.extraRequestHeaders ?? {})).toEqual([ANSWER_TAG_HEADER])
+   })
+ 
+   it('waits for the first answer with code within the turn', async () => {
+@@ -382,6 +401,7 @@ describe('failure paths', () => {
+     const out = await collect(wrap(callModel, h.deps)(args([userPrompt('u1', '코드 짜 줘')]) as never))
+     expect(out).toEqual([home])
+     expect(h.picks.length).toBe(0)
++    expect(h.served).toEqual([])
+     await settle()
+     expect(h.records.length).toBe(1)
+     expect(h.records[0]!.responses.map(r => [r.server, r.error])).toEqual([
+@@ -555,3 +575,189 @@ describe('query watchdog', () => {
+     expect(guard.end(generation)).toBe(true)
+   })
+ })
++
++
++const SERVER_NAMES: Record<string, string> = { rngd: 'RNGD', atom: 'ATOM MAX', gpu: 'GPU' }
++
++/** Like fakeCallModel, and notes the answering server the way the shim does once headers arrive. */
++function servedCallModel(answers: Yielded[][], server: string | null = 'rngd', afterHeaders?: () => Promise<void>) {
++  const calls: CallArgsLike[] = []
++  async function* callModel(a: CallArgsLike) {
++    calls.push(a)
++    const hs = a.options?.extraRequestHeaders ?? {}
++    const captureId = hs[COMPARE_CAPTURE_HEADER]
++    if (captureId) {
++      recordCompareCapture(captureId, 'http://gw/v1/chat/completions', {
++        method: 'POST',
++        headers: { authorization: 'Bearer furio_tok' },
++        body: BODY,
++      })
++    }
++    const tag = hs[ANSWER_TAG_HEADER] ?? captureId
++    if (tag && server) {
++      noteAnswerServer(tag, new Response('', { headers: { [SERVER_HEADER]: server, [SERVER_NAME_HEADER]: SERVER_NAMES[server]! } }))
++    }
++    if (afterHeaders) await afterHeaders()
++    yield { type: 'stream_event', event: { type: 'message_start', message: {} }, ttftMs: 12 }
++    for (const m of answers[calls.length - 1] ?? []) yield m
++    yield { type: 'stream_event', event: { type: 'message_stop' } }
++  }
++  return { calls, callModel }
++}
++
++/** consumeStudentArm for a student who typed /compare once. */
++function armedOnce() {
++  let armed = true
++  return () => {
++    const was = armed
++    armed = false
++    return was
++  }
++}
++const TWO: CompareConfig = { ...CONFIG, servers: ['rngd', 'atom'] }
++const candidateFor = (server: string) => (cs: PickCandidate[]): PickResult =>
++  cs.find(c => c.toolCalls.some(t => t.detail?.includes(`'${server}'`)))?.label ?? 'skip'
++const assistants = (out: Yielded[]) => out.filter(m => m.type === 'assistant')
++const run = (h: Harness, cm: { callModel: unknown }, text = '코드 짜 줘') =>
++  collect(wrap(cm.callModel, h.deps)(args([userPrompt('u1', text)]) as never))
++const failedLeg = (server: string, error: string): ReplayResult => ({ ...okReplay(server, []), error })
++
++describe('answered server', () => {
++  it('home server comes from response header', async () => {
++    const h = harness({ pickAnswer: candidateFor('A') })
++    await run(h, servedCallModel([[assistant([HOME_TEXT, HOME_WRITE])]], 'atom'))
++    await settle()
++    expect(h.records[0]!.responses.find(r => r.text === HOME_TEXT.text)?.server).toBe('atom')
++    expect(h.served).toEqual([{ id: 'atom', name: 'ATOM MAX' }])
++  })
++
++  it('replays skip the actual home', async () => {
++    const h = harness()
++    await run(h, servedCallModel([[assistant([HOME_WRITE])]], 'atom'))
++    expect(h.replays.map(r => r.server).sort()).toEqual(['gpu', 'rngd'])
++    expect(h.replays.every(r => r.kind !== 'student')).toBe(true)
++  })
++
++  it('student replays start before home stream ends', async () => {
++    const h = harness({ consumeStudentArm: armedOnce() })
++    const seen: number[] = []
++    await run(
++      h,
++      servedCallModel([[assistant([HOME_WRITE])]], 'rngd', async () => {
++        await new Promise(resolve => setTimeout(resolve, 5))
++        seen.push(h.replays.length)
++      }),
++    )
++    expect(seen).toEqual([2])
++    expect(h.replays.map(r => r.kind)).toEqual(['student', 'student'])
++    expect(h.picks.length).toBe(1)
++  })
++
++  it('sample turn does not touch status line before choice', async () => {
++    let servedAtPick = -1
++    const h = harness({
++      pickAnswer: cs => {
++        servedAtPick = h.served.length
++        return candidateFor('gpu')(cs)
++      },
++    })
++    await run(h, servedCallModel([[assistant([HOME_WRITE])]]))
++    expect(servedAtPick).toBe(0)
++    expect(h.picks[0]!.every(c => c.serverName === undefined)).toBe(true)
++    expect(h.served).toEqual([{ id: 'gpu', name: 'GPU' }])
++  })
++
++  it('normal turn updates status line', async () => {
++    const h = harness()
++    const cm = servedCallModel([[assistant([HOME_TEXT])]])
++    await run(h, cm, '안녕')
++    expect(cm.calls[0]!.options?.extraRequestHeaders?.[ANSWER_TAG_HEADER]).toBeString()
++    expect(h.served).toEqual([{ id: 'rngd', name: 'RNGD' }])
++    const lab = harness({ isClassEdition: () => false })
++    const labCm = servedCallModel([[assistant([HOME_TEXT])]])
++    await run(lab, labCm, '안녕')
++    expect(labCm.calls[0]!.options?.extraRequestHeaders).toBeUndefined()
++    expect(lab.served).toEqual([])
++  })
++
++  it('sample target without code updates status line', async () => {
++    const h = harness()
++    await run(h, servedCallModel([[assistant([HOME_TEXT])]]))
++    expect(h.replays.length).toBe(0)
++    expect(h.served).toEqual([{ id: 'rngd', name: 'RNGD' }])
++  })
++
++  it('single offered answer updates status line', async () => {
++    const h = harness({ replayResults: { atom: failedLeg('atom', 'timeout'), gpu: failedLeg('gpu', 'timeout') } })
++    await run(h, servedCallModel([[assistant([HOME_WRITE])]]))
++    await settle()
++    expect(h.picks.length).toBe(0)
++    expect(h.notes).toEqual([])
++    expect(h.served).toEqual([{ id: 'rngd', name: 'RNGD' }])
++    expect(h.records[0]!.kind).toBe('sample')
++  })
++
++  it('error answer leaves status line unchanged', async () => {
++    const failure = () => assistant([{ type: 'text', text: 'API Error: 503' }], { isApiErrorMessage: true })
++    const h = harness()
++    const out = await run(h, servedCallModel([[failure()]]), '안녕')
++    expect(assistants(out).length).toBe(1)
++    expect(h.served).toEqual([])
++    __resetCompareTurnForTest()
++    const s = harness()
++    await run(s, servedCallModel([[failure()]]))
++    expect(s.served).toEqual([])
++    expect(s.replays.length).toBe(0)
++  })
++
++  it('student picker gets server names, home first', async () => {
++    const h = harness({ consumeStudentArm: armedOnce(), pickAnswer: () => 'B' })
++    await run(h, servedCallModel([[assistant([HOME_TEXT])]]))
++    await settle()
++    expect(h.picks[0]!.map(c => [c.label, c.serverName])).toEqual([
++      ['A', 'RNGD'],
++      ['B', 'ATOM MAX'],
++      ['C', 'GPU'],
++    ])
++    expect(h.served).toEqual([{ id: 'atom', name: 'ATOM MAX' }])
++    expect(h.records[0]!.kind).toBe('student')
++  })
++
++  it('one failed leg continues with the other answer', async () => {
++    const h = harness({
++      ensureConfig: async () => TWO,
++      consumeStudentArm: armedOnce(),
++      replayResults: { atom: failedLeg('atom', 'compare_unavailable') },
++    })
++    const out = await run(h, servedCallModel([[assistant([HOME_WRITE])]]))
++    await settle()
++    expect(h.picks.length).toBe(0)
++    expect(h.notes).toEqual(['다른 서버 답을 받지 못해 RNGD 답으로 이어 갑니다.'])
++    expect(assistants(out).map(m => m.furioServer)).toEqual(['rngd'])
++    expect(h.served).toEqual([{ id: 'rngd', name: 'RNGD' }])
++    expect(h.records[0]!.kind).toBe('student')
++    expect(h.choices).toEqual([])
++  })
++
++  it('429 leg shows limit line', async () => {
++    const h = harness({
++      ensureConfig: async () => TWO,
++      consumeStudentArm: armedOnce(),
++      replayResults: { atom: failedLeg('atom', 'rate_limited') },
++    })
++    await run(h, servedCallModel([[assistant([HOME_WRITE])]]))
++    expect(h.notes).toEqual(['요청 한도에 걸려 다른 서버 답을 받지 못해 RNGD 답으로 이어 갑니다.'])
++  })
++
++  it('assistant messages carry furioServer', async () => {
++    const out1 = await run(harness(), servedCallModel([[assistant([HOME_TEXT])]]), '안녕')
++    expect(assistants(out1).map(m => m.furioServer)).toEqual(['rngd'])
++    __resetCompareTurnForTest()
++    const out2 = await run(harness({ pickAnswer: candidateFor('gpu') }), servedCallModel([[assistant([HOME_WRITE])]]))
++    expect(assistants(out2).length).toBeGreaterThan(0)
++    expect(assistants(out2).every(m => m.furioServer === 'gpu')).toBe(true)
++    __resetCompareTurnForTest()
++    const out3 = await run(harness(), servedCallModel([[assistant([HOME_WRITE])]]))
++    expect(assistants(out3).map(m => m.furioServer)).toEqual(['rngd'])
++  })
++})
+diff --git a/src/furio/compare/turn.ts b/src/furio/compare/turn.ts
+index 907785ca..43b681d0 100644
+--- a/src/furio/compare/turn.ts
++++ b/src/furio/compare/turn.ts
+@@ -29,7 +29,18 @@ import type { AssistantMessage } from '../../types/message.js'
+ import { normalizeContentFromAPI } from '../../utils/messages.js'
+ import { furioBase } from '../auth.js'
+ import { isClassEdition } from '../edition.js'
+-import { COMPARE_CAPTURE_HEADER, type CapturedRequest, takeCompareCapture } from './capture.js'
++import { createSystemMessage } from '../../utils/messages/systemFactories.js'
++import { type AnsweredServer, setAnsweredServer } from '../answeredServer.js'
++import {
++  ANSWER_TAG_HEADER,
++  COMPARE_CAPTURE_HEADER,
++  type CapturedRequest,
++  peekAnswerServer,
++  takeAnswerServer,
++  takeCompareCapture,
++  waitAnswerServer,
++} from './capture.js'
++import { consumeStudentArm } from './studentArm.js'
+ import {
+   assignLabels,
+   type BlockLike,
+@@ -67,12 +78,18 @@ export type CompareTurnDeps = {
+   rng: () => number
+   replay: (
+     capture: CapturedRequest,
+-    opts: { compareId: string; server: string; timeoutMs: number; signal?: AbortSignal },
++    opts: { compareId: string; server: string; timeoutMs: number; signal?: AbortSignal; kind?: 'sample' | 'student' },
+   ) => Promise<ReplayResult>
+   pick: (candidates: PickCandidate[], signal?: AbortSignal) => Promise<PickResult | 'aborted'>
+   postRecord: (base: string, record: CompareRecord) => Promise<string | number | null>
+   postChoice: (base: string, id: string | number, choice: CompareChoice) => Promise<boolean>
+   setPreparing: (on: boolean) => void
++  /** The status line's answered server. Only this flow sets it. */
++  setAnsweredServer: (server: AnsweredServer) => void
++  /** True once after the student typed /compare. */
++  consumeStudentArm: () => boolean
++  /** A one-line notice for the transcript. */
++  notify: (text: string) => Yielded
+ }
+ 
+ const REPLAY_LEASE_MARGIN_MS = 10_000
+@@ -88,12 +105,15 @@ const defaultDeps: CompareTurnDeps = {
+   postRecord: (base, record) => postCompareRecord(base, record),
+   postChoice: (base, id, choice) => postCompareChoice(base, id, choice),
+   setPreparing: setComparePreparing,
++  setAnsweredServer,
++  consumeStudentArm,
++  notify: text => createSystemMessage(text, 'warning') as unknown as Yielded,
+ }
+ 
+ type TurnState = {
+   key: string
+   question: string
+-  target: boolean
++  kind: 'sample' | 'student' | null
+   /** The picker (or a recorded attempt) already happened in this turn. */
+   done: boolean
+   config: CompareConfig | null
+@@ -130,6 +150,7 @@ function isMainThread(args: CallArgs): boolean {
+ 
+ type Answer = {
+   server: string
++  serverName: string
+   blocks: BetaContentBlock[]
+   error: string | null
+   stopReason: string | null
+@@ -176,12 +197,12 @@ function toolCalls(blocks: readonly BlockLike[]): Array<{ name: string; input: u
+     .map(b => ({ name: b.name as string, input: b.input }))
+ }
+ 
+-function pickCandidate(label: CompareLabel, answer: Answer): PickCandidate {
++function pickCandidate(label: CompareLabel, answer: Answer, withName: boolean): PickCandidate {
+   const calls: PickToolCall[] = toolCalls(answer.blocks).map(c => ({
+     summary: summarizeToolCall(c.name, c.input),
+     detail: toolDetail(c.name, c.input),
+   }))
+-  return { label, text: textOf(answer.blocks), toolCalls: calls }
++  return { label, text: textOf(answer.blocks), toolCalls: calls, ...(withName ? { serverName: answer.serverName } : {}) }
+ }
+ 
+ function responseRecord(label: CompareLabel, answer: Answer): CompareResponseRecord {
+@@ -208,6 +229,7 @@ function toAssistantMessages(answer: Answer, template: AssistantMessage): Assist
+   const last = answer.blocks.length - 1
+   return answer.blocks.map((block, i) => ({
+     type: 'assistant' as const,
++    furioServer: answer.server,
+     uuid: randomUUID(),
+     timestamp: new Date().toISOString(),
+     message: {
+@@ -223,6 +245,17 @@ function toAssistantMessages(answer: Answer, template: AssistantMessage): Assist
+   }))
+ }
+ 
++/** An assistant message stamped with the server that wrote it (kept in the transcript). */
++function stamp(m: Yielded, server: string | undefined): Yielded {
++  return m.type === 'assistant' && server ? { ...m, furioServer: server } : m
++}
++
++function withHeader(args: CallArgs, name: string, value: string): CallArgs {
++  return { ...args, options: { ...args.options, extraRequestHeaders: { ...args.options.extraRequestHeaders, [name]: value } } }
++}
++
++const isAnswer = (m: Yielded) => m.type === 'assistant' && !(m as unknown as AssistantMessage).isApiErrorMessage
++
+ /**
+  * Wraps `queryModelWithStreaming` (same signature) with the comparison flow.
+  * `deps` is for tests.
+@@ -232,186 +265,261 @@ export function createCompareCallModel<F extends (args: never) => AsyncGenerator
+   deps: CompareTurnDeps = defaultDeps,
+ ): F {
+   const callModel = callModelFn as unknown as CallModel
++
++  /** After an answer went out as it came: the status line shows its server. */
++  function settle(tag: string, answered: boolean): void {
++    const server = takeAnswerServer(tag)
++    if (answered && server) deps.setAnsweredServer(server)
++  }
++
++  /** The class edition's plain call: tagged, so the answering server is known. */
++  async function* passThrough(args: CallArgs): AsyncGenerator<Yielded, void> {
++    const tag = randomUUID()
++    let answered = false
++    try {
++      for await (const m of callModel(withHeader(args, ANSWER_TAG_HEADER, tag))) {
++        if (isAnswer(m)) answered = true
++        yield stamp(m, peekAnswerServer(tag)?.id)
++      }
++    } finally {
++      settle(tag, answered)
++    }
++  }
++
++  function* passHeld(held: Yielded[], tag: string): Generator<Yielded, void> {
++    const server = peekAnswerServer(tag)?.id
++    for (const m of held) yield stamp(m, server)
++    settle(tag, held.some(isAnswer))
++  }
++
+   async function* wrapped(args: CallArgs): AsyncGenerator<Yielded, void> {
+-    if (
+-      !deps.isClassEdition() ||
+-      !isMainThread(args) ||
+-      args.options.isNonInteractiveSession ||
+-      !deps.hasPickerHost()
+-    ) {
++    if (!deps.isClassEdition() || !isMainThread(args)) {
+       yield* callModel(args)
+       return
+     }
++    if (args.options.isNonInteractiveSession || !deps.hasPickerHost()) {
++      yield* passThrough(args)
++      return
++    }
+ 
+     const human = lastHumanTurn(args.messages)
+     if (!human) {
+-      yield* callModel(args)
++      yield* passThrough(args)
+       return
+     }
+     if (!turn || turn.key !== human.key) {
+       const config = await deps.ensureConfig()
++      const student = deps.consumeStudentArm() && !!config && config.servers.length >= 2
+       turn = {
+         key: human.key,
+         question: human.text,
+-        target: isCompareTurn(config, human.text, deps.rng),
++        kind: student ? 'student' : isCompareTurn(config, human.text, deps.rng) ? 'sample' : null,
+         done: false,
+         config,
+       }
+     }
+     const state = turn
+-    if (!state.target || state.done || !state.config) {
+-      yield* callModel(args)
++    if (!state.kind || state.done || !state.config) {
++      yield* passThrough(args)
+       return
+     }
+     const config = state.config
++    const kind = state.kind
++    const student = kind === 'student'
+     const activity = args.options.queryActivity
+ 
+-    // ---- collect the home answer without streaming it ----
+     const captureId = randomUUID()
+-    const started = Date.now()
+-    const held: Yielded[] = []
+-    let homeTtft: number | null = null
+-    deps.setPreparing(true)
++    const compareId = randomUUID()
++    const timeoutMs = config.timeoutS * 1000
++    // the replays end with the turn, or when the home answer turns out to be an error
++    const replayAbort = new AbortController()
++    const stopReplays = () => replayAbort.abort()
++    args.signal.addEventListener('abort', stopReplays, { once: true })
++    const replayTo = (capture: CapturedRequest, home: string) =>
++      Promise.all(
++        config.servers
++          .filter(server => server !== home)
++          .map(server => deps.replay(capture, { compareId, server, timeoutMs, signal: replayAbort.signal, kind })),
++      )
+     try {
+-      for await (const m of callModel({
+-        ...args,
+-        options: {
+-          ...args.options,
+-          extraRequestHeaders: { ...args.options.extraRequestHeaders, [COMPARE_CAPTURE_HEADER]: captureId },
+-        },
+-      }) as AsyncGenerator<Yielded, void>) {
+-        // what is held back here never reaches the REPL's watchdog
+-        activity?.registerActivity(`furio_compare:home:${m.type}`)
+-        if (m.type === 'stream_event') {
+-          if (m.event?.type === 'message_start' && typeof m.ttftMs === 'number') homeTtft = m.ttftMs
+-          continue
++      // ---- collect the home answer without streaming it ----
++      const started = Date.now()
++      const held: Yielded[] = []
++      let homeTtft: number | null = null
++      // a student's comparison starts as soon as the home server is known
++      const homeEnded = new AbortController()
++      const early = student
++        ? waitAnswerServer(captureId, homeEnded.signal).then(server => {
++            const capture = server ? takeCompareCapture(captureId) : undefined
++            if (!server || !capture) return null
++            const results = replayTo(capture, server.id)
++            results.catch(() => {})
++            return { capture, results }
++          })
++        : null
++      deps.setPreparing(true)
++      try {
++        for await (const m of callModel(withHeader(args, COMPARE_CAPTURE_HEADER, captureId))) {
++          // what is held back here never reaches the REPL's watchdog
++          activity?.registerActivity(`furio_compare:home:${m.type}`)
++          if (m.type === 'stream_event') {
++            if (m.event?.type === 'message_start' && typeof m.ttftMs === 'number') homeTtft = m.ttftMs
++            continue
++          }
++          if (m.type === 'assistant') held.push(m)
++          // retry notices and the like are not the answer: show them now
++          else yield m
+         }
+-        if (m.type === 'assistant') held.push(m)
+-        // retry notices and the like are not the answer: show them now
+-        else yield m
++      } finally {
++        deps.setPreparing(false)
++        homeEnded.abort()
+       }
+-    } finally {
+-      deps.setPreparing(false)
+-    }
+-    const homeLatency = Date.now() - started
+-    const capture = takeCompareCapture(captureId)
+-
+-    if (args.signal.aborted) return
+-    const home = held as AssistantMessage[]
+-    const homeBlocks = home.flatMap(m => m.message.content) as BetaContentBlock[]
+-    if (home.length === 0 || home.some(m => m.isApiErrorMessage) || !responseHasCode(homeBlocks as BlockLike[])) {
+-      yield* held
+-      return
+-    }
++      const homeLatency = Date.now() - started
++      const startedEarly = early ? await early : null
++      const capture = startedEarly?.capture ?? takeCompareCapture(captureId)
+ 
+-    // ---- this is the one comparison of the turn ----
+-    state.done = true
+-    const base = deps.base()
+-    if (!capture || !base) {
+-      yield* held
+-      return
+-    }
+-    const compareId = randomUUID()
+-    const last = home[home.length - 1]!
+-    const homeAnswer: Answer = {
+-      server: config.servers[0]!,
+-      blocks: homeBlocks,
+-      error: null,
+-      stopReason: (last.message.stop_reason as string | null) ?? null,
+-      outputTokens: typeof last.message.usage?.output_tokens === 'number' ? last.message.usage.output_tokens : null,
+-      ttftMs: homeTtft,
+-      latencyMs: homeLatency,
+-    }
++      if (args.signal.aborted) return
++      const home = held as unknown as AssistantMessage[]
++      const homeBlocks = home.flatMap(m => m.message.content) as BetaContentBlock[]
++      if (
++        home.length === 0 ||
++        home.some(m => m.isApiErrorMessage) ||
++        (!student && !responseHasCode(homeBlocks as BlockLike[]))
++      ) {
++        yield* passHeld(held, captureId)
++        return
++      }
+ 
+-    deps.setPreparing(true)
+-    // Each replay ends itself at the gateway's timeout; the margin covers
+-    // the abort and reading what came back.
+-    const lease = activity?.acquireLease({
+-      owner: 'furio_compare',
+-      id: compareId,
+-      timeoutMs: config.timeoutS * 1000 + REPLAY_LEASE_MARGIN_MS,
+-      description: 'furio answer comparison',
+-    })
+-    let results: ReplayResult[]
+-    try {
+-      results = await Promise.all(
+-        config.servers.slice(1).map(server =>
+-          deps.replay(capture, { compareId, server, timeoutMs: config.timeoutS * 1000, signal: args.signal }),
+-        ),
+-      )
+-    } finally {
+-      lease?.release()
+-      activity?.registerActivity('furio_compare:answers')
+-      deps.setPreparing(false)
+-    }
+-    if (args.signal.aborted) return
+-
+-    const others: Answer[] = results.map(r => {
+-      let blocks: BetaContentBlock[] = []
+-      let error = r.error
+-      if (!error) {
+-        try {
+-          blocks = normalizeContentFromAPI(r.blocks as BetaContentBlock[], args.tools, args.options.agentId as never)
+-        } catch {
+-          error = 'unreadable'
++      // ---- this is the one comparison of the turn ----
++      state.done = true
++      const base = deps.base()
++      if (!capture || !base || (student && !startedEarly)) {
++        yield* passHeld(held, captureId)
++        return
++      }
++      // the server that really answered (the gateway may have failed over)
++      const homeServer = peekAnswerServer(captureId)
++      const homeId = homeServer?.id ?? config.servers[0]!
++      const nameOf = (id: string) => config.names[id] ?? id
++      const last = home[home.length - 1]!
++      const homeAnswer: Answer = {
++        server: homeId,
++        serverName: homeServer?.name ?? nameOf(homeId),
++        blocks: homeBlocks,
++        error: null,
++        stopReason: (last.message.stop_reason as string | null) ?? null,
++        outputTokens: typeof last.message.usage?.output_tokens === 'number' ? last.message.usage.output_tokens : null,
++        ttftMs: homeTtft,
++        latencyMs: homeLatency,
++      }
++
++      deps.setPreparing(true)
++      // Each replay ends itself at the gateway's timeout; the margin covers
++      // the abort and reading what came back.
++      const lease = activity?.acquireLease({
++        owner: 'furio_compare',
++        id: compareId,
++        timeoutMs: timeoutMs + REPLAY_LEASE_MARGIN_MS,
++        description: 'furio answer comparison',
++      })
++      let results: ReplayResult[]
++      try {
++        results = await (startedEarly ? startedEarly.results : replayTo(capture, homeId))
++      } finally {
++        lease?.release()
++        activity?.registerActivity('furio_compare:answers')
++        deps.setPreparing(false)
++      }
++      if (args.signal.aborted) return
++
++      const others: Answer[] = results.map(r => {
++        let blocks: BetaContentBlock[] = []
++        let error = r.error
++        if (!error) {
++          try {
++            blocks = normalizeContentFromAPI(r.blocks as BetaContentBlock[], args.tools, args.options.agentId as never)
++          } catch {
++            error = 'unreadable'
++          }
++          if (!error && !hasContent(blocks as BlockLike[])) error = 'empty'
++        }
++        return {
++          server: r.server,
++          serverName: nameOf(r.server),
++          blocks: error ? [] : blocks,
++          error,
++          stopReason: r.stopReason,
++          outputTokens: r.outputTokens,
++          ttftMs: r.ttftMs,
++          latencyMs: r.latencyMs,
+         }
+-        if (!error && !hasContent(blocks as BlockLike[])) error = 'empty'
++      })
++
++      // Labels: a sample's answers are shuffled into A, B (, C); a student's
++      // keep their order, home first. The failed ones take the labels left,
++      // so the picker's tabs have no gaps.
++      const offered = assignLabels([homeAnswer, ...others.filter(a => !a.error)], student ? () => 1 : deps.rng)
++      const failed = others.filter(a => a.error)
++      const labeled = [
++        ...offered,
++        ...failed.map((item, i) => ({ label: (['A', 'B', 'C'] as const)[offered.length + i]!, item })),
++      ].filter(entry => entry.label !== undefined)
++
++      const recordId = deps.postRecord(base, {
++        compare_id: compareId,
++        kind,
++        prompt: state.question,
++        responses: labeled.map(({ label, item }) => responseRecord(label, item)),
++      }).catch(() => null)
++
++      // the answer the turn goes on with; the status line follows it. The
++      // home server shows only when its response said so (an older gateway
++      // sends no header, and servers[0] is only a guess).
++      const goOn = (answer: Answer): Yielded[] => {
++        const server = answer === homeAnswer ? homeServer : { id: answer.server, name: answer.serverName }
++        if (server) deps.setAnsweredServer(server)
++        return answer === homeAnswer
++          ? held.map(m => stamp(m, server?.id))
++          : (toAssistantMessages(answer, last) as unknown as Yielded[])
+       }
+-      return {
+-        server: r.server,
+-        blocks: error ? [] : blocks,
+-        error,
+-        stopReason: r.stopReason,
+-        outputTokens: r.outputTokens,
+-        ttftMs: r.ttftMs,
+-        latencyMs: r.latencyMs,
++
++      if (offered.length < 2) {
++        // a sample says nothing; a student asked for the comparison
++        if (student) {
++          const limited = failed.some(a => a.error === 'rate_limited')
++          yield deps.notify(
++            `${limited ? '요청 한도에 걸려 ' : ''}다른 서버 답을 받지 못해 ${homeAnswer.serverName} 답으로 이어 갑니다.`,
++          )
++        }
++        yield* goOn(homeAnswer)
++        return
+       }
+-    })
+-
+-    // Labels: the answers that came back are shuffled into A, B (, C); the
+-    // failed ones take the labels left, so the picker's tabs have no gaps.
+-    const offered = assignLabels([homeAnswer, ...others.filter(a => !a.error)], deps.rng)
+-    const failed = others.filter(a => a.error)
+-    const labeled = [
+-      ...offered,
+-      ...failed.map((item, i) => ({ label: (['A', 'B', 'C'] as const)[offered.length + i]!, item })),
+-    ].filter(entry => entry.label !== undefined)
+-
+-    const recordId = deps.postRecord(base, {
+-      compare_id: compareId,
+-      kind: 'sample',
+-      prompt: state.question,
+-      responses: labeled.map(({ label, item }) => responseRecord(label, item)),
+-    }).catch(() => null)
+-
+-    if (offered.length < 2) {
+-      yield* held
+-      return
+-    }
+ 
+-    // the student's think time is not idle time
+-    const resumeWatchdog = activity?.beginUserInteraction?.()
+-    let choice: PickResult | 'aborted'
+-    try {
+-      choice = await deps.pick(
+-        offered.map(({ label, item }) => pickCandidate(label, item)),
+-        args.signal,
+-      )
+-    } finally {
+-      resumeWatchdog?.()
+-    }
+-    if (choice === 'aborted' || args.signal.aborted) return
++      // the student's think time is not idle time
++      const resumeWatchdog = activity?.beginUserInteraction?.()
++      let choice: PickResult | 'aborted'
++      try {
++        choice = await deps.pick(
++          offered.map(({ label, item }) => pickCandidate(label, item, student)),
++          args.signal,
++        )
++      } finally {
++        resumeWatchdog?.()
++      }
++      if (choice === 'aborted' || args.signal.aborted) return
+ 
+-    void recordId
+-      .then(id => (id === null ? false : deps.postChoice(base, id, choice)))
+-      .catch(() => false)
++      void recordId
++        .then(id => (id === null ? false : deps.postChoice(base, id, choice)))
++        .catch(() => false)
+ 
+-    const picked = choice === 'skip' ? null : offered.find(entry => entry.label === choice)?.item
+-    if (!picked || picked === homeAnswer) {
+-      yield* held
+-      return
++      const picked = choice === 'skip' ? null : offered.find(entry => entry.label === choice)?.item
++      yield* goOn(picked ?? homeAnswer)
++    } finally {
++      args.signal.removeEventListener('abort', stopReplays)
++      stopReplays()
++      takeAnswerServer(captureId)
++      takeCompareCapture(captureId)
+     }
+-    yield* toAssistantMessages(picked, last)
+   }
+   return wrapped as unknown as F
+ }
+diff --git a/src/furio/compare/ui.ts b/src/furio/compare/ui.ts
+index 902ed12e..99206ca8 100644
+--- a/src/furio/compare/ui.ts
++++ b/src/furio/compare/ui.ts
+@@ -21,6 +21,8 @@ export type PickCandidate = {
+   label: CompareLabel
+   text: string
+   toolCalls: PickToolCall[]
++  /** A student's comparison only: the server's name for the tab. A sample picker stays blind. */
++  serverName?: string
+ }
+ 
+ export type PickResult = CompareLabel | 'skip'
+-- 
+2.43.0
+
+
+From 9820a866a929435175280c55957bf7d8cb846ca7 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Thu, 5 Nov 2026 19:17:59 +0900
+Subject: [PATCH 64/69] =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90=20=EB=B9=84?=
+ =?UTF-8?q?=EA=B5=90:=20/compare=20=EC=9A=A9=20=EC=84=A4=EC=A0=95=20?=
+ =?UTF-8?q?=EB=B0=94=EB=A1=9C=20=EC=9D=BD=EA=B8=B0(readCompareConfigNow),?=
+ =?UTF-8?q?=20=EC=A2=8B=EC=9D=80=20=EA=B0=92=EC=9D=80=20=ED=84=B4=EC=9D=B4?=
+ =?UTF-8?q?=20=EC=93=B0=EB=8A=94=20=EC=BA=90=EC=8B=9C=EC=97=90=EB=8F=84=20?=
+ =?UTF-8?q?=EB=84=A3=EC=9D=8C?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ src/furio/compare/gateway.test.ts | 20 ++++++++++++++++++++
+ src/furio/compare/gateway.ts      | 17 +++++++++++++++++
+ 2 files changed, 37 insertions(+)
+
+diff --git a/src/furio/compare/gateway.test.ts b/src/furio/compare/gateway.test.ts
+index 551bf265..157167cb 100644
+--- a/src/furio/compare/gateway.test.ts
++++ b/src/furio/compare/gateway.test.ts
+@@ -9,6 +9,7 @@ import {
+   parseCompareConfig,
+   postCompareChoice,
+   postCompareRecord,
++  readCompareConfigNow,
+ } from './gateway.js'
+ 
+ type Call = { url: string; init?: RequestInit }
+@@ -206,3 +207,22 @@ describe('student request fields', () => {
+     expect(old?.names).toEqual({})
+   })
+ })
++
++describe('readCompareConfigNow', () => {
++  it('reads now and the turn sees the same config', async () => {
++    __resetCompareConfigForTest(parseCompareConfig({ enabled: true, servers: ['rngd'] }))
++    const { calls, impl } = stub(() => json({ enabled: true, servers: ['rngd', 'atom'], student: true }))
++    const fresh = await readCompareConfigNow({ base: 'http://gw', fetchImpl: impl })
++    expect(calls.map(c => c.url)).toEqual(['http://gw/client/compare'])
++    expect(fresh?.student).toBe(true)
++    expect(getCompareConfig()?.servers).toEqual(['rngd', 'atom'])
++  })
++
++  it('a failed read keeps the cached config', async () => {
++    const old = parseCompareConfig({ enabled: true, servers: ['rngd', 'atom'] })
++    __resetCompareConfigForTest(old)
++    const { impl } = stub(() => json({}, 500))
++    expect(await readCompareConfigNow({ base: 'http://gw', fetchImpl: impl })).toBeNull()
++    expect(getCompareConfig()).toEqual(old)
++  })
++})
+diff --git a/src/furio/compare/gateway.ts b/src/furio/compare/gateway.ts
+index c7b567d6..9d608938 100644
+--- a/src/furio/compare/gateway.ts
++++ b/src/furio/compare/gateway.ts
+@@ -176,6 +176,23 @@ async function refresh(base: string, fetchImpl: FetchLike, now: () => number): P
+  * old one now and a refresh in the background. Never read yet → waits up to
+  * two seconds for the first read (a turn without it just has no comparison).
+  */
++/**
++ * A read right now (for `/compare`). A good read also becomes the cached
++ * config, so the turn that follows sees the same servers.
++ */
++export async function readCompareConfigNow(
++  opts: { base?: string | null; fetchImpl?: FetchLike; now?: () => number } = {},
++): Promise<CompareConfig | null> {
++  const base = opts.base === undefined ? furioBase() : opts.base
++  if (!base) return null
++  const config = await fetchCompareConfig(base, opts.fetchImpl ?? fetch)
++  if (config) {
++    cached = config
++    fetchedAt = (opts.now ?? Date.now)()
++  }
++  return config
++}
++
+ export async function ensureCompareConfig(
+   opts: { base?: string | null; fetchImpl?: FetchLike; now?: () => number } = {},
+ ): Promise<CompareConfig | null> {
+-- 
+2.43.0
+
+
+From 1464b6166434313ae58f6046a9a005b72081dac7 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Thu, 5 Nov 2026 19:24:16 +0900
+Subject: [PATCH 65/69] =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90=20=EB=B9=84?=
+ =?UTF-8?q?=EA=B5=90:=20/compare=20=EB=AA=85=EB=A0=B9(=EC=84=A4=EC=A0=95?=
+ =?UTF-8?q?=20=EB=B0=94=EB=A1=9C=20=EC=9D=BD=EA=B8=B0,=20=EB=AC=B4?=
+ =?UTF-8?q?=EC=9E=A5,=20/compare=20=EC=A7=88=EB=AC=B8=EC=9D=80=20=EB=8B=A4?=
+ =?UTF-8?q?=EC=9D=8C=20=EC=9E=85=EB=A0=A5=EC=9C=BC=EB=A1=9C=20=EB=B3=B4?=
+ =?UTF-8?q?=EB=83=84),=20=EC=83=81=ED=83=9C=EC=A4=84=20'=EB=8B=B5=ED=95=9C?=
+ =?UTF-8?q?=20=EC=84=9C=EB=B2=84'=EC=99=80=20'=EB=8B=A4=EC=9D=8C=20?=
+ =?UTF-8?q?=EC=A7=88=EB=AC=B8=20=EB=B9=84=EA=B5=90'=20=EC=A1=B0=EA=B0=81,?=
+ =?UTF-8?q?=20=ED=95=99=EC=83=9D=20=ED=94=BC=EC=BB=A4=20=EC=A0=9C=EB=AA=A9?=
+ =?UTF-8?q?=EA=B3=BC=20=EC=84=9C=EB=B2=84=20=EC=9D=B4=EB=A6=84=20=ED=83=AD?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ src/commands.ts                             |  3 +-
+ src/commands/compare/index.ts               | 17 +++++
+ src/components/BuiltinStatusLine.test.tsx   | 31 +++++++++
+ src/components/BuiltinStatusLine.tsx        | 28 +++++++-
+ src/components/furio/ComparePicker.test.tsx | 20 ++++++
+ src/components/furio/ComparePicker.tsx      | 15 +++-
+ src/furio/compare/command.test.ts           | 76 +++++++++++++++++++++
+ src/furio/compare/command.ts                | 53 ++++++++++++++
+ src/furio/edition.ts                        |  1 +
+ 9 files changed, 239 insertions(+), 5 deletions(-)
+ create mode 100644 src/commands/compare/index.ts
+ create mode 100644 src/furio/compare/command.test.ts
+ create mode 100644 src/furio/compare/command.ts
+
+diff --git a/src/commands.ts b/src/commands.ts
+index 535b8b8b..207c16cd 100644
+--- a/src/commands.ts
++++ b/src/commands.ts
+@@ -78,6 +78,7 @@ import usage from './commands/usage/index.js'
+ import theme from './commands/theme/index.js'
+ import logo from './commands/logo/index.js'
+ import survey from './commands/survey/index.js'
++import compare from './commands/compare/index.js'
+ import switchSession from './commands/switch/index.js'
+ import furioLogin from './commands/furio-login/index.js'
+ import furioLogout from './commands/furio-logout/index.js'
+@@ -412,7 +413,7 @@ const COMMANDS = memoize((): Command[] => [
+   // the filter above has removed the upstream commands of the same names —
+   // and after the localization map, whose `login`/`logout`/`update` keys would
+   // otherwise replace the furio wording with the upstream one.
+-  .concat(isClassEdition() ? [furioLogin, furioLogout, furioUpdate] : []))
++  .concat(isClassEdition() ? [furioLogin, furioLogout, furioUpdate, compare] : []))
+ 
+ function withOpenClaudeCommandLocalizationKey(cmd: Command): Command {
+   cmd.localizationKey ??= getOpenClaudeCommandDescriptionKey(cmd.name)
+diff --git a/src/commands/compare/index.ts b/src/commands/compare/index.ts
+new file mode 100644
+index 00000000..f0120e6c
+--- /dev/null
++++ b/src/commands/compare/index.ts
+@@ -0,0 +1,17 @@
++import type { Command, LocalCommandCall } from '../../types/command.js'
++import { COMPARE_COMMAND_DESCRIPTION, runCompareCommand } from '../../furio/compare/command.js'
++
++const call: LocalCommandCall = args => runCompareCommand(args)
++
++// Class edition only: commands.ts appends it after the edition filter, and
++// src/furio/edition.ts lists it as class-only.
++const compare = {
++  type: 'local',
++  name: 'compare',
++  description: COMPARE_COMMAND_DESCRIPTION,
++  argumentHint: '[질문]',
++  supportsNonInteractive: false,
++  load: () => Promise.resolve({ call }),
++} satisfies Command
++
++export default compare
+diff --git a/src/components/BuiltinStatusLine.test.tsx b/src/components/BuiltinStatusLine.test.tsx
+index 2d0ac803..3548c24a 100644
+--- a/src/components/BuiltinStatusLine.test.tsx
++++ b/src/components/BuiltinStatusLine.test.tsx
+@@ -596,3 +596,34 @@ describe('buildNpuSegments', () => {
+     })
+   })
+ })
++
++describe('answered server and armed /compare', () => {
++  const savedEdition = process.env.FURIO_EDITION
++  afterEach(() => {
++    if (savedEdition === undefined) delete process.env.FURIO_EDITION
++    else process.env.FURIO_EDITION = savedEdition
++  })
++
++  it('class: names the server that answered, right after the NPU segments', () => {
++    process.env.FURIO_EDITION = 'class'
++    const line = buildBuiltinStatusSegments({ ...fullData, answeredServerName: 'RNGD' })
++    expect(line[0]).toEqual({ key: 'furio:served', priority: 1.5, text: '답한 서버: RNGD' })
++  })
++
++  it('class: hidden before any answer; an armed /compare shows 다음 질문 비교', () => {
++    process.env.FURIO_EDITION = 'class'
++    const none = buildBuiltinStatusSegments({ ...fullData, answeredServerName: null })
++    expect(none.map(s => s.key)).not.toContain('furio:served')
++    expect(none.map(s => s.key)).not.toContain('furio:compare-armed')
++    const armed = buildBuiltinStatusSegments({ ...fullData, answeredServerName: 'ATOM MAX', compareArmed: true })
++    expect(armed.find(s => s.key === 'furio:compare-armed')?.text).toBe('다음 질문 비교')
++    expect(armed.find(s => s.key === 'furio:served')?.text).toBe('답한 서버: ATOM MAX')
++  })
++
++  it('lab: neither segment, even if handed them', () => {
++    process.env.FURIO_EDITION = 'lab'
++    const keys = buildBuiltinStatusSegments({ ...fullData, answeredServerName: 'RNGD', compareArmed: true }).map(s => s.key)
++    expect(keys).not.toContain('furio:served')
++    expect(keys).not.toContain('furio:compare-armed')
++  })
++})
+diff --git a/src/components/BuiltinStatusLine.tsx b/src/components/BuiltinStatusLine.tsx
+index ef137c16..b7dd1b26 100644
+--- a/src/components/BuiltinStatusLine.tsx
++++ b/src/components/BuiltinStatusLine.tsx
+@@ -12,6 +12,8 @@ import { getRawUtilization } from '../services/claudeAiLimits.js';
+ import { useClaudeAiLimits } from '../services/claudeAiLimitsHook.js';
+ import { isClassEdition } from '../furio/edition.js';
+ import { statusLineUpdateCommand, subscribeFurioUpdate } from '../furio/update.js';
++import { getAnsweredServer, subscribeAnsweredServer } from '../furio/answeredServer.js';
++import { isStudentArmed, subscribeStudentArm } from '../furio/compare/studentArm.js';
+ import { type NpuStatus, npuDisplayModels } from '../services/npuStatus.js';
+ import { useNpuStatus } from '../services/npuStatusHook.js';
+ import { useAppState } from '../state/AppState.js';
+@@ -202,6 +204,10 @@ export type BuiltinStatusData = {
+    * when update.json says one is out; null otherwise. See src/furio/update.ts.
+    */
+   updateCommand?: string | null;
++  /** Class edition: the server that gave the latest answer (src/furio/answeredServer.ts); null hides it. */
++  answeredServerName?: string | null;
++  /** Class edition: `/compare` is armed for the next question (src/furio/compare/studentArm.ts). */
++  compareArmed?: boolean;
+ };
+ export function buildBuiltinStatusSegments(data: BuiltinStatusData): StatusSegment[] {
+   const classEdition = isClassEdition();
+@@ -217,6 +223,21 @@ export function buildBuiltinStatusSegments(data: BuiltinStatusData): StatusSegme
+     priority: 0,
+     text: data.modelName
+   }];
++  if (classEdition && data.answeredServerName) {
++    segments.push({
++      key: 'furio:served',
++      priority: 1.5,
++      text: `답한 서버: ${data.answeredServerName}`
++    });
++  }
++  if (classEdition && data.compareArmed) {
++    segments.push({
++      key: 'furio:compare-armed',
++      priority: 1,
++      text: '다음 질문 비교',
++      color: 'suggestion'
++    });
++  }
+   if (!classEdition && npuSegments.length > 0 && data.npuCursorModelId) {
+     // Only while focused — the keys do nothing otherwise, and the row is tight.
+     segments.push({
+@@ -368,6 +389,9 @@ function BuiltinStatusLineInner({
+   // `/update` re-reads update.json; repaint now rather than on the next poll.
+   const [, repaint] = useReducer((n: number) => n + 1, 0);
+   useEffect(() => subscribeFurioUpdate(repaint), []);
++  // A new answer's server and an armed `/compare` repaint the line at once.
++  useEffect(() => subscribeAnsweredServer(repaint), []);
++  useEffect(() => subscribeStudentArm(repaint), []);
+   const {
+     columns
+   } = useTerminalSize();
+@@ -406,7 +430,9 @@ function BuiltinStatusLineInner({
+     npuCursorModelId: npuFocused ? npuFooterModelId : null,
+     rateLimit: getWorstRateLimit(),
+     // Cached: update.json is read at most once a minute, not per render.
+-    updateCommand: statusLineUpdateCommand()
++    updateCommand: statusLineUpdateCommand(),
++    answeredServerName: getAnsweredServer()?.name ?? null,
++    compareArmed: isStudentArmed()
+   }),
+   // paddingX from the footer (2 each side) is already outside this Box;
+   // keep a 1-col safety margin against the truncate ellipsis. No artificial
+diff --git a/src/components/furio/ComparePicker.test.tsx b/src/components/furio/ComparePicker.test.tsx
+index d01fb260..a75f612e 100644
+--- a/src/components/furio/ComparePicker.test.tsx
++++ b/src/components/furio/ComparePicker.test.tsx
+@@ -270,3 +270,23 @@ test('a long answer scrolls inside the picker', async () => {
+     h.stop()
+   }
+ })
++
++test('student comparison: asks which answer to continue with, tabs and box carry the server names', async () => {
++  const named: PickCandidate[] = [
++    { label: 'A', text: '첫 답입니다.', toolCalls: [], serverName: 'RNGD' },
++    { label: 'B', text: '둘째 답입니다.', toolCalls: [], serverName: 'ATOM MAX' },
++  ]
++  const h = await mount(() => {}, 80, 30, { candidates: named })
++  try {
++    const out = h.output()
++    expect(out).toContain('이어 갈 답을 고르세요')
++    expect(out).not.toContain('어느 답변이 더 마음에 드나요?')
++    expect(out).toContain(' RNGD ')
++    expect(out).toContain('ATOM MAX')
++    expect(out).not.toContain('답변 A')
++    expect(out.indexOf('RNGD')).toBeLessThan(out.indexOf('ATOM MAX'))
++    expect(out).not.toMatch(/[—–]/)
++  } finally {
++    h.stop()
++  }
++})
+diff --git a/src/components/furio/ComparePicker.tsx b/src/components/furio/ComparePicker.tsx
+index 2cd6194b..54a7ad9b 100644
+--- a/src/components/furio/ComparePicker.tsx
++++ b/src/components/furio/ComparePicker.tsx
+@@ -149,7 +149,16 @@ function boxTitle(text: string, c: keyof Theme, theme: ThemeName): BorderTextOpt
+   return { content: color(c, theme)(chalk.bold(` ${text} `)), position: 'top', align: 'start', offset: 1 }
+ }
+ 
++/**
++ * A student-requested comparison names each answer by its server (home first);
++ * the evaluation sample stays blind as 답변 A, B, C.
++ */
++function tabName(c: PickCandidate): string {
++  return c.serverName ?? `답변 ${c.label}`
++}
++
+ export function ComparePicker({ candidates, onPick, onCancel }: Props): React.ReactNode {
++  const named = candidates.some(c => c.serverName)
+   useRegisterOverlay('furio-compare')
+   const [theme] = useTheme()
+   const { columns, rows: termRows } = useTerminalSize()
+@@ -224,14 +233,14 @@ export function ComparePicker({ candidates, onPick, onCancel }: Props): React.Re
+     >
+       <Box paddingX={1}>
+         <Text bold color="permission">
+-          어느 답변이 더 마음에 드나요?
++          {named ? '이어 갈 답을 고르세요' : '어느 답변이 더 마음에 드나요?'}
+         </Text>
+       </Box>
+       <Box paddingX={1} marginTop={1} flexDirection="row">
+         {candidates.map((c, i) => (
+           <Box key={c.label} marginRight={2}>
+             <Text inverse={i === index} bold={i === index} dimColor={i !== index}>
+-              {` 답변 ${c.label} `}
++              {` ${tabName(c)} `}
+             </Text>
+           </Box>
+         ))}
+@@ -242,7 +251,7 @@ export function ComparePicker({ candidates, onPick, onCancel }: Props): React.Re
+         flexDirection="column"
+         borderStyle="round"
+         borderColor="permission"
+-        borderText={boxTitle(`답변 ${candidate.label}`, 'permission', theme)}
++        borderText={boxTitle(tabName(candidate), 'permission', theme)}
+       >
+         {visible.map((row, i) =>
+           row.kind === 'code' ? (
+diff --git a/src/furio/compare/command.test.ts b/src/furio/compare/command.test.ts
+new file mode 100644
+index 00000000..e65dc03a
+--- /dev/null
++++ b/src/furio/compare/command.test.ts
+@@ -0,0 +1,76 @@
++import { afterEach, expect, test } from 'bun:test'
++import { commandAllowedInEdition } from '../edition.js'
++import { COMPARE_COPY, runCompareCommand } from './command.js'
++import type { readCompareConfigNow } from './gateway.js'
++
++type CompareConfig = NonNullable<Awaited<ReturnType<typeof readCompareConfigNow>>>
++import { __resetStudentArmForTest, consumeStudentArm, isStudentArmed } from './studentArm.js'
++
++afterEach(() => __resetStudentArmForTest())
++
++function config(over: Record<string, unknown>): CompareConfig {
++  return {
++    enabled: true,
++    servers: ['rngd', 'atom'],
++    student: true,
++    studentReason: null,
++    names: { rngd: 'RNGD', atom: 'ATOM MAX' },
++    ...over,
++  } as unknown as CompareConfig
++}
++
++function deps(value: CompareConfig | null) {
++  let reads = 0
++  return {
++    reads: () => reads,
++    readConfig: async () => {
++      reads++
++      return value
++    },
++  }
++}
++
++test('arms once: the next question goes to every server, then the arm is gone', async () => {
++  const d = deps(config({}))
++  const result = await runCompareCommand('', d)
++  expect(result).toEqual({ type: 'text', value: '다음 질문을 모든 서버에 보내 비교합니다.' })
++  expect(d.reads()).toBe(1)
++  expect(isStudentArmed()).toBe(true)
++  expect(consumeStudentArm()).toBe(true)
++  expect(consumeStudentArm()).toBe(false)
++})
++
++test('with a question: arms and sends the question as the next input', async () => {
++  const result = await runCompareCommand('  두 수를 더하는 함수  ', deps(config({})))
++  expect(result).toEqual({
++    type: 'text',
++    value: COMPARE_COPY.armed,
++    nextInput: '두 수를 더하는 함수',
++    submitNextInput: true,
++  })
++  expect(isStudentArmed()).toBe(true)
++})
++
++test('off: says the admin turned it off and does not arm', async () => {
++  const result = await runCompareCommand('질문', deps(config({ student: false, studentReason: 'off' })))
++  expect(result).toEqual({ type: 'text', value: '관리자가 학생 요청 비교를 꺼 두었습니다.' })
++  expect(isStudentArmed()).toBe(false)
++})
++
++test('few_servers: says there are not enough servers and does not arm', async () => {
++  const result = await runCompareCommand('', deps(config({ student: false, studentReason: 'few_servers' })))
++  expect(result).toEqual({ type: 'text', value: '지금은 비교할 서버가 모자랍니다.' })
++  expect(isStudentArmed()).toBe(false)
++})
++
++test('config not readable: says so and does not arm', async () => {
++  const result = await runCompareCommand('', deps(null))
++  expect(result).toEqual({ type: 'text', value: COMPARE_COPY.unreachable })
++  expect(isStudentArmed()).toBe(false)
++  expect(Object.values(COMPARE_COPY).join('')).not.toMatch(/[—–·]/)
++})
++
++test('/compare is a class edition command only', () => {
++  expect(commandAllowedInEdition('compare', 'class')).toBe(true)
++  expect(commandAllowedInEdition('compare', 'lab')).toBe(false)
++})
+diff --git a/src/furio/compare/command.ts b/src/furio/compare/command.ts
+new file mode 100644
+index 00000000..bb001a2a
+--- /dev/null
++++ b/src/furio/compare/command.ts
+@@ -0,0 +1,53 @@
++/**
++ * `/compare` (class edition): the next question, and only that one, goes to
++ * every server so the student sees each server's answer by name and picks the
++ * one to continue with (src/furio/compare/turn.ts, kind 'student').
++ *
++ * The config is read right now rather than from the turn's cache: the switch
++ * (compare.student) and the server count are the admin's and the gateway's,
++ * and a stale cache would arm a comparison the gateway then refuses. A good
++ * read also becomes the turn's cached config (readCompareConfigNow).
++ */
++import type { LocalCommandResult } from '../../types/command.js'
++import { readCompareConfigNow } from './gateway.js'
++import { armStudentCompare } from './studentArm.js'
++
++export const COMPARE_COMMAND_DESCRIPTION = '다음 질문 하나를 모든 서버에 보내 비교합니다'
++
++export const COMPARE_COPY = {
++  armed: '다음 질문을 모든 서버에 보내 비교합니다.',
++  off: '관리자가 학생 요청 비교를 꺼 두었습니다.',
++  fewServers: '지금은 비교할 서버가 모자랍니다.',
++  // Not in the contract's copy table: no base URL (not a FURIO setup) or the
++  // gateway did not answer.
++  unreachable: '비교 설정을 읽지 못했습니다. 잠시 뒤 다시 입력하세요.',
++} as const
++
++type CompareConfig = NonNullable<Awaited<ReturnType<typeof readCompareConfigNow>>>
++
++export type CompareCommandDeps = {
++  readConfig: () => Promise<CompareConfig | null>
++}
++
++const defaultDeps: CompareCommandDeps = { readConfig: () => readCompareConfigNow() }
++
++export async function runCompareCommand(
++  args: string,
++  deps: CompareCommandDeps = defaultDeps,
++): Promise<LocalCommandResult> {
++  const config = await deps.readConfig()
++  if (!config) return { type: 'text', value: COMPARE_COPY.unreachable }
++  if (!config.student) {
++    // An old gateway has no student fields: parseCompareConfig reads that as 'off'.
++    return {
++      type: 'text',
++      value: config.studentReason === 'few_servers' ? COMPARE_COPY.fewServers : COMPARE_COPY.off,
++    }
++  }
++  armStudentCompare()
++  const question = args.trim()
++  // `/compare 질문`: the command result's nextInput is submitted as the next
++  // prompt (handlePromptSubmit.ts), which is the human turn that uses the arm.
++  if (question) return { type: 'text', value: COMPARE_COPY.armed, nextInput: question, submitNextInput: true }
++  return { type: 'text', value: COMPARE_COPY.armed }
++}
+diff --git a/src/furio/edition.ts b/src/furio/edition.ts
+index 94bd2200..ea56b68a 100644
+--- a/src/furio/edition.ts
++++ b/src/furio/edition.ts
+@@ -58,6 +58,7 @@ export const CLASS_EDITION_HIDDEN_COMMANDS: ReadonlySet<string> = new Set([
+ /** Slash commands only the class build has. */
+ export const CLASS_EDITION_ONLY_COMMANDS: ReadonlySet<string> = new Set([
+   'survey', // the course questionnaire
++  'compare', // the next question to every server, by name (src/furio/compare/command.ts)
+ ])
+ 
+ export function commandAllowedInEdition(
+-- 
+2.43.0
+
+
+From 547b16f4b76b8f2d2fc2e5ed7c3fcb41f5e01e38 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Thu, 5 Nov 2026 19:29:39 +0900
+Subject: [PATCH 66/69] =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90=20=EB=B9=84?=
+ =?UTF-8?q?=EA=B5=90=20=EB=AA=A9=20=EA=B2=8C=EC=9D=B4=ED=8A=B8=EC=9B=A8?=
+ =?UTF-8?q?=EC=9D=B4:=20=EB=8B=B5=ED=95=9C=20=EC=84=9C=EB=B2=84=20?=
+ =?UTF-8?q?=ED=97=A4=EB=8D=94,=20=ED=95=99=EC=83=9D=20=EC=84=A4=EC=A0=95?=
+ =?UTF-8?q?=20=EC=B9=B8,=20=EC=9E=A5=EC=95=A0=20=EC=A0=84=ED=99=98?=
+ =?UTF-8?q?=EA=B3=BC=20=ED=95=9C=EB=8F=84=EC=99=80=20=EA=BA=BC=EC=A7=90?=
+ =?UTF-8?q?=EA=B3=BC=201=EB=8C=80=EB=BF=90=20=EC=98=B5=EC=85=98,=20?=
+ =?UTF-8?q?=EB=9D=84=EC=9A=B4=20=EC=B1=84=20=EB=B0=94=EA=BE=B8=EB=8A=94=20?=
+ =?UTF-8?q?/mock/mode,=20=ED=99=95=EC=9D=B8=20=EC=8A=A4=ED=81=AC=EB=A6=BD?=
+ =?UTF-8?q?=ED=8A=B8?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- 200 답에 X-Furio-Server, X-Furio-Server-Name. 비교 요청은 X-Furio-Compare-Kind 가 student 면 꺼져 있어도 받음
+- 기본 포트 8499, 기본 서버 rngd,atom(계약 C7 모양). 삼지선다 e2e 는 --servers rngd,atom,gpu 로 띄움
+- mock_compare_gateway_check.py: 빈 포트에 목을 띄워 계약 C7 동작 12개 확인
+
+Claude-Session: https://claude.ai/code/session_011ZL47QB5kb5mmFu21wfKHA
+---
+ tests/furio/compare_e2e.py                |  2 +-
+ tests/furio/mock_compare_gateway.py       | 74 ++++++++++++++----
+ tests/furio/mock_compare_gateway_check.py | 94 +++++++++++++++++++++++
+ 3 files changed, 152 insertions(+), 18 deletions(-)
+ create mode 100644 tests/furio/mock_compare_gateway_check.py
+
+diff --git a/tests/furio/compare_e2e.py b/tests/furio/compare_e2e.py
+index a1f98574..65f82c88 100644
+--- a/tests/furio/compare_e2e.py
++++ b/tests/furio/compare_e2e.py
+@@ -306,7 +306,7 @@ def main():
+     config = prepare(base, a.port)
+     work = os.path.join(base, "work")
+     mock_args = [sys.executable, os.path.join(ROOT, "tests", "furio", "mock_compare_gateway.py"),
+-                 "--port", str(a.port), "--workdir", work]
++                 "--port", str(a.port), "--workdir", work, "--servers", "rngd,atom,gpu"]
+     if a.scenario == "pick":
+         mock_args += ["--slow", "atom=3", "--slow", "gpu=3"]
+     elif a.scenario == "fail":
+diff --git a/tests/furio/mock_compare_gateway.py b/tests/furio/mock_compare_gateway.py
+index 057ed5b7..a020e3d8 100644
+--- a/tests/furio/mock_compare_gateway.py
++++ b/tests/furio/mock_compare_gateway.py
+@@ -10,6 +10,11 @@
+   POST /compare/cli             {compare_id, prompt, responses[]} → {"id"}
+   POST /compare/{id}/choice     {"choice": "A"|"B"|"C"|"skip"}
+   GET  /mock/state              시험 스크립트가 읽는 기록(요청·비교·선택)
++  POST /mock/mode               {"config", "limit", "fail", "home"} 를 띄운 채로 바꾼다
++
++학생 요청 비교(계약 C7): 200 답에 X-Furio-Server, X-Furio-Server-Name 을 단다. 설정에 student, student_reason,
++names 가 있다. 비교 요청은 X-Furio-Compare-Kind 가 student 면 표본 비교가 꺼져 있어도 받는다.
++옵션 --home atom(장애 전환), --limit(비교 요청 429 rate_limited), --fail atom(409), --config one|off|old.
+   그 밖(/router/status 등)      404 — 클라이언트는 라우터가 아니라고 보고 상태 폴링을 멈춘다
+ 
+ 답(서버마다 다른 hello.py):
+@@ -17,18 +22,22 @@
+   요청에 Write 도구가 있고 학생 글에 '코드'나 'hello.py' 가 들어 있으면 → Write <workdir>/hello.py
+   그 밖 → "안녕하세요. 무엇을 도와드릴까요?"
+ 
+-실행: python3 tests/furio/mock_compare_gateway.py --port 8597 --workdir /tmp/furio-cmp-e2e/work [--fail atom]
++실행: python3 tests/furio/mock_compare_gateway.py [--port 8499] [--workdir DIR] [--home atom] [--limit] [--fail atom] [--config one|off|old]
+ """
+ import argparse
+ import hashlib
+ import json
++import os
+ import re
+ import threading
+ import time
+ import uuid
+ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+ 
+-SERVERS = ["rngd", "atom", "gpu"]
++SERVERS = ["rngd", "atom", "gpu"]  # 아는 서버. 설정에 나오는 서버는 --servers(기본 rngd,atom)
++NAMES = {"rngd": "RNGD", "atom": "ATOM MAX", "gpu": "GPU"}
++PLAIN = {"rngd": "안녕하세요. 무엇을 도와드릴까요?", "atom": "반갑습니다. 어떤 코드를 볼까요?",
++         "gpu": "안녕하세요. 무엇을 도와드릴까요?"}
+ CONTENT = {
+     "rngd": 'print("hello")\n',
+     "atom": 'print("Hello!")\n',
+@@ -97,7 +106,19 @@ def answer(server, body, workdir):
+     if has_tool(body, "Write") and re.search(r"코드|hello\.py", question):
+         args = {"file_path": f"{workdir}/hello.py", "content": CONTENT[server]}
+         return {"text": TEXT[server], "tool": {"name": "Write", "arguments": json.dumps(args, ensure_ascii=False)}}
+-    return {"text": "안녕하세요. 무엇을 도와드릴까요?", "tool": None}
++    return {"text": PLAIN[server], "tool": None}
++
++
++def compare_config(srv):
++    """GET /client/compare. config: normal | one(1대뿐) | off(꺼짐) | old(학생 칸과 서버 헤더가 없는 옛 게이트웨이)."""
++    mode = srv.mode
++    servers = srv.servers[:1] if mode["config"] == "one" else list(srv.servers)
++    cfg = {"enabled": mode["config"] != "off", "servers": servers, "rate": 1.0, "code_only": True,
++           "timeout_s": srv.timeout_s}
++    if mode["config"] != "old":
++        reason = "off" if mode["config"] == "off" else "few_servers" if len(servers) < 2 else None
++        cfg.update(student=reason is None, student_reason=reason, names={s: NAMES.get(s, s) for s in servers})
++    return cfg
+ 
+ 
+ def chunk(model, delta, finish=None, usage=None):
+@@ -119,11 +140,13 @@ class Handler(BaseHTTPRequestHandler):
+     def log_message(self, fmt, *args):  # quiet
+         pass
+ 
+-    def send_json(self, status, obj):
++    def send_json(self, status, obj, extra=None):
+         data = json.dumps(obj, ensure_ascii=False).encode()
+         self.send_response(status)
+         self.send_header("content-type", "application/json")
+         self.send_header("content-length", str(len(data)))
++        for k, v in (extra or {}).items():
++            self.send_header(k, v)
+         self.end_headers()
+         self.wfile.write(data)
+ 
+@@ -140,13 +163,7 @@ def do_GET(self):
+         if self.path == "/client/compare":
+             with lock:
+                 state["config_reads"] += 1
+-            self.send_json(200, {
+-                "enabled": True,
+-                "servers": SERVERS,
+-                "rate": 1.0,
+-                "code_only": True,
+-                "timeout_s": self.server.timeout_s,
+-            })
++            self.send_json(200, compare_config(self.server))
+         elif self.path == "/mock/state":
+             with lock:
+                 self.send_json(200, state)
+@@ -167,6 +184,10 @@ def do_POST(self):
+             with lock:
+                 state["choices"].append({"id": int(m.group(1)), "choice": body.get("choice")})
+             self.send_json(200, {"ok": True})
++        elif self.path == "/mock/mode":  # 시험 스크립트가 끄지 않고 동작을 바꾼다: config, limit, fail, home
++            with lock:
++                self.server.mode.update({k: v for k, v in body.items() if k in self.server.mode})
++                self.send_json(200, self.server.mode)
+         elif self.path == "/v1/chat/completions":
+             self.chat(body)
+         else:
+@@ -175,10 +196,13 @@ def do_POST(self):
+     def chat(self, body):
+         compare_id = self.headers.get("X-Furio-Compare-Id")
+         target = self.headers.get("X-Furio-Compare-Server")
+-        server = target or SERVERS[0]
++        kind = self.headers.get("X-Furio-Compare-Kind")
++        mode = self.server.mode
++        server = target or mode["home"] or self.server.servers[0]
+         with lock:
+             state["requests"].append({
+                 "server": server,
++                "kind": kind,
+                 "compare_id": compare_id,
+                 "compare_server": target,
+                 "authorization": self.headers.get("authorization"),
+@@ -190,9 +214,16 @@ def chat(self, body):
+                 "body_sha": self.raw_sha,
+                 "ts": time.time(),
+             })
+-        if target is not None and (not compare_id or target not in SERVERS or target in self.server.fail):
++        if target is not None and mode["limit"]:
++            self.send_json(429, {"error": {"code": "rate_limited", "message": "요청 한도에 걸렸습니다"}})
++            return
++        # 학생 요청(kind student)은 표본 비교가 꺼져 있어도 받는다
++        if target is not None and (not compare_id or target not in self.server.servers or target in mode["fail"]
++                                   or (mode["config"] == "off" and kind != "student")):
+             self.send_json(409, {"error": {"code": "compare_unavailable", "message": "그 서버는 지금 비교에 쓸 수 없습니다"}})
+             return
++        served = {} if mode["config"] == "old" else {"X-Furio-Server": server,
++                                                     "X-Furio-Server-Name": NAMES.get(server, server)}
+         if target in self.server.slow:
+             time.sleep(self.server.slow[target])
+         model = "gpt-oss-20b"  # 응답 model 은 public 이름(서버를 드러내지 않음)
+@@ -205,7 +236,8 @@ def chat(self, body):
+                 msg["tool_calls"] = [{"id": f"call_{uuid.uuid4().hex[:8]}", "type": "function",
+                                       "function": ans["tool"]}]
+             self.send_json(200, {"id": "chatcmpl-mock", "object": "chat.completion", "model": model,
+-                                 "choices": [{"index": 0, "message": msg, "finish_reason": finish}], "usage": usage})
++                                 "choices": [{"index": 0, "message": msg, "finish_reason": finish}], "usage": usage},
++                           served)
+             return
+         chunks = [chunk(model, {"role": "assistant", "content": ""})]
+         for i in range(0, len(ans["text"]), 6):
+@@ -224,22 +256,30 @@ def chat(self, body):
+         self.send_response(200)
+         self.send_header("content-type", "text/event-stream")
+         self.send_header("content-length", str(len(data)))
++        for k, v in served.items():
++            self.send_header(k, v)
+         self.end_headers()
+         self.wfile.write(data)
+ 
+ 
+ def main():
+     ap = argparse.ArgumentParser(description="furio 터미널 삼지선다 목 게이트웨이")
+-    ap.add_argument("--port", type=int, default=8597)
++    ap.add_argument("--port", type=int, default=8499)
+     ap.add_argument("--host", default="127.0.0.1")
+-    ap.add_argument("--workdir", required=True, help="Write 도구가 hello.py 를 쓸 절대 경로 폴더")
++    ap.add_argument("--workdir", default=os.getcwd(), help="Write 도구가 hello.py 를 쓸 절대 경로 폴더")
++    ap.add_argument("--servers", default="rngd,atom", help="설정에 나오는 서버, 홈 먼저(삼지선다 e2e 는 rngd,atom,gpu)")
++    ap.add_argument("--home", default=None, help="홈 요청에 답하는 서버(장애 전환을 흉내 내려면 atom)")
++    ap.add_argument("--config", choices=["normal", "one", "off", "old"], default="normal",
++                    help="/client/compare 모양: 보통, 1대뿐, 꺼짐, 옛 게이트웨이(학생 칸과 서버 헤더 없음)")
++    ap.add_argument("--limit", action="store_true", help="비교 요청은 429 rate_limited")
+     ap.add_argument("--fail", action="append", default=[], help="이 서버로 온 비교 요청은 409")
+     ap.add_argument("--slow", action="append", default=[], help="서버=초 — 이 서버 비교 답을 늦춘다")
+     ap.add_argument("--timeout-s", type=int, default=60)
+     a = ap.parse_args()
+     srv = ThreadingHTTPServer((a.host, a.port), Handler)
+     srv.workdir = a.workdir.rstrip("/")
+-    srv.fail = set(a.fail)
++    srv.servers = a.servers.split(",")
++    srv.mode = {"config": a.config, "limit": a.limit, "fail": list(a.fail), "home": a.home}
+     srv.slow = {k: float(v) for k, v in (s.split("=", 1) for s in a.slow)}
+     srv.timeout_s = a.timeout_s
+     print(f"mock compare gateway on http://{a.host}:{a.port} workdir={srv.workdir}", flush=True)
+diff --git a/tests/furio/mock_compare_gateway_check.py b/tests/furio/mock_compare_gateway_check.py
+new file mode 100644
+index 00000000..e9087003
+--- /dev/null
++++ b/tests/furio/mock_compare_gateway_check.py
+@@ -0,0 +1,94 @@
++#!/usr/bin/env python3
++"""
++mock_compare_gateway.py 의 계약 C7 동작 확인. 빈 포트에 목을 띄워 HTTP 로만 묻는다(실제 라우터는 건드리지 않는다).
++실행: python3 -I tests/furio/mock_compare_gateway_check.py
++"""
++import json
++import os
++import socket
++import subprocess
++import sys
++import time
++import urllib.error
++import urllib.request
++
++HERE = os.path.dirname(os.path.abspath(__file__))
++fails = []
++
++
++def check(cond, what):
++    print(("[ok]   " if cond else "[FAIL] ") + what, flush=True)
++    if not cond:
++        fails.append(what)
++
++
++def call(port, path, body=None, headers=None):
++    req = urllib.request.Request(f"http://127.0.0.1:{port}{path}", method="POST" if body is not None else "GET",
++                                 data=None if body is None else json.dumps(body).encode(),
++                                 headers={"content-type": "application/json", **(headers or {})})
++    try:
++        with urllib.request.urlopen(req, timeout=5) as r:
++            return r.status, dict(r.headers), r.read().decode()
++    except urllib.error.HTTPError as e:
++        return e.code, dict(e.headers), e.read().decode()
++
++
++def free_port():
++    with socket.socket() as s:
++        s.bind(("127.0.0.1", 0))
++        return s.getsockname()[1]
++
++
++def main():
++    port = free_port()
++    mock = subprocess.Popen([sys.executable, "-I", os.path.join(HERE, "mock_compare_gateway.py"), "--port", str(port),
++                             "--workdir", "/nonexistent"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
++    try:
++        time.sleep(0.8)
++        chat = {"model": "gpt-oss-20b", "messages": [{"role": "user", "content": "안녕"}]}
++        leg = lambda kind=None: {"X-Furio-Compare-Id": "c1", "X-Furio-Compare-Server": "atom",
++                                 **({"X-Furio-Compare-Kind": kind} if kind else {})}
++        s, _, b = call(port, "/client/compare")
++        cfg = json.loads(b)
++        check(s == 200 and cfg.get("servers") == ["rngd", "atom"] and cfg.get("student") is True
++              and cfg.get("student_reason") is None and cfg.get("names") == {"rngd": "RNGD", "atom": "ATOM MAX"},
++              "config has the contract shape (two servers, student on, names)")
++        for stream in (False, True):
++            s, h, _ = call(port, "/v1/chat/completions", {**chat, "stream": stream})
++            check(s == 200 and h.get("X-Furio-Server") == "rngd" and h.get("X-Furio-Server-Name") == "RNGD",
++                  f"home answer names its server (stream={stream})")
++        s, h, _ = call(port, "/v1/chat/completions", chat, leg("student"))
++        check(s == 200 and h.get("X-Furio-Server") == "atom" and h.get("X-Furio-Server-Name") == "ATOM MAX",
++              "student leg answers with its server headers")
++        call(port, "/mock/mode", {"config": "off"})
++        s, _, b = call(port, "/client/compare")
++        cfg = json.loads(b)
++        check(cfg.get("student") is False and cfg.get("student_reason") == "off", "off shape")
++        s, _, _ = call(port, "/v1/chat/completions", chat, leg("student"))
++        check(s == 200, "student leg is taken while sample compare is off")
++        s, _, b = call(port, "/v1/chat/completions", chat, leg())
++        check(s == 409 and "compare_unavailable" in b, "sample leg is refused while off")
++        call(port, "/mock/mode", {"config": "one"})
++        cfg = json.loads(call(port, "/client/compare")[2])
++        check(cfg.get("servers") == ["rngd"] and cfg.get("student_reason") == "few_servers", "one server shape")
++        call(port, "/mock/mode", {"config": "normal", "limit": True})
++        s, _, b = call(port, "/v1/chat/completions", chat, leg("student"))
++        check(s == 429 and json.loads(b)["error"]["code"] == "rate_limited", "limit option: leg 429 rate_limited")
++        call(port, "/mock/mode", {"limit": False, "fail": ["atom"]})
++        s, _, b = call(port, "/v1/chat/completions", chat, leg("student"))
++        check(s == 409 and "compare_unavailable" in b, "fail option: leg 409 compare_unavailable")
++        call(port, "/mock/mode", {"fail": [], "home": "atom"})
++        s, h, _ = call(port, "/v1/chat/completions", chat)
++        check(h.get("X-Furio-Server") == "atom" and h.get("X-Furio-Server-Name") == "ATOM MAX",
++              "home option: atom answers home requests (failover)")
++        kinds = [r.get("kind") for r in json.loads(call(port, "/mock/state")[2])["requests"]]
++        check("student" in kinds, "state records the compare kind")
++    finally:
++        mock.terminate()
++        mock.wait(5)
++    print("FAIL" if fails else "PASS", len(fails))
++    sys.exit(1 if fails else 0)
++
++
++if __name__ == "__main__":
++    main()
+-- 
+2.43.0
+
+
+From 6a215dec8e1f6df8bcab3b3275efc3f868cbf4b6 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Thu, 5 Nov 2026 19:41:54 +0900
+Subject: [PATCH 67/69] =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90=20=EB=B9=84?=
+ =?UTF-8?q?=EA=B5=90=20TUI=20=EC=BA=A1=EC=B2=98:=20=EC=9B=8C=ED=81=AC?=
+ =?UTF-8?q?=ED=8A=B8=EB=A6=AC=20=EB=B9=8C=EB=93=9C=EB=A5=BC=20=EB=AA=A9?=
+ =?UTF-8?q?=EC=97=90=EB=A7=8C=20=EB=B6=99=EC=9D=B4=EB=8A=94=20=EC=8B=A4?=
+ =?UTF-8?q?=ED=96=89=20=EB=AA=85=EB=A0=B9=20furio-dev-wt(=EC=8B=A4?=
+ =?UTF-8?q?=EC=A0=9C=20=EB=9D=BC=EC=9A=B0=ED=84=B0=EC=99=80=20=EC=A4=91?=
+ =?UTF-8?q?=EA=B3=84=EA=B8=B0=20=EC=A3=BC=EC=86=8C=20=EA=B1=B0=EB=B6=80),?=
+ =?UTF-8?q?=20=ED=95=99=EC=83=9D=20=EB=B9=84=EA=B5=90=EC=99=80=20=EB=8B=B5?=
+ =?UTF-8?q?=ED=95=9C=20=EC=84=9C=EB=B2=84=20=ED=99=94=EB=A9=B4=2011?=
+ =?UTF-8?q?=EB=8B=A8=EA=B3=84=20=EC=BA=A1=EC=B2=98=20=EB=93=9C=EB=9D=BC?=
+ =?UTF-8?q?=EC=9D=B4=EB=B2=84(=EC=88=98=EC=97=85=ED=8C=90=202=EC=84=B8?=
+ =?UTF-8?q?=EC=85=98,=20=EC=9D=BC=EB=B0=98=ED=8C=90=201=EC=84=B8=EC=85=98)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ tests/furio/furio-dev-wt             |  65 ++++++++
+ tests/furio/student_compare_shots.py | 237 +++++++++++++++++++++++++++
+ 2 files changed, 302 insertions(+)
+ create mode 100755 tests/furio/furio-dev-wt
+ create mode 100644 tests/furio/student_compare_shots.py
+
+diff --git a/tests/furio/furio-dev-wt b/tests/furio/furio-dev-wt
+new file mode 100755
+index 00000000..3cce65a5
+--- /dev/null
++++ b/tests/furio/furio-dev-wt
+@@ -0,0 +1,65 @@
++#!/usr/bin/env bash
++# 이 워크트리의 빌드를 목 게이트웨이(mock_compare_gateway.py)에 붙여 띄운다.
++# /home/jun/NPU_AIP/tools/furio-dev 와 같은 일을 하되 cli.mjs 를 FURIO_DEV_CLI 로 받는다
++# (furio-dev 는 /home/jun/NPU_AIP/openclaude-fork/dist/cli.mjs 고정).
++# furio 는 시작 때 기본 모델을 preload 하므로 실제 라우터(:8400, :8410)와 중계기 주소는 거부한다.
++#
++#   FURIO_DEV_CLI       띄울 cli.mjs (기본 워크트리 dist-class/cli.mjs)
++#   FURIO_DEV_BASE_URL  목 주소 (기본 http://127.0.0.1:8499/v1)
++#   FURIO_TEST_CONFIG   설정 폴더. 없으면 fcfg 를 임시 폴더에 복사하고 agentModels, agentRouting 을 빼고 model=gpt-oss-20b
++#   FURIO_HOME          없으면 임시 폴더
++#   FURIO_EDITION       기본 class (빌드한 번들은 빌드 때 정한 판을 쓴다)
++#
++#   예: FURIO_DEV_CLI=/tmp/dist-class/cli.mjs tests/furio/furio-dev-wt
++set -euo pipefail
++here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
++root="$(cd "$here/../.." && pwd)"
++cli="${FURIO_DEV_CLI:-$root/dist-class/cli.mjs}"
++base="${FURIO_DEV_BASE_URL:-http://127.0.0.1:8499/v1}"
++
++real_router() { grep -q -e ':8400' -e ':8410' -e 'sota\.pusan\.ac\.kr'; }
++if printf '%s' "$base" | real_router; then
++  echo "furio-dev-wt: $base 는 실제 라우터입니다. 목 게이트웨이를 가리키세요." >&2
++  exit 2
++fi
++[ -f "$cli" ] || { echo "furio-dev-wt: $cli 가 없습니다. 먼저 빌드하세요." >&2; exit 2; }
++
++if [ -z "${FURIO_TEST_CONFIG:-}" ] || [ -z "${FURIO_HOME:-}" ]; then
++  tmp="$(mktemp -d /tmp/furio-dev-wt.XXXXXX)"
++fi
++if [ -z "${FURIO_TEST_CONFIG:-}" ]; then
++  cp -a /home/jun/NPU_AIP/tools/fcfg "$tmp/config"
++  python3 -I - "$tmp/config/settings.json" <<'PY'
++import json, sys
++path = sys.argv[1]
++with open(path) as f:
++    s = json.load(f)
++# 복사본의 agent 모델은 실제 라우터를 가리킨다. 학생 설정에는 없으니 뺀다.
++s.pop("agentModels", None)
++s.pop("agentRouting", None)
++s["model"] = "gpt-oss-20b"
++with open(path, "w") as f:
++    json.dump(s, f, indent=2)
++PY
++  FURIO_TEST_CONFIG="$tmp/config"
++fi
++if real_router < "$FURIO_TEST_CONFIG/settings.json"; then
++  echo "furio-dev-wt: $FURIO_TEST_CONFIG/settings.json 이 실제 라우터를 가리킵니다." >&2
++  exit 2
++fi
++if [ -z "${FURIO_HOME:-}" ]; then
++  FURIO_HOME="$tmp/home"
++  mkdir -p "$FURIO_HOME"
++fi
++
++export CLAUDE_CODE_USE_OPENAI=1
++export OPENAI_BASE_URL="$base"
++export OPENAI_MODEL="${OPENAI_MODEL:-gpt-oss-20b}"
++export OPENAI_API_KEY=furio_e2e_token
++export FURIO_HOME
++export OPENCLAUDE_CONFIG_DIR="$FURIO_TEST_CONFIG"
++export FURIO_EDITION="${FURIO_EDITION:-class}"
++export BROWSER=true
++export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 DISABLE_TELEMETRY=1 DISABLE_AUTOUPDATER=1 DISABLE_ERROR_REPORTING=1
++node="$(command -v node || echo "$HOME/.local/bin/node")"
++exec "$node" "$cli" "$@"
+diff --git a/tests/furio/student_compare_shots.py b/tests/furio/student_compare_shots.py
+new file mode 100644
+index 00000000..eaa0a32f
+--- /dev/null
++++ b/tests/furio/student_compare_shots.py
+@@ -0,0 +1,237 @@
++#!/usr/bin/env python3
++"""
++수업판 학생 요청 비교와 답한 서버 표시를 목 게이트웨이(mock_compare_gateway.py)에 붙여 tmux 로 찍는다(계약 C7).
++실행 명령은 tests/furio/furio-dev-wt 라서 실제 라우터(:8400, :8410)와 중계기에는 요청하지 않는다.
++
++  세션 1 수업판: 01 보통 턴 뒤 상태줄, 02 /compare 무장 안내와 상태줄 조각, 03 학생 피커, 04 고른 뒤 상태줄,
++                05 한 서버 실패 줄, 06 한도 줄, 07 홈 장애 전환 뒤 상태줄, 08 꺼짐 안내, 09 1대뿐 안내
++                (off, one 은 끝에: /compare 가 읽은 좋은 값은 턴이 쓰는 캐시에도 들어간다)
++  세션 2 수업판 새로: 10 표본 피커(서버 이름 없음)
++  세션 3 일반판: 11 상태줄 그대로, /compare 없음, 비교 설정을 읽지 않음
++
++캡처: <out>/cli-<단계>.txt(.ansi)
++
++실행(워크트리 루트에서, 수업판과 일반판을 따로 빌드한 뒤):
++  taskset -c 64-127 python3 -I tests/furio/student_compare_shots.py --class-cli A/cli.mjs --lab-cli B/cli.mjs --out DIR
++"""
++import argparse
++import json
++import os
++import re
++import shlex
++import shutil
++import subprocess
++import sys
++import time
++import urllib.request
++
++HERE = os.path.dirname(os.path.abspath(__file__))
++sys.dont_write_bytecode = True
++sys.path.insert(0, HERE)
++import compare_e2e as e2e  # noqa: E402
++from compare_e2e import PICKER, READY, Tui, check, get_state, prepare  # noqa: E402
++
++STUDENT = "이어 갈 답을 고르세요"
++ARMED = "다음 질문을 모든 서버에 보내 비교합니다."
++ARM_SEG = "다음 질문 비교"
++FAIL = "다른 서버 답을 받지 못해 RNGD 답으로 이어 갑니다."
++LIMIT = "요청 한도에 걸려 다른 서버 답을 받지 못해 RNGD 답으로 이어 갑니다."
++OFF = "관리자가 학생 요청 비교를 꺼 두었습니다."
++FEW = "지금은 비교할 서버가 모자랍니다."
++QUESTION = "리스트를 거꾸로 뒤집는 법 알려 줘"  # 코드 낱말이 없어 표본 비교 대상이 아니다
++
++
++def served(name):
++    return r"답한\s*서버:\s*" + re.escape(name)
++
++
++def mode(port, **kw):
++    req = urllib.request.Request(f"http://127.0.0.1:{port}/mock/mode", data=json.dumps(kw).encode(),
++                                 headers={"Content-Type": "application/json"}, method="POST")
++    with urllib.request.urlopen(req, timeout=5) as r:
++        return json.loads(r.read())
++
++
++def command(tui, text, pattern, timeout=15):
++    """슬래시 명령을 넣는다. 자동 완성이 첫 Enter 를 먹으면 한 번 더 누른다."""
++    tui.type_line(text)
++    p = tui.wait(pattern, 6)
++    if p is None:
++        tui.keys("Enter")
++        p = tui.wait(pattern, timeout)
++    return p
++
++
++def arm(tui, step):
++    # 앞 단계의 무장 안내가 화면에 남아 있으므로 상태줄 조각이 새로 뜨는 것으로 본다(턴이 끝나면 조각은 사라진다)
++    p = command(tui, "/compare", re.escape(ARM_SEG))
++    check(p is not None and ARMED in p, f"{step} /compare 무장 안내와 상태줄 조각 '{ARM_SEG}'")
++    return p
++
++
++def bridge(st):
++    return [r for r in st["requests"] if r["compare_server"]]
++
++
++def session_class(tui, port):
++    tui.type_line("안녕")
++    p = tui.wait(served("RNGD"), 40)
++    check(p is not None, "01 보통 턴 뒤 상태줄 '답한 서버: RNGD'")
++    tui.snap("01-plain-status")
++    check(not bridge(get_state(port)), "01 보통 턴은 다리 요청이 없다")
++
++    arm(tui, "02")
++    tui.snap("02-compare-armed")
++
++    tui.type_line(QUESTION)
++    p = tui.wait(re.escape(STUDENT), 60)
++    check(p is not None, "03 학생 피커 제목 '이어 갈 답을 고르세요'")
++    tui.snap("03-student-picker")
++    check(p is not None and any(re.search(r"RNGD.*ATOM MAX", line) for line in p.splitlines()),
++          "03 탭은 서버 이름, 홈 RNGD 먼저 ATOM MAX")
++    check(p is not None and ARM_SEG not in p, "03 무장은 이 턴에서 풀린다")
++    b = bridge(get_state(port))
++    check(len(b) == 1 and b[0]["compare_server"] == "atom" and b[0]["kind"] == "student",
++          "03 다리 요청 하나, atom 으로, kind student")
++
++    tui.keys("2")
++    time.sleep(0.8)
++    tui.snap("03b-student-picker-B")
++    tui.keys("Enter")
++    p = tui.wait(served("ATOM MAX"), 30)
++    check(p is not None and "반갑습니다" in p, "04 고른 ATOM MAX 답으로 이어 가고 상태줄 '답한 서버: ATOM MAX'")
++    tui.snap("04-after-pick")
++    st = get_state(port)
++    check(bool(st["comparisons"]) and st["comparisons"][-1].get("kind") == "student", "04 /compare/cli 기록 kind student")
++    check([c["choice"] for c in st["choices"]] == ["B"], "04 choice B")
++
++    mode(port, fail=["atom"])
++    arm(tui, "05")
++    tui.type_line(QUESTION)
++    p = tui.wait(re.escape(FAIL), 40)
++    check(p is not None, "05 한 서버 실패 줄")
++    p = tui.wait(served("RNGD"), 20)
++    check(p is not None and not re.search(served("ATOM MAX"), p), "05 상태줄 '답한 서버: RNGD'")
++    tui.snap("05-fail")
++    st = get_state(port)
++    check(len(st["comparisons"]) == 2 and st["comparisons"][-1].get("kind") == "student", "05 기록 kind student")
++    check(len(st["choices"]) == 1, "05 choice 없음")
++
++    mode(port, fail=[], limit=True)
++    arm(tui, "06")
++    tui.type_line(QUESTION)
++    p = tui.wait(re.escape(LIMIT), 40)
++    check(p is not None, "06 한도 줄")
++    tui.snap("06-limit")
++    check(p is not None and re.search(served("RNGD"), p) is not None, "06 상태줄 '답한 서버: RNGD'")
++    check(len(get_state(port)["choices"]) == 1, "06 choice 없음")
++
++    mode(port, limit=False, home="atom")
++    tui.type_line("안녕")
++    p = tui.wait(served("ATOM MAX"), 40)
++    check(p is not None, "07 홈 장애 전환 뒤 상태줄 '답한 서버: ATOM MAX'")
++    tui.snap("07-failover-status")
++
++    mode(port, home=None, config="off")
++    p = command(tui, "/compare", re.escape(OFF))
++    check(p is not None, "08 꺼짐 안내")
++    tui.snap("08-off")
++    check(p is not None and ARM_SEG not in p, "08 무장하지 않는다")
++
++    mode(port, config="one")
++    p = command(tui, "/compare", re.escape(FEW))
++    check(p is not None, "09 1대뿐 안내")
++    tui.snap("09-one-server")
++    check(p is not None and ARM_SEG not in p, "09 무장하지 않는다")
++
++
++def session_sample(tui, port):
++    tui.type_line("hello.py 만드는 코드 짜 줘")
++    p = tui.wait(re.escape(PICKER), 60)
++    check(p is not None, "10 표본 피커 '어느 답변이 더 마음에 드나요?'")
++    tui.snap("10-sample-picker")
++    check(p is not None and "RNGD" not in p and "ATOM MAX" not in p and "답한 서버" not in p,
++          "10 표본 피커와 상태줄에 서버 이름이 없다")
++    check(p is not None and STUDENT not in p, "10 학생 피커 제목이 아니다")
++    tui.keys("Escape")
++
++
++def session_lab(tui, port):
++    reads = get_state(port)["config_reads"]
++    tui.type_line("안녕")
++    p = tui.wait(r"안녕하세요\. 무엇을 도와드릴까요\?", 40)
++    check(p is not None, "11 일반판 보통 답")
++    time.sleep(1.5)
++    tui.type_line("/compare")
++    time.sleep(4)
++    tui.keys("Enter")
++    time.sleep(3)
++    p = tui.pane()
++    tui.snap("11-lab")
++    check("답한 서버" not in p, "11 일반판 상태줄에 '답한 서버' 가 없다")
++    check(ARMED not in p and ARM_SEG not in p, "11 일반판에는 /compare 무장이 없다")
++    check(get_state(port)["config_reads"] == reads, "11 일반판은 비교 설정을 읽지 않는다")
++
++
++def launch(cli, base, config, port, edition):
++    node = shutil.which("node") or os.path.expanduser("~/.local/bin/node")
++    env = {
++        "PATH": os.path.dirname(node) + ":" + os.environ.get("PATH", "/usr/bin:/bin"),
++        "FURIO_DEV_CLI": cli,
++        "FURIO_DEV_BASE_URL": f"http://127.0.0.1:{port}/v1",
++        "FURIO_TEST_CONFIG": config,
++        "FURIO_HOME": os.path.join(base, "home"),
++        "FURIO_EDITION": edition,
++    }
++    parts = ["taskset", "-c", "64-127", "env"] + [f"{k}={shlex.quote(v)}" for k, v in env.items()]
++    return " ".join(parts + [shlex.quote(os.path.join(HERE, "furio-dev-wt"))])
++
++
++def run_session(name, edition, cli, body, a, base, config, work):
++    tui = Tui(f"srv1105i-Cscr2-{name}", a.out, a.cols, a.rows, "cli-")
++    try:
++        tui.start(launch(cli, base, config, a.port, edition), work)
++        p = tui.wait(READY.pattern, 90, handle_blocking=True)
++        check(p is not None, f"{name}: {edition} 빌드가 목 게이트웨이에 붙어 뜬다")
++        if p is not None:
++            body(tui, a.port)
++    finally:
++        tui.stop()
++
++
++def main():
++    ap = argparse.ArgumentParser()
++    ap.add_argument("--class-cli", required=True, help="수업판 빌드의 cli.mjs")
++    ap.add_argument("--lab-cli", required=True, help="일반판 빌드의 cli.mjs")
++    ap.add_argument("--out", required=True, help="캡처 폴더")
++    ap.add_argument("--port", type=int, default=8499)
++    ap.add_argument("--dir", default="/tmp/furio-student-shots")
++    ap.add_argument("--cols", type=int, default=120)
++    ap.add_argument("--rows", type=int, default=40)
++    a = ap.parse_args()
++
++    config = prepare(a.dir, a.port)
++    work = os.path.join(a.dir, "work")
++    mock = subprocess.Popen([sys.executable, "-I", os.path.join(HERE, "mock_compare_gateway.py"),
++                             "--port", str(a.port), "--workdir", work, "--servers", "rngd,atom"],
++                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
++    time.sleep(0.8)
++    try:
++        run_session("s1", "class", a.class_cli, session_class, a, a.dir, config, work)
++        mode(a.port, config="normal", limit=False, fail=[], home=None)
++        run_session("s2", "class", a.class_cli, session_sample, a, a.dir, config, work)
++        run_session("s3", "lab", a.lab_cli, session_lab, a, a.dir, config, work)
++    finally:
++        try:
++            with open(os.path.join(a.dir, "mock-state.json"), "w") as f:
++                json.dump(get_state(a.port), f, ensure_ascii=False, indent=1)
++        except OSError:
++            pass
++        mock.terminate()
++        mock.wait(timeout=5)
++    print(f"\n{len(e2e.failures)} failure(s)" if e2e.failures else "\nall checks passed")
++    sys.exit(1 if e2e.failures else 0)
++
++
++if __name__ == "__main__":
++    main()
+-- 
+2.43.0
+
+
+From e4181345f9fbee2ac58715bb9f75e36accf1ed21 Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Thu, 5 Nov 2026 20:03:00 +0900
+Subject: [PATCH 68/69] =?UTF-8?q?=EC=88=98=EC=97=85=ED=8C=90=20=EB=B9=84?=
+ =?UTF-8?q?=EA=B5=90=20=EA=B2=80=ED=86=A0=201=EC=B0=A8=20=EA=B3=A0?=
+ =?UTF-8?q?=EC=B9=A8:=20=EC=93=B8=20=EC=88=98=20=EC=97=86=EB=8A=94=20?=
+ =?UTF-8?q?=ED=95=99=EC=83=9D=20=EB=AC=B4=EC=9E=A5=EC=9D=80=20=EC=9D=B4?=
+ =?UTF-8?q?=EC=9C=A0=20=ED=95=9C=20=EC=A4=84(=EC=84=9C=EB=B2=84=20?=
+ =?UTF-8?q?=EB=AA=A8=EC=9E=90=EB=9E=8C,=20=EA=BA=BC=EC=A7=90,=20=EC=84=A4?=
+ =?UTF-8?q?=EC=A0=95=20=EB=AA=BB=20=EC=9D=BD=EC=9D=8C)=EC=9D=84=20?=
+ =?UTF-8?q?=EB=B3=B4=EC=9D=B4=EA=B3=A0=20=EB=B3=B4=ED=86=B5=20=EB=8B=B5?=
+ =?UTF-8?q?=EC=9C=BC=EB=A1=9C,=20=EC=9E=A5=EC=95=A0=20=EC=A0=84=ED=99=98?=
+ =?UTF-8?q?=EC=9C=BC=EB=A1=9C=20=ED=99=88=20=EC=84=9C=EB=B2=84=EA=B0=80=20?=
+ =?UTF-8?q?=EB=B0=94=EB=80=8C=EB=A9=B4=20=EA=B2=B9=EC=B9=9C=20=EB=8B=A4?=
+ =?UTF-8?q?=EC=8B=9C=20=EB=B3=B4=EB=82=B4=EA=B8=B0=20=EB=8B=B5=EC=9D=84=20?=
+ =?UTF-8?q?=EB=B2=84=EB=A6=BC,=20=ED=94=BC=EC=BB=A4=20=EC=95=88=EB=82=B4?=
+ =?UTF-8?q?=20=EC=88=AB=EC=9E=90=EB=8A=94=20=ED=83=AD=20=EC=88=98=EB=A7=8C?=
+ =?UTF-8?q?=ED=81=BC?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- command.ts: studentCompareRefusal 로 /compare 와 턴이 같은 규칙(config.student, studentReason, 서버 2대 미만)을 씀
+- turn.ts: 무장을 쓴 턴에서 다시 판정해 거절이면 deps.notify, 다시 보내기를 시작한 홈과 끝난 뒤 홈이 다르면 그 서버 다리를 뺌
+- ComparePicker.tsx: 고정 '1 2 3' 대신 keyHint(후보 수), pickerLayout 도 같은 줄로 높이를 셈
+---
+ src/components/furio/ComparePicker.test.tsx | 13 ++--
+ src/components/furio/ComparePicker.tsx      | 16 +++--
+ src/furio/compare/command.ts                | 25 +++++---
+ src/furio/compare/turn.test.ts              | 66 +++++++++++++++++++++
+ src/furio/compare/turn.ts                   | 14 ++++-
+ 5 files changed, 111 insertions(+), 23 deletions(-)
+
+diff --git a/src/components/furio/ComparePicker.test.tsx b/src/components/furio/ComparePicker.test.tsx
+index a75f612e..af27adcb 100644
+--- a/src/components/furio/ComparePicker.test.tsx
++++ b/src/components/furio/ComparePicker.test.tsx
+@@ -212,7 +212,7 @@ test('the frame is as tall as the layout says and keeps every line, at any width
+       const lines = h.output().split('\n')
+       // the first frame ends with the hint, whose last word is 취소
+       const rendered = lines.findIndex(line => line.includes('취소')) + 1
+-      expect({ columns, rendered }).toEqual({ columns, rendered: pickerLayout(CANDIDATES[0]!, columns, 40).totalRows })
++      expect({ columns, rendered }).toEqual({ columns, rendered: pickerLayout(CANDIDATES[0]!, columns, 40, 3).totalRows })
+       // the note under the proposed calls wraps at 60 columns; the call above it stays
+       expect(lines.join('\n')).toMatch(/╭─ 제안한 작업 ─+╮\n\s*│ Write hello\.py 1줄/)
+     } finally {
+@@ -222,17 +222,17 @@ test('the frame is as tall as the layout says and keeps every line, at any width
+ })
+ 
+ test('many proposed calls still leave the title and tabs on a 24 row screen', async () => {
+-  const layout = pickerLayout(MANY_CALLS, 80, 24)
++  const layout = pickerLayout(MANY_CALLS, 80, 24, 2)
+   expect(layout.totalRows).toBeLessThanOrEqual(23)
+   expect(layout.bodyHeight).toBeGreaterThanOrEqual(3)
+   expect(layout.shownCalls).toBeLessThan(10)
+   // a short list is shown whole, and a short answer needs no scroll line
+-  const short = pickerLayout(CANDIDATES[0]!, 80, 24)
++  const short = pickerLayout(CANDIDATES[0]!, 80, 24, 3)
+   expect(short.shownCalls).toBe(1)
+   expect(short.scrollRow).toBe(false)
+   expect(short.bodyHeight).toBe(pickerBodyLines(CANDIDATES[0]!, short.width).length)
+   // a long answer keeps its scroll line inside the box and still fits
+-  const long = pickerLayout(CANDIDATES[2]!, 80, 24)
++  const long = pickerLayout(CANDIDATES[2]!, 80, 24, 3)
+   expect(long.scrollRow).toBe(true)
+   expect(long.totalRows).toBeLessThanOrEqual(23)
+ 
+@@ -255,7 +255,7 @@ test('a long answer scrolls inside the picker', async () => {
+     const first = h.output()
+     expect(first).toContain('줄 1')
+     expect(first).not.toContain('줄 60')
+-    expect(first).toContain(`↓ ${60 - pickerLayout(CANDIDATES[2]!, 80, 24).bodyHeight}줄 더`)
++    expect(first).toContain(`↓ ${60 - pickerLayout(CANDIDATES[2]!, 80, 24, 3).bodyHeight}줄 더`)
+     let seen = ''
+     for (let i = 0; i < 6; i++) {
+       await h.type('\u001b[6~') // PgDn
+@@ -286,6 +286,9 @@ test('student comparison: asks which answer to continue with, tabs and box carry
+     expect(out).not.toContain('답변 A')
+     expect(out.indexOf('RNGD')).toBeLessThan(out.indexOf('ATOM MAX'))
+     expect(out).not.toMatch(/[—–]/)
++    // two tabs: the hint offers the two digits there are
++    expect(out).toContain('1 2 ←→ 답변 보기')
++    expect(out).not.toContain('1 2 3')
+   } finally {
+     h.stop()
+   }
+diff --git a/src/components/furio/ComparePicker.tsx b/src/components/furio/ComparePicker.tsx
+index 54a7ad9b..bf7af4d6 100644
+--- a/src/components/furio/ComparePicker.tsx
++++ b/src/components/furio/ComparePicker.tsx
+@@ -13,7 +13,7 @@
+  * line, so blank lines in a file still read as part of the file), the
+  * proposed calls get a box of their own, and a rule sets the key hint apart.
+  *
+- * Keys: 1 2 3 or ←→ switch, ↑↓ PgUp PgDn scroll, Enter picks, Esc or s
++ * Keys: the tab digits (1 2, or 1 2 3) or ←→ switch, ↑↓ PgUp PgDn scroll, Enter picks, Esc or s
+  * (ㄴ with the Korean layout on) keep the home answer, which the hint calls
+  * the default answer, and ctrl+c cancels the turn so nothing runs.
+  */
+@@ -37,7 +37,11 @@ type Props = {
+   onCancel: () => void
+ }
+ 
+-const HINT = '1 2 3 ←→ 답변 보기, ↑↓ 스크롤, Enter 고르기, Esc 기본 답변 사용, ctrl+c 취소'
++/** The key hint: one digit per tab there is. */
++function keyHint(count: number): string {
++  const digits = Array.from({ length: count }, (_, i) => String(i + 1)).join(' ')
++  return `${digits} ←→ 답변 보기, ↑↓ 스크롤, Enter 고르기, Esc 기본 답변 사용, ctrl+c 취소`
++}
+ const NOT_RUN = '아직 실행하지 않았습니다. 고른 답변의 작업만 실행합니다.'
+ const EMPTY_ANSWER = '답변 내용이 없습니다.'
+ 
+@@ -120,14 +124,14 @@ export type PickerLayout = {
+  * How the picker fits a screen: the list of proposed calls gives way first,
+  * then the body, so the title and tabs stay on screen.
+  */
+-export function pickerLayout(candidate: PickCandidate, columns: number, rows: number): PickerLayout {
++export function pickerLayout(candidate: PickCandidate, columns: number, rows: number, count: number): PickerLayout {
+   // inside a box: the panel's margin, the box border and its padding on each
+   // side, and two columns spare, as the lines outside the boxes keep
+   const width = Math.max(16, columns - 8)
+   const bodyLength = bodyRows(candidate, width).length
+   // margin, titled top line, question, gap, tabs, answer box top and bottom,
+   // rule above the hint, hint
+-  const base = 8 + linesOf(HINT, hintWidth(columns)).length
++  const base = 8 + linesOf(keyHint(count), hintWidth(columns)).length
+   const toolCount = candidate.toolCalls.length
+   // box top and bottom, the not-run-yet note
+   const toolFrame = toolCount === 0 ? 0 : 2 + linesOf(NOT_RUN, width).length
+@@ -167,7 +171,7 @@ export function ComparePicker({ candidates, onPick, onCancel }: Props): React.Re
+   const picked = React.useRef(false)
+ 
+   const candidate = candidates[Math.min(index, candidates.length - 1)]!
+-  const { width, bodyHeight, scrollRow, shownCalls } = pickerLayout(candidate, columns, termRows)
++  const { width, bodyHeight, scrollRow, shownCalls } = pickerLayout(candidate, columns, termRows, candidates.length)
+   const body = React.useMemo(() => bodyRows(candidate, width), [candidate, width])
+   const toolCount = candidate.toolCalls.length
+   const maxOffset = Math.max(0, body.length - bodyHeight)
+@@ -296,7 +300,7 @@ export function ComparePicker({ candidates, onPick, onCancel }: Props): React.Re
+         borderRight={false}
+         borderBottom={false}
+       >
+-        {linesOf(HINT, hintWidth(columns)).map((line, i) => (
++        {linesOf(keyHint(candidates.length), hintWidth(columns)).map((line, i) => (
+           <Text key={`hint${i}`} dimColor>
+             {line}
+           </Text>
+diff --git a/src/furio/compare/command.ts b/src/furio/compare/command.ts
+index bb001a2a..4499955a 100644
+--- a/src/furio/compare/command.ts
++++ b/src/furio/compare/command.ts
+@@ -25,6 +25,18 @@ export const COMPARE_COPY = {
+ 
+ type CompareConfig = NonNullable<Awaited<ReturnType<typeof readCompareConfigNow>>>
+ 
++/**
++ * Why a student's comparison cannot run now (the gateway would refuse it),
++ * or null when it can. The command checks it before arming, and the turn
++ * that uses the arm checks it again: the config may have changed in between.
++ */
++export function studentCompareRefusal(config: CompareConfig | null): string | null {
++  if (!config) return COMPARE_COPY.unreachable
++  // An old gateway has no student fields: parseCompareConfig reads that as 'off'.
++  if (!config.student) return config.studentReason === 'few_servers' ? COMPARE_COPY.fewServers : COMPARE_COPY.off
++  return config.servers.length < 2 ? COMPARE_COPY.fewServers : null
++}
++
+ export type CompareCommandDeps = {
+   readConfig: () => Promise<CompareConfig | null>
+ }
+@@ -35,19 +47,14 @@ export async function runCompareCommand(
+   args: string,
+   deps: CompareCommandDeps = defaultDeps,
+ ): Promise<LocalCommandResult> {
+-  const config = await deps.readConfig()
+-  if (!config) return { type: 'text', value: COMPARE_COPY.unreachable }
+-  if (!config.student) {
+-    // An old gateway has no student fields: parseCompareConfig reads that as 'off'.
+-    return {
+-      type: 'text',
+-      value: config.studentReason === 'few_servers' ? COMPARE_COPY.fewServers : COMPARE_COPY.off,
+-    }
+-  }
++  const refused = studentCompareRefusal(await deps.readConfig())
++  if (refused) return { type: 'text', value: refused }
+   armStudentCompare()
+   const question = args.trim()
+   // `/compare 질문`: the command result's nextInput is submitted as the next
+   // prompt (handlePromptSubmit.ts), which is the human turn that uses the arm.
++  // It always goes, so the contract's fallback line for a command that cannot
++  // send the question ('/compare 를 먼저 입력하고 ...') has no place here.
+   if (question) return { type: 'text', value: COMPARE_COPY.armed, nextInput: question, submitNextInput: true }
+   return { type: 'text', value: COMPARE_COPY.armed }
+ }
+diff --git a/src/furio/compare/turn.test.ts b/src/furio/compare/turn.test.ts
+index ebfcef4f..78dc4715 100644
+--- a/src/furio/compare/turn.test.ts
++++ b/src/furio/compare/turn.test.ts
+@@ -761,3 +761,69 @@ describe('answered server', () => {
+     expect(assistants(out3).map(m => m.furioServer)).toEqual(['rngd'])
+   })
+ })
++
++describe('student arm the turn cannot use', () => {
++  // rate 0: no sample comparison takes the turn instead
++  const cases: Array<[string, CompareConfig | null, string]> = [
++    ['one server left', { ...CONFIG, rate: 0, servers: ['rngd'], student: false, studentReason: 'few_servers' }, '지금은 비교할 서버가 모자랍니다.'],
++    ['switched off after /compare', { ...TWO, rate: 0, student: false, studentReason: 'off' }, '관리자가 학생 요청 비교를 꺼 두었습니다.'],
++    ['two servers listed but one in the config', { ...CONFIG, rate: 0, servers: ['rngd'] }, '지금은 비교할 서버가 모자랍니다.'],
++    ['no config', null, '비교 설정을 읽지 못했습니다. 잠시 뒤 다시 입력하세요.'],
++  ]
++  for (const [name, config, line] of cases) {
++    it(`says why, then answers as usual: ${name}`, async () => {
++      const h = harness({ ensureConfig: async () => config, consumeStudentArm: armedOnce() })
++      const out = await run(h, servedCallModel([[assistant([HOME_WRITE])]]))
++      await settle()
++      expect(h.notes).toEqual([line])
++      expect(out[0]).toEqual({ type: 'system', content: line })
++      expect(h.replays).toEqual([])
++      expect(h.picks.length).toBe(0)
++      expect(h.records).toEqual([])
++      expect(assistants(out).map(m => m.furioServer)).toEqual(['rngd'])
++    })
++  }
++
++  it('no arm, no line', async () => {
++    const h = harness({ ensureConfig: async () => ({ ...TWO, rate: 0, student: false, studentReason: 'off' }) })
++    await run(h, servedCallModel([[assistant([HOME_WRITE])]]))
++    expect(h.notes).toEqual([])
++  })
++})
++
++/** The home stream breaks after its headers and the shim's retry lands on `retry`. */
++function failoverCallModel(first: string, retry: string) {
++  const holder: { calls?: CallArgsLike[] } = {}
++  const cm = servedCallModel([[assistant([HOME_WRITE])]], first, async () => {
++    await new Promise(resolve => setTimeout(resolve, 5))
++    const id = holder.calls![0]!.options!.extraRequestHeaders![COMPARE_CAPTURE_HEADER]!
++    noteAnswerServer(id, new Response('', { headers: { [SERVER_HEADER]: retry, [SERVER_NAME_HEADER]: SERVER_NAMES[retry]! } }))
++  })
++  holder.calls = cm.calls
++  return cm
++}
++
++describe('student home moves to another server mid-answer', () => {
++  it('two servers: the doubled answer is dropped and the one-server line shows', async () => {
++    const h = harness({ ensureConfig: async () => TWO, consumeStudentArm: armedOnce() })
++    const out = await run(h, failoverCallModel('rngd', 'atom'))
++    await settle()
++    expect(h.replays.map(r => r.server)).toEqual(['atom'])
++    expect(h.picks.length).toBe(0)
++    expect(h.notes).toEqual(['다른 서버 답을 받지 못해 ATOM MAX 답으로 이어 갑니다.'])
++    expect(assistants(out).map(m => m.furioServer)).toEqual(['atom'])
++    expect(h.served).toEqual([{ id: 'atom', name: 'ATOM MAX' }])
++    expect(h.records[0]!.responses.map(r => r.server)).toEqual(['atom'])
++  })
++
++  it('three servers: each server shows once', async () => {
++    const h = harness({ consumeStudentArm: armedOnce() })
++    await run(h, failoverCallModel('rngd', 'atom'))
++    await settle()
++    expect(h.picks[0]!.map(c => [c.label, c.serverName])).toEqual([
++      ['A', 'ATOM MAX'],
++      ['B', 'GPU'],
++    ])
++    expect(h.records[0]!.responses.map(r => r.server)).toEqual(['atom', 'gpu'])
++  })
++})
+diff --git a/src/furio/compare/turn.ts b/src/furio/compare/turn.ts
+index 43b681d0..80520ce9 100644
+--- a/src/furio/compare/turn.ts
++++ b/src/furio/compare/turn.ts
+@@ -40,6 +40,7 @@ import {
+   takeCompareCapture,
+   waitAnswerServer,
+ } from './capture.js'
++import { studentCompareRefusal } from './command.js'
+ import { consumeStudentArm } from './studentArm.js'
+ import {
+   assignLabels,
+@@ -309,7 +310,10 @@ export function createCompareCallModel<F extends (args: never) => AsyncGenerator
+     }
+     if (!turn || turn.key !== human.key) {
+       const config = await deps.ensureConfig()
+-      const student = deps.consumeStudentArm() && !!config && config.servers.length >= 2
++      // an arm the gateway would now refuse is used up with a line saying why
++      const armed = deps.consumeStudentArm()
++      const refused = armed ? studentCompareRefusal(config) : null
++      const student = armed && !refused
+       turn = {
+         key: human.key,
+         question: human.text,
+@@ -317,6 +321,7 @@ export function createCompareCallModel<F extends (args: never) => AsyncGenerator
+         done: false,
+         config,
+       }
++      if (refused) yield deps.notify(refused)
+     }
+     const state = turn
+     if (!state.kind || state.done || !state.config) {
+@@ -354,7 +359,7 @@ export function createCompareCallModel<F extends (args: never) => AsyncGenerator
+             if (!server || !capture) return null
+             const results = replayTo(capture, server.id)
+             results.catch(() => {})
+-            return { capture, results }
++            return { capture, results, home: server }
+           })
+         : null
+       deps.setPreparing(true)
+@@ -398,7 +403,7 @@ export function createCompareCallModel<F extends (args: never) => AsyncGenerator
+         return
+       }
+       // the server that really answered (the gateway may have failed over)
+-      const homeServer = peekAnswerServer(captureId)
++      const homeServer = peekAnswerServer(captureId) ?? startedEarly?.home ?? null
+       const homeId = homeServer?.id ?? config.servers[0]!
+       const nameOf = (id: string) => config.names[id] ?? id
+       const last = home[home.length - 1]!
+@@ -431,6 +436,9 @@ export function createCompareCallModel<F extends (args: never) => AsyncGenerator
+         deps.setPreparing(false)
+       }
+       if (args.signal.aborted) return
++      // A retry that failed over moved the home answer to a server the
++      // student's replays already went to: drop that leg, not show it twice.
++      if (startedEarly && startedEarly.home.id !== homeId) results = results.filter(r => r.server !== homeId)
+ 
+       const others: Answer[] = results.map(r => {
+         let blocks: BetaContentBlock[] = []
+-- 
+2.43.0
+
+
+From d13cbf7c2e7202c33f11bd0a9f636e7dcdde16dd Mon Sep 17 00:00:00 2001
+From: hyunjun1234 <plab2090@gmail.com>
+Date: Thu, 5 Nov 2026 20:32:58 +0900
+Subject: [PATCH 69/69] =?UTF-8?q?=ED=95=99=EC=83=9D=20=EB=B9=84=EA=B5=90?=
+ =?UTF-8?q?=20=ED=81=90=20=EC=9E=85=EB=A0=A5=EA=B3=BC=20=EC=84=A4=EC=A0=95?=
+ =?UTF-8?q?=20=EB=B3=80=EA=B2=BD,=20=EC=9E=A5=EC=95=A0=20=EC=A0=84?=
+ =?UTF-8?q?=ED=99=98=20=ED=99=94=EB=A9=B4=20=EA=B2=80=EC=A6=9D=20=EB=B3=B4?=
+ =?UTF-8?q?=EA=B0=95?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ tests/furio/mock_compare_gateway.py  | 22 ++++---
+ tests/furio/student_compare_shots.py | 92 +++++++++++++++++++++++++++-
+ 2 files changed, 105 insertions(+), 9 deletions(-)
+
+diff --git a/tests/furio/mock_compare_gateway.py b/tests/furio/mock_compare_gateway.py
+index a020e3d8..86e56572 100644
+--- a/tests/furio/mock_compare_gateway.py
++++ b/tests/furio/mock_compare_gateway.py
+@@ -10,11 +10,12 @@
+   POST /compare/cli             {compare_id, prompt, responses[]} → {"id"}
+   POST /compare/{id}/choice     {"choice": "A"|"B"|"C"|"skip"}
+   GET  /mock/state              시험 스크립트가 읽는 기록(요청·비교·선택)
+-  POST /mock/mode               {"config", "limit", "fail", "home"} 를 띄운 채로 바꾼다
++  POST /mock/mode               {"config", "limit", "fail", "home", "home_delay"} 를 띄운 채로 바꾼다
+ 
+ 학생 요청 비교(계약 C7): 200 답에 X-Furio-Server, X-Furio-Server-Name 을 단다. 설정에 student, student_reason,
+ names 가 있다. 비교 요청은 X-Furio-Compare-Kind 가 student 면 표본 비교가 꺼져 있어도 받는다.
+-옵션 --home atom(장애 전환), --limit(비교 요청 429 rate_limited), --fail atom(409), --config one|off|old.
++옵션 --home atom(장애 전환), --limit(비교 요청 429 rate_limited), --fail atom(409), --config one|off|old|unreadable.
++home_delay 는 홈 응답을 늦춰 진행 중 큐 입력을 시험한다. unreadable 은 설정 읽기 503 을 흉내 낸다.
+   그 밖(/router/status 등)      404 — 클라이언트는 라우터가 아니라고 보고 상태 폴링을 멈춘다
+ 
+ 답(서버마다 다른 hello.py):
+@@ -163,7 +164,10 @@ def do_GET(self):
+         if self.path == "/client/compare":
+             with lock:
+                 state["config_reads"] += 1
+-            self.send_json(200, compare_config(self.server))
++            if self.server.mode["config"] == "unreadable":
++                self.send_json(503, {"error": {"code": "unavailable"}})
++            else:
++                self.send_json(200, compare_config(self.server))
+         elif self.path == "/mock/state":
+             with lock:
+                 self.send_json(200, state)
+@@ -184,7 +188,7 @@ def do_POST(self):
+             with lock:
+                 state["choices"].append({"id": int(m.group(1)), "choice": body.get("choice")})
+             self.send_json(200, {"ok": True})
+-        elif self.path == "/mock/mode":  # 시험 스크립트가 끄지 않고 동작을 바꾼다: config, limit, fail, home
++        elif self.path == "/mock/mode":  # 시험 스크립트가 끄지 않고 설정, 실패, 홈과 응답 지연을 바꾼다
+             with lock:
+                 self.server.mode.update({k: v for k, v in body.items() if k in self.server.mode})
+                 self.send_json(200, self.server.mode)
+@@ -205,6 +209,8 @@ def chat(self, body):
+                 "kind": kind,
+                 "compare_id": compare_id,
+                 "compare_server": target,
++                "private_headers": [k for k in self.headers if k.lower() in
++                                    {"x-furio-answer-tag", "x-furio-compare-capture"}],
+                 "authorization": self.headers.get("authorization"),
+                 "stream": bool(body.get("stream")),
+                 "tools": len(body.get("tools") or []),
+@@ -226,6 +232,8 @@ def chat(self, body):
+                                                      "X-Furio-Server-Name": NAMES.get(server, server)}
+         if target in self.server.slow:
+             time.sleep(self.server.slow[target])
++        if target is None:
++            time.sleep(mode["home_delay"])
+         model = "gpt-oss-20b"  # 응답 model 은 public 이름(서버를 드러내지 않음)
+         ans = answer(server, body, self.server.workdir)
+         finish = "tool_calls" if ans["tool"] else "stop"
+@@ -269,8 +277,8 @@ def main():
+     ap.add_argument("--workdir", default=os.getcwd(), help="Write 도구가 hello.py 를 쓸 절대 경로 폴더")
+     ap.add_argument("--servers", default="rngd,atom", help="설정에 나오는 서버, 홈 먼저(삼지선다 e2e 는 rngd,atom,gpu)")
+     ap.add_argument("--home", default=None, help="홈 요청에 답하는 서버(장애 전환을 흉내 내려면 atom)")
+-    ap.add_argument("--config", choices=["normal", "one", "off", "old"], default="normal",
+-                    help="/client/compare 모양: 보통, 1대뿐, 꺼짐, 옛 게이트웨이(학생 칸과 서버 헤더 없음)")
++    ap.add_argument("--config", choices=["normal", "one", "off", "old", "unreadable"], default="normal",
++                    help="/client/compare 모양: 보통, 1대뿐, 꺼짐, 옛 게이트웨이, 읽기 실패(503)")
+     ap.add_argument("--limit", action="store_true", help="비교 요청은 429 rate_limited")
+     ap.add_argument("--fail", action="append", default=[], help="이 서버로 온 비교 요청은 409")
+     ap.add_argument("--slow", action="append", default=[], help="서버=초 — 이 서버 비교 답을 늦춘다")
+@@ -279,7 +287,7 @@ def main():
+     srv = ThreadingHTTPServer((a.host, a.port), Handler)
+     srv.workdir = a.workdir.rstrip("/")
+     srv.servers = a.servers.split(",")
+-    srv.mode = {"config": a.config, "limit": a.limit, "fail": list(a.fail), "home": a.home}
++    srv.mode = {"config": a.config, "limit": a.limit, "fail": list(a.fail), "home": a.home, "home_delay": 0}
+     srv.slow = {k: float(v) for k, v in (s.split("=", 1) for s in a.slow)}
+     srv.timeout_s = a.timeout_s
+     print(f"mock compare gateway on http://{a.host}:{a.port} workdir={srv.workdir}", flush=True)
+diff --git a/tests/furio/student_compare_shots.py b/tests/furio/student_compare_shots.py
+index eaa0a32f..8693342a 100644
+--- a/tests/furio/student_compare_shots.py
++++ b/tests/furio/student_compare_shots.py
+@@ -8,8 +8,11 @@
+                 (off, one 은 끝에: /compare 가 읽은 좋은 값은 턴이 쓰는 캐시에도 들어간다)
+   세션 2 수업판 새로: 10 표본 피커(서버 이름 없음)
+   세션 3 일반판: 11 상태줄 그대로, /compare 없음, 비교 설정을 읽지 않음
++  세션 4 수업판: 12 진행 중 /compare 질문을 큐에 입력, 13 학생 피커와 실제 요청 본문, 14 설정 읽기 실패 안내
++  세션 5 수업판: 15 학생 비교 칸과 서버 헤더가 없는 옛 게이트웨이
++  세션 6 수업판: 16 무장 뒤 꺼짐, 17 무장 뒤 서버 모자람, 18 장애 전환 뒤 홈 먼저 피커
+ 
+-캡처: <out>/cli-<단계>.txt(.ansi)
++캡처: <out>/<prefix><단계>.txt(.ansi), 기본 prefix 는 cli-
+ 
+ 실행(워크트리 루트에서, 수업판과 일반판을 따로 빌드한 뒤):
+   taskset -c 64-127 python3 -I tests/furio/student_compare_shots.py --class-cli A/cli.mjs --lab-cli B/cli.mjs --out DIR
+@@ -90,6 +93,7 @@ def session_class(tui, port):
+     check(p is not None and any(re.search(r"RNGD.*ATOM MAX", line) for line in p.splitlines()),
+           "03 탭은 서버 이름, 홈 RNGD 먼저 ATOM MAX")
+     check(p is not None and ARM_SEG not in p, "03 무장은 이 턴에서 풀린다")
++    check(p is not None and "1 2 ←→" in p and "1 2 3" not in p, "03 두 답의 피커 안내에는 1 2 만 나온다")
+     b = bridge(get_state(port))
+     check(len(b) == 1 and b[0]["compare_server"] == "atom" and b[0]["kind"] == "student",
+           "03 다리 요청 하나, atom 으로, kind student")
+@@ -173,6 +177,80 @@ def session_lab(tui, port):
+     check(get_state(port)["config_reads"] == reads, "11 일반판은 비교 설정을 읽지 않는다")
+ 
+ 
++def session_queued(tui, port):
++    mode(port, home_delay=5)
++    before = len(get_state(port)["requests"])
++    tui.type_line("먼저 답하는 질문")
++    deadline = time.time() + 20
++    while not any(r["tools"] for r in get_state(port)["requests"][before:]) and time.time() < deadline:
++        time.sleep(0.1)
++    check(any(r["tools"] for r in get_state(port)["requests"][before:]), "12 첫 턴이 목 서버에서 답을 만드는 중이다")
++    tui.type_line("/compare " + QUESTION)
++    time.sleep(0.5)
++    tui.snap("12-queued-command")
++    p = tui.wait(re.escape(STUDENT), 60)
++    check(p is not None, "13 실행 중 큐에 넣은 /compare 질문이 학생 피커를 연다")
++    tui.snap("13-queued-student-picker")
++    # 시작 때 도구 없는 보조 요청도 나간다. 학생 턴과 다시 보내기는 도구 목록을 함께 보낸다.
++    requests = [r for r in get_state(port)["requests"][before:] if r["tools"]]
++    check(len(requests) == 3 and [r["question"] for r in requests] == ["먼저 답하는 질문", QUESTION, QUESTION],
++          "13 첫 질문 뒤 같은 비교 질문이 홈과 다른 서버에 한 번씩 간다")
++    check(len(requests) == 3 and requests[-1]["kind"] == "student" and requests[-1]["compare_server"] == "atom",
++          "13 큐 명령의 다시 보내기는 student 종류이다")
++    check(len(requests) == 3 and requests[-1]["body_sha"] == requests[-2]["body_sha"],
++          "13 홈과 다른 서버에 보낸 요청 본문이 같다")
++    check(not any(r["question"].startswith("/compare") for r in requests), "13 슬래시 명령 자체는 모델에 보내지 않는다")
++    if p is not None:
++        tui.keys("Escape")
++        tui.wait(served("RNGD"), 20)
++    mode(port, home_delay=0, config="unreadable")
++    p = command(tui, "/compare", re.escape("비교 설정을 읽지 못했습니다. 잠시 뒤 다시 입력하세요."))
++    check(p is not None and ARM_SEG not in p, "14 설정을 못 읽으면 이유를 알리고 무장하지 않는다")
++    tui.snap("14-config-unreadable")
++
++
++def session_old(tui, port):
++    tui.type_line("안녕")
++    p = tui.wait(r"안녕하세요\. 무엇을 도와드릴까요\?", 40)
++    check(p is not None and "답한 서버" not in p, "15 옛 게이트웨이에서는 헤더 없이 보통 답을 받는다")
++    p = command(tui, "/compare", re.escape(OFF))
++    check(p is not None and ARM_SEG not in p, "15 옛 게이트웨이는 학생 요청 비교를 무장하지 않는다")
++    tui.snap("15-old-gateway")
++
++
++def session_armed_config(tui, port):
++    # 좋은 설정으로 무장한 뒤, 한 번 더 /compare 를 입력해 바뀐 설정을 캐시에 읽는다.
++    # 이미 무장한 다음 질문이 설정 변경 때문에 보통 턴으로 가는 경로도 실제 화면에서 본다.
++    for number, config, notice in ((16, "off", OFF), (17, "one", FEW)):
++        mode(port, config="normal", home=None)
++        arm(tui, str(number))
++        mode(port, config=config)
++        p = command(tui, "/compare", re.escape(notice))
++        check(p is not None and ARM_SEG in p, f"{number} 설정을 새로 읽어도 앞서 무장한 질문은 남아 있다")
++        old_count = (p or "").count(notice)
++        tui.type_line("지금 받은 질문")
++        deadline = time.time() + 30
++        while time.time() < deadline:
++            p = tui.pane()
++            if p.count(notice) > old_count and ARM_SEG not in p and re.search(served("RNGD"), p):
++                break
++            time.sleep(0.2)
++        check(p.count(notice) > old_count and ARM_SEG not in p and re.search(served("RNGD"), p),
++              f"{number} 무장을 쓸 수 없는 턴은 이유를 다시 알리고 보통 답과 서버를 보인다")
++        tui.snap(f"{number}-armed-{config}")
++
++    mode(port, config="normal", home="atom")
++    arm(tui, "18")
++    tui.type_line(QUESTION)
++    p = tui.wait(re.escape(STUDENT), 60)
++    check(p is not None and any(re.search(r"ATOM MAX\s+RNGD", line) for line in p.splitlines()),
++          "18 장애 전환된 실제 홈 ATOM MAX 먼저, 다른 RNGD 답이 한 칸씩 나온다")
++    tui.snap("18-student-failover-picker")
++    if p is not None:
++        tui.keys("Escape")
++        check(tui.wait(served("ATOM MAX"), 20) is not None, "18 건너뛰면 실제 홈 ATOM MAX 로 이어 간다")
++
++
+ def launch(cli, base, config, port, edition):
+     node = shutil.which("node") or os.path.expanduser("~/.local/bin/node")
+     env = {
+@@ -188,13 +266,15 @@ def launch(cli, base, config, port, edition):
+ 
+ 
+ def run_session(name, edition, cli, body, a, base, config, work):
+-    tui = Tui(f"srv1105i-Cscr2-{name}", a.out, a.cols, a.rows, "cli-")
++    tui = Tui(f"srv1105i-Cscr2-{name}", a.out, a.cols, a.rows, a.prefix)
+     try:
+         tui.start(launch(cli, base, config, a.port, edition), work)
+         p = tui.wait(READY.pattern, 90, handle_blocking=True)
+         check(p is not None, f"{name}: {edition} 빌드가 목 게이트웨이에 붙어 뜬다")
+         if p is not None:
+             body(tui, a.port)
++        else:
++            tui.snap(name + "-startup-failed")
+     finally:
+         tui.stop()
+ 
+@@ -204,6 +284,7 @@ def main():
+     ap.add_argument("--class-cli", required=True, help="수업판 빌드의 cli.mjs")
+     ap.add_argument("--lab-cli", required=True, help="일반판 빌드의 cli.mjs")
+     ap.add_argument("--out", required=True, help="캡처 폴더")
++    ap.add_argument("--prefix", default="cli-", help="캡처 파일 이름 앞글")
+     ap.add_argument("--port", type=int, default=8499)
+     ap.add_argument("--dir", default="/tmp/furio-student-shots")
+     ap.add_argument("--cols", type=int, default=120)
+@@ -221,6 +302,13 @@ def main():
+         mode(a.port, config="normal", limit=False, fail=[], home=None)
+         run_session("s2", "class", a.class_cli, session_sample, a, a.dir, config, work)
+         run_session("s3", "lab", a.lab_cli, session_lab, a, a.dir, config, work)
++        run_session("s4", "class", a.class_cli, session_queued, a, a.dir, config, work)
++        mode(a.port, config="old")
++        run_session("s5", "class", a.class_cli, session_old, a, a.dir, config, work)
++        mode(a.port, config="normal")
++        run_session("s6", "class", a.class_cli, session_armed_config, a, a.dir, config, work)
++        check(not any(r["private_headers"] for r in get_state(a.port)["requests"]),
++              "모든 실제 HTTP 요청에서 내부 답한 서버와 캡처 태그를 뗀다")
+     finally:
+         try:
+             with open(os.path.join(a.dir, "mock-state.json"), "w") as f:
 -- 
 2.43.0
 
