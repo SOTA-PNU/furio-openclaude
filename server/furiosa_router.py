@@ -35,6 +35,8 @@ import hashlib
 import hmac
 import math
 
+from model_discovery import discover as discover_models, runtime_info
+
 # 옛 로컬 아티팩트 폴더(상대경로 레지스트리 항목 호환용). 배포본에선 환경변수로 옮길 수 있다.
 ART = os.environ.get("FURIO_ARTIFACTS_LEGACY", "/home/jun/RNGD-proj/Model_Benchmark/rngd-npu/artifacts")
 # 새로 빌드한 tp8 v2 아티팩트 8종이 사는 곳(nvme2 공용 저장소). 레지스트리의 tps 경로 접두사.
@@ -255,6 +257,8 @@ FXB_CACHE = os.path.expanduser("~/.cache/furiosa/llm/fxb")
 def is_fxb(reg):
     """이 모델의 기본 빌드가 FXB 번들인지. fxb 캐시에 저장소 디렉토리가 있으면 FXB.
     (수동 표기 대신 실제 캐시를 보므로 아티팩트가 바뀌어도 자동으로 맞다.)"""
+    if reg.get("fxb") is True:
+        return True
     repo = reg["path"]
     if repo.startswith("/"):
         return False
@@ -283,6 +287,8 @@ def resolve_art(reg, tp):
 
 def is_fxb_variant(reg, tp):
     """(reg, tp) 구성이 FXB 로 서빙되는지 = pp 불가 여부. 로컬 v2 경로면 항상 아님."""
+    if tp == reg["tp"] and reg.get("fxb") is True:
+        return True
     p = resolve_art(reg, tp)
     return False if p.startswith("/") else is_fxb(reg)
 
@@ -405,13 +411,16 @@ def model_desc(model_id):
 
 # ── 모델 목록 다시 읽기·올릴 수 있는지(2026-10-26) ─────────────────────────────
 # 콘솔이 "이 서버에서 바로 올릴 수 있는 모델" 을 고르게 한다(설계 notes/2026-10-26-furio-model-control-compare-design.md 1절).
-#   · 목록 = 내장 REGISTRY + 추가 모델 파일(ROUTER_EXTRA_MODELS, yaml·json, 없으면 내장만). 추가 파일을 고치면
+#   · 목록 = 자동 발견 결과 + 내장 REGISTRY + 추가 모델 파일(ROUTER_EXTRA_MODELS, yaml·json). 명시한 설정이 우선한다. 추가 파일을 고치면
 #     다음 /router/models(그리고 /v1/models·preload·pin·요청) 때 저절로 다시 읽고, POST /router/rescan 은 바로 다시 읽는다.
 #   · /router/models 각 행의 available·reason: 그 변형이 쓰는 결과물이 디스크에 다 있나. 결과물 폴더(절대 경로)는
 #     폴더를, 프리빌트(HF 저장소 id)는 HF 캐시의 스냅숏을 본다. 없어도 목록에는 남긴다(콘솔이 흐리게 보인다).
 # 내장 목록의 처음 모습. rebuild_registry 가 매번 여기서 새로 짓는다(추가 파일을 지우면 내장 값으로 돌아간다).
 _BUILTIN_REGISTRY = copy.deepcopy(REGISTRY)
 _BUILTIN_TOOLS = dict(TOOL_SUPPORT)
+_DISCOVERED_REGISTRY = {}
+_DISCOVERED_TOOLS = {}
+_DISCOVERY_REPORT = {}
 EXTRA_MODELS = os.environ.get("ROUTER_EXTRA_MODELS") or os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "extra-models.yaml")
 TP_VALUES = (1, 2, 4, 8, 16, 32)
@@ -538,11 +547,24 @@ def _active_bases():
     return {parse_variant(m)[0] for m in mids}
 
 
-def rebuild_registry():
-    """REGISTRY·TOOL_SUPPORT 를 내장 목록 + 추가 파일로 다시 짓는다 → {"count", "added", "removed", "kept"}.
+def discovery_roots():
+    """로컬 결과물 기본 폴더 + ROUTER_MODEL_DIRS(콜론 구분). 서버 전체를 재귀 탐색하지 않는다."""
+    roots = [NVME_ART, ART, os.path.expanduser("~/models")]
+    roots.extend(p for p in os.environ.get("ROUTER_MODEL_DIRS", "").split(os.pathsep) if p)
+    return list(dict.fromkeys(os.path.abspath(os.path.expanduser(p)) for p in roots))
+
+
+def discovery_runtime():
+    return runtime_info(FURIOSA_LLM)
+
+
+def rebuild_registry(discover=False):
+    """REGISTRY·TOOL_SUPPORT 를 자동 발견 + 내장 목록 + 추가 파일로 다시 짓는다.
+    discover=True면 로컬 디스크를 다시 읽고 응답에 discovery 진단도 넣는다. 보통 조회는 발견 결과를 재사용한다.
     added·removed 는 /router/models 의 id(변형 포함) 기준, kept 는 빠져야 하지만 떠 있어서 남긴 base.
     추가 파일이 틀렸으면 ValueError 이고 목록은 앞의 것 그대로. 새 dict 로 갈아 끼운다(읽는 쪽은 락 없이 옛 것이나 새 것을 본다)."""
     global REGISTRY, TOOL_SUPPORT, _REG_SIG, _REG_BAD_SIG, _REG_KEPT
+    global _DISCOVERED_REGISTRY, _DISCOVERED_TOOLS, _DISCOVERY_REPORT
     with _REG_LOCK:
         sig = _file_sig(EXTRA_MODELS)
         try:
@@ -550,17 +572,26 @@ def rebuild_registry():
         except ValueError:
             _REG_BAD_SIG = sig
             raise
-        reg = copy.deepcopy(_BUILTIN_REGISTRY)
-        tools = dict(_BUILTIN_TOOLS)
+        found, found_tools, report = _DISCOVERED_REGISTRY, _DISCOVERED_TOOLS, _DISCOVERY_REPORT
+        if discover:
+            found, found_tools, report = discover_models(
+                hub_caches(), discovery_roots(), {**_BUILTIN_REGISTRY, **extra}, runtime=discovery_runtime())
+        reg = copy.deepcopy(found)
+        reg.update(copy.deepcopy(_BUILTIN_REGISTRY))
+        tools = {**found_tools, **_BUILTIN_TOOLS}
         reg.update(extra)
         tools.update(extra_tools)
-        kept = sorted(b for b in _active_bases() if b in REGISTRY and b not in reg)
+        active = _active_bases()
+        kept = sorted(b for b in active if b in REGISTRY and (
+            b not in reg or (b in found and b not in extra and b not in _BUILTIN_REGISTRY and REGISTRY[b] != reg[b])))
         for b in kept:
+            # 새 스냅숏을 발견해도 실행 중인 빌드의 TP·경로는 종료 전까지 보존한다.
             reg[b] = REGISTRY[b]
             if b in TOOL_SUPPORT:
                 tools[b] = TOOL_SUPPORT[b]
         before = all_model_ids()
         REGISTRY, TOOL_SUPPORT = reg, tools
+        _DISCOVERED_REGISTRY, _DISCOVERED_TOOLS, _DISCOVERY_REPORT = found, found_tools, report
         _REG_SIG, _REG_BAD_SIG, _REG_KEPT = sig, False, set(kept)
         _AVAIL.clear()
         after = all_model_ids()
@@ -568,7 +599,8 @@ def rebuild_registry():
         return {"count": len(after),
                 "added": [m for m in after if m not in seen_before],
                 "removed": [m for m in before if m not in seen_after],
-                "kept": kept}
+                "kept": kept,
+                **({"discovery": report} if discover else {})}
 
 
 def registry_fresh():
@@ -2153,18 +2185,19 @@ def build_app():
 
     @app.post("/router/rescan")
     def rescan():
-        """모델 목록(내장 REGISTRY + 추가 파일 ROUTER_EXTRA_MODELS)을 바로 다시 읽는다 →
+        """디스크의 로컬 모델을 자동 발견하고 내장 REGISTRY + 추가 파일 ROUTER_EXTRA_MODELS을 다시 읽는다 →
         {"ok": true, "count": n, "added": [id...], "removed": [id...], "kept": [base...]}. 추가 파일이 틀렸으면
         400 {"reason": "bad_catalog", "error": {"message"}} 이고 목록은 앞의 것 그대로. 떠 있는 모델은 빠져도
         내려갈 때까지 남는다(kept). 라우터 키는 미들웨어가 다른 /router 길과 같게 본다. sync — 파일 읽기는 threadpool 에서."""
         try:
-            res = rebuild_registry()
+            res = rebuild_registry(discover=True)
         except ValueError as e:
             ROUTER._log(f"rescan 실패: {e}")
             return JSONResponse({"ok": False, "reason": "bad_catalog",
                                  "error": {"message": str(e), "code": "bad_catalog"}}, status_code=400)
         ROUTER._log(f"rescan: 모델 {res['count']}개, 더함 {res['added']}, 뺌 {res['removed']}"
-                    + (f", 떠 있어 남김 {res['kept']}" if res["kept"] else ""))
+                    + (f", 떠 있어 남김 {res['kept']}" if res["kept"] else "")
+                    + f", 자동 발견 {len(res['discovery']['found'])}개, 제외 {len(res['discovery']['skipped'])}건")
         return {"ok": True, **res}
 
     @app.get("/router/status")
@@ -2442,6 +2475,11 @@ def main():
         gen_opencode_json(sys.argv[2])
     elif cmd == "serve":
         import uvicorn
+        try:
+            found = rebuild_registry(discover=True)
+            ROUTER._log(f"로컬 모델 자동 발견: {found.get('discovery', {}).get('found', [])}")
+        except ValueError as error:
+            ROUTER._log(f"시작 시 목록 갱신 실패, 기존 목록 유지: {error}")
         start_smi_refresher()   # furiosa-smi 를 백그라운드로만 호출 → /router/status 가 항상 즉답
         api_key = os.environ.get("SDI_API_KEY") or os.environ.get("FURIOSA_API_KEY")
         # 인증 on/off 는 SDI_API_KEY 설정 여부로 결정:
@@ -2468,7 +2506,7 @@ def main():
             ROUTER._log(f"수업 모드: pin={sorted(PINNED)} force_evict={'on' if FORCE_EVICT else 'off'}")
         extra = sorted(set(REGISTRY) - set(_BUILTIN_REGISTRY))
         ROUTER._log(f"추가 모델 파일 {EXTRA_MODELS}: "
-                    + (f"{len(extra)}개 {extra}" if os.path.exists(EXTRA_MODELS) else "없음(내장 목록만)"))
+                    + (f"{len(extra)}개 {extra}" if os.path.exists(EXTRA_MODELS) else "없음(내장 목록과 자동 발견 사용)"))
         # PIN_START_DELAY 초 뒤 모델을 순서대로 올린다(스레드라 HTTP 는 바로 뜬다). 기록이 있으면 그때 올라와 있던 모델(비었으면 없음)
         if resume is None:
             start_pin_preload()

@@ -10,6 +10,7 @@ import os
 import sys
 import tempfile
 import time
+import zipfile
 
 os.environ.setdefault("FURIO_LOGDIR", tempfile.mkdtemp(prefix="router-catalog-"))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -54,6 +55,11 @@ def no_npu(monkeypatch, tmp_path):
     monkeypatch.setattr(fr, "hub_caches", lambda: [str(hub)])
     monkeypatch.setattr(fr, "EXTRA_MODELS", str(tmp_path / "extra-models.yaml"))
     monkeypatch.setattr(fr, "AVAIL_TTL", 0.0)
+    monkeypatch.setattr(fr, "_DISCOVERED_REGISTRY", {}, raising=False)
+    monkeypatch.setattr(fr, "_DISCOVERED_TOOLS", {}, raising=False)
+    monkeypatch.setattr(fr, "_DISCOVERY_REPORT", {}, raising=False)
+    monkeypatch.setattr(fr, "discovery_roots", lambda: [], raising=False)
+    monkeypatch.setattr(fr, "discovery_runtime", lambda: ("v2026.4", {"gemma4"}, {"gemma4"}), raising=False)
     fr.rebuild_registry()
     yield
     monkeypatch.undo()
@@ -379,3 +385,159 @@ def test_example_extra_file_loads(monkeypatch):
     reg = regs["Qwen3-32B-FP8-local"]
     assert (reg["tp"], reg["ctx"], reg["tool"], reg["reasoning"], reg["cards"]) == (8, 40960, "hermes", "qwen3", 1)
     assert tools["Qwen3-32B-FP8-local"] == "ok"
+
+
+# ── 디스크에서 자동 발견 ─────────────────────────────────────────────────────
+GEMMA = "gemma-4-31B-it-FP8-block"
+
+
+def ready_fxb(snapshot, *, tp=32, ctx=262144, architecture="Gemma4ForConditionalGeneration"):
+    (snapshot / "config.json").write_text(json.dumps({"architectures": [architecture], "model_type": "gemma4"}))
+    with zipfile.ZipFile(snapshot / "model.fxb", "w") as bundle:
+        bundle.writestr("manifest.json", json.dumps({
+            "model": {"architecture": architecture, "max_position_embeddings": ctx},
+            "parallel_config": {"tensor_parallel_size": tp, "pipeline_parallel_size": 1},
+        }))
+    (snapshot / "model.safetensors").write_text("weights")
+
+
+def test_rescan_discovers_downloaded_gemma_without_loading_npu(monkeypatch, tmp_path):
+    snap = hub_repo(tmp_path, "furiosa-ai/" + GEMMA, {})
+    ready_fxb(snap)
+    c = _client(monkeypatch)
+    assert GEMMA not in _rows(c)
+    res = c.post("/router/rescan").json()
+    assert GEMMA in res["added"] and GEMMA in res["discovery"]["found"]
+    row = _rows(c)[GEMMA]
+    assert (row["tp"], row["context"], row["cards"], row["available"]) == (32, 262144, 4, True)
+    assert (row["dp_choices"], row["pp_choices"]) == ([1], [1])
+    assert fr.REGISTRY[GEMMA]["tool"] == fr.REGISTRY[GEMMA]["reasoning"] == "gemma4"
+    assert fr.ROUTER.running == {}
+    assert not (tmp_path / "extra-models.yaml").exists()
+    assert c.post("/router/rescan").json()["added"] == []
+
+
+def test_discovered_model_survives_manual_catalog_reload(monkeypatch, tmp_path):
+    snap = hub_repo(tmp_path, "furiosa-ai/" + GEMMA, {})
+    ready_fxb(snap)
+    c = _client(monkeypatch)
+    c.post("/router/rescan")
+    write_extra(tmp_path, [{"id": "Manual", "path": "org/Manual", "tp": 8, "ctx": 4096}])
+    assert GEMMA in _rows(c) and "Manual" in _rows(c)
+    # 명시한 모델 설정은 자동 메타데이터보다 우선한다.
+    write_extra(tmp_path, [{"id": GEMMA, "path": "furiosa-ai/" + GEMMA, "tp": 32, "ctx": 65536}])
+    bump(tmp_path / "extra-models.yaml")
+    assert _rows(c)[GEMMA]["context"] == 65536
+
+
+def test_rescan_uses_installed_release_snapshot(monkeypatch, tmp_path):
+    repo = "furiosa-ai/" + GEMMA
+    current = hub_repo(tmp_path, repo, {}, rev="release")
+    ready_fxb(current, ctx=65536)
+    latest = hub_repo(tmp_path, repo, {}, rev="latest")
+    ready_fxb(latest, tp=8, ctx=131072)
+    refs = current.parent.parent / "refs"
+    refs.mkdir()
+    (refs / "v2026.4").write_text("release")
+    (refs / "main").write_text("latest")
+    c = _client(monkeypatch)
+    c.post("/router/rescan")
+    assert (_rows(c)[GEMMA]["tp"], _rows(c)[GEMMA]["context"]) == (32, 65536)
+    assert fr.REGISTRY[GEMMA]["path"] == str(current)
+
+
+def test_rescan_incomplete_weights_and_missing_metadata(monkeypatch, tmp_path):
+    snap = hub_repo(tmp_path, "furiosa-ai/" + GEMMA, {})
+    ready_fxb(snap)
+    (snap / "model.safetensors").unlink()
+    hub_repo(tmp_path, "other/Only-Weights", {"config.json": "{}", "m.safetensors": "x"})
+    c = _client(monkeypatch)
+    result = c.post("/router/rescan").json()
+    assert _rows(c)[GEMMA]["available"] is False
+    assert "Only-Weights" not in _rows(c)
+    assert any("Only-Weights" in row["path"] for row in result["discovery"]["skipped"])
+    (snap / "model.safetensors").write_text("weights")
+    c.post("/router/rescan")
+    assert _rows(c)[GEMMA]["available"] is True
+
+
+def test_rescan_detects_local_v2_and_never_offers_fxb_pp(monkeypatch, tmp_path):
+    root = tmp_path / "local"
+    folder = root / "Local-Model"
+    folder.mkdir(parents=True)
+    v2_dir(str(folder))
+    (folder / "config.json").write_text(json.dumps({"architectures": ["LlamaForCausalLM"], "model_type": "llama", "max_position_embeddings": 8192}))
+    (folder / "artifact.json").write_text(json.dumps({"model": {
+        "parallel_config": {"tensor_parallel_size": 8, "pipeline_parallel_size": 1}}}))
+    fxb = root / "FXB-Model"
+    fxb.mkdir()
+    ready_fxb(fxb, tp=8)
+    monkeypatch.setattr(fr, "discovery_roots", lambda: [str(root)])
+    c = _client(monkeypatch)
+    c.post("/router/rescan")
+    rows = _rows(c)
+    assert rows["Local-Model"]["available"] is True and "Local-Model@pp2" in rows
+    assert rows["FXB-Model"]["pp_choices"] == [1] and "FXB-Model@pp2" not in rows
+
+
+def test_rescan_removes_deleted_discovery_and_keeps_running(monkeypatch, tmp_path):
+    import shutil
+    snap = hub_repo(tmp_path, "furiosa-ai/" + GEMMA, {})
+    ready_fxb(snap)
+    r = fr.Router()
+    c = _client(monkeypatch, r)
+    c.post("/router/rescan")
+    r.running[GEMMA] = fr.Backend(GEMMA, 8411, FakeProc(), [0, 1, 2, 3])
+    r.state[GEMMA] = "up"
+    shutil.rmtree(snap)
+    res = c.post("/router/rescan").json()
+    assert GEMMA in res["kept"] and GEMMA not in res["removed"]
+    r.running.clear()
+    r.state.clear()
+    assert GEMMA in c.post("/router/rescan").json()["removed"]
+
+
+@pytest.mark.parametrize("bad", ["broken zip", "bad manifest", "wrong tp"])
+def test_bad_discovered_artifact_does_not_break_other_models(monkeypatch, tmp_path, bad):
+    snap = hub_repo(tmp_path, "furiosa-ai/" + GEMMA, {})
+    ready_fxb(snap)
+    broken = hub_repo(tmp_path, "other/Broken", {})
+    ready_fxb(broken, tp=3 if bad == "wrong tp" else 8)
+    if bad == "broken zip":
+        (broken / "model.fxb").write_text("broken")
+    elif bad == "bad manifest":
+        with zipfile.ZipFile(broken / "model.fxb", "w") as bundle:
+            bundle.writestr("manifest.json", "{")
+    c = _client(monkeypatch)
+    res = c.post("/router/rescan")
+    assert res.status_code == 200
+    assert GEMMA in _rows(c) and "Broken" not in _rows(c)
+    assert res.json()["discovery"]["skipped"]
+
+
+def test_discovery_name_collision_is_not_silent(monkeypatch, tmp_path):
+    for org in ("a", "b"):
+        snap = hub_repo(tmp_path, org + "/Same", {})
+        ready_fxb(snap)
+    c = _client(monkeypatch)
+    result = c.post("/router/rescan").json()
+    assert len(result["discovery"]["found"]) == 2
+    discovered = [row for mid, row in _rows(c).items() if row["base"] in result["discovery"]["found"]]
+    assert len(discovered) == 2 and len({r["base"] for r in discovered}) == 2
+
+
+def test_discovery_preserves_running_build_until_it_stops(monkeypatch, tmp_path):
+    snap = hub_repo(tmp_path, "furiosa-ai/" + GEMMA, {})
+    ready_fxb(snap)
+    r = fr.Router()
+    c = _client(monkeypatch, r)
+    c.post("/router/rescan")
+    r.running[GEMMA] = fr.Backend(GEMMA, 8411, FakeProc(), [0, 1, 2, 3])
+    r.state[GEMMA] = "up"
+    ready_fxb(snap, tp=8, ctx=65536)
+    result = c.post("/router/rescan").json()
+    assert GEMMA in result["kept"]
+    assert fr.REGISTRY[GEMMA]["tp"] == 32 and fr._DISCOVERED_REGISTRY[GEMMA]["tp"] == 8
+    r.running.clear()
+    r.state.clear()
+    assert _rows(c)[GEMMA]["tp"] == 8
